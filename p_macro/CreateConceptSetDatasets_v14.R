@@ -99,7 +99,11 @@ CreateConceptSetDatasets <- function(dataset,codvar,datevar,EAVtables,EAVattribu
         used_df <- as.data.table(read_dta(paste0(dirinput,"/",df2,".",extension)))
       } else if (extension == "csv") {
         options(readr.num_columns = 0)
-        used_df <- fread(paste0(dirinput,"/",df2,".",extension))
+        used_df <- fread(paste0(dirinput,"/",df2,".",extension), colClasses = c("character", "numeric", "numeric",
+                                                                                "character", "character", "character",
+                                                                                "character", "character", "character",
+                                                                                "numeric", "character", "character", "character"))
+        browser()
       }
       else if (extension == "RData") {
         assign('used_df', get(load(paste0(dirinput,"/",df2,".",extension))))
@@ -116,6 +120,7 @@ CreateConceptSetDatasets <- function(dataset,codvar,datevar,EAVtables,EAVattribu
           }
         }
       }
+      
 
       used_df[, General:=0]
       used_df0<-as.data.table(data.frame(matrix(ncol = 0, nrow = 0)))
