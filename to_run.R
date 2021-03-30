@@ -26,3 +26,9 @@ source(paste0(thisdir,"/p_parameters/03_concept_sets.R"))
 # 01 RETRIEVE RECORDS FRM CDM
 
 system.time(source(paste0(thisdir,"/p_steps/step_01_1_T2.1_create_conceptset_datasets.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_01_2_T2.1_create_spells.R")))
+# TODO ask about step4
+system.time(source(paste0(thisdir,"/p_steps/step_04_T2_create_exclusion_criteria.R")))
+# TODO is flowchart results correct?
+system.time(source(paste0(thisdir,"/p_steps/step_05_T3_apply_exclusion_criteria.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_ECVM.R")))
