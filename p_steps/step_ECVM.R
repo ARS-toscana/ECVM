@@ -75,10 +75,9 @@ setnames(D4_doses_birthcohorts, old = c("week"), new = c("week"))
 
 fwrite(D4_doses_birthcohorts, paste0(diroutput,"D4_doses_birthcohorts.csv"))
 
-PERSONS <- fread(paste0(dirinput, "PERSONS.csv"))
-
-tot_pop_cohorts <- PERSONS[!is.na(year_of_birth),]
-tot_pop_cohorts <- tot_pop_cohorts[, birth_cohort := findInterval(year_of_birth, c(1940, 1950, 1960, 1970, 1980, 1990))]
+tot_pop_cohorts <- D4_study_population_doses[!is.na(date_of_birth),]
+tot_pop_cohorts <- tot_pop_cohorts[, birth_year := year(date_of_birth)]
+tot_pop_cohorts <- tot_pop_cohorts[, birth_cohort := findInterval(birth_year, c(1940, 1950, 1960, 1970, 1980, 1990))]
 tot_pop_cohorts$birth_cohort <- as.character(tot_pop_cohorts$birth_cohort)
 tot_pop_cohorts <- tot_pop_cohorts[.(birth_cohort = c("0", "1", "2", "3", "4", "5", "6"),
                                      to = c("<1940", "1940-1949", "1950-1959", "1960-1969", "1970-1979",
