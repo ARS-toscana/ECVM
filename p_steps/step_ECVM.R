@@ -4,7 +4,7 @@ find_last_monday <- function(tmp_date) {
   tmp_date <- as.Date(lubridate::ymd(tmp_date))
   Sys_option <- c("LC_COLLATE", "LC_CTYPE", "LC_MONETARY", "LC_NUMERIC", "LC_TIME")
   str_option <- lapply(strsplit(Sys.getlocale(), ";"), strsplit, "=")[[1]]
-  Sys.setlocale("LC_ALL","English")
+  Sys.setlocale("LC_ALL","English_United States.1252")
   while (weekdays(tmp_date) != "Monday") {
     tmp_date <- tmp_date - 1
   }

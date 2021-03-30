@@ -37,7 +37,7 @@ PERSONS<-PERSONS[,sex:=as.numeric(ifelse(sex_at_instance_creation=="M",1,0))] #1
 PERSONS<-PERSONS[is.na(sex) | is.na(date_of_birth),sex_or_birth_date_missing:=1]
 PERSONS<-PERSONS[year(date_of_birth)<1899 | year(date_of_birth)>2021, birth_date_absurd:=1]
 
-# no observation period
+# no observation period (NA + )
 PERSONS_in_OP<-unique(merge(PERSONS, OBSERVATION_PERIODS, all.x = T, by="person_id")[is.na(op_start_date),no_observation_periods:=1][is.na(no_observation_periods),no_observation_periods:=0][,MAXop_start_date:=max(no_observation_periods), by="person_id"][MAXop_start_date==no_observation_periods,],by="person_id")
 D3_exclusion_no_observation_periods<-PERSONS_in_OP[,.(person_id,sex_or_birth_date_missing,birth_date_absurd,no_observation_periods)]
 
@@ -59,7 +59,6 @@ output_spells_category_enriched <- output_spells_category_enriched[,study_entry_
 output_spells_category_enriched <- output_spells_category_enriched[date_of_birth>study_start & date_of_birth==entry_spell_category, study_entry_date:=date_of_birth]
   
 ## KEEP ONLY SPELLS THAT INCLUDE study_entry_date AND WHOSE entry_spell_category IS < exit_spell_category
-# TODO mistake here
 output_spells_category_enriched <- output_spells_category_enriched[study_entry_date %between% list(entry_spell_category,exit_spell_category ) & entry_spell_category< exit_spell_category ,spell_contains_study_entry_date:=1, by="person_id"][is.na(spell_contains_study_entry_date),spell_contains_study_entry_date:=0]
   
 D3_exclusion_observation_periods_not_overlapping<-output_spells_category_enriched[,spell_contains_study_entry_dateMAX:=max(spell_contains_study_entry_date), by="person_id"][,observation_periods_not_overlapping:=1-spell_contains_study_entry_dateMAX] #[,.(person_id,observation_periods_not_overlapping)])
