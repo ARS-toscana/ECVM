@@ -92,7 +92,3 @@ D4_coverage_birthcohorts <- D4_coverage_birthcohorts[, cum_N := cumsum(N), by = 
 D4_coverage_birthcohorts <- D4_coverage_birthcohorts[, percentage := round(cum_N / pop_cohorts, 3)][, c("week", "vx_manufacturer", "dose", "birth_cohort", "percentage")]
 
 fwrite(D4_coverage_birthcohorts, paste0(diroutput,"D4_coverage_birthcohorts.csv"))
-
-
-
-
