@@ -103,7 +103,6 @@ CreateConceptSetDatasets <- function(dataset,codvar,datevar,EAVtables,EAVattribu
                                                                                 "character", "character", "character",
                                                                                 "character", "character", "character",
                                                                                 "numeric", "character", "character", "character"))
-        browser()
       }
       else if (extension == "RData") {
         assign('used_df', get(load(paste0(dirinput,"/",df2,".",extension))))
@@ -160,6 +159,10 @@ CreateConceptSetDatasets <- function(dataset,codvar,datevar,EAVtables,EAVattribu
             }
           }else{
             cod_system_indataset<-names(concept_set_codes[[concept]])
+          }
+          
+          if (cod_system_indataset == "") {
+            cod_system_indataset <- 1
           }
 
           if (length(cod_system_indataset)==0) {
