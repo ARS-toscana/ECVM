@@ -65,12 +65,34 @@ D4_doses_birthcohorts <- D4_doses_birthcohorts[.(birth_cohort = c("0", "1", "2",
                                                         "1980-1989", "1990+")),
                                                on = "birth_cohort", birth_cohort := i.to]
 
-D4_doses_birthcohorts <- D4_doses_birthcohorts[, .N, by = c("vx_manufacturer", "vx_date", "vx_dose", "birth_cohort")]
+D4_doses_birthcohorts <- D4_doses_birthcohorts[, .N, by = c("vx_manufacturer", "week", "dose", "birth_cohort")]
 
-all_ages <- copy(D4_doses_birthcohorts)[, N := sum(N), by = c("vx_manufacturer", "vx_date", "vx_dose")]
-all_ages <- unique(all_ages[,birth_cohort:="all_birth_cohorts"][, c("vx_manufacturer", "vx_date", "vx_dose", "birth_cohort", "N")])
+all_ages <- copy(D4_doses_birthcohorts)[, N := sum(N), by = c("vx_manufacturer", "week", "dose")]
+all_ages <- unique(all_ages[,birth_cohort:="all_birth_cohorts"][, c("vx_manufacturer", "week", "dose", "birth_cohort", "N")])
 
-D4_doses_birthcohorts <- rbind(D4_doses_birthcohorts, all_ages)[, vx_date := format(vx_date, "%Y%m%d")][, c("vx_date", "vx_manufacturer", "vx_dose", "birth_cohort", "N")]
-setnames(D4_doses_birthcohorts, old = c("vx_date", "vx_dose"), new = c("week","dose"))
+D4_doses_birthcohorts <- rbind(D4_doses_birthcohorts, all_ages)[, week := format(week, "%Y%m%d")][, c("week", "vx_manufacturer", "dose", "birth_cohort", "N")]
+setnames(D4_doses_birthcohorts, old = c("week"), new = c("week"))
 
 fwrite(D4_doses_birthcohorts, paste0(diroutput,"D4_doses_birthcohorts.csv"))
+
+tot_pop_cohorts <- D4_study_population_doses[!is.na(date_of_birth),]
+tot_pop_cohorts <- tot_pop_cohorts[, birth_year := year(date_of_birth)]
+tot_pop_cohorts <- tot_pop_cohorts[, birth_cohort := findInterval(birth_year, c(1940, 1950, 1960, 1970, 1980, 1990))]
+tot_pop_cohorts$birth_cohort <- as.character(tot_pop_cohorts$birth_cohort)
+tot_pop_cohorts <- tot_pop_cohorts[.(birth_cohort = c("0", "1", "2", "3", "4", "5", "6"),
+                                     to = c("<1940", "1940-1949", "1950-1959", "1960-1969", "1970-1979",
+                                            "1980-1989", "1990+")),
+                                   on = "birth_cohort", birth_cohort := i.to]
+tot_pop_cohorts <- tot_pop_cohorts[, .(pop_cohorts = .N), by = c("birth_cohort")]
+all_pop <- unique(copy(tot_pop_cohorts)[, pop_cohorts := sum(pop_cohorts)][, birth_cohort := "all_birth_cohorts"])
+tot_pop_cohorts <- rbind(tot_pop_cohorts, all_pop)
+D4_coverage_birthcohorts <- merge(D4_doses_birthcohorts, tot_pop_cohorts, by = "birth_cohort", all.x = T)
+setorder(D4_coverage_birthcohorts, week)
+D4_coverage_birthcohorts <- D4_coverage_birthcohorts[, cum_N := cumsum(N), by = c("vx_manufacturer", "dose", "birth_cohort", "pop_cohorts")]
+D4_coverage_birthcohorts <- D4_coverage_birthcohorts[, percentage := round(cum_N / pop_cohorts, 3)][, c("week", "vx_manufacturer", "dose", "birth_cohort", "percentage")]
+
+fwrite(D4_coverage_birthcohorts, paste0(diroutput,"D4_coverage_birthcohorts.csv"))
+
+
+
+
