@@ -28,15 +28,15 @@ for (concept in names(concept_set_domains)) {
 }
 
 D3_doses <- merge(concepts, D4_study_population_doses, all.x = T, by="person_id")
-D3_doses$vx_dose <- as.character(D3_doses$vx_dose)
-D3_doses <- D3_doses[,c("person_id", "vx_manufacturer", "date", "vx_dose",
+D3_doses$dose <- as.character(D3_doses$vx_dose)
+D3_doses <- D3_doses[,c("person_id", "vx_manufacturer", "date", "vx_dose", "dose",
                         "study_entry_date", "study_exit_date")]
 # TODO add J&J to dictionary
 D3_doses <- D3_doses[.(vx_manufacturer = c("MODERNA BIOTECH SPAIN S.L.",
 "PFIZER Srl", "ASTRAZENECA SpA", "J&J"), to = c("Moderna", "Pfizer", "AstraZeneca", "J&J")),
                      on = "vx_manufacturer", vx_manufacturer := i.to]
 D3_doses <- D3_doses[date < study_exit_date & date > study_entry_date,
-                     vx_dose := fifelse(vx_dose != "1" & vx_dose != "2", "UNK", vx_dose)]
+                     dose := fifelse(dose != "1" & dose != "2", "UNK", dose)]
 
 monday_week <- seq.Date(from = find_last_monday(study_start), to = find_last_monday(study_end),
                   by = "week")
@@ -48,9 +48,9 @@ all_days_df <- all_days_df[all_days >= study_start,]
 
 D3_doses <- merge(D3_doses, all_days_df, by.x = "date", by.y = "all_days", all.x = T)[, vx_admin_date := date]
 D3_doses <- D3_doses[, vx_admin_date := date]
-D3_doses <- D3_doses[, vx_date := monday_week]
+D3_doses <- D3_doses[, week := monday_week]
 # TODO ask about dose vs vx_dose and week vs vx_date
-D3_doses <- D3_doses[,c("person_id", "vx_manufacturer", "vx_admin_date", "vx_dose", "vx_date")]
+D3_doses <- D3_doses[,c("person_id", "vx_manufacturer", "vx_admin_date", "vx_dose", "dose", "week")]
 
 save(D3_doses, file = paste0(dirtemp, "D3_doses.RData"))
 
