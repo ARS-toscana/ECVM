@@ -28,7 +28,8 @@ for (concept in names(concept_set_domains)) {
 }
 
 D3_doses <- merge(concepts, D4_study_population_doses, all.x = T, by="person_id")
-D3_doses$dose <- as.character(D3_doses$vx_dose)
+setorder(D3_doses, person_id, date)
+D3_doses <- D3_doses[, dose := as.character(row.names(.SD)), by = person_id]
 D3_doses <- D3_doses[,c("person_id", "vx_manufacturer", "date", "vx_dose", "dose",
                         "study_entry_date", "study_exit_date")]
 # TODO add J&J to dictionary
