@@ -78,9 +78,8 @@ date_format <- "%Y%m%d"
 #---------------------------------------
 # understand which datasource the script is querying
 
-# CDM_SOURCE<- fread(paste0(dirinput,"CDM_SOURCE.csv"))
-# thisdatasource <- as.character(CDM_SOURCE[1,3])
-thisdatasource <- "ARS"
+CDM_SOURCE<- fread(paste0(dirinput,"CDM_SOURCE.csv"))
+thisdatasource <- as.character(CDM_SOURCE[1,3])
 
 #---------------------------------------
 # assess datasource-specific parameters
@@ -122,8 +121,7 @@ study_start <- as.Date(as.character(20200101), date_format)
 
 
 # study_end <- study_end_datasource[[thisdatasource]]
-study_end <- as.Date(as.character(20210331), date_format)
-
+study_end <- as.Date(as.character(CDM_SOURCE[1,"recommended_end_date"]), date_format)
 # study start coprimary_c and coprimary_d
 
 # study_start_coprimary_c <- if_else(study_end_datasource[[thisdatasource]]>as.Date(as.character(20200101), date_format),as.Date(as.character(20200101), date_format),as.Date(NA, date_format))
