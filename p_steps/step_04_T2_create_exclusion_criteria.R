@@ -38,8 +38,14 @@ PERSONS<-PERSONS[is.na(sex) | is.na(date_of_birth),sex_or_birth_date_missing:=1]
 PERSONS<-PERSONS[year(date_of_birth)<1899 | year(date_of_birth)>2021, birth_date_absurd:=1]
 
 # no observation period (NA + )
-PERSONS_in_OP<-unique(merge(PERSONS, OBSERVATION_PERIODS, all.x = T, by="person_id")[is.na(op_start_date),no_observation_periods:=1][is.na(no_observation_periods),no_observation_periods:=0][,MAXop_start_date:=max(no_observation_periods), by="person_id"][MAXop_start_date==no_observation_periods,],by="person_id")
+PERSONS_in_OP<-unique(merge(PERSONS, OBSERVATION_PERIODS, all.x = T, by="person_id")[is.na(op_start_date),no_observation_periods:=1][is.na(no_observation_periods),no_observation_periods:=0][,Minop_start_date:=min(no_observation_periods), by="person_id"][Minop_start_date==no_observation_periods,],by="person_id")
+
 D3_exclusion_no_observation_periods<-PERSONS_in_OP[,.(person_id,sex_or_birth_date_missing,birth_date_absurd,no_observation_periods)]
+
+D3_study_source_population <- D3_exclusion_no_observation_periods[entry_spell_category >= study_start | exit_spell_category <= study_start, persons_not_in_study_start := 1]
+
+save(D3_study_source_population, file=paste0(dirtemp,"D3_study_source_population.RData"))
+
 
 ## KEEP ONLY NEEDED VARs
 D3_inclusion_from_PERSONS <- PERSONS[,.(person_id,sex,date_of_birth,date_of_death)]
@@ -54,33 +60,31 @@ output_spells_category_enriched <- merge(output_spells_category,D3_inclusion_fro
 output_spells_category_enriched <- output_spells_category_enriched[entry_spell_category>date_of_birth,one_year_obs:=entry_spell_category+1*365][entry_spell_category<=date_of_birth,one_year_obs:=date_of_birth]
 
 ## CALCULATE study_entry_date
-output_spells_category_enriched <- output_spells_category_enriched[,study_entry_date:=max(date_of_birth,study_start,one_year_obs),by="person_id"]
+# output_spells_category_enriched <- output_spells_category_enriched[,study_entry_date:=max(date_of_birth,study_start,one_year_obs),by="person_id"]
+output_spells_category_enriched <- output_spells_category_enriched[,study_entry_date:=max(date_of_birth,study_start),by="person_id"]
 
-output_spells_category_enriched <- output_spells_category_enriched[date_of_birth>study_start & date_of_birth==entry_spell_category, study_entry_date:=date_of_birth]
-  
+output_spells_category_enriched <- output_spells_category_enriched[date_of_birth>study_start & date_of_birth==entry_spell_category, study_entry_date:=date_of_birth]  #forse toglila
+
+#check if subject died before entering the study and correct if exit spell is wrong
+output_spells_category_enriched <-output_spells_category_enriched[!is.na(date_of_death) & date_of_death < study_entry_date, death_before_study_entry:=1]
+# TODO ask Rosa if want binary variable for quality check
+output_spells_category_enriched <-output_spells_category_enriched[!is.na(date_of_death) & date_of_death < exit_spell_category, exit_spell_category:=date_of_death]
+D3_exclusion_observation_periods_not_overlapping <-D3_exclusion_observation_periods_not_overlapping[is.na(death_before_study_entry),death_before_study_entry:=0]
+
 ## KEEP ONLY SPELLS THAT INCLUDE study_entry_date AND WHOSE entry_spell_category IS < exit_spell_category
 output_spells_category_enriched <- output_spells_category_enriched[study_entry_date %between% list(entry_spell_category,exit_spell_category ) & entry_spell_category< exit_spell_category ,spell_contains_study_entry_date:=1, by="person_id"][is.na(spell_contains_study_entry_date),spell_contains_study_entry_date:=0]
   
 D3_exclusion_observation_periods_not_overlapping<-output_spells_category_enriched[,spell_contains_study_entry_dateMAX:=max(spell_contains_study_entry_date), by="person_id"][,observation_periods_not_overlapping:=1-spell_contains_study_entry_dateMAX] #[,.(person_id,observation_periods_not_overlapping)])
-  
-D3_exclusion_observation_periods_not_overlapping <- D3_exclusion_observation_periods_not_overlapping[one_year_obs>study_end | one_year_obs> exit_spell_category,insufficient_run_in:=1]
+
+
+#check the subject has one year of lookback
+D3_exclusion_observation_periods_not_overlapping <- D3_exclusion_observation_periods_not_overlapping[one_year_obs>=study_entry_date ,insufficient_run_in:=1]
 D3_exclusion_observation_periods_not_overlapping[is.na(insufficient_run_in),insufficient_run_in:=0]
   
   
 D3_exclusion_observation_periods_not_overlapping <-merge(PERSONS[,.(person_id)],D3_exclusion_observation_periods_not_overlapping,by="person_id", all.x = T)[is.na(observation_periods_not_overlapping), observation_periods_not_overlapping := 1]
   
-D3_exclusion_observation_periods_not_overlapping <-D3_exclusion_observation_periods_not_overlapping[is.na(insufficient_run_in),insufficient_run_in:=1]
-  
-  # there is some people whose death has not been recorded in the exit_spell, let's remove them
-# TODO ask Claudia???
-  # D3_exclusion_observation_periods_not_overlapping <-D3_exclusion_observation_periods_not_overlapping[is.na(date_of_death),min_death_exit_spell:=min(date_of_death,exit_spell_category)]
 
-D3_exclusion_observation_periods_not_overlapping <-D3_exclusion_observation_periods_not_overlapping[!is.na(date_of_death) & date_of_death < study_entry_date, death_before_study_entry:=1]
-# TODO ask Rosa if want binary variable for quality check
-D3_exclusion_observation_periods_not_overlapping <-D3_exclusion_observation_periods_not_overlapping[!is.na(date_of_death) & date_of_death < exit_spell_category, exit_spell_category:=date_of_death]
-  
-D3_exclusion_observation_periods_not_overlapping <-D3_exclusion_observation_periods_not_overlapping[is.na(death_before_study_entry),death_before_study_entry:=0]
-  
 D3_exclusion_observation_periods_not_overlapping <-D3_exclusion_observation_periods_not_overlapping[,.(person_id,observation_periods_not_overlapping, insufficient_run_in, death_before_study_entry, study_entry_date)]
   
   

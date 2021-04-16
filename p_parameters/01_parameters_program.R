@@ -79,7 +79,7 @@ date_format <- "%Y%m%d"
 # understand which datasource the script is querying
 
 CDM_SOURCE<- fread(paste0(dirinput,"CDM_SOURCE.csv"))
-thisdatasource <- as.character(CDM_SOURCE[1,3])
+thisdatasource <- as.character(CDM_SOURCE[1,2])
 
 #---------------------------------------
 # assess datasource-specific parameters
@@ -171,7 +171,7 @@ study_end <- as.Date(as.character(CDM_SOURCE[1,"recommended_end_date"]), date_fo
 # suppressWarnings(if (!file.exists(dirtemp)) dir.create(file.path( dirtemp)))
 # suppressWarnings(if (!file.exists(direxp)) dir.create(file.path( direxp)))
 # suppressWarnings(if (!file.exists(dirfigure)) dir.create(file.path( dirfigure)))
-# suppressWarnings(if (!file.exists(dirpargen)) dir.create(file.path( dirpargen)))
+suppressWarnings(if (!file.exists(dirpargen)) dir.create(file.path( dirpargen)))
 # suppressWarnings(if (!file.exists(dirsmallcountsremoved)) dir.create(file.path(dirsmallcountsremoved)))
 # 
 # 

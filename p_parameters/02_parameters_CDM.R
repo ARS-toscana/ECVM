@@ -11,10 +11,10 @@ for (i in 1:length(files)) {
   if (str_detect(files[i],"^VACCINES"))  ConcePTION_CDM_tables[["Vaccine"]][[(length(ConcePTION_CDM_tables[["Vaccine"]]) + 1)]]<-files[i]
 }
 
-files<-sub('\\.csv$', '', list.files(dirinput))
-for (i in 1:length(files)) {
-  if (str_detect(files[i],"^VACCINES"))  ConcePTION_CDM_tables[["VaccineATC"]][[(length(ConcePTION_CDM_tables[["VaccineATC"]]) + 1)]]<-files[i]
-}
+# files<-sub('\\.csv$', '', list.files(dirinput))
+# for (i in 1:length(files)) {
+#   if (str_detect(files[i],"^VACCINES"))  ConcePTION_CDM_tables[["VaccineATC"]][[(length(ConcePTION_CDM_tables[["VaccineATC"]]) + 1)]]<-files[i]
+# }
 
 #define tables for createconceptset
 # ConcePTION_CDM_EAV_tables <- vector(mode="list")
@@ -47,12 +47,12 @@ for (ds in ConcePTION_CDM_tables[["Vaccine"]]) {
   ConcePTION_CDM_datevar[["Vaccine"]][[ds]] <- "vx_admin_date"
 }
 
-for (ds in ConcePTION_CDM_tables[["VaccineATC"]]) {
-  ConcePTION_CDM_codvar[["VaccineATC"]][[ds]] <- "vx_atc"
-  person_id[["VaccineATC"]][[ds]] <- "person_id"
-  date[["VaccineATC"]][[ds]] <- "vx_admin_date"
-  ConcePTION_CDM_datevar[["VaccineATC"]][[ds]] <- "vx_admin_date"
-}
+# for (ds in ConcePTION_CDM_tables[["VaccineATC"]]) {
+#   ConcePTION_CDM_codvar[["VaccineATC"]][[ds]] <- "vx_atc"
+#   person_id[["VaccineATC"]][[ds]] <- "person_id"
+#   date[["VaccineATC"]][[ds]] <- "vx_admin_date"
+#   ConcePTION_CDM_datevar[["VaccineATC"]][[ds]] <- "vx_admin_date"
+# }
 
 # ConcePTION_CDM_coding_system_cols <- vector(mode="list")
 # if (length(ConcePTION_CDM_EAV_tables)!=0 ){
