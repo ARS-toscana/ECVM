@@ -148,11 +148,16 @@ setnames(vaxweeks_to_dos_bir_cor, c("Datasource", "monday_week", "Dose", "Birthc
 
 vaxweeks_to_dos_bir_cor <- vaxweeks_to_dos_bir_cor[, .(N = .N), by = c("datasource", "week", "vx_manufacturer", "dose", "birth_cohort")]
 
+all_ages <- copy(vaxweeks_to_dos_bir_cor)[, N := sum(N), by = c("datasource", "week", "vx_manufacturer", "dose")]
+all_ages <- unique(all_ages[, birth_cohort:="all_birth_cohorts"][, c("datasource", "week", "vx_manufacturer", "dose", "birth_cohort", "N")])
+
+vaxweeks_to_dos_bir_cor <- rbind(vaxweeks_to_dos_bir_cor, all_ages)
+
 complete_df <- expand.grid(datasource = "ARS", week = monday_week, vx_manufacturer = c("Moderna", "Pfizer", "AstraZeneca", "J&J", "UKN"),
                            dose = c("1", "2"), birth_cohort = c("<1940", "1940-1949", "1950-1959", "1960-1969", "1970-1979",
-                                                                "1980-1989", "1990+"))
+                                                                "1980-1989", "1990+", "all_birth_cohorts"))
 
 vaxweeks_to_dos_bir_cor <- merge(vaxweeks_to_dos_bir_cor, complete_df, all.y = T, by = c("datasource", "week", "vx_manufacturer", "dose", "birth_cohort"))
-DOSES_BIRTHCOHORTS <- vaxweeks_to_dos_bir_cor[is.na(N), N := 0]
+DOSES_BIRTHCOHORTS <- vaxweeks_to_dos_bir_cor[is.na(N), N := 0][, week := format(week, "%Y%m%d")]
 
 save(DOSES_BIRTHCOHORTS, file = paste0(diroutput, "DOSES_BIRTHCOHORTS.RData"))
