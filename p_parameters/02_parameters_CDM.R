@@ -8,7 +8,7 @@ ConcePTION_CDM_tables <- vector(mode="list")
 
 files<-sub('\\.csv$', '', list.files(dirinput))
 for (i in 1:length(files)) {
-  if (str_detect(files[i],"^VACCINES"))  ConcePTION_CDM_tables[["Vaccine"]][[(length(ConcePTION_CDM_tables[["Vaccine"]]) + 1)]]<-files[i]
+  if (str_detect(files[i],"^VACCINES"))  ConcePTION_CDM_tables[["VaccineATC"]][[(length(ConcePTION_CDM_tables[["VaccineATC"]]) + 1)]]<-files[i]
 }
 
 # files<-sub('\\.csv$', '', list.files(dirinput))
@@ -40,11 +40,11 @@ person_id <- vector(mode="list")
 date<- vector(mode="list")
 ConcePTION_CDM_datevar<-vector(mode="list")
 
-for (ds in ConcePTION_CDM_tables[["Vaccine"]]) {
-  ConcePTION_CDM_codvar[["Vaccine"]][[ds]] <- "medicinal_product_id"
-  person_id[["Vaccine"]][[ds]] <- "person_id"
-  date[["Vaccine"]][[ds]] <- "vx_admin_date"
-  ConcePTION_CDM_datevar[["Vaccine"]][[ds]] <- "vx_admin_date"
+for (ds in ConcePTION_CDM_tables[["VaccineATC"]]) {
+  ConcePTION_CDM_codvar[["VaccineATC"]][[ds]] <- "vx_atc"
+  person_id[["VaccineATC"]][[ds]] <- "person_id"
+  date[["VaccineATC"]][[ds]] <- "vx_admin_date"
+  ConcePTION_CDM_datevar[["VaccineATC"]][[ds]] <- "vx_admin_date"
 }
 
 # for (ds in ConcePTION_CDM_tables[["VaccineATC"]]) {

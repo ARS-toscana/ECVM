@@ -1,7 +1,7 @@
 concept_sets_of_our_study <- c("Covid_vaccine")
 
 concept_set_domains<- vector(mode="list")
-concept_set_domains[["Covid_vaccine"]] = "Vaccine"
+concept_set_domains[["Covid_vaccine"]] = "VaccineATC"
 
 
 

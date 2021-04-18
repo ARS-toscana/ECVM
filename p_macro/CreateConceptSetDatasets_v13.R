@@ -40,6 +40,7 @@ CreateConceptSetDatasets <- function(dataset,codvar,datevar,EAVtables,EAVattribu
                                      concept_set_domains,concept_set_codes,concept_set_codes_excl,concept_set_names,vocabulary,
                                      addtabcol=T, verbose=F,discard_from_environment=F,
                                      dirinput,diroutput,extension,vocabularies_with_dot_wildcard) {
+  browser()
   if (!require("haven")) install.packages("haven")
   library(haven)
   if (!require("stringr")) install.packages("stringr")
