@@ -120,9 +120,9 @@ vax_to_doses_weeks <- vax_to_doses_weeks[, .(person_id, Datasource, year, Birthc
 vax_to_doses_weeks <- vax_to_doses_weeks[, sex := fifelse(sex == 1, "Male", "Female")]
 D4_doses_weeks <- vax_to_doses_weeks[, .(Number_of_doses_in_week = .N), by = c("Datasource", "year", "Birthcohort_persons", "week", "sex", "Dose", "type_vax_1", "type_vax_2")]
 
-save(D4_doses_weeks, file = paste0(dirtemp, "D4_doses_weeks.RData"))
+save(D4_doses_weeks, file = paste0(diroutput, "D4_doses_weeks.RData"))
 
-temp <- D3_vaxweeks[week == 0]
+vaxweeks_to_dos_bir_cor <- D3_vaxweeks[week == 0]
 
 monday_week <- seq.Date(from = find_last_monday(study_start), to = find_last_monday(study_end),
                         by = "week")
@@ -132,16 +132,27 @@ all_days_df <- merge(all_days_df, double_weeks, by.x = "all_days", by.y = "weeks
 all_days_df <- all_days_df[, monday_week := nafill(monday_week, type="locf")]
 all_days_df <- all_days_df[all_days >= study_start,]
 
-temp <- merge(temp, all_days_df, by.x = "start_date_of_period", by.y = "all_days")
+vaxweeks_to_dos_bir_cor <- merge(vaxweeks_to_dos_bir_cor, all_days_df, by.x = "start_date_of_period", by.y = "all_days")
 
-temp <- merge(temp, cohort_to_doses_weeks, by = "person_id")
-temp <- temp[, Birthcohort_persons := findInterval(year(date_of_birth), c(1940, 1950, 1960, 1970, 1980, 1990))]
-temp$Birthcohort_persons <- as.character(temp$Birthcohort_persons)
-temp <- temp[.(Birthcohort_persons = c("0", "1", "2", "3", "4", "5", "6"),
+vaxweeks_to_dos_bir_cor <- merge(vaxweeks_to_dos_bir_cor, cohort_to_doses_weeks, by = "person_id")
+vaxweeks_to_dos_bir_cor <- vaxweeks_to_dos_bir_cor[, Birthcohort_persons := findInterval(year(date_of_birth), c(1940, 1950, 1960, 1970, 1980, 1990))]
+vaxweeks_to_dos_bir_cor$Birthcohort_persons <- as.character(vaxweeks_to_dos_bir_cor$Birthcohort_persons)
+vaxweeks_to_dos_bir_cor <- vaxweeks_to_dos_bir_cor[.(Birthcohort_persons = c("0", "1", "2", "3", "4", "5", "6"),
                                            to = c("<1940", "1940-1949", "1950-1959", "1960-1969", "1970-1979",
                                                   "1980-1989", "1990+")),
                                          on = "Birthcohort_persons", Birthcohort_persons := i.to]
+vaxweeks_to_dos_bir_cor <- vaxweeks_to_dos_bir_cor[, vx_manufacturer := fifelse(Dose == 1, type_vax_1, type_vax_2)]
 
+vaxweeks_to_dos_bir_cor <- vaxweeks_to_dos_bir_cor[, .(Datasource, monday_week, vx_manufacturer, Dose, Birthcohort_persons)]
+setnames(vaxweeks_to_dos_bir_cor, c("Datasource", "monday_week", "Dose", "Birthcohort_persons"), c("datasource", "week", "dose", "birth_cohort"))
 
+vaxweeks_to_dos_bir_cor <- vaxweeks_to_dos_bir_cor[, .(N = .N), by = c("datasource", "week", "vx_manufacturer", "dose", "birth_cohort")]
 
+complete_df <- expand.grid(datasource = "ARS", week = monday_week, vx_manufacturer = c("Moderna", "Pfizer", "AstraZeneca", "J&J", "UKN"),
+                           dose = c("1", "2"), birth_cohort = c("<1940", "1940-1949", "1950-1959", "1960-1969", "1970-1979",
+                                                                "1980-1989", "1990+"))
 
+vaxweeks_to_dos_bir_cor <- merge(vaxweeks_to_dos_bir_cor, complete_df, all.y = T, by = c("datasource", "week", "vx_manufacturer", "dose", "birth_cohort"))
+DOSES_BIRTHCOHORTS <- vaxweeks_to_dos_bir_cor[is.na(N), N := 0]
+
+save(DOSES_BIRTHCOHORTS, file = paste0(diroutput, "DOSES_BIRTHCOHORTS.RData"))
