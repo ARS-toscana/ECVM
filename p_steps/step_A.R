@@ -1,5 +1,7 @@
 library(data.table)
 
+corrected_
+
 load(paste0(diroutput,"D4_study_population.RData"))
 
 D4_study_population <- D4_study_population[, .(person_id, sex, date_of_birth, date_of_death, study_entry_date, start_follow_up, study_exit_date)]
@@ -55,7 +57,10 @@ D3_vaccin_cohort <- D3_study_population[, .(person_id, sex, date_of_birth, study
                                                age_at_date_vax_1, age_at_date_vax_2,
                                                type_vax_1, type_vax_2, study_entry_date_vax1,
                                                study_exit_date_vax1, study_entry_date_vax2,
-                                               study_exit_date_vax2, fup_days, fup_vax1, fup_vax2)]
+                                               study_exit_date_vax2, fup_vax1, fup_vax2)]
 
 save(D3_vaccin_cohort, file = paste0(dirtemp, "D3_vaccin_cohort.RData"))
 
+temp <- D3_vaccin_cohort[, .(person_id, study_entry_date_vax1, study_exit_date_vax1, study_entry_date_vax2,
+                             study_exit_date_vax2, fup_vax1, fup_vax2)]
+temp <- temp[, c("fup_vax1", "fup_vax2") := list(time_length(fup_vax1, "week"), time_length(fup_vax2, "week"))]
