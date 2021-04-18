@@ -17,6 +17,8 @@ D4_study_population <- vector(mode="list")
 
 load(paste0(dirtemp,"D3_selection_criteria_doses.RData"))
 
+
+
 selected_population <- CreateFlowChart(
   dataset = D3_selection_criteria_doses,
   listcriteria = c("sex_or_birth_date_missing", "birth_date_absurd", "no_observation_period", "death_before_study_entry", "no_observation_period_including_study_start"),
