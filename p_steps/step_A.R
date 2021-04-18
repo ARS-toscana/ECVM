@@ -161,3 +161,22 @@ vaxweeks_to_dos_bir_cor <- merge(vaxweeks_to_dos_bir_cor, complete_df, all.y = T
 DOSES_BIRTHCOHORTS <- vaxweeks_to_dos_bir_cor[is.na(N), N := 0][, week := format(week, "%Y%m%d")]
 
 save(DOSES_BIRTHCOHORTS, file = paste0(diroutput, "DOSES_BIRTHCOHORTS.RData"))
+
+load(paste0(diroutput,"D4_study_source_population.RData"))
+tot_pop_cohorts <- D4_study_source_population[, birth_cohort := findInterval(year(date_of_birth), c(1940, 1950, 1960, 1970, 1980, 1990))]
+tot_pop_cohorts$birth_cohort <- as.character(tot_pop_cohorts$birth_cohort)
+tot_pop_cohorts <- tot_pop_cohorts[.(birth_cohort = c("0", "1", "2", "3", "4", "5", "6"),
+                                                     to = c("<1940", "1940-1949", "1950-1959", "1960-1969", "1970-1979",
+                                                            "1980-1989", "1990+")),
+                                                   on = "birth_cohort", birth_cohort := i.to]
+tot_pop_cohorts <- tot_pop_cohorts[, .(pop_cohorts = .N), by = c("birth_cohort")]
+all_pop <- unique(copy(tot_pop_cohorts)[, pop_cohorts := sum(pop_cohorts)][, birth_cohort := "all_birth_cohorts"])
+tot_pop_cohorts <- rbind(tot_pop_cohorts, all_pop)
+COVERAGE_BIRTHCOHORTS <- merge(DOSES_BIRTHCOHORTS, tot_pop_cohorts, by = "birth_cohort", all.x = T)
+setorder(COVERAGE_BIRTHCOHORTS, week)
+
+COVERAGE_BIRTHCOHORTS <- COVERAGE_BIRTHCOHORTS[, cum_N := cumsum(N), by = c("datasource", "vx_manufacturer", "dose", "birth_cohort")]
+COVERAGE_BIRTHCOHORTS <- COVERAGE_BIRTHCOHORTS[, percentage := round(cum_N / pop_cohorts, 3)][, c("datasource", "week", "vx_manufacturer", "dose", "birth_cohort", "percentage")]
+COVERAGE_BIRTHCOHORTS <- COVERAGE_BIRTHCOHORTS[, .(datasource, week, vx_manufacturer, dose, birth_cohort, percentage)]
+
+save(COVERAGE_BIRTHCOHORTS, file = paste0(diroutput, "COVERAGE_BIRTHCOHORTS.RData"))
