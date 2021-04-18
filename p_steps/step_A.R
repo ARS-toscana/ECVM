@@ -1,6 +1,21 @@
 library(data.table)
 
 
+find_last_monday <- function(tmp_date) {
+  tmp_date <- as.Date(lubridate::ymd(tmp_date))
+  Sys_option <- c("LC_COLLATE", "LC_CTYPE", "LC_MONETARY", "LC_NUMERIC", "LC_TIME")
+  str_option <- lapply(strsplit(Sys.getlocale(), ";"), strsplit, "=")[[1]]
+  Sys.setlocale("LC_ALL","English_United States.1252")
+  while (weekdays(tmp_date) != "Monday") {
+    tmp_date <- tmp_date - 1
+  }
+  for (i in seq(length(Sys_option))) {
+    Sys.setlocale(Sys_option[i], str_option[[i]][[2]])
+  }
+  return(tmp_date)
+}
+
+
 correct_difftime <- function(t1, t2, t_period = "years") {
   return(difftime(t1, t2, units = "days") + 1)
 }
@@ -95,7 +110,7 @@ vax_to_doses_weeks <- vax_to_doses_weeks[, year := year(start_date_of_period)]
 cohort_to_doses_weeks <- D3_vaccin_cohort[, .(person_id, sex, type_vax_1, type_vax_2, date_of_birth)]
 
 vax_to_doses_weeks <- merge(vax_to_doses_weeks, cohort_to_doses_weeks)
-vax_to_doses_weeks <- vax_to_doses_weeks[, Birthcohort_persons := findInterval(date_of_birth, c(1940, 1950, 1960, 1970, 1980, 1990))]
+vax_to_doses_weeks <- vax_to_doses_weeks[, Birthcohort_persons := findInterval(year(date_of_birth), c(1940, 1950, 1960, 1970, 1980, 1990))]
 vax_to_doses_weeks$Birthcohort_persons <- as.character(vax_to_doses_weeks$Birthcohort_persons)
 vax_to_doses_weeks <- vax_to_doses_weeks[.(Birthcohort_persons = c("0", "1", "2", "3", "4", "5", "6"),
                                                  to = c("<1940", "1940-1949", "1950-1959", "1960-1969", "1970-1979",
@@ -107,7 +122,25 @@ D4_doses_weeks <- vax_to_doses_weeks[, .(Number_of_doses_in_week = .N), by = c("
 
 save(D4_doses_weeks, file = paste0(dirtemp, "D4_doses_weeks.RData"))
 
+temp <- D3_vaxweeks[week == 0]
 
+monday_week <- seq.Date(from = find_last_monday(study_start), to = find_last_monday(study_end),
+                        by = "week")
+double_weeks <- data.table(weeks_to_join = monday_week, monday_week = monday_week)
+all_days_df <- data.table(all_days = seq.Date(from = find_last_monday(study_start), to = study_end, by = "days"))
+all_days_df <- merge(all_days_df, double_weeks, by.x = "all_days", by.y = "weeks_to_join", all.x = T)
+all_days_df <- all_days_df[, monday_week := nafill(monday_week, type="locf")]
+all_days_df <- all_days_df[all_days >= study_start,]
+
+temp <- merge(temp, all_days_df, by.x = "start_date_of_period", by.y = "all_days")
+
+temp <- merge(temp, cohort_to_doses_weeks, by = "person_id")
+temp <- temp[, Birthcohort_persons := findInterval(year(date_of_birth), c(1940, 1950, 1960, 1970, 1980, 1990))]
+temp$Birthcohort_persons <- as.character(temp$Birthcohort_persons)
+temp <- temp[.(Birthcohort_persons = c("0", "1", "2", "3", "4", "5", "6"),
+                                           to = c("<1940", "1940-1949", "1950-1959", "1960-1969", "1970-1979",
+                                                  "1980-1989", "1990+")),
+                                         on = "Birthcohort_persons", Birthcohort_persons := i.to]
 
 
 
