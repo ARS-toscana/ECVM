@@ -38,7 +38,7 @@ save(D4_study_source_population,file = paste0(diroutput,"D4_study_source_populat
 
 
 selected_population_all_filter <- CreateFlowChart(
-  dataset = selected_population[,.(person_id, sex, date_of_birth, date_of_death, insufficient_run_in)],
+  dataset = selected_population[,.(person_id, sex, date_of_birth, date_of_death, study_entry_date, start_follow_up, study_exit_date, insufficient_run_in)],
   listcriteria = c("insufficient_run_in"),
   flowchartname = "Flowchart_exclusion_criteria")
 
