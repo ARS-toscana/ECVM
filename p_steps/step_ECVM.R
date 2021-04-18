@@ -25,6 +25,7 @@ for (concept in names(concept_set_domains)) {
   } else {
     concepts <- get(concept)
   }
+  rm(concept)
 }
 
 D3_doses <- merge(concepts, D4_study_population_doses, all.x = T, by="person_id")
