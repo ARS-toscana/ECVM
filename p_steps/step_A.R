@@ -48,7 +48,7 @@ if (thisdatasource == "ARS") {
 
 setorder(D3_doses, date)
 
-D3_doses <- D3_doses[, if(.N>1) .SD, by=c("person_id")]
+D3_doses <- D3_doses[, if(.N<3) .SD, by=c("person_id")]
 D3_doses <- D3_doses[, vx_dose := seq_len(.N), by = c("person_id")]
 
 D3_doses <- unique(D3_doses)
