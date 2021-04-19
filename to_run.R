@@ -28,8 +28,8 @@ source(paste0(thisdir,"/p_parameters/05_subpopulations_restricting_meanings.R"))
 system.time(source(paste0(thisdir,"/p_steps/step_01_1_T2.1_create_conceptset_datasets.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_01_2_T2.1_create_spells.R")))
 # TODO ask about step4
-system.time(source(paste0(thisdir,"/p_steps/step_04_T2_create_exclusion_criteria.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_03_T2_create_exclusion_criteria.R")))
 # TODO is flowchart results correct?
-system.time(source(paste0(thisdir,"/p_steps/step_05_T3_apply_exclusion_criteria.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_04_T3_apply_exclusion_criteria.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_A.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_B.R")))
