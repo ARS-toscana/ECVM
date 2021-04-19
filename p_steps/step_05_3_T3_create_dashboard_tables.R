@@ -1,5 +1,6 @@
 load(paste0(dirtemp, "D3_vaxweeks.RData"))
 
+cohort_to_doses_weeks <- D3_Vaccin_cohort[, .(person_id, sex, type_vax_1, type_vax_2, date_of_birth)]
 
 all_mondays <- seq.Date(as.Date("19000101","%Y%m%d"), Sys.Date(), by = "week")
 
@@ -7,9 +8,6 @@ monday_week <- seq.Date(from = find_last_monday(study_start, all_mondays), to = 
                         by = "week")
 double_weeks <- data.table(weeks_to_join = monday_week, monday_week = monday_week)
 all_days_df <- data.table(all_days = seq.Date(from = find_last_monday(study_start, monday_week), to = study_end, by = "days"))
-all_days_df <- merge(all_days_df, double_weeks, by.x = "all_days", by.y = "weeks_to_join", all.x = T)
-all_days_df <- all_days_df[, monday_week := nafill(monday_week, type="locf")]
-all_days_df <- all_days_df[all_days >= study_start,]
 
 
 
@@ -31,6 +29,7 @@ vaxweeks_to_dos_bir_cor <- vaxweeks_to_dos_bir_cor[.(Birthcohort_persons = c("0"
                                                             "1980-1989", "1990+")),
                                                    on = "Birthcohort_persons", Birthcohort_persons := i.to]
 vaxweeks_to_dos_bir_cor <- vaxweeks_to_dos_bir_cor[, vx_manufacturer := fifelse(Dose == 1, type_vax_1, type_vax_2)]
+vaxweeks_to_dos_bir_cor <- vaxweeks_to_dos_bir_cor[, Datasource := thisdatasource]
 
 vaxweeks_to_dos_bir_cor <- vaxweeks_to_dos_bir_cor[, .(Datasource, monday_week, vx_manufacturer, Dose, Birthcohort_persons)]
 setnames(vaxweeks_to_dos_bir_cor, c("Datasource", "monday_week", "Dose", "Birthcohort_persons"), c("datasource", "week", "dose", "birth_cohort"))

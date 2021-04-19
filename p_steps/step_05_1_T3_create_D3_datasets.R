@@ -1,10 +1,5 @@
 library(data.table)
 
-bnch <- bench::mark(
-  min_iterations = 100,
-  Roel = !sum(Start_study_time==test)==1,
-  Davide = Start_study_time %not in% test)
-
 find_last_monday <- function(tmp_date, monday_week) {
   tmp_date <- as.Date(lubridate::ymd(tmp_date))
   Sys_option <- c("LC_COLLATE", "LC_CTYPE", "LC_MONETARY", "LC_NUMERIC", "LC_TIME")
