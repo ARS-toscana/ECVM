@@ -86,16 +86,16 @@ D3_study_population <- D3_doses[, .(person_id, sex, date_of_birth, start_follow_
 save(D3_study_population, file = paste0(dirtemp, "D3_study_population.RData"))
 
 D3_study_population <- D3_study_population[!is.na(date_vax1), ][, age_at_date_vax_2 := floor(time_length(correct_difftime(date_vax2, date_of_birth), "years"))]
-D3_vaccin_cohort <- D3_study_population[, .(person_id, sex, date_of_birth, study_entry_date,
+D3_Vaccin_cohort <- D3_study_population[, .(person_id, sex, date_of_birth, study_entry_date,
                                                study_exit_date, date_vax1, date_vax2,
                                                age_at_date_vax_1, age_at_date_vax_2,
                                                type_vax_1, type_vax_2, study_entry_date_vax1,
                                                study_exit_date_vax1, study_entry_date_vax2,
                                                study_exit_date_vax2, fup_vax1, fup_vax2)]
 
-save(D3_vaccin_cohort, file = paste0(dirtemp, "D3_vaccin_cohort.RData"))
+save(D3_Vaccin_cohort, file = paste0(dirtemp, "D3_Vaccin_cohort.RData"))
 
-cohort_to_vaxweeks <- D3_vaccin_cohort[, .(person_id, study_entry_date_vax1, study_exit_date_vax1, study_entry_date_vax2,
+cohort_to_vaxweeks <- D3_Vaccin_cohort[, .(person_id, study_entry_date_vax1, study_exit_date_vax1, study_entry_date_vax2,
                              study_exit_date_vax2, fup_vax1, fup_vax2)]
 cohort_to_vaxweeks <- cohort_to_vaxweeks[, c("fup_vax1", "fup_vax2") := list(floor(time_length(fup_vax1, "week")) + 1, floor(time_length(fup_vax2, "week")) + 1)]
 colA = paste("study_entry_date_vax", 1:2, sep = "")
@@ -116,7 +116,7 @@ save(D3_vaxweeks, file = paste0(dirtemp, "D3_vaxweeks.RData"))
 vax_to_doses_weeks <- D3_vaxweeks[, Datasource := thisdatasource]
 vax_to_doses_weeks <- vax_to_doses_weeks[, year := year(start_date_of_period)]
 
-cohort_to_doses_weeks <- D3_vaccin_cohort[, .(person_id, sex, type_vax_1, type_vax_2, date_of_birth)]
+cohort_to_doses_weeks <- D3_Vaccin_cohort[, .(person_id, sex, type_vax_1, type_vax_2, date_of_birth)]
 
 vax_to_doses_weeks <- merge(vax_to_doses_weeks, cohort_to_doses_weeks)
 vax_to_doses_weeks <- vax_to_doses_weeks[, Birthcohort_persons := findInterval(year(date_of_birth), c(1940, 1950, 1960, 1970, 1980, 1990))]
