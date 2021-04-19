@@ -195,17 +195,17 @@ save(COVERAGE_BIRTHCOHORTS, file = paste0(diroutput, "COVERAGE_BIRTHCOHORTS.RDat
 ### DescribeThisDatasets
 source(paste0(dirmacro, "DescribeThisDataset.R"))
 
-DescribeThisDataset(D4_doses_weeks,
-                    Individual=T,
-                    ColumnN=NULL,
-                    HeadOfDataset=TRUE,
-                    StructureOfDataset=TRUE,
-                    NameOutputFile="D4_doses_weeks",
-                    Cols=list("datasource","year", "Birthcohort_persons", "week", "sex", "Dose", "type_vax_1", "type_vax_2", "Number_of_doses_in_week"),
-                    ColsFormat=list("categorical","categorical", "categorical", "categorical", "binary",  "categorical",  "categorical",  "categorical",  "categorical"),
-                    #DateFormat_ymd=TRUE,
-                    DetailInformation=TRUE,
-                    PathOutputFolder=paste0(thisdir,"/g_describeHTML"))
+# DescribeThisDataset(D4_doses_weeks,
+#                     Individual=T,
+#                     ColumnN=NULL,
+#                     HeadOfDataset=TRUE,
+#                     StructureOfDataset=TRUE,
+#                     NameOutputFile="D4_doses_weeks",
+#                     Cols=list("datasource","year", "Birthcohort_persons", "week", "sex", "Dose", "type_vax_1", "type_vax_2", "Number_of_doses_in_week"),
+#                     ColsFormat=list("categorical","categorical", "categorical", "categorical", "binary",  "categorical",  "categorical",  "categorical",  "categorical"),
+#                     #DateFormat_ymd=TRUE,
+#                     DetailInformation=TRUE,
+#                     PathOutputFolder=paste0(thisdir,"/g_describeHTML"))
 
 DescribeThisDataset(COVERAGE_BIRTHCOHORTS,
                     Individual=T,
@@ -214,6 +214,18 @@ DescribeThisDataset(COVERAGE_BIRTHCOHORTS,
                     StructureOfDataset=TRUE,
                     NameOutputFile="COVERAGE_BIRTHCOHORTS",
                     Cols=list("datasource", "week",  "vx_manufacturer", "dose", "birth_cohort", "percentage"),
+                    ColsFormat=list("categorical", "date",  "categorical",  "categorical",  "categorical", "continuous"),
+                    DateFormat_ymd=TRUE,
+                    DetailInformation=TRUE,
+                    PathOutputFolder=paste0(thisdir,"/g_describeHTML"))
+
+DescribeThisDataset(DOSES_BIRTHCOHORTS,
+                    Individual=T,
+                    ColumnN=NULL,
+                    HeadOfDataset=TRUE,
+                    StructureOfDataset=TRUE,
+                    NameOutputFile="DOSES_BIRTHCOHORTS",
+                    Cols=list("datasource", "week",  "vx_manufacturer", "dose", "birth_cohort", "N"),
                     ColsFormat=list("categorical", "date",  "categorical",  "categorical",  "categorical", "continuous"),
                     DateFormat_ymd=TRUE,
                     DetailInformation=TRUE,
