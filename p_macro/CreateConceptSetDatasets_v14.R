@@ -343,7 +343,7 @@ CreateConceptSetDatasets <- function(dataset,codvar,datevar,EAVtables,EAVattribu
             export_df = suppressWarnings( rbind(export_df, eval(parse(text = paste0(concept,"_",df2))),fill = T) )
           }
         }
-        export_df<-export_df[, .SD[!all(is.na(.SD))]]
+        export_df<-unique(export_df[, .SD[!all(is.na(.SD))]])
 
         if (addtabcol == F) export_df<-export_df[,c("Table_cdm","Col"):=NULL]
         if (discard_from_environment==T) {

@@ -38,11 +38,18 @@ D3_doses <- merge(concepts, D4_study_population, by="person_id")[, .(person_id, 
                                                                      study_entry_date, start_follow_up, study_exit_date,
                                                                      date, vx_dose, vx_manufacturer)]
 
+D3_doses <- unique(D3_doses)
+
 if (thisdatasource == "ARS") {
   D3_doses <- D3_doses[.(vx_manufacturer = c("MODERNA BIOTECH SPAIN S.L.",
                                              "PFIZER Srl", "ASTRAZENECA SpA", "J&J"), to = c("Moderna", "Pfizer", "AstraZeneca", "J&J")),
                        on = "vx_manufacturer", vx_manufacturer := i.to]
 }
+
+setorder(D3_doses, date)
+D3_doses <- D3_doses[, vx_dose := seq_len(.N), by = c("person_id")]
+
+D3_doses <- unique(D3_doses)
 
 D3_doses <- dcast(D3_doses, person_id + sex + date_of_birth + date_of_death + study_entry_date + start_follow_up +
         study_exit_date ~ vx_dose, value.var = c("date", "vx_manufacturer"))
@@ -177,6 +184,6 @@ setorder(COVERAGE_BIRTHCOHORTS, week)
 
 COVERAGE_BIRTHCOHORTS <- COVERAGE_BIRTHCOHORTS[, cum_N := cumsum(N), by = c("datasource", "vx_manufacturer", "dose", "birth_cohort")]
 COVERAGE_BIRTHCOHORTS <- COVERAGE_BIRTHCOHORTS[, percentage := round(cum_N / pop_cohorts, 3)][, c("datasource", "week", "vx_manufacturer", "dose", "birth_cohort", "percentage")]
-COVERAGE_BIRTHCOHORTS <- COVERAGE_BIRTHCOHORTS[, .(datasource, week, vx_manufacturer, dose, birth_cohort, percentage)]
+COVERAGE_BIRTHCOHORTS <- COVERAGE_BIRTHCOHORTS[, .(datasource, week, vx_manufacturer, dose, birth_cohort, percentage)][, week := format(week, "%Y%m%d")]
 
 save(COVERAGE_BIRTHCOHORTS, file = paste0(diroutput, "COVERAGE_BIRTHCOHORTS.RData"))
