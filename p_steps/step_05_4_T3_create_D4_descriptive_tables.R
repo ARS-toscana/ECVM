@@ -11,7 +11,6 @@ na_to_0 = function(DT) {
 load(file = paste0(dirtemp, "D3_study_population.RData"))
 load(file = paste0(dirtemp, "D3_Vaccin_cohort.RData"))
 
-
 D4_descriptive_dataset_age_studystart <- D3_study_population[, .(person_id, age_at_study_entry, fup_days)]
 D4_descriptive_dataset_age_studystart <- D4_descriptive_dataset_age_studystart[,c("Age_P25", "Age_P50", "Age_p75") :=
                                                                                  as.list(round(quantile(age_at_study_entry, probs = c(0.25, 0.50, 0.75)), 0))]
@@ -80,7 +79,6 @@ D4_followup_fromstudystart <- D4_followup_fromstudystart[, .(Datasource, Followu
 
 fwrite(D4_followup_fromstudystart, file = paste0(direxp, "D4_followup_fromstudystart.csv"))
 
-
 D4_descriptive_dataset_age_vax1 <- D3_Vaccin_cohort[, .(person_id, type_vax_1, date_vax1, fup_vax1, age_at_date_vax_1)]
 D4_descriptive_dataset_age_vax1 <- D4_descriptive_dataset_age_vax1[, Month_vax1 := month(date_vax1)]
 setnames(D4_descriptive_dataset_age_vax1, "type_vax_1", "Vax_dose1")
@@ -118,6 +116,7 @@ D4_descriptive_dataset_sex_vaccination <- D4_descriptive_dataset_sex_vaccination
 D4_descriptive_dataset_sex_vaccination <- dcast(D4_descriptive_dataset_sex_vaccination, Datasource + type_vax_1 ~ sex, value.var = "N")
 
 fwrite(D4_descriptive_dataset_sex_vaccination, file = paste0(direxp, "D4_descriptive_dataset_sex_vaccination.csv"))
+
 
 D4_followup_from_vax <- D3_study_population[, .(person_id, sex, age_at_study_entry, fup_vax1, fup_vax2)]
 D4_followup_from_vax <- D4_followup_from_vax[, age_at_study_entry := findInterval(age_at_study_entry, c(20, 30, 40, 50, 60, 70, 80))]
@@ -181,6 +180,7 @@ D4_followup_from_vax <- D4_followup_from_vax[, c("Datasource", "Followup_males_v
 
 fwrite(D4_followup_from_vax, file = paste0(direxp, "D4_followup_from_vax.csv"))
 
+
 D4_distance_doses <- D3_Vaccin_cohort[, .(person_id, date_vax1, date_vax2, type_vax_1, type_vax_2)]
 D4_distance_doses <- D4_distance_doses[!is.na(date_vax2) & type_vax_1 == type_vax_2, ]
 D4_distance_doses <- D4_distance_doses[, distance := correct_difftime(date_vax2, date_vax1)]
@@ -205,7 +205,12 @@ D4_distance_doses <- D4_distance_doses[, c("Datasource", "Distance_P25_Pfizer1_2
 fwrite(D4_distance_doses, file = paste0(direxp, "D4_distance_doses.csv"))
 
 
-
+rm(D3_study_population, D3_Vaccin_cohort, D4_descriptive_dataset_age_studystart, D4_descriptive_dataset_ageband_studystart,
+   D4_descriptive_dataset_sex_studystart, D4_followup_fromstudystart, dec31, jan1, D4_followup_sex, D4_followup_cohort,
+   D4_followup_complete, D4_descriptive_dataset_age_vax1, D4_descriptive_dataset_ageband_vax,
+   D4_descriptive_dataset_sex_vaccination, D4_followup_from_vax, followup_vax1, followup_vax2, followup_vax1_sex,
+   followup_vax2_sex, followup_vax1_cohort, empty_vax1_cohort, followup_vax2_cohort, empty_vax2_cohort,
+   followup_vax1_complete, followup_vax2_complete, D4_distance_doses, empty_distances)
 
 
 

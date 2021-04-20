@@ -1,15 +1,13 @@
 library(data.table)
 
+`%not in%` = Negate(`%in%`)
+
 find_last_monday <- function(tmp_date, monday_week) {
+  
   tmp_date <- as.Date(lubridate::ymd(tmp_date))
-  Sys_option <- c("LC_COLLATE", "LC_CTYPE", "LC_MONETARY", "LC_NUMERIC", "LC_TIME")
-  str_option <- lapply(strsplit(Sys.getlocale(), ";"), strsplit, "=")[[1]]
-  Sys.setlocale("LC_ALL","English_United States.1252")
-  while (weekdays(tmp_date) != "Monday") {
+  
+  while (tmp_date %not in% monday_week) {
     tmp_date <- tmp_date - 1
-  }
-  for (i in seq(length(Sys_option))) {
-    Sys.setlocale(Sys_option[i], str_option[[i]][[2]])
   }
   return(tmp_date)
 }
@@ -22,6 +20,7 @@ all_mondays <- seq.Date(as.Date("19000101","%Y%m%d"), Sys.Date(), by = "week")
 
 monday_week <- seq.Date(from = find_last_monday(study_start, all_mondays), to = find_last_monday(study_end, all_mondays),
                         by = "week")
+
 double_weeks <- data.table(weeks_to_join = monday_week, monday_week = monday_week)
 all_days_df <- data.table(all_days = seq.Date(from = find_last_monday(study_start, monday_week), to = study_end, by = "days"))
 all_days_df <- merge(all_days_df, double_weeks, by.x = "all_days", by.y = "weeks_to_join", all.x = T)
@@ -125,5 +124,6 @@ D3_vaxweeks <- cohort_to_vaxweeks[, .(person_id, start_date_of_period, end_date_
 
 save(D3_vaxweeks, file = paste0(dirtemp, "D3_vaxweeks.RData"))
 
-
+rm(all_mondays, monday_week, double_weeks, all_days_df, D4_study_population, concepts, D3_doses, D3_doses_duplicate,
+   D3_study_population, D3_Vaccin_cohort, cohort_to_vaxweeks, colA, colB, colC, D3_vaxweeks)
 

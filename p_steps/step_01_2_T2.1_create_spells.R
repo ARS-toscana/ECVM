@@ -29,6 +29,7 @@ output_spells_category <- CreateSpells(
 )
 
 save(output_spells_category, file=paste0(dirtemp,"output_spells_category.RData"))
+rm(files, output_spells_category)
 
 # empty_spells <- OBSERVATION_PERIODS[1,.(person_id)]
 # empty_spells <- empty_spells[,op_meaning := "test"]

@@ -32,14 +32,13 @@ suppressWarnings(
 )
 
 fwrite(Flowchart_basic_exclusion_criteria, paste0(direxp,"Flowchart_basic_exclusion_criteria.csv"))
-names(selected_population)
+
 to_study_pop <- unique(selected_population)[, .(person_id, sex, date_of_birth, date_of_death, study_entry_date,
                                                 start_follow_up, study_exit_date, insufficient_run_in)]
-D4_study_source_population <-to_study_pop[, .(person_id, sex, date_of_birth, date_of_death, study_entry_date,
+D4_study_source_population <- to_study_pop[, .(person_id, sex, date_of_birth, date_of_death, study_entry_date,
                                               start_follow_up, study_exit_date)]
 
 save(D4_study_source_population,file = paste0(diroutput,"D4_study_source_population.RData"))
-names(D4_study_source_population)
 
 selected_population_all_filter <- CreateFlowChart(
   dataset = selected_population[,.(person_id, sex, date_of_birth, date_of_death, study_entry_date, start_follow_up, study_exit_date, insufficient_run_in)],
@@ -53,8 +52,8 @@ D4_study_population <- unique(selected_population_all_filter)[, .(person_id, sex
 save(D4_study_population,file = paste0(diroutput, "D4_study_population.RData"))
 
 # rm(PERSONS, OBSERVATION_PERIODS)
-rm(D3_selection_criteria_doses, D4_study_population, D4_study_source_population,
-   Flowchart_basic_exclusion_criteria, Flowchart_exclusion_criteria, selected_population)
+rm(D4_study_source_population, D4_study_population, D3_selection_criteria_doses, Flowchart_basic_exclusion_criteria,
+   Flowchart_exclusion_criteria, selected_population, to_study_pop, selected_population_all_filter)
 
 
 

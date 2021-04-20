@@ -1,4 +1,5 @@
 load(paste0(dirtemp, "D3_vaxweeks.RData"))
+load(paste0(dirtemp, "D3_Vaccin_cohort.RData"))
 
 cohort_to_doses_weeks <- D3_Vaccin_cohort[, .(person_id, sex, type_vax_1, type_vax_2, date_of_birth)]
 
@@ -8,10 +9,6 @@ monday_week <- seq.Date(from = find_last_monday(study_start, all_mondays), to = 
                         by = "week")
 double_weeks <- data.table(weeks_to_join = monday_week, monday_week = monday_week)
 all_days_df <- data.table(all_days = seq.Date(from = find_last_monday(study_start, monday_week), to = study_end, by = "days"))
-
-
-
-
 
 vaxweeks_to_dos_bir_cor <- D3_vaxweeks[week == 0]
 
@@ -69,8 +66,6 @@ COVERAGE_BIRTHCOHORTS <- COVERAGE_BIRTHCOHORTS[, .(datasource, week, vx_manufact
 
 fwrite(COVERAGE_BIRTHCOHORTS, file = paste0(direxp, "COVERAGE_BIRTHCOHORTS.csv"))
 
-
-
 ### DescribeThisDatasets
 source(paste0(dirmacro, "DescribeThisDataset.R"))
 
@@ -117,3 +112,7 @@ DescribeThisDataset(D3_Vaccin_cohort,
                     DateFormat_ymd=FALSE,
                     DetailInformation=TRUE,
                     PathOutputFolder=paste0(thisdir,"/g_describeHTML"))
+
+rm(D3_vaxweeks, cohort_to_doses_weeks, all_mondays, monday_week, double_weeks, all_days_df, vaxweeks_to_dos_bir_cor,
+   all_ages, complete_df, DOSES_BIRTHCOHORTS, D4_study_source_population, tot_pop_cohorts, all_pop, COVERAGE_BIRTHCOHORTS,
+   D3_Vaccin_cohort)

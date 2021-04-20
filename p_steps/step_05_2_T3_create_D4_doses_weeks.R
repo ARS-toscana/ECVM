@@ -1,5 +1,18 @@
 load(paste0(dirtemp, "D3_vaxweeks.RData"))
 
+`%not in%` = Negate(`%in%`)
+
+find_last_monday <- function(tmp_date, monday_week) {
+  
+  tmp_date <- as.Date(lubridate::ymd(tmp_date))
+  
+  while (tmp_date %not in% monday_week) {
+    tmp_date <- tmp_date - 1
+  }
+  return(tmp_date)
+}
+
+load(file = paste0(dirtemp, "D3_vaxweeks.RData"))
 
 all_mondays <- seq.Date(as.Date("19000101","%Y%m%d"), Sys.Date(), by = "week")
 
@@ -10,9 +23,6 @@ all_days_df <- data.table(all_days = seq.Date(from = find_last_monday(study_star
 all_days_df <- merge(all_days_df, double_weeks, by.x = "all_days", by.y = "weeks_to_join", all.x = T)
 all_days_df <- all_days_df[, monday_week := nafill(monday_week, type="locf")]
 all_days_df <- all_days_df[all_days >= study_start,]
-
-
-
 
 vax_to_doses_weeks <- D3_vaxweeks[, Datasource := thisdatasource][, .(person_id, start_date_of_period, Dose, Datasource, year)]
 

@@ -81,7 +81,7 @@ D3_selection_criteria_doses <- D3_selection_criteria_doses[!is.na(study_entry_da
 save(D3_selection_criteria_doses,file=paste0(dirtemp,"D3_selection_criteria_doses.RData"))
 
 rm(output_spells_category_enriched,D3_inclusion_from_PERSONS,D3_exclusion_observation_periods_not_overlapping)
-rm(PERSONS_OP, PERSONS_OP2)
+rm(PERSONS_OP, PERSONS_OP2, start_follow_up, na_date, coords)
 rm(PERSONS, PERSONS_in_OP, output_spells_category,OBSERVATION_PERIODS, D3_selection_criteria_doses, D3_exclusion_no_observation_period)
 
 
