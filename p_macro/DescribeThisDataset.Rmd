@@ -161,6 +161,7 @@ if(Vars_Form_Det){
         compDataset<-Dataset[complete.cases(data_subset), ]
         
         category=unique(compDataset[ , get(i)])
+        category=sort(category) ##################################################
         count=list()
         percentage=list()
         iteration_count=1
