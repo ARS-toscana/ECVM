@@ -1,21 +1,5 @@
 library(data.table)
 
-`%not in%` = Negate(`%in%`)
-
-find_last_monday <- function(tmp_date, monday_week) {
-  
-  tmp_date <- as.Date(lubridate::ymd(tmp_date))
-  
-  while (tmp_date %not in% monday_week) {
-    tmp_date <- tmp_date - 1
-  }
-  return(tmp_date)
-}
-
-correct_difftime <- function(t1, t2, t_period = "years") {
-  return(difftime(t1, t2, units = "days") + 1)
-}
-
 all_mondays <- seq.Date(as.Date("19000101","%Y%m%d"), Sys.Date(), by = "week")
 
 monday_week <- seq.Date(from = find_last_monday(study_start, all_mondays), to = find_last_monday(study_end, all_mondays),

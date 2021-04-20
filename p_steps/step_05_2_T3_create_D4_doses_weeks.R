@@ -12,7 +12,7 @@ find_last_monday <- function(tmp_date, monday_week) {
   return(tmp_date)
 }
 
-load(file = paste0(dirtemp, "D3_vaxweeks.RData"))
+load(file = paste0(dirtemp, "D3_Vaccin_cohort.RData"))
 
 all_mondays <- seq.Date(as.Date("19000101","%Y%m%d"), Sys.Date(), by = "week")
 
@@ -24,12 +24,11 @@ all_days_df <- merge(all_days_df, double_weeks, by.x = "all_days", by.y = "weeks
 all_days_df <- all_days_df[, monday_week := nafill(monday_week, type="locf")]
 all_days_df <- all_days_df[all_days >= study_start,]
 
-vax_to_doses_weeks <- D3_vaxweeks[, Datasource := thisdatasource][, .(person_id, start_date_of_period, Dose, Datasource, year)]
+vax_to_doses_weeks <- D3_vaxweeks[, .(person_id, start_date_of_period, Datasource, type_vax_1, type_vax_2)]
+vax_to_doses_weeks <- merge(vax_to_doses_weeks, all_days_df, by.x = "start_date_of_period", by.y = "all_days")
 
-vaxweeks_to_dos_bir_cor <- merge(vaxweeks_to_dos_bir_cor, all_days_df, by.x = "start_date_of_period", by.y = "all_days")
-
-
-
+coh_to_doses_weeks <- D3_Vaccin_cohort[, Datasource := thisdatasource]
+coh_to_doses_weeks <- vax_to_doses_weeks[, .(person_id, sex, Datasource, type_vax_1, type_vax_2)]
 
 
 

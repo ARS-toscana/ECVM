@@ -100,3 +100,19 @@ age_fast = function(from, to) {
            (to_lt$mon == from_lt$mon & to_lt$mday < from_lt$mday),
          age - 1, age)
 }
+
+`%not in%` = Negate(`%in%`)
+
+find_last_monday <- function(tmp_date, monday_week) {
+  
+  tmp_date <- as.Date(lubridate::ymd(tmp_date))
+  
+  while (tmp_date %not in% monday_week) {
+    tmp_date <- tmp_date - 1
+  }
+  return(tmp_date)
+}
+
+correct_difftime <- function(t1, t2, t_period = "years") {
+  return(difftime(t1, t2, units = "days") + 1)
+}
