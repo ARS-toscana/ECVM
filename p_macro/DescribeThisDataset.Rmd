@@ -3,6 +3,7 @@ title: "DescribeThisDataset"
 output: 
   html_document:
     toc: TRUE
+    toc_float: true
     theme: united
 params:
   Dataset: NULL
@@ -37,7 +38,7 @@ knitr::opts_chunk$set(echo = FALSE)
   
 This is a description of  **`r NameOfDataset`**, this dataset is composed by `r n_of_observations` observations of  `r n_of_variables` variables.
 
-### Diagnosi
+## Diagnosi
 ```{r DF_output, include=TRUE}
 knitr::kable(df_output, caption = "Missing and Unique diagnosi")
 ```
