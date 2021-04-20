@@ -9,6 +9,8 @@ na_to_0 = function(DT) {
 }
 
 load(file = paste0(dirtemp, "D3_study_population.RData"))
+load(file = paste0(dirtemp, "D3_Vaccin_cohort.RData"))
+
 
 D4_descriptive_dataset_age_studystart <- D3_study_population[, .(person_id, age_at_study_entry, fup_days)]
 D4_descriptive_dataset_age_studystart <- D4_descriptive_dataset_age_studystart[,c("Age_P25", "Age_P50", "Age_p75") :=
@@ -79,7 +81,6 @@ D4_followup_fromstudystart <- D4_followup_fromstudystart[, .(Datasource, Followu
 fwrite(D4_followup_fromstudystart, file = paste0(direxp, "D4_followup_fromstudystart.csv"))
 
 
-load(file = paste0(dirtemp, "D3_Vaccin_cohort.RData"))
 D4_descriptive_dataset_age_vax1 <- D3_Vaccin_cohort[, .(person_id, type_vax_1, date_vax1, fup_vax1, age_at_date_vax_1)]
 D4_descriptive_dataset_age_vax1 <- D4_descriptive_dataset_age_vax1[, Month_vax1 := month(date_vax1)]
 setnames(D4_descriptive_dataset_age_vax1, "type_vax_1", "Vax_dose1")
@@ -180,7 +181,7 @@ D4_followup_from_vax <- D4_followup_from_vax[, c("Datasource", "Followup_males_v
 
 fwrite(D4_followup_from_vax, file = paste0(direxp, "D4_followup_from_vax.csv"))
 
-D4_distance_doses <- D3_study_population[, .(person_id, date_vax1, date_vax2, type_vax_1, type_vax_2)]
+D4_distance_doses <- D3_Vaccin_cohort[, .(person_id, date_vax1, date_vax2, type_vax_1, type_vax_2)]
 D4_distance_doses <- D4_distance_doses[!is.na(date_vax2) & type_vax_1 == type_vax_2, ]
 D4_distance_doses <- D4_distance_doses[, distance := correct_difftime(date_vax2, date_vax1)]
 D4_distance_doses <- D4_distance_doses[,c("P25", "P50", "p75") :=
