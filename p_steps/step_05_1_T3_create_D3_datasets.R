@@ -53,17 +53,16 @@ if (thisdatasource == "ARS") {
 }
 
 D3_doses <- D3_doses[, vx_dose := as.character(vx_dose)]
-D3_doses_duplicate <- D3_doses[, if(.N >= 3 | max(vx_dose) >= 3) .SD, by=c("person_id")]
-D3_doses <- D3_doses[, if(.N < 3 & max(vx_dose) < 3) .SD, by=c("person_id")]
+D3_doses_duplicate <- D3_doses[, if(.N >= 2) .SD, by = c("person_id", "vx_dose")]
+D3_doses <- D3_doses[, if(.N < 2) .SD, by = c("person_id", "vx_dose")]
 if (nrow(D3_doses_duplicate) != 0) {
   setorder(D3_doses_duplicate, vx_dose, date)
-  D3_doses_duplicate <- unique(D3_doses_duplicate[, vx_dose := fifelse(vx_dose >= 3 | (!is.na(shift(vx_dose)) & vx_dose == shift(vx_dose)), NA_character_, vx_dose), by=c("person_id")])
+  D3_doses_duplicate <- unique(D3_doses_duplicate[, vx_dose := fifelse(!is.na(shift(vx_dose)) & vx_dose == shift(vx_dose), NA_character_, vx_dose), by=c("person_id")])
   D3_doses_duplicate <- D3_doses_duplicate[!is.na(vx_dose), ]
   D3_doses <- rbind(D3_doses, D3_doses_duplicate)
 }
-# D3_doses <- D3_doses[, if(.N < 3) .SD, by=c("person_id")]
-# D3_doses <- D3_doses[, vx_dose := seq_len(.N), by = c("person_id")]
 
+D3_doses <- D3_doses[vx_dose < 3,]
 D3_doses <- unique(D3_doses)
 
 D3_doses <- dcast(D3_doses, person_id + sex + date_of_birth + date_of_death + study_entry_date + start_follow_up +
