@@ -48,7 +48,7 @@ complete_df <- expand.grid(datasource = "ARS", week = monday_week, vx_manufactur
 vaxweeks_to_dos_bir_cor <- merge(vaxweeks_to_dos_bir_cor, complete_df, all.y = T, by = c("datasource", "week", "vx_manufacturer", "dose", "birth_cohort"))
 DOSES_BIRTHCOHORTS <- vaxweeks_to_dos_bir_cor[is.na(N), N := 0][, week := format(week, "%Y%m%d")]
 
-save(DOSES_BIRTHCOHORTS, file = paste0(diroutput, "DOSES_BIRTHCOHORTS.RData"))
+fwrite(DOSES_BIRTHCOHORTS, file = paste0(direxp, "DOSES_BIRTHCOHORTS.csv"))
 
 load(paste0(diroutput,"D4_study_source_population.RData"))
 tot_pop_cohorts <- D4_study_source_population[, birth_cohort := findInterval(year(date_of_birth), c(1940, 1950, 1960, 1970, 1980, 1990))]
@@ -67,7 +67,7 @@ COVERAGE_BIRTHCOHORTS <- COVERAGE_BIRTHCOHORTS[, cum_N := cumsum(N), by = c("dat
 COVERAGE_BIRTHCOHORTS <- COVERAGE_BIRTHCOHORTS[, percentage := round(cum_N / pop_cohorts, 3)][, c("datasource", "week", "vx_manufacturer", "dose", "birth_cohort", "percentage")]
 COVERAGE_BIRTHCOHORTS <- COVERAGE_BIRTHCOHORTS[, .(datasource, week, vx_manufacturer, dose, birth_cohort, percentage)]
 
-save(COVERAGE_BIRTHCOHORTS, file = paste0(diroutput, "COVERAGE_BIRTHCOHORTS.RData"))
+fwrite(COVERAGE_BIRTHCOHORTS, file = paste0(direxp, "COVERAGE_BIRTHCOHORTS.csv"))
 
 
 
