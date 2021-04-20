@@ -52,12 +52,14 @@ if (thisdatasource == "ARS") {
                        on = "vx_manufacturer", vx_manufacturer := i.to]
 }
 
+D3_doses[1, 1] <- D3_doses[3, 1]
 D3_doses <- D3_doses[, vx_dose := as.character(vx_dose)]
 D3_doses_duplicate <- D3_doses[, if(.N >= 3) .SD, by=c("person_id")]
 D3_doses <- D3_doses[, if(.N < 3) .SD, by=c("person_id")]
 if (nrow(D3_doses_duplicate) != 0) {
   setorder(D3_doses_duplicate, vx_dose, date)
   D3_doses_duplicate <- unique(D3_doses_duplicate[, vx_dose := fifelse(!is.na(shift(vx_dose)) & vx_dose == shift(vx_dose), NA_character_, vx_dose), by=c("person_id")])
+  D3_doses_duplicate <- D3_doses_duplicate[!is.na(vx_dose), ]
   D3_doses <- unique(rbind(D3_doses, D3_doses_duplicate))
 }
 # D3_doses <- D3_doses[, if(.N < 3) .SD, by=c("person_id")]
