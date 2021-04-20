@@ -50,5 +50,6 @@ setnames(concepts_wider, c("1", "2"), c("date_vax1", "date_vax2"))
 concepts_wider <- concepts_wider[, qc_date_2 := fifelse(is.na(date_vax2) | date_vax1 < date_vax2, 1, 0)][, .(person_id, qc_date_2)]
 concepts_wider <- unique(concepts_wider)
 
-concepts <- merge(concepts, concepts_wider, by = "person_id")[, temp_id := NULL]
+concepts <- merge(concepts, concepts_wider, by = "person_id")
 concepts <- concepts[pmin(qc_manufacturer, qc_lot_num, qc_manufacturer_1, qc_date, qc_dose, qc_date_1, qc_dose_1, qc_date_2) != 0, ]
+concepts <- concepts[, .(person_id, date, vx_dose, vx_manufacturer)]
