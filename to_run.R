@@ -28,6 +28,8 @@ system.time(source(paste0(thisdir,"/p_steps/step_01_2_T2.1_create_spells.R")))
 
 #02 quality checks
 system.time(source(paste0(thisdir,"/p_steps/step_02_T2_create_exclusion_criteria_VACCINES.R")))
+#02 qualirt checks
+system.time(source(paste0(thisdir,"/p_steps/step_02_T2_quality_check.R")))
 
 #03 create exclusion criteria
 system.time(source(paste0(thisdir,"/p_steps/step_03_T2_create_exclusion_criteria.R")))
