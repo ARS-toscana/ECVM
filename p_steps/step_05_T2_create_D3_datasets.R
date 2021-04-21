@@ -1,31 +1,9 @@
-library(data.table)
-
-all_mondays <- seq.Date(as.Date("19000101","%Y%m%d"), Sys.Date(), by = "week")
-
-monday_week <- seq.Date(from = find_last_monday(study_start, all_mondays), to = find_last_monday(study_end, all_mondays),
-                        by = "week")
-
-double_weeks <- data.table(weeks_to_join = monday_week, monday_week = monday_week)
-all_days_df <- data.table(all_days = seq.Date(from = find_last_monday(study_start, monday_week), to = study_end, by = "days"))
-all_days_df <- merge(all_days_df, double_weeks, by.x = "all_days", by.y = "weeks_to_join", all.x = T)
-all_days_df <- all_days_df[, monday_week := nafill(monday_week, type="locf")]
-all_days_df <- all_days_df[all_days >= study_start,]
-
-load(paste0(diroutput,"D4_study_population.RData"))
+load(paste0(diroutput, "D4_study_population.RData"))
+load(paste0(dirtemp, "selected_doses.RData"))
 
 D4_study_population <- D4_study_population[, .(person_id, sex, date_of_birth, date_of_death, study_entry_date, start_follow_up, study_exit_date)]
 
-concepts<-data.table()
-for (concept in names(concept_set_domains)) {
-  load(paste0(dirtemp, concept,".RData"))
-  if (exists("concepts")) {
-    concepts <- rbind(concepts, get(concept))
-  } else {
-    concepts <- get(concept)
-  }
-}
-
-D3_doses <- merge(concepts, D4_study_population, by="person_id")[, .(person_id, sex, date_of_birth, date_of_death,
+D3_doses <- merge(selected_doses, D4_study_population, by="person_id")[, .(person_id, sex, date_of_birth, date_of_death,
                                                                      study_entry_date, start_follow_up, study_exit_date,
                                                                      date, vx_dose, vx_manufacturer)]
 
@@ -75,24 +53,45 @@ D3_Vaccin_cohort <- D3_study_population[, .(person_id, sex, date_of_birth, study
 
 save(D3_Vaccin_cohort, file = paste0(dirtemp, "D3_Vaccin_cohort.RData"))
 
-cohort_to_vaxweeks <- D3_Vaccin_cohort[, .(person_id, study_entry_date_vax1, study_exit_date_vax1, study_entry_date_vax2,
-                             study_exit_date_vax2, fup_vax1, fup_vax2)]
-cohort_to_vaxweeks <- cohort_to_vaxweeks[, c("fup_vax1", "fup_vax2") := list(floor(time_length(fup_vax1, "week")) + 1, floor(time_length(fup_vax2, "week")) + 1)]
-colA = paste("study_entry_date_vax", 1:2, sep = "")
-colB = paste("study_exit_date_vax", 1:2, sep = "")
-colC = paste("fup_vax", 1:2, sep = "")
-cohort_to_vaxweeks <- melt(cohort_to_vaxweeks, measure = list(colA, colB, colC), variable.name = "Dose", value.name = c("study_entry_date_vax", "study_exit_date_vax", "fup_vax"))
-cohort_to_vaxweeks <- cohort_to_vaxweeks[!is.na(fup_vax), ]
-cohort_to_vaxweeks <- as.data.table(lapply(cohort_to_vaxweeks, rep, cohort_to_vaxweeks$fup_vax))
-cohort_to_vaxweeks <- cohort_to_vaxweeks[, week := seq_len(.N), by=c("person_id", "Dose", "study_entry_date_vax", "study_exit_date_vax")]
-cohort_to_vaxweeks <- cohort_to_vaxweeks[, week := week - 1]
-cohort_to_vaxweeks <- cohort_to_vaxweeks[, start_date_of_period := study_entry_date_vax + 7 * week]
-cohort_to_vaxweeks <- cohort_to_vaxweeks[, end_date_of_period := fifelse(week == fup_vax - 1, study_exit_date_vax, start_date_of_period + 7)]
-cohort_to_vaxweeks <- cohort_to_vaxweeks[, month := month(start_date_of_period)]
-D3_vaxweeks <- cohort_to_vaxweeks[, .(person_id, start_date_of_period, end_date_of_period, Dose, week, month)]
+cohort_to_vaxweeks <- D3_study_population[, .(person_id, date_of_birth, sex, study_entry_date, study_exit_date,
+                                              study_entry_date_vax1, study_exit_date_vax1, study_entry_date_vax2,
+                                              study_exit_date_vax2, type_vax_1, type_vax_2, fup_no_vax, fup_vax1, fup_vax2)]
 
+cohort_to_vaxweeks <- cohort_to_vaxweeks[, Birthcohort_persons := findInterval(year(date_of_birth), c(1940, 1950, 1960, 1970, 1980, 1990))]
+cohort_to_vaxweeks$Birthcohort_persons <- as.character(cohort_to_vaxweeks$Birthcohort_persons)
+cohort_to_vaxweeks <- cohort_to_vaxweeks[.(Birthcohort_persons = c("0", "1", "2", "3", "4", "5", "6"),
+                                           to = c("<1940", "1940-1949", "1950-1959", "1960-1969", "1970-1979",
+                                                  "1980-1989", "1990+")),
+                                         on = "Birthcohort_persons", Birthcohort_persons := i.to]
+cohort_to_vaxweeks <- cohort_to_vaxweeks[, date_of_birth := NULL]
+
+cohort_to_vaxweeks <- cohort_to_vaxweeks[!is.na(study_entry_date_vax1), study_exit_date := study_entry_date_vax1 - 1]
+cols <- c("fup_no_vax", "fup_vax1", "fup_vax2")
+cohort_to_vaxweeks <- cohort_to_vaxweeks[, (cols) := lapply(.SD, calc_precise_week), .SDcols = cols]
+colA = c(paste("study_entry_date_vax", 1:2, sep = ""), "study_entry_date")
+colB = c(paste("study_exit_date_vax", 1:2, sep = ""), "study_exit_date")
+colC = c(paste("fup_vax", 1:2, sep = ""), "fup_no_vax")
+colD = paste("type_vax", 1:2, sep = "_")
+cohort_to_vaxweeks <- melt(cohort_to_vaxweeks, measure = list(colA, colB, colC, colD), variable.name = "Dose",
+                           value.name = c("study_entry_date", "study_exit_date", "fup", "type_vax"), na.rm = F)
+cohort_to_vaxweeks <- cohort_to_vaxweeks[!is.na(study_entry_date) & !is.na(study_exit_date) & !is.na(fup), ]
+cohort_to_vaxweeks <- cohort_to_vaxweeks[, Dose := as.integer(Dose)][Dose == 3, Dose := 0]
+D3_vaxweeks <- copy(cohort_to_vaxweeks)
+D3_studyweeks <- copy(cohort_to_vaxweeks)
+D3_vaxweeks <- D3_vaxweeks[, c("sex", "type_vax", "Birthcohort_persons") := NULL][Dose %in% c(1, 2), ]
+setnames(D3_vaxweeks, c("study_entry_date", "study_exit_date", "fup"),
+         c("study_entry_date_vax", "study_exit_date_vax", "fup_vax"))
+D3_vaxweeks <- as.data.table(lapply(D3_vaxweeks, rep, D3_vaxweeks$fup_vax))
+D3_vaxweeks[, week := rowid(person_id, Dose, study_entry_date_vax, study_exit_date_vax)]
+D3_vaxweeks <- D3_vaxweeks[, week := week - 1][, fup_vax := fup_vax - 1]
+D3_vaxweeks <- D3_vaxweeks[, start_date_of_period := study_entry_date_vax + 7 * week]
+D3_vaxweeks <- D3_vaxweeks[, end_date_of_period := fifelse(week == fup_vax, study_exit_date_vax, start_date_of_period + 7)]
+D3_vaxweeks <- D3_vaxweeks[, month := month(start_date_of_period)]
+D3_vaxweeks <- D3_vaxweeks[, .(person_id, start_date_of_period, end_date_of_period, Dose, week, month)]
+
+save(D3_studyweeks, file = paste0(dirtemp, "D3_studyweeks.RData"))
 save(D3_vaxweeks, file = paste0(dirtemp, "D3_vaxweeks.RData"))
 
-rm(all_mondays, monday_week, double_weeks, all_days_df, D4_study_population, concepts, D3_doses, D3_doses_duplicate,
-   D3_study_population, D3_Vaccin_cohort, cohort_to_vaxweeks, colA, colB, colC, D3_vaxweeks)
+rm(D4_study_population, concepts, D3_doses, D3_doses_duplicate, D3_study_population, D3_Vaccin_cohort,
+   cohort_to_vaxweeks, colA, colB, colC, colD, D3_vaxweeks, D3_studyweeks)
 
