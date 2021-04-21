@@ -24,6 +24,7 @@ concepts <- concepts[, qc_1_lot_num := as.numeric(!is.na(vx_lot_num))]
 
 err_1_date <- nrow(concepts[qc_1_date == 0, ])
 err_1_dose <- nrow(concepts[qc_1_dose == 0, ])
+# TODO no
 err_1_manufacturer <- nrow(concepts[qc_1_manufacturer == 0, ])
 err_1_lot_num <- nrow(concepts[qc_1_lot_num == 0, ])
 #NOTE add the filter for lot_num when it will be necessary
@@ -36,6 +37,7 @@ if (thisdatasource == "ARS") {
                        on = "vx_manufacturer", vx_manufacturer := i.to]
 }
 
+# TODO to unknows
 concepts <- concepts[, qc_2_manufacturer := as.numeric(vx_manufacturer %in% c("Moderna", "Pfizer", "AstraZeneca", "J&J", "UKN"))]
 
 setorder(concepts, person_id, vx_dose, date)
@@ -43,7 +45,7 @@ concepts[, temp_id := rowid(person_id, vx_dose, date, vx_manufacturer)]
 #NOTE remove the filter for lot_num when it will be necessary (moved above)
 concepts <- concepts[qc_1_lot_num == 1, qc_2_lot_num := fifelse(temp_id == 1, 1, 0), by = c("person_id", "vx_dose", "date", "vx_manufacturer")]
 concepts <- concepts[is.na(qc_2_lot_num), qc_2_lot_num := 1]
-concepts <- concepts[, qc_2_date := fifelse(date > ymd(20201227), 1, 0)]
+concepts <- concepts[, qc_2_date := fifelse(date >= ymd(20201227), 1, 0)]
 concepts <- concepts[, qc_2_dose := fifelse(vx_dose <= 2, 1, 0), by = c("person_id", "date")]
 err_2_manufacturer <- nrow(concepts[qc_2_manufacturer == 0, ])
 err_2_lot_num <- nrow(concepts[qc_2_lot_num == 0, ])
@@ -54,6 +56,7 @@ concepts <- unique(concepts[qc_2_manufacturer == 1 & qc_2_date == 1 & qc_2_dose 
 concepts <- unique(concepts[, c("qc_2_lot_num", "qc_1_lot_num", "qc_2_manufacturer") := NULL])
 
 concepts[, temp_id := rowid(person_id, vx_dose, date)]
+# TODO na manufacturer
 concepts <- concepts[, qc_3_manufacturer := fifelse(temp_id == 1, 1, 0), by = c("person_id", "vx_dose", "date")]
 err_3_manufacturer <- nrow(concepts[qc_3_manufacturer == 0, ])
 concepts <- concepts[qc_3_manufacturer == 1, ]

@@ -24,14 +24,16 @@ all_days_df <- merge(all_days_df, double_weeks, by.x = "all_days", by.y = "weeks
 all_days_df <- all_days_df[, monday_week := nafill(monday_week, type="locf")]
 all_days_df <- all_days_df[all_days >= study_start,]
 
-vax_to_doses_weeks <- D3_vaxweeks[, .(person_id, start_date_of_period, Datasource, type_vax_1, type_vax_2)]
+vax_to_doses_weeks <- D3_vaxweeks[, .(person_id, start_date_of_period, Dose)]
 vax_to_doses_weeks <- merge(vax_to_doses_weeks, all_days_df, by.x = "start_date_of_period", by.y = "all_days")
 
 coh_to_doses_weeks <- D3_Vaccin_cohort[, Datasource := thisdatasource]
-coh_to_doses_weeks <- vax_to_doses_weeks[, .(person_id, sex, Datasource, type_vax_1, type_vax_2)]
+coh_to_doses_weeks <- coh_to_doses_weeks[, .(person_id, sex, Datasource, type_vax_1, type_vax_2)]
+coh_to_doses_weeks <- melt(coh_to_doses_weeks, measure.vars = c("type_vax_1", "type_vax_2"),
+                           variable.name = "Dose", value.name = "Type_vax")
+coh_to_doses_weeks <- coh_to_doses_weeks[, Dose := fifelse(Dose == "type_vax_1", "1", "2")]
 
-
-
+D4_doses_weeks <- merge(vax_to_doses_weeks, coh_to_doses_weeks, by = c("person_id", "Dose"))
 
 
 
