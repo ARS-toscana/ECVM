@@ -29,24 +29,9 @@ D3_doses <- merge(concepts, D4_study_population, by="person_id")[, .(person_id, 
                                                                      study_entry_date, start_follow_up, study_exit_date,
                                                                      date, vx_dose, vx_manufacturer)]
 
-if (thisdatasource == "ARS") {
-  D3_doses <- D3_doses[.(vx_manufacturer = c("MODERNA BIOTECH SPAIN S.L.",
-                                             "PFIZER Srl", "ASTRAZENECA SpA", "J&J"), to = c("Moderna", "Pfizer", "AstraZeneca", "J&J")),
-                       on = "vx_manufacturer", vx_manufacturer := i.to]
-}
+
 
 D3_doses <- D3_doses[, vx_dose := as.character(vx_dose)]
-D3_doses_duplicate <- D3_doses[, if(.N >= 2) .SD, by = c("person_id", "vx_dose")]
-D3_doses <- D3_doses[, if(.N < 2) .SD, by = c("person_id", "vx_dose")]
-if (nrow(D3_doses_duplicate) != 0) {
-  setorder(D3_doses_duplicate, vx_dose, date)
-  D3_doses_duplicate <- unique(D3_doses_duplicate[, vx_dose := fifelse(!is.na(shift(vx_dose)) & vx_dose == shift(vx_dose), NA_character_, vx_dose), by=c("person_id")])
-  D3_doses_duplicate <- D3_doses_duplicate[!is.na(vx_dose), ]
-  D3_doses <- rbind(D3_doses, D3_doses_duplicate)
-}
-
-D3_doses <- D3_doses[vx_dose < 3,]
-D3_doses <- unique(D3_doses)
 
 D3_doses <- dcast(D3_doses, person_id + sex + date_of_birth + date_of_death + study_entry_date + start_follow_up +
         study_exit_date ~ vx_dose, value.var = c("date", "vx_manufacturer"))
