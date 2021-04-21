@@ -118,15 +118,21 @@ correct_difftime <- function(t1, t2, t_period = "years") {
 }
 
 find_last_monday <- function(tmp_date, monday_week) {
+  
   tmp_date <- as.Date(lubridate::ymd(tmp_date))
-  Sys_option <- c("LC_COLLATE", "LC_CTYPE", "LC_MONETARY", "LC_NUMERIC", "LC_TIME")
-  str_option <- lapply(strsplit(Sys.getlocale(), ";"), strsplit, "=")[[1]]
-  Sys.setlocale("LC_ALL","English_United States.1252")
-  while (weekdays(tmp_date) != "Monday") {
+  
+  while (tmp_date %not in% monday_week) {
     tmp_date <- tmp_date - 1
   }
-  for (i in seq(length(Sys_option))) {
-    Sys.setlocale(Sys_option[i], str_option[[i]][[2]])
-  }
   return(tmp_date)
+}
+
+calc_precise_week <- function(time_diff) {
+  floor(time_length(time_diff, "week")) + 1
+}
+
+join_and_replace <- function(df1, df2, join_cond, old_name) {
+  temp <- merge(df1, df2, by.x = join_cond[1], by.y = join_cond[2])
+  temp[, join_cond[1] := NULL]
+  setnames(temp, old_name, join_cond[1])
 }
