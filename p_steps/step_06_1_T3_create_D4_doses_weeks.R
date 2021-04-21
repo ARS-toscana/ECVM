@@ -38,7 +38,7 @@ cohort_to_vaxweeks <- cohort_to_vaxweeks[, Datasource := thisdatasource]
 setnames(cohort_to_vaxweeks, c("start_date_of_period", "type_vax", "sex"), c("Week_number", "Type_vax", "Sex"))
 
 D4_doses_weeks <- cohort_to_vaxweeks[, .(Datasource, year, Week_number, Birthcohort_persons, Sex, Dose, Type_vax,
-                                             month, Number_of_persons_present_in_week, Number_of_doses_in_week)]
+                                         Number_of_persons_present_in_week, Number_of_doses_in_week)]
 
 save(D4_doses_weeks, file = paste0(diroutput, "D4_doses_weeks.RData"))
 
