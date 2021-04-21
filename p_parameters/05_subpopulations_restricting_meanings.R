@@ -3,8 +3,8 @@
 ###################################################################
 
 # datasources_with_subpopulations lists the datasources where some meanings of events should be excluded during some observation periods, associated with some op_meanings
-datasources_with_subpopulations <- c("BIFAP","SIDIAP","PHARMO","ARS")
-datasources_with_subpopulations <- c("BIFAP","SIDIAP","PHARMO")
+datasources_with_subpopulations <- c("TEST","BIFAP","SIDIAP","PHARMO")
+
 
 this_datasource_has_subpopulations <- ifelse(thisdatasource %in% datasources_with_subpopulations,TRUE,FALSE) 
 
@@ -28,18 +28,20 @@ op_meaning_sets_in_subpopulations <- vector(mode="list")
 # exclude_meaning_of_event associates to each subpopulation the corresponding meaning of events that should not be processed (3-levels list: the datasource, and the subpopulation) 
 exclude_meaning_of_event <- vector(mode="list") 
 
-# # ARS
-# subpopulations[["ARS"]] = c("HOSP","ER_HOSP")
-# 
-# op_meaning_sets[["ARS"]] <- c("meaningsHOSP","meaningsER")
-# op_meanings_list_per_set[["ARS"]][["meaningsHOSP"]] <- c("REGION_1_HOSP","REGION_2_HOSP","REGION_3_HOSP")
-# op_meanings_list_per_set[["ARS"]][["meaningsER"]] <- c("REGION_1_ER","REGION_2_ER","REGION_3_ER")
-# 
-# op_meaning_sets_in_subpopulations[["ARS"]][["HOSP"]] <- c("meaningsHOSP")
-# op_meaning_sets_in_subpopulations[["ARS"]][["ER_HOSP"]] <- c("meaningsHOSP","meaningsER")
-# 
-# exclude_meaning_of_event[["ARS"]][["ER_HOSP"]]<-c()
-# exclude_meaning_of_event[["ARS"]][["HOSP"]]<-c("emergency_room_diagnosis")
+
+# datasource TEST
+subpopulations[["TEST"]] = c("HOSP","ER_HOSP")
+
+op_meaning_sets[["TEST"]] <- c("meaningsHOSP","meaningsER")
+op_meanings_list_per_set[["TEST"]][["meaningsHOSP"]] <- c("REGION_1_HOSP","REGION_2_HOSP","REGION_3_HOSP")
+op_meanings_list_per_set[["TEST"]][["meaningsER"]] <- c("REGION_1_ER","REGION_2_ER","REGION_3_ER")
+
+op_meaning_sets_in_subpopulations[["TEST"]][["HOSP"]] <- c("meaningsHOSP")
+op_meaning_sets_in_subpopulations[["TEST"]][["ER_HOSP"]] <- c("meaningsHOSP","meaningsER")
+
+exclude_meaning_of_event[["TEST"]][["ER_HOSP"]] <- c()
+exclude_meaning_of_event[["TEST"]][["HOSP"]] <- c("emergency_room_diagnosis")
+
 
 # BIFAP
 subpopulations[["BIFAP"]] = c("PC","PC_HOSP","PC_COVID")
@@ -73,7 +75,7 @@ exclude_meaning_of_event[["SIDIAP"]][["PC"]]<-c("hospitalisation_primary", "hosp
 exclude_meaning_of_event[["SIDIAP"]][["PC_HOSP"]]<-c()
 
 # PHARMO
-subpopulations[["PHARMO"]] = c("PC","PC_HOSP","HOSP")
+subpopulations[["PHARMO"]] = c("PC","HOSP","PC_HOSP")
 
 op_meaning_sets[["PHARMO"]] <- c("meaningsPC","meaningsHOSP","meaningsPHARMA")
 
@@ -93,6 +95,17 @@ exclude_meaning_of_event[["PHARMO"]][["PC_HOSP"]]<-c()
 
 
 if (this_datasource_has_subpopulations == TRUE){ 
+  # define selection criterion for events
+  select_in_subpopulationsEVENTS <- vector(mode="list")
+  for (subpop in subpopulations[[thisdatasource]]){
+    select <- "!is.na(person_id) "
+    for (meaningevent in exclude_meaning_of_event[[thisdatasource]][[subpop]]){
+      select <- paste0(select," & meaning_of_event!= '",meaningevent,"'")
+    }
+    select_in_subpopulationsEVENTS[[subpop]] <- select
+  }
+  
+  # create multiple directories for export
   direxpsubpop <- vector(mode="list")
   dirsmallcountsremovedsubpop <- vector(mode="list")
   for (subpop in subpopulations[[thisdatasource]]){
@@ -100,7 +113,15 @@ if (this_datasource_has_subpopulations == TRUE){
     dirsmallcountsremovedsubpop[[subpop]] <- paste0(thisdir,"/g_export_SMALL_COUNTS_REMOVED_",subpop,'/')
     suppressWarnings(if (!file.exists(direxpsubpop[[subpop]])) dir.create(file.path(direxpsubpop[[subpop]])))
     suppressWarnings(if (!file.exists(dirsmallcountsremovedsubpop[[subpop]])) dir.create(file.path(dirsmallcountsremovedsubpop[[subpop]])))
+    file.copy(paste0(dirinput,'/METADATA.csv'), direxpsubpop[[subpop]], overwrite = T)
+    file.copy(paste0(dirinput,'/CDM_SOURCE.csv'), direxpsubpop[[subpop]], overwrite = T)
+    file.copy(paste0(dirinput,'/INSTANCE.csv'), direxpsubpop[[subpop]], overwrite = T)
+    file.copy(paste0(dirinput,'/METADATA.csv'), dirsmallcountsremovedsubpop[[subpop]], overwrite = T)
+    file.copy(paste0(dirinput,'/CDM_SOURCE.csv'), dirsmallcountsremovedsubpop[[subpop]], overwrite = T)
+    file.copy(paste0(dirinput,'/INSTANCE.csv'), dirsmallcountsremovedsubpop[[subpop]], overwrite = T)
     
+    file.copy(paste0(thisdir,'/to_run.R'), direxpsubpop[[subpop]], overwrite = T)
+    file.copy(paste0(thisdir,'/to_run.R'), dirsmallcountsremovedsubpop[[subpop]], overwrite = T)
   }
 }
 
