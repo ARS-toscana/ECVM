@@ -15,9 +15,6 @@ suppressWarnings(
 
 fwrite(Flowchart_QC_criteria, paste0(direxp,"Flowchart_QC_criteria.csv"))
 
-D3_concepts_QC <- unique(selected_doses)[, .(person_id, date, vx_dose, vx_manufacturer)]
-save(D3_concepts_QC, file = paste0(diroutput, "D3_concepts_QC.RData"))
-
 save(selected_doses, file = paste0(dirtemp, "selected_doses.RData"))
 
 # rm(PERSONS, OBSERVATION_PERIODS)
