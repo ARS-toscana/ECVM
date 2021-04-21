@@ -1,0 +1,18 @@
+---
+title: "DOSES_BIRTHCOHORTS"
+output: 
+  html_document:
+    theme: united
+params:
+  Dataset: NULL
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r parameters, include=FALSE}
+  Dataset = params$Dataset
+```
+
+This is the description of DOSES_BIRTHCOHORTS dataset.

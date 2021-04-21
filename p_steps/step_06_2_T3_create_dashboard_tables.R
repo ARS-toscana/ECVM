@@ -67,51 +67,24 @@ COVERAGE_BIRTHCOHORTS <- COVERAGE_BIRTHCOHORTS[, .(datasource, week, vx_manufact
 fwrite(COVERAGE_BIRTHCOHORTS, file = paste0(direxp, "COVERAGE_BIRTHCOHORTS.csv"))
 
 ### DescribeThisDatasets
-source(paste0(dirmacro, "DescribeThisDataset.R"))
+PathOutputFolder=paste0(thisdir,"/g_describeHTML")
 
-# DescribeThisDataset(D4_doses_weeks,
-#                     Individual=T,
-#                     ColumnN=NULL,
-#                     HeadOfDataset=TRUE,
-#                     StructureOfDataset=TRUE,
-#                     NameOutputFile="D4_doses_weeks",
-#                     Cols=list("datasource","year", "Birthcohort_persons", "week", "sex", "Dose", "type_vax_1", "type_vax_2", "Number_of_doses_in_week"),
-#                     ColsFormat=list("categorical","categorical", "categorical", "categorical", "binary",  "categorical",  "categorical",  "categorical",  "categorical"),
-#                     #DateFormat_ymd=TRUE,
-#                     DetailInformation=TRUE,
-#                     PathOutputFolder=paste0(thisdir,"/g_describeHTML"))
+if (!require("rmarkdown")) install.packages("rmarkdown")
+library(rmarkdown )
 
-DescribeThisDataset(D3_vaxweeks,
-                    Individual=T,
-                    ColumnN=NULL,
-                    HeadOfDataset=FALSE,
-                    StructureOfDataset=FALSE,
-                    NameOutputFile="D3_vaxweeks",
-                    Cols=list("start_date_of_period", "end_date_of_period",  "Dose", "week", "month"),
-                    ColsFormat=list("date", "date",  "categorical",  "categorical",  "categorical"),
-                    DateFormat_ymd=FALSE,
-                    DetailInformation=TRUE,
-                    PathOutputFolder=paste0(thisdir,"/g_describeHTML"))
+# Directories
+suppressWarnings(if (!file.exists(PathOutputFolder)) dir.create(file.path( PathOutputFolder)))
 
-DescribeThisDataset(D3_Vaccin_cohort,
-                    Individual=T,
-                    ColumnN=NULL,
-                    HeadOfDataset=FALSE,
-                    StructureOfDataset=FALSE,
-                    NameOutputFile="D3_Vaccin_cohort",
-                    
-                    Cols=list("sex", "date_of_birth",  "study_entry_date", "study_exit_date", 
-                              "date_vax1", "date_vax1", "date_vax2", "date_vax2", "age_at_date_vax_1", "age_at_date_vax_2",
-                              "type_vax_1", "type_vax_2", "study_entry_date_vax1", "study_exit_date_vax1",
-                              "study_entry_date_vax2", "study_exit_date_vax2", "fup_vax1", "fup_vax2"),
-                    
-                    ColsFormat=list("binary", "date",  "date",  "date",
-                                    "date","categorical", "date", "categorical",  "continuous",  "continuous",
-                                    "categorical", "categorical",  "date",  "date",
-                                    "date", "date",  "categorical",  "categorical"),
-                    DateFormat_ymd=FALSE,
-                    DetailInformation=TRUE,
-                    PathOutputFolder=paste0(thisdir,"/g_describeHTML"))
+render(paste0(dirmacro,"COVERAGE_BIRTHCOHORTS_description.Rmd"),           
+       output_dir=PathOutputFolder,
+       output_file="COVERAGE_BIRTHCOHORTS", 
+       params=list(Dataset=COVERAGE_BIRTHCOHORTS))
+
+render(paste0(dirmacro,"DOSES_BIRTHCOHORTS_description.Rmd"),           
+       output_dir=PathOutputFolder,
+       output_file="DOSES_BIRTHCOHORTS", 
+       params=list(Dataset=COVERAGE_BIRTHCOHORTS))
+
 
 rm(D3_vaxweeks, cohort_to_doses_weeks, all_mondays, monday_week, double_weeks, all_days_df, vaxweeks_to_dos_bir_cor,
    all_ages, complete_df, DOSES_BIRTHCOHORTS, D4_study_source_population, tot_pop_cohorts, all_pop, COVERAGE_BIRTHCOHORTS,
