@@ -38,7 +38,7 @@ coords<-c("sex_or_birth_date_missing", "birth_date_absurd", "no_observation_peri
 
 for (i in coords) {
   assign(paste0("dataset_",i),D3_selection_criteria_doses[get(i)==0,])
-  temp<-merge(concepts,get(paste0("dataset_",i)),all.x=T,by="person_id")
+  temp<-merge(get(paste0("dataset_",i)),concepts,all.x=T,by="person_id")
   temp1<-merge(temp,all_days_df, by.x=c("date"), by.y = "all_days")
   assign(paste0("table_",i),unique(temp1[,doses_week:=.N ,by="monday_week"][,.(monday_week,doses_week)]))
   fwrite(get(paste0("table_",i)),file=paste0(direxp,paste0("table_",i,".csv")))
