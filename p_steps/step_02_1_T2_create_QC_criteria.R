@@ -54,7 +54,6 @@ concepts[, temp_id := rowid(person_id, date)]
 concepts <- concepts[qc_dupl == 0 & qc_2_date == 0 & qc_2_dose == 0 & qc_manufacturer == 0 & qc_mult_date_for_dose == 0,
                      qc_mult_dose_for_date := fifelse(temp_id == 1, 0, 1), by = c("person_id", "date")]
 
-concepts <- concepts[qc_dupl == 0 & qc_2_date == 0 & qc_2_dose == 0 & qc_manufacturer == 0 & qc_mult_date_for_dose == 0 & qc_mult_dose_for_date == 0, ]
 concepts_wider <- concepts[, .(person_id, date, vx_dose)]
 
 concepts_wider <- dcast(concepts_wider, person_id ~ vx_dose, value.var = "date")

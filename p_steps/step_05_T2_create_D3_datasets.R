@@ -10,6 +10,7 @@ D3_doses <- merge(selected_doses, D4_study_population, by="person_id")[, .(perso
 
 
 D3_doses <- D3_doses[, vx_dose := as.character(vx_dose)]
+
 D3_doses <- dcast(D3_doses, person_id + sex + date_of_birth + date_of_death + study_entry_date + start_follow_up +
         study_exit_date ~ vx_dose, value.var = c("date", "vx_manufacturer"))
 
