@@ -12,7 +12,7 @@ load(paste0(dirtemp,"persons_doses.RData"))
 
 #add quality checks davide
 
-all_mondays <- seq.Date(as.Date("20200106","%Y%m%d"), Sys.Date(), by = "week")
+all_mondays <- seq.Date(as.Date("19000101","%Y%m%d"), Sys.Date(), by = "week")
 
 monday_week <- seq.Date(from = find_last_monday(study_start, all_mondays), to = find_last_monday(study_end, all_mondays),
                         by = "week")
