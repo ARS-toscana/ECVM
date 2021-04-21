@@ -22,6 +22,8 @@ selected_population <- CreateFlowChart(
   dataset = temp,
   listcriteria = c( "qc_1_date" ,"qc_1_dose","qc_dupl","qc_2_date" ,"qc_2_dose", "qc_manufacturer", "qc_mult_date_for_dose", "qc_mult_dose_for_date", "qc_3_date","sex_or_birth_date_missing", "birth_date_absurd", "no_observation_period", "death_before_study_entry", "no_observation_period_including_study_start","insufficient_run_in"),
   strata = "monday_week",
-  flowchartname = "prova")
+  flowchartname = "Flowchart_doses")
 
-rm(persons_doses, all_mondays, monday_week, double_weeks, all_days_df, temp, temp2, selected_population, prova)
+fwrite(Flowchart_doses,file=paste0(direxp,"Flowchart_doses.csv"))
+
+rm(persons_doses, all_mondays, monday_week, double_weeks, all_days_df, temp, temp2, selected_population, Flowchart_doses)
