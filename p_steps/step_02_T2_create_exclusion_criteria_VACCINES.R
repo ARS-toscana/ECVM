@@ -42,7 +42,8 @@ concepts <- concepts[, qc_dose := fifelse(temp_id == 1, 1, 0), by = c("person_id
 
 concepts <- concepts[, qc_date_1 := fifelse(date > ymd(20201227), 1, 0)]
 concepts <- concepts[, qc_dose_1 := fifelse(vx_dose <= 2, 1, 0), by = c("person_id", "date")]
-concepts_wider <- concepts[qc_dose == 1, .(person_id, date, vx_dose)]
+
+concepts_wider <- concepts[qc_dose == 1 & qc_dose_1 == 1 & qc_date == 1, .(person_id, date, vx_dose)]
 
 concepts_wider <- dcast(concepts_wider, person_id ~ vx_dose, value.var = "date")
 
