@@ -24,7 +24,7 @@ cohort_to_vaxweeks <- cohort_to_vaxweeks[, start_date_of_period := study_entry_d
 cohort_to_vaxweeks <- cohort_to_vaxweeks[, c("study_entry_date", "week") := NULL]
 
 tot_cohort <- copy(cohort_to_vaxweeks)
-tot_cohort <- unique(tot_cohort[, c("sex", "Dose", "type_vax") := NULL])
+tot_cohort <- unique(tot_cohort[, c("sex", "Dose", "type_vax", "Birthcohort_persons") := NULL])
 tot_cohort <- tot_cohort[, Number_of_persons_present_in_week := .N, by = c("start_date_of_period")]
 tot_cohort <- unique(tot_cohort[, person_id := NULL])
 
@@ -35,7 +35,7 @@ cohort_to_vaxweeks <- merge(cohort_to_vaxweeks, tot_cohort, by = "start_date_of_
 cohort_to_vaxweeks <- cohort_to_vaxweeks[, year := year(start_date_of_period)]
 cohort_to_vaxweeks <- cohort_to_vaxweeks[, Datasource := thisdatasource]
 
-setnames(cohort_to_vaxweeks, c("cohort_to_vaxweeks", "type_vax", "sex"), c("Week_number", "Type_vax", "Sex"))
+setnames(cohort_to_vaxweeks, c("start_date_of_period", "type_vax", "sex"), c("Week_number", "Type_vax", "Sex"))
 
 D4_doses_weeks <- cohort_to_vaxweeks[, .(Datasource, year, Week_number, Birthcohort_persons, Sex, Dose, Type_vax,
                                              month, Number_of_persons_present_in_week, Number_of_doses_in_week)]

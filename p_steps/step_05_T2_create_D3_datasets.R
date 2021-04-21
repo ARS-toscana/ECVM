@@ -75,7 +75,7 @@ colD = paste("type_vax", 1:2, sep = "_")
 cohort_to_vaxweeks <- melt(cohort_to_vaxweeks, measure = list(colA, colB, colC, colD), variable.name = "Dose",
                            value.name = c("study_entry_date", "study_exit_date", "fup", "type_vax"), na.rm = F)
 cohort_to_vaxweeks <- cohort_to_vaxweeks[!is.na(study_entry_date) & !is.na(study_exit_date) & !is.na(fup), ]
-cohort_to_vaxweeks <- cohort_to_vaxweeks[, Dose := as.integer(Dose)][Dose == 3, Dose := 0]
+cohort_to_vaxweeks <- cohort_to_vaxweeks[, Dose := as.character(Dose)][Dose == "3", Dose := "0"]
 D3_vaxweeks <- copy(cohort_to_vaxweeks)
 D3_studyweeks <- copy(cohort_to_vaxweeks)
 D3_vaxweeks <- D3_vaxweeks[, c("sex", "type_vax", "Birthcohort_persons") := NULL][Dose %in% c(1, 2), ]
@@ -92,6 +92,6 @@ D3_vaxweeks <- D3_vaxweeks[, .(person_id, start_date_of_period, end_date_of_peri
 save(D3_studyweeks, file = paste0(dirtemp, "D3_studyweeks.RData"))
 save(D3_vaxweeks, file = paste0(dirtemp, "D3_vaxweeks.RData"))
 
-rm(D4_study_population, concepts, D3_doses, D3_doses_duplicate, D3_study_population, D3_Vaccin_cohort,
+rm(D4_study_population, D3_doses, D3_study_population, D3_Vaccin_cohort,
    cohort_to_vaxweeks, colA, colB, colC, colD, D3_vaxweeks, D3_studyweeks)
 

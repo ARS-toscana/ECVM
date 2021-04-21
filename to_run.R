@@ -44,7 +44,7 @@ system.time(source(paste0(thisdir,"/p_steps/step_04_2_T3_apply_quality_check_exc
 system.time(source(paste0(thisdir,"/p_steps/step_05_T2_create_D3_datasets.R")))
 
 #06 create D4 for doses and coverage
-# system.time(source(paste0(thisdir,"/p_steps/step_06_1_T3_create_D4_doses_weeks.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_06_1_T3_create_D4_doses_weeks.R")))
 
 system.time(source(paste0(thisdir,"/p_steps/step_06_2_T3_create_dashboard_tables.R")))
 
