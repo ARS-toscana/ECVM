@@ -20,7 +20,11 @@ temp2<-unique(temp[,doses_week:=.N ,by="monday_week"][,.(monday_week,doses_week)
 
 selected_population <- CreateFlowChart(
   dataset = temp,
-  listcriteria = c( "qc_1_date" ,"qc_1_dose","qc_dupl","qc_2_date" ,"qc_2_dose", "qc_manufacturer", "qc_mult_date_for_dose", "qc_mult_dose_for_date", "qc_3_date","sex_or_birth_date_missing", "birth_date_absurd", "no_observation_period", "death_before_study_entry", "no_observation_period_including_study_start","insufficient_run_in"),
+  listcriteria = c("qc_1_date" ,"qc_1_dose","qc_dupl","qc_2_date" ,"qc_2_dose", "qc_manufacturer",
+                  "qc_mult_date_for_dose", "qc_mult_dose_for_date", "qc_3_date","sex_or_birth_date_missing",
+                  "birth_date_absurd", "no_observation_period", "death_before_study_entry",
+                  "no_observation_period_including_study_start","insufficient_run_in", "death_before_vax",
+                  "exit_spell_before_vax", "study_end_before_vax"),
   strata = "monday_week",
   flowchartname = "Flowchart_doses")
 
