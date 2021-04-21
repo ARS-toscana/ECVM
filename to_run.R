@@ -26,13 +26,11 @@ source(paste0(thisdir,"/p_parameters/05_subpopulations_restricting_meanings.R"))
 system.time(source(paste0(thisdir,"/p_steps/step_01_1_T2.1_create_conceptset_datasets.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_01_2_T2.1_create_spells.R")))
 
-
 #02 qualirt checks
 system.time(source(paste0(thisdir,"/p_steps/step_02_T2_quality_check.R")))
 
 #03 create exclusion criteria
 system.time(source(paste0(thisdir,"/p_steps/step_03_1_T2_create_exclusion_criteria.R")))
-##merge d3_exclusion con covid_vaccine
 system.time(source(paste0(thisdir,"/p_steps/step_03_2_T2_merge_persons_concept.R")))
 
 #04 apply exclusion criteria
