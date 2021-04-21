@@ -68,7 +68,7 @@ D3_concepts_QC_criteria <- concepts[, .(person_id, date, vx_dose, vx_manufacture
                                         qc_2_date, qc_2_dose, qc_manufacturer, qc_mult_date_for_dose,
                                         qc_mult_dose_for_date, qc_3_date)]
 
-save(D3_concepts_QC_criteria, file = paste0(dirtemp, "D3_concepts_QC_criteria"))
+save(D3_concepts_QC_criteria, file = paste0(dirtemp, "D3_concepts_QC_criteria.RData"))
 
 rm(concepts, concepts_wider, D3_concepts_QC_criteria)
 
