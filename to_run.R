@@ -30,15 +30,21 @@ system.time(source(paste0(thisdir,"/p_steps/step_01_2_T2.1_create_spells.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_02_T2_quality_check.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_02_2_T3_apply_QC_exclusion_criteria.R")))
 
-#03 create exclution criteria
-system.time(source(paste0(thisdir,"/p_steps/step_03_T2_create_exclusion_criteria.R")))
+#03 create exclusion criteria
+system.time(source(paste0(thisdir,"/p_steps/step_03_1_T2_create_exclusion_criteria.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_03_2_T2_merge_persons_concept.R")))
 
-#04 apply exclutioc criteria
-system.time(source(paste0(thisdir,"/p_steps/step_04_T3_apply_exclusion_criteria.R")))
-system.time(source(paste0(thisdir,"/p_steps/step_04_1_T3_apply_single_exclusion_criteria.R")))
+#04 apply exclusion criteria
+system.time(source(paste0(thisdir,"/p_steps/step_04_1_T3_apply_exclusion_criteria.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_04_2_T3_apply_quality_check_exclusion_criteria_doses.R")))
+##use flowchart (apply also quality checks)
 
-#05 create D3 and D4
-system.time(source(paste0(thisdir,"/p_steps/step_05_1_T3_create_D3_datasets.R")))
-# system.time(source(paste0(thisdir,"/p_steps/step_05_2_T3_create_D4_doses_weeks.R")))
-system.time(source(paste0(thisdir,"/p_steps/step_05_3_T3_create_dashboard_tables.R")))
-system.time(source(paste0(thisdir,"/p_steps/step_05_4_T3_create_D4_descriptive_tables.R")))
+#05 create D3 for doses and coverage
+system.time(source(paste0(thisdir,"/p_steps/step_05_T2_create_D3_datasets.R")))
+
+#06 create D4 for doses and coverage
+# system.time(source(paste0(thisdir,"/p_steps/step_06_1_T3_create_D4_doses_weeks.R")))
+
+system.time(source(paste0(thisdir,"/p_steps/step_06_2_T3_create_dashboard_tables.R")))
+
+system.time(source(paste0(thisdir,"/p_steps/step_06_3_T3_create_D4_descriptive_tables.R")))
