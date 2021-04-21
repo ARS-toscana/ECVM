@@ -40,8 +40,8 @@ D3_study_population <- D3_doses[, .(person_id, sex, date_of_birth, start_follow_
 
 save(D3_study_population, file = paste0(dirtemp, "D3_study_population.RData"))
 
-D3_study_population <- D3_study_population[!is.na(date_vax1) & (is.na(date_vax2) | date_vax1 < date_vax2), ][, age_at_date_vax_2 := floor(time_length(correct_difftime(date_vax2, date_of_birth), "years"))]
-D3_Vaccin_cohort <- D3_study_population[, .(person_id, sex, date_of_birth, study_entry_date,
+D3_Vaccin_cohort <- D3_study_population[!is.na(date_vax1) & (is.na(date_vax2) | date_vax1 < date_vax2), ][, age_at_date_vax_2 := floor(time_length(correct_difftime(date_vax2, date_of_birth), "years"))]
+D3_Vaccin_cohort <- D3_Vaccin_cohort[, .(person_id, sex, date_of_birth, study_entry_date,
                                                study_exit_date, date_vax1, date_vax2,
                                                age_at_date_vax_1, age_at_date_vax_2,
                                                type_vax_1, type_vax_2, study_entry_date_vax1,
