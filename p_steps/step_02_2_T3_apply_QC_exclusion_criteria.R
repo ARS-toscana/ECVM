@@ -1,4 +1,4 @@
-load(paste0(dirtemp, "D3_concepts_QC_criteria"))
+load(paste0(dirtemp, "D3_concepts_QC_criteria.RData"))
 
 selected_doses<- CreateFlowChart(
   dataset = D3_concepts_QC_criteria,
