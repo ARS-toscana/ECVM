@@ -16,6 +16,7 @@ import_concepts <- function(dirtemp, concept_set_domains) {
 concepts <- import_concepts(dirtemp, concept_set_domains)
 
 concepts <- concepts[, .(person_id, date, vx_dose, vx_manufacturer)]
+
 concepts <- concepts[, qc_1_date := as.numeric(is.na(date))]
 concepts <- concepts[, qc_1_dose := as.numeric(is.na(vx_dose))]
 concepts <- concepts[vx_manufacturer %in% c("Moderna", "Pfizer", "AstraZeneca", "J&J"), vx_manufacturer := "UKN"]
@@ -54,8 +55,8 @@ concepts[, temp_id := rowid(person_id, date)]
 concepts <- concepts[qc_dupl == 0 & qc_2_date == 0 & qc_2_dose == 0 & qc_manufacturer == 0 & qc_mult_date_for_dose == 0,
                      qc_mult_dose_for_date := fifelse(temp_id == 1, 0, 1), by = c("person_id", "date")]
 
-concepts <- concepts[qc_dupl == 0 & qc_2_date == 0 & qc_2_dose == 0 & qc_manufacturer == 0 & qc_mult_date_for_dose == 0 & qc_mult_dose_for_date == 0, ]
-concepts_wider <- concepts[, .(person_id, date, vx_dose)]
+concepts_wider <- concepts[qc_dupl == 0 & qc_2_date == 0 & qc_2_dose == 0 & qc_manufacturer == 0 & qc_mult_date_for_dose == 0 & qc_mult_dose_for_date == 0, ]
+concepts_wider <- concepts_wider[, .(person_id, date, vx_dose)]
 
 concepts_wider <- dcast(concepts_wider, person_id ~ vx_dose, value.var = "date")
 
@@ -63,7 +64,7 @@ setnames(concepts_wider, c("1", "2"), c("date_vax1", "date_vax2"))
 concepts_wider <- concepts_wider[, qc_3_date := fifelse(is.na(date_vax2) | date_vax1 < date_vax2, 0, 1)][, .(person_id, qc_3_date)]
 concepts_wider <- unique(concepts_wider)
 
-concepts <- merge(concepts, concepts_wider, by = "person_id")
+concepts <- merge(concepts, concepts_wider, by = "person_id",all.x=T)
 D3_concepts_QC_criteria <- concepts[, .(person_id, date, vx_dose, vx_manufacturer, qc_1_date, qc_1_dose, qc_dupl,
                                         qc_2_date, qc_2_dose, qc_manufacturer, qc_mult_date_for_dose,
                                         qc_mult_dose_for_date, qc_3_date)]
