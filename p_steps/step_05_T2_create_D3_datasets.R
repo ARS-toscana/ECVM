@@ -31,9 +31,6 @@ D3_doses <- D3_doses[!is.na(study_entry_date_vax1), fup_vax1 := fifelse(is.na(st
 
 D3_doses <- D3_doses[!is.na(study_entry_date_vax2), fup_vax2 := correct_difftime(study_exit_date_vax2, study_entry_date_vax2)]
 
-D3_doses <- D3_doses[!is.na(date_vax1) & is.na(type_vax_1), type_vax_1 := "UNK"]
-D3_doses <- D3_doses[!is.na(date_vax2) & is.na(type_vax_2), type_vax_2 := "UNK"]
-
 
 
 D3_study_population <- D3_doses[, .(person_id, sex, date_of_birth, start_follow_up, study_entry_date, study_exit_date,
