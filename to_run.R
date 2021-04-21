@@ -28,7 +28,7 @@ system.time(source(paste0(thisdir,"/p_steps/step_01_2_T2.1_create_spells.R")))
 
 #02 qualirt checks
 system.time(source(paste0(thisdir,"/p_steps/step_02_1_T2_create_QC_criteria.R")))
-system.time(source(paste0(thisdir,"/p_steps/step_02_2_T3_apply_QC_exclusion_criteria.R")))
+#system.time(source(paste0(thisdir,"/p_steps/step_02_2_T3_apply_QC_exclusion_criteria.R")))
 
 #03 create exclusion criteria
 system.time(source(paste0(thisdir,"/p_steps/step_03_1_T2_create_exclusion_criteria.R")))
@@ -38,6 +38,7 @@ system.time(source(paste0(thisdir,"/p_steps/step_03_2_T2_merge_persons_concept.R
 system.time(source(paste0(thisdir,"/p_steps/step_04_1_T3_apply_exclusion_criteria.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_04_2_T3_apply_quality_check_exclusion_criteria_doses.R")))
 ##use flowchart (apply also quality checks)
+
 
 #05 create D3 for doses and coverage
 system.time(source(paste0(thisdir,"/p_steps/step_05_T2_create_D3_datasets.R")))

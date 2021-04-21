@@ -68,11 +68,15 @@ D3_concepts_QC_criteria <- concepts[, .(person_id, date, vx_dose, vx_manufacture
                                         qc_2_date, qc_2_dose, qc_manufacturer, qc_mult_date_for_dose,
                                         qc_mult_dose_for_date, qc_3_date)]
 
+<<<<<<< HEAD
 for (i in names(D3_concepts_QC_criteria)){
   D3_concepts_QC_criteria[is.na(get(i)), (i):=0]
 }
 
 save(D3_concepts_QC_criteria, file = paste0(dirtemp, "D3_concepts_QC_criteria"))
+=======
+save(D3_concepts_QC_criteria, file = paste0(dirtemp, "D3_concepts_QC_criteria.RData"))
+>>>>>>> ce6f6231ecd063e6ecfe0cab9544f6d5e7e7b7a2
 
 rm(concepts, concepts_wider, D3_concepts_QC_criteria)
 
