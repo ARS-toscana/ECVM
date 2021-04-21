@@ -92,6 +92,6 @@ D3_vaxweeks <- D3_vaxweeks[, .(person_id, start_date_of_period, end_date_of_peri
 save(D3_studyweeks, file = paste0(dirtemp, "D3_studyweeks.RData"))
 save(D3_vaxweeks, file = paste0(dirtemp, "D3_vaxweeks.RData"))
 
-rm(D4_study_population, D3_doses, D3_study_population, D3_Vaccin_cohort,
+rm(selected_doses, D4_study_population, D3_doses, D3_study_population, D3_Vaccin_cohort,
    cohort_to_vaxweeks, colA, colB, colC, colD, D3_vaxweeks, D3_studyweeks)
 
