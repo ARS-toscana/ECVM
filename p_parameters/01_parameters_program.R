@@ -116,3 +116,17 @@ find_last_monday <- function(tmp_date, monday_week) {
 correct_difftime <- function(t1, t2, t_period = "years") {
   return(difftime(t1, t2, units = "days") + 1)
 }
+
+find_last_monday <- function(tmp_date, monday_week) {
+  tmp_date <- as.Date(lubridate::ymd(tmp_date))
+  Sys_option <- c("LC_COLLATE", "LC_CTYPE", "LC_MONETARY", "LC_NUMERIC", "LC_TIME")
+  str_option <- lapply(strsplit(Sys.getlocale(), ";"), strsplit, "=")[[1]]
+  Sys.setlocale("LC_ALL","English_United States.1252")
+  while (weekdays(tmp_date) != "Monday") {
+    tmp_date <- tmp_date - 1
+  }
+  for (i in seq(length(Sys_option))) {
+    Sys.setlocale(Sys_option[i], str_option[[i]][[2]])
+  }
+  return(tmp_date)
+}

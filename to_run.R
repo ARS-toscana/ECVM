@@ -31,6 +31,7 @@ system.time(source(paste0(thisdir,"/p_steps/step_01_2_T2.1_create_spells.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_03_T2_create_exclusion_criteria.R")))
 # TODO is flowchart results correct?
 system.time(source(paste0(thisdir,"/p_steps/step_04_T3_apply_exclusion_criteria.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_04_1_T3_apply_single_exclusion_criteria.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_05_1_T3_create_D3_datasets.R")))
 # system.time(source(paste0(thisdir,"/p_steps/step_05_2_T3_create_D4_doses_weeks.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_05_3_T3_create_dashboard_tables.R")))
