@@ -41,6 +41,8 @@ if (!require("dplyr")) install.packages("dplyr")
 library(dplyr)
 if (!require("survival")) install.packages("survival")
 library(survival)
+if (!require("kableExtra")) install.packages("kableExtra")
+library(kableExtra) #Step_02
 
 # load macros
 

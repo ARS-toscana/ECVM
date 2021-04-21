@@ -1,4 +1,5 @@
 Datasource,type_vax_1,Sex_female,Sex_male
-ARS,AstraZeneca,98,56
-ARS,Moderna,18,25
-ARS,Pfizer,263,143
+ARS,,169,105
+ARS,AstraZeneca,49,27
+ARS,Moderna,9,11
+ARS,Pfizer,152,81

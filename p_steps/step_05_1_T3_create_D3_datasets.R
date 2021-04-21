@@ -54,8 +54,8 @@ D3_doses <- dcast(D3_doses, person_id + sex + date_of_birth + date_of_death + st
 setnames(D3_doses, c("date_1", "date_2", "vx_manufacturer_1", "vx_manufacturer_2"),
          c("date_vax1", "date_vax2", "type_vax_1", "type_vax_2"))
 
-D3_doses <- D3_doses[study_exit_date < date_vax1, date_vax1 := NA]
-D3_doses <- D3_doses[study_exit_date < date_vax2, date_vax2 := NA]
+D3_doses <- D3_doses[study_exit_date < date_vax1, c("date_vax1", "type_vax_1") := NA]
+D3_doses <- D3_doses[study_exit_date < date_vax2, c("date_vax2", "type_vax_2") := NA]
 D3_doses <- D3_doses[!is.na(date_vax1), c("study_entry_date_vax1", "study_exit_date_vax1") := list(date_vax1, fifelse(is.na(date_vax2) | study_exit_date < date_vax2, study_exit_date, date_vax2 - 1))]
 D3_doses <- D3_doses[!is.na(date_vax2), c("study_entry_date_vax2", "study_exit_date_vax2") := list(date_vax2, study_exit_date)]
 
