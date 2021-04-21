@@ -24,7 +24,7 @@ concepts <- concepts[vx_manufacturer %in% c("Moderna", "Pfizer", "AstraZeneca", 
 # err_1_lot_num <- nrow(concepts[qc_1_lot_num == 0, ])
 #NOTE add the filter for lot_num when it will be necessary
 
-if (thisdatasource == "ARS") {
+if (thisdatasource %in% c("ARS", "TEST")) {
   concepts <- concepts[.(vx_manufacturer = c("MODERNA BIOTECH SPAIN S.L.",
                                              "PFIZER Srl", "ASTRAZENECA SpA", "J&J"), to = c("Moderna", "Pfizer", "AstraZeneca", "J&J")),
                        on = "vx_manufacturer", vx_manufacturer := i.to]
@@ -67,6 +67,10 @@ concepts <- merge(concepts, concepts_wider, by = "person_id")
 D3_concepts_QC_criteria <- concepts[, .(person_id, date, vx_dose, vx_manufacturer, qc_1_date, qc_1_dose, qc_dupl,
                                         qc_2_date, qc_2_dose, qc_manufacturer, qc_mult_date_for_dose,
                                         qc_mult_dose_for_date, qc_3_date)]
+
+for (i in names(D3_concepts_QC_criteria)){
+  D3_concepts_QC_criteria[is.na(get(i)), (i):=0]
+}
 
 save(D3_concepts_QC_criteria, file = paste0(dirtemp, "D3_concepts_QC_criteria"))
 
