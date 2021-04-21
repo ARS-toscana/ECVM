@@ -27,7 +27,8 @@ system.time(source(paste0(thisdir,"/p_steps/step_01_1_T2.1_create_conceptset_dat
 system.time(source(paste0(thisdir,"/p_steps/step_01_2_T2.1_create_spells.R")))
 
 #02 qualirt checks
-system.time(source(paste0(thisdir,"/p_steps/step_02_T2_quality_check.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_02_1_T2_create_QC_criteria.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_02_2_T3_apply_QC_exclusion_criteria.R")))
 
 #03 create exclusion criteria
 system.time(source(paste0(thisdir,"/p_steps/step_03_1_T2_create_exclusion_criteria.R")))
