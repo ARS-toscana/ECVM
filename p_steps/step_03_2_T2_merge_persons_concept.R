@@ -18,13 +18,13 @@ temp_tot <- merge(temp_tot, temp2)
 temp_tot <- temp_tot[date_of_death < date, death_before_vax := 1]
 temp_tot <- temp_tot[exit_spell_category < date, exit_spell_before_vax := 1]
 temp_tot <- temp_tot[study_end < date, study_end_before_vax := 1]
-temp_tot <- temp_tot[, .(person_id, death_before_vax, exit_spell_before_vax, study_end_before_vax)]
+temp_tot <- temp_tot[, .(person_id, vx_dose, death_before_vax, exit_spell_before_vax, study_end_before_vax)]
 
 for (i in names(temp_tot)){
   temp_tot[is.na(get(i)), (i):=0]
 }
 
-persons_doses <- merge(persons_doses, unique(temp_tot))
+persons_doses <- merge(persons_doses, unique(temp_tot), by = c("person_id", "vx_dose"))
 
 save(persons_doses,file=paste0(dirtemp,"persons_doses.RData"))
 
