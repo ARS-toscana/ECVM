@@ -7,6 +7,8 @@ load(paste0(dirtemp,"output_spells_category.RData"))
 
 persons_doses<-merge(D3_selection_criteria_doses,D3_concepts_QC_criteria, by=c("person_id"),all=T)
 
+persons_doses<-persons_doses[is.na(sex_or_birth_date_missing),sex_or_birth_date_missing:=1]
+
 temp <- copy(D3_selection_criteria_doses)[, .(person_id, date_of_death)]
 temp1 <- copy(D3_concepts_QC_criteria)[, .(person_id, date, vx_dose)]
 names(output_spells_category)
@@ -24,7 +26,7 @@ for (i in names(temp_tot)){
   temp_tot[is.na(get(i)), (i):=0]
 }
 
-persons_doses <- merge(persons_doses, unique(temp_tot), by = c("person_id", "vx_dose"))
+persons_doses <- merge(persons_doses, unique(temp_tot), by = c("person_id", "vx_dose"),all.x=T)
 
 save(persons_doses,file=paste0(dirtemp,"persons_doses.RData"))
 

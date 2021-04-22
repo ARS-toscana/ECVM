@@ -83,7 +83,7 @@ render(paste0(dirmacro,"COVERAGE_BIRTHCOHORTS_description.Rmd"),
 render(paste0(dirmacro,"DOSES_BIRTHCOHORTS_description.Rmd"),           
        output_dir=PathOutputFolder,
        output_file="DOSES_BIRTHCOHORTS", 
-       params=list(Dataset=COVERAGE_BIRTHCOHORTS))
+       params=list(Dataset=DOSES_BIRTHCOHORTS))
 
 
 rm(D3_vaxweeks, cohort_to_doses_weeks, all_mondays, monday_week, double_weeks, all_days_df, vaxweeks_to_dos_bir_cor,

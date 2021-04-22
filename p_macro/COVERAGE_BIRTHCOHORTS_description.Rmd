@@ -16,3 +16,26 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 This is the description of COVERAGE_BIRTHCOHORTS dataset.
+
+```{r plot1, include=TRUE}
+if (!require("ggplot2")) install.packages("ggplot2")
+library(ggplot2 )
+
+if (!require("ggthemes")) install.packages("ggthemes")
+library(ggthemes )
+
+if (!require("lubridate")) install.packages("lubridate")
+library(lubridate )
+
+Dataset$week=ymd(Dataset$week)
+
+theme_set(theme_hc())
+theme_update(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+
+
+  ggplot(Dataset, aes(week, percentage, fill=vx_manufacturer)) +   
+   geom_col(position = "dodge", alpha = 0.9)+
+   scale_x_date(limit= c(ymd(20201228), ymd(20210222)), breaks="1 week")+
+   scale_y_continuous(labels = scales::percent_format())+
+   theme_hc()
+```
