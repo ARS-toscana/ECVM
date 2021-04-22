@@ -24,7 +24,7 @@ for (i in names(temp_tot)){
   temp_tot[is.na(get(i)), (i):=0]
 }
 
-persons_doses <- merge(persons_doses, unique(temp_tot), by = c("person_id", "vx_dose"))
+persons_doses <- merge(persons_doses, unique(temp_tot), by = c("person_id", "vx_dose"),all.x=T)
 
 save(persons_doses,file=paste0(dirtemp,"persons_doses.RData"))
 
