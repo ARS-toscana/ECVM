@@ -3,12 +3,12 @@
 
 load(paste0(dirtemp,"D3_selection_criteria_doses.RData"))
 load(paste0(dirtemp,"D3_concepts_QC_criteria.RData"))
+load(paste0(dirtemp,"output_spells_category.RData"))
 
 persons_doses<-merge(D3_selection_criteria_doses,D3_concepts_QC_criteria, by=c("person_id"),all=T)
 
 temp <- copy(D3_selection_criteria_doses)[, .(person_id, date_of_death)]
 temp1 <- copy(D3_concepts_QC_criteria)[, .(person_id, date, vx_dose)]
-load(paste0(dirtemp,"output_spells_category.RData"))
 names(output_spells_category)
 temp2 <- copy(output_spells_category)[, .(person_id, entry_spell_category, exit_spell_category)]
 temp2 <- temp2[study_start %between% list(entry_spell_category,exit_spell_category) & entry_spell_category < exit_spell_category, ]
