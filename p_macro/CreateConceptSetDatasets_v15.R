@@ -82,12 +82,14 @@ CreateConceptSetDatasets <- function(dataset,codvar,datevar,EAVtables,EAVattribu
   dataset1<-list()
   
   for (dom in used_domains) {
-    if (!missing(EAVtables) & !missing(EAVattributes) & length(EAVattributes)!=0){
-      if (dom %in% names(EAVtables)){
-        dataset1[[dom]]<-dataset[[dom]]
-        for (f in 1:length(EAVtables[[dom]])){
-          dataset1[[dom]]<-append(dataset1[[dom]],EAVtables[[dom]][[f]][[1]][[1]])
-        }
+    if (!missing(EAVtables) & !missing(EAVattributes)){
+      if (length(EAVattributes)!=0) {
+        if (dom %in% names(EAVtables)){
+          dataset1[[dom]]<-dataset[[dom]]
+          for (f in 1:length(EAVtables[[dom]])){
+            dataset1[[dom]]<-append(dataset1[[dom]],EAVtables[[dom]][[f]][[1]][[1]])
+          }
+        }else{dataset1[[dom]]<-dataset[[dom]]}
       }else{dataset1[[dom]]<-dataset[[dom]]}
     }else{dataset1[[dom]]<-dataset[[dom]]}
     
