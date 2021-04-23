@@ -48,15 +48,15 @@ D3_inclusion_from_PERSONS <- PERSONS[,.(person_id,sex,date_of_birth,date_of_deat
 
 # if (this_datasource_has_subpopulations == TRUE)D3_selection_criteria <- vector(mode="list")
 
-if (this_datasource_has_subpopulations == TRUE)D3_selection_criteria <- vector(mode="list")
+# if (this_datasource_has_subpopulations == TRUE)D3_selection_criteria <- vector(mode="list")
 
 # OBSERVATION PERIODS -----------------------------------------------------
 
-for (subpop in subpopulations[[thisdatasource]]){
-  print(subpop)
+# for (subpop in subpopulations[[thisdatasource]]){
+#   print(subpop)
   load(paste0(dirtemp,"output_spells_category.RData"))
   
-  if (this_datasource_has_subpopulations == TRUE)output_spells_category <- as.data.table(output_spells_category[[subpop]])
+  # if (this_datasource_has_subpopulations == TRUE)output_spells_category <- as.data.table(output_spells_category[[subpop]])
 
 start_follow_up = study_start - 365
 na_date = lubridate::ymd(99991231)
@@ -81,21 +81,21 @@ PERSONS_OP2 <- merge(PERSONS_OP,
                      all.x = T)
   
 coords<-c("sex_or_birth_date_missing", "birth_date_absurd", "no_observation_period", "insufficient_run_in","no_observation_period_including_study_start", "death_before_study_entry")
-D3_selection_criteriatemp <- PERSONS_OP2[, (coords) := replace(.SD, is.na(.SD), 0), .SDcols = coords]
-D3_selection_criteriatemp <- D3_selection_criteriatemp[!is.na(study_entry_date), ]
+D3_selection_criteria <- PERSONS_OP2[, (coords) := replace(.SD, is.na(.SD), 0), .SDcols = coords]
+D3_selection_criteria <- D3_selection_criteria[!is.na(study_entry_date), ]
 
-if (this_datasource_has_subpopulations == FALSE){ 
-  D3_selection_criteria <- D3_selection_criteriatemp
-}else{
-  D3_selection_criteria[[subpop]] <- D3_selection_criteriatemp
-}
-}
+#if (this_datasource_has_subpopulations == FALSE){ 
+  #D3_selection_criteria <- D3_selection_criteriatemp
+# }else{
+#   D3_selection_criteria[[subpop]] <- D3_selection_criteriatemp
+# }
+#}
 
 save(D3_selection_criteria,file=paste0(dirtemp,"D3_selection_criteria.RData"))
 
 rm(output_spells_category_enriched,D3_inclusion_from_PERSONS,D3_exclusion_observation_periods_not_overlapping)
 rm(PERSONS_OP, PERSONS_OP2, start_follow_up, na_date, coords)
-rm(PERSONS, PERSONS_in_OP, output_spells_category,OBSERVATION_PERIODS, D3_selection_criteria, D3_exclusion_no_observation_period,D3_selection_criteriatemp)
+rm(PERSONS, PERSONS_in_OP, output_spells_category,OBSERVATION_PERIODS, D3_selection_criteria, D3_exclusion_no_observation_period)
 
 
 

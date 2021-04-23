@@ -1,14 +1,14 @@
 
 
 #merge vaccine information to persons
-for (subpop in subpopulations[[thisdatasource]]){
-  print(subpop)
+# for (subpop in subpopulations[[thisdatasource]]){
+#   print(subpop)
   load(paste0(dirtemp,"output_spells_category.RData"))
   load(paste0(dirtemp,"D3_selection_criteria.RData"))
   load(paste0(dirtemp,"D3_concepts_QC_criteria.RData"))
   
-  if (this_datasource_has_subpopulations == TRUE)output_spells_category <- as.data.table(output_spells_category[[subpop]])
-  if (this_datasource_has_subpopulations == TRUE)D3_selection_criteria <- as.data.table(D3_selection_criteria[[subpop]]) 
+  # if (this_datasource_has_subpopulations == TRUE)output_spells_category <- as.data.table(output_spells_category[[subpop]])
+  # if (this_datasource_has_subpopulations == TRUE)D3_selection_criteria <- as.data.table(D3_selection_criteria[[subpop]]) 
 
 
 persons_doses<-merge(D3_selection_criteria,D3_concepts_QC_criteria, by=c("person_id"),all=T)
@@ -34,12 +34,12 @@ for (i in names(temp_tot)){
 
 persons_doses <- merge(persons_doses, unique(temp_tot), by = c("person_id", "vx_dose"),all.x=T)
 
-if (this_datasource_has_subpopulations == FALSE){ 
+# if (this_datasource_has_subpopulations == FALSE){ 
   persons_doses <- persons_doses
-}else{
-  persons_doses[[subpop]] <- persons_doses
-}
-}
+# }else{
+#   persons_doses[[subpop]] <- persons_doses
+# }
+# }
 
 
 save(persons_doses,file=paste0(dirtemp,"persons_doses.RData"))
