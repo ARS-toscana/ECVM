@@ -75,12 +75,12 @@ suppressWarnings(if (!file.exists(PathOutputFolder)) dir.create(file.path( PathO
 
 render(paste0(dirmacro,"COVERAGE_BIRTHCOHORTS_description.Rmd"),           
        output_dir=PathOutputFolder,
-       output_file="COVERAGE_BIRTHCOHORTS", 
+       output_file="HTML_COVERAGE_BIRTHCOHORTS_description", 
        params=list(Dataset=COVERAGE_BIRTHCOHORTS))
 
 render(paste0(dirmacro,"DOSES_BIRTHCOHORTS_description.Rmd"),           
        output_dir=PathOutputFolder,
-       output_file="DOSES_BIRTHCOHORTS", 
+       output_file="HTML_DOSES_BIRTHCOHORTS_description", 
        params=list(Dataset=DOSES_BIRTHCOHORTS))
 
 

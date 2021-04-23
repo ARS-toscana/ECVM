@@ -32,8 +32,8 @@ if (!require("lubridate")) install.packages("lubridate")
 library(lubridate )
 
 Dataset$week=ymd(Dataset$week)
-study_end <- as.Date(as.character(CDM_SOURCE[1,"recommended_end_date"]), date_format)
-study_start <- as.Date("2020-12-14")
+# study_end <- as.Date(as.character(CDM_SOURCE[1,"recommended_end_date"]), date_format)
+study_start <- as.Date("2020-11-30")
 
 ```
 
@@ -86,8 +86,8 @@ setnames(t4, "V1", "N")
 
  p4 <- ggplot(t4, aes(week, N)) +   
         geom_col(alpha = 0.9, fill ="salmon", na.rm=TRUE)+
-        scale_x_date(limit= c(study_start,study_end))+
-        facet_grid(rows = vars(dose))
+        scale_x_date(limit= c(study_start, study_end))#+
+        #facet_grid(rows = vars(dose))
 
 p4
 
