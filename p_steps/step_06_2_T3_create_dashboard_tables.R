@@ -10,13 +10,11 @@ monday_week <- seq.Date(from = find_last_monday(study_start, all_mondays), to = 
                         by = "week")
 double_weeks <- data.table(weeks_to_join = monday_week, monday_week = monday_week)
 all_days_df <- data.table(all_days = seq.Date(from = find_last_monday(study_start, monday_week), to = study_end, by = "days"))
-
-vaxweeks_to_dos_bir_cor <- D3_vaxweeks[week == 0]
-
 all_days_df <- merge(all_days_df, double_weeks, by.x = "all_days", by.y = "weeks_to_join", all.x = T)
 all_days_df <- all_days_df[, monday_week := nafill(monday_week, type="locf")]
 all_days_df <- all_days_df[all_days >= study_start,]
 
+vaxweeks_to_dos_bir_cor <- D3_vaxweeks[week == 0]
 vaxweeks_to_dos_bir_cor <- merge(vaxweeks_to_dos_bir_cor, all_days_df, by.x = "start_date_of_period", by.y = "all_days")
 
 vaxweeks_to_dos_bir_cor <- merge(vaxweeks_to_dos_bir_cor, cohort_to_doses_weeks, by = "person_id")
