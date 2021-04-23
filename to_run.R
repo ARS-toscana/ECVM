@@ -16,7 +16,7 @@ source(paste0(thisdir,"/p_parameters/01_parameters_program.R"))
 source(paste0(thisdir,"/p_parameters/02_parameters_CDM.R"))
 source(paste0(thisdir,"/p_parameters/03_concept_sets.R"))
 # source(paste0(thisdir,"/p_parameters/04_itemsets.R"))
-source(paste0(thisdir,"/p_parameters/05_subpopulations_restricting_meanings.R"))
+#source(paste0(thisdir,"/p_parameters/05_subpopulations_restricting_meanings.R"))
 # source(paste0(thisdir,"/p_parameters/06_algorithms.R"))
 
 

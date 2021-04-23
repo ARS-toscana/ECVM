@@ -35,7 +35,7 @@ for (i in names(temp_tot)){
 persons_doses <- merge(persons_doses, unique(temp_tot), by = c("person_id", "vx_dose"),all.x=T)
 
 # if (this_datasource_has_subpopulations == FALSE){ 
-  persons_doses <- persons_doses
+#  persons_doses <- persons_doses
 # }else{
 #   persons_doses[[subpop]] <- persons_doses
 # }
