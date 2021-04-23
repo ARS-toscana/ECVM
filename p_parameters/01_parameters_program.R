@@ -4,10 +4,7 @@
 # dirbase<-getwd()
 # dirinput <- paste0(dirbase,"/CDMInstances/ACCESS/")
 
-setwd("..")
-# setwd("..")
-dirbase<-getwd()
-# dirproducts <- past <- paste0(dirbase,"/i_input_subpop/")
+dirinput <- paste0(thisdir,"/i_input/")
 
 # set other directories
 diroutput <- paste0(thisdir,"/g_output/")
@@ -16,7 +13,6 @@ direxp <- paste0(thisdir,"/g_export/")
 dirmacro <- paste0(thisdir,"/p_macro/")
 dirfigure <- paste0(thisdir,"/g_figure/")
 extension <- c(".csv")
-dirinput <- paste0(thisdir,"/i_input/")
 dirpargen <- paste0(thisdir,"/g_parameters/")
 dirsmallcountsremoved <- paste0(thisdir,"/g_export_SMALL_COUNTS_REMOVED/")
 
