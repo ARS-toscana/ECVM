@@ -4,8 +4,8 @@
 
 # datasources_with_subpopulations lists the datasources where some meanings of events should be excluded during some observation periods, associated with some op_meanings
 datasources_with_subpopulations <- c("TEST","BIFAP","SIDIAP","PHARMO")
-datasources_with_subpopulations <- c("TEST")
-datasources_with_subpopulations <- c("")
+datasources_with_subpopulations <- c("ARSO")
+
 
 this_datasource_has_subpopulations <- ifelse(thisdatasource %in% datasources_with_subpopulations,TRUE,FALSE) 
 
@@ -94,42 +94,35 @@ exclude_meaning_of_event[["PHARMO"]][["PC"]]<-c("hospital_diagnosis","amb_diagno
 exclude_meaning_of_event[["PHARMO"]][["HOSP"]]<-c("primary_care_event")
 exclude_meaning_of_event[["PHARMO"]][["PC_HOSP"]]<-c()
 
-
-if (this_datasource_has_subpopulations == TRUE){ 
-  # define selection criterion for events
-  select_in_subpopulationsEVENTS <- vector(mode="list")
-  for (subpop in subpopulations[[thisdatasource]]){
-    select <- "!is.na(person_id) "
-    for (meaningevent in exclude_meaning_of_event[[thisdatasource]][[subpop]]){
-      select <- paste0(select," & meaning_of_event!= '",meaningevent,"'")
-    }
-    select_in_subpopulationsEVENTS[[subpop]] <- select
-  }
+# 
+# if (this_datasource_has_subpopulations == TRUE){ 
+#   # define selection criterion for events
+#   select_in_subpopulationsEVENTS <- vector(mode="list")
+#   for (subpop in subpopulations[[thisdatasource]]){
+#     select <- "!is.na(person_id) "
+#     for (meaningevent in exclude_meaning_of_event[[thisdatasource]][[subpop]]){
+#       select <- paste0(select," & meaning_of_event!= '",meaningevent,"'")
+#     }
+#     select_in_subpopulationsEVENTS[[subpop]] <- select
+#   }
   
-  # create multiple directories for export
-  direxpsubpop <- vector(mode="list")
-  dirsmallcountsremovedsubpop <- vector(mode="list")
-  for (subpop in subpopulations[[thisdatasource]]){
-    direxpsubpop[[subpop]] <- paste0(thisdir,"/g_export_",subpop,'/')
-    dirsmallcountsremovedsubpop[[subpop]] <- paste0(thisdir,"/g_export_SMALL_COUNTS_REMOVED_",subpop,'/')
-    suppressWarnings(if (!file.exists(direxpsubpop[[subpop]])) dir.create(file.path(direxpsubpop[[subpop]])))
-    suppressWarnings(if (!file.exists(dirsmallcountsremovedsubpop[[subpop]])) dir.create(file.path(dirsmallcountsremovedsubpop[[subpop]])))
-    file.copy(paste0(dirinput,'/METADATA.csv'), direxpsubpop[[subpop]], overwrite = T)
-    file.copy(paste0(dirinput,'/CDM_SOURCE.csv'), direxpsubpop[[subpop]], overwrite = T)
-    file.copy(paste0(dirinput,'/INSTANCE.csv'), direxpsubpop[[subpop]], overwrite = T)
-    file.copy(paste0(dirinput,'/METADATA.csv'), dirsmallcountsremovedsubpop[[subpop]], overwrite = T)
-    file.copy(paste0(dirinput,'/CDM_SOURCE.csv'), dirsmallcountsremovedsubpop[[subpop]], overwrite = T)
-    file.copy(paste0(dirinput,'/INSTANCE.csv'), dirsmallcountsremovedsubpop[[subpop]], overwrite = T)
-    
-    file.copy(paste0(thisdir,'/to_run.R'), direxpsubpop[[subpop]], overwrite = T)
-    file.copy(paste0(thisdir,'/to_run.R'), dirsmallcountsremovedsubpop[[subpop]], overwrite = T)
-  }
-}
-
-if (this_datasource_has_subpopulations == FALSE) { 
-  subpopulations_non_empty <- subpopulations[[thisdatasource]]
-  save(subpopulations_non_empty,file=paste0(dirpargen,"subpopulations_non_empty.RData"))
-}
+#   # create multiple directories for export
+#   direxpsubpop <- vector(mode="list")
+#   for (subpop in subpopulations[[thisdatasource]]){
+#     direxpsubpop[[subpop]] <- paste0(thisdir,"/g_export_",subpop,'/')
+#     suppressWarnings(if (!file.exists(direxpsubpop[[subpop]])) dir.create(file.path(direxpsubpop[[subpop]])))
+#     file.copy(paste0(dirinput,'/METADATA.csv'), direxpsubpop[[subpop]], overwrite = T)
+#     file.copy(paste0(dirinput,'/CDM_SOURCE.csv'), direxpsubpop[[subpop]], overwrite = T)
+#     file.copy(paste0(dirinput,'/INSTANCE.csv'), direxpsubpop[[subpop]], overwrite = T)
+#     file.copy(paste0(thisdir,'/to_run.R'), direxpsubpop[[subpop]], overwrite = T)
+# 
+#   }
+# }
+# 
+# if (this_datasource_has_subpopulations == FALSE) { 
+#   subpopulations_non_empty <- subpopulations[[thisdatasource]]
+#   save(subpopulations_non_empty,file=paste0(dirpargen,"subpopulations_non_empty.RData"))
+# }
 
 
 

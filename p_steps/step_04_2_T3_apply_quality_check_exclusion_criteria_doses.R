@@ -1,9 +1,9 @@
 #merge vaccine information to persons
-for (subpop in subpopulations[[thisdatasource]]){
-  print(subpop)
+# for (subpop in subpopulations[[thisdatasource]]){
+#   print(subpop)
   load(paste0(dirtemp,"persons_doses.RData"))
   
-  if (this_datasource_has_subpopulations == TRUE) persons_doses <- as.data.table(persons_doses[[subpop]])
+  # if (this_datasource_has_subpopulations == TRUE) persons_doses <- as.data.table(persons_doses[[subpop]])
 
 
 all_mondays <- seq.Date(as.Date("19000101","%Y%m%d"), Sys.Date(), by = "week")
@@ -34,16 +34,16 @@ selected_population <- CreateFlowChart(
   strata = "monday_week",
   flowchartname = "Flowchart_doses")
 
-if (this_datasource_has_subpopulations == TRUE & nrow(selected_population)>0){
+# if (this_datasource_has_subpopulations == TRUE & nrow(selected_population)>0){
   
-  D4_study_source_population[[subpop]] <- selected_population
-  fwrite(Flowchart_doses,file=paste0(direxpsubpop[[subpop]],"Flowchart_doses.csv"))}  
+  # D4_study_source_population[[subpop]] <- selected_population
+  # fwrite(Flowchart_doses,file=paste0(direxpsubpop[[subpop]],"Flowchart_doses.csv"))}  
 
-if (this_datasource_has_subpopulations == FALSE & nrow(selected_population)>0){ 
+# if (this_datasource_has_subpopulations == FALSE & nrow(selected_population)>0){ 
   fwrite(Flowchart_doses,file=paste0(direxp,"Flowchart_doses.csv"))
   D4_study_source_population <- selected_population
-}
-}
+# }
+# }
 
 
 ## FlowChart description
