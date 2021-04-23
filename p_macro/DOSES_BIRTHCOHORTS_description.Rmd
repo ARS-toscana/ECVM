@@ -3,6 +3,8 @@ title: "DOSES_BIRTHCOHORTS"
 output: 
   html_document:
     theme: united
+    toc: TRUE
+    toc_float: TRUE
 params:
   Dataset: NULL
 ---
@@ -15,9 +17,11 @@ knitr::opts_chunk$set(echo = FALSE)
   Dataset = params$Dataset
 ```
 
-This is the description of DOSES_BIRTHCOHORTS dataset.
+This is the description of **DOSES_BIRTHCOHORTS** dataset.
+<br>
+This file contains graphical tools and tables to summarize the number of vaccines administered data obtained from the script. 
 
-```{r plot1, include=TRUE}
+```{r plot preparation, include=FALSE}
 if (!require("ggplot2")) install.packages("ggplot2")
 library(ggplot2 )
 
@@ -28,13 +32,85 @@ if (!require("lubridate")) install.packages("lubridate")
 library(lubridate )
 
 Dataset$week=ymd(Dataset$week)
+study_end <- as.Date(as.character(CDM_SOURCE[1,"recommended_end_date"]), date_format)
+study_start <- as.Date("2020-12-14")
 
-theme_set(theme_hc())
-theme_update(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+```
+
+## Number of vaccines
+
+This section includes a graph showing the number of vaccine administered by week. 
+The data are also shown in the subsequent table. 
+
+```{r plot1, include=TRUE}
+t2<-Dataset[N != 0 & !is.na(N), sum(N), by= week]
+setnames(t2, "V1", "N")
 
 
-  ggplot(Dataset, aes(week, N, fill=vx_manufacturer)) +   
-   geom_col(position = "dodge", alpha = 0.9)+
-   scale_x_date(limit= c(ymd(20201228), ymd(20210222)), breaks="1 week")+
-   theme_hc()
+ p2 <- ggplot(t2, aes(week, N)) +   
+         geom_col( alpha = 0.9, fill ="salmon", na.rm=TRUE)+
+         scale_x_date(limit= c(study_start, study_end))
+
+p2
+rmarkdown::paged_table(t2)
+```
+
+## Number of vaccines by manufacturer
+
+This section includes a graph showing the number of vaccine administered by week, divided by manifacturer. 
+The data are also shown in the subsequent table. 
+
+```{r plot2, include=TRUE}
+t1<-Dataset[N != 0 & !is.na(N), sum(N), by= .(week, vx_manufacturer)]
+setnames(t1, "V1", "N")
+p1<-  ggplot(t1, aes(week, N, fill=vx_manufacturer)) +   
+       geom_col(position = "dodge", alpha = 0.9, na.rm=TRUE)+
+       scale_x_date(limit= c(study_start, study_end))
+
+p1
+
+rmarkdown::paged_table(t1)
+```
+
+
+## Number of vaccines by dose
+
+This section includes a graph showing the number of vaccine administered by week, divided by dose number. 
+The data are also shown in the subsequent table.
+
+```{r plot4, include=TRUE}
+
+t4<-Dataset[N != 0 & !is.na(N), sum(N), by= .(week, dose)]
+
+setnames(t4, "V1", "N")
+
+ p4 <- ggplot(t4, aes(week, N)) +   
+        geom_col(alpha = 0.9, fill ="salmon", na.rm=TRUE)+
+        scale_x_date(limit= c(study_start,study_end))+
+        facet_grid(rows = vars(dose))
+
+p4
+
+rmarkdown::paged_table(t4)
+
+```
+
+## Number of vaccines by dose and by manufacturer
+
+This section includes a graph showing the number of vaccine administered by week, divided by manifacturer and by dose number. 
+The data are also shown in the subsequent table.
+
+```{r plot3, include=TRUE}
+ 
+t3<-Dataset[N != 0 & !is.na(N), sum(N), by= .(week, vx_manufacturer, dose)]
+
+setnames(t3, "V1", "N")
+
+ p3 <- ggplot(t3, aes(week, N, fill=vx_manufacturer)) +   
+         geom_col(position = "dodge", alpha = 0.9, na.rm=TRUE)+
+         scale_x_date(limit= c(study_start, study_end))+
+         facet_grid(rows = vars(dose))
+
+p3
+rmarkdown::paged_table(t3)
 ```
