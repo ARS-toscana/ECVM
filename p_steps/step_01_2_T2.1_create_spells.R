@@ -34,7 +34,7 @@ if (this_datasource_has_subpopulations == FALSE){
     end_date = "op_end_date",
     category ="op_meaning",
     replace_missing_end_date = study_end,
-    gap_allowed = 15
+    gap_allowed = 21
     )
 
   output_spells_category<-as.data.table(output_spells_category)
@@ -70,7 +70,7 @@ if (this_datasource_has_subpopulations == TRUE){
       end_date = "op_end_date",
       category ="op_meaning",
       replace_missing_end_date = study_end,
-      gap_allowed = 15
+      gap_allowed = 21
     )
     if (nrow(output_spells_op_meaning_set)>0){
       output_spells_op_meaning_set<-as.data.table(output_spells_op_meaning_set)
@@ -123,7 +123,7 @@ if (this_datasource_has_subpopulations == TRUE){
               dataset_overlap = "overlap",
               replace_missing_end_date = study_end,
               only_overlaps = T,
-              gap_allowed = 15
+              gap_allowed = 21
             )
             output_spells_category_meaning_set[[overlap_op_meaning_sets]] <- get("overlap")
           }
