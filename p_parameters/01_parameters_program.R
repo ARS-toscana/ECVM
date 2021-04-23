@@ -127,6 +127,7 @@ find_last_monday <- function(tmp_date, monday_week) {
   return(tmp_date)
 }
 
+
 calc_precise_week <- function(time_diff) {
   floor(time_length(time_diff, "week")) + 1
 }
@@ -135,4 +136,18 @@ join_and_replace <- function(df1, df2, join_cond, old_name) {
   temp <- merge(df1, df2, by.x = join_cond[1], by.y = join_cond[2])
   temp[, join_cond[1] := NULL]
   setnames(temp, old_name, join_cond[1])
+}
+
+
+import_concepts <- function(dirtemp, concept_set_domains) {
+  concepts<-data.table()
+  for (concept in names(concept_set_domains)) {
+    load(paste0(dirtemp, concept,".RData"))
+    if (exists("concepts")) {
+      concepts <- rbind(concepts, get(concept))
+    } else {
+      concepts <- get(concept)
+    }
+  }
+  return(concepts)
 }

@@ -1,18 +1,5 @@
 #NOTE add cycle trough the concept dfs?
 
-import_concepts <- function(dirtemp, concept_set_domains) {
-  concepts<-data.table()
-  for (concept in names(concept_set_domains)) {
-    load(paste0(dirtemp, concept,".RData"))
-    if (exists("concepts")) {
-      concepts <- rbind(concepts, get(concept))
-    } else {
-      concepts <- get(concept)
-    }
-  }
-  return(concepts)
-}
-
 concepts <- import_concepts(dirtemp, concept_set_domains)
 
 concepts <- concepts[, .(person_id, date, vx_dose, vx_manufacturer)]
@@ -20,10 +7,7 @@ concepts <- concepts[, .(person_id, date, vx_dose, vx_manufacturer)]
 concepts <- concepts[, qc_1_date := as.numeric(is.na(date))]
 concepts <- concepts[, qc_1_dose := as.numeric(is.na(vx_dose))]
 concepts <- concepts[vx_manufacturer %in% c("Moderna", "Pfizer", "AstraZeneca", "J&J"), vx_manufacturer := "UKN"]
-# concepts <- concepts[, qc_1_lot_num := as.numeric(!is.na(vx_lot_num))]
 
-# err_1_lot_num <- nrow(concepts[qc_1_lot_num == 0, ])
-#NOTE add the filter for lot_num when it will be necessary
 
 if (thisdatasource %in% c("ARS", "TEST")) {
   concepts <- concepts[.(vx_manufacturer = c("MODERNA BIOTECH SPAIN S.L.",
@@ -43,10 +27,6 @@ concepts <- concepts[, qc_2_dose := fifelse(vx_dose <= 2, 0, 1), by = c("person_
 
 concepts[, temp_id := rowid(person_id, vx_dose, date)]
 concepts <- concepts[qc_dupl == 0, qc_manufacturer := fifelse(temp_id == 1, 0, 1), by = c("person_id", "vx_dose", "date")]
-
-# concepts <- concepts[qc_dupl == 0 & qc_2_date == 0 & qc_2_dose == 0, qc_2a_dose := fifelse(max(vx_dose) == 1 & date > min(date + 21), 0, 1), by = c("person_id", "vx_dose")]
-# # NOTE is it really ok?
-# concepts <- concepts[qc_dupl == 0 & qc_2_date == 0 & qc_2_dose == 0, qc_2b_dose := fifelse(min(vx_dose) == 2 & date < max(date - 21), 0, 1), by = c("person_id", "vx_dose")]
 
 concepts[, temp_id := rowid(person_id, vx_dose)]
 concepts <- concepts[qc_dupl == 0 & qc_2_date == 0 & qc_2_dose == 0 & qc_manufacturer == 0,
