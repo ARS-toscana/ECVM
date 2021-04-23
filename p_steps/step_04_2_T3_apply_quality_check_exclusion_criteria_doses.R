@@ -5,7 +5,6 @@ for (subpop in subpopulations[[thisdatasource]]){
   
   if (this_datasource_has_subpopulations == TRUE) persons_doses <- as.data.table(persons_doses[[subpop]])
 
-#add quality checks davide
 
 all_mondays <- seq.Date(as.Date("19000101","%Y%m%d"), Sys.Date(), by = "week")
 
@@ -19,7 +18,9 @@ all_days_df <- all_days_df[all_days >= study_start,]
 
 ##add the corresponding moday to each date
 temp<-merge(persons_doses,all_days_df, by.x=c("date"), by.y = "all_days")
-temp<-temp[monday_week>=as.Date("20201228","%Y%m%d"),]
+monday_start_covid<-find_last_monday(start_COVID_vaccination_date,monday_week)
+temp<-temp[monday_week>=monday_start_covid,]
+
 temp2<-unique(temp[,doses_week:=.N ,by="monday_week"][,.(monday_week,doses_week)])
 setnames(temp, "sex_or_birth_date_missing", "dose_not_in_persons")
 
