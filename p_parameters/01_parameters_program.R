@@ -44,10 +44,10 @@ library(survival)
 
 # load macros
 
-source(paste0(dirmacro,"CreateConceptSetDatasets_v14.R"))
+source(paste0(dirmacro,"CreateConceptSetDatasets_v15.R"))
 source(paste0(dirmacro,"RetrieveRecordsFromEAVDatasets.R"))
 source(paste0(dirmacro,"MergeFilterAndCollapse_v5.R"))
-source(paste0(dirmacro,"CreateSpells_v10.R"))
+source(paste0(dirmacro,"CreateSpells_v11.R"))
 source(paste0(dirmacro,"CreateFlowChart.R"))
 source(paste0(dirmacro,"CountPersonTimeV10.2.R"))
 source(paste0(dirmacro,"ApplyComponentStrategy_v13_2.R"))
