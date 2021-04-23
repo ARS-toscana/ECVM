@@ -6,7 +6,6 @@ concepts <- concepts[, .(person_id, date, vx_dose, vx_manufacturer)]
 
 concepts <- concepts[, qc_1_date := as.numeric(is.na(date))]
 concepts <- concepts[, qc_1_dose := as.numeric(is.na(vx_dose))]
-concepts <- concepts[vx_manufacturer %in% c("Moderna", "Pfizer", "AstraZeneca", "J&J"), vx_manufacturer := "UKN"]
 
 
 if (thisdatasource %in% c("ARS", "TEST")) {
@@ -14,6 +13,8 @@ if (thisdatasource %in% c("ARS", "TEST")) {
                                              "PFIZER Srl", "ASTRAZENECA SpA", "J&J"), to = c("Moderna", "Pfizer", "AstraZeneca", "J&J")),
                        on = "vx_manufacturer", vx_manufacturer := i.to]
 }
+
+concepts <- concepts[vx_manufacturer %not in% c("Moderna", "Pfizer", "AstraZeneca", "J&J"), vx_manufacturer := "UKN"]
 
 # TODO to unknows
 setorder(concepts, person_id, vx_dose, date)

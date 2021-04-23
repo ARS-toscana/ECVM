@@ -37,7 +37,7 @@ all_ages <- unique(all_ages[, birth_cohort:="all_birth_cohorts"][, c("datasource
 
 vaxweeks_to_dos_bir_cor <- rbind(vaxweeks_to_dos_bir_cor, all_ages)
 
-complete_df <- expand.grid(datasource = "ARS", week = monday_week, vx_manufacturer = c("Moderna", "Pfizer", "AstraZeneca", "J&J", "UKN"),
+complete_df <- expand.grid(datasource = thisdatasource, week = monday_week, vx_manufacturer = c("Moderna", "Pfizer", "AstraZeneca", "J&J", "UKN"),
                            dose = c("1", "2"), birth_cohort = c("<1940", "1940-1949", "1950-1959", "1960-1969", "1970-1979",
                                                                 "1980-1989", "1990+", "all_birth_cohorts"))
 

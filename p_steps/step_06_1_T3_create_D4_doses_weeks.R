@@ -24,7 +24,8 @@ cohort_to_vaxweeks <- cohort_to_vaxweeks[, start_date_of_period := study_entry_d
 cohort_to_vaxweeks <- cohort_to_vaxweeks[, c("study_entry_date", "week") := NULL]
 
 tot_cohort <- copy(cohort_to_vaxweeks)
-tot_cohort <- unique(tot_cohort[, c("sex", "Dose", "type_vax", "Birthcohort_persons") := NULL])
+tot_cohort <- tot_cohort[, c("sex", "Dose", "type_vax", "Birthcohort_persons") := NULL]
+tot_cohort <- unique(tot_cohort)
 tot_cohort <- tot_cohort[, Persons_in_week := .N, by = c("start_date_of_period")]
 tot_cohort <- unique(tot_cohort[, person_id := NULL])
 
