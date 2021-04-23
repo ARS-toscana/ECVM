@@ -87,3 +87,13 @@ The values in the table refer to the number of persons excluded by the correspon
   paged_table(as.data.frame(FlowChart_reshaped_table))
 ```
 
+
+## Sum of excluded
+```{r  sum, include=TRUE}
+FlowChart_reshaped_table<- data.table(FlowChart_reshaped_table)
+DF_sum<-FlowChart_reshaped_table[,-1]
+DF_sum<-DF_sum[, lapply(.SD, sum, na.rm=TRUE)]
+suppressWarnings(DF_sum<- melt(DF_sum))
+paged_table(as.data.frame(DF_sum))
+
+```
