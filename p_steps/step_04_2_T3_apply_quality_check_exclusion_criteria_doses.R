@@ -17,11 +17,12 @@ all_days_df <- all_days_df[all_days >= study_start,]
 temp<-merge(persons_doses,all_days_df, by.x=c("date"), by.y = "all_days")
 temp<-temp[monday_week>=as.Date("20201228","%Y%m%d"),]
 temp2<-unique(temp[,doses_week:=.N ,by="monday_week"][,.(monday_week,doses_week)])
+setnames(temp, "sex_or_birth_date_missing", "doses_not_in_pop")
 
 selected_population <- CreateFlowChart(
   dataset = temp,
   listcriteria = c("qc_1_date" ,"qc_1_dose","qc_dupl","qc_2_date" ,"qc_2_dose", "qc_manufacturer",
-                  "qc_mult_date_for_dose", "qc_mult_dose_for_date", "qc_3_date","sex_or_birth_date_missing",
+                  "qc_mult_date_for_dose", "qc_mult_dose_for_date", "qc_3_date","doses_not_in_pop",
                   "birth_date_absurd", "no_observation_period", "death_before_study_entry",
                   "no_observation_period_including_study_start","insufficient_run_in", "death_before_vax",
                   "exit_spell_before_vax", "study_end_before_vax"),
