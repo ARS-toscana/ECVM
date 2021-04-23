@@ -18,4 +18,4 @@ fwrite(Flowchart_QC_criteria, paste0(direxp,"Flowchart_QC_criteria.csv"))
 save(selected_doses, file = paste0(dirtemp, "selected_doses.RData"))
 
 # rm(PERSONS, OBSERVATION_PERIODS)
-rm(selected_doses, D3_concepts_QC_criteria, Flowchart_QC_criteria, D3_concepts_QC)
+rm(selected_doses, D3_concepts_QC_criteria, Flowchart_QC_criteria)
