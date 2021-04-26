@@ -64,15 +64,15 @@ Different colors correspond to different exclusion criteria.
 <br>
 
 ```{r  QC, include=TRUE}
-FlowChart_reshaped_plot <- FlowChart_reshaped_plot[variable == "A_qc_1_date" |
-                                                   variable == "B_qc_1_dose" |
-                                                   variable == "C_qc_dupl" |
-                                                   variable == "D_qc_2_date" |
-                                                   variable == "E_qc_2_dose" |
-                                                   variable == "F_qc_manufacturer" |
-                                                   variable == "G_qc_mult_date_for_dose" |
-                                                   variable == "H_qc_mult_dose_for_date" |
-                                                   variable == "I_qc_3_date", variable := "A_I_quality_check"]
+# FlowChart_reshaped_plot <- FlowChart_reshaped_plot[variable == "A_qc_1_date" |
+#                                                    variable == "B_qc_1_dose" |
+#                                                    variable == "C_qc_dupl" |
+#                                                    variable == "D_qc_2_date" |
+#                                                    variable == "E_qc_2_dose" |
+#                                                    variable == "F_qc_manufacturer" |
+#                                                    variable == "G_qc_mult_date_for_dose" |
+#                                                    variable == "H_qc_mult_dose_for_date" |
+#                                                    variable == "I_qc_3_date", variable := "A_I_quality_check"]
 
 ```
 
