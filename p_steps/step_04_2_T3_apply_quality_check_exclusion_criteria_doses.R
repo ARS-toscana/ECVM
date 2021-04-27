@@ -41,7 +41,6 @@ selected_population <- CreateFlowChart(
 
 # if (this_datasource_has_subpopulations == FALSE & nrow(selected_population)>0){ 
   fwrite(Flowchart_doses,file=paste0(direxp,"Flowchart_doses.csv"))
-  D4_study_source_population <- selected_population
 # }
 # }
 

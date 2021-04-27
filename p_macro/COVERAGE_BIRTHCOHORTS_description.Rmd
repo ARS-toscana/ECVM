@@ -34,7 +34,7 @@ library(lubridate )
 
 Dataset$week=ymd(Dataset$week)
 #study_end <- as.Date(as.character(CDM_SOURCE[1,"recommended_end_date"]), date_format)
-study_start <- as.Date("2020-11-30")
+#study_start <- as.Date("2020-11-30")
 
 ```
 
@@ -50,7 +50,7 @@ setnames(t2, "V1", "percentage")
 
  p2 <- ggplot(t2, aes(week, percentage)) +   
          geom_col( alpha = 0.9, fill ="salmon", na.rm=TRUE)+
-         scale_x_date(limit= c(study_start, study_end))
+         scale_x_date(limit= c(monday_start_covid, study_end))
 
 p2
 rmarkdown::paged_table(t2)
@@ -65,8 +65,8 @@ The data are also shown in the subsequent table.
 t1<-Dataset[percentage != 0 & !is.na(percentage), sum(percentage), by= .(week, vx_manufacturer)]
 setnames(t1, "V1", "percentage")
 p1<-  ggplot(t1, aes(week, percentage, fill=vx_manufacturer)) +   
-       geom_col(position = "dodge", alpha = 0.9, na.rm=TRUE)+
-       scale_x_date(limit= c(study_start, study_end))
+       geom_col(position = position_dodge(preserve = "single"), alpha = 0.9, na.rm=TRUE)+
+       scale_x_date(limit= c(monday_start_covid, study_end))
 
 p1
 
@@ -87,7 +87,7 @@ setnames(t4, "V1", "percentage")
 
  p4 <- ggplot(t4, aes(week, percentage)) +   
         geom_col(alpha = 0.9, fill ="salmon", na.rm=TRUE)+
-        scale_x_date(limit= c(study_start, study_end))+
+        scale_x_date(limit= c(monday_start_covid, study_end))+
         facet_grid(rows = vars(dose)) 
 
 p4
@@ -107,8 +107,8 @@ t3<-Dataset[percentage != 0 & !is.na(percentage), sum(percentage), by= .(week, v
 setnames(t3, "V1", "percentage")
 
  p3 <- ggplot(t3, aes(week, percentage, fill=vx_manufacturer)) +   
-         geom_col(position = "dodge", alpha = 0.9, na.rm=TRUE)+
-         scale_x_date(limit= c(study_start, study_end))+
+         geom_col(position=position_dodge(preserve = "single"), alpha = 0.9, na.rm=TRUE)+
+         scale_x_date(limit= c(monday_start_covid, study_end))+
          facet_grid(rows = vars(dose))
 
 p3
