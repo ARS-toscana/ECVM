@@ -13,9 +13,9 @@ load(file = paste0(dirtemp, "D3_Vaccin_cohort.RData"))
 
 D4_descriptive_dataset_age_studystart <- D3_study_population[, .(person_id, age_at_study_entry, fup_days)]
 D4_descriptive_dataset_age_studystart <- D4_descriptive_dataset_age_studystart[,c("Age_P25", "Age_P50", "Age_p75") :=
-                                                                                 as.list(round(quantile(age_at_study_entry, probs = c(0.25, 0.50, 0.75)), 0))]
+                                                                                  as.list(round(quantile(age_at_study_entry, probs = c(0.25, 0.50, 0.75)), 0))]
 D4_descriptive_dataset_age_studystart <- D4_descriptive_dataset_age_studystart[, c("Age_mean", "Age_min", "Age_max") :=
-                                                                                 list(round(mean(age_at_study_entry), 0), min(age_at_study_entry), max(age_at_study_entry))]
+                                                                                  list(round(mean(age_at_study_entry), 0), min(age_at_study_entry), max(age_at_study_entry))]
 
 D4_descriptive_dataset_age_studystart <- D4_descriptive_dataset_age_studystart[, Followup := sum(fup_days)][, Datasource := thisdatasource]
 D4_descriptive_dataset_age_studystart <- unique(D4_descriptive_dataset_age_studystart[, .(Datasource, Followup, Age_P25, Age_P50, Age_p75, Age_mean, Age_min, Age_max)])
