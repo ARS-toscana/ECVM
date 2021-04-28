@@ -1,10 +1,10 @@
-#set directory with input data
-setwd("..")
-setwd("..")
-dirbase<-getwd()
-dirinput <- paste0(dirbase,"/CDMInstances/ACCESS/")
+# #set directory with input data
+# setwd("..")
+# setwd("..")
+# dirbase<-getwd()
+# dirinput <- paste0(dirbase,"/CDMInstances/ECVM2104/")
 
-#dirinput <- paste0(thisdir,"/i_input/")
+dirinput <- paste0(thisdir,"/i_input/")
 
 # set other directories
 diroutput <- paste0(thisdir,"/g_output/")
