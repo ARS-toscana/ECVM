@@ -36,6 +36,7 @@ for (row_id in seq_len(nrow(flow_source))) {
 
 correct_col_names <- names(empty_table_1)[2:length(names(empty_table_1))]
 table_1a <- empty_table_1[a == "end population", (correct_col_names) := empty_table_1[1, 2:5] - colSums(empty_table_1[2:5, 2:5])]
+
 empty_table_2 <- empty_table_2[a == "Start population", (correct_col_names) := empty_table_1[1, 2:5] - colSums(empty_table_1[2:5, 2:5])]
 
 for (row_id in seq_len(nrow(flow_source))) {
@@ -59,3 +60,6 @@ for (row_id in seq_len(nrow(flow_study))) {
 correct_col_names <- names(empty_table_2)[2:length(names(empty_table_2))]
 table_1b <- empty_table_2[a == "end population", (correct_col_names) := empty_table_2[1, 2:5] - colSums(empty_table_2[2:3, 2:5])]
 
+table_1b <- table_1b[.(a = c("B_birth_date_absurd", "A_insufficient_run_in"),
+                       to = c("Subjects without valid birth date", "Subjects without one year of look back at 1/1/2020")),
+                     on = "a", a := i.to]
