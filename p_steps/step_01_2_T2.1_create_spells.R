@@ -26,7 +26,7 @@ empty_spells <- empty_spells[,num_spell := 1]
 empty_spells <- empty_spells[op_meaning!="test",]
 
 #if (this_datasource_has_subpopulations == FALSE){
-if (thisdatasource %in% c("ARS","TEST")) {
+
   OBSERVATION_PERIODS <- OBSERVATION_PERIODS[,op_meaning:="all"]
   output_spells_category <- CreateSpells(
     dataset=OBSERVATION_PERIODS,
@@ -35,21 +35,8 @@ if (thisdatasource %in% c("ARS","TEST")) {
     end_date = "op_end_date",
     category ="op_meaning",
     replace_missing_end_date = study_end,
-    gap_allowed = 21
+    gap_allowed = days
   )
-}else {
-  OBSERVATION_PERIODS <- OBSERVATION_PERIODS[,op_meaning:="all"]
-  output_spells_category <- CreateSpells(
-    dataset=OBSERVATION_PERIODS,
-    id="person_id" ,
-    start_date = "op_start_date",
-    end_date = "op_end_date",
-    category ="op_meaning",
-    replace_missing_end_date = study_end,
-    gap_allowed = 1
-  )
-  
-}
 
 
   output_spells_category<-as.data.table(output_spells_category)
