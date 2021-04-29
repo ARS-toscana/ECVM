@@ -74,15 +74,16 @@ start_COVID_vaccination_date <- fifelse(thisdatasource == 'CPRD',as.Date(as.char
 # # CREATE FOLDERS
 # ###################################################################
 # 
-# suppressWarnings(if (!file.exists(diroutput)) dir.create(file.path( diroutput)))
-# suppressWarnings(if (!file.exists(dirtemp)) dir.create(file.path( dirtemp)))
-# suppressWarnings(if (!file.exists(direxp)) dir.create(file.path( direxp)))
+ suppressWarnings(if (!file.exists(diroutput)) dir.create(file.path( diroutput)))
+ suppressWarnings(if (!file.exists(dirtemp)) dir.create(file.path( dirtemp)))
+ suppressWarnings(if (!file.exists(direxp)) dir.create(file.path( direxp)))
 # suppressWarnings(if (!file.exists(dirfigure)) dir.create(file.path( dirfigure)))
 suppressWarnings(if (!file.exists(dirpargen)) dir.create(file.path( dirpargen)))
 # suppressWarnings(if (!file.exists(dirsmallcountsremoved)) dir.create(file.path(dirsmallcountsremoved)))
 # 
 # 
-# 
+
+days<-ifelse(thisdatasource %in% c("ARS","TEST"),21,1)
 
 Birthcohorts =c("<1940", "1940-1949", "1950-1959", "1960-1969",
                 "1970-1979", "1980-1989", "1990+")
