@@ -74,9 +74,9 @@ start_COVID_vaccination_date <- fifelse(thisdatasource == 'CPRD',as.Date(as.char
 # # CREATE FOLDERS
 # ###################################################################
 # 
-# suppressWarnings(if (!file.exists(diroutput)) dir.create(file.path( diroutput)))
-# suppressWarnings(if (!file.exists(dirtemp)) dir.create(file.path( dirtemp)))
-# suppressWarnings(if (!file.exists(direxp)) dir.create(file.path( direxp)))
+ suppressWarnings(if (!file.exists(diroutput)) dir.create(file.path( diroutput)))
+ suppressWarnings(if (!file.exists(dirtemp)) dir.create(file.path( dirtemp)))
+ suppressWarnings(if (!file.exists(direxp)) dir.create(file.path( direxp)))
 # suppressWarnings(if (!file.exists(dirfigure)) dir.create(file.path( dirfigure)))
 suppressWarnings(if (!file.exists(dirpargen)) dir.create(file.path( dirpargen)))
 # suppressWarnings(if (!file.exists(dirsmallcountsremoved)) dir.create(file.path(dirsmallcountsremoved)))
