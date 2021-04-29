@@ -40,7 +40,7 @@ Dataset$week=ymd(Dataset$week)
 
 ## Coverage
 
-This section includes a graph showing the percentage of vaccine coverage by week. 
+This section includes a graph showing the vaccine coverage by week. 
 The data are also shown in the subsequent table. 
 
 ```{r plot1, include=TRUE}
@@ -58,7 +58,7 @@ rmarkdown::paged_table(t2)
 
 ## Coverage by manufacturer
 
-This section includes a graph showing the percentage of vaccine coverage by week, divided by manifacturer. 
+This section includes a graph showing the vaccine coverage by week, divided by manifacturer. 
 The data are also shown in the subsequent table. 
 
 ```{r plot2, include=TRUE}
@@ -76,7 +76,7 @@ rmarkdown::paged_table(t1)
 
 ## Coverage by dose
 
-This section includes a graph showing the percentage of vaccine coverage by week, divided by dose number. 
+This section includes a graph showing the vaccine coverage by week, divided by dose number. 
 The data are also shown in the subsequent table.
 
 ```{r plot4, include=TRUE}
@@ -98,7 +98,7 @@ rmarkdown::paged_table(t4)
 
 ## Coverage by dose and by manufacturer
 
-This section includes a graph showing the percentage of vaccine coverage by week, divided by manifacturer and by dose number. 
+This section includes a graph showing the vaccine coverage by week, divided by manifacturer and by dose number. 
 The data are also shown in the subsequent table.
 ```{r plot3, include=TRUE}
  

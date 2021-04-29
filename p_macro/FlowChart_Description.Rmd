@@ -59,7 +59,7 @@ library(data.table)
 
 ## Exclusion criteria graph
 
-The next graph shows the proportion of people included in the study and the proportion of people excluded. 
+The next graph shows the proportion of doses included in the study and the proportion of doses excluded. 
 Different colors correspond to different exclusion criteria. 
 <br>
 
@@ -95,7 +95,7 @@ Different colors correspond to different exclusion criteria.
 ## Exclusion criteria table
 
 In the next table each column represents an exclusion criteria and each row represents a week. 
-The values in the table refer to the number of persons excluded by the corresponding criteria in that week.
+The values in the table refer to the number of doses excluded by the corresponding criteria in that week.
 <br>
 ```{r  Table, include=TRUE}
   paged_table(as.data.frame(FlowChart_reshaped_table))
