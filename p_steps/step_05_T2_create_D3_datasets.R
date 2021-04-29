@@ -11,8 +11,8 @@ D3_doses <- merge(D4_study_population, selected_doses, all.x = T, by="person_id"
 
 D3_doses <- D3_doses[, vx_dose := as.character(vx_dose)]
 
-D3_doses <- dcast(D3_doses, person_id + sex + date_of_birth + date_of_death + study_entry_date + start_follow_up +
-                    study_exit_date ~ vx_dose, value.var = c("date", "vx_manufacturer"))
+D3_doses <- data.table::dcast(D3_doses, person_id + sex + date_of_birth + date_of_death + study_entry_date + start_follow_up +
+                                study_exit_date ~ vx_dose, value.var = c("date", "vx_manufacturer"))
 
 setnames(D3_doses, c("date_1", "date_2", "vx_manufacturer_1", "vx_manufacturer_2"),
          c("date_vax1", "date_vax2", "type_vax_1", "type_vax_2"))
@@ -25,9 +25,9 @@ D3_doses <- D3_doses[!is.na(date_vax2), c("study_entry_date_vax2", "study_exit_d
 D3_doses <- D3_doses[, age_at_study_entry := floor(lubridate::time_length(correct_difftime(study_entry_date, date_of_birth), "years"))]
 D3_doses <- D3_doses[, age_at_date_vax_1 := floor(lubridate::time_length(correct_difftime(date_vax1, date_of_birth), "years"))]
 D3_doses <- D3_doses[, fup_days := correct_difftime(study_exit_date, study_entry_date)]
-D3_doses <- D3_doses[, fup_no_vax := fifelse(is.na(study_entry_date_vax1), fup_days, correct_difftime(study_entry_date_vax1, study_entry_date))]
+D3_doses <- D3_doses[, fup_no_vax := fifelse(is.na(study_entry_date_vax1), fup_days, correct_difftime(study_entry_date_vax1, study_entry_date) - 1)]
 
-D3_doses <- D3_doses[!is.na(study_entry_date_vax1), fup_vax1 := fifelse(is.na(study_entry_date_vax2), correct_difftime(study_exit_date_vax1, study_entry_date_vax1), correct_difftime(study_entry_date_vax2, study_entry_date_vax1))]
+D3_doses <- D3_doses[!is.na(study_entry_date_vax1), fup_vax1 := correct_difftime(study_exit_date_vax1, study_entry_date_vax1)]
 
 D3_doses <- D3_doses[!is.na(study_entry_date_vax2), fup_vax2 := correct_difftime(study_exit_date_vax2, study_entry_date_vax2)]
 
@@ -69,8 +69,8 @@ colA = c(paste("study_entry_date_vax", 1:2, sep = ""), "study_entry_date")
 colB = c(paste("study_exit_date_vax", 1:2, sep = ""), "study_exit_date")
 colC = c(paste("fup_vax", 1:2, sep = ""), "fup_no_vax")
 colD = paste("type_vax", 1:2, sep = "_")
-cohort_to_vaxweeks <- melt(cohort_to_vaxweeks, measure = list(colA, colB, colC, colD), variable.name = "Dose",
-                           value.name = c("study_entry_date", "study_exit_date", "fup", "type_vax"), na.rm = F)
+cohort_to_vaxweeks <- data.table::melt(cohort_to_vaxweeks, measure = list(colA, colB, colC, colD), variable.name = "Dose",
+                                       value.name = c("study_entry_date", "study_exit_date", "fup", "type_vax"), na.rm = F)
 cohort_to_vaxweeks <- cohort_to_vaxweeks[!is.na(study_entry_date) & !is.na(study_exit_date) & !is.na(fup), ]
 cohort_to_vaxweeks <- cohort_to_vaxweeks[, Dose := as.character(Dose)][Dose == "3", Dose := "0"]
 D3_vaxweeks <- copy(cohort_to_vaxweeks)

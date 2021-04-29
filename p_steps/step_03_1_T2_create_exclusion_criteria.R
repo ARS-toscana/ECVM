@@ -26,9 +26,12 @@ for (i in 1:length(files)) {
   }
 }
 
+PERSONS[!is.na(month_of_birth) & is.na(day_of_birth), day_of_birth := 15]
+PERSONS[is.na(month_of_birth) & is.na(day_of_birth), c("month_of_birth", "day_of_birth") := list(7, 1)]
+
 #STANDARDIZE THE DATE FORMAT WITH  LUBRIDATE
 PERSONS<-PERSONS[, date_of_birth := lubridate::ymd(paste(year_of_birth, month_of_birth, day_of_birth, sep="-"))]
-PERSONS<-suppressWarnings(PERSONS[, date_of_death:=lubridate::ymd(paste(year_of_death, month_of_death, day_of_death, sep="-"))])
+PERSONS<-suppressWarnings(PERSONS[, date_of_death := lubridate::ymd(paste(year_of_death, month_of_death, day_of_death, sep="-"))])
 
 #CONVERT SEX to BINARY 0/1
 PERSONS<-PERSONS[, sex := fifelse(sex_at_instance_creation == "M", 1, 0)] #1:M 0:F

@@ -5,8 +5,8 @@
 flow_source <- fread(paste0(direxp, "Flowchart_basic_exclusion_criteria.csv"))
 flow_study <- fread(paste0(direxp, "Flowchart_exclusion_criteria.csv"))
 
-# flow_source <- flow_source[, Datasource := "ARS"][, TOTAL := sum(N), by = "Datasource"]
-# flow_study <- flow_study[, Datasource := "ARS"]
+# flow_source <- flow_source[, Datasource := "TEST"][, TOTAL := sum(N), by = "Datasource"]
+# flow_study <- flow_study[, Datasource := "TEST"]
 flow_source <- flow_source[, TOTAL := sum(N), by = "Datasource"]
 
 n6 <- numeric(6)
@@ -19,10 +19,10 @@ empty_table_2 <- data.table(a = row_names_2, Italy_ARS = n4, NL_PHARMO = n4, UK_
 
 fwrite(empty_table_1, paste0(direxp, "test.csv"))
 
-flow_source <- flow_source[.(Datasource = c("ARS", "PHARMO", "CPRD", "BIFAP"),
+flow_source <- flow_source[.(Datasource = c("TEST", "PHARMO", "CPRD", "BIFAP"),
                              to = c("Italy_ARS", "NL_PHARMO", "UK_CPRD", "ES_BIFAP")),
                            on = "Datasource", Datasource := i.to]
-flow_study <- flow_study[.(Datasource = c("ARS", "PHARMO", "CPRD", "BIFAP"),
+flow_study <- flow_study[.(Datasource = c("TEST", "PHARMO", "CPRD", "BIFAP"),
                            to = c("Italy_ARS", "NL_PHARMO", "UK_CPRD", "ES_BIFAP")),
                          on = "Datasource", Datasource := i.to]
 
@@ -83,7 +83,7 @@ setnames(table_1b, "a", " ")
 ageband_studystart <- fread(paste0(direxp, "D4_descriptive_dataset_ageband_studystart.csv"))
 ageband_studystart <- ageband_studystart[, TOTAL := sum(AgeCat_019, AgeCat_2029, AgeCat_3039, AgeCat_4049, AgeCat_5059,
                                                         AgeCat_6069, AgeCat_7079, get("Agecat_80+"))]
-ageband_studystart <- ageband_studystart[.(Datasource = c("ARS", "PHARMO", "CPRD", "BIFAP"),
+ageband_studystart <- ageband_studystart[.(Datasource = c("TEST", "PHARMO", "CPRD", "BIFAP"),
                              to = c("Italy_ARS", "NL_PHARMO", "UK_CPRD", "ES_BIFAP")),
                            on = "Datasource", Datasource := i.to]
 total_pop <- ageband_studystart[, a := "Study population"][, Parameters := "N"][, .(a, Parameters, Datasource, TOTAL)]
@@ -93,7 +93,7 @@ total_pop <- total_pop[, c("a", "Parameters", "Italy_ARS", "NL_PHARMO", "UK_CPRD
 
 
 age_studystart <- fread(paste0(direxp, "D4_descriptive_dataset_age_studystart.csv"))
-age_studystart <- age_studystart[.(Datasource = c("ARS", "PHARMO", "CPRD", "BIFAP"),
+age_studystart <- age_studystart[.(Datasource = c("TEST", "PHARMO", "CPRD", "BIFAP"),
                                    to = c("Italy_ARS", "NL_PHARMO", "UK_CPRD", "ES_BIFAP")),
                                  on = "Datasource", Datasource := i.to]
 pt_total <- age_studystart[, a := "Person years of follow-up"][, Parameters := "PY"][, .(a, Parameters, Datasource, Followup)]
@@ -137,7 +137,7 @@ ageband_start <- ageband_start[.(Parameters = c("AgeCat_019", "AgeCat_2029", "Ag
 
 
 followup_studystart <- fread(paste0(direxp, "D4_followup_fromstudystart.csv"))
-followup_studystart <- followup_studystart[.(Datasource = c("ARS", "PHARMO", "CPRD", "BIFAP"),
+followup_studystart <- followup_studystart[.(Datasource = c("TEST", "PHARMO", "CPRD", "BIFAP"),
                                              to = c("Italy_ARS", "NL_PHARMO", "UK_CPRD", "ES_BIFAP")),
                                            on = "Datasource", Datasource := i.to]
 followup_start <- followup_studystart[, a := "Person years across age categories"][, .(a, Datasource, Followup_0119,
@@ -161,7 +161,7 @@ followup_start <- followup_start[.(Parameters = c("Followup_0119", "Followup_202
 
 
 sex_studystart <- fread(paste0(direxp, "D4_descriptive_dataset_sex_studystart.csv"))
-sex_studystart <- sex_studystart[.(Datasource = c("ARS", "PHARMO", "CPRD", "BIFAP"),
+sex_studystart <- sex_studystart[.(Datasource = c("TEST", "PHARMO", "CPRD", "BIFAP"),
                                    to = c("Italy_ARS", "NL_PHARMO", "UK_CPRD", "ES_BIFAP")),
                                  on = "Datasource", Datasource := i.to]
 sex_start <- sex_studystart[, a := "Person years across sex"][, .(a, Datasource, Sex_female, Sex_male)]
