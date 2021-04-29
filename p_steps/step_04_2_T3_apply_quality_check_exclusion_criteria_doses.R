@@ -44,20 +44,6 @@ selected_population <- CreateFlowChart(
 # }
 # }
 
-##############################################################################
-##########################  FlowChart description   ##########################
-##############################################################################
-PathOutputFolder=paste0(thisdir,"/g_describeHTML")
-suppressWarnings(if (!file.exists(PathOutputFolder)) dir.create(file.path( PathOutputFolder)))
-if (!require("rmarkdown")) install.packages("rmarkdown")
-library(rmarkdown )
 
-render(paste0(dirmacro,"FlowChart_Description.Rmd"),           
-       output_dir=PathOutputFolder,
-       output_file="HTML_Flowchart_doses_description", 
-       params=list(FlowChart = Flowchart_doses)) 
-##############################################################################
-##################################  end   ####################################
-##############################################################################
 
 rm(persons_doses, all_mondays, monday_week, double_weeks, all_days_df, temp, temp2, selected_population, Flowchart_doses)

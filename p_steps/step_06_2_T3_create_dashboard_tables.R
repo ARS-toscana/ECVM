@@ -64,23 +64,6 @@ COVERAGE_BIRTHCOHORTS <- COVERAGE_BIRTHCOHORTS[, .(datasource, week, vx_manufact
 
 fwrite(COVERAGE_BIRTHCOHORTS, file = paste0(direxp, "COVERAGE_BIRTHCOHORTS.csv"))
 
-##############################################################################
-##########################   Datasets description   ##########################
-##############################################################################
-suppressWarnings(if (!file.exists(PathOutputFolder)) dir.create(file.path( PathOutputFolder)))
-
-render(paste0(dirmacro,"COVERAGE_BIRTHCOHORTS_description.Rmd"),           
-       output_dir=PathOutputFolder,
-       output_file="HTML_COVERAGE_BIRTHCOHORTS_description", 
-       params=list(Dataset=COVERAGE_BIRTHCOHORTS))
-
-render(paste0(dirmacro,"DOSES_BIRTHCOHORTS_description.Rmd"),           
-       output_dir=PathOutputFolder,
-       output_file="HTML_DOSES_BIRTHCOHORTS_description", 
-       params=list(Dataset=DOSES_BIRTHCOHORTS))
-##############################################################################
-##################################  end   ####################################
-##############################################################################
 
 rm(D3_vaxweeks, cohort_to_doses_weeks, all_mondays, monday_week, double_weeks, all_days_df, vaxweeks_to_dos_bir_cor,
    all_ages, complete_df, DOSES_BIRTHCOHORTS, D4_study_source_population, tot_pop_cohorts, all_pop, COVERAGE_BIRTHCOHORTS,

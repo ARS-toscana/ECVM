@@ -49,3 +49,9 @@ system.time(source(paste0(thisdir,"/p_steps/step_06_1_T3_create_D4_doses_weeks.R
 system.time(source(paste0(thisdir,"/p_steps/step_06_2_T3_create_dashboard_tables.R")))
 
 system.time(source(paste0(thisdir,"/p_steps/step_06_3_T3_create_D4_descriptive_tables.R")))
+
+#08 describing the datasets
+system.time(source(paste0(thisdir,"/p_steps/step_08_01_FlowChart_description.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_08_02_Coverage_description.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_08_03_Doses_description.R")))
+
