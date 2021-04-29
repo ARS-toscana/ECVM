@@ -8,7 +8,20 @@ concepts <- concepts[, .(person_id, date, derived_date, vx_dose, vx_manufacturer
 
 setorderv(concepts, c("person_id", "derived_date"))
 concepts <- concepts[, derived_dose := rowid(person_id)]
-wrong_doses <- concepts[vx_dose != derived_dose, ]
+concepts[1:5, "vx_dose"] <- 2
+
+QC_dose_derived <- concepts[, wrong_dose := fifelse(vx_dose != derived_dose, 1, 0)]
+nrow_wrong <- nrow(QC_dose_derived)
+nrow_wrong_0 <- nrow(QC_dose_derived[wrong_dose == 0, ])
+nrow_wrong_1 <- nrow(QC_dose_derived[wrong_dose == 1, ])
+save(QC_dose_derived, file = paste0(dirtemp, "QC_dose_derived.RData"))
+table_QC_dose_derived <- data.table(a = c("", "Number of doses", "Correct doses", "Misclassified doses"),
+                                    b = c("N", nrow_wrong, nrow_wrong_0, nrow_wrong_1),
+                                    c = c("%", "", round(nrow_wrong_0/nrow(QC_dose_derived)*100, 2),
+                                          round(nrow_wrong_1/nrow(QC_dose_derived)*100, 2)))
+setnames(table_QC_dose_derived, c("a", "b", "c"), c("", thisdatasource, thisdatasource))
+fwrite(table_QC_dose_derived, file = paste0(direxp, "table_QC_dose_derived.csv"))
+
 concepts <- concepts[, qc_1_date := as.numeric(is.na(derived_date))]
 concepts <- concepts[, qc_1_dose := as.numeric(is.na(derived_dose))]
 concepts$derived_dose <- as.numeric(concepts$derived_dose)
@@ -67,4 +80,4 @@ for (i in names(D3_concepts_QC_criteria)){
 }
 
 save(D3_concepts_QC_criteria, file = paste0(dirtemp, "D3_concepts_QC_criteria.RData"))
-rm(concepts, concepts_wider, D3_concepts_QC_criteria)
+rm(concepts, concepts_wider, D3_concepts_QC_criteria, QC_dose_derived)
