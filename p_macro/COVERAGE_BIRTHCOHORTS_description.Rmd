@@ -40,77 +40,78 @@ Dataset$week=ymd(Dataset$week)
 
 ## Coverage
 
-This section includes a graph showing the vaccine coverage by week. 
+This section includes a graph showing the vaccine coverage by week, the coverage is calculated on individuals who have received at least the first dose. 
 The data are also shown in the subsequent table. 
 
 ```{r plot1, include=TRUE}
-t2<-Dataset[percentage != 0 & !is.na(percentage), sum(percentage), by= week]
-setnames(t2, "V1", "percentage")
 
+t0<-Dataset[percentage != 0 & !is.na(percentage), sum(percentage), by= .(week, dose)]
 
- p2 <- ggplot(t2, aes(week, percentage)) +   
-         geom_col( alpha = 0.9, fill ="salmon", na.rm=TRUE)+
-         scale_x_date(limit= c(monday_start_covid, study_end))
+setnames(t0, "V1", "percentage")
 
-p2
-rmarkdown::paged_table(t2)
-```
-
-## Coverage by manufacturer
-
-This section includes a graph showing the vaccine coverage by week, divided by manifacturer. 
-The data are also shown in the subsequent table. 
-
-```{r plot2, include=TRUE}
-t1<-Dataset[percentage != 0 & !is.na(percentage), sum(percentage), by= .(week, vx_manufacturer)]
-setnames(t1, "V1", "percentage")
-p1<-  ggplot(t1, aes(week, percentage, fill=vx_manufacturer)) +   
-       geom_col(position = position_dodge(preserve = "single"), alpha = 0.9, na.rm=TRUE)+
-       scale_x_date(limit= c(monday_start_covid, study_end))
-
+t1<-t0[dose==1,]
+ p1 <- ggplot(t1, aes(week, percentage)) +   
+        geom_col(alpha = 0.9, fill ="salmon", na.rm=TRUE)+
+        scale_x_date(limit= c(monday_start_covid, study_end))
+      
 p1
 
 rmarkdown::paged_table(t1)
 ```
 
+## Coverage dose 2
 
-## Coverage by dose
-
-This section includes a graph showing the vaccine coverage by week, divided by dose number. 
+This section includes a graph showing the vaccine coverage by week, the coverage is calculated on individuals who have received the second dose. 
 The data are also shown in the subsequent table.
+
+```{r plot2, include=TRUE}
+t2<-t0[dose==2,]
+ p2 <- ggplot(t2, aes(week, percentage)) +   
+        geom_col(alpha = 0.9, fill ="salmon", na.rm=TRUE)+
+        scale_x_date(limit= c(monday_start_covid, study_end))
+      
+p2
+
+rmarkdown::paged_table(t2)
+```
+
+
+## Coverage by manufacturer
+
+This section includes a graph showing the vaccine coverage by week, divided by manufacturer. The coverage is calculated on individuals who have received at least the first dose. 
+The data are also shown in the subsequent table. 
 
 ```{r plot4, include=TRUE}
 
-t4<-Dataset[percentage != 0 & !is.na(percentage), sum(percentage), by= .(week, dose)]
+t00<-Dataset[percentage != 0 & !is.na(percentage), sum(percentage), by= .(week, vx_manufacturer, dose)]
+setnames(t00, "V1", "percentage")
 
-setnames(t4, "V1", "percentage")
+t3<- t00[dose==1, ]
 
- p4 <- ggplot(t4, aes(week, percentage)) +   
-        geom_col(alpha = 0.9, fill ="salmon", na.rm=TRUE)+
-        scale_x_date(limit= c(monday_start_covid, study_end))+
-        facet_grid(rows = vars(dose)) 
+ p3 <- ggplot(t3, aes(week, percentage, fill=vx_manufacturer)) +   
+        geom_col(position=position_dodge(preserve = "single"), alpha = 0.9, na.rm=TRUE)+
+        scale_x_date(limit= c(monday_start_covid, study_end))
+
+p3
+
+rmarkdown::paged_table(t3)
+
+```
+
+## Coverage dose 2 by manufacturer
+
+This section includes a graph showing the vaccine coverage by week, divided by manufacturer. The coverage is calculated on individuals who have received the second dose. 
+The data are also shown in the subsequent table. 
+
+```{r plot3, include=TRUE}
+ 
+t4<- t00[dose==2, ]
+
+ p4 <- ggplot(t4, aes(week, percentage, fill=vx_manufacturer)) +   
+        geom_col(position=position_dodge(preserve = "single"), alpha = 0.9, na.rm=TRUE)+
+        scale_x_date(limit= c(monday_start_covid, study_end))
 
 p4
 
 rmarkdown::paged_table(t4)
-
-```
-
-## Coverage by dose and by manufacturer
-
-This section includes a graph showing the vaccine coverage by week, divided by manifacturer and by dose number. 
-The data are also shown in the subsequent table.
-```{r plot3, include=TRUE}
- 
-t3<-Dataset[percentage != 0 & !is.na(percentage), sum(percentage), by= .(week, vx_manufacturer, dose)]
-
-setnames(t3, "V1", "percentage")
-
- p3 <- ggplot(t3, aes(week, percentage, fill=vx_manufacturer)) +   
-         geom_col(position=position_dodge(preserve = "single"), alpha = 0.9, na.rm=TRUE)+
-         scale_x_date(limit= c(monday_start_covid, study_end))+
-         facet_grid(rows = vars(dose))
-
-p3
-rmarkdown::paged_table(t3)
 ```

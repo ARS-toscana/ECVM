@@ -1,10 +1,5 @@
 Datasource,type_vax_1,Sex_female,Sex_male
-<<<<<<< HEAD
 TEST,,2121,1964
 TEST,AstraZeneca,50,28
-=======
-TEST,,2154,1992
-TEST,AstraZeneca,49,27
->>>>>>> 1b61a92df321551d93889028b3ecf4e5f6a5a2b3
 TEST,Moderna,9,11
-TEST,Pfizer,152,81
+TEST,Pfizer,157,85
