@@ -26,7 +26,7 @@ empty_spells <- empty_spells[,num_spell := 1]
 empty_spells <- empty_spells[op_meaning!="test",]
 
 #if (this_datasource_has_subpopulations == FALSE){
-if (thisdatasource=="ARS") {
+if (thisdatasource %in% c("ARS","TEST")) {
   OBSERVATION_PERIODS <- OBSERVATION_PERIODS[,op_meaning:="all"]
   output_spells_category <- CreateSpells(
     dataset=OBSERVATION_PERIODS,
