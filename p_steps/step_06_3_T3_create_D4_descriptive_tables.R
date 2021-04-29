@@ -183,7 +183,7 @@ fwrite(D4_followup_from_vax, file = paste0(direxp, "D4_followup_from_vax.csv"))
 
 D4_distance_doses <- D3_Vaccin_cohort[, .(person_id, date_vax1, date_vax2, type_vax_1, type_vax_2)]
 D4_distance_doses <- D4_distance_doses[!is.na(date_vax2) & type_vax_1 == type_vax_2, ]
-D4_distance_doses <- D4_distance_doses[, distance := correct_difftime(date_vax2, date_vax1)]
+D4_distance_doses <- D4_distance_doses[, distance := correct_difftime(date_vax2 - 1, date_vax1)]
 D4_distance_doses <- D4_distance_doses[,c("P25", "P50", "p75") :=
                                          as.list(round(quantile(distance, probs = c(0.25, 0.50, 0.75)), 0)), by = "type_vax_1"]
 
