@@ -109,14 +109,14 @@ D4_descriptive_dataset_ageband_vax <- data.table::dcast(D4_descriptive_dataset_a
 
 fwrite(D4_descriptive_dataset_ageband_vax, file = paste0(direxp, "D4_descriptive_dataset_ageband_vax.csv"))
 
-D4_descriptive_dataset_sex_vaccination <- D3_study_population[, .(person_id, sex, type_vax_1)]
+D4_descriptive_dataset_sex_vaccination <- D3_Vaccin_cohort[, .(person_id, sex, type_vax_1)]
 D4_descriptive_dataset_sex_vaccination <- unique(D4_descriptive_dataset_sex_vaccination[, N := .N, by = c("sex", "type_vax_1")][, person_id := NULL])
 D4_descriptive_dataset_sex_vaccination <- D4_descriptive_dataset_sex_vaccination[, Datasource := thisdatasource]
 D4_descriptive_dataset_sex_vaccination <- D4_descriptive_dataset_sex_vaccination[, sex := fifelse(sex == 1, "Sex_male", "Sex_female")]
 D4_descriptive_dataset_sex_vaccination <- data.table::dcast(D4_descriptive_dataset_sex_vaccination, Datasource + type_vax_1 ~ sex, value.var = "N")
 
 fwrite(D4_descriptive_dataset_sex_vaccination, file = paste0(direxp, "D4_descriptive_dataset_sex_vaccination.csv"))
-
+D3_Vaccin_cohort
 
 D4_followup_from_vax <- D3_study_population[, .(person_id, sex, age_at_study_entry, fup_vax1, fup_vax2)]
 D4_followup_from_vax <- D4_followup_from_vax[, age_at_study_entry := findInterval(age_at_study_entry, c(20, 30, 40, 50, 60, 70, 80))]
