@@ -15,6 +15,7 @@ dirfigure <- paste0(thisdir,"/g_figure/")
 extension <- c(".csv")
 dirpargen <- paste0(thisdir,"/g_parameters/")
 dirsmallcountsremoved <- paste0(thisdir,"/g_export_SMALL_COUNTS_REMOVED/")
+PathOutputFolder=paste0(thisdir,"/g_describeHTML")
 
 # load packages
 if (!require("haven")) install.packages("haven")
@@ -37,6 +38,9 @@ if (!require("dplyr")) install.packages("dplyr")
 library(dplyr)
 if (!require("survival")) install.packages("survival")
 library(survival)
+if (!require("rmarkdown")) install.packages("rmarkdown")
+library(rmarkdown )
+
 
 # load macros
 
