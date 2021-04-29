@@ -3,16 +3,16 @@ load(paste0(dirtemp, "selected_doses.RData"))
 
 D4_study_population <- D4_study_population[, .(person_id, sex, date_of_birth, date_of_death, study_entry_date, start_follow_up, study_exit_date)]
 
-D3_doses <- merge(selected_doses, D4_study_population, by="person_id")[, .(person_id, sex, date_of_birth, date_of_death,
-                                                                     study_entry_date, start_follow_up, study_exit_date,
-                                                                     date, vx_dose, vx_manufacturer)]
+D3_doses <- merge(D4_study_population, selected_doses, all.x = T, by="person_id")[, .(person_id, sex, date_of_birth, date_of_death,
+                                                                                      study_entry_date, start_follow_up, study_exit_date,
+                                                                                      date, vx_dose, vx_manufacturer)]
 
 
 
 D3_doses <- D3_doses[, vx_dose := as.character(vx_dose)]
 
 D3_doses <- dcast(D3_doses, person_id + sex + date_of_birth + date_of_death + study_entry_date + start_follow_up +
-        study_exit_date ~ vx_dose, value.var = c("date", "vx_manufacturer"))
+                    study_exit_date ~ vx_dose, value.var = c("date", "vx_manufacturer"))
 
 setnames(D3_doses, c("date_1", "date_2", "vx_manufacturer_1", "vx_manufacturer_2"),
          c("date_vax1", "date_vax2", "type_vax_1", "type_vax_2"))
@@ -42,11 +42,11 @@ save(D3_study_population, file = paste0(dirtemp, "D3_study_population.RData"))
 
 D3_Vaccin_cohort <- D3_study_population[!is.na(date_vax1) & (is.na(date_vax2) | date_vax1 < date_vax2), ][, age_at_date_vax_2 := floor(time_length(correct_difftime(date_vax2, date_of_birth), "years"))]
 D3_Vaccin_cohort <- D3_Vaccin_cohort[, .(person_id, sex, date_of_birth, study_entry_date,
-                                               study_exit_date, date_vax1, date_vax2,
-                                               age_at_date_vax_1, age_at_date_vax_2,
-                                               type_vax_1, type_vax_2, study_entry_date_vax1,
-                                               study_exit_date_vax1, study_entry_date_vax2,
-                                               study_exit_date_vax2, fup_vax1, fup_vax2)]
+                                         study_exit_date, date_vax1, date_vax2,
+                                         age_at_date_vax_1, age_at_date_vax_2,
+                                         type_vax_1, type_vax_2, study_entry_date_vax1,
+                                         study_exit_date_vax1, study_entry_date_vax2,
+                                         study_exit_date_vax2, fup_vax1, fup_vax2)]
 
 save(D3_Vaccin_cohort, file = paste0(dirtemp, "D3_Vaccin_cohort.RData"))
 
