@@ -32,6 +32,8 @@ if (!require("lubridate")) install.packages("lubridate")
 library(lubridate )
 
 Dataset$week=ymd(Dataset$week)
+Dataset=Dataset[birth_cohort=="all_birth_cohorts"]
+
 # study_end <- as.Date(as.character(CDM_SOURCE[1,"recommended_end_date"]), date_format)
 #study_start <- as.Date("2020-11-30")
 
