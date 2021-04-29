@@ -47,7 +47,10 @@ selected_population <- CreateFlowChart(
 ##############################################################################
 ##########################  FlowChart description   ##########################
 ##############################################################################
+PathOutputFolder=paste0(thisdir,"/g_describeHTML")
 suppressWarnings(if (!file.exists(PathOutputFolder)) dir.create(file.path( PathOutputFolder)))
+if (!require("rmarkdown")) install.packages("rmarkdown")
+library(rmarkdown )
 
 render(paste0(dirmacro,"FlowChart_Description.Rmd"),           
        output_dir=PathOutputFolder,
