@@ -115,3 +115,8 @@ setnames(t3, "V1", "N")
 p3
 rmarkdown::paged_table(t3)
 ```
+
+```{r include = FALSE}
+rm(p1, p2, p3, p4, t1, t2, t3, t4, Dataset)
+
+```

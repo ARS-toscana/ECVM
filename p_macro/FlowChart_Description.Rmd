@@ -110,3 +110,8 @@ DF_sum<-DF_sum[, lapply(.SD, sum, na.rm=TRUE)]
 paged_table(as.data.frame(DF_sum))
 
 ```
+
+```{r include = FALSE}
+rm(DF_sum, FlowChart_reshaped_table, FlowChart_reshaped_plot, FlowChart_reshaped, FlowChart, row)
+
+```

@@ -177,4 +177,4 @@ if (thisdatasource %in% c("ARS","TEST")) {
 #   rm(output_spells_category_meaning_set,output_spells_category)
 # }
 # 
-# rm(empty_spells)
+rm(empty_spells)

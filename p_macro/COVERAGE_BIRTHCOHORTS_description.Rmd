@@ -115,3 +115,8 @@ p4
 
 rmarkdown::paged_table(t4)
 ```
+
+```{r include = FALSE}
+rm(p1, p2, p3, p4, t1, t2, t3, t4, t00, t0, Dataset)
+
+```
