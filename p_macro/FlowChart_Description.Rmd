@@ -26,7 +26,7 @@ library(data.table)
 ```
 
 ```{r Reshaping for Plot, include=FALSE}
-  FlowChart = params$FlowChart
+  FlowChart = Flowchart_doses
   FlowChart<-data.frame(FlowChart)
 
   n_criteria<-dim(FlowChart)[2]-2
