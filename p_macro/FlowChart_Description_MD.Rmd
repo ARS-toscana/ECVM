@@ -1,13 +1,6 @@
 ---
 title: "FlowChart Description"
-output: 
-  html_document:
-    theme: united
-    toc: TRUE
-    toc_float: TRUE
-params:
-  FlowChart: NULL
-  ExclusionTable: NULL
+output: md_document
 ---
 
 This is a description of the Flow Chart.
@@ -23,11 +16,12 @@ if (!require("ggplot2")) install.packages("ggplot2")
 library(ggplot2)
 if (!require("data.table")) install.packages("data.table")
 library(data.table)
+# if (!require("DT")) install.packages("DT")
+# library(DT)
 ```
 
 ```{r Reshaping for Plot, include=FALSE}
-
-  FlowChart = params$FlowChart
+  FlowChart = Flowchart_doses
   FlowChart<-data.frame(FlowChart)
 
   n_criteria<-dim(FlowChart)[2]-2
@@ -99,7 +93,7 @@ In the next table each column represents an exclusion criteria and each row repr
 The values in the table refer to the number of doses excluded by the corresponding criteria in that week.
 <br>
 ```{r  Table, include=TRUE}
-  paged_table(as.data.frame(FlowChart_reshaped_table))
+knitr::kable(FlowChart_reshaped_table)
 ```
 
 
@@ -108,7 +102,7 @@ The values in the table refer to the number of doses excluded by the correspondi
 FlowChart_reshaped_table<- data.table(FlowChart_reshaped_table)
 DF_sum<-FlowChart_reshaped_table[,-1]
 DF_sum<-DF_sum[, lapply(.SD, sum, na.rm=TRUE)]
-paged_table(as.data.frame(DF_sum))
+ knitr::kable(DF_sum)
 
 ```
 

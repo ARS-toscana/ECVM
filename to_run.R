@@ -55,3 +55,7 @@ system.time(source(paste0(thisdir,"/p_steps/step_08_01_FlowChart_description.R")
 system.time(source(paste0(thisdir,"/p_steps/step_08_02_Coverage_description.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_08_03_Doses_description.R")))
 
+# system.time(source(paste0(thisdir,"/p_steps/step_08_01_FlowChart_description_MD.R")))
+# system.time(source(paste0(thisdir,"/p_steps/step_08_02_Coverage_description_MD.R")))
+# system.time(source(paste0(thisdir,"/p_steps/step_08_03_Doses_description_MD.R")))
+
