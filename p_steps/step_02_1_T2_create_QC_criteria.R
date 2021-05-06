@@ -3,14 +3,15 @@
 concepts <- import_concepts(dirtemp, concept_set_domains)
 concepts <- concepts[, vx_record_date := ymd(vx_record_date)]
 concepts <- concepts[, derived_date := fifelse(!is.na(date), date, vx_record_date)]
+concepts[, temp_id := rowid(person_id, vx_dose, derived_date, vx_manufacturer)]
+concepts <- concepts[, qc_dupl := fifelse(temp_id == 1, 0, 1)]
 
-concepts <- concepts[, .(person_id, date, derived_date, vx_dose, vx_manufacturer)]
+concepts <- concepts[, .(person_id, date, derived_date, vx_dose, vx_manufacturer, qc_dupl)]
 
 setorderv(concepts, c("person_id", "derived_date"))
-concepts <- concepts[, derived_dose := rowid(person_id)]
-concepts[1:5, "vx_dose"] <- 2
+concepts <- concepts[qc_dupl == 0, derived_dose := rowid(person_id)]
 
-QC_dose_derived <- concepts[, wrong_dose := fifelse(vx_dose != derived_dose, 1, 0)]
+QC_dose_derived <- concepts[qc_dupl == 0, wrong_dose := fifelse(vx_dose != derived_dose, 1, 0)]
 nrow_wrong <- nrow(QC_dose_derived)
 nrow_wrong_0 <- nrow(QC_dose_derived[wrong_dose == 0, ])
 nrow_wrong_1 <- nrow(QC_dose_derived[wrong_dose == 1, ])
@@ -37,21 +38,21 @@ concepts <- concepts[vx_manufacturer %not in% c("Moderna", "Pfizer", "AstraZenec
 
 # TODO to unknows
 setorder(concepts, person_id, derived_dose, derived_date)
-concepts[, temp_id := rowid(person_id, derived_dose, derived_date, vx_manufacturer)]
+# concepts[, temp_id := rowid(person_id, derived_dose, derived_date, vx_manufacturer)]
 #NOTE remove the filter for lot_num when it will be necessary (moved above)
 
-concepts[, temp_id := rowid(person_id, derived_dose, derived_date, vx_manufacturer)]
-concepts <- concepts[, qc_dupl := fifelse(temp_id == 1, 0, 1), by = c("person_id", "derived_dose", "derived_date", "vx_manufacturer")]
-concepts <- concepts[, qc_2_date := fifelse(derived_date >= ymd(20201227), 0, 1)]
-concepts <- concepts[, qc_2_dose := fifelse(derived_dose <= 2, 0, 1), by = c("person_id", "derived_date")]
+concepts[qc_dupl == 0, temp_id := rowid(person_id, derived_dose, derived_date, vx_manufacturer)]
+# concepts <- concepts[, qc_dupl := fifelse(temp_id == 1, 0, 1), by = c("person_id", "derived_dose", "derived_date", "vx_manufacturer")]
+concepts <- concepts[qc_dupl == 0, qc_2_date := fifelse(derived_date >= start_COVID_vaccination_date, 0, 1)]
+concepts <- concepts[qc_dupl == 0, qc_2_dose := fifelse(derived_dose <= 2, 0, 1), by = c("person_id", "derived_date")]
 
-concepts[, temp_id := rowid(person_id, derived_dose, derived_date)]
+concepts[qc_dupl == 0, temp_id := rowid(person_id, derived_dose, derived_date)]
 concepts <- concepts[qc_dupl == 0, qc_manufacturer := fifelse(temp_id == 1, 0, 1), by = c("person_id", "derived_dose", "derived_date")]
 
-concepts[, temp_id := rowid(person_id, derived_dose)]
+concepts[qc_dupl == 0 & qc_2_date == 0 & qc_2_dose == 0 & qc_manufacturer == 0, temp_id := rowid(person_id, derived_dose)]
 concepts <- concepts[qc_dupl == 0 & qc_2_date == 0 & qc_2_dose == 0 & qc_manufacturer == 0,
                      qc_mult_date_for_dose := fifelse(temp_id == 1, 0, 1), by = c("person_id", "derived_dose")]
-concepts[, temp_id := rowid(person_id, derived_date)]
+concepts[qc_dupl == 0 & qc_2_date == 0 & qc_2_dose == 0 & qc_manufacturer == 0 & qc_mult_date_for_dose == 0, temp_id := rowid(person_id, derived_date)]
 concepts <- concepts[qc_dupl == 0 & qc_2_date == 0 & qc_2_dose == 0 & qc_manufacturer == 0 & qc_mult_date_for_dose == 0,
                      qc_mult_dose_for_date := fifelse(temp_id == 1, 0, 1), by = c("person_id", "derived_date")]
 

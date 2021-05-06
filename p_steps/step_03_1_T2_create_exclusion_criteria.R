@@ -27,6 +27,9 @@ for (i in 1:length(files)) {
 }
 
 PERSONS[!is.na(month_of_birth) & is.na(day_of_birth), day_of_birth := 15]
+
+PERSONS$day_of_birth <- as.numeric(PERSONS$day_of_birth)
+PERSONS$month_of_birth <- as.numeric(PERSONS$month_of_birth)
 PERSONS[is.na(month_of_birth) & is.na(day_of_birth), c("month_of_birth", "day_of_birth") := list(7, 1)]
 
 #STANDARDIZE THE DATE FORMAT WITH  LUBRIDATE

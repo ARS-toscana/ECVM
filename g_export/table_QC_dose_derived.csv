@@ -1,5 +1,5 @@
 "",TEST,TEST
 "",N,%
 Number of doses,926,""
-Correct doses,922,99.57
-Misclassified doses,4,0.43
+Correct doses,926,100
+Misclassified doses,0,0
