@@ -81,114 +81,116 @@ setnames(table_1b, "a", " ")
 
 
 ageband_studystart <- fread(paste0(direxp, "D4_descriptive_dataset_ageband_studystart.csv"))
-ageband_studystart <- ageband_studystart[, TOTAL := sum(AgeCat_019, AgeCat_2029, AgeCat_3039, AgeCat_4049, AgeCat_5059,
-                                                        AgeCat_6069, AgeCat_7079, get("Agecat_80+"))]
-ageband_studystart <- ageband_studystart[.(Datasource = c("TEST", "PHARMO", "CPRD", "BIFAP"),
-                             to = c("Italy_ARS", "NL_PHARMO", "UK_CPRD", "ES_BIFAP")),
-                           on = "Datasource", Datasource := i.to]
+ageband_studystart <- ageband_studystart[rep(1, 2), ]
+ageband_studystart <- ageband_studystart[1, Datasource := "ARS"]
+ageband_studystart <- ageband_studystart[2, Datasource := "PHARMO"]
+
+ageband_studystart[, Datasource := c(TEST = "test", ARS = "Italy_ARS",
+                                     PHARMO = "NL_PHARMO", CPRD = "UK_CPRD",
+                                     BIFAP = "ES_BIFAP")[Datasource]]
+
+ageband_studystart[, TOTAL := sum(AgeCat_019, AgeCat_2029, AgeCat_3039,
+                                  AgeCat_4049, AgeCat_5059, AgeCat_6069,
+                                  AgeCat_7079, get("Agecat_80+")),
+                   by = Datasource]
+
+
 total_pop <- ageband_studystart[, a := "Study population"][, Parameters := "N"][, .(a, Parameters, Datasource, TOTAL)]
 total_pop <- dcast(total_pop, a + Parameters ~ Datasource, value.var = 'TOTAL')
-total_pop <- total_pop[, c("NL_PHARMO", "UK_CPRD", "ES_BIFAP") := 0]
-total_pop <- total_pop[, c("a", "Parameters", "Italy_ARS", "NL_PHARMO", "UK_CPRD", "ES_BIFAP")]
+col_to_keep <- intersect(c("a", "Parameters", "Italy_ARS", "NL_PHARMO",
+                           "UK_CPRD", "ES_BIFAP"), names(total_pop))
+total_pop <- total_pop[, ..col_to_keep]
 
 
 age_studystart <- fread(paste0(direxp, "D4_descriptive_dataset_age_studystart.csv"))
-age_studystart <- age_studystart[.(Datasource = c("TEST", "PHARMO", "CPRD", "BIFAP"),
-                                   to = c("Italy_ARS", "NL_PHARMO", "UK_CPRD", "ES_BIFAP")),
-                                 on = "Datasource", Datasource := i.to]
+age_studystart <- age_studystart[rep(1, 2), ]
+age_studystart <- age_studystart[1, Datasource := "ARS"]
+age_studystart <- age_studystart[2, Datasource := "PHARMO"]
+
+age_studystart[, Datasource := c(TEST = "test", ARS = "Italy_ARS",
+                                 PHARMO = "NL_PHARMO", CPRD = "UK_CPRD",
+                                 BIFAP = "ES_BIFAP")[Datasource]]
+
 pt_total <- age_studystart[, a := "Person years of follow-up"][, Parameters := "PY"][, .(a, Parameters, Datasource, Followup)]
 pt_total <- dcast(pt_total, a + Parameters ~ Datasource, value.var = 'Followup')
-pt_total <- pt_total[, c("NL_PHARMO", "UK_CPRD", "ES_BIFAP") := 0]
-pt_total <- pt_total[, c("a", "Parameters", "Italy_ARS", "NL_PHARMO", "UK_CPRD", "ES_BIFAP")]
+pt_total <- pt_total[, ..col_to_keep]
 
-
-age_start <- age_studystart[, a := "Age in years"][, .(a, Datasource, Age_min, Age_P25, Age_P50, Age_mean,
-                                                       Age_p75, Age_max)]
-age_start <- rbind(age_start, age_start, age_start, age_start)
-age_start[2, 2] <- "NL_PHARMO"
-age_start[3, 2] <- "UK_CPRD"
-age_start[4, 2] <- "ES_BIFAP"
+age_start <- copy(age_studystart)[, a := "Age in years"][, Followup := NULL]
 age_start <- melt(age_start, id.vars = c("a", "Datasource"),
-                  measure.vars = c("Age_min", "Age_P25", "Age_P50", "Age_mean", "Age_p75", "Age_max"),
+                  measure.vars = c("Age_min", "Age_P25", "Age_P50",
+                                   "Age_mean", "Age_p75", "Age_max"),
                   variable.name = "Parameters")
 age_start <- dcast(age_start, a + Parameters  ~ Datasource, value.var = 'value')
-age_start <- age_start[.(Parameters = c("Age_min", "Age_P25", "Age_P50", "Age_mean", "Age_p75", "Age_max"),
-                         to = c("Min", "P25", "P50", "Mean", "P75", "Max")),
-                       on = "Parameters", Parameters := i.to]
+age_start[, Parameters := c(Age_min = "Min", Age_P25 = "P25", Age_P50 = "P50",
+                            Age_mean = "Mean", Age_p75 = "P75", Age_max = "Max")[Parameters]]
+age_start <- age_start[, ..col_to_keep]
 
 
-ageband_start <- ageband_studystart[, a := "Age in categories"][, c("a", "Datasource", "AgeCat_019", "AgeCat_2029", "AgeCat_3039",
-                                                                    "AgeCat_4049", "AgeCat_5059", "AgeCat_6069",
-                                                                    "AgeCat_7079", "Agecat_80+")]
+ageband_start <- ageband_studystart[, a := "Age in categories"][, TOTAL := NULL]
+ageband_start <- ageband_start[rep(1, 2), ]
+ageband_start <- ageband_start[1, Datasource := "ARS"]
+ageband_start <- ageband_start[2, Datasource := "PHARMO"]
+ageband_start[, Datasource := c(TEST = "test", ARS = "Italy_ARS",
+                                 PHARMO = "NL_PHARMO", CPRD = "UK_CPRD",
+                                 BIFAP = "ES_BIFAP")[Datasource]]
 
-ageband_start <- rbind(ageband_start, ageband_start, ageband_start, ageband_start)
-ageband_start[2, 2] <- "NL_PHARMO"
-ageband_start[3, 2] <- "UK_CPRD"
-ageband_start[4, 2] <- "ES_BIFAP"
 ageband_start <- melt(ageband_start, id.vars = c("a", "Datasource"),
-                      measure.vars = c("AgeCat_019", "AgeCat_2029", "AgeCat_3039", "AgeCat_4049", "AgeCat_5059",
-                                       "AgeCat_6069", "AgeCat_7079", "Agecat_80+"),
+                      measure.vars = c("AgeCat_019", "AgeCat_2029", "AgeCat_3039",
+                                       "AgeCat_4049", "AgeCat_5059", "AgeCat_6069",
+                                       "AgeCat_7079", "Agecat_80+"),
                       variable.name = "Parameters")
 ageband_start <- dcast(ageband_start, a + Parameters  ~ Datasource, value.var = 'value')
-ageband_start <- ageband_start[.(Parameters = c("AgeCat_019", "AgeCat_2029", "AgeCat_3039", "AgeCat_4049", "AgeCat_5059",
-                                                "AgeCat_6069", "AgeCat_7079", "Agecat_80+"),
-                                 to = c("0-19", "20-29", "30-39", "40-49", "50-59", "60-69", "70-79", ">=80")),
-                               on = "Parameters", Parameters := i.to]
+ageband_start[, Parameters := c(AgeCat_019 = "0-19", AgeCat_2029 = "20-29", AgeCat_3039 = "30-39",
+                                AgeCat_4049 = "40-49", AgeCat_5059 = "50-59", AgeCat_6069 = "60-69",
+                                AgeCat_7079 = "70-79", Agecat_80 = ">=80")[Parameters]]
 
 
 followup_studystart <- fread(paste0(direxp, "D4_followup_fromstudystart.csv"))
-followup_studystart <- followup_studystart[.(Datasource = c("TEST", "PHARMO", "CPRD", "BIFAP"),
-                                             to = c("Italy_ARS", "NL_PHARMO", "UK_CPRD", "ES_BIFAP")),
-                                           on = "Datasource", Datasource := i.to]
-followup_start <- followup_studystart[, a := "Person years across age categories"][, .(a, Datasource, Followup_0119,
-                                                                                       Followup_2029, Followup_3039,
-                                                                                       Followup_4049, Followup_5059,
-                                                                                       Followup_6069, Followup_7079,
-                                                                                       Followup_80)]
-followup_start <- rbind(followup_start, followup_start, followup_start, followup_start)
-followup_start[2, 2] <- "NL_PHARMO"
-followup_start[3, 2] <- "UK_CPRD"
-followup_start[4, 2] <- "ES_BIFAP"
+followup_studystart <- followup_studystart[rep(1, 2), ]
+followup_studystart <- followup_studystart[1, Datasource := "ARS"]
+followup_studystart <- followup_studystart[2, Datasource := "PHARMO"]
+followup_studystart[, Datasource := c(TEST = "test", ARS = "Italy_ARS",
+                                      PHARMO = "NL_PHARMO", CPRD = "UK_CPRD",
+                                      BIFAP = "ES_BIFAP")[Datasource]]
+followup_studystart <- followup_studystart[, a := "Person years across age categories"]
+followup_start <- followup_studystart[, .(a, Datasource, Followup_0119, Followup_2029,
+                                          Followup_3039, Followup_4049, Followup_5059,
+                                          Followup_6069, Followup_7079, Followup_80)]
+
 followup_start <- melt(followup_start, id.vars = c("a", "Datasource"),
-                  measure.vars = c("Followup_0119", "Followup_2029", "Followup_3039", "Followup_4049", "Followup_5059",
-                                   "Followup_6069", "Followup_7079", "Followup_80"),
+                  measure.vars = c("Followup_0119", "Followup_2029", "Followup_3039",
+                                   "Followup_4049", "Followup_5059", "Followup_6069",
+                                   "Followup_7079", "Followup_80"),
                   variable.name = "Parameters")
 followup_start <- dcast(followup_start, a + Parameters  ~ Datasource, value.var = 'value')
-followup_start <- followup_start[.(Parameters = c("Followup_0119", "Followup_2029", "Followup_3039", "Followup_4049",
-                                                  "Followup_5059", "Followup_6069", "Followup_7079", "Followup_80"),
-                                 to = c("0-19", "20-29", "30-39", "40-49", "50-59", "60-69", "70-79", ">=80")),
-                               on = "Parameters", Parameters := i.to]
+followup_start[, Parameters := c(Followup_0119 = "0-19", Followup_2029 = "20-29", Followup_3039 = "30-39",
+                                 Followup_4049 = "40-49", Followup_5059 = "50-59", Followup_6069 = "60-69",
+                                 Followup_7079 = "70-79", Followup_80 = ">=80")[Parameters]]
 
 
 sex_studystart <- fread(paste0(direxp, "D4_descriptive_dataset_sex_studystart.csv"))
-sex_studystart <- sex_studystart[.(Datasource = c("TEST", "PHARMO", "CPRD", "BIFAP"),
-                                   to = c("Italy_ARS", "NL_PHARMO", "UK_CPRD", "ES_BIFAP")),
-                                 on = "Datasource", Datasource := i.to]
-sex_start <- sex_studystart[, a := "Person years across sex"][, .(a, Datasource, Sex_female, Sex_male)]
-sex_start <- rbind(sex_start, sex_start, sex_start, sex_start)
-sex_start[2, 2] <- "NL_PHARMO"
-sex_start[3, 2] <- "UK_CPRD"
-sex_start[4, 2] <- "ES_BIFAP"
+sex_studystart <- sex_studystart[rep(1, 2), ]
+sex_studystart <- sex_studystart[1, Datasource := "ARS"]
+sex_studystart <- sex_studystart[2, Datasource := "PHARMO"]
+sex_studystart[, Datasource := c(TEST = "test", ARS = "Italy_ARS",
+                                 PHARMO = "NL_PHARMO", CPRD = "UK_CPRD",
+                                 BIFAP = "ES_BIFAP")[Datasource]]
+sex_start <- sex_studystart[, a := "Person years across sex"]
 sex_start <- melt(sex_start, id.vars = c("a", "Datasource"),
                   measure.vars = c("Sex_female", "Sex_male"),
                   variable.name = "Parameters")
 sex_start <- dcast(sex_start, a + Parameters  ~ Datasource, value.var = 'value')
-
-sex_start <- sex_start[.(Parameters = c("Sex_male", "Sex_female"), to = c("Male", "Female")),
-                       on = "Parameters", Parameters := i.to]
+sex_start[, Parameters := c(Sex_male = "Male", Sex_female = "Female")[Parameters]]
 
 table2 <- rbind(total_pop, pt_total, age_start, ageband_start, followup_start, sex_start)
-table2 <- table2[, c("Italy_ARS_perc", "NL_PHARMO_perc", "UK_CPRD_perc", "ES_BIFAP_perc") := character(nrow(table2))]
+daps <- intersect(c("Italy_ARS", "NL_PHARMO", "UK_CPRD", "ES_BIFAP"), names(table2))
+daps_perc <- paste("perc", daps, sep="_")
+table2 <- table2[, (daps_perc) := character(nrow(table2))]
+total_pop <- total_pop[, ..daps]
+pt_total <- pt_total[, ..daps]
 table2 <- table2[a %in% c("Age in categories", "Person years across sex"),
-                 c("Italy_ARS_perc", "NL_PHARMO_perc",
-                   "UK_CPRD_perc", "ES_BIFAP_perc") := list(as.character(round(Italy_ARS / as.numeric(table2[a == "Study population", .(Italy_ARS)]), 3)),
-                                                            as.character(round(NL_PHARMO / as.numeric(table2[a == "Study population", .(NL_PHARMO)]), 3)),
-                                                            as.character(round(UK_CPRD / as.numeric(table2[a == "Study population", .(UK_CPRD)]), 3)),
-                                                            as.character(round(ES_BIFAP / as.numeric(table2[a == "Study population", .(ES_BIFAP)]), 3)))]
+                 (daps_perc) := round(.SD / as.numeric(total_pop) * 100, 3), .SDcols = daps]
+
 table2 <- table2[a == "Person years across age categories",
-                 c("Italy_ARS_perc", "NL_PHARMO_perc",
-                   "UK_CPRD_perc", "ES_BIFAP_perc") := list(as.character(round(Italy_ARS / as.numeric(table2[a == "Person years of follow-up", .(Italy_ARS)]), 3)),
-                                                            as.character(round(NL_PHARMO / as.numeric(table2[a == "Person years of follow-up", .(NL_PHARMO)]), 3)),
-                                                            as.character(round(UK_CPRD / as.numeric(table2[a == "Person years of follow-up", .(UK_CPRD)]), 3)),
-                                                            as.character(round(ES_BIFAP / as.numeric(table2[a == "Person years of follow-up", .(ES_BIFAP)]), 3)))]
-print(table2)
+                 (daps_perc) := round(.SD / as.numeric(pt_total) * 100, 3), .SDcols = daps]
+setnames(table2, "a", " ")
