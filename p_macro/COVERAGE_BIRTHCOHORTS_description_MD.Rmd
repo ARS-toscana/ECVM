@@ -1,0 +1,117 @@
+---
+title: "COVERAGE_BIRTHCOHORTS"
+output: md_document
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r parameters, include=FALSE}
+  Dataset = COVERAGE_BIRTHCOHORTS
+```
+
+This is the description of **COVERAGE_BIRTHCOHORTS** dataset.
+<br>
+This file contains graphical tools and tables to summarize the vaccine coverage data obtained from the script. 
+
+```{r plot preparation, include=FALSE}
+if (!require("ggplot2")) install.packages("ggplot2")
+library(ggplot2 )
+
+if (!require("ggthemes")) install.packages("ggthemes")
+library(ggthemes )
+
+if (!require("lubridate")) install.packages("lubridate")
+library(lubridate )
+
+Dataset$week=ymd(Dataset$week)
+Dataset=Dataset[birth_cohort=="all_birth_cohorts"]
+#study_end <- as.Date(as.character(CDM_SOURCE[1,"recommended_end_date"]), date_format)
+#study_start <- as.Date("2020-11-30")
+
+```
+
+## Coverage
+
+This section includes a graph showing the vaccine coverage by week, the coverage is calculated on individuals who have received at least one dose. 
+The data are also shown in the subsequent table. 
+
+```{r plot1, include=TRUE}
+
+t0<-Dataset[percentage != 0 & !is.na(percentage), sum(percentage), by= .(week, dose)]
+
+setnames(t0, "V1", "percentage")
+
+t1<-t0[dose==1,]
+ p1 <- ggplot(t1, aes(week, percentage)) +   
+        geom_col(alpha = 0.9, fill ="salmon", na.rm=TRUE)+
+        scale_x_date(limit= c(monday_start_covid, study_end))
+      
+p1
+
+knitr::kable(t1)
+```
+
+## Coverage dose 2
+
+This section includes a graph showing the vaccine coverage by week, the coverage is calculated on individuals who have received the second dose. 
+The data are also shown in the subsequent table.
+
+```{r plot2, include=TRUE}
+t2<-t0[dose==2,]
+ p2 <- ggplot(t2, aes(week, percentage)) +   
+        geom_col(alpha = 0.9, fill ="salmon", na.rm=TRUE)+
+        scale_x_date(limit= c(monday_start_covid, study_end))
+      
+p2
+
+knitr::kable(t2)
+```
+
+
+## Coverage by manufacturer
+
+This section includes a graph showing the vaccine coverage by week, divided by manufacturer. The coverage is calculated on individuals who have received at least one dose. 
+The data are also shown in the subsequent table. 
+
+```{r plot4, include=TRUE}
+
+t00<-Dataset[percentage != 0 & !is.na(percentage), sum(percentage), by= .(week, vx_manufacturer, dose)]
+setnames(t00, "V1", "percentage")
+
+t3<- t00[dose==1, ]
+
+ p3 <- ggplot(t3, aes(week, percentage, fill=vx_manufacturer)) +   
+        geom_col(position=position_dodge(preserve = "single"), alpha = 0.9, na.rm=TRUE)+
+        scale_x_date(limit= c(monday_start_covid, study_end))
+
+p3
+
+knitr::kable(t3)
+
+```
+
+## Coverage dose 2 by manufacturer
+
+This section includes a graph showing the vaccine coverage by week, divided by manufacturer. The coverage is calculated on individuals who have received the second dose. 
+The data are also shown in the subsequent table. 
+
+```{r plot3, include=TRUE}
+ 
+t4<- t00[dose==2, ]
+
+ p4 <- ggplot(t4, aes(week, percentage, fill=vx_manufacturer)) +   
+        geom_col(position=position_dodge(preserve = "single"), alpha = 0.9, na.rm=TRUE)+
+        scale_x_date(limit= c(monday_start_covid, study_end))
+
+p4
+
+knitr::kable(t4)
+```
+
+```{r include = FALSE}
+rm(p1, p2, p3, p4, t1, t2, t3, t4, t00, t0, Dataset)
+
+```
