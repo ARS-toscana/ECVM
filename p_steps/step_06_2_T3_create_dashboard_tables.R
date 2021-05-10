@@ -59,7 +59,7 @@ COVERAGE_BIRTHCOHORTS <- merge(DOSES_BIRTHCOHORTS, tot_pop_cohorts, by = "birth_
 setorder(COVERAGE_BIRTHCOHORTS, week)
 
 COVERAGE_BIRTHCOHORTS <- COVERAGE_BIRTHCOHORTS[, cum_N := cumsum(N), by = c("datasource", "vx_manufacturer", "dose", "birth_cohort")]
-COVERAGE_BIRTHCOHORTS <- COVERAGE_BIRTHCOHORTS[, percentage := round(cum_N / pop_cohorts, 3)][, c("datasource", "week", "vx_manufacturer", "dose", "birth_cohort", "percentage")]
+COVERAGE_BIRTHCOHORTS <- COVERAGE_BIRTHCOHORTS[, percentage := round(cum_N / pop_cohorts * 100, 3)][, c("datasource", "week", "vx_manufacturer", "dose", "birth_cohort", "percentage")]
 COVERAGE_BIRTHCOHORTS <- COVERAGE_BIRTHCOHORTS[, .(datasource, week, vx_manufacturer, dose, birth_cohort, percentage)]
 
 fwrite(COVERAGE_BIRTHCOHORTS, file = paste0(direxp, "COVERAGE_BIRTHCOHORTS.csv"))
