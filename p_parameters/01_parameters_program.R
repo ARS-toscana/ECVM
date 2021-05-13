@@ -39,7 +39,9 @@ library(dplyr)
 if (!require("survival")) install.packages("survival")
 library(survival)
 if (!require("rmarkdown")) install.packages("rmarkdown")
-library(rmarkdown )
+library(rmarkdown)
+if (!require("ggplot2")) install.packages("ggplot2")
+library(ggplot2)
 
 
 # load macros
