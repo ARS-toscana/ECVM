@@ -13,13 +13,24 @@ concepts <- concepts[qc_dupl == 0, derived_dose := rowid(person_id)]
 
 QC_dose_derived <- concepts[qc_dupl == 0, wrong_dose := fifelse(vx_dose != derived_dose, 1, 0)]
 nrow_wrong <- nrow(QC_dose_derived)
-nrow_wrong_0 <- nrow(QC_dose_derived[wrong_dose == 0, ])
-nrow_wrong_1 <- nrow(QC_dose_derived[wrong_dose == 1, ])
+nrow_wrong_0 <- nrow(QC_dose_derived[is.na(vx_dose) & derived_dose == 1, ])
+nrow_wrong_1 <- nrow(QC_dose_derived[is.na(vx_dose) & derived_dose == 2, ])
+nrow_wrong_2 <- nrow(QC_dose_derived[vx_dose == 1 & wrong_dose == 1, ])
+nrow_wrong_3 <- nrow(QC_dose_derived[vx_dose == 2 & wrong_dose == 1, ])
+nrow_wrong_4 <- nrow(QC_dose_derived[vx_dose == 1 & wrong_dose == 0, ])
+nrow_wrong_5 <- nrow(QC_dose_derived[vx_dose == 2 & wrong_dose == 0, ])
 save(QC_dose_derived, file = paste0(dirtemp, "QC_dose_derived.RData"))
-table_QC_dose_derived <- data.table(a = c("", "Number of doses", "Correct doses", "Misclassified doses"),
-                                    b = c("N", nrow_wrong, nrow_wrong_0, nrow_wrong_1),
+table_QC_dose_derived <- data.table(a = c("", "Number of doses", "Missing first doses", "Missing second doses",
+                                          "Discordant first to second", "Discordant second to first",
+                                          "Concordant first doses", "Concordant second doses"),
+                                    b = c("N", nrow_wrong, nrow_wrong_0, nrow_wrong_1, nrow_wrong_2, nrow_wrong_3,
+                                          nrow_wrong_4, nrow_wrong_5),
                                     c = c("%", "", round(nrow_wrong_0/nrow(QC_dose_derived)*100, 2),
-                                          round(nrow_wrong_1/nrow(QC_dose_derived)*100, 2)))
+                                          round(nrow_wrong_1/nrow(QC_dose_derived)*100, 2),
+                                          round(nrow_wrong_2/nrow(QC_dose_derived)*100, 2),
+                                          round(nrow_wrong_3/nrow(QC_dose_derived)*100, 2),
+                                          round(nrow_wrong_4/nrow(QC_dose_derived)*100, 2),
+                                          round(nrow_wrong_5/nrow(QC_dose_derived)*100, 2)))
 setnames(table_QC_dose_derived, c("a", "b", "c"), c("", thisdatasource, thisdatasource))
 fwrite(table_QC_dose_derived, file = paste0(direxp, "table_QC_dose_derived.csv"))
 
