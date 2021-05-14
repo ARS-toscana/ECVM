@@ -72,18 +72,37 @@ study_end <- as.Date(as.character(CDM_SOURCE[1,"recommended_end_date"]), date_fo
 
 start_COVID_vaccination_date <- fifelse(thisdatasource == 'CPRD',as.Date(as.character(20201206), date_format),as.Date(as.character(20201227), date_format))
  
-# ###################################################################
-# # CREATE FOLDERS
-# ###################################################################
-# 
- suppressWarnings(if (!file.exists(diroutput)) dir.create(file.path( diroutput)))
- suppressWarnings(if (!file.exists(dirtemp)) dir.create(file.path( dirtemp)))
- suppressWarnings(if (!file.exists(direxp)) dir.create(file.path( direxp)))
-# suppressWarnings(if (!file.exists(dirfigure)) dir.create(file.path( dirfigure)))
+###################################################################
+# CREATE FOLDERS
+###################################################################
+
+suppressWarnings(if (!file.exists(diroutput)) dir.create(file.path( diroutput)))
+suppressWarnings(if (!file.exists(dirtemp)) dir.create(file.path( dirtemp)))
+suppressWarnings(if (!file.exists(direxp)) dir.create(file.path( direxp)))
+suppressWarnings(if (!file.exists(dirfigure)) dir.create(file.path( dirfigure)))
 suppressWarnings(if (!file.exists(dirpargen)) dir.create(file.path( dirpargen)))
-# suppressWarnings(if (!file.exists(dirsmallcountsremoved)) dir.create(file.path(dirsmallcountsremoved)))
-# 
-# 
+suppressWarnings(if (!file.exists(dirsmallcountsremoved)) dir.create(file.path(dirsmallcountsremoved)))
+
+
+
+#############################################
+#SAVE METADATA TO direxp
+#############################################
+
+file.copy(paste0(dirinput,'/METADATA.csv'), direxp, overwrite = T)
+file.copy(paste0(dirinput,'/CDM_SOURCE.csv'), direxp, overwrite = T)
+file.copy(paste0(dirinput,'/INSTANCE.csv'), direxp, overwrite = T)
+file.copy(paste0(dirinput,'/METADATA.csv'), dirsmallcountsremoved, overwrite = T)
+file.copy(paste0(dirinput,'/CDM_SOURCE.csv'), dirsmallcountsremoved, overwrite = T)
+file.copy(paste0(dirinput,'/INSTANCE.csv'), dirsmallcountsremoved, overwrite = T)
+
+#############################################
+#SAVE to_run.R TO direxp
+#############################################
+
+file.copy(paste0(thisdir,'/to_run.R'), direxp, overwrite = T)
+file.copy(paste0(thisdir,'/to_run.R'), dirsmallcountsremoved, overwrite = T)
+
 
 days<-ifelse(thisdatasource %in% c("ARS","TEST"),21,1)
 
