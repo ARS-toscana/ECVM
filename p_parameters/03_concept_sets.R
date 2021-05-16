@@ -29,6 +29,8 @@ DRUGS_conceptssets <- c("DP_COVCANCER","DP_COVDIAB","DP_CVD","DP_COVHIV","DP_COV
 
 SEVERCOVID_conceptsets <- c("COVIDSYMPTOM","MechanicalVent")
 
+concept_sets_of_our_study <- c(OUTCOMES_conceptssets, COV_conceptssets, DRUGS_conceptssets, SEVERCOVID_conceptsets)
+
 for (concept in c(OUTCOMES_conceptssets, COV_conceptssets, SEVERCOVID_conceptsets)) {
   concept_set_domains[[concept]] = "Diagnosis"
 }
