@@ -6,7 +6,6 @@
 
 
 print('RETRIEVE FROM CDM RECORDS CORRESPONDING TO CONCEPT SETS')
-
 CreateConceptSetDatasets(concept_set_names = c(vaccine__conceptssets),
                          dataset = ECVM_CDM_tables,
                          codvar = ECVM_CDM_codvar,

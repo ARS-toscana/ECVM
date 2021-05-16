@@ -163,9 +163,9 @@ join_and_replace <- function(df1, df2, join_cond, old_name) {
 }
 
 
-import_concepts <- function(dirtemp, concept_set_domains) {
+import_concepts <- function(dirtemp, concept_set) {
   concepts<-data.table()
-  for (concept in names(concept_set_domains)) {
+  for (concept in concept_set) {
     load(paste0(dirtemp, concept,".RData"))
     if (exists("concepts")) {
       concepts <- rbind(concepts, get(concept))

@@ -4,16 +4,12 @@ concept_set_domains<- vector(mode="list")
 concept_set_domains[["Covid_vaccine"]] = "VaccineATC"
 
 
-
-concept_set_codes_our_study <- vector(mode="list")
-
-
 #old: c("049269018","049314026","049283017")
 # if (thisdatasource == "ARS") {
 #   concept_set_codes_our_study[["Covid_vaccine"]][["ATC"]] <- c("J07BX03")
 # }
 
-concept_set_codes_our_study[["Covid_vaccine"]][["ATC"]] <- c("J07BX03")
+
 
 
 
@@ -33,10 +29,6 @@ DRUGS_conceptssets <- c("DP_COVCANCER","DP_COVDIAB","DP_CVD","DP_COVHIV","DP_COV
 
 SEVERCOVID_conceptsets <- c("COVIDSYMPTOM","MechanicalVent")
 
-concept_sets_of_our_study <- c(OUTCOMES_conceptssets, COV_conceptssets, DRUGS_conceptssets, SEVERCOVID_conceptsets)
-
-concept_set_domains <- vector(mode="list")
-
 for (concept in c(OUTCOMES_conceptssets, COV_conceptssets, SEVERCOVID_conceptsets)) {
   concept_set_domains[[concept]] = "Diagnosis"
 }
@@ -44,9 +36,11 @@ for (concept in c(DRUGS_conceptssets)) {
   concept_set_domains[[concept]] = "Medicines"
 }
 
-
 concept_set_codes_our_study_pre <- vector(mode="list")
 concept_set_codes_our_study_pre_excl <- vector(mode="list")
+
+concept_set_codes_our_study_pre[["Covid_vaccine"]][["ATC"]] <- c("J07BX03")
+
 
 #--------------------------
 # "xxx"

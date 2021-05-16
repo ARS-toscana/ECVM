@@ -1,6 +1,7 @@
 #NOTE add cycle trough the concept dfs?
 
-concepts <- import_concepts(dirtemp, concept_set_domains)
+concepts <- import_concepts(dirtemp, vaccine__conceptssets)
+
 concepts <- concepts[, vx_record_date := ymd(vx_record_date)]
 concepts <- concepts[, derived_date := fifelse(!is.na(date), date, vx_record_date)]
 concepts[, temp_id := rowid(person_id, vx_dose, derived_date, vx_manufacturer)]

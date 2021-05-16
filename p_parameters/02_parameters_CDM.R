@@ -115,9 +115,6 @@ for (dom in alldomain) {
 # assign 2 more 2-level lists: -id- -date-. They encode from the data model the name of the column(s) of each data table that contain, respectively, the personal identifier and the date. Those 2 lists are to be inputted in the rename_col option of the function. 
 #NB: GENERAL  contains the names columns will have in the final datasets
 
-person_id <- vector(mode="list")
-date<- vector(mode="list")
-
 if (length(ECVM_CDM_EAV_tables)!=0 ){
   for (dom in alldomain) {
     for (i in 1:(length(ECVM_CDM_EAV_tables[[dom]]))){
@@ -204,8 +201,6 @@ if (length(ECVM_CDM_EAV_attributes)!=0 ){
     }
   }
 }
-
-ECVM_CDM_datevar<-vector(mode="list")
 
 if (length(ECVM_CDM_EAV_tables)!=0 ){
   for (dom in alldomain) {

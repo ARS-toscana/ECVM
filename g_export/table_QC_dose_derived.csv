@@ -1,5 +1,9 @@
 "",TEST,TEST
 "",N,%
 Number of doses,926,""
-Correct doses,926,100
-Misclassified doses,0,0
+Missing first doses,0,0
+Missing second doses,0,0
+Discordant first to second,0,0
+Discordant second to first,0,0
+Concordant first doses,640,69.11
+Concordant second doses,286,30.89
