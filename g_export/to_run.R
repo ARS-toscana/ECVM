@@ -26,6 +26,8 @@ source(paste0(thisdir,"/p_parameters/06_algorithms.R"))
 system.time(source(paste0(thisdir,"/p_steps/step_01_1_T2.1_create_conceptset_datasets.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_01_2_T2.1_create_spells.R")))
 
+system.time(source(paste0(thisdir,"/p_steps/step_01_3_T2.1_create_dates_in_PERSONS.R")))
+
 #02 quality checks
 system.time(source(paste0(thisdir,"/p_steps/step_02_1_T2_create_QC_criteria.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_02_2_T3_apply_QC_exclusion_criteria.R")))
@@ -44,11 +46,30 @@ system.time(source(paste0(thisdir,"/p_steps/step_04_2_T3_apply_quality_check_exc
 system.time(source(paste0(thisdir,"/p_steps/step_05_T2_create_D3_datasets.R")))
 
 #06 create D4 for doses and coverage
-system.time(source(paste0(thisdir,"/p_steps/step_06_1_T3_create_D4_doses_weeks.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_06_1_T2.2_components.R")))
 
-system.time(source(paste0(thisdir,"/p_steps/step_06_2_T3_create_dashboard_tables.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_06_2_T2.2_secondary_components.R")))
 
-system.time(source(paste0(thisdir,"/p_steps/step_06_3_T3_create_D4_descriptive_tables.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_06_3_T2_create_events_ALL_OUTCOMES.R")))
+
+system.time(source(paste0(thisdir,"/p_steps/step_06_4_QC_count_codes_ALL_OUTCOMES.R")))
+
+system.time(source(paste0(thisdir,"/p_steps/step_06_5_QC_apply_component_strategy.R")))
+
+system.time(source(paste0(thisdir,"/p_steps/step_06_6_T2.2_covariates_at_baseline.R")))
+
+system.time(source(paste0(thisdir,"/p_steps/step_06_7_T2.2_DP_at_baseline.R")))
+
+system.time(source(paste0(thisdir,"/p_steps/step_06_8_T2.3_baseline_characteristics.R")))
+
+system.time(source(paste0(thisdir,"/p_steps/step_06_9_T2.3_ALL_covariates_at_baseline.R")))
+
+#07 create D4 for doses and coverage
+system.time(source(paste0(thisdir,"/p_steps/step_07_1_T3_create_D4_doses_weeks.R")))
+
+system.time(source(paste0(thisdir,"/p_steps/step_07_2_T3_create_dashboard_tables.R")))
+
+system.time(source(paste0(thisdir,"/p_steps/step_07_3_T3_create_D4_descriptive_tables.R")))
 
 #08 describing the datasets
 system.time(source(paste0(thisdir,"/p_steps/step_08_01_FlowChart_description.R")))

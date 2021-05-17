@@ -71,7 +71,6 @@ MergeFilterAndCollapse <- function(listdatasetL,datasetS,key,condition,saveinter
   if (!missing(sorting)) {
     setkeyv(tmp,sorting)
   }
- 
   
   if (!missing(additionalvar)) {
     for (elem in additionalvar) {
