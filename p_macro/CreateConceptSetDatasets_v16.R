@@ -102,11 +102,14 @@ CreateConceptSetDatasets <- function(dataset,codvar,datevar,EAVtables,EAVattribu
         for (datevar_dom_df2 in datevar[[dom]][[df2]]) {
           first_char <- substring(dateformat, 1,1)
           if (stringr::str_count(dateformat, "m") == 3 || stringr::str_count(dateformat, "M") == 3) {
-            used_df[,datevar_dom_df2] <- as.Date(used_df[,get(datevar_dom_df2)],"%d%b%Y")
+            used_df <- used_df[, (datevar_dom_df2) := as.Date(get(datevar_dom_df2),"%d%b%Y")]
+            # used_df[,datevar_dom_df2] <- as.Date(used_df[,get(datevar_dom_df2)],"%d%b%Y")
           } else if (first_char %in% c("Y", "y")) {
-            used_df[,datevar_dom_df2] <- lubridate::ymd(used_df[,get(datevar_dom_df2)])
+            used_df <- used_df[, (datevar_dom_df2) := lubridate::ymd(get(datevar_dom_df2))]
+            # used_df[,datevar_dom_df2] <- lubridate::ymd(used_df[,get(datevar_dom_df2)])
           } else if (first_char %in% c("D", "d")) {
-            used_df[,datevar_dom_df2] <- lubridate::dmy(used_df[,get(datevar_dom_df2)])
+            # used_df[,datevar_dom_df2] <- lubridate::dmy(used_df[,get(datevar_dom_df2)])
+            used_df <- used_df[, (datevar_dom_df2) := lubridate::dmy(get(datevar_dom_df2))]
           }
         }
       }

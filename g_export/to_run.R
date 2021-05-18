@@ -62,7 +62,7 @@ system.time(source(paste0(thisdir,"/p_steps/step_06_7_T2.2_DP_at_baseline.R")))
 
 system.time(source(paste0(thisdir,"/p_steps/step_06_8_T2.3_baseline_characteristics.R")))
 
-system.time(source(paste0(thisdir,"/p_steps/step_06_9_T2.3_ALL_covariates_at_baseline.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_06_9_T2.3_ALL_covariates_at_baseline_V2.R")))
 
 #07 create D4 for doses and coverage
 system.time(source(paste0(thisdir,"/p_steps/step_07_1_T3_create_D4_doses_weeks.R")))

@@ -62,11 +62,7 @@ system.time(source(paste0(thisdir,"/p_steps/step_06_7_T2.2_DP_at_baseline.R")))
 
 system.time(source(paste0(thisdir,"/p_steps/step_06_8_T2.3_baseline_characteristics.R")))
 
-<<<<<<< HEAD
 system.time(source(paste0(thisdir,"/p_steps/step_06_9_T2.3_ALL_covariates_at_baseline_V2.R")))
-=======
-system.time(source(paste0(thisdir,"/p_steps/step_06_9_T2.3_ALL_covariates_at_baseline.R")))
->>>>>>> 52f4ded7da132bdbd3b7cf9cf7e79ac36e202170
 
 #07 create D4 for doses and coverage
 system.time(source(paste0(thisdir,"/p_steps/step_07_1_T3_create_D4_doses_weeks.R")))

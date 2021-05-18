@@ -22,7 +22,6 @@ CreateConceptSetDatasets(concept_set_names = c(vaccine__conceptssets),
 
 
 # APPLY THE FUNCTION CreateConceptSetDatasets TO CREATE ONE DATASET PER CONCEPT SET CONTAINING ONLY RECORDS WITH A CODE OF INTEREST
-
 for (conceptset in OUTCOMES_conceptssets){
   CreateConceptSetDatasets(concept_set_names = conceptset,
                            dataset = ECVM_CDM_tables,
