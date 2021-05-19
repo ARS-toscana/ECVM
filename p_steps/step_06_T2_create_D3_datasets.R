@@ -1,5 +1,6 @@
 load(paste0(diroutput, "D4_study_population.RData"))
 load(paste0(dirtemp, "selected_doses.RData"))
+load(paste0(diroutput, "D3_study_population_cov_ALL.RData"))
 
 D4_study_population <- D4_study_population[, .(person_id, sex, date_of_birth, date_of_death, study_entry_date, start_follow_up, study_exit_date)]
 
@@ -7,7 +8,8 @@ D3_doses <- merge(D4_study_population, selected_doses, all.x = T, by="person_id"
                                                                                       study_entry_date, start_follow_up, study_exit_date,
                                                                                       date, vx_dose, vx_manufacturer)]
 
-
+D3_study_population_cov_ALL <- D3_study_population_cov_ALL[]
+names(D3_study_population_cov_ALL)
 
 D3_doses <- D3_doses[, vx_dose := as.character(vx_dose)]
 

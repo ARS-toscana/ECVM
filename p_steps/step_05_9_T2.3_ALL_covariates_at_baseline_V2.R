@@ -31,7 +31,7 @@ for (subpop in subpopulations_non_empty) {
     study_population_cov <- D4_study_population_cov
     study_population_DP <- D3_study_population_DP
   }
-  study_population_cov_ALL <- merge(study_population[,-c("study_entry_date","sex")], study_population_cov, by="person_id", all.x = T)
+  study_population_cov_ALL <- merge(study_population[,-c("study_entry_date","sex")], study_population_cov, by=c("person_id", "date_of_death", "start_follow_up"), all.x = T)
   
   study_population_cov_ALL <- merge(study_population_cov_ALL, study_population_DP, by="person_id", all.x = T)
   
