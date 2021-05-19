@@ -1,9 +1,9 @@
 "",ARS,ARS
 "",N,%
-Number of doses,926,""
+Number of doses,132,""
 Missing first doses,0,0
 Missing second doses,0,0
-Discordant first to second,0,0
-Discordant second to first,0,0
-Concordant first doses,640,69.11
-Concordant second doses,286,30.89
+Discordant first to second,9,6.82
+Discordant second to first,11,8.33
+Concordant first doses,90,68.18
+Concordant second doses,22,16.67
