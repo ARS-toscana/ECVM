@@ -8,9 +8,6 @@ D3_doses <- merge(D4_study_population, selected_doses, all.x = T, by="person_id"
                                                                                       study_entry_date, start_follow_up, study_exit_date,
                                                                                       date, vx_dose, vx_manufacturer)]
 
-D3_study_population_cov_ALL <- D3_study_population_cov_ALL[]
-names(D3_study_population_cov_ALL)
-
 D3_doses <- D3_doses[, vx_dose := as.character(vx_dose)]
 
 D3_doses <- data.table::dcast(D3_doses, person_id + sex + date_of_birth + date_of_death + study_entry_date + start_follow_up +
@@ -33,12 +30,31 @@ D3_doses <- D3_doses[!is.na(study_entry_date_vax1), fup_vax1 := correct_difftime
 
 D3_doses <- D3_doses[!is.na(study_entry_date_vax2), fup_vax2 := correct_difftime(study_exit_date_vax2, study_entry_date_vax2)]
 
+setnames(D3_study_population_cov_ALL,
+         c("CV_either_DX_or_DP", "COVCANCER_either_DX_or_DP", "COVCOPD_either_DX_or_DP", "COVHIV_either_DX_or_DP",
+           "COVCKD_either_DX_or_DP", "COVDIAB_either_DX_or_DP", "COVOBES_either_DX_or_DP", "COVSICKLE_either_DX_or_DP",
+           "IMMUNOSUPPR_at_study_entry", "all_covariates_non_CONTR"),
+         c("CV_at_study_entry", "COVCANCER_at_study_entry", "COVCOPD_at_study_entry", "COVHIV_at_study_entry",
+           "COVCKD_at_study_entry", "COVDIAB_at_study_entry", "COVOBES_at_study_entry", "COVSICKLE_at_study_entry",
+           "immunosuppressants_at_study_entry", "at_risk_at_study_entry"))
 
+D3_study_population_cov_ALL <- D3_study_population_cov_ALL[, .(person_id, CV_at_study_entry, COVCANCER_at_study_entry,
+                                                               COVCOPD_at_study_entry, COVHIV_at_study_entry,
+                                                               COVCKD_at_study_entry, COVDIAB_at_study_entry,
+                                                               COVOBES_at_study_entry, COVSICKLE_at_study_entry,
+                                                               immunosuppressants_at_study_entry, at_risk_at_study_entry)]
 
-D3_study_population <- D3_doses[, .(person_id, sex, date_of_birth, start_follow_up, study_entry_date, study_exit_date,
-                                    date_vax1, date_vax2, age_at_study_entry, age_at_date_vax_1, type_vax_1, type_vax_2,
-                                    study_entry_date_vax1, study_exit_date_vax1, study_entry_date_vax2, study_exit_date_vax2,
-                                    fup_days, fup_no_vax, fup_vax1, fup_vax2)]
+D3_doses <- merge(D3_doses, D3_study_population_cov_ALL, all.x = T, by="person_id")
+
+setnames(D3_doses, "start_follow_up", "start_lookback")
+
+D3_study_population <- D3_doses[, .(person_id, sex, date_of_birth, start_lookback, study_entry_date, study_exit_date,
+                                    date_vax1, date_vax2, age_at_study_entry, CV_at_study_entry, COVCANCER_at_study_entry,
+                                    COVCOPD_at_study_entry, COVHIV_at_study_entry, COVCKD_at_study_entry,
+                                    COVDIAB_at_study_entry, COVOBES_at_study_entry, COVSICKLE_at_study_entry,
+                                    immunosuppressants_at_study_entry, at_risk_at_study_entry, age_at_date_vax_1,
+                                    type_vax_1, type_vax_2, study_entry_date_vax1, study_exit_date_vax1,
+                                    study_entry_date_vax2, study_exit_date_vax2, fup_days, fup_no_vax, fup_vax1, fup_vax2)]
 
 save(D3_study_population, file = paste0(dirtemp, "D3_study_population.RData"))
 
@@ -54,7 +70,8 @@ save(D3_Vaccin_cohort, file = paste0(dirtemp, "D3_Vaccin_cohort.RData"))
 
 cohort_to_vaxweeks <- D3_study_population[, .(person_id, date_of_birth, sex, study_entry_date, study_exit_date,
                                               study_entry_date_vax1, study_exit_date_vax1, study_entry_date_vax2,
-                                              study_exit_date_vax2, type_vax_1, type_vax_2, fup_no_vax, fup_vax1, fup_vax2)]
+                                              study_exit_date_vax2, type_vax_1, type_vax_2, fup_no_vax, fup_vax1,
+                                              fup_vax2, at_risk_at_study_entry)]
 
 cohort_to_vaxweeks <- cohort_to_vaxweeks[, Birthcohort_persons := findInterval(year(date_of_birth), c(1940, 1950, 1960, 1970, 1980, 1990))]
 cohort_to_vaxweeks$Birthcohort_persons <- as.character(cohort_to_vaxweeks$Birthcohort_persons)
