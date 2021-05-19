@@ -53,7 +53,7 @@ for (ds in ECVM_CDM_tables[["VaccineATC"]]) {
 
 if (length(ECVM_CDM_EAV_tables)!=0 ){
   for (dom in alldomain) {
-    for (i in 1:(length(ECVM_CDM_tables[["Diagnosis"]]))){
+    for (i in 1:(length(ECVM_CDM_EAV_tables[["Diagnosis"]]))){
       for (ds in append(ECVM_CDM_tables[[dom]],ECVM_CDM_EAV_tables[["Diagnosis"]][[i]][[1]][[1]])) {
         if (ds==ECVM_CDM_EAV_tables[["Diagnosis"]][[i]][[1]][[1]]) {
           if (str_detect(ds,"^SURVEY_OB"))  ECVM_CDM_codvar[["Diagnosis"]][[ds]]="so_source_value"
