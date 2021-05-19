@@ -48,6 +48,7 @@ library(ggplot2)
 
 source(paste0(dirmacro,"CreateConceptSetDatasets_v16.R"))
 source(paste0(dirmacro,"RetrieveRecordsFromEAVDatasets.R"))
+source(paste0(dirmacro,"CreateItemsetDatasets_v02.R"))
 source(paste0(dirmacro,"MergeFilterAndCollapse_v5.R"))
 source(paste0(dirmacro,"CreateSpells_v13.R"))
 source(paste0(dirmacro,"CreateFlowChart.R"))
