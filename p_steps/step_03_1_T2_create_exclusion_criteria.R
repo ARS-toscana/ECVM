@@ -1,20 +1,12 @@
 # -----------------------------------------------------
 # CREATE EXCLUSION CRITERIA
 
-# input: PERSONS, D3_output_spells_category, D3_output_spells_overlap
+# input: D3_PERSONS, D3_output_spells_category, D3_output_spells_overlap
 # output: D3_selection_criteria.RData
 
 print('CREATE EXCLUSION CRITERIA')
 
-PERSONS <- data.table()
-files<-sub('\\.csv$', '', list.files(dirinput))
-for (i in 1:length(files)) {
-  if (stringr::str_detect(files[i],"^PERSONS")) {  
-    temp <- fread(paste0(dirinput,files[i],".csv"), colClasses = list( character="person_id"))
-    PERSONS <- rbind(PERSONS, temp,fill=T)
-    rm(temp)
-  }
-}
+load(paste0(dirtemp,"D3_PERSONS.RData"))
 
 OBSERVATION_PERIODS <- data.table()
 files<-sub('\\.csv$', '', list.files(dirinput))
@@ -26,31 +18,31 @@ for (i in 1:length(files)) {
   }
 }
 
-PERSONS[!is.na(month_of_birth) & is.na(day_of_birth), day_of_birth := 15]
+D3_PERSONS[!is.na(month_of_birth) & is.na(day_of_birth), day_of_birth := 15]
 
-PERSONS$day_of_birth <- as.numeric(PERSONS$day_of_birth)
-PERSONS$month_of_birth <- as.numeric(PERSONS$month_of_birth)
-PERSONS[is.na(month_of_birth) & is.na(day_of_birth), c("month_of_birth", "day_of_birth") := list(7, 1)]
+D3_PERSONS$day_of_birth <- as.numeric(D3_PERSONS$day_of_birth)
+D3_PERSONS$month_of_birth <- as.numeric(D3_PERSONS$month_of_birth)
+D3_PERSONS[is.na(month_of_birth) & is.na(day_of_birth), c("month_of_birth", "day_of_birth") := list(7, 1)]
 
 #STANDARDIZE THE DATE FORMAT WITH  LUBRIDATE
-PERSONS<-PERSONS[, date_of_birth := lubridate::ymd(paste(year_of_birth, month_of_birth, day_of_birth, sep="-"))]
-PERSONS<-suppressWarnings(PERSONS[, date_of_death := lubridate::ymd(paste(year_of_death, month_of_death, day_of_death, sep="-"))])
+D3_PERSONS<-D3_PERSONS[, date_of_birth := lubridate::ymd(paste(year_of_birth, month_of_birth, day_of_birth, sep="-"))]
+D3_PERSONS<-suppressWarnings(D3_PERSONS[, date_of_death := lubridate::ymd(paste(year_of_death, month_of_death, day_of_death, sep="-"))])
 
 #CONVERT SEX to BINARY 0/1
-PERSONS<-PERSONS[, sex := fifelse(sex_at_instance_creation == "M", 1, 0)] #1:M 0:F
+D3_PERSONS<-D3_PERSONS[, sex := fifelse(sex_at_instance_creation == "M", 1, 0)] #1:M 0:F
 #[,age_at_index_date:=age_fast(date_of_birth,index_date)][age_at_index_date<12 | age_at_index_date>55,age:=1]
 
-PERSONS<-PERSONS[, sex_or_birth_date_missing:= fifelse(is.na(sex) | is.na(date_of_birth), 1, 0)]
-PERSONS<-PERSONS[, birth_date_absurd := fifelse(year(date_of_birth) < 1899 | year(date_of_birth) > 2021, 1, 0)]
+D3_PERSONS<-D3_PERSONS[, sex_or_birth_date_missing:= fifelse(is.na(sex) | is.na(date_of_birth), 1, 0)]
+D3_PERSONS<-D3_PERSONS[, birth_date_absurd := fifelse(year(date_of_birth) < 1899 | year(date_of_birth) > 2021, 1, 0)]
 
 # no observation period (NA + )
-PERSONS_in_OP <- merge(PERSONS, OBSERVATION_PERIODS, all.x = T, by="person_id")
+PERSONS_in_OP <- merge(D3_PERSONS, OBSERVATION_PERIODS, all.x = T, by="person_id")
 PERSONS_in_OP <- PERSONS_in_OP[, no_observation_period := fifelse(is.na(op_start_date), 1, 0)][, Minop_start_date := min(no_observation_period), by="person_id"][Minop_start_date==no_observation_period,]
 
 D3_exclusion_no_observation_period <- unique(PERSONS_in_OP[,.(person_id, sex_or_birth_date_missing, birth_date_absurd, no_observation_period)])
 
 ## KEEP ONLY NEEDED VARs
-D3_inclusion_from_PERSONS <- PERSONS[,.(person_id,sex,date_of_birth,date_of_death)]
+D3_inclusion_from_PERSONS <- D3_PERSONS[,.(person_id,sex,date_of_birth,date_of_death)]
 
 # if (this_datasource_has_subpopulations == TRUE)D3_selection_criteria <- vector(mode="list")
 
@@ -101,7 +93,7 @@ save(D3_selection_criteria,file=paste0(dirtemp,"D3_selection_criteria.RData"))
 
 rm(output_spells_category_enriched,D3_inclusion_from_PERSONS,D3_exclusion_observation_periods_not_overlapping)
 rm(PERSONS_OP, PERSONS_OP2, start_follow_up, na_date, coords)
-rm(PERSONS, PERSONS_in_OP, output_spells_category,OBSERVATION_PERIODS, D3_selection_criteria, D3_exclusion_no_observation_period)
+rm(D3_PERSONS, PERSONS_in_OP, output_spells_category,OBSERVATION_PERIODS, D3_selection_criteria, D3_exclusion_no_observation_period)
 
 
 

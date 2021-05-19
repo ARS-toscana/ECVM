@@ -1,6 +1,11 @@
 Datasource,Vax_dose1,Month_vax1,Followup_vax1,Age_P25,Age_P50,Age_p75,Age_mean,Age_min,Age_max
-TEST,Pfizer,1,2743,44,54,63,54,21,96
-TEST,Pfizer,2,1201,40,52,59,53,22,96
-TEST,AstraZeneca,2,655,40,45,49,44,24,54
-TEST,Moderna,1,201,61,69,70,66,57,78
-TEST,Moderna,2,159,28,44,62,44,20,70
+ARS,Moderna,4,107,69,73,74,71,65,74
+ARS,Pfizer,4,477,76,84,90,80,39,99
+ARS,Pfizer,5,237,76,81,82,77,39,93
+ARS,AstraZeneca,4,360,66,75,75,68,44,78
+ARS,AstraZeneca,5,144,44,52,73,57,30,79
+ARS,Pfizer,3,298,45,54,57,54,33,84
+ARS,AstraZeneca,3,64,46,46,46,46,46,46
+ARS,Pfizer,2,42,41,50,59,50,32,68
+ARS,Pfizer,1,144,43,43,43,43,43,43
+ARS,Moderna,5,47,58,64,71,64,52,77

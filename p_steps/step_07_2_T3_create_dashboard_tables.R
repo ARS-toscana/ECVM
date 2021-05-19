@@ -1,6 +1,6 @@
 load(paste0(dirtemp, "D3_vaxweeks.RData"))
 load(paste0(dirtemp, "D3_Vaccin_cohort.RData"))
-load(paste0(diroutput,"D4_study_source_population.RData"))
+load(paste0(diroutput,"D4_study_population.RData"))
 
 cohort_to_doses_weeks <- D3_Vaccin_cohort[, .(person_id, sex, type_vax_1, type_vax_2, date_of_birth)]
 
@@ -46,7 +46,7 @@ DOSES_BIRTHCOHORTS <- vaxweeks_to_dos_bir_cor[is.na(N), N := 0][, week := format
 
 fwrite(DOSES_BIRTHCOHORTS, file = paste0(direxp, "DOSES_BIRTHCOHORTS.csv"))
 
-tot_pop_cohorts <- D4_study_source_population[, birth_cohort := findInterval(year(date_of_birth), c(1940, 1950, 1960, 1970, 1980, 1990))]
+tot_pop_cohorts <- D4_study_population[, birth_cohort := findInterval(year(date_of_birth), c(1940, 1950, 1960, 1970, 1980, 1990))]
 tot_pop_cohorts$birth_cohort <- as.character(tot_pop_cohorts$birth_cohort)
 tot_pop_cohorts <- tot_pop_cohorts[.(birth_cohort = c("0", "1", "2", "3", "4", "5", "6"),
                                      to = c("<1940", "1940-1949", "1950-1959", "1960-1969", "1970-1979",
@@ -66,5 +66,5 @@ fwrite(COVERAGE_BIRTHCOHORTS, file = paste0(direxp, "COVERAGE_BIRTHCOHORTS.csv")
 
 
 rm(D3_vaxweeks, cohort_to_doses_weeks, all_mondays, monday_week, double_weeks, all_days_df, vaxweeks_to_dos_bir_cor,
-   all_ages, complete_df, DOSES_BIRTHCOHORTS, D4_study_source_population, tot_pop_cohorts, all_pop, COVERAGE_BIRTHCOHORTS,
+   all_ages, complete_df, DOSES_BIRTHCOHORTS, D4_study_population, tot_pop_cohorts, all_pop, COVERAGE_BIRTHCOHORTS,
    D3_Vaccin_cohort)
