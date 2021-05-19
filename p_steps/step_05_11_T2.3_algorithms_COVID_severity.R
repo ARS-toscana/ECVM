@@ -1,11 +1,11 @@
 # SUMMARIZE ALGORITHMS FOR COVID SEVERITY
 #-----------------------------------------------
-# input: D3_components_covid_severity.RData, D4_study_population_coprimary_c.RData
+# input: D3_components_covid_severity.RData, D4_study_population.RData
 # output: D3_algorithm_covid
 
 print("CREATE ALGORITHMS FOR COVID SEVERITY")
 
-load(paste0(diroutput,"D4_study_population_coprimary_c.RData")) 
+load(paste0(diroutput,"D4_study_population.RData")) 
 
 load(paste0(dirpargen,"subpopulations_non_empty.RData"))
 

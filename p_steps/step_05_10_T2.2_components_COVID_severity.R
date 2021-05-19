@@ -1,6 +1,6 @@
 # CREATE ALGORITHMS FOR COVID
 #-----------------------------------------------
-# input: D4_study_population_coprimary_c.RData, D3_events_COVID_narrow, D3_events_DEATH.RData, covid_registry, COVID_symptoms
+# input: D4_study_population.RData, D3_events_COVID_narrow, D3_events_DEATH.RData, covid_registry, COVID_symptoms
 # output: D3_algorithm_covid
 
 print("CREATE ALGORITHMS FOR COVID SEVERITY")
@@ -30,14 +30,14 @@ for (subpop in subpopulations_non_empty) {
   print(subpop)
   
   if (this_datasource_has_subpopulations == TRUE){  
-    study_population_coprimary_c <- D4_study_population_coprimary_c[[subpop]]
+    study_population <- D4_study_population[[subpop]]
     events_COVID_narrow <- D3_events_COVID_narrow[[subpop]]
   }else{
-    study_population_coprimary_c <- D4_study_population_coprimary_c
+    study_population <- D4_study_population
     events_COVID_narrow <- D3_events_COVID_narrow
   }
   
-  components_covid_severity <- study_population_coprimary_c
+  components_covid_severity <- study_population
   
   # define components first_date_covid_narrow
   
@@ -46,7 +46,7 @@ for (subpop in subpopulations_non_empty) {
     covid_dates <- MergeFilterAndCollapse(listdatasetL = list(events_COVID_narrow),
                                           condition = "date == date",
                                           key = c("person_id"),
-                                          datasetS = study_population_coprimary_c,
+                                          datasetS = study_population,
                                           additionalvar = list(
                                             list(
                                               c('inhosp'),"1",condmeaning[['HOSP']])
@@ -72,13 +72,13 @@ for (subpop in subpopulations_non_empty) {
     if (nrow(covid_dates_HOSP) > 0){
       covid_dates <- merge(covid_dates,covid_dates_HOSP, all.x = T, by="person_id")
     }else{ 
-      covid_dates <- covid_dates[is.na(person_id),first_date_covid_narrow_hosp_discharge := lubridate::ymd(study_start_coprimary_c)]
+      covid_dates <- covid_dates[is.na(person_id),first_date_covid_narrow_hosp_discharge := lubridate::ymd(study_start)]
     }
     components_covid_severity <- merge(components_covid_severity,covid_dates, all.x = T, by="person_id")
     rm(covid_dates_HOSP)
   }else{ # if there is no narrow concepsets, define the dates as missing
     covid_dates <- emptydataset
-    components_covid_severity[is.na(person_id), first_date_covid_narrow_hosp_discharge := lubridate::ymd(study_start_coprimary_c)][is.na(person_id), first_date_covid_narrow := lubridate::ymd(study_start_coprimary_c)]
+    components_covid_severity[is.na(person_id), first_date_covid_narrow_hosp_discharge := lubridate::ymd(study_start)][is.na(person_id), first_date_covid_narrow := lubridate::ymd(study_start)]
   }
   
   #-------------------------------- 
@@ -88,14 +88,14 @@ for (subpop in subpopulations_non_empty) {
     covid_dates_registry <- MergeFilterAndCollapse(listdatasetL = list(covid_registry),
                                                    condition = "!is.na(date)",
                                                    key = c("person_id"),
-                                                   datasetS = study_population_coprimary_c,
+                                                   datasetS = study_population,
                                                    strata = c("person_id"),
                                                    summarystat = list(                                                                          list(c("min"),"date","first_date_covid_registry")
                                                    )
     )
     components_covid_severity <- merge(components_covid_severity, covid_dates_registry, all.x = T, by="person_id")
   }else{# if there is no covid registry, define first_date_covid_registry as missing
-    components_covid_severity[is.na(person_id), first_date_covid_registry := lubridate::ymd(study_start_coprimary_c)]
+    components_covid_severity[is.na(person_id), first_date_covid_registry := lubridate::ymd(study_start)]
   }
   
   #-------------------------------------------------------
@@ -248,5 +248,5 @@ for (subpop in subpopulations_non_empty) {
 } 
 
 save(D3_components_covid_severity,file=paste0(dirtemp,"D3_components_covid_severity.RData"))
-rm(D3_components_covid_severity,events_COVID_narrow,     study_population_coprimary_c,D4_study_population_coprimary_c,D3_events_COVID_narrow,COVID_symptoms,D3_events_DEATH, components_covid_severity)
+rm(D3_components_covid_severity,events_COVID_narrow,     study_population,D4_study_population,D3_events_COVID_narrow,COVID_symptoms,D3_events_DEATH, components_covid_severity)
 # D3_components_covid_severity
