@@ -1,3 +1,4 @@
-narrow_emergency_room_diagnosis,todrop,N
-0,0,391
-1,0,< 5
+narrow_emergency_room_diagnosis,narrow_exemption,todrop,N
+0,0,0,385
+1,0,0,< 5
+0,1,0,< 5

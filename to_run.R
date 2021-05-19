@@ -43,10 +43,6 @@ system.time(source(paste0(thisdir,"/p_steps/step_04_1_T3_apply_exclusion_criteri
 system.time(source(paste0(thisdir,"/p_steps/step_04_2_T3_apply_quality_check_exclusion_criteria_doses.R")))
 ##use flowchart (apply also quality checks)
 
-
-#05 create D3 for doses and coverage
-system.time(source(paste0(thisdir,"/p_steps/step_06_T2_create_D3_datasets.R")))
-
 #06 create D4 for doses and coverage
 system.time(source(paste0(thisdir,"/p_steps/step_05_1_T2.2_components.R")))
 
@@ -65,6 +61,9 @@ system.time(source(paste0(thisdir,"/p_steps/step_05_7_T2.2_DP_at_baseline.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_05_8_T2.3_baseline_characteristics.R")))
 
 system.time(source(paste0(thisdir,"/p_steps/step_05_9_T2.3_ALL_covariates_at_baseline_V2.R")))
+
+#05 create D3 for doses and coverage
+system.time(source(paste0(thisdir,"/p_steps/step_06_T2_create_D3_datasets.R")))
 
 #07 create D4 for doses and coverage
 system.time(source(paste0(thisdir,"/p_steps/step_07_1_T3_create_D4_doses_weeks.R")))

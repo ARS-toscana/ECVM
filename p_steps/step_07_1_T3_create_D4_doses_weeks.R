@@ -24,13 +24,14 @@ cohort_to_vaxweeks <- cohort_to_vaxweeks[, start_date_of_period := study_entry_d
 cohort_to_vaxweeks <- cohort_to_vaxweeks[, c("study_entry_date", "week") := NULL]
 
 tot_cohort <- copy(cohort_to_vaxweeks)
-tot_cohort <- tot_cohort[, c("sex", "Dose", "type_vax", "Birthcohort_persons") := NULL]
+tot_cohort <- tot_cohort[, c("sex", "Dose", "type_vax", "Birthcohort_persons", "at_risk_at_study_entry") := NULL]
 tot_cohort <- unique(tot_cohort)
 tot_cohort <- tot_cohort[, Persons_in_week := .N, by = c("start_date_of_period")]
 tot_cohort <- unique(tot_cohort[, person_id := NULL])
 
 cohort_to_vaxweeks <- cohort_to_vaxweeks[, Doses_in_week := .N,
-                                         by = c("sex", "Birthcohort_persons", "Dose", "type_vax", "start_date_of_period")]
+                                         by = c("sex", "Birthcohort_persons", "Dose",
+                                                "type_vax", "start_date_of_period", "at_risk_at_study_entry")]
 cohort_to_vaxweeks <- unique(cohort_to_vaxweeks[, person_id := NULL])
 cohort_to_vaxweeks <- merge(cohort_to_vaxweeks, tot_cohort, by = "start_date_of_period")
 cohort_to_vaxweeks <- cohort_to_vaxweeks[, Year := year(start_date_of_period)]
@@ -42,6 +43,5 @@ D4_doses_weeks <- cohort_to_vaxweeks[, .(Datasource, Year, Week_number, Birthcoh
                                          Persons_in_week, Doses_in_week)]
 
 save(D4_doses_weeks, file = paste0(diroutput, "D4_doses_weeks.RData"))
-
 
 rm(D3_studyweeks, all_mondays, monday_week, double_weeks, all_days_df, cohort_to_vaxweeks, tot_cohort, D4_doses_weeks)
