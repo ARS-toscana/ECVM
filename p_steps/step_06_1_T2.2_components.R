@@ -64,15 +64,16 @@ for (OUTCOME in OUTCOME_events) {
         selectionOUTCOME <- paste0(selectionOUTCOME,' & ',select_in_subpopulationsEVENTS[[subpop]])
       }
       nameconceptsetdatasetOUTCOMEtype <- paste0(OUTCOME, "_",type)
-      components <- MergeFilterAndCollapse(list(get(load(paste0(dirtemp,nameconceptsetdatasetOUTCOMEtype,".RData")))),
-                                             condition = selectionOUTCOME,
-                                             key = c("person_id"),
-                                             datasetS = COHORT_TMP,
-                                             additionalvar = addvarOUTCOME,
-                                             saveintermediatedataset = T,
-                                             nameintermediatedataset = paste0(dirtemp,'tempfile'),
-                                             strata = c("person_id"),
-                                             summarystat = summarystatOUTCOME
+      components <- MergeFilterAndCollapse(
+        listdatasetL= list(get(load(paste0(dirtemp,nameconceptsetdatasetOUTCOMEtype,".RData")))),
+        condition = selectionOUTCOME,
+        key = c("person_id"),
+        datasetS = COHORT_TMP,
+        additionalvar = addvarOUTCOME,
+        saveintermediatedataset = T,
+        nameintermediatedataset = paste0(dirtemp,'tempfile'),
+        strata = c("person_id"),
+        summarystat = summarystatOUTCOME
       )
       
       

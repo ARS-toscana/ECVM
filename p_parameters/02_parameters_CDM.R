@@ -4,6 +4,8 @@
 
 # assign -ECVM_CDM_tables-: it is a 2-level list describing the ECVM CDM tables, and will enter the function as the first parameter. the first level is the data domain (in the example: 'Diagnosis' and 'Medicines') and the second level is the list of tables that has a column pertaining to that data domain 
 
+thisdatasource_has_prescriptions = TRUE
+
 ECVM_CDM_tables <- vector(mode="list")
 
 files<-sub('\\.csv$', '', list.files(dirinput))
@@ -57,7 +59,7 @@ if (length(ECVM_CDM_EAV_tables)!=0 ){
           if (str_detect(ds,"^SURVEY_OB"))  ECVM_CDM_codvar[["Diagnosis"]][[ds]]="so_source_value"
           if (str_detect(ds,"^MEDICAL_OB"))  ECVM_CDM_codvar[["Diagnosis"]][[ds]]="mo_source_value"
         }else{
-          if (dom=="Medicines") ECVM_CDM_codvar[[dom]][[ds]]="product_ATCcode"
+          if (dom=="Medicines") ECVM_CDM_codvar[[dom]][[ds]]="medicinal_product_atc_code"
           if (dom=="Diagnosis") ECVM_CDM_codvar[[dom]][[ds]]="event_code"
         }
       }
@@ -66,7 +68,7 @@ if (length(ECVM_CDM_EAV_tables)!=0 ){
 }else{
   for (dom in alldomain) {
     for (ds in ECVM_CDM_tables[[dom]]) {
-      if (dom=="Medicines") ECVM_CDM_codvar[[dom]][[ds]]="product_ATCcode"
+      if (dom=="Medicines") ECVM_CDM_codvar[[dom]][[ds]]="medicinal_product_atc_code"
       if (dom=="Diagnosis") ECVM_CDM_codvar[[dom]][[ds]]="event_code"
     }
   }
@@ -89,7 +91,7 @@ if (length(ECVM_CDM_EAV_tables)!=0 ){
           if (str_detect(ds,"^SURVEY_OB"))  ECVM_CDM_codvar[["Diagnosis"]][[ds]]="so_source_value"
           if (str_detect(ds,"^MEDICAL_OB"))  ECVM_CDM_codvar[["Diagnosis"]][[ds]]="mo_source_value"
         }else{
-          if (dom=="Medicines") ECVM_CDM_codvar[[dom]][[ds]]="product_ATCcode"
+          if (dom=="Medicines") ECVM_CDM_codvar[[dom]][[ds]]="medicinal_product_atc_code"
           if (dom=="Diagnosis") ECVM_CDM_codvar[[dom]][[ds]]="event_code"
         }
       }
@@ -98,7 +100,7 @@ if (length(ECVM_CDM_EAV_tables)!=0 ){
 }else{
   for (dom in alldomain) {
     for (ds in ECVM_CDM_tables[[dom]]) {
-      if (dom=="Medicines") ECVM_CDM_codvar[[dom]][[ds]]="product_ATCcode"
+      if (dom=="Medicines") ECVM_CDM_codvar[[dom]][[ds]]="medicinal_product_atc_code"
       if (dom=="Diagnosis") ECVM_CDM_codvar[[dom]][[ds]]="event_code"
     }
   }

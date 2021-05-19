@@ -25,7 +25,9 @@
 #'
 
 
-MergeFilterAndCollapse <- function(listdatasetL,datasetS,key,condition,saveintermediatedataset=F,nameintermediatedataset,additionalvar,sorting,strata,summarystat,typemerge=1){
+MergeFilterAndCollapse <- function(listdatasetL,datasetS,key,condition,
+                                   saveintermediatedataset=F,nameintermediatedataset,
+                                   additionalvar,sorting,strata,summarystat,typemerge=1){
   
   if (!require("data.table")) install.packages("data.table")
   library(data.table)
