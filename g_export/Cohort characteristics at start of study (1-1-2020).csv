@@ -1,0 +1,36 @@
+ ,Parameters,Italy_ARS,perc_Italy_ARS
+Study population,N,388,""
+Person years of follow-up,PY,184728,""
+Age in years,Min,0,""
+Age in years,P25,34,""
+Age in years,P50,50,""
+Age in years,Mean,50,""
+Age in years,P75,67,""
+Age in years,Max,98,""
+Age in categories,0-19,48,12.371
+Age in categories,20-29,32,8.247
+Age in categories,30-39,43,11.082
+Age in categories,40-49,61,15.722
+Age in categories,50-59,70,18.041
+Age in categories,60-69,52,13.402
+Age in categories,70-79,45,11.598
+Age in categories,>=80,37,9.536
+Person years across age categories,0-19,23309,12.618
+Person years across age categories,20-29,15292,8.278
+Person years across age categories,30-39,20605,11.154
+Person years across age categories,40-49,28094,15.208
+Person years across age categories,50-59,34435,18.641
+Person years across age categories,60-69,25077,13.575
+Person years across age categories,70-79,21110,11.428
+Person years across age categories,>=80,16806,9.098
+Person years across sex,Male,215,55.412
+Person years across sex,Female,173,44.588
+"At risk population at January 1, 2020",Cardiovascular disease,48,12.371
+"At risk population at January 1, 2020",Cancer,6,1.546
+"At risk population at January 1, 2020",Chronic lung disease,14,3.608
+"At risk population at January 1, 2020",HIV,1,0.258
+"At risk population at January 1, 2020",Chronic kidney disease,2,0.515
+"At risk population at January 1, 2020",Diabetes,23,5.928
+"At risk population at January 1, 2020",Severe obesity,0,0
+"At risk population at January 1, 2020",Sickle cell disease,0,0
+"At risk population at January 1, 2020",Use of immunosuppressants,23,5.928
