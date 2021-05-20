@@ -37,10 +37,11 @@ cohort_to_vaxweeks <- merge(cohort_to_vaxweeks, tot_cohort, by = "start_date_of_
 cohort_to_vaxweeks <- cohort_to_vaxweeks[, Year := year(start_date_of_period)]
 cohort_to_vaxweeks <- cohort_to_vaxweeks[, Datasource := thisdatasource]
 
-setnames(cohort_to_vaxweeks, c("start_date_of_period", "type_vax", "sex"), c("Week_number", "Type_vax", "Sex"))
+setnames(cohort_to_vaxweeks, c("start_date_of_period", "type_vax", "sex", "at_risk_at_study_entry"),
+         c("Week_number", "Type_vax", "Sex", "At_Risk"))
 
-D4_doses_weeks <- cohort_to_vaxweeks[, .(Datasource, Year, Week_number, Birthcohort_persons, Sex, Dose, Type_vax,
-                                         Persons_in_week, Doses_in_week)]
+D4_doses_weeks <- cohort_to_vaxweeks[, .(Datasource, Year, Week_number, Birthcohort_persons, Sex, At_Risk, Dose,
+                                         Type_vax, Persons_in_week, Doses_in_week)]
 
 save(D4_doses_weeks, file = paste0(diroutput, "D4_doses_weeks.RData"))
 
