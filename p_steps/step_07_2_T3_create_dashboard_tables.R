@@ -1,10 +1,13 @@
 load(paste0(dirtemp, "D3_vaxweeks.RData"))
 load(paste0(dirtemp, "D3_Vaccin_cohort.RData"))
-load(paste0(diroutput,"D4_study_population.RData"))
+load(paste0(dirtemp, "D3_study_population.RData"))
+
+
+# Birth Cohort ----------------------------------------------------------------------------------------------------
 
 cohort_to_doses_weeks <- D3_Vaccin_cohort[, .(person_id, sex, type_vax_1, type_vax_2, date_of_birth)]
 
-all_mondays <- seq.Date(as.Date("19000101","%Y%m%d"), Sys.Date(), by = "week")
+all_mondays <- seq.Date(as.Date("19000101","%Y%m%d"), study_end, by = "week")
 
 monday_week <- seq.Date(from = find_last_monday(study_start, all_mondays), to = find_last_monday(study_end, all_mondays),
                         by = "week")
@@ -14,11 +17,12 @@ all_days_df <- merge(all_days_df, double_weeks, by.x = "all_days", by.y = "weeks
 all_days_df <- all_days_df[, monday_week := nafill(monday_week, type="locf")]
 all_days_df <- all_days_df[all_days >= study_start,]
 
-vaxweeks_to_dos_bir_cor <- D3_vaxweeks[week == 0]
-vaxweeks_to_dos_bir_cor <- merge(vaxweeks_to_dos_bir_cor, all_days_df, by.x = "start_date_of_period", by.y = "all_days")
+D3_vaxweeks <- D3_vaxweeks[week == 0]
+D3_vaxweeks <- merge(D3_vaxweeks, all_days_df, by.x = "start_date_of_period", by.y = "all_days", all.x = T)
 
-vaxweeks_to_dos_bir_cor <- merge(vaxweeks_to_dos_bir_cor, cohort_to_doses_weeks, by = "person_id")
-vaxweeks_to_dos_bir_cor <- vaxweeks_to_dos_bir_cor[, Birthcohort_persons := findInterval(year(date_of_birth), c(1940, 1950, 1960, 1970, 1980, 1990))]
+vaxweeks_to_dos_bir_cor_base <- merge(D3_vaxweeks, cohort_to_doses_weeks, by = "person_id")
+vaxweeks_to_dos_bir_cor <- vaxweeks_to_dos_bir_cor_base[, Birthcohort_persons := findInterval(year(date_of_birth),
+                                                                                              c(1940, 1950, 1960, 1970, 1980, 1990))]
 vaxweeks_to_dos_bir_cor$Birthcohort_persons <- as.character(vaxweeks_to_dos_bir_cor$Birthcohort_persons)
 vaxweeks_to_dos_bir_cor <- vaxweeks_to_dos_bir_cor[.(Birthcohort_persons = c("0", "1", "2", "3", "4", "5", "6"),
                                                      to = c("<1940", "1940-1949", "1950-1959", "1960-1969", "1970-1979",
@@ -46,7 +50,7 @@ DOSES_BIRTHCOHORTS <- vaxweeks_to_dos_bir_cor[is.na(N), N := 0][, week := format
 
 fwrite(DOSES_BIRTHCOHORTS, file = paste0(direxp, "DOSES_BIRTHCOHORTS.csv"))
 
-tot_pop_cohorts <- D4_study_population[, birth_cohort := findInterval(year(date_of_birth), c(1940, 1950, 1960, 1970, 1980, 1990))]
+tot_pop_cohorts <- D3_study_population[, birth_cohort := findInterval(year(date_of_birth), c(1940, 1950, 1960, 1970, 1980, 1990))]
 tot_pop_cohorts$birth_cohort <- as.character(tot_pop_cohorts$birth_cohort)
 tot_pop_cohorts <- tot_pop_cohorts[.(birth_cohort = c("0", "1", "2", "3", "4", "5", "6"),
                                      to = c("<1940", "1940-1949", "1950-1959", "1960-1969", "1970-1979",
@@ -59,12 +63,65 @@ COVERAGE_BIRTHCOHORTS <- merge(DOSES_BIRTHCOHORTS, tot_pop_cohorts, by = "birth_
 setorder(COVERAGE_BIRTHCOHORTS, week)
 
 COVERAGE_BIRTHCOHORTS <- COVERAGE_BIRTHCOHORTS[, cum_N := cumsum(N), by = c("datasource", "vx_manufacturer", "dose", "birth_cohort")]
-COVERAGE_BIRTHCOHORTS <- COVERAGE_BIRTHCOHORTS[, percentage := round(cum_N / pop_cohorts * 100, 3)][, c("datasource", "week", "vx_manufacturer", "dose", "birth_cohort", "percentage")]
+COVERAGE_BIRTHCOHORTS <- COVERAGE_BIRTHCOHORTS[, percentage := round(cum_N / pop_cohorts * 100, 3)]
 COVERAGE_BIRTHCOHORTS <- COVERAGE_BIRTHCOHORTS[, .(datasource, week, vx_manufacturer, dose, birth_cohort, percentage)]
 
 fwrite(COVERAGE_BIRTHCOHORTS, file = paste0(direxp, "COVERAGE_BIRTHCOHORTS.csv"))
 
 
+
+# Risk Factors ----------------------------------------------------------------------------------------------------
+
+load(paste0(diroutput, "D3_study_population_cov_ALL.RData"))
+
+setnames(D3_study_population_cov_ALL,
+         c("CV_either_DX_or_DP", "COVCANCER_either_DX_or_DP", "COVCOPD_either_DX_or_DP", "COVHIV_either_DX_or_DP",
+           "COVCKD_either_DX_or_DP", "COVDIAB_either_DX_or_DP", "COVOBES_either_DX_or_DP", "COVSICKLE_either_DX_or_DP",
+           "IMMUNOSUPPR_at_study_entry", "all_covariates_non_CONTR"),
+         c("CV", "COVCANCER", "COVCOPD", "COVHIV", "COVCKD", "COVDIAB", "COVOBES", "COVSICKLE", "IMMUNOSUPPR",
+           "all_risk_factors"))
+
+D3_study_population_cov_ALL <- D3_study_population_cov_ALL[, .(person_id, CV, COVCANCER, COVCOPD, COVHIV, COVCKD,
+                                                               COVDIAB, COVOBES, COVSICKLE, IMMUNOSUPPR, all_risk_factors)]
+
+D3_study_population_cov_ALL <- melt(D3_study_population_cov_ALL,
+                                    measure.vars = c("CV", "COVCANCER", "COVCOPD", "COVHIV", "COVCKD", "COVDIAB",
+                                                     "COVOBES", "COVSICKLE", "IMMUNOSUPPR", "all_risk_factors"),
+                                    variable.name = "riskfactor", value.name = "to_drop")
+
+D3_study_population_cov_ALL <- D3_study_population_cov_ALL[to_drop == 1, ]
+vaxweeks_to_dos_risk <- merge(vaxweeks_to_dos_bir_cor_base, D3_study_population_cov_ALL, by = "person_id")
+
+vaxweeks_to_dos_risk <- vaxweeks_to_dos_risk[, vx_manufacturer := fifelse(Dose == 1, type_vax_1, type_vax_2)]
+vaxweeks_to_dos_risk <- vaxweeks_to_dos_risk[, Datasource := thisdatasource]
+
+vaxweeks_to_dos_risk <- vaxweeks_to_dos_risk[, .(Datasource, monday_week, vx_manufacturer, Dose, riskfactor)]
+
+setnames(vaxweeks_to_dos_risk, c("Datasource", "monday_week", "Dose"), c("datasource", "week", "dose"))
+
+vaxweeks_to_dos_risk <- vaxweeks_to_dos_risk[, .(N = .N), by = c("datasource", "week", "vx_manufacturer",
+                                                                 "dose", "riskfactor")]
+
+complete_df <- expand.grid(datasource = thisdatasource, week = monday_week, vx_manufacturer = c("Moderna", "Pfizer", "AstraZeneca", "J&J", "UKN"),
+                           dose = c("1", "2"), riskfactor = c("CV", "COVCANCER", "COVCOPD", "COVHIV", "COVCKD", "COVDIAB",
+                                                              "COVOBES", "COVSICKLE", "IMMUNOSUPPR", "all_risk_factors"))
+
+vaxweeks_to_dos_risk <- merge(vaxweeks_to_dos_risk, complete_df, all.y = T, by = c("datasource", "week", "vx_manufacturer", "dose", "riskfactor"))
+DOSES_RISKFACTORS <- vaxweeks_to_dos_risk[is.na(N), N := 0][, week := format(week, "%Y%m%d")]
+
+fwrite(DOSES_RISKFACTORS, file = paste0(direxp, "DOSES_RISKFACTORS.csv"))
+
+tot_pop_cohorts <- D3_study_population_cov_ALL[, .(pop_cohorts = .N), by = c("riskfactor")]
+COVERAGE_RISKFACTORS <- merge(DOSES_RISKFACTORS, tot_pop_cohorts, by = "riskfactor", all.x = T)
+setorder(COVERAGE_RISKFACTORS, week)
+
+COVERAGE_RISKFACTORS <- COVERAGE_RISKFACTORS[, cum_N := cumsum(N), by = c("datasource", "vx_manufacturer", "dose", "riskfactor")]
+COVERAGE_RISKFACTORS <- COVERAGE_RISKFACTORS[, percentage := round(cum_N / pop_cohorts * 100, 3)]
+COVERAGE_RISKFACTORS <- COVERAGE_RISKFACTORS[, .(datasource, week, vx_manufacturer, dose, riskfactor, percentage)]
+
+fwrite(COVERAGE_RISKFACTORS, file = paste0(direxp, "COVERAGE_RISKFACTORS.csv"))
+
 rm(D3_vaxweeks, cohort_to_doses_weeks, all_mondays, monday_week, double_weeks, all_days_df, vaxweeks_to_dos_bir_cor,
-   all_ages, complete_df, DOSES_BIRTHCOHORTS, D4_study_population, tot_pop_cohorts, all_pop, COVERAGE_BIRTHCOHORTS,
-   D3_Vaccin_cohort)
+   all_ages, complete_df, DOSES_BIRTHCOHORTS, D3_study_population, tot_pop_cohorts, all_pop, COVERAGE_BIRTHCOHORTS,
+   D3_Vaccin_cohort, D3_study_population_cov_ALL, vaxweeks_to_dos_bir_cor_base, vaxweeks_to_dos_risk, DOSES_RISKFACTORS,
+   COVERAGE_RISKFACTORS)

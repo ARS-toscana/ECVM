@@ -178,17 +178,6 @@ correct_difftime <- function(t1, t2, t_period = "years") {
   return(difftime(t1, t2, units = "days") + 1)
 }
 
-find_last_monday <- function(tmp_date, monday_week) {
-  
-  tmp_date <- as.Date(lubridate::ymd(tmp_date))
-  
-  while (tmp_date %not in% monday_week) {
-    tmp_date <- tmp_date - 1
-  }
-  return(tmp_date)
-}
-
-
 calc_precise_week <- function(time_diff) {
   floor(time_length(time_diff, "week")) + 1
 }

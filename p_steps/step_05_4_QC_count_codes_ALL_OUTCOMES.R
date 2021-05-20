@@ -34,9 +34,8 @@ if (this_datasource_has_subpopulations == TRUE){
   list_outcomes <- list_outcomes_observed_for_QC
 }
 
-print(list_outcomes)
 for (outcome in list_outcomes) {
-  print(list_outcomes)
+  print(outcome)
   outcome_code_counts <- vector(mode = 'list')
   for (subpop in subpopulations_non_empty) {  
     if (this_datasource_has_subpopulations == TRUE){ 
