@@ -38,29 +38,38 @@ flow_source_totals <- data.table::dcast(flow_source_totals, a ~ Datasource, valu
 
 flow_source <- flow_source[, row_id := rowid(Datasource)]
 flow_source <- data.table::melt(flow_source, id.vars = c("row_id", "Datasource", "N"),
-                         measure.vars = c("A_sex_or_birth_date_missing", "B_birth_date_absurd",
-                                          "C_no_observation_period", "D_death_before_study_entry",
-                                          "E_no_observation_period_including_study_start"), variable.name = "a")
+                                measure.vars = c("A_sex_or_birth_date_missing", "B_birth_date_absurd",
+                                                 "C_no_observation_period", "D_death_before_study_entry",
+                                                 "E_no_observation_period_including_study_start"), variable.name = "a")
 
 flow_source <- flow_source[, .SD[which.min(value)], by = c("row_id", "Datasource", "N")][value == 0, .(Datasource, N, a)]
 flow_source <- data.table::dcast(flow_source, a ~ Datasource, value.var = c("N"))
-flow_source <- rbind(flow_source, flow_source_totals)
-flow_source <- rbind(empty_table_1, flow_source, fill = T)
-flow_source <- flow_source[, lapply(.SD, max, na.rm = T), by = a]
+flow_source_1a <- flow_source[a != "B_birth_date_absurd", ]
+flow_source_1a <- rbind(flow_source_1a, flow_source_totals)
+flow_source_1a <- rbind(empty_table_1, flow_source_1a, fill = T)
+flow_source_1a <- flow_source_1a[, lapply(.SD, max, na.rm = T), by = a]
 
-correct_col_names <- names(empty_table_1)[2:length(names(empty_table_1))]
+max_col <- length(names(empty_table_1))
+correct_col_names <- names(empty_table_1)[2:max_col]
 correct_row_names <- empty_table_1$a[2:5]
-table_1a <- flow_source[a == "end population",
-                        (correct_col_names) := flow_source[a == "Start population", 2:5] -
-                          colSums(flow_source[a %in% correct_row_names, 2:5])]
-setnames(table_1a, "a", " ")
-
-
+table_1a <- flow_source_1a[a == "end population",
+                           (correct_col_names) := flow_source_1a[a == "Start population", 2:max_col] -
+                             colSums(flow_source_1a[a %in% correct_row_names, 2:max_col])]
 
 
 
 
 empty_table_2 <- create_empty_table_1b()
+
+flow_source_1b <- flow_source[a == "B_birth_date_absurd", ]
+flow_source_1b <- rbind(flow_source_1b, table_1a[a == "end population", a := "Start population"])
+
+
+
+
+setnames(table_1a, "a", " ")
+
+
 
 empty_table_2 <- empty_table_2[a == "Start population", (correct_col_names) := empty_table_1[1, 2:5] - colSums(empty_table_1[2:5, 2:5])]
 
