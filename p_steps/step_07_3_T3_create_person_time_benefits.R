@@ -2,14 +2,14 @@
 #-----------------------------------------------
 #To estimate the weekly incidence rates of COVID-19 (overall and by severity level) in 2020 by data source
 
-# input: D4_study_population, D3_algorithm_covid ,list_outcomes_observed_COVID
+# input: D3_studyweeks, D3_algorithm_covid ,list_outcomes_observed_COVID
 # output: D4_persontime_benefit_week (exported to csv)
 
 
 print("COUNT PERSON TIME PER COVID by week benefits")
 
 load(paste0(dirtemp,paste0("D3_outcomes_covid.RData")))
-load(paste0(diroutput,"D4_study_population.RData"))
+load(paste0(dirtemp,"D3_studyweeks.RData"))
 load(paste0(dirpargen,paste0("list_outcomes_observed_COVID.RData")))
 
 D4_persontime_benefit_week <- vector(mode = 'list')
@@ -18,11 +18,11 @@ for (subpop in subpopulations_non_empty) {
   start_week=seq.Date(as.Date("20200106","%Y%m%d"),Sys.Date(),by = "week")
   
   if (this_datasource_has_subpopulations == TRUE){ 
-    study_population <- D4_study_population[[subpop]]
+    study_population <- D3_studyweeks[[subpop]]
     events_ALL_OUTCOMES <- D3_outcomes_covid[[subpop]]
     list_outcomes <- list_outcomes_observed_COVID[[subpop]]
   }else{
-    study_population <- D4_study_population
+    study_population <- D3_studyweeks
     events_ALL_OUTCOMES <- D3_outcomes_covid
     list_outcomes <- list_outcomes_observed_COVID
   }
@@ -41,7 +41,7 @@ for (subpop in subpopulations_non_empty) {
   start_week=gsub("-","", start_week)
   end_week=gsub("-","", end_week)
   
-  for (i in 1:length(start_week)){
+for (i in 1:length(start_week)){
     start_persontime_studytime = start_week[i]
     end_persontime_studytime = end_week[i]
     nameoutput <- paste0("Output_file",start_week[i])
@@ -54,15 +54,15 @@ for (subpop in subpopulations_non_empty) {
       End_study_time = end_persontime_studytime,
       Start_date = "study_entry_date",
       End_date = "study_exit_date",
-      Birth_date = "date_of_birth",
-      Strata = c("sex"),
+      #Birth_date = "date_of_birth",
+      Strata = c("sex","Birthcohort_persons","Dose","type_vax"),
       Name_event = "name_event",
       Date_event = "date_event",
-      Age_bands = c(0,19,29,39,49,59,69,79),
+      #Age_bands = c(0,19,29,39,49,59,69,79),
       Increment="week",
       Outcomes =  list_outcomes, 
-      Unit_of_age = "year",
-      include_remaning_ages = T,
+      # Unit_of_age = "year",
+      # include_remaning_ages = T,
       Aggregate = T
     )
     )
@@ -103,4 +103,4 @@ for (subpop in subpopulations_non_empty){
   )
 }
 # rm(list = nameobject)
-rm(D4_study_population,persontime_benefit_week,study_population,events_ALL_OUTCOMES)
+rm(D3_studyweeks,persontime_benefit_week,study_population,events_ALL_OUTCOMES)

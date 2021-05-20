@@ -12,6 +12,8 @@
 
 load(paste0(diroutput,"D4_persontime_benefit_week.RData"))
 
+#save(D4_persontime_benefit_year,file=paste0(diroutput,"D4_persontime_benefit_year.RData"))
+
 
 #for each event: "COVID_L1plus","COVID_L2plus", "COVID_L3plus","COVID_L4plus"
 

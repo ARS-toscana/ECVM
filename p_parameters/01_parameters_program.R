@@ -121,25 +121,8 @@ study_years_datasource[['SIDIAP']] <-  c("2017","2018","2019","2020")
 study_years <- study_years_datasource[[thisdatasource]]
 
 
-firstYearComponentAnalysis_datasource <- vector(mode="list")
-secondYearComponentAnalysis_datasource <- vector(mode="list")
-
-firstYearComponentAnalysis_datasource[['TEST']] <- '2018'
-firstYearComponentAnalysis_datasource[['ARS']] <- '2018'
-firstYearComponentAnalysis_datasource[['BIFAP']] <- '2018'
-firstYearComponentAnalysis_datasource[['AARHUS']] <- '2012'
-firstYearComponentAnalysis_datasource[['GePaRD']] <- '2016'
-firstYearComponentAnalysis_datasource[['PEDIANET']] <- '2018'
-firstYearComponentAnalysis_datasource[['FISABIO']] <- '2018'
-firstYearComponentAnalysis_datasource[['CPRD']] <- '2018'
-firstYearComponentAnalysis_datasource[['SIDIAP']] <- '2018'
-
-for (datas in c('TEST','ARS','BIFAP','AARHUS','GePaRD','PEDIANET','FISABIO','CPRD','SIDIAP')){
-  secondYearComponentAnalysis_datasource[[datas]] = as.character(as.numeric(firstYearComponentAnalysis_datasource[[datas]])+1)
-}
-
-firstYearComponentAnalysis = firstYearComponentAnalysis_datasource[[thisdatasource]]
-secondYearComponentAnalysis = secondYearComponentAnalysis_datasource[[thisdatasource]]
+firstYearComponentAnalysis = "2019"
+secondYearComponentAnalysis = "2020"
 
 days<-ifelse(thisdatasource %in% c("ARS","TEST"),21,1)
 
