@@ -5,30 +5,36 @@ create_empty_table_1a <- function() {
   n6 <- numeric(6)
   row_names_1 <- c("Start population", "A_sex_or_birth_date_missing", "C_no_observation_period",
                    "D_death_before_study_entry", "E_no_observation_period_including_study_start", "end population")
+  if (length(intersect(names(flow_source_1a), c("Italy_ARS", "NL_PHARMO", "UK_CPRD", "ES_BIFAP"))) == 1) {
+    ext = data.table(a = row_names_1, datasource = n6)
+    setnames(ext, "datasource", vect_recode_manufacturer[thisdatasource])
+    return(ext)
+  }
   return(data.table(a = row_names_1, Italy_ARS = n6, NL_PHARMO = n6, UK_CPRD = n6, ES_BIFAP = n6))
 }
 
 create_empty_table_1b <- function() {
   n4 <- numeric(4)
   row_names_2 <- c("Start population", "B_birth_date_absurd", "A_insufficient_run_in", "end population")
+  if (length(intersect(names(flow_source_1a), c("Italy_ARS", "NL_PHARMO", "UK_CPRD", "ES_BIFAP"))) == 1) {
+    ext = data.table(a = row_names_2, datasource = n4)
+    setnames(ext, "datasource", vect_recode_manufacturer[thisdatasource])
+    return(ext)
+  }
   return(data.table(a = row_names_2, Italy_ARS = n4, NL_PHARMO = n4, UK_CPRD = n4, ES_BIFAP = n4))
 }
 
 flow_source <- fread(paste0(direxp, "Flowchart_basic_exclusion_criteria.csv"))
 flow_study <- fread(paste0(direxp, "Flowchart_exclusion_criteria.csv"))
 
-if (length(unique(flow_source$"Datasource")) > 1) {
-  print("all")
-} else {
-  flow_source <- rbind(flow_source[, Datasource := thisdatasource], copy(flow_source)[, Datasource := "PHARMO"])
-  
-  flow_study <- flow_study[, Datasource := thisdatasource]
-}
-
-empty_table_1 <- create_empty_table_1a()
-
 vect_recode_manufacturer <- c(TEST = "Italy_ARS", ARS = "Italy_ARS", PHARMO = "NL_PHARMO",
                               CPRD = "UK_CPRD", BIFAP = "ES_BIFAP")
+
+if ("Datasource" %not in% names(flow_source)) {
+  flow_source <- flow_source[ , Datasource := thisdatasource]
+  flow_study <- flow_study[ , Datasource := thisdatasource]
+}
+
 flow_source <- flow_source[ , Datasource := vect_recode_manufacturer[Datasource]]
 flow_study <- flow_study[ , Datasource := vect_recode_manufacturer[Datasource]]
 
@@ -42,10 +48,11 @@ flow_source <- data.table::melt(flow_source, id.vars = c("row_id", "Datasource",
                                                  "C_no_observation_period", "D_death_before_study_entry",
                                                  "E_no_observation_period_including_study_start"), variable.name = "a")
 
-flow_source <- flow_source[, .SD[which.min(value)], by = c("row_id", "Datasource", "N")][value == 0, .(Datasource, N, a)]
+flow_source <- flow_source[, .SD[which.min(value)], by = c("row_id", "Datasource", "N")][value == 0, ][, .(Datasource, N, a)]
 flow_source <- data.table::dcast(flow_source, a ~ Datasource, value.var = c("N"))
 flow_source_1a <- flow_source[a != "B_birth_date_absurd", ]
 flow_source_1a <- rbind(flow_source_1a, flow_source_totals)
+empty_table_1 <- create_empty_table_1a()
 flow_source_1a <- rbind(empty_table_1, flow_source_1a, fill = T)
 flow_source_1a <- flow_source_1a[, lapply(.SD, max, na.rm = T), by = a]
 
@@ -59,15 +66,20 @@ table_1a <- flow_source_1a[a == "end population",
 
 
 
-empty_table_2 <- create_empty_table_1b()
 
 flow_source_1b <- flow_source[a == "B_birth_date_absurd", ]
-flow_source_1b <- rbind(flow_source_1b, table_1a[a == "end population", a := "Start population"])
+flow_source_1b <- rbind(flow_source_1b, table_1a[a == "end population", ][, a := "Start population"])
+flow_study <- flow_study[, row_id := rowid(Datasource)]
+flow_study <- data.table::melt(flow_study, id.vars = c("row_id", "Datasource", "N"),
+                                measure.vars = c("A_insufficient_run_in"), variable.name = "a")
+flow_study <- flow_study[value == 1, a := "end population"][, .(Datasource, N, a)]
+flow_study <- data.table::dcast(flow_study, a ~ Datasource, value.var = c("N"))
+flow_source_1b <- rbind(flow_source_1b, flow_study)
+empty_table_2 <- create_empty_table_1b()
+flow_source_1b <- rbind(empty_table_2, flow_source_1b, fill = T)
+table_1b <- flow_source_1b[, lapply(.SD, max, na.rm = T), by = a]
 
-
-
-
-setnames(table_1a, "a", " ")
+setnames(table_1b, "a", " ")
 
 
 
@@ -97,6 +109,7 @@ table_1b <- empty_table_2[a == "end population", (correct_col_names) := empty_ta
 table_1b <- table_1b[.(a = c("B_birth_date_absurd", "A_insufficient_run_in"),
                        to = c("Subjects without valid birth date", "Subjects without one year of look back at 1/1/2020")),
                      on = "a", a := i.to]
+flow_source_1a <- flow_source_1a[, lapply(.SD, max, na.rm = T), by = a]
 
 setnames(table_1b, "a", " ")
 
