@@ -53,13 +53,14 @@ for (subpop in subpopulations_non_empty) {
     
 
 D4_persontime_benefit_year <- Output_file
+fwrite(D4_persontime_benefit_year,file=paste0(direxp,"D4_persontime_benefit_year.csv"))
 save(D4_persontime_benefit_year,file=paste0(diroutput,"D4_persontime_benefit_year.RData"))
 
 
 for (subpop in subpopulations_non_empty){
   thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
   thisdirsmallcountsremoved <- ifelse(this_datasource_has_subpopulations == FALSE,dirsmallcountsremoved,dirsmallcountsremovedsubpop[[subpop]])
-  col<-colnames(persontime_benefit_year)[-(1:3)]
+  col<-colnames(D4_persontime_benefit_year)[-(1:6)]
   temp<-paste0(col,"=5")
   temp2<-paste("c(",paste(temp, collapse = ','),")")
   suppressWarnings(
@@ -73,4 +74,4 @@ for (subpop in subpopulations_non_empty){
   )
 }
 # rm(list = nameobject)
-rm(D3_studyweeks,persontime_benefit_year,study_population,events_ALL_OUTCOMES,Output_file)
+rm(D3_studyweeks,D4_persontime_benefit_year,study_population,events_ALL_OUTCOMES,Output_file)

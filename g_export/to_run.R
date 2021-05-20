@@ -71,7 +71,12 @@ system.time(source(paste0(thisdir,"/p_steps/step_06_T2_create_D3_datasets.R")))
 
 #07 create persontime
 system.time(source(paste0(thisdir,"/p_steps/step_07_1_T3_create_person_time_risks.R")))
-system.time(source(paste0(thisdir,"/p_steps/step_07_2_T3_create_person_time_benefits.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_07_2_T3_create_person_time_risks_year.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_07_3_T3_create_person_time_benefits.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_07_4_T3_create_person_time_benefits_year.R")))
+
+
+system.time(source(paste0(thisdir,"/p_steps/step_07_6_T4_IR.R")))
 
 #08 create D4 for doses and coverage
 system.time(source(paste0(thisdir,"/p_steps/step_08_1_T3_create_D4_doses_weeks.R")))
