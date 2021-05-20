@@ -64,9 +64,6 @@ table_1a <- flow_source_1a[a == "end population",
                              colSums(flow_source_1a[a %in% correct_row_names, 2:max_col])]
 
 
-
-
-
 flow_source_1b <- flow_source[a == "B_birth_date_absurd", ]
 flow_source_1b <- rbind(flow_source_1b, table_1a[a == "end population", ][, a := "Start population"])
 flow_study <- flow_study[, row_id := rowid(Datasource)]
@@ -83,49 +80,10 @@ setnames(table_1b, "a", " ")
 
 
 
-empty_table_2 <- empty_table_2[a == "Start population", (correct_col_names) := empty_table_1[1, 2:5] - colSums(empty_table_1[2:5, 2:5])]
-
-for (row_id in seq_len(nrow(flow_source))) {
-  for (col_name in names(flow_source)) {
-    if (flow_source[row_id, ..col_name] == 0) {
-      empty_table_2[a == col_name, flow_source[row_id, Datasource]] <- flow_source[row_id, N]
-      next
-    }
-  }
-}
-
-for (row_id in seq_len(nrow(flow_study))) {
-  for (col_name in names(flow_study)) {
-    if (flow_study[row_id, ..col_name] == 0) {
-      empty_table_2[a == col_name, flow_study[row_id, Datasource]] <- flow_study[row_id, N]
-      next
-    }
-  }
-}
-
-correct_col_names <- names(empty_table_2)[2:length(names(empty_table_2))]
-table_1b <- empty_table_2[a == "end population", (correct_col_names) := empty_table_2[1, 2:5] - colSums(empty_table_2[2:3, 2:5])]
-
-table_1b <- table_1b[.(a = c("B_birth_date_absurd", "A_insufficient_run_in"),
-                       to = c("Subjects without valid birth date", "Subjects without one year of look back at 1/1/2020")),
-                     on = "a", a := i.to]
-flow_source_1a <- flow_source_1a[, lapply(.SD, max, na.rm = T), by = a]
-
-setnames(table_1b, "a", " ")
-
-
-
-
-
-
-
 # Table2 ----------------------------------------------------------------------------------------------------------
 
 
 ageband_studystart <- fread(paste0(direxp, "D4_descriptive_dataset_ageband_studystart.csv"))
-ageband_studystart <- ageband_studystart[rep(1, 2), ]
-ageband_studystart <- ageband_studystart[1, Datasource := "ARS"]
-ageband_studystart <- ageband_studystart[2, Datasource := "PHARMO"]
 
 ageband_studystart[, Datasource := c(TEST = "test", ARS = "Italy_ARS",
                                      PHARMO = "NL_PHARMO", CPRD = "UK_CPRD",
