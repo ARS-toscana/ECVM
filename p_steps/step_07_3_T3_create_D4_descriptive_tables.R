@@ -10,6 +10,7 @@ na_to_0 = function(DT) {
 
 load(file = paste0(dirtemp, "D3_study_population.RData"))
 load(file = paste0(dirtemp, "D3_Vaccin_cohort.RData"))
+load(paste0(diroutput, "D3_study_population_cov_ALL.RData"))
 
 D4_descriptive_dataset_age_studystart <- D3_study_population[, .(person_id, age_at_study_entry, fup_days)]
 D4_descriptive_dataset_age_studystart <- D4_descriptive_dataset_age_studystart[,c("Age_P25", "Age_P50", "Age_p75") :=
@@ -43,6 +44,19 @@ D4_descriptive_dataset_sex_studystart <- D4_descriptive_dataset_sex_studystart[,
 D4_descriptive_dataset_sex_studystart <- data.table::dcast(D4_descriptive_dataset_sex_studystart, Datasource ~ sex, value.var = "N")
 
 fwrite(D4_descriptive_dataset_sex_studystart, file = paste0(direxp, "D4_descriptive_dataset_sex_studystart.csv"))
+
+setnames(D3_study_population_cov_ALL,
+         c("CV_either_DX_or_DP", "COVCANCER_either_DX_or_DP", "COVCOPD_either_DX_or_DP", "COVHIV_either_DX_or_DP",
+           "COVCKD_either_DX_or_DP", "COVDIAB_either_DX_or_DP", "COVOBES_either_DX_or_DP", "COVSICKLE_either_DX_or_DP",
+           "IMMUNOSUPPR_at_study_entry"),
+         c("CV", "Cancer", "CLD", "HIV", "CKD", "Diabetes", "Obesity", "Sicklecell", "immunosuppressants"))
+
+cols_chosen <- c("CV", "Cancer", "CLD", "HIV", "CKD", "Diabetes", "Obesity", "Sicklecell", "immunosuppressants")
+D4_descriptive_dataset_covariate_studystart <- D3_study_population_cov_ALL[, lapply(.SD, sum, na.rm=TRUE), .SDcols = cols_chosen]
+D4_descriptive_dataset_covariate_studystart <- D4_descriptive_dataset_covariate_studystart[, Datasource := thisdatasource]
+D4_descriptive_dataset_covariate_studystart <- D4_descriptive_dataset_covariate_studystart[, .(Datasource, CV, Cancer, CLD, HIV, CKD, Diabetes, Obesity, Sicklecell, immunosuppressants)]
+
+fwrite(D4_descriptive_dataset_covariate_studystart, file = paste0(direxp, "D4_descriptive_dataset_covariate_studystart.csv"))
 
 D4_followup_fromstudystart <- D3_study_population[, .(person_id, sex, age_at_study_entry, study_entry_date, study_exit_date, fup_days)]
 dec31 = ymd(20201231)
