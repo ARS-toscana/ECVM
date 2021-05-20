@@ -43,7 +43,7 @@ system.time(source(paste0(thisdir,"/p_steps/step_04_1_T3_apply_exclusion_criteri
 system.time(source(paste0(thisdir,"/p_steps/step_04_2_T3_apply_quality_check_exclusion_criteria_doses.R")))
 ##use flowchart (apply also quality checks)
 
-#06 create D4 for doses and coverage
+#05 create D4 for doses and coverage
 system.time(source(paste0(thisdir,"/p_steps/step_05_1_T2.2_components.R")))
 
 system.time(source(paste0(thisdir,"/p_steps/step_05_2_T2.2_secondary_components.R")))
@@ -66,17 +66,21 @@ system.time(source(paste0(thisdir,"/p_steps/step_05_10_T2.2_components_COVID_sev
 
 system.time(source(paste0(thisdir,"/p_steps/step_05_11_T2.3_algorithms_COVID_severity.R")))
 
-#05 create D3 for doses and coverage
+#06 create D3 for doses and coverage
 system.time(source(paste0(thisdir,"/p_steps/step_06_T2_create_D3_datasets.R")))
 
-#07 create D4 for doses and coverage
+#07 create persontime
+system.time(source(paste0(thisdir,"/p_steps/step_07_1_T3_create_person_time_risks.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_07_2_T3_create_person_time_benefits.R")))
+
+#08 create D4 for doses and coverage
 system.time(source(paste0(thisdir,"/p_steps/step_08_1_T3_create_D4_doses_weeks.R")))
 
 system.time(source(paste0(thisdir,"/p_steps/step_08_2_T3_create_dashboard_tables.R")))
 
 system.time(source(paste0(thisdir,"/p_steps/step_08_3_T3_create_D4_descriptive_tables.R")))
 
-#08 describing the datasets
+#09 describing the datasets
 system.time(source(paste0(thisdir,"/p_steps/step_09_1_FlowChart_description.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_09_2_Coverage_description.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_09_3_Doses_description.R")))

@@ -62,22 +62,26 @@ system.time(source(paste0(thisdir,"/p_steps/step_05_8_T2.3_baseline_characterist
 
 system.time(source(paste0(thisdir,"/p_steps/step_05_9_T2.3_ALL_covariates_at_baseline_V2.R")))
 
+system.time(source(paste0(thisdir,"/p_steps/step_05_10_T2.2_components_COVID_severity.R")))
+
+system.time(source(paste0(thisdir,"/p_steps/step_05_11_T2.3_algorithms_COVID_severity.R")))
+
 #05 create D3 for doses and coverage
 system.time(source(paste0(thisdir,"/p_steps/step_06_T2_create_D3_datasets.R")))
 
 #07 create D4 for doses and coverage
-system.time(source(paste0(thisdir,"/p_steps/step_07_1_T3_create_D4_doses_weeks.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_08_1_T3_create_D4_doses_weeks.R")))
 
-system.time(source(paste0(thisdir,"/p_steps/step_07_2_T3_create_dashboard_tables.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_08_2_T3_create_dashboard_tables.R")))
 
-system.time(source(paste0(thisdir,"/p_steps/step_07_3_T3_create_D4_descriptive_tables.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_08_3_T3_create_D4_descriptive_tables.R")))
 
 #08 describing the datasets
-system.time(source(paste0(thisdir,"/p_steps/step_08_01_FlowChart_description.R")))
-system.time(source(paste0(thisdir,"/p_steps/step_08_02_Coverage_description.R")))
-system.time(source(paste0(thisdir,"/p_steps/step_08_03_Doses_description.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_09_1_FlowChart_description.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_09_2_Coverage_description.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_09_3_Doses_description.R")))
 
-# system.time(source(paste0(thisdir,"/p_steps/step_08_01_FlowChart_description_MD.R")))
-# system.time(source(paste0(thisdir,"/p_steps/step_08_02_Coverage_description_MD.R")))
-# system.time(source(paste0(thisdir,"/p_steps/step_08_03_Doses_description_MD.R")))
+# system.time(source(paste0(thisdir,"/p_steps/step_09_1_FlowChart_description_MD.R")))
+# system.time(source(paste0(thisdir,"/p_steps/step_09_2_Coverage_description_MD.R")))
+# system.time(source(paste0(thisdir,"/p_steps/step_09_3_Doses_description_MD.R")))
 
