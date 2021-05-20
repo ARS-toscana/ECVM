@@ -66,12 +66,6 @@ system.time(source(paste0(thisdir,"/p_steps/step_05_10_T2.2_components_COVID_sev
 
 system.time(source(paste0(thisdir,"/p_steps/step_05_11_T2.3_algorithms_COVID_severity.R")))
 
-<<<<<<< HEAD
-#05 create D3 for doses and coverage
-system.time(source(paste0(thisdir,"/p_steps/step_06_T2_create_D3_datasets.R")))
-
-#07 create D4 for doses and coverage
-=======
 #06 create D3 for doses and coverage
 system.time(source(paste0(thisdir,"/p_steps/step_06_T2_create_D3_datasets.R")))
 
@@ -80,18 +74,13 @@ system.time(source(paste0(thisdir,"/p_steps/step_07_1_T3_create_person_time_risk
 system.time(source(paste0(thisdir,"/p_steps/step_07_2_T3_create_person_time_benefits.R")))
 
 #08 create D4 for doses and coverage
->>>>>>> 3b35588b22b63513a70b008dfb01464b760c17f9
 system.time(source(paste0(thisdir,"/p_steps/step_08_1_T3_create_D4_doses_weeks.R")))
 
-system.time(source(paste0(thisdir,"/p_steps/step_08_2_T3_create_dashboard_tables.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_08_2_T3_create_D4_descriptive_tables.R")))
 
-system.time(source(paste0(thisdir,"/p_steps/step_08_3_T3_create_D4_descriptive_tables.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_08_3_T3_create_dashboard_tables.R")))
 
-<<<<<<< HEAD
-#08 describing the datasets
-=======
 #09 describing the datasets
->>>>>>> 3b35588b22b63513a70b008dfb01464b760c17f9
 system.time(source(paste0(thisdir,"/p_steps/step_09_1_FlowChart_description.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_09_2_Coverage_description.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_09_3_Doses_description.R")))
