@@ -106,19 +106,8 @@ file.copy(paste0(thisdir,'/to_run.R'), dirsmallcountsremoved, overwrite = T)
 
 #study_years_datasource
 
-study_years_datasource <- vector(mode="list")
 
-study_years_datasource[['TEST']] <-  c("2017","2018","2019","2020")
-study_years_datasource[['AARHUS']] <-  c("2010","2011","2012","2013")
-study_years_datasource[['ARS']] <-  c("2017","2018","2019","2020")
-study_years_datasource[['BIFAP']] <-  c("2017","2018","2019")
-study_years_datasource[['PEDIANET']] <-  c("2018","2019","2020")
-study_years_datasource[['GePaRD']] <-  c("2014","2015","2016","2017")
-study_years_datasource[['FISABIO']] <-  c("2017","2018","2019","2020")
-study_years_datasource[['CPRD']] <-  c("2017","2018","2019","2020")
-study_years_datasource[['SIDIAP']] <-  c("2017","2018","2019","2020")
-
-study_years <- study_years_datasource[[thisdatasource]]
+study_years <- c("2020","2021")
 
 
 firstYearComponentAnalysis = "2019"
