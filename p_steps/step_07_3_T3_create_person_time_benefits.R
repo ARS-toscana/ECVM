@@ -2,7 +2,7 @@
 #-----------------------------------------------
 #To estimate the weekly incidence rates of COVID-19 (overall and by severity level) in 2020 by data source
 
-# input: D3_studyweeks, D3_algorithm_covid ,list_outcomes_observed_COVID
+# input: D3_vaxweeks_including_not_vaccinated, D3_algorithm_covid ,list_outcomes_observed_COVID
 # output: D4_persontime_benefit_week (exported to csv)
 
 
@@ -18,11 +18,11 @@ for (subpop in subpopulations_non_empty) {
   start_week=seq.Date(as.Date("20200106","%Y%m%d"),Sys.Date(),by = "week")
   
   if (this_datasource_has_subpopulations == TRUE){ 
-    study_population <- D3_studyweeks[[subpop]]
+    study_population <- D3_vaxweeks_including_not_vaccinated[[subpop]]
     events_ALL_OUTCOMES <- D3_outcomes_covid[[subpop]]
     list_outcomes <- list_outcomes_observed_COVID[[subpop]]
   }else{
-    study_population <- D3_studyweeks
+    study_population <- D3_vaxweeks_including_not_vaccinated
     events_ALL_OUTCOMES <- D3_outcomes_covid
     list_outcomes <- list_outcomes_observed_COVID
   }
@@ -103,4 +103,4 @@ for (subpop in subpopulations_non_empty){
   )
 }
 # rm(list = nameobject)
-rm(D3_studyweeks,persontime_benefit_week,study_population,events_ALL_OUTCOMES)
+rm(D3_vaxweeks_including_not_vaccinated,persontime_benefit_week,study_population,events_ALL_OUTCOMES)
