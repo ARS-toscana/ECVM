@@ -30,7 +30,7 @@ for (subpop in subpopulations_non_empty) {
   # if (last_event>study_end)  last_event<-study_end
   # 
   # start_week=start_week[start_week<last_event-7]
-  max_exit<-study_population[,max(study_exit_date)]
+  max_exit<-study_population[,max(end_date_of_period)]
   last_event<-events_ALL_OUTCOMES[,max(date_event)]
   if (last_event<ymd("20200101")) {
     next

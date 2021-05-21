@@ -1,4 +1,4 @@
-# CREATE ALGORITHMS FOR COVID
+# CREATE ALGORITHMS FOR COVID SEVERITY
 #-----------------------------------------------
 # input: D4_study_population.RData, D3_events_COVID_narrow, D3_events_DEATH.RData, covid_registry, COVID_symptoms
 # output: D3_algorithm_covid

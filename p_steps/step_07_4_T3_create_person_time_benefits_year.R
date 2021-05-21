@@ -27,7 +27,7 @@ for (subpop in subpopulations_non_empty) {
     list_outcomes <- list_outcomes_observed_COVID
   }
 }
-  endyear<- substr(study_population[,max(study_exit_date)], 1, 4)
+  endyear<- substr(study_population[,max(end_date_of_period)], 1, 4)
   end_persontime_studytime<-as.character(paste0(endyear,"1231"))
   
 

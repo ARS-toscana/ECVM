@@ -1,5 +1,5 @@
 #------------------------------------------------------------------
-# split outcomes in components, beyond those included in HOSP and PC that are involved in D3_components_ OUTCOME 
+# split outcomes in components
 
 # input: D4_study_population, D3_events_OUTCOME for each outcome, named OUTCOME
 # output: QC_all_components_OUTCOME.RData

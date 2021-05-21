@@ -101,7 +101,7 @@ D3_vaxweeks <- as.data.table(lapply(D3_vaxweeks, rep, D3_vaxweeks$fup_vax))
 D3_vaxweeks[, week := rowid(person_id, Dose, study_entry_date_vax, study_exit_date_vax)]
 D3_vaxweeks <- D3_vaxweeks[, week := week - 1][, fup_vax := fup_vax - 1]
 D3_vaxweeks <- D3_vaxweeks[, start_date_of_period := study_entry_date_vax + 7 * week]
-D3_vaxweeks <- D3_vaxweeks[, end_date_of_period := fifelse(week == fup_vax, study_exit_date_vax, start_date_of_period + 7)]
+D3_vaxweeks <- D3_vaxweeks[, end_date_of_period := fifelse(week == fup_vax, study_exit_date_vax, start_date_of_period + 6)]
 D3_vaxweeks <- D3_vaxweeks[, month := month(start_date_of_period)]
 D3_vaxweeks <- D3_vaxweeks[, .(person_id, start_date_of_period, end_date_of_period, Dose, week, month, sex, type_vax, Birthcohort_persons)]
 
@@ -119,6 +119,9 @@ setnames(D3_vaxweeks_including_not_vaccinated, "week", "week_fup")
 
 D3_vaxweeks <- D3_vaxweeks[, c("sex", "type_vax", "Birthcohort_persons") := NULL]
 D3_vaxweeks <- D3_vaxweeks[, .(person_id, start_date_of_period, end_date_of_period, Dose, week, month)]
+
+D3_vaxweeks_including_not_vaccinated <- D3_vaxweeks_including_not_vaccinated[start_date_of_period < end_date_of_period, ]
+D3_vaxweeks<- D3_vaxweeks[start_date_of_period < end_date_of_period, ]
 
 save(D3_studyweeks, file = paste0(dirtemp, "D3_studyweeks.RData"))
 save(D3_vaxweeks, file = paste0(dirtemp, "D3_vaxweeks.RData"))

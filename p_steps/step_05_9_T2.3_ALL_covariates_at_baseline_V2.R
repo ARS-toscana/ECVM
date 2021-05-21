@@ -1,5 +1,5 @@
 # ----------------------------------
-# for all covariates create binary variable drug procy OR diagnosis; also create binary 'overall'
+# for all covariates create binary variable drug proxy OR diagnosis; also create binary 'overall'
 
 # input: D3_study_population_covariates , D3_study_population_DP.RData
 # output: D3_study_population_cov_ALL.RData

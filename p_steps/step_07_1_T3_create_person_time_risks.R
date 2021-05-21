@@ -29,7 +29,7 @@ for (subpop in subpopulations_non_empty) {
   }
 
   
-  max_exit<-study_population[,max(study_exit_date)]
+  max_exit<-study_population[,max(end_date_of_period)]
   last_event<-events_ALL_OUTCOMES[,max(date_event)]
   if (last_event<ymd("20200101")) {
     next
