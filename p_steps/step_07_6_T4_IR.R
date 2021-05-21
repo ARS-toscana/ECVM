@@ -17,6 +17,7 @@ for (ev in events) {
     round(get(paste0("IR_",ev))*exp(+1.96/sqrt(get(paste0(ev,"_b")))), 2))]
 }
 
+D4_persontime_benefit_week<-D4_persontime_benefit_week[,-c(6:14)]
 fwrite(D4_persontime_benefit_week,file=paste0(direxp,"D4_IR_benefit_week.csv"))
 
 
@@ -30,6 +31,8 @@ for (ev in events) {
     round(get(paste0("IR_",ev))*exp(-1.96/sqrt(get(paste0(ev,"_b")))), 2),
     round(get(paste0("IR_",ev))*exp(+1.96/sqrt(get(paste0(ev,"_b")))), 2))]
 }
+
+D4_persontime_benefit_year<-D4_persontime_benefit_year[,-c(6:14)]
 fwrite(D4_persontime_benefit_year,file=paste0(direxp,"D4_IR_benefit_fup.csv"))
 
 
@@ -48,6 +51,7 @@ for (ev in list_outcomes_observed) {
     round(get(paste0("IR_",ev))*exp(+1.96/sqrt(get(paste0(ev,"_b")))), 2))]
 }
 
+D4_persontime_risk_week<-D4_persontime_risk_week[,-c(6:44)]
 fwrite(D4_persontime_risk_week,file=paste0(direxp,"D4_IR_risk_week.csv"))
 
 
@@ -61,6 +65,8 @@ for (ev in list_outcomes_observed) {
     round(get(paste0("IR_",ev))*exp(-1.96/sqrt(get(paste0(ev,"_b")))), 2),
     round(get(paste0("IR_",ev))*exp(+1.96/sqrt(get(paste0(ev,"_b")))), 2))]
 }
+
+D4_persontime_risk_year<-D4_persontime_risk_year[,-c(6:44)]
 fwrite(D4_persontime_risk_year,file=paste0(direxp,"D4_IR_risk_fup.csv"))
 
 load(paste0(diroutput,"D4_persontime_risk_week.RData"))
