@@ -94,6 +94,8 @@ cohort_to_vaxweeks <- cohort_to_vaxweeks[!is.na(study_entry_date) & !is.na(study
 cohort_to_vaxweeks <- cohort_to_vaxweeks[, Dose := as.character(Dose)][Dose == "3", Dose := "0"]
 D3_vaxweeks <- copy(cohort_to_vaxweeks)
 D3_studyweeks <- copy(cohort_to_vaxweeks)
+D3_studyweeks <- D3_studyweeks[, fup_vaccinations := fup]
+D3_studyweeks <- D3_studyweeks[Dose == 0, fup_vaccinations := 0]
 D3_vaxweeks <- D3_vaxweeks[, c("sex", "type_vax", "Birthcohort_persons") := NULL][Dose %in% c(1, 2), ]
 setnames(D3_vaxweeks, c("study_entry_date", "study_exit_date", "fup"),
          c("study_entry_date_vax", "study_exit_date_vax", "fup_vax"))

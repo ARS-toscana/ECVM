@@ -95,3 +95,5 @@ system.time(source(paste0(thisdir,"/p_steps/step_09_3_Doses_description.R")))
 # system.time(source(paste0(thisdir,"/p_steps/step_09_2_Coverage_description_MD.R")))
 # system.time(source(paste0(thisdir,"/p_steps/step_09_3_Doses_description_MD.R")))
 
+#10 Create descriptive tables
+system.time(source(paste0(thisdir,"/p_steps/step_10_T4_create_dummy_tables.R")))
