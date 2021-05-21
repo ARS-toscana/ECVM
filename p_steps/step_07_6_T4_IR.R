@@ -6,7 +6,8 @@
 # round(calculated IR_&x.*exp(+1.96/SQRT(calculated Events_&x.)),0.01) as UL_&x.
 
 #D4_persontime_benefit_week----------------------------------------------
-load(paste0(diroutput,"D4_persontime_benefit_week.RData"))
+load(paste0(diroutput,"D4_persontime_benefit_week_totals.RData"))
+load(paste0(dirtemp,"list_outcomes_observed.RData"))
 
 events<-c("COVID_L1plus","COVID_L2plus", "COVID_L3plus","COVID_L4plus")
 
@@ -24,7 +25,7 @@ fwrite(D4_persontime_benefit_week,file=paste0(direxp,"D4_IR_benefit_week.csv"))
 
 
 #D4_persontime_benefit_year-----------------------------------------------------
-load(paste0(diroutput,"D4_persontime_benefit_year.RData"))
+load(paste0(diroutput,"D4_persontime_benefit_year_totals.RData"))
 for (ev in events) {
   D4_persontime_benefit_year[, paste0("IR_",ev) :=  round(100000*(get(paste0(ev,"_b")))/get(paste0("Persontime_",ev)), 2)]
   D4_persontime_benefit_year <- D4_persontime_benefit_year[, c(paste0("lb_",ev), paste0("ub_",ev)) := list(
@@ -41,7 +42,7 @@ fwrite(D4_persontime_benefit_year,file=paste0(direxp,"D4_IR_benefit_fup.csv"))
 #for all outcomes
 
 #D4_persontime_risk_week----------------------------------------------
-load(paste0(diroutput,"D4_persontime_risk_week.RData"))
+load(paste0(diroutput,"D4_persontime_risk_week_totals.RData"))
 
 
 for (ev in list_outcomes_observed) {
@@ -58,7 +59,7 @@ fwrite(D4_persontime_risk_week,file=paste0(direxp,"D4_IR_risk_week.csv"))
 
 
 #D4_persontime_risk_year-----------------------------------------------------
-load(paste0(diroutput,"D4_persontime_risk_year.RData"))
+load(paste0(diroutput,"D4_persontime_risk_year_totals.RData"))
 for (ev in list_outcomes_observed) {
   D4_persontime_risk_year[, paste0("IR_",ev) :=  round(100000*(get(paste0(ev,"_b")))/get(paste0("Persontime_",ev)), 2)]
   D4_persontime_risk_year <- D4_persontime_risk_year[, c(paste0("lb_",ev), paste0("ub_",ev)) := list(
