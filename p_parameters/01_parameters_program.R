@@ -151,7 +151,8 @@ correct_difftime <- function(t1, t2, t_period = "years") {
 }
 
 calc_precise_week <- function(time_diff) {
-  floor(time_length(time_diff, "week")) + 1
+  weeks_frac <- time_length(time_diff, "week")
+  fifelse(weeks_frac%%1==0, weeks_frac, floor(weeks_frac) + 1)
 }
 
 join_and_replace <- function(df1, df2, join_cond, old_name) {

@@ -120,9 +120,6 @@ setnames(D3_vaxweeks_including_not_vaccinated, "week", "week_fup")
 D3_vaxweeks <- D3_vaxweeks[, c("sex", "type_vax", "Birthcohort_persons") := NULL]
 D3_vaxweeks <- D3_vaxweeks[, .(person_id, start_date_of_period, end_date_of_period, Dose, week, month)]
 
-D3_vaxweeks_including_not_vaccinated <- D3_vaxweeks_including_not_vaccinated[start_date_of_period < end_date_of_period, ]
-D3_vaxweeks<- D3_vaxweeks[start_date_of_period < end_date_of_period, ]
-
 save(D3_studyweeks, file = paste0(dirtemp, "D3_studyweeks.RData"))
 save(D3_vaxweeks, file = paste0(dirtemp, "D3_vaxweeks.RData"))
 save(D3_vaxweeks_including_not_vaccinated, file = paste0(dirtemp, "D3_vaxweeks_including_not_vaccinated.RData"))
