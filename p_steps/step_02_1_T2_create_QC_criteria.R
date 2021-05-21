@@ -6,11 +6,13 @@ concepts <- concepts[, vx_record_date := ymd(vx_record_date)]
 concepts <- concepts[, derived_date := fifelse(!is.na(date), date, vx_record_date)]
 concepts[, temp_id := rowid(person_id, vx_dose, derived_date, vx_manufacturer)]
 concepts <- concepts[, qc_dupl := fifelse(temp_id == 1, 0, 1)]
+concepts <- concepts[, qc_1_date := as.numeric(is.na(derived_date))]
+concepts <- concepts[qc_dupl == 0 & qc_1_date == 0, qc_2_date := fifelse(derived_date >= start_COVID_vaccination_date, 0, 1)]
 
-concepts <- concepts[, .(person_id, date, derived_date, vx_dose, vx_manufacturer, qc_dupl)]
+concepts <- concepts[, .(person_id, date, derived_date, vx_dose, vx_manufacturer, qc_dupl, qc_1_date, qc_2_date)]
 
 setorderv(concepts, c("person_id", "derived_date"))
-concepts <- concepts[qc_dupl == 0, derived_dose := rowid(person_id)]
+concepts <- concepts[qc_dupl == 0 & qc_1_date == 0 & qc_2_date == 0, derived_dose := rowid(person_id)]
 
 QC_dose_derived <- concepts[qc_dupl == 0, wrong_dose := fifelse(vx_dose != derived_dose, 1, 0)]
 nrow_wrong <- nrow(QC_dose_derived)
@@ -35,7 +37,6 @@ table_QC_dose_derived <- data.table(a = c("", "Number of doses", "Missing first 
 setnames(table_QC_dose_derived, c("a", "b", "c"), c("", thisdatasource, thisdatasource))
 fwrite(table_QC_dose_derived, file = paste0(direxp, "table_QC_dose_derived.csv"))
 
-concepts <- concepts[, qc_1_date := as.numeric(is.na(derived_date))]
 concepts <- concepts[, qc_1_dose := as.numeric(is.na(derived_dose))]
 concepts$derived_dose <- as.numeric(concepts$derived_dose)
 concepts$vx_manufacturer <- as.character(concepts$vx_manufacturer)
@@ -55,7 +56,7 @@ setorder(concepts, person_id, derived_dose, derived_date)
 
 concepts[qc_dupl == 0, temp_id := rowid(person_id, derived_dose, derived_date, vx_manufacturer)]
 # concepts <- concepts[, qc_dupl := fifelse(temp_id == 1, 0, 1), by = c("person_id", "derived_dose", "derived_date", "vx_manufacturer")]
-concepts <- concepts[qc_dupl == 0, qc_2_date := fifelse(derived_date >= start_COVID_vaccination_date, 0, 1)]
+
 concepts <- concepts[qc_dupl == 0, qc_2_dose := fifelse(derived_dose <= 2, 0, 1), by = c("person_id", "derived_date")]
 
 concepts[qc_dupl == 0, temp_id := rowid(person_id, derived_dose, derived_date)]

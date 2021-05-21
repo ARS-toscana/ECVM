@@ -1,6 +1,7 @@
 load(paste0(dirtemp, "D3_vaxweeks.RData"))
 load(paste0(dirtemp, "D3_Vaccin_cohort.RData"))
 load(paste0(dirtemp, "D3_study_population.RData"))
+load(paste0(dirtemp,"list_outcomes_observed.RData"))
 
 
 # Birth Cohort ----------------------------------------------------------------------------------------------------
@@ -125,3 +126,103 @@ rm(D3_vaxweeks, cohort_to_doses_weeks, all_mondays, monday_week, double_weeks, a
    all_ages, complete_df, DOSES_BIRTHCOHORTS, D3_study_population, tot_pop_cohorts, all_pop, COVERAGE_BIRTHCOHORTS,
    D3_Vaccin_cohort, D3_study_population_cov_ALL, vaxweeks_to_dos_bir_cor_base, vaxweeks_to_dos_risk, DOSES_RISKFACTORS,
    COVERAGE_RISKFACTORS)
+
+
+
+# Benefit ------------------------------------------------------------------------------------------------------------
+
+D4_IR_benefit_week <- fread(paste0(direxp,"D4_IR_benefit_week.csv"))
+BBC <- D4_IR_benefit_week[, Dose := as.character(Dose)]
+BBC <- BBC[Dose == 0, c("Dose", "type_vax") := list("no_dose", "none")]
+colA = paste("IR_COVID_L", 1:4, "plus", sep = "")
+colB = paste("lb_COVID_L", 1:4, "plus", sep = "")
+colC = paste("ub_COVID_L", 1:4, "plus", sep = "")
+BBC <- data.table::melt(BBC, measure = list(colA, colB, colC), variable.name = "COVID",
+                        value.name = c("IR", "lb", "ub"), na.rm = F)
+
+BBC <- BBC[is.na(ub), ub := 0]
+setnames(BBC, c("Birthcohort_persons", "Dose", "type_vax"), c("birth_cohort", "dose", "vx_manufacturer"))
+BBC <- BBC[, datasource := thisdatasource][, .(datasource, week, vx_manufacturer, dose, birth_cohort, COVID, IR, lb, ub)]
+vect_recode_COVID <- c("1" = "COVID", "2" = "COVID_REGISTRY", "3" = "COVID_HOSP", "4" = "COVID_DEATH")
+BBC <- BBC[ , COVID := vect_recode_COVID[COVID]]
+
+fwrite(BBC, file = paste0(direxp, "BENEFIT_BIRTHCOHORTS_CALENDARTIME.csv"))
+
+
+D4_IR_benefit_fup <- fread(paste0(direxp,"D4_IR_benefit_fup.csv"))
+BBT <- D4_IR_benefit_fup[, Dose := as.character(Dose)]
+BBT <- BBT[Dose == 0, c("Dose", "type_vax") := list("no_dose", "none")]
+colA = paste("IR_COVID_L", 1:4, "plus", sep = "")
+colB = paste("lb_COVID_L", 1:4, "plus", sep = "")
+colC = paste("ub_COVID_L", 1:4, "plus", sep = "")
+BBT <- data.table::melt(BBT, measure = list(colA, colB, colC), variable.name = "COVID",
+                        value.name = c("IR", "lb", "ub"), na.rm = F)
+
+BBT <- BBT[is.na(ub), ub := 0]
+setnames(BBT, c("Birthcohort_persons", "Dose", "type_vax"), c("birth_cohort", "dose", "vx_manufacturer"))
+BBT <- BBT[, datasource := thisdatasource][, .(datasource, week_fup, vx_manufacturer, dose, birth_cohort, COVID, IR, lb, ub)]
+setnames(BBT, c("week_fup"), c("week"))
+vect_recode_COVID <- c("1" = "COVID", "2" = "COVID_REGISTRY", "3" = "COVID_HOSP", "4" = "COVID_DEATH")
+BBT <- BBT[ , COVID := vect_recode_COVID[COVID]]
+
+fwrite(BBT, file = paste0(direxp, "BENEFIT_BIRTHCOHORTS_TIMESINCEVACCINATION.csv"))
+
+
+
+
+# Risk ------------------------------------------------------------------------------------------------------------
+
+D4_IR_risk_week <- fread(paste0(direxp,"D4_IR_risk_week.csv"))
+RBC <- D4_IR_risk_week[, Dose := as.character(Dose)]
+RBC <- RBC[Dose == 0, c("Dose", "type_vax") := list("no_dose", "none")]
+list_risk = list_outcomes_observed[list_outcomes_observed %not in% c("DM_broad", "HF_broad", "CAD_broad",
+                                                                     "GENCONV_broad", "VTE_broad")]
+colA = paste("IR_", list_risk, sep = "")
+colB = paste("lb_", list_risk, sep = "")
+colC = paste("ub_", list_risk, sep = "")
+
+for (i in names(RBC)){
+  RBC[is.na(get(i)), (i) := 0]
+  RBC[is.integer(get(i)), (i) := as.numeric(get(i))]
+  RBC[is.logical(get(i)), (i) := as.numeric(get(i))]
+}
+
+RBC <- data.table::melt(RBC, measure = list(colA, colB, colC), variable.name = "AESI",
+                        value.name = c("IR", "lb", "ub"), na.rm = F)
+
+setnames(RBC, c("Birthcohort_persons", "Dose", "type_vax"), c("birth_cohort", "dose", "vx_manufacturer"))
+RBC <- RBC[, datasource := thisdatasource][, .(datasource, week, vx_manufacturer, dose, birth_cohort, AESI, IR, lb, ub)]
+vect_recode_AESI <- list_risk
+names(vect_recode_AESI) <- c(as.character(seq_len(length(list_risk))))
+RBC <- RBC[ , AESI := vect_recode_AESI[AESI]]
+
+fwrite(RBC, file = paste0(direxp, "RISK_BIRTHCOHORTS_CALENDARTIME.csv"))
+
+
+D4_IR_risk_fup <- fread(paste0(direxp,"D4_IR_risk_fup.csv"))
+RBT <- D4_IR_risk_fup[, Dose := as.character(Dose)]
+RBT <- RBT[Dose == 0, c("Dose", "type_vax") := list("no_dose", "none")]
+list_risk = list_outcomes_observed[list_outcomes_observed %not in% c("DM_broad", "HF_broad", "CAD_broad",
+                                                                     "GENCONV_broad", "VTE_broad")]
+colA = paste("IR_", list_risk, sep = "")
+colB = paste("lb_", list_risk, sep = "")
+colC = paste("ub_", list_risk, sep = "")
+
+for (i in names(RBT)){
+  RBT[is.na(get(i)), (i) := 0]
+  RBT[is.integer(get(i)), (i) := as.numeric(get(i))]
+  RBT[is.logical(get(i)), (i) := as.numeric(get(i))]
+}
+
+RBT <- data.table::melt(RBT, measure = list(colA, colB, colC), variable.name = "AESI",
+                        value.name = c("IR", "lb", "ub"), na.rm = F)
+
+RBT <- RBT[is.na(ub), ub := 0]
+setnames(RBT, c("Birthcohort_persons", "Dose", "type_vax"), c("birth_cohort", "dose", "vx_manufacturer"))
+RBT <- RBT[, datasource := thisdatasource][, .(datasource, week_fup, vx_manufacturer, dose, birth_cohort, AESI, IR, lb, ub)]
+setnames(RBT, c("week_fup"), c("week"))
+vect_recode_AESI <- list_risk
+names(vect_recode_AESI) <- c(as.character(seq_len(length(list_risk))))
+RBT <- RBT[ , AESI := vect_recode_AESI[AESI]]
+
+fwrite(RBT, file = paste0(direxp, "RISK_BIRTHCOHORTS_TIMESINCEVACCINATION.csv"))

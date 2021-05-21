@@ -1,0 +1,22 @@
+meaning_of_first_event,coding_system_of_code_first_event,code_first_event,count_n
+emergency_room_diagnosis,ICD9,5849,2415
+emergency_room_diagnosis,ICD9,27651,1670
+emergency_room_diagnosis,ICD9,7889,34
+emergency_room_diagnosis,ICD9,2762,42
+emergency_room_diagnosis,ICD9,7885,41
+emergency_room_diagnosis,ICD9,586,37
+emergency_room_diagnosis,ICD9,86600,19
+emergency_room_diagnosis,ICD9,9585,< 5
+emergency_room_diagnosis,ICD9,5809,7
+emergency_room_diagnosis,ICD9,86602,< 5
+emergency_room_diagnosis,ICD9,6393,5
+"","",5849,14
+emergency_room_diagnosis,ICD9,5724,< 5
+emergency_room_diagnosis,ICD9,2752,< 5
+emergency_room_diagnosis,ICD9,5933,< 5
+emergency_room_diagnosis,ICD9,5845,< 5
+emergency_room_diagnosis,ICD9,40390,< 5
+emergency_room_diagnosis,ICD9,86613,< 5
+emergency_room_diagnosis,ICD9,5846,< 5
+"","",27651,< 5
+"","",7889,< 5

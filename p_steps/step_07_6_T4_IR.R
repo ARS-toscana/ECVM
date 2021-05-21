@@ -63,4 +63,5 @@ for (ev in list_outcomes_observed) {
 }
 fwrite(D4_persontime_risk_year,file=paste0(direxp,"D4_IR_risk_fup.csv"))
 
-load(paste0(diroutput,"D4_persontime_risk_week.RData"))
+
+test <- D4_persontime_benefit_year
