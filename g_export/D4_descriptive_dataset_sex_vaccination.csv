@@ -1,4 +1,3 @@
 Datasource,type_vax_1,Sex_female,Sex_male
-ARS,AstraZeneca,7,9
-ARS,Moderna,3,2
-ARS,Pfizer,16,16
+ARS,AstraZeneca,,2
+ARS,Pfizer,8,7
