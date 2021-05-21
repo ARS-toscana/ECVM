@@ -10,7 +10,7 @@ print("COUNT PERSON TIME by week for risks")
 
 load(paste0(dirtemp,"list_outcomes_observed.RData"))
 load(paste0(dirtemp,"D3_events_ALL_OUTCOMES.RData"))
-load(paste0(dirtemp,"D3_studyweeks.RData"))
+load(paste0(dirtemp,"D3_vaxweeks_including_not_vaccinated.RData"))
 
 
 D4_persontime_risk_year <- vector(mode = 'list')
@@ -40,10 +40,10 @@ for (subpop in subpopulations_non_empty) {
       Person_id = "person_id",
       Start_study_time = start_persontime_studytime,
       End_study_time = end_persontime_studytime,
-      Start_date = "study_entry_date",
-      End_date = "study_exit_date",
+      Start_date = "start_date_of_period",
+      End_date = "end_date_of_period",
       #Birth_date = "date_of_birth",
-      Strata = c("sex","Birthcohort_persons","Dose","type_vax","fup"),
+      Strata = c("sex","Birthcohort_persons","Dose","type_vax","week_fup"),
       Name_event = "name_event",
       Date_event = "date_event",
       #Age_bands = c(0,19,29,39,49,59,69,79),

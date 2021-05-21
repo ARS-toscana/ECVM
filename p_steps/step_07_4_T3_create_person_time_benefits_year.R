@@ -9,7 +9,7 @@
 print("COUNT PERSON TIME PER COVID by week benefits")
 
 load(paste0(dirtemp,paste0("D3_outcomes_covid.RData")))
-load(paste0(dirtemp,"D3_studyweeks.RData"))
+load(paste0(dirtemp,"D3_vaxweeks_including_not_vaccinated.RData"))
 load(paste0(dirpargen,paste0("list_outcomes_observed_COVID.RData")))
 
 D4_persontime_benefit_year <- vector(mode = 'list')
@@ -37,10 +37,10 @@ for (subpop in subpopulations_non_empty) {
       Person_id = "person_id",
       Start_study_time = start_persontime_studytime,
       End_study_time = end_persontime_studytime,
-      Start_date = "study_entry_date",
-      End_date = "study_exit_date",
+      Start_date = "start_date_of_period",
+      End_date = "end_date_of_period",
       #Birth_date = "date_of_birth",
-      Strata = c("Dose","sex", "Birthcohort_persons","type_vax","fup"),
+      Strata = c("Dose","sex", "Birthcohort_persons","type_vax","week_fup"),
       Name_event = "name_event",
       Date_event = "date_event",
       #Age_bands = c(0,19,29,39,49,59,69,79),

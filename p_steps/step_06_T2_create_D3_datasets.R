@@ -125,5 +125,6 @@ save(D3_vaxweeks, file = paste0(dirtemp, "D3_vaxweeks.RData"))
 save(D3_vaxweeks_including_not_vaccinated, file = paste0(dirtemp, "D3_vaxweeks_including_not_vaccinated.RData"))
 
 rm(selected_doses, D4_study_population, D3_doses, D3_study_population, D3_Vaccin_cohort,
-   cohort_to_vaxweeks, colA, colB, colC, colD, D3_vaxweeks, D3_studyweeks)
+   cohort_to_vaxweeks, colA, colB, colC, colD, D3_vaxweeks, D3_studyweeks, D3_vaxweeks_including_not_vaccinated,
+   D3_studyweeks_not_vaccinated)
 
