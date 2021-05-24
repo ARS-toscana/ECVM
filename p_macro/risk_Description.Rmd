@@ -1,0 +1,37 @@
+---
+title: "Risk description"
+output: 
+  html_document:
+    theme: united
+    toc: TRUE
+    toc_float: TRUE
+params:
+  RISK_BIRTHCOHORTS_CALENDARTIME: NULL
+  RISK_BIRTHCOHORTS_TIMESINCEVACCINATION: NULL
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r parameters, include=FALSE}
+RISK_BIRTHCOHORTS_CALENDARTIME = params$RISK_BIRTHCOHORTS_CALENDARTIME
+RISK_BIRTHCOHORTS_TIMESINCEVACCINATION = params$RISK_BIRTHCOHORTS_TIMESINCEVACCINATION
+```
+
+This is the description of **RISK_BIRTHCOHORTS_CALENDARTIME** and  **RISK_BIRTHCOHORTS_TIMESINCEVACCINATION** datasets.
+<br>
+This file contains graphical tools and tables to summarize the risk data obtained from the script. 
+
+```{r plot preparation, include=FALSE}
+if (!require("ggplot2")) install.packages("ggplot2")
+library(ggplot2 )
+
+if (!require("ggthemes")) install.packages("ggthemes")
+library(ggthemes )
+
+if (!require("lubridate")) install.packages("lubridate")
+library(lubridate )
+
+```
