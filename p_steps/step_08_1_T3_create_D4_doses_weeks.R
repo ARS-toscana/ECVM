@@ -39,6 +39,7 @@ cohort_to_vaxweeks <- cohort_to_vaxweeks[, Datasource := thisdatasource]
 
 setnames(cohort_to_vaxweeks, c("start_date_of_period", "type_vax", "sex", "at_risk_at_study_entry"),
          c("Week_number", "Type_vax", "Sex", "At_Risk"))
+cohort_to_vaxweeks <- cohort_to_vaxweeks[, sex := fifelse(sex == 1, "Male", "Female")]
 
 D4_doses_weeks <- cohort_to_vaxweeks[, .(Datasource, Year, Week_number, Birthcohort_persons, Sex, At_Risk, Dose,
                                          Type_vax, Persons_in_week, Doses_in_week)]

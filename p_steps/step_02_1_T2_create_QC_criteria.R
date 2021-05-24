@@ -14,7 +14,7 @@ concepts <- concepts[, .(person_id, date, derived_date, vx_dose, vx_manufacturer
 setorderv(concepts, c("person_id", "derived_date"))
 concepts <- concepts[qc_dupl == 0 & qc_1_date == 0 & qc_2_date == 0, derived_dose := rowid(person_id)]
 
-QC_dose_derived <- concepts[qc_dupl == 0, wrong_dose := fifelse(vx_dose != derived_dose, 1, 0)]
+QC_dose_derived <- concepts[qc_dupl == 0 & qc_1_date == 0 & qc_2_date == 0, wrong_dose := fifelse(vx_dose != derived_dose, 1, 0)]
 nrow_wrong <- nrow(QC_dose_derived)
 nrow_wrong_0 <- nrow(QC_dose_derived[is.na(vx_dose) & derived_dose == 1, ])
 nrow_wrong_1 <- nrow(QC_dose_derived[is.na(vx_dose) & derived_dose == 2, ])
