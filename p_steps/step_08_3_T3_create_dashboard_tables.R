@@ -142,7 +142,8 @@ BBC <- data.table::melt(BBC, measure = list(colA, colB, colC), variable.name = "
 
 BBC <- BBC[is.na(ub), ub := 0]
 setnames(BBC, c("Birthcohort_persons", "Dose", "type_vax"), c("birth_cohort", "dose", "vx_manufacturer"))
-BBC <- BBC[, datasource := thisdatasource][, .(datasource, week, vx_manufacturer, dose, birth_cohort, COVID, IR, lb, ub)]
+BBC <- BBC[, datasource := thisdatasource][sex == "both_sexes", ]
+BBC <- BBC[, .(datasource, week, vx_manufacturer, dose, birth_cohort, COVID, IR, lb, ub)]
 vect_recode_COVID <- c("1" = "COVID", "2" = "COVID_REGISTRY", "3" = "COVID_HOSP", "4" = "COVID_DEATH")
 BBC <- BBC[ , COVID := vect_recode_COVID[COVID]]
 
@@ -160,7 +161,8 @@ BBT <- data.table::melt(BBT, measure = list(colA, colB, colC), variable.name = "
 
 BBT <- BBT[is.na(ub), ub := 0]
 setnames(BBT, c("Birthcohort_persons", "Dose", "type_vax"), c("birth_cohort", "dose", "vx_manufacturer"))
-BBT <- BBT[, datasource := thisdatasource][, .(datasource, week_fup, vx_manufacturer, dose, birth_cohort, COVID, IR, lb, ub)]
+BBT <- BBT[, datasource := thisdatasource][sex == "both_sexes", ]
+BBT <- BBT[, .(datasource, week_fup, vx_manufacturer, dose, birth_cohort, COVID, IR, lb, ub)]
 setnames(BBT, c("week_fup"), c("week"))
 vect_recode_COVID <- c("1" = "COVID", "2" = "COVID_REGISTRY", "3" = "COVID_HOSP", "4" = "COVID_DEATH")
 BBT <- BBT[ , COVID := vect_recode_COVID[COVID]]
@@ -191,7 +193,8 @@ RBC <- data.table::melt(RBC, measure = list(colA, colB, colC), variable.name = "
                         value.name = c("IR", "lb", "ub"), na.rm = F)
 
 setnames(RBC, c("Birthcohort_persons", "Dose", "type_vax"), c("birth_cohort", "dose", "vx_manufacturer"))
-RBC <- RBC[, datasource := thisdatasource][, .(datasource, week, vx_manufacturer, dose, birth_cohort, AESI, IR, lb, ub)]
+RBC <- RBC[, datasource := thisdatasource][sex == "both_sexes", ]
+RBC <- RBC[, .(datasource, week, vx_manufacturer, dose, birth_cohort, AESI, IR, lb, ub)]
 vect_recode_AESI <- list_risk
 names(vect_recode_AESI) <- c(as.character(seq_len(length(list_risk))))
 RBC <- RBC[ , AESI := vect_recode_AESI[AESI]]
@@ -219,7 +222,8 @@ RBT <- data.table::melt(RBT, measure = list(colA, colB, colC), variable.name = "
 
 RBT <- RBT[is.na(ub), ub := 0]
 setnames(RBT, c("Birthcohort_persons", "Dose", "type_vax"), c("birth_cohort", "dose", "vx_manufacturer"))
-RBT <- RBT[, datasource := thisdatasource][, .(datasource, week_fup, vx_manufacturer, dose, birth_cohort, AESI, IR, lb, ub)]
+RBT <- RBT[, datasource := thisdatasource][sex == "both_sexes", ]
+RBT <- RBT[, .(datasource, week_fup, vx_manufacturer, dose, birth_cohort, AESI, IR, lb, ub)]
 setnames(RBT, c("week_fup"), c("week"))
 vect_recode_AESI <- list_risk
 names(vect_recode_AESI) <- c(as.character(seq_len(length(list_risk))))
