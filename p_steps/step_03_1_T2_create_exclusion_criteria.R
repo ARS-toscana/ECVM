@@ -12,7 +12,7 @@ OBSERVATION_PERIODS <- data.table()
 files<-sub('\\.csv$', '', list.files(dirinput))
 for (i in 1:length(files)) {
   if (stringr::str_detect(files[i],"^OBSERVATION_PERIODS")) {  
-    temp <- fread(paste0(dirinput,files[i],".csv"), colClasses = list( character="person_id"))
+    temp <- fread(paste0(dirinput,files[i],".csv"), colClasses = list(character="person_id"))
     OBSERVATION_PERIODS <- rbind(OBSERVATION_PERIODS, temp,fill=T)
     rm(temp)
   }

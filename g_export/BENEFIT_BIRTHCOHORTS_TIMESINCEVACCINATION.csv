@@ -1,11 +1,4 @@
-datasource,week,vx_manufacturer,dose,birth_cohort,COVID,IR,lb,ub
-ARS,0,none,no_dose,1990+,COVID,5.62,1.41,22.47
-ARS,0,none,no_dose,1970-1979,COVID,11.68,3.77,36.22
-ARS,0,none,no_dose,<1940,COVID,12.92,3.23,51.66
-ARS,0,none,no_dose,1940-1949,COVID,10.3,2.58,41.18
-ARS,0,none,no_dose,1950-1959,COVID,4.33,0.61,30.74
-ARS,0,none,no_dose,1960-1969,COVID,6.38,1.6,25.51
-ARS,0,none,no_dose,1980-1989,COVID,10.64,2.66,42.54
+datasource,week_since_vaccination,vx_manufacturer,dose,birth_cohort,COVID,IR,lb,ub
 ARS,1,Pfizer,1,1970-1979,COVID,0,0,0
 ARS,2,Pfizer,1,1970-1979,COVID,0,0,0
 ARS,1,Pfizer,2,1970-1979,COVID,0,0,0
@@ -47,7 +40,6 @@ ARS,1,Pfizer,2,1980-1989,COVID,0,0,0
 ARS,2,Pfizer,2,1980-1989,COVID,0,0,0
 ARS,3,Pfizer,2,1980-1989,COVID,0,0,0
 ARS,4,Pfizer,2,1980-1989,COVID,0,0,0
-ARS,0,none,no_dose,all_birth_cohorts,COVID,8.27,4.9,13.96
 ARS,1,Pfizer,1,all_birth_cohorts,COVID,0,0,0
 ARS,2,Pfizer,1,all_birth_cohorts,COVID,0,0,0
 ARS,1,Pfizer,2,all_birth_cohorts,COVID,0,0,0
@@ -68,13 +60,6 @@ ARS,13,Pfizer,1,all_birth_cohorts,COVID,0,0,0
 ARS,14,Pfizer,1,all_birth_cohorts,COVID,0,0,0
 ARS,3,Pfizer,2,all_birth_cohorts,COVID,0,0,0
 ARS,4,Pfizer,2,all_birth_cohorts,COVID,0,0,0
-ARS,0,none,no_dose,1990+,COVID_REGISTRY,0,0,0
-ARS,0,none,no_dose,1970-1979,COVID_REGISTRY,3.87,0.55,27.47
-ARS,0,none,no_dose,<1940,COVID_REGISTRY,0,0,0
-ARS,0,none,no_dose,1940-1949,COVID_REGISTRY,0,0,0
-ARS,0,none,no_dose,1950-1959,COVID_REGISTRY,0,0,0
-ARS,0,none,no_dose,1960-1969,COVID_REGISTRY,3.18,0.45,22.58
-ARS,0,none,no_dose,1980-1989,COVID_REGISTRY,0,0,0
 ARS,1,Pfizer,1,1970-1979,COVID_REGISTRY,0,0,0
 ARS,2,Pfizer,1,1970-1979,COVID_REGISTRY,0,0,0
 ARS,1,Pfizer,2,1970-1979,COVID_REGISTRY,0,0,0
@@ -116,7 +101,6 @@ ARS,1,Pfizer,2,1980-1989,COVID_REGISTRY,0,0,0
 ARS,2,Pfizer,2,1980-1989,COVID_REGISTRY,0,0,0
 ARS,3,Pfizer,2,1980-1989,COVID_REGISTRY,0,0,0
 ARS,4,Pfizer,2,1980-1989,COVID_REGISTRY,0,0,0
-ARS,0,none,no_dose,all_birth_cohorts,COVID_REGISTRY,1.17,0.29,4.68
 ARS,1,Pfizer,1,all_birth_cohorts,COVID_REGISTRY,0,0,0
 ARS,2,Pfizer,1,all_birth_cohorts,COVID_REGISTRY,0,0,0
 ARS,1,Pfizer,2,all_birth_cohorts,COVID_REGISTRY,0,0,0
@@ -137,13 +121,6 @@ ARS,13,Pfizer,1,all_birth_cohorts,COVID_REGISTRY,0,0,0
 ARS,14,Pfizer,1,all_birth_cohorts,COVID_REGISTRY,0,0,0
 ARS,3,Pfizer,2,all_birth_cohorts,COVID_REGISTRY,0,0,0
 ARS,4,Pfizer,2,all_birth_cohorts,COVID_REGISTRY,0,0,0
-ARS,0,none,no_dose,1990+,COVID_HOSP,0,0,0
-ARS,0,none,no_dose,1970-1979,COVID_HOSP,0,0,0
-ARS,0,none,no_dose,<1940,COVID_HOSP,0,0,0
-ARS,0,none,no_dose,1940-1949,COVID_HOSP,0,0,0
-ARS,0,none,no_dose,1950-1959,COVID_HOSP,0,0,0
-ARS,0,none,no_dose,1960-1969,COVID_HOSP,3.18,0.45,22.58
-ARS,0,none,no_dose,1980-1989,COVID_HOSP,0,0,0
 ARS,1,Pfizer,1,1970-1979,COVID_HOSP,0,0,0
 ARS,2,Pfizer,1,1970-1979,COVID_HOSP,0,0,0
 ARS,1,Pfizer,2,1970-1979,COVID_HOSP,0,0,0
@@ -185,7 +162,6 @@ ARS,1,Pfizer,2,1980-1989,COVID_HOSP,0,0,0
 ARS,2,Pfizer,2,1980-1989,COVID_HOSP,0,0,0
 ARS,3,Pfizer,2,1980-1989,COVID_HOSP,0,0,0
 ARS,4,Pfizer,2,1980-1989,COVID_HOSP,0,0,0
-ARS,0,none,no_dose,all_birth_cohorts,COVID_HOSP,0.59,0.08,4.19
 ARS,1,Pfizer,1,all_birth_cohorts,COVID_HOSP,0,0,0
 ARS,2,Pfizer,1,all_birth_cohorts,COVID_HOSP,0,0,0
 ARS,1,Pfizer,2,all_birth_cohorts,COVID_HOSP,0,0,0
@@ -206,13 +182,6 @@ ARS,13,Pfizer,1,all_birth_cohorts,COVID_HOSP,0,0,0
 ARS,14,Pfizer,1,all_birth_cohorts,COVID_HOSP,0,0,0
 ARS,3,Pfizer,2,all_birth_cohorts,COVID_HOSP,0,0,0
 ARS,4,Pfizer,2,all_birth_cohorts,COVID_HOSP,0,0,0
-ARS,0,none,no_dose,1990+,COVID_DEATH,0,0,0
-ARS,0,none,no_dose,1970-1979,COVID_DEATH,0,0,0
-ARS,0,none,no_dose,<1940,COVID_DEATH,0,0,0
-ARS,0,none,no_dose,1940-1949,COVID_DEATH,0,0,0
-ARS,0,none,no_dose,1950-1959,COVID_DEATH,0,0,0
-ARS,0,none,no_dose,1960-1969,COVID_DEATH,3.18,0.45,22.58
-ARS,0,none,no_dose,1980-1989,COVID_DEATH,0,0,0
 ARS,1,Pfizer,1,1970-1979,COVID_DEATH,0,0,0
 ARS,2,Pfizer,1,1970-1979,COVID_DEATH,0,0,0
 ARS,1,Pfizer,2,1970-1979,COVID_DEATH,0,0,0
@@ -254,7 +223,6 @@ ARS,1,Pfizer,2,1980-1989,COVID_DEATH,0,0,0
 ARS,2,Pfizer,2,1980-1989,COVID_DEATH,0,0,0
 ARS,3,Pfizer,2,1980-1989,COVID_DEATH,0,0,0
 ARS,4,Pfizer,2,1980-1989,COVID_DEATH,0,0,0
-ARS,0,none,no_dose,all_birth_cohorts,COVID_DEATH,0.59,0.08,4.19
 ARS,1,Pfizer,1,all_birth_cohorts,COVID_DEATH,0,0,0
 ARS,2,Pfizer,1,all_birth_cohorts,COVID_DEATH,0,0,0
 ARS,1,Pfizer,2,all_birth_cohorts,COVID_DEATH,0,0,0
