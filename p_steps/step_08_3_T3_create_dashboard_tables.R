@@ -185,7 +185,9 @@ colC = paste("ub_", list_risk, sep = "")
 
 for (i in names(RBC)){
   RBC[is.na(get(i)), (i) := 0]
-  RBC[is.integer(get(i)), (i) := as.numeric(get(i))]
+  if (!inherits(RBC[, get(i)], "IDate")) {
+    RBC[is.integer(get(i)), (i) := as.numeric(get(i))]
+  }
   RBC[is.logical(get(i)), (i) := as.numeric(get(i))]
 }
 
