@@ -30,6 +30,12 @@ D3_doses <- D3_doses[!is.na(study_entry_date_vax1), fup_vax1 := correct_difftime
 
 D3_doses <- D3_doses[!is.na(study_entry_date_vax2), fup_vax2 := correct_difftime(study_exit_date_vax2, study_entry_date_vax2)]
 
+D3_study_population_cov_ALL <- D3_study_population_cov_ALL[, .(person_id, CV_either_DX_or_DP, COVCANCER_either_DX_or_DP,
+                                                               COVCOPD_either_DX_or_DP, COVHIV_either_DX_or_DP,
+                                                               COVCKD_either_DX_or_DP, COVDIAB_either_DX_or_DP,
+                                                               COVOBES_either_DX_or_DP, COVSICKLE_either_DX_or_DP,
+                                                               IMMUNOSUPPR_at_study_entry, all_covariates_non_CONTR)]
+
 setnames(D3_study_population_cov_ALL,
          c("CV_either_DX_or_DP", "COVCANCER_either_DX_or_DP", "COVCOPD_either_DX_or_DP", "COVHIV_either_DX_or_DP",
            "COVCKD_either_DX_or_DP", "COVDIAB_either_DX_or_DP", "COVOBES_either_DX_or_DP", "COVSICKLE_either_DX_or_DP",
@@ -37,12 +43,6 @@ setnames(D3_study_population_cov_ALL,
          c("CV_at_study_entry", "COVCANCER_at_study_entry", "COVCOPD_at_study_entry", "COVHIV_at_study_entry",
            "COVCKD_at_study_entry", "COVDIAB_at_study_entry", "COVOBES_at_study_entry", "COVSICKLE_at_study_entry",
            "immunosuppressants_at_study_entry", "at_risk_at_study_entry"))
-
-D3_study_population_cov_ALL <- D3_study_population_cov_ALL[, .(person_id, CV_at_study_entry, COVCANCER_at_study_entry,
-                                                               COVCOPD_at_study_entry, COVHIV_at_study_entry,
-                                                               COVCKD_at_study_entry, COVDIAB_at_study_entry,
-                                                               COVOBES_at_study_entry, COVSICKLE_at_study_entry,
-                                                               immunosuppressants_at_study_entry, at_risk_at_study_entry)]
 
 D3_doses <- merge(D3_doses, D3_study_population_cov_ALL, all.x = T, by="person_id")
 
@@ -131,7 +131,7 @@ D3_study_population_cov_ALL <- D3_study_population_cov_ALL[to_drop == 1, ][, to_
 
 D3_vaxweeks_including_not_vaccinated <- merge(D3_vaxweeks_including_not_vaccinated, D3_study_population_cov_ALL,
                                               all.x = T, by = "person_id")
-
+D3_vaxweeks_including_not_vaccinated[riskfactor %in% c("any_risk_factors", NA),]
 D3_vaxweeks <- D3_vaxweeks[, c("sex", "type_vax", "Birthcohort_persons") := NULL]
 D3_vaxweeks <- D3_vaxweeks[, .(person_id, start_date_of_period, end_date_of_period, Dose, week, month)]
 
@@ -141,5 +141,5 @@ save(D3_vaxweeks_including_not_vaccinated, file = paste0(dirtemp, "D3_vaxweeks_i
 
 rm(selected_doses, D4_study_population, D3_doses, D3_study_population, D3_Vaccin_cohort,
    cohort_to_vaxweeks, colA, colB, colC, colD, D3_vaxweeks, D3_studyweeks, D3_vaxweeks_including_not_vaccinated,
-   D3_studyweeks_not_vaccinated)
+   D3_studyweeks_not_vaccinated, D3_study_population_cov_ALL)
 
