@@ -80,7 +80,7 @@ setnames(D3_study_population_cov_ALL,
            "COVCKD_either_DX_or_DP", "COVDIAB_either_DX_or_DP", "COVOBES_either_DX_or_DP", "COVSICKLE_either_DX_or_DP",
            "IMMUNOSUPPR_at_study_entry", "all_covariates_non_CONTR"),
          c("CV", "COVCANCER", "COVCOPD", "COVHIV", "COVCKD", "COVDIAB", "COVOBES", "COVSICKLE", "IMMUNOSUPPR",
-           "all_risk_factors"))
+           "any_risk_factors"))
 
 D3_study_population_cov_ALL <- D3_study_population_cov_ALL[, .(person_id, CV, COVCANCER, COVCOPD, COVHIV, COVCKD,
                                                                COVDIAB, COVOBES, COVSICKLE, IMMUNOSUPPR, all_risk_factors)]
