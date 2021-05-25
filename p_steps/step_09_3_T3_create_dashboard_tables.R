@@ -208,7 +208,7 @@ BRC <- BRC[, .(datasource, week, vx_manufacturer, dose, riskfactor, COVID, IR, l
 vect_recode_COVID <- c("1" = "L1", "2" = "L2", "3" = "L3", "4" = "L4", "5" = "L5")
 BRC <- BRC[ , COVID := vect_recode_COVID[COVID]]
 
-fwrite(BRC, file = paste0(direxp, "BENEFIT_BIRTHCOHORTS_CALENDARTIME.csv"))
+fwrite(BRC, file = paste0(direxp, "BENEFIT_RISKFACTORS_CALENDARTIME.csv"))
 rm(BRC, D4_IR_benefit_week)
 
 
@@ -232,7 +232,7 @@ setnames(BRT, c("week_fup"), c("week_since_vaccination"))
 vect_recode_COVID <- c("1" = "L1", "2" = "L2", "3" = "L3", "4" = "L4", "5" = "L5")
 BRT <- BRT[ , COVID := vect_recode_COVID[COVID]]
 
-fwrite(BRT, file = paste0(direxp, "BENEFIT_BIRTHCOHORTS_TIMESINCEVACCINATION.csv"))
+fwrite(BRT, file = paste0(direxp, "BENEFIT_RISKFACTORS_TIMESINCEVACCINATION.csv"))
 rm(BRT, vect_recode_COVID, D4_IR_benefit_fup)
 
 
@@ -313,7 +313,7 @@ vect_recode_AESI <- list_risk
 names(vect_recode_AESI) <- c(as.character(seq_len(length(list_risk))))
 RRC <- RRC[ , AESI := vect_recode_AESI[AESI]]
 
-fwrite(RRC, file = paste0(direxp, "RISK_BIRTHCOHORTS_CALENDARTIME.csv"))
+fwrite(RRC, file = paste0(direxp, "RISK_RISKFACTORS_CALENDARTIME.csv"))
 rm(RRC, D4_IR_risk_week)
 
 
@@ -340,5 +340,5 @@ vect_recode_AESI <- list_risk
 names(vect_recode_AESI) <- c(as.character(seq_len(length(list_risk))))
 RRT <- RRT[ , AESI := vect_recode_AESI[AESI]]
 
-fwrite(RRT, file = paste0(direxp, "RISK_BIRTHCOHORTS_TIMESINCEVACCINATION.csv"))
+fwrite(RRT, file = paste0(direxp, "RISK_RISKFACTORS_TIMESINCEVACCINATION.csv"))
 rm(RRT, vect_recode_AESI, D4_IR_risk_fup)
