@@ -97,10 +97,14 @@ is.na(severity_level_covid) & MechanicalVentilation_within_registry_date != 0, s
   }
 }
 
+D3_outcomes_covid_multiple<-D3_outcomes_covid
+D3_outcomes_covid<-unique(D3_outcomes_covid)
+
+save(D3_outcomes_covid_multiple,file=paste0(dirtemp,paste0("D3_outcomes_covid_multiple.RData")))
+save(D3_outcomes_covid,file=paste0(dirtemp,paste0("D3_outcomes_covid.RData")))
 
 # save the COVID outcomes as a dataset and their list as a parameter
 save(D3_algorithm_covid,file=paste0(dirtemp,paste0("D3_algorithm_covid.RData")))
-save(D3_outcomes_covid,file=paste0(dirtemp,paste0("D3_outcomes_covid.RData")))
 save(list_outcomes_observed_COVID,file=paste0(dirpargen,paste0("list_outcomes_observed_COVID.RData")))
 
 
