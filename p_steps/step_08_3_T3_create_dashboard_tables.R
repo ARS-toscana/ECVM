@@ -134,9 +134,9 @@ rm(D3_vaxweeks, cohort_to_doses_weeks, all_mondays, monday_week, double_weeks, a
 D4_IR_benefit_week <- fread(paste0(direxp,"D4_IR_benefit_week.csv"))
 BBC <- D4_IR_benefit_week[, Dose := as.character(Dose)]
 BBC <- BBC[Dose == 0, c("Dose", "type_vax") := list("no_dose", "none")]
-colA = paste("IR_COVID_L", 1:4, "plus", sep = "")
-colB = paste("lb_COVID_L", 1:4, "plus", sep = "")
-colC = paste("ub_COVID_L", 1:4, "plus", sep = "")
+colA = paste("IR_COVID_L", 1:5, "plus", sep = "")
+colB = paste("lb_COVID_L", 1:5, "plus", sep = "")
+colC = paste("ub_COVID_L", 1:5, "plus", sep = "")
 BBC <- data.table::melt(BBC, measure = list(colA, colB, colC), variable.name = "COVID",
                         value.name = c("IR", "lb", "ub"), na.rm = F)
 
@@ -144,7 +144,7 @@ BBC <- BBC[is.na(ub), ub := 0]
 setnames(BBC, c("Birthcohort_persons", "Dose", "type_vax"), c("birth_cohort", "dose", "vx_manufacturer"))
 BBC <- BBC[, datasource := thisdatasource][sex == "both_sexes", ][, week := format(week, "%Y%m%d")]
 BBC <- BBC[, .(datasource, week, vx_manufacturer, dose, birth_cohort, COVID, IR, lb, ub)]
-vect_recode_COVID <- c("1" = "L1", "2" = "L2", "3" = "L3", "4" = "L4")
+vect_recode_COVID <- c("1" = "L1", "2" = "L2", "3" = "L3", "4" = "L4", "5" = "L5")
 BBC <- BBC[ , COVID := vect_recode_COVID[COVID]]
 
 fwrite(BBC, file = paste0(direxp, "BENEFIT_BIRTHCOHORTS_CALENDARTIME.csv"))
@@ -153,9 +153,9 @@ fwrite(BBC, file = paste0(direxp, "BENEFIT_BIRTHCOHORTS_CALENDARTIME.csv"))
 D4_IR_benefit_fup <- fread(paste0(direxp,"D4_IR_benefit_fup.csv"))
 BBT <- D4_IR_benefit_fup[, Dose := as.character(Dose)]
 BBT <- BBT[Dose == 0, c("Dose", "type_vax") := list("no_dose", "none")]
-colA = paste("IR_COVID_L", 1:4, "plus", sep = "")
-colB = paste("lb_COVID_L", 1:4, "plus", sep = "")
-colC = paste("ub_COVID_L", 1:4, "plus", sep = "")
+colA = paste("IR_COVID_L", 1:5, "plus", sep = "")
+colB = paste("lb_COVID_L", 1:5, "plus", sep = "")
+colC = paste("ub_COVID_L", 1:5, "plus", sep = "")
 BBT <- data.table::melt(BBT, measure = list(colA, colB, colC), variable.name = "COVID",
                         value.name = c("IR", "lb", "ub"), na.rm = F)
 
@@ -164,7 +164,7 @@ setnames(BBT, c("Birthcohort_persons", "Dose", "type_vax"), c("birth_cohort", "d
 BBT <- BBT[, datasource := thisdatasource][sex == "both_sexes", ]
 BBT <- BBT[, .(datasource, week_fup, vx_manufacturer, dose, birth_cohort, COVID, IR, lb, ub)]
 setnames(BBT, c("week_fup"), c("week_since_vaccination"))
-vect_recode_COVID <- c("1" = "L1", "2" = "L2", "3" = "L3", "4" = "L4")
+vect_recode_COVID <- c("1" = "L1", "2" = "L2", "3" = "L3", "4" = "L4", "5" = "L5")
 BBT <- BBT[ , COVID := vect_recode_COVID[COVID]]
 
 fwrite(BBT, file = paste0(direxp, "BENEFIT_BIRTHCOHORTS_TIMESINCEVACCINATION.csv"))
