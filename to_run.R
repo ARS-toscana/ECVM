@@ -79,6 +79,7 @@ suppressWarnings(system.time(source(paste0(thisdir,"/p_steps/step_07_2_T3_create
 suppressWarnings(system.time(source(paste0(thisdir,"/p_steps/step_07_3_T3_create_person_time_benefits.R"))))
 suppressWarnings(system.time(source(paste0(thisdir,"/p_steps/step_07_4_T3_create_person_time_benefits_year.R"))))
 system.time(source(paste0(thisdir,"/p_steps/step_07_5_T3_aggregate_sex_birth_cohort.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_07_6_T3_aggregate_sex_risk_factor.R")))
 
 
 system.time(source(paste0(thisdir,"/p_steps/step_07_6_T4_IR.R")))
@@ -96,7 +97,7 @@ system.time(source(paste0(thisdir,"/p_steps/step_09_2_Coverage_description.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_09_3_Doses_description.R")))
 
 system.time(source(paste0(thisdir,"/p_steps/step_09_4_benefit_description.R")))
-#system.time(source(paste0(thisdir,"/p_steps/step_09_5_risk_description.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_09_5_risk_description.R")))
 
 # system.time(source(paste0(thisdir,"/p_steps/step_09_1_FlowChart_description_MD.R")))
 # system.time(source(paste0(thisdir,"/p_steps/step_09_2_Coverage_description_MD.R")))
