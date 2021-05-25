@@ -1,5 +1,7 @@
 load(paste0(diroutput,"D4_persontime_risk_week.RData"))
 
+D4_persontime_risk_week <- D4_persontime_risk_week[riskfactor %in% c("any_risk_factors", NA),][, riskfactor := NULL]
+
 cols_to_sums = names(D4_persontime_risk_week)[6:length(D4_persontime_risk_week)]
 
 all_sex <- copy(D4_persontime_risk_week)[, lapply(.SD, sum, na.rm=TRUE),
@@ -14,13 +16,16 @@ all_ages <- copy(D4_persontime_risk_week)[, lapply(.SD, sum, na.rm=TRUE),
                                           .SDcols = cols_to_sums]
 all_ages <- unique(all_ages[, Birthcohort_persons := "all_birth_cohorts"])
 
-D4_persontime_risk_week <- rbind(D4_persontime_risk_week, all_ages)
-D4_persontime_risk_week_totals <- D4_persontime_risk_week
-save(D4_persontime_risk_week_totals,file=paste0(diroutput,"D4_persontime_risk_week_totals.RData"))
+D4_persontime_risk_week_totals <- rbind(D4_persontime_risk_week, all_ages)
 
-rm(D4_persontime_risk_week)
+save(D4_persontime_risk_week_totals,file=paste0(diroutput,"D4_persontime_risk_week_BC.RData"))
+rm(D4_persontime_risk_week, D4_persontime_risk_week_totals)
+
+
 
 load(paste0(diroutput,"D4_persontime_benefit_week.RData"))
+
+D4_persontime_benefit_week <- D4_persontime_benefit_week[riskfactor %in% c("any_risk_factors", NA),][, riskfactor := NULL]
 
 cols_to_sums = names(D4_persontime_benefit_week)[6:length(D4_persontime_benefit_week)]
 
@@ -36,13 +41,16 @@ all_ages <- copy(D4_persontime_benefit_week)[, lapply(.SD, sum, na.rm=TRUE),
                                           .SDcols = cols_to_sums]
 all_ages <- unique(all_ages[, Birthcohort_persons := "all_birth_cohorts"])
 
-D4_persontime_benefit_week <- rbind(D4_persontime_benefit_week, all_ages)
-D4_persontime_benefit_week_totals <- D4_persontime_benefit_week
-save(D4_persontime_benefit_week_totals,file=paste0(diroutput,"D4_persontime_benefit_week_totals.RData"))
+D4_persontime_benefit_week_totals <- rbind(D4_persontime_benefit_week, all_ages)
 
-rm(D4_persontime_benefit_week)
+save(D4_persontime_benefit_week_totals,file=paste0(diroutput,"D4_persontime_benefit_week_BC.RData"))
+rm(D4_persontime_benefit_week, D4_persontime_benefit_week_totals)
+
+
 
 load(paste0(diroutput,"D4_persontime_risk_year.RData"))
+
+D4_persontime_risk_year <- D4_persontime_risk_year[riskfactor %in% c("any_risk_factors", NA),][, riskfactor := NULL]
 
 D4_persontime_risk_year <- D4_persontime_risk_year[, year := NULL]
 cols_to_sums = names(D4_persontime_risk_year)[6:length(D4_persontime_risk_year)]
@@ -59,13 +67,16 @@ all_ages <- copy(D4_persontime_risk_year)[, lapply(.SD, sum, na.rm=TRUE),
                                              .SDcols = cols_to_sums]
 all_ages <- unique(all_ages[, Birthcohort_persons := "all_birth_cohorts"])
 
-D4_persontime_risk_year <- rbind(D4_persontime_risk_year, all_ages)
-D4_persontime_risk_year_totals <- D4_persontime_risk_year
-save(D4_persontime_risk_year_totals,file=paste0(diroutput,"D4_persontime_risk_year_totals.RData"))
+D4_persontime_risk_year_totals <- rbind(D4_persontime_risk_year, all_ages)
 
-rm(D4_persontime_risk_year)
+save(D4_persontime_risk_year_totals,file=paste0(diroutput,"D4_persontime_risk_year_BC.RData"))
+rm(D4_persontime_risk_year, D4_persontime_risk_year_totals)
+
+
 
 load(paste0(diroutput,"D4_persontime_benefit_year.RData"))
+
+D4_persontime_benefit_year <- D4_persontime_benefit_year[riskfactor %in% c("any_risk_factors", NA),][, riskfactor := NULL]
 
 D4_persontime_benefit_year <- D4_persontime_benefit_year[, year := NULL]
 cols_to_sums = names(D4_persontime_benefit_year)[6:length(D4_persontime_benefit_year)]
@@ -82,8 +93,7 @@ all_ages <- copy(D4_persontime_benefit_year)[, lapply(.SD, sum, na.rm=TRUE),
                                           .SDcols = cols_to_sums]
 all_ages <- unique(all_ages[, Birthcohort_persons := "all_birth_cohorts"])
 
-D4_persontime_benefit_year <- rbind(D4_persontime_benefit_year, all_ages)
-D4_persontime_benefit_year_totals <- D4_persontime_benefit_year
-save(D4_persontime_benefit_year_totals,file=paste0(diroutput,"D4_persontime_benefit_year_totals.RData"))
+D4_persontime_benefit_year_totals <- rbind(D4_persontime_benefit_year, all_ages)
 
-rm(D4_persontime_benefit_year)
+save(D4_persontime_benefit_year_totals,file=paste0(diroutput,"D4_persontime_benefit_year_BC.RData"))
+rm(D4_persontime_benefit_year, D4_persontime_benefit_year_totals, all_ages, all_sex, cols_to_sums)

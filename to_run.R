@@ -74,10 +74,10 @@ system.time(source(paste0(thisdir,"/p_steps/step_05_11_T2.3_algorithms_COVID_sev
 system.time(source(paste0(thisdir,"/p_steps/step_06_T2_create_D3_datasets.R")))
 
 #07 create persontime
-system.time(source(paste0(thisdir,"/p_steps/step_07_1_T3_create_person_time_risks.R")))
-system.time(source(paste0(thisdir,"/p_steps/step_07_2_T3_create_person_time_risks_year.R")))
-system.time(source(paste0(thisdir,"/p_steps/step_07_3_T3_create_person_time_benefits.R")))
-system.time(source(paste0(thisdir,"/p_steps/step_07_4_T3_create_person_time_benefits_year.R")))
+suppressWarnings(system.time(source(paste0(thisdir,"/p_steps/step_07_1_T3_create_person_time_risks.R"))))
+suppressWarnings(system.time(source(paste0(thisdir,"/p_steps/step_07_2_T3_create_person_time_risks_year.R"))))
+suppressWarnings(system.time(source(paste0(thisdir,"/p_steps/step_07_3_T3_create_person_time_benefits.R"))))
+suppressWarnings(system.time(source(paste0(thisdir,"/p_steps/step_07_4_T3_create_person_time_benefits_year.R"))))
 system.time(source(paste0(thisdir,"/p_steps/step_07_5_T3_aggregate_sex_birth_cohort.R")))
 
 
