@@ -144,7 +144,7 @@ BBC <- BBC[is.na(ub), ub := 0]
 setnames(BBC, c("Birthcohort_persons", "Dose", "type_vax"), c("birth_cohort", "dose", "vx_manufacturer"))
 BBC <- BBC[, datasource := thisdatasource][sex == "both_sexes", ][, week := format(week, "%Y%m%d")]
 BBC <- BBC[, .(datasource, week, vx_manufacturer, dose, birth_cohort, COVID, IR, lb, ub)]
-vect_recode_COVID <- c("1" = "COVID", "2" = "COVID_REGISTRY", "3" = "COVID_HOSP", "4" = "COVID_DEATH")
+vect_recode_COVID <- c("1" = "L1", "2" = "L2", "3" = "L3", "4" = "L4")
 BBC <- BBC[ , COVID := vect_recode_COVID[COVID]]
 
 fwrite(BBC, file = paste0(direxp, "BENEFIT_BIRTHCOHORTS_CALENDARTIME.csv"))
@@ -161,10 +161,10 @@ BBT <- data.table::melt(BBT, measure = list(colA, colB, colC), variable.name = "
 
 BBT <- BBT[is.na(ub), ub := 0]
 setnames(BBT, c("Birthcohort_persons", "Dose", "type_vax"), c("birth_cohort", "dose", "vx_manufacturer"))
-BBT <- BBT[, datasource := thisdatasource][sex == "both_sexes", ][, week_fup := format(week, "%Y%m%d")]
+BBT <- BBT[, datasource := thisdatasource][sex == "both_sexes", ]
 BBT <- BBT[, .(datasource, week_fup, vx_manufacturer, dose, birth_cohort, COVID, IR, lb, ub)]
 setnames(BBT, c("week_fup"), c("week_since_vaccination"))
-vect_recode_COVID <- c("1" = "COVID", "2" = "COVID_REGISTRY", "3" = "COVID_HOSP", "4" = "COVID_DEATH")
+vect_recode_COVID <- c("1" = "L1", "2" = "L2", "3" = "L3", "4" = "L4")
 BBT <- BBT[ , COVID := vect_recode_COVID[COVID]]
 
 fwrite(BBT, file = paste0(direxp, "BENEFIT_BIRTHCOHORTS_TIMESINCEVACCINATION.csv"))
@@ -224,7 +224,7 @@ RBT <- data.table::melt(RBT, measure = list(colA, colB, colC), variable.name = "
 
 RBT <- RBT[is.na(ub), ub := 0]
 setnames(RBT, c("Birthcohort_persons", "Dose", "type_vax"), c("birth_cohort", "dose", "vx_manufacturer"))
-RBT <- RBT[, datasource := thisdatasource][sex == "both_sexes", ][, week_fup := format(week, "%Y%m%d")]
+RBT <- RBT[, datasource := thisdatasource][sex == "both_sexes", ]
 RBT <- RBT[, .(datasource, week_fup, vx_manufacturer, dose, birth_cohort, AESI, IR, lb, ub)]
 setnames(RBT, c("week_fup"), c("week_since_vaccination"))
 vect_recode_AESI <- list_risk
