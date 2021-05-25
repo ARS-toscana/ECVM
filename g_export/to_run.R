@@ -79,6 +79,7 @@ suppressWarnings(system.time(source(paste0(thisdir,"/p_steps/step_07_2_T3_create
 suppressWarnings(system.time(source(paste0(thisdir,"/p_steps/step_07_3_T3_create_person_time_benefits.R"))))
 suppressWarnings(system.time(source(paste0(thisdir,"/p_steps/step_07_4_T3_create_person_time_benefits_year.R"))))
 system.time(source(paste0(thisdir,"/p_steps/step_07_5_T3_aggregate_sex_birth_cohort.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_07_6_T3_aggregate_sex_risk_factor.R")))
 
 
 system.time(source(paste0(thisdir,"/p_steps/step_07_6_T4_IR.R")))
