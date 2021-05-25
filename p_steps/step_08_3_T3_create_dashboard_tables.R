@@ -80,14 +80,14 @@ setnames(D3_study_population_cov_ALL,
            "COVCKD_either_DX_or_DP", "COVDIAB_either_DX_or_DP", "COVOBES_either_DX_or_DP", "COVSICKLE_either_DX_or_DP",
            "IMMUNOSUPPR_at_study_entry", "all_covariates_non_CONTR"),
          c("CV", "COVCANCER", "COVCOPD", "COVHIV", "COVCKD", "COVDIAB", "COVOBES", "COVSICKLE", "IMMUNOSUPPR",
-           "all_risk_factors"))
+           "any_risk_factors"))
 
 D3_study_population_cov_ALL <- D3_study_population_cov_ALL[, .(person_id, CV, COVCANCER, COVCOPD, COVHIV, COVCKD,
                                                                COVDIAB, COVOBES, COVSICKLE, IMMUNOSUPPR, all_risk_factors)]
 
 D3_study_population_cov_ALL <- melt(D3_study_population_cov_ALL,
                                     measure.vars = c("CV", "COVCANCER", "COVCOPD", "COVHIV", "COVCKD", "COVDIAB",
-                                                     "COVOBES", "COVSICKLE", "IMMUNOSUPPR", "all_risk_factors"),
+                                                     "COVOBES", "COVSICKLE", "IMMUNOSUPPR", "any_risk_factors"),
                                     variable.name = "riskfactor", value.name = "to_drop")
 
 D3_study_population_cov_ALL <- D3_study_population_cov_ALL[to_drop == 1, ]
@@ -105,7 +105,7 @@ vaxweeks_to_dos_risk <- vaxweeks_to_dos_risk[, .(N = .N), by = c("datasource", "
 
 complete_df <- expand.grid(datasource = thisdatasource, week = monday_week, vx_manufacturer = c("Moderna", "Pfizer", "AstraZeneca", "J&J", "UKN"),
                            dose = c("1", "2"), riskfactor = c("CV", "COVCANCER", "COVCOPD", "COVHIV", "COVCKD", "COVDIAB",
-                                                              "COVOBES", "COVSICKLE", "IMMUNOSUPPR", "all_risk_factors"))
+                                                              "COVOBES", "COVSICKLE", "IMMUNOSUPPR", "any_risk_factors"))
 
 vaxweeks_to_dos_risk <- merge(vaxweeks_to_dos_risk, complete_df, all.y = T, by = c("datasource", "week", "vx_manufacturer", "dose", "riskfactor"))
 DOSES_RISKFACTORS <- vaxweeks_to_dos_risk[is.na(N), N := 0][, week := format(week, "%Y%m%d")]

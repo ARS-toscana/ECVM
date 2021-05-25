@@ -117,6 +117,21 @@ setnames(D3_studyweeks_not_vaccinated, c("study_entry_date", "study_exit_date", 
 D3_vaxweeks_including_not_vaccinated <- rbind(D3_vaxweeks_including_not_vaccinated, D3_studyweeks_not_vaccinated)
 setnames(D3_vaxweeks_including_not_vaccinated, "week", "week_fup")
 
+setnames(D3_study_population_cov_ALL,
+         c("CV_at_study_entry", "COVCANCER_at_study_entry", "COVCOPD_at_study_entry", "COVHIV_at_study_entry",
+           "COVCKD_at_study_entry", "COVDIAB_at_study_entry", "COVOBES_at_study_entry", "COVSICKLE_at_study_entry",
+           "immunosuppressants_at_study_entry", "at_risk_at_study_entry"),
+         c("CV", "COVCANCER", "COVCOPD", "COVHIV", "COVCKD", "COVDIAB", "COVOBES", "COVSICKLE", "IMMUNOSUPPR",
+           "any_risk_factors"))
+D3_study_population_cov_ALL <- melt(D3_study_population_cov_ALL,
+                                    measure.vars = c("CV", "COVCANCER", "COVCOPD", "COVHIV", "COVCKD", "COVDIAB",
+                                                     "COVOBES", "COVSICKLE", "IMMUNOSUPPR", "any_risk_factors"),
+                                    variable.name = "riskfactor", value.name = "to_drop")
+D3_study_population_cov_ALL <- D3_study_population_cov_ALL[to_drop == 1, ][, to_drop := NULL]
+
+D3_vaxweeks_including_not_vaccinated <- merge(D3_vaxweeks_including_not_vaccinated, D3_study_population_cov_ALL,
+                                              all.x = T, by = "person_id")
+
 D3_vaxweeks <- D3_vaxweeks[, c("sex", "type_vax", "Birthcohort_persons") := NULL]
 D3_vaxweeks <- D3_vaxweeks[, .(person_id, start_date_of_period, end_date_of_period, Dose, week, month)]
 
