@@ -1,7 +1,11 @@
 #-------------------------------
 # ECVM script
-# v3.1 - 21 May 2021
+# v3.2 - 25 May 2021
 # authors: Olga Paoletti, Davide Messina, Giorgio Limoncella
+
+# changelog:
+# - Debugged Createconceptset
+# - IR dataset now in Rdata too.
 
 rm(list=ls(all.names=TRUE))
 

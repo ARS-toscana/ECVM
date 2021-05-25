@@ -54,7 +54,7 @@ for (subpop in subpopulations_non_empty) {
       Start_date = "start_date_of_period",
       End_date = "end_date_of_period",
       #Birth_date = "date_of_birth",
-      Strata = c("sex","Birthcohort_persons","Dose","type_vax"),
+      Strata = c("sex","Birthcohort_persons","Dose","type_vax","riskfactor"),
       Name_event = "name_event",
       Date_event = "date_event",
       #Age_bands = c(0,19,29,39,49,59,69,79),
