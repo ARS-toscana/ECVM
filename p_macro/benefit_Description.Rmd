@@ -22,8 +22,8 @@ BENEFIT_BIRTHCOHORTS_TIMESINCEVACCINATION = params$BENEFIT_BIRTHCOHORTS_TIMESINC
 
 This is the description of **BENEFIT_BIRTHCOHORTS_CALENDARTIME** and  **BENEFIT_BIRTHCOHORTS_TIMESINCEVACCINATION** datasets.
 <br>
-This file contains graphical tools and tables to summarize the risk data obtained from the script. 
-
+This file contains graphical tools and tables to summarize the benefits data obtained from the script regarding a specific cohort. 
+<br>
 ```{r plot preparation, include=FALSE}
 if (!require("ggplot2")) install.packages("ggplot2")
 library(ggplot2 )
@@ -34,4 +34,83 @@ library(ggthemes )
 if (!require("lubridate")) install.packages("lubridate")
 library(lubridate )
 
+```
+#  BENEFIT_BIRTHCOHORTS_CALENDARTIME
+
+<br>
+The graph and table below show the IR for each weeks (in calendar time), regarding the cohort with the following characteristics:
+
+- birth_cohort = "all_birth_cohorts" 
+- vx_manufacturer = "Pfizer"
+- COVID = "COVID"
+
+<br>
+
+## Graph
+
+<br>
+```{r plot1, include=TRUE}
+######  BENEFIT_BIRTHCOHORTS_CALENDARTIME
+######  birth_cohort == "all_birth_cohorts" & vx_manufacturer == "Pfizer"  & COVID == "COVID"
+######  dose 1 vs dose 2
+BENEFIT_BIRTHCOHORTS_CALENDARTIME_4plt <- BENEFIT_BIRTHCOHORTS_CALENDARTIME[birth_cohort == "all_birth_cohorts" & vx_manufacturer == "Pfizer"  & COVID == "COVID"]
+
+
+BENEFIT_BIRTHCOHORTS_CALENDARTIME_plt <- ggplot(BENEFIT_BIRTHCOHORTS_CALENDARTIME_4plt, aes(x=week, y=IR, fill = dose)) + 
+                                            geom_col(position=position_dodge( 5, preserve = "single"), alpha=0.5) +
+                                            geom_errorbar(position=position_dodge( 5, preserve = "single"), aes(ymin=lb, ymax=ub, col=dose), width=.25) +
+                                            labs(title = "Benefit: Calendar Time")+
+                                            theme_hc()
+BENEFIT_BIRTHCOHORTS_CALENDARTIME_plt
+cat("\n")
+cat("\n")
+
+```
+<br>
+
+## Table
+
+<br>
+
+```{r table1, include=TRUE}
+paged_table(BENEFIT_BIRTHCOHORTS_CALENDARTIME_4plt[order(week), .(week, IR)])
+```
+<br>
+
+# BENEFIT_BIRTHCOHORTS_TIMESINCEVACCINATION
+
+<br>
+
+The graph and table below show the IR for each weeks (numbers of weeks since vaccination), regarding the cohort with the following characteristics:
+
+- birth_cohort = "all_birth_cohorts" 
+- vx_manufacturer = "Pfizer"
+- COVID = "COVID"
+
+<br>
+
+## Graph
+
+<br>
+```{r plot2, include=TRUE}
+BENEFIT_BIRTHCOHORTS_TIMESINCEVACCINATION_4plot <- BENEFIT_BIRTHCOHORTS_TIMESINCEVACCINATION[birth_cohort == "all_birth_cohorts" & vx_manufacturer == "Pfizer"  & COVID == "COVID"]
+
+BENEFIT_BIRTHCOHORTS_TIMESINCEVACCINATION_plot <- ggplot(BENEFIT_BIRTHCOHORTS_TIMESINCEVACCINATION_4plot, aes(x=week_since_vaccination, y=IR)) + 
+                                                      geom_col(alpha=0.5, fill="salmon") +
+                                                      geom_errorbar(position=position_dodge( 5, preserve = "single"), aes(ymin=lb, ymax=ub), width=.25, col="salmon") +
+                                                      facet_grid( ~ dose)+
+                                                      labs(title = "Benefit: Weeks since Vaccination")+
+                                                      theme_hc()
+                                                    
+BENEFIT_BIRTHCOHORTS_TIMESINCEVACCINATION_plot
+cat("\n")
+cat("\n")
+```
+<br>
+
+## Table
+
+<br>
+```{r table2, include=TRUE}
+paged_table(BENEFIT_BIRTHCOHORTS_TIMESINCEVACCINATION_4plot[order(week_since_vaccination), .(week_since_vaccination, dose, IR)])
 ```
