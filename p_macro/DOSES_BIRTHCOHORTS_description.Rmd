@@ -52,7 +52,7 @@ setnames(t2, "V1", "N")
 
  p2 <- ggplot(t2, aes(week, N)) +   
          geom_col( alpha = 0.9, fill ="salmon", na.rm=TRUE)+
-         scale_x_date(limit= c(monday_start_covid, study_end))
+         scale_x_date(limit= c(start_COVID_vaccination_date, study_end))
 
 p2
 rmarkdown::paged_table(t2)
@@ -68,7 +68,7 @@ t1<-Dataset[N != 0 & !is.na(N), sum(N), by= .(week, vx_manufacturer)]
 setnames(t1, "V1", "N")
 p1<-  ggplot(t1, aes(week, N, fill=vx_manufacturer)) +   
        geom_col(position =position_dodge(preserve = "single"), alpha = 0.9, na.rm=TRUE)+
-       scale_x_date(limit= c(monday_start_covid, study_end))
+       scale_x_date(limit= c(start_COVID_vaccination_date, study_end))
 
 p1
 
@@ -89,7 +89,7 @@ setnames(t4, "V1", "N")
 
  p4 <- ggplot(t4, aes(week, N)) +   
         geom_col(alpha = 0.9, fill ="salmon", na.rm=TRUE)+
-        scale_x_date(limit= c(monday_start_covid, study_end))+
+        scale_x_date(limit= c(start_COVID_vaccination_date, study_end))+
         facet_grid(rows = vars(dose))
 
 p4
@@ -111,7 +111,7 @@ setnames(t3, "V1", "N")
 
  p3 <- ggplot(t3, aes(week, N, fill=vx_manufacturer)) +   
          geom_col(position = position_dodge(preserve = "single"), alpha = 0.9, na.rm=TRUE)+
-         scale_x_date(limit= c(monday_start_covid, study_end))+
+         scale_x_date(limit= c(start_COVID_vaccination_date, study_end))+
          facet_grid(rows = vars(dose))
 
 p3

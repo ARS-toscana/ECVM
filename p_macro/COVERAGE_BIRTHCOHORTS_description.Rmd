@@ -53,7 +53,7 @@ setnames(t0, "V1", "percentage")
 t1<-t0[dose==1,]
  p1 <- ggplot(t1, aes(week, percentage)) +   
         geom_col(alpha = 0.9, fill ="salmon", na.rm=TRUE)+
-        scale_x_date(limit= c(monday_start_covid, study_end))
+        scale_x_date(limit= c(start_COVID_vaccination_date, study_end))
       
 p1
 
@@ -69,7 +69,7 @@ The data are also shown in the subsequent table.
 t2<-t0[dose==2,]
  p2 <- ggplot(t2, aes(week, percentage)) +   
         geom_col(alpha = 0.9, fill ="salmon", na.rm=TRUE)+
-        scale_x_date(limit= c(monday_start_covid, study_end))
+        scale_x_date(limit= c(start_COVID_vaccination_date, study_end))
       
 p2
 
@@ -91,7 +91,7 @@ t3<- t00[dose==1, ]
 
  p3 <- ggplot(t3, aes(week, percentage, fill=vx_manufacturer)) +   
         geom_col(position=position_dodge(preserve = "single"), alpha = 0.9, na.rm=TRUE)+
-        scale_x_date(limit= c(monday_start_covid, study_end))
+        scale_x_date(limit= c(start_COVID_vaccination_date, study_end))
 
 p3
 
@@ -110,7 +110,7 @@ t4<- t00[dose==2, ]
 
  p4 <- ggplot(t4, aes(week, percentage, fill=vx_manufacturer)) +   
         geom_col(position=position_dodge(preserve = "single"), alpha = 0.9, na.rm=TRUE)+
-        scale_x_date(limit= c(monday_start_covid, study_end))
+        scale_x_date(limit= c(start_COVID_vaccination_date, study_end))
 
 p4
 
