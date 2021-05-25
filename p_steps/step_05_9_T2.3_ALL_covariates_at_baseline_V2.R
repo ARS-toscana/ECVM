@@ -55,6 +55,9 @@ for (subpop in subpopulations_non_empty) {
       study_population_cov_ALL[is.na(get(i)), (i):=0]
     }
   }
+  
+  study_population_cov_ALL <- study_population_cov_ALL[IMMUNOSUPPR_at_study_entry == 1, all_covariates_non_CONTR :=1]
+  
   if (this_datasource_has_subpopulations == TRUE){ 
     D3_study_population_cov_ALL[[subpop]] <- study_population_cov_ALL
   }else{

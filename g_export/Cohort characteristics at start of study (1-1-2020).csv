@@ -1,6 +1,6 @@
  ,Parameters,Italy_ARS,perc_Italy_ARS
 Study population,N,388,""
-Person years of follow-up,PY,171345,""
+Person years of follow-up,PY,171046,""
 Age in years,Min,0,""
 Age in years,P25,34,""
 Age in years,P50,50,""
@@ -15,14 +15,14 @@ Age in categories,50-59,70,18.041
 Age in categories,60-69,52,13.402
 Age in categories,70-79,45,11.598
 Age in categories,>=80,37,9.536
-Person years across age categories,0-19,21632,12.625
-Person years across age categories,20-29,14161,8.265
-Person years across age categories,30-39,19045,11.115
-Person years across age categories,40-49,26060,15.209
-Person years across age categories,50-59,31900,18.617
-Person years across age categories,60-69,23205,13.543
-Person years across age categories,70-79,19667,11.478
-Person years across age categories,>=80,15675,9.148
+Person years across age categories,0-19,21632,12.647
+Person years across age categories,20-29,14161,8.279
+Person years across age categories,30-39,19045,11.134
+Person years across age categories,40-49,26060,15.236
+Person years across age categories,50-59,31601,18.475
+Person years across age categories,60-69,23205,13.567
+Person years across age categories,70-79,19667,11.498
+Person years across age categories,>=80,15675,9.164
 Person years across sex,Male,215,55.412
 Person years across sex,Female,173,44.588
 "At risk population at January 1, 2020",Cardiovascular disease,48,12.371

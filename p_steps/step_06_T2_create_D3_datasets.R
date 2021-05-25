@@ -131,7 +131,7 @@ D3_study_population_cov_ALL <- D3_study_population_cov_ALL[to_drop == 1, ][, to_
 
 D3_vaxweeks_including_not_vaccinated <- merge(D3_vaxweeks_including_not_vaccinated, D3_study_population_cov_ALL,
                                               all.x = T, by = "person_id")
-D3_vaxweeks_including_not_vaccinated[riskfactor %in% c("any_risk_factors", NA),]
+
 D3_vaxweeks <- D3_vaxweeks[, c("sex", "type_vax", "Birthcohort_persons") := NULL]
 D3_vaxweeks <- D3_vaxweeks[, .(person_id, start_date_of_period, end_date_of_period, Dose, week, month)]
 
