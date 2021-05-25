@@ -217,6 +217,21 @@ g <- ggplot(D4_distance_doses, aes(as.numeric(distance), fill = factor(type_vax_
 suppressMessages(ggsave(paste0(direxp, "Density_plot_distance_doses.png"), plot = g,
                         units = c("cm"), dpi = 600))
 
+g <- ggplot(D4_distance_doses, aes(as.numeric(distance), fill = factor(type_vax_1))) +
+   geom_histogram(alpha=0.5, 
+                  position="identity", binwidth = 1) +
+   geom_density(alpha=0.2) + 
+   scale_x_continuous(limits = c(as.numeric(D4_distance_doses[, min(distance)]) - 5,
+                                 as.numeric(D4_distance_doses[, max(distance)]) + 5),
+                      oob = scales::oob_keep) +
+   labs(title = "Density plot of distances", 
+        subtitle = "Distances between First and Second Doses Grouped by Manufacturers",
+        caption = "Source: D4_distance_doses",
+        x = "Distance",
+        fill = "Manufacturers")
+suppressMessages(ggsave(paste0(direxp, "Histogram_distance_doses.png"), plot = g,
+                        units = c("cm"), dpi = 600))
+
 
 D4_distance_doses <- D4_distance_doses[,c("P25", "P50", "p75") :=
                                          as.list(round(quantile(distance, probs = c(0.25, 0.50, 0.75)), 0)), by = "type_vax_1"]
