@@ -259,7 +259,8 @@ rm(D3_study_population, D3_Vaccin_cohort, D4_descriptive_dataset_age_studystart,
    D4_followup_complete, D4_descriptive_dataset_age_vax1, D4_descriptive_dataset_ageband_vax,
    D4_descriptive_dataset_sex_vaccination, D4_followup_from_vax, followup_vax1, followup_vax2, followup_vax1_sex,
    followup_vax2_sex, followup_vax1_cohort, empty_vax1_cohort, followup_vax2_cohort, empty_vax2_cohort,
-   followup_vax1_complete, followup_vax2_complete, D4_distance_doses, empty_distances)
+   followup_vax1_complete, followup_vax2_complete, D4_distance_doses, empty_distances, D3_study_population_cov_ALL,
+   D4_descriptive_dataset_covariate_studystart, g)
 
 
 
