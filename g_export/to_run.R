@@ -1,9 +1,13 @@
 #-------------------------------
 # ECVM script
-# v3.2 - 25 May 2021
+# v3.3 - 25 May 2021
 # authors: Olga Paoletti, Davide Messina, Giorgio Limoncella
 
-# changelog:
+# changelog V3.3:
+# - Risk factors now are wide, not long, for countpersontime
+
+
+# changelog V3.2:
 # - Debugged Createconceptset
 # - IR dataset now in Rdata too.
 
@@ -74,10 +78,10 @@ system.time(source(paste0(thisdir,"/p_steps/step_05_11_T2.3_algorithms_COVID_sev
 system.time(source(paste0(thisdir,"/p_steps/step_06_T2_create_D3_datasets.R")))
 
 #07 create persontime
-suppressWarnings(system.time(source(paste0(thisdir,"/p_steps/step_07_1_T3_create_person_time_risks.R"))))
-suppressWarnings(system.time(source(paste0(thisdir,"/p_steps/step_07_2_T3_create_person_time_risks_year.R"))))
-suppressWarnings(system.time(source(paste0(thisdir,"/p_steps/step_07_3_T3_create_person_time_benefits.R"))))
-suppressWarnings(system.time(source(paste0(thisdir,"/p_steps/step_07_4_T3_create_person_time_benefits_year.R"))))
+system.time(source(paste0(thisdir,"/p_steps/step_07_1_T3_create_person_time_risks.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_07_2_T3_create_person_time_risks_year.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_07_3_T3_create_person_time_benefits.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_07_4_T3_create_person_time_benefits_year.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_07_5_T3_aggregate_sex_birth_cohort.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_07_6_T3_aggregate_sex_risk_factor.R")))
 
