@@ -60,7 +60,7 @@ complete_df <- expand.grid(datasource = thisdatasource, week = monday_week, vx_m
 vaxweeks_to_dos_bir_cor <- merge(vaxweeks_to_dos_bir_cor, complete_df, all.y = T, by = c("datasource", "week", "vx_manufacturer", "dose", "birth_cohort"))
 DOSES_BIRTHCOHORTS <- vaxweeks_to_dos_bir_cor[is.na(N), N := 0][, week := format(week, "%Y%m%d")]
 
-fwrite(DOSES_BIRTHCOHORTS, file = paste0(direxp, "DOSES_BIRTHCOHORTS.csv"))
+fwrite(DOSES_BIRTHCOHORTS, file = paste0(dirdashboard, "DOSES_BIRTHCOHORTS.csv"))
 
 tot_pop_cohorts <- D3_study_population[, birth_cohort := findInterval(year(date_of_birth), c(1940, 1950, 1960, 1970, 1980, 1990))]
 tot_pop_cohorts$birth_cohort <- as.character(tot_pop_cohorts$birth_cohort)
@@ -78,7 +78,7 @@ COVERAGE_BIRTHCOHORTS <- COVERAGE_BIRTHCOHORTS[, cum_N := cumsum(N), by = c("dat
 COVERAGE_BIRTHCOHORTS <- COVERAGE_BIRTHCOHORTS[, percentage := round(cum_N / pop_cohorts * 100, 3)]
 COVERAGE_BIRTHCOHORTS <- COVERAGE_BIRTHCOHORTS[, .(datasource, week, vx_manufacturer, dose, birth_cohort, percentage)]
 
-fwrite(COVERAGE_BIRTHCOHORTS, file = paste0(direxp, "COVERAGE_BIRTHCOHORTS.csv"))
+fwrite(COVERAGE_BIRTHCOHORTS, file = paste0(dirdashboard, "COVERAGE_BIRTHCOHORTS.csv"))
 
 
 
@@ -121,7 +121,7 @@ complete_df <- expand.grid(datasource = thisdatasource, week = monday_week, vx_m
 vaxweeks_to_dos_risk <- merge(vaxweeks_to_dos_risk, complete_df, all.y = T, by = c("datasource", "week", "vx_manufacturer", "dose", "riskfactor"))
 DOSES_RISKFACTORS <- vaxweeks_to_dos_risk[is.na(N), N := 0][, week := format(week, "%Y%m%d")]
 
-fwrite(DOSES_RISKFACTORS, file = paste0(direxp, "DOSES_RISKFACTORS.csv"))
+fwrite(DOSES_RISKFACTORS, file = paste0(dirdashboard, "DOSES_RISKFACTORS.csv"))
 
 tot_pop_cohorts <- D3_study_population_cov_ALL[, .(pop_cohorts = .N), by = c("riskfactor")]
 COVERAGE_RISKFACTORS <- merge(DOSES_RISKFACTORS, tot_pop_cohorts, by = "riskfactor", all.x = T)
@@ -131,7 +131,7 @@ COVERAGE_RISKFACTORS <- COVERAGE_RISKFACTORS[, cum_N := cumsum(N), by = c("datas
 COVERAGE_RISKFACTORS <- COVERAGE_RISKFACTORS[, percentage := round(cum_N / pop_cohorts * 100, 3)]
 COVERAGE_RISKFACTORS <- COVERAGE_RISKFACTORS[, .(datasource, week, vx_manufacturer, dose, riskfactor, percentage)]
 
-fwrite(COVERAGE_RISKFACTORS, file = paste0(direxp, "COVERAGE_RISKFACTORS.csv"))
+fwrite(COVERAGE_RISKFACTORS, file = paste0(dirdashboard, "COVERAGE_RISKFACTORS.csv"))
 
 rm(D3_vaxweeks, cohort_to_doses_weeks, all_mondays, monday_week, double_weeks, all_days_df, vaxweeks_to_dos_bir_cor,
    all_ages, complete_df, DOSES_BIRTHCOHORTS, D3_study_population, tot_pop_cohorts, all_pop, COVERAGE_BIRTHCOHORTS,
@@ -161,7 +161,7 @@ BBC <- BBC[, .(datasource, week, vx_manufacturer, dose, birth_cohort, COVID, IR,
 vect_recode_COVID <- c("1" = "L1", "2" = "L2", "3" = "L3", "4" = "L4", "5" = "L5")
 BBC <- BBC[ , COVID := vect_recode_COVID[COVID]]
 
-fwrite(BBC, file = paste0(direxp, "BENEFIT_BIRTHCOHORTS_CALENDARTIME.csv"))
+fwrite(BBC, file = paste0(dirdashboard, "BENEFIT_BIRTHCOHORTS_CALENDARTIME.csv"))
 rm(BBC, D4_IR_benefit_week)
 
 
@@ -185,7 +185,7 @@ setnames(BBT, c("week_fup"), c("week_since_vaccination"))
 vect_recode_COVID <- c("1" = "L1", "2" = "L2", "3" = "L3", "4" = "L4", "5" = "L5")
 BBT <- BBT[ , COVID := vect_recode_COVID[COVID]]
 
-fwrite(BBT, file = paste0(direxp, "BENEFIT_BIRTHCOHORTS_TIMESINCEVACCINATION.csv"))
+fwrite(BBT, file = paste0(dirdashboard, "BENEFIT_BIRTHCOHORTS_TIMESINCEVACCINATION.csv"))
 rm(BBT, D4_IR_benefit_fup)
 
 
@@ -208,7 +208,7 @@ BRC <- BRC[, .(datasource, week, vx_manufacturer, dose, riskfactor, COVID, IR, l
 vect_recode_COVID <- c("1" = "L1", "2" = "L2", "3" = "L3", "4" = "L4", "5" = "L5")
 BRC <- BRC[ , COVID := vect_recode_COVID[COVID]]
 
-fwrite(BRC, file = paste0(direxp, "BENEFIT_RISKFACTORS_CALENDARTIME.csv"))
+fwrite(BRC, file = paste0(dirdashboard, "BENEFIT_RISKFACTORS_CALENDARTIME.csv"))
 rm(BRC, D4_IR_benefit_week)
 
 
@@ -232,7 +232,7 @@ setnames(BRT, c("week_fup"), c("week_since_vaccination"))
 vect_recode_COVID <- c("1" = "L1", "2" = "L2", "3" = "L3", "4" = "L4", "5" = "L5")
 BRT <- BRT[ , COVID := vect_recode_COVID[COVID]]
 
-fwrite(BRT, file = paste0(direxp, "BENEFIT_RISKFACTORS_TIMESINCEVACCINATION.csv"))
+fwrite(BRT, file = paste0(dirdashboard, "BENEFIT_RISKFACTORS_TIMESINCEVACCINATION.csv"))
 rm(BRT, vect_recode_COVID, D4_IR_benefit_fup)
 
 
@@ -261,7 +261,7 @@ vect_recode_AESI <- list_risk
 names(vect_recode_AESI) <- c(as.character(seq_len(length(list_risk))))
 RBC <- RBC[ , AESI := vect_recode_AESI[AESI]]
 
-fwrite(RBC, file = paste0(direxp, "RISK_BIRTHCOHORTS_CALENDARTIME.csv"))
+fwrite(RBC, file = paste0(dirdashboard, "RISK_BIRTHCOHORTS_CALENDARTIME.csv"))
 rm(RBC, D4_IR_risk_week)
 
 
@@ -288,7 +288,7 @@ vect_recode_AESI <- list_risk
 names(vect_recode_AESI) <- c(as.character(seq_len(length(list_risk))))
 RBT <- RBT[ , AESI := vect_recode_AESI[AESI]]
 
-fwrite(RBT, file = paste0(direxp, "RISK_BIRTHCOHORTS_TIMESINCEVACCINATION.csv"))
+fwrite(RBT, file = paste0(dirdashboard, "RISK_BIRTHCOHORTS_TIMESINCEVACCINATION.csv"))
 rm(RBT, D4_IR_risk_fup)
 
 
@@ -313,7 +313,7 @@ vect_recode_AESI <- list_risk
 names(vect_recode_AESI) <- c(as.character(seq_len(length(list_risk))))
 RRC <- RRC[ , AESI := vect_recode_AESI[AESI]]
 
-fwrite(RRC, file = paste0(direxp, "RISK_RISKFACTORS_CALENDARTIME.csv"))
+fwrite(RRC, file = paste0(dirdashboard, "RISK_RISKFACTORS_CALENDARTIME.csv"))
 rm(RRC, D4_IR_risk_week)
 
 
@@ -340,5 +340,5 @@ vect_recode_AESI <- list_risk
 names(vect_recode_AESI) <- c(as.character(seq_len(length(list_risk))))
 RRT <- RRT[ , AESI := vect_recode_AESI[AESI]]
 
-fwrite(RRT, file = paste0(direxp, "RISK_RISKFACTORS_TIMESINCEVACCINATION.csv"))
+fwrite(RRT, file = paste0(dirdashboard, "RISK_RISKFACTORS_TIMESINCEVACCINATION.csv"))
 rm(RRT, vect_recode_AESI, D4_IR_risk_fup)
