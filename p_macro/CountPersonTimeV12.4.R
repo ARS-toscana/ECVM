@@ -92,21 +92,21 @@ CountPersonTime<-function(Dataset_events = NULL, Dataset, Person_id, Start_study
   #Check if the subjects have overlap in the time intervals (within strata???), defined by end-start date.
   ################################################################################################################################
   
-  print("Check if observation periods do not have overlap")
-  test_overlap<-Dataset[!is.na(get(End_date))&!is.na(get(End_date))&get(End_date)>get(Start_date),][,.(get(Person_id), as.integer(get(Start_date)), as.integer(get(End_date)))]
-  setkey(test_overlap,V1,V2,V3)
-  test_overlap2<-as.data.table(foverlaps(test_overlap, test_overlap, type="any", which=TRUE))
-  test_overlap2<-test_overlap2[xid!=yid,]
-  test_overlap[,id:=as.integer(rownames(test_overlap))]
-  overlap_subjects<-unlist(unique(test_overlap2[test_overlap, on = .(xid = id), nomatch=NULL][,.(V1)]))
+  # print("Check if observation periods do not have overlap")
+  # test_overlap<-Dataset[!is.na(get(End_date))&!is.na(get(End_date))&get(End_date)>get(Start_date),][,.(get(Person_id), as.integer(get(Start_date)), as.integer(get(End_date)))]
+  # setkey(test_overlap,V1,V2,V3)
+  # test_overlap2<-as.data.table(foverlaps(test_overlap, test_overlap, type="any", which=TRUE))
+  # test_overlap2<-test_overlap2[xid!=yid,]
+  # test_overlap[,id:=as.integer(rownames(test_overlap))]
+  # overlap_subjects<-unlist(unique(test_overlap2[test_overlap, on = .(xid = id), nomatch=NULL][,.(V1)]))
   
-  if(length(overlap_subjects) > 0){
-    warning("Subjects have overlapping person time: ")
-    warning(paste0(overlap_subjects," "))
-  }
+  # if(length(overlap_subjects) > 0){
+  #   warning("Subjects have overlapping person time: ")
+  #   warning(paste0(overlap_subjects," "))
+  # }
   
-  rm(test_overlap,test_overlap2,overlap_subjects)
-  gc()
+  # rm(test_overlap,test_overlap2,overlap_subjects)
+  # gc()
   ################################################################################################################################
   
     

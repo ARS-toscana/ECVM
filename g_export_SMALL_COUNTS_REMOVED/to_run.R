@@ -81,27 +81,27 @@ suppressWarnings(system.time(source(paste0(thisdir,"/p_steps/step_07_4_T3_create
 system.time(source(paste0(thisdir,"/p_steps/step_07_5_T3_aggregate_sex_birth_cohort.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_07_6_T3_aggregate_sex_risk_factor.R")))
 
+#08 Calculate Incidence Rates
+system.time(source(paste0(thisdir,"/p_steps/step_08_T4_IR.R")))
 
-system.time(source(paste0(thisdir,"/p_steps/step_07_6_T4_IR.R")))
+#09 create D4 for doses and coverage
+system.time(source(paste0(thisdir,"/p_steps/step_09_1_T3_create_D4_doses_weeks.R")))
 
-#08 create D4 for doses and coverage
-system.time(source(paste0(thisdir,"/p_steps/step_08_1_T3_create_D4_doses_weeks.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_09_2_T3_create_D4_descriptive_tables.R")))
 
-system.time(source(paste0(thisdir,"/p_steps/step_08_2_T3_create_D4_descriptive_tables.R")))
-
-system.time(source(paste0(thisdir,"/p_steps/step_08_3_T3_create_dashboard_tables.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_09_3_T3_create_dashboard_tables.R")))
 
 #09 describing the datasets
-system.time(source(paste0(thisdir,"/p_steps/step_09_1_FlowChart_description.R")))
-system.time(source(paste0(thisdir,"/p_steps/step_09_2_Coverage_description.R")))
-system.time(source(paste0(thisdir,"/p_steps/step_09_3_Doses_description.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_10_1_FlowChart_description.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_10_2_Coverage_description.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_10_3_Doses_description.R")))
 
-system.time(source(paste0(thisdir,"/p_steps/step_09_4_benefit_description.R")))
-system.time(source(paste0(thisdir,"/p_steps/step_09_5_risk_description.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_10_4_benefit_description.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_10_5_risk_description.R")))
 
 # system.time(source(paste0(thisdir,"/p_steps/step_09_1_FlowChart_description_MD.R")))
 # system.time(source(paste0(thisdir,"/p_steps/step_09_2_Coverage_description_MD.R")))
 # system.time(source(paste0(thisdir,"/p_steps/step_09_3_Doses_description_MD.R")))
 
 #10 Create descriptive tables
-system.time(source(paste0(thisdir,"/p_steps/step_10_T4_create_dummy_tables.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_11_T4_create_dummy_tables.R")))
