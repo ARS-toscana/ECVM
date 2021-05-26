@@ -1,6 +1,7 @@
 load(paste0(diroutput,"D4_persontime_risk_week.RData"))
 
-D4_persontime_risk_week <- D4_persontime_risk_week[riskfactor %in% c("any_risk_factors", NA),][, riskfactor := NULL]
+D4_persontime_risk_week <- D4_persontime_risk_week[, c("CV", "COVCANCER", "COVCOPD", "COVHIV", "COVCKD", "COVDIAB", "COVOBES", "COVSICKLE", "IMMUNOSUPPR",
+                                                       "any_risk_factors") := NULL]
 
 cols_to_sums = names(D4_persontime_risk_week)[6:length(D4_persontime_risk_week)]
 
@@ -25,7 +26,8 @@ rm(D4_persontime_risk_week, D4_persontime_risk_week_BC)
 
 load(paste0(diroutput,"D4_persontime_benefit_week.RData"))
 
-D4_persontime_benefit_week <- D4_persontime_benefit_week[riskfactor %in% c("any_risk_factors", NA),][, riskfactor := NULL]
+D4_persontime_benefit_week <- D4_persontime_benefit_week[, c("CV", "COVCANCER", "COVCOPD", "COVHIV", "COVCKD", "COVDIAB", "COVOBES", "COVSICKLE", "IMMUNOSUPPR",
+                                                             "any_risk_factors") := NULL]
 
 cols_to_sums = names(D4_persontime_benefit_week)[6:length(D4_persontime_benefit_week)]
 
@@ -50,7 +52,8 @@ rm(D4_persontime_benefit_week, D4_persontime_benefit_week_BC)
 
 load(paste0(diroutput,"D4_persontime_risk_year.RData"))
 
-D4_persontime_risk_year <- D4_persontime_risk_year[riskfactor %in% c("any_risk_factors", NA),][, riskfactor := NULL]
+D4_persontime_risk_year <- D4_persontime_risk_year[, c("CV", "COVCANCER", "COVCOPD", "COVHIV", "COVCKD", "COVDIAB", "COVOBES", "COVSICKLE", "IMMUNOSUPPR",
+                                                       "any_risk_factors") := NULL]
 
 D4_persontime_risk_year <- D4_persontime_risk_year[, year := NULL]
 cols_to_sums = names(D4_persontime_risk_year)[6:length(D4_persontime_risk_year)]
@@ -76,7 +79,8 @@ rm(D4_persontime_risk_year, D4_persontime_risk_year_BC)
 
 load(paste0(diroutput,"D4_persontime_benefit_year.RData"))
 
-D4_persontime_benefit_year <- D4_persontime_benefit_year[riskfactor %in% c("any_risk_factors", NA),][, riskfactor := NULL]
+D4_persontime_benefit_year <- D4_persontime_benefit_year[, c("CV", "COVCANCER", "COVCOPD", "COVHIV", "COVCKD", "COVDIAB", "COVOBES", "COVSICKLE", "IMMUNOSUPPR",
+                                                             "any_risk_factors") := NULL]
 
 D4_persontime_benefit_year <- D4_persontime_benefit_year[, year := NULL]
 cols_to_sums = names(D4_persontime_benefit_year)[6:length(D4_persontime_benefit_year)]

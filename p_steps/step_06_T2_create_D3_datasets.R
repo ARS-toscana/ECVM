@@ -123,11 +123,6 @@ setnames(D3_study_population_cov_ALL,
            "immunosuppressants_at_study_entry", "at_risk_at_study_entry"),
          c("CV", "COVCANCER", "COVCOPD", "COVHIV", "COVCKD", "COVDIAB", "COVOBES", "COVSICKLE", "IMMUNOSUPPR",
            "any_risk_factors"))
-D3_study_population_cov_ALL <- melt(D3_study_population_cov_ALL,
-                                    measure.vars = c("CV", "COVCANCER", "COVCOPD", "COVHIV", "COVCKD", "COVDIAB",
-                                                     "COVOBES", "COVSICKLE", "IMMUNOSUPPR", "any_risk_factors"),
-                                    variable.name = "riskfactor", value.name = "to_drop")
-D3_study_population_cov_ALL <- D3_study_population_cov_ALL[to_drop == 1, ][, to_drop := NULL]
 
 D3_vaxweeks_including_not_vaccinated <- merge(D3_vaxweeks_including_not_vaccinated, D3_study_population_cov_ALL,
                                               all.x = T, by = "person_id", allow.cartesian = T)
