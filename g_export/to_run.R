@@ -4,8 +4,7 @@
 # authors: Olga Paoletti, Davide Messina, Giorgio Limoncella
 
 # changelog V3.3:
-# - Risk factors now are wide, not long, for countpersontime
-
+# - Risk factors now are in wide format, not long, for countpersontime
 
 # changelog V3.2:
 # - Debugged Createconceptset

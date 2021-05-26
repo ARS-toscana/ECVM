@@ -13,8 +13,8 @@ PathOutputFolder=paste0(thisdir,"/g_describeHTML")
 suppressWarnings(if (!file.exists(PathOutputFolder)) dir.create(file.path( PathOutputFolder)))
 
 #loading the datasets
-RISK_BIRTHCOHORTS_CALENDARTIME <- fread(paste0(direxp, "RISK_BIRTHCOHORTS_CALENDARTIME.csv"))
-RISK_BIRTHCOHORTS_TIMESINCEVACCINATION <- fread( paste0(direxp, "RISK_BIRTHCOHORTS_TIMESINCEVACCINATION.csv"))
+RISK_BIRTHCOHORTS_CALENDARTIME <- fread(paste0(dirdashboard, "RISK_BIRTHCOHORTS_CALENDARTIME.csv"))
+RISK_BIRTHCOHORTS_TIMESINCEVACCINATION <- fread( paste0(dirdashboard, "RISK_BIRTHCOHORTS_TIMESINCEVACCINATION.csv"))
 
 #rendering the file
 render(paste0(dirmacro,"risk_Description.Rmd"),           

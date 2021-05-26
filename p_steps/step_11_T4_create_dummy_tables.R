@@ -84,7 +84,7 @@ fwrite(table_1b, file = paste0(direxp, "Attrition diagram 2.csv"))
 # Table2 ----------------------------------------------------------------------------------------------------------
 
 
-ageband_studystart <- fread(paste0(direxp, "D4_descriptive_dataset_ageband_studystart.csv"))
+ageband_studystart <- fread(paste0(dirD4tables, "D4_descriptive_dataset_ageband_studystart.csv"))
 
 ageband_studystart[, Datasource := c(TEST = "test", ARS = "Italy_ARS", PHARMO = "NL_PHARMO", CPRD = "UK_CPRD",
                                      BIFAP = "ES_BIFAP")[Datasource]]
@@ -99,7 +99,7 @@ col_to_keep <- intersect(c("a", "Parameters", "Italy_ARS", "NL_PHARMO",
 total_pop <- total_pop[, ..col_to_keep]
 
 
-age_studystart <- fread(paste0(direxp, "D4_descriptive_dataset_age_studystart.csv"))
+age_studystart <- fread(paste0(dirD4tables, "D4_descriptive_dataset_age_studystart.csv"))
 
 age_studystart[, Datasource := c(TEST = "test", ARS = "Italy_ARS", PHARMO = "NL_PHARMO", CPRD = "UK_CPRD",
                                  BIFAP = "ES_BIFAP")[Datasource]]
@@ -130,7 +130,7 @@ ageband_start[, Parameters := c(AgeCat_019 = "0-19", AgeCat_2029 = "20-29", AgeC
                                 Agecat_80 = ">=80")[Parameters]]
 
 
-followup_studystart <- fread(paste0(direxp, "D4_followup_fromstudystart.csv"))
+followup_studystart <- fread(paste0(dirD4tables, "D4_followup_fromstudystart.csv"))
 followup_studystart[, Datasource := c(TEST = "test", ARS = "Italy_ARS", PHARMO = "NL_PHARMO", CPRD = "UK_CPRD",
                                       BIFAP = "ES_BIFAP")[Datasource]]
 followup_studystart <- followup_studystart[, a := "Person years across age categories"]
@@ -147,7 +147,7 @@ followup_start[, Parameters := c(Followup_0119 = "0-19", Followup_2029 = "20-29"
                                  Followup_7079 = "70-79", Followup_80 = ">=80")[Parameters]]
 
 
-sex_studystart <- fread(paste0(direxp, "D4_descriptive_dataset_sex_studystart.csv"))
+sex_studystart <- fread(paste0(dirD4tables, "D4_descriptive_dataset_sex_studystart.csv"))
 sex_studystart[, Datasource := c(TEST = "test", ARS = "Italy_ARS",
                                  PHARMO = "NL_PHARMO", CPRD = "UK_CPRD",
                                  BIFAP = "ES_BIFAP")[Datasource]]
@@ -159,7 +159,7 @@ sex_start <- dcast(sex_start, a + Parameters  ~ Datasource, value.var = 'value')
 sex_start[, Parameters := c(Sex_male = "Male", Sex_female = "Female")[Parameters]]
 
 
-risk_factors_studystart <- fread(paste0(direxp, "D4_descriptive_dataset_covariate_studystart.csv"))
+risk_factors_studystart <- fread(paste0(dirD4tables, "D4_descriptive_dataset_covariate_studystart.csv"))
 risk_factors_studystart[, Datasource := c(TEST = "test", ARS = "Italy_ARS", PHARMO = "NL_PHARMO", CPRD = "UK_CPRD",
                                           BIFAP = "ES_BIFAP")[Datasource]]
 risk_factors_start <- risk_factors_studystart[, a := "At risk population at January 1, 2020"]

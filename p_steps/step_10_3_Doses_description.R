@@ -14,7 +14,7 @@ suppressWarnings(if (!file.exists(PathOutputFolder)) dir.create(file.path( PathO
 
 #loading the flowchart
 
-DOSES_BIRTHCOHORTS<- fread(paste0(direxp,"DOSES_BIRTHCOHORTS.csv"))
+DOSES_BIRTHCOHORTS<- fread(paste0(dirdashboard,"DOSES_BIRTHCOHORTS.csv"))
 
 #rendering the file
 render(paste0(dirmacro,"DOSES_BIRTHCOHORTS_description.Rmd"),           

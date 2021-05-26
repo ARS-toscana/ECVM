@@ -53,7 +53,7 @@ The graph and table below show the IR for each weeks (in calendar time), regardi
 ######  BENEFIT_BIRTHCOHORTS_CALENDARTIME
 ######  birth_cohort == "all_birth_cohorts" & vx_manufacturer == "Pfizer"  & COVID == "COVID"
 ######  dose 1 vs dose 2
-BENEFIT_BIRTHCOHORTS_CALENDARTIME_4plt <- BENEFIT_BIRTHCOHORTS_CALENDARTIME[birth_cohort == "all_birth_cohorts" & vx_manufacturer == "Pfizer"  & COVID == "COVID"]
+BENEFIT_BIRTHCOHORTS_CALENDARTIME_4plt <- BENEFIT_BIRTHCOHORTS_CALENDARTIME[birth_cohort == "all_birth_cohorts" & vx_manufacturer == "Pfizer"  & COVID == "L1"]
 
 
 BENEFIT_BIRTHCOHORTS_CALENDARTIME_plt <- ggplot(BENEFIT_BIRTHCOHORTS_CALENDARTIME_4plt, aes(x=week, y=IR, fill = dose)) + 
@@ -93,7 +93,7 @@ The graph and table below show the IR for each weeks (numbers of weeks since vac
 
 <br>
 ```{r plot2, include=TRUE}
-BENEFIT_BIRTHCOHORTS_TIMESINCEVACCINATION_4plot <- BENEFIT_BIRTHCOHORTS_TIMESINCEVACCINATION[birth_cohort == "all_birth_cohorts" & vx_manufacturer == "Pfizer"  & COVID == "COVID"]
+BENEFIT_BIRTHCOHORTS_TIMESINCEVACCINATION_4plot <- BENEFIT_BIRTHCOHORTS_TIMESINCEVACCINATION[birth_cohort == "all_birth_cohorts" & vx_manufacturer == "Pfizer"  & COVID == "L1"]
 
 BENEFIT_BIRTHCOHORTS_TIMESINCEVACCINATION_plot <- ggplot(BENEFIT_BIRTHCOHORTS_TIMESINCEVACCINATION_4plot, aes(x=week_since_vaccination, y=IR)) + 
                                                       geom_col(alpha=0.5, fill="salmon") +

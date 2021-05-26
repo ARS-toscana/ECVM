@@ -10,7 +10,7 @@ library(rmarkdown )
 PathOutputFolder=paste0(thisdir,"/g_describeMD")
 
 #loading the flowchart
-COVERAGE_BIRTHCOHORTS<- fread(paste0(direxp,"COVERAGE_BIRTHCOHORTS.csv"))
+COVERAGE_BIRTHCOHORTS<- fread(paste0(dirdashboard,"COVERAGE_BIRTHCOHORTS.csv"))
 
 #converting rmd the file to md
 setwd(paste0(PathOutputFolder, "/Coverage/"))
