@@ -42,7 +42,7 @@ The graph and table below show the IR for each weeks (in calendar time), regardi
 
 - birth_cohort = "all_birth_cohorts" 
 - vx_manufacturer = "Pfizer"
-- COVID = "COVID"
+- COVID = "L1"
 
 <br>
 
@@ -54,6 +54,7 @@ The graph and table below show the IR for each weeks (in calendar time), regardi
 ######  birth_cohort == "all_birth_cohorts" & vx_manufacturer == "Pfizer"  & COVID == "COVID"
 ######  dose 1 vs dose 2
 BENEFIT_BIRTHCOHORTS_CALENDARTIME_4plt <- BENEFIT_BIRTHCOHORTS_CALENDARTIME[birth_cohort == "all_birth_cohorts" & vx_manufacturer == "Pfizer"  & COVID == "L1"]
+BENEFIT_BIRTHCOHORTS_CALENDARTIME_4plt <- BENEFIT_BIRTHCOHORTS_CALENDARTIME[, week:= ymd(week)]
 
 
 BENEFIT_BIRTHCOHORTS_CALENDARTIME_plt <- ggplot(BENEFIT_BIRTHCOHORTS_CALENDARTIME_4plt, aes(x=week, y=IR, fill = dose)) + 
@@ -85,7 +86,7 @@ The graph and table below show the IR for each weeks (numbers of weeks since vac
 
 - birth_cohort = "all_birth_cohorts" 
 - vx_manufacturer = "Pfizer"
-- COVID = "COVID"
+- COVID = "L1"
 
 <br>
 
