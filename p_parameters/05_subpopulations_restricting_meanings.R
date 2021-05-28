@@ -11,8 +11,7 @@ this_datasource_has_subpopulations <- ifelse(thisdatasource %in% datasources_wit
 
 # subpopulations associates with each datasource the label of its subpopulations
 subpopulations <- list()
-
-if (this_datasource_has_subpopulations == FALSE) subpopulations[[thisdatasource]] <- c('ALL') 
+ 
 
 
 # op_meaning_sets labels each group of op_meaning that are relevant
@@ -126,7 +125,7 @@ if (this_datasource_has_subpopulations == TRUE){
 }
 
 if (this_datasource_has_subpopulations == FALSE) { 
-  subpopulations_non_empty <- subpopulations[[thisdatasource]]
+  subpopulations_non_empty <- c('ALL')
   save(subpopulations_non_empty,file=paste0(dirpargen,"subpopulations_non_empty.RData"))
 }
 
