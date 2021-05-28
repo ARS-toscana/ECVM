@@ -2,11 +2,12 @@
 setwd("..")
 setwd("..")
 dirbase<-getwd()
-dirinput <- paste0(dirbase,"/CDMInstances/ECVM2105/")
+# dirinput <- paste0(dirbase,"/CDMInstances/ECVM2105/")
 
 
 # set other directories
 diroutput <- paste0(thisdir,"/g_output/")
+dirinput <- paste0(thisdir,"/i_input/")
 dirtemp <- paste0(thisdir,"/g_intermediate/")
 direxp <- paste0(thisdir,"/g_export/")
 dirdashboard <- paste0(direxp,"/dashboard tables/")
