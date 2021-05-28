@@ -100,7 +100,7 @@ system.time(source(paste0(thisdir,"/p_steps/step_10_2_Coverage_description.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_10_3_Doses_description.R")))
 
 system.time(source(paste0(thisdir,"/p_steps/step_10_4_benefit_description.R")))
-system.time(source(paste0(thisdir,"/p_steps/step_10_5_risk_description.R")))
+#system.time(source(paste0(thisdir,"/p_steps/step_10_5_risk_description.R")))
 
 # system.time(source(paste0(thisdir,"/p_steps/step_09_1_FlowChart_description_MD.R")))
 # system.time(source(paste0(thisdir,"/p_steps/step_09_2_Coverage_description_MD.R")))

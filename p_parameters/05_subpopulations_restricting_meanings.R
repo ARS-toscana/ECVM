@@ -43,23 +43,23 @@ exclude_meaning_of_event[["TEST"]][["ER_HOSP"]] <- c()
 exclude_meaning_of_event[["TEST"]][["HOSP"]] <- c("emergency_room_diagnosis")
 
 
-# BIFAP
-subpopulations[["BIFAP"]] = c("PC","PC_HOSP","PC_COVID")
-
-op_meaning_sets[["BIFAP"]] <- c("meaningsPC","meaningsHOSP","meaningsCOVID")
-op_meanings_list_per_set[["BIFAP"]][["meaningsPC"]] <- c("region2_PC","region3_PC","region6_PC","region7_PC","region8_PC","region13_PC","region14_PC","region15_PC") 
-op_meanings_list_per_set[["BIFAP"]][["meaningsHOSP"]] <- c("region2_HOSP","region6_HOSP","region7_HOSP","region13_HOSP","region15_HOSP") 
-op_meanings_list_per_set[["BIFAP"]][["meaningsCOVID"]] <- c("region2_COVID","region2_PC","region3_COVID","region3_PC","region7_COVID","region7_PC","region14_COVID","region14_PC")
-
-op_meaning_sets_in_subpopulations[["BIFAP"]][["PC"]] <- c("meaningsPC")
-op_meaning_sets_in_subpopulations[["BIFAP"]][["PC_HOSP"]] <- c("meaningsPC","meaningsHOSP")
-op_meaning_sets_in_subpopulations[["BIFAP"]][["PC_COVID"]] <- c("meaningsPC","meaningsCOVID")
-
-exclude_meaning_of_event[["BIFAP"]][["PC"]]<-c("hopitalisation_diagnosis_unspecified","hospitalisation_primary","
-hospitalisation_secondary")
-exclude_meaning_of_event[["BIFAP"]][["PC_COVID"]]<-c("hopitalisation_diagnosis_unspecified","hospitalisation_primary","
-hospitalisation_secondary")
-exclude_meaning_of_event[["BIFAP"]][["PC_HOSP"]]<-c()
+# # BIFAP
+# subpopulations[["BIFAP"]] = c("PC","PC_HOSP","PC_COVID")
+# 
+# op_meaning_sets[["BIFAP"]] <- c("meaningsPC","meaningsHOSP","meaningsCOVID")
+# op_meanings_list_per_set[["BIFAP"]][["meaningsPC"]] <- c("region2_PC","region3_PC","region6_PC","region7_PC","region8_PC","region13_PC","region14_PC","region15_PC") 
+# op_meanings_list_per_set[["BIFAP"]][["meaningsHOSP"]] <- c("region2_HOSP","region6_HOSP","region7_HOSP","region13_HOSP","region15_HOSP") 
+# op_meanings_list_per_set[["BIFAP"]][["meaningsCOVID"]] <- c("region2_COVID","region2_PC","region3_COVID","region3_PC","region7_COVID","region7_PC","region14_COVID","region14_PC")
+# 
+# op_meaning_sets_in_subpopulations[["BIFAP"]][["PC"]] <- c("meaningsPC")
+# op_meaning_sets_in_subpopulations[["BIFAP"]][["PC_HOSP"]] <- c("meaningsPC","meaningsHOSP")
+# op_meaning_sets_in_subpopulations[["BIFAP"]][["PC_COVID"]] <- c("meaningsPC","meaningsCOVID")
+# 
+# exclude_meaning_of_event[["BIFAP"]][["PC"]]<-c("hopitalisation_diagnosis_unspecified","hospitalisation_primary","
+# hospitalisation_secondary")
+# exclude_meaning_of_event[["BIFAP"]][["PC_COVID"]]<-c("hopitalisation_diagnosis_unspecified","hospitalisation_primary","
+# hospitalisation_secondary")
+# exclude_meaning_of_event[["BIFAP"]][["PC_HOSP"]]<-c()
 
 # SIDIAP
 subpopulations[["SIDIAP"]] = c("PC","PC_HOSP")
@@ -74,24 +74,24 @@ op_meaning_sets_in_subpopulations[["SIDIAP"]][["PC_HOSP"]] <- c("meaningsPC","me
 exclude_meaning_of_event[["SIDIAP"]][["PC"]]<-c("hospitalisation_primary", "hospitalisation_secondary","hospitalisation_secondar")
 exclude_meaning_of_event[["SIDIAP"]][["PC_HOSP"]]<-c()
 
-# PHARMO
-subpopulations[["PHARMO"]] = c("PC","HOSP","PC_HOSP")
-
-op_meaning_sets[["PHARMO"]] <- c("meaningsPC","meaningsHOSP","meaningsPHARMA")
-
-op_meanings_list_per_set[["PHARMO"]][["meaningsPC"]] <- c("primary_care") 
-op_meanings_list_per_set[["PHARMO"]][["meaningsHOSP"]] <- c("hospitalisation") 
-op_meanings_list_per_set[["PHARMO"]][["meaningsPHARMA"]] <- c("outpatient_pharmacy") 
-
-
-op_meaning_sets_in_subpopulations[["PHARMO"]][["PC"]] <- c("meaningsPHARMA","meaningsPC")
-op_meaning_sets_in_subpopulations[["PHARMO"]][["HOSP"]] <- c("meaningsPHARMA","meaningsHOSP")
-op_meaning_sets_in_subpopulations[["PHARMO"]][["PC_HOSP"]] <- c("meaningsPHARMA","meaningsHOSP","meaningsPC")
-
-
-exclude_meaning_of_event[["PHARMO"]][["PC"]]<-c("hospital_diagnosis","amb_diagnosis")
-exclude_meaning_of_event[["PHARMO"]][["HOSP"]]<-c("primary_care_event")
-exclude_meaning_of_event[["PHARMO"]][["PC_HOSP"]]<-c()
+# # PHARMO
+# subpopulations[["PHARMO"]] = c("PC","HOSP","PC_HOSP")
+# 
+# op_meaning_sets[["PHARMO"]] <- c("meaningsPC","meaningsHOSP","meaningsPHARMA")
+# 
+# op_meanings_list_per_set[["PHARMO"]][["meaningsPC"]] <- c("primary_care") 
+# op_meanings_list_per_set[["PHARMO"]][["meaningsHOSP"]] <- c("hospitalisation") 
+# op_meanings_list_per_set[["PHARMO"]][["meaningsPHARMA"]] <- c("outpatient_pharmacy") 
+# 
+# 
+# op_meaning_sets_in_subpopulations[["PHARMO"]][["PC"]] <- c("meaningsPHARMA","meaningsPC")
+# op_meaning_sets_in_subpopulations[["PHARMO"]][["HOSP"]] <- c("meaningsPHARMA","meaningsHOSP")
+# op_meaning_sets_in_subpopulations[["PHARMO"]][["PC_HOSP"]] <- c("meaningsPHARMA","meaningsHOSP","meaningsPC")
+# 
+# 
+# exclude_meaning_of_event[["PHARMO"]][["PC"]]<-c("hospital_diagnosis","amb_diagnosis")
+# exclude_meaning_of_event[["PHARMO"]][["HOSP"]]<-c("primary_care_event")
+# exclude_meaning_of_event[["PHARMO"]][["PC_HOSP"]]<-c()
 
 
 if (this_datasource_has_subpopulations == TRUE){ 
