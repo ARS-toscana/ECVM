@@ -1,15 +1,9 @@
 # #set directory with input data
-<<<<<<< HEAD
-setwd("..")
-setwd("..")
-dirbase<-getwd()
-# dirinput <- paste0(dirbase,"/CDMInstances/ECVM2105/")
-=======
+
 # setwd("..")
 # setwd("..")
 # dirbase<-getwd()
 # dirinput <- paste0(dirbase,"/CDMInstances/ECVM2104/")
->>>>>>> 58659cf1975ec8abf8ebe2a56040c62a69bca8bf
 
 dirinput <- paste0(thisdir,"/i_input/")
 
