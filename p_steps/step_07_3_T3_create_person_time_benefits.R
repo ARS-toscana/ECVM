@@ -41,7 +41,7 @@ for (subpop in subpopulations_non_empty) {
   start_week=gsub("-","", start_week)
   end_week=gsub("-","", end_week)
   
-for (i in 1:length(start_week)){
+  for (i in 1:length(start_week)){
     start_persontime_studytime = start_week[i]
     end_persontime_studytime = end_week[i]
     nameoutput <- paste0("Output_file",start_week[i])
