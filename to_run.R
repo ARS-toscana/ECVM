@@ -94,7 +94,7 @@ system.time(source(paste0(thisdir,"/p_steps/step_09_2_T3_create_D4_descriptive_t
 
 system.time(source(paste0(thisdir,"/p_steps/step_09_3_T3_create_dashboard_tables.R")))
 
-#09 describing the datasets
+#10 describing the datasets
 system.time(source(paste0(thisdir,"/p_steps/step_10_1_FlowChart_description.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_10_2_Coverage_description.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_10_3_Doses_description.R")))
@@ -106,5 +106,5 @@ system.time(source(paste0(thisdir,"/p_steps/step_10_4_benefit_description.R")))
 # system.time(source(paste0(thisdir,"/p_steps/step_09_2_Coverage_description_MD.R")))
 # system.time(source(paste0(thisdir,"/p_steps/step_09_3_Doses_description_MD.R")))
 
-#10 Create descriptive tables
+#11 Create descriptive tables
 system.time(source(paste0(thisdir,"/p_steps/step_11_T4_create_dummy_tables.R")))

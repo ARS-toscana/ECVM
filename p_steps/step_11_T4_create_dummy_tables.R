@@ -30,9 +30,14 @@ flow_study <- fread(paste0(direxp, "Flowchart_exclusion_criteria.csv"))
 vect_recode_manufacturer <- c(TEST = "Italy_ARS", ARS = "Italy_ARS", PHARMO = "NL_PHARMO",
                               CPRD = "UK_CPRD", BIFAP = "ES_BIFAP")
 
-if ("Datasource" %not in% names(flow_source)) {
+
+
+if ("datasource" %not in% names(flow_source)) {
   flow_source <- flow_source[ , Datasource := thisdatasource]
   flow_study <- flow_study[ , Datasource := thisdatasource]
+} else {
+  setnames(flow_source, "datasource", "Datasource")
+  setnames(flow_source, "datasource", "Datasource")
 }
 
 flow_source <- flow_source[ , Datasource := vect_recode_manufacturer[Datasource]]

@@ -1,7 +1,7 @@
 #NOTE add cycle trough the concept dfs?
 
 concepts <- import_concepts(dirtemp, vaccine__conceptssets)
-
+concepts[2, date := ymd(20200412)]
 concepts <- concepts[, vx_record_date := ymd(vx_record_date)]
 concepts <- concepts[, derived_date := fifelse(!is.na(date), date, vx_record_date)]
 concepts[, temp_id := rowid(person_id, vx_dose, derived_date, vx_manufacturer)]
@@ -13,6 +13,11 @@ concepts <- concepts[, .(person_id, date, derived_date, vx_dose, vx_manufacturer
 
 setorderv(concepts, c("person_id", "derived_date"))
 concepts <- concepts[qc_dupl == 0 & qc_1_date == 0 & qc_2_date == 0, derived_dose := rowid(person_id)]
+concepts <- concepts[qc_dupl == 0 & qc_1_date == 0 & qc_2_date == 0, min_derived_date := derived_date[1], by = person_id]
+concepts <- concepts[qc_dupl == 0 & qc_1_date == 0 & qc_2_date == 0, distance_doses := as.numeric(derived_date - min_derived_date)]
+concepts <- concepts[qc_dupl == 0 & qc_1_date == 0 & qc_2_date == 0, qc_4_date := fifelse(distance_doses > 0 & distance_doses < 21, 1, 0)]
+concepts <- concepts[, c("min_derived_date", "distance_doses") := NULL]
+concepts <- concepts[qc_dupl == 0 & qc_1_date == 0 & qc_2_date == 0 & qc_4_date == 0, imputed_dose := rowid(person_id)]
 
 QC_dose_derived <- concepts[qc_dupl == 0 & qc_1_date == 0 & qc_2_date == 0, wrong_dose := fifelse(vx_dose != derived_dose, 1, 0)]
 nrow_wrong <- nrow(QC_dose_derived)

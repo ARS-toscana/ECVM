@@ -31,11 +31,15 @@ for (subpop in subpopulations_non_empty) {
   # 
   # start_week=start_week[start_week<last_event-7]
   max_exit<-study_population[,max(end_date_of_period)]
-  last_event<-events_ALL_OUTCOMES[,max(date_event)]
-  if (last_event<ymd("20200101")) {
-    next
+  if (nrow(events_ALL_OUTCOMES) != 0) {
+    last_event<-events_ALL_OUTCOMES[,max(date_event)]
+    if (last_event<ymd("20200101")) {
+      next
+    }
+    end_persontime_studytime<-min(max_exit,last_event)
+  } else {
+    end_persontime_studytime<-max_exit
   }
-  end_persontime_studytime<-min(max_exit,last_event)
   start_week=start_week[start_week<=end_persontime_studytime]
   end_week=start_week+6
   start_week=gsub("-","", start_week)

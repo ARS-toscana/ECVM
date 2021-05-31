@@ -74,14 +74,13 @@ is.na(severity_level_covid) & MechanicalVentilation_within_registry_date != 0, s
   list_outcomes_observed <- c()
   for (j in c(1,2,3,4,5) ){
     temp <- algorithm_covid[severity_level_covid >= j]
-    if (nrow(temp) > 0 ){ 
-      level <- paste0('COVID_L',j,'plus')
-      temp <- temp[, name_event := level]
-      temp <- temp[, date_event := date_covid]
-      temp <- temp[,.(person_id,name_event,date_event,origin_severity_level_covid)]
-      outcomes_covid <- rbind(outcomes_covid, temp)
-      list_outcomes_observed <- c(list_outcomes_observed, level)
-    }
+    level <- paste0('COVID_L',j,'plus')
+    temp <- temp[, name_event := level]
+    temp <- temp[, date_event := date_covid]
+    temp <- temp[,.(person_id,name_event,date_event,origin_severity_level_covid)]
+    outcomes_covid <- rbind(outcomes_covid, temp)
+    list_outcomes_observed <- c(list_outcomes_observed, level)
+      
   }
 
   
