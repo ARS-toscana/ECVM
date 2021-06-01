@@ -25,29 +25,27 @@ files<-sub('\\.csv$', '', files_list)
 timestamp_df <- data.table(DAP = character(), delivery_timestamp = character(), dataset = character(),
                            postprocessing_timestamp = character(), script_version = character())
 
-#for (subfolder in c("", "dashboard tables/", "D4 tables/")){
-  for (f in files){
-    print (f)
-    data<-data.table()
-    for (dap in list_of_DAP){
-      print(dap)
-      if( file.exists( paste0(list_of_submitted_folders[[dap]],f,".csv")) ){
-        if(stringr::str_detect(paste0(list_of_submitted_folders[[dap]],f,".csv"),"QC_code_counts_in_study_population" )){
-          input<-fread(paste0(list_of_submitted_folders[[dap]],f,".csv"), colClasses = list(character="code_first_event"))
-          
-        } else {
-          input<-fread(paste0(list_of_submitted_folders[[dap]],f,".csv") )
-        }
-        input<-input[,datasource:=dap]
-        data<-rbind(data, input, fill=T)
-        timestamp_df <- rbind(timestamp_df, data.table(dap, str_match(list_of_submitted_folders[[dap]], "(?<=-).+?(?=/)"),
-                                                       str_match(f, ".+?(?=\\.)"), as.character(Sys.time()), "Version 3.3"), use.names=FALSE)
+
+for (f in files){
+  print (f)
+  data<-data.table()
+  
+  for (dap in list_of_DAP){
+    if( file.exists( paste0(list_of_submitted_folders[[dap]],f,".csv")) ){
+      if(stringr::str_detect(paste0(list_of_submitted_folders[[dap]],f,".csv"),"QC_code_counts_in_study_population" )){
+        input<-fread(paste0(list_of_submitted_folders[[dap]],f,".csv"), colClasses = list(character="code_first_event"))
+        
+      } else {
+        input<-fread(paste0(list_of_submitted_folders[[dap]],f,".csv") )
       }
+      input<-input[,datasource:=dap]
+      data<-rbind(data, input, fill=T)
+      timestamp_df <- rbind(timestamp_df, data.table(dap, str_match(list_of_submitted_folders[[dap]], "(?<=-).+?(?=/)"),
+                                                     str_match(f, ".+?(?=\\.)"), as.character(Sys.time()), "Version 3.3"), use.names=FALSE)
     }
-    #assign("f", data)
-    #save(f,file=paste0(dirinput_pp, f, ".RData"), list=f)
-    fwrite(data, file= paste0(dirinput_pp, f, ".csv"))
-  #}
+  }
+  
+  fwrite(data, file= paste0(dirinput_pp, f, ".csv"))
 }
 
 save(timestamp_df, file= paste0(dirinput_pp,"timestamp_df.RData"))
