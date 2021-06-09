@@ -126,6 +126,7 @@ if (this_datasource_has_subpopulations == TRUE){
 
 if (this_datasource_has_subpopulations == FALSE) { 
   subpopulations_non_empty <- c('ALL')
+  subpopulations[[thisdatasource]] <- c('ALL')
   save(subpopulations_non_empty,file=paste0(dirpargen,"subpopulations_non_empty.RData"))
 }
 
