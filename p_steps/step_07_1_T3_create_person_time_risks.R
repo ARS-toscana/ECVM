@@ -5,13 +5,11 @@
 # input: D3_vaxweeks_including_not_vaccinated, D3_events_ALL_OUTCOMES.RData ,list_outcomes_observed.RData
 # output: D4_persontime_risk_week (exported to csv)
 
-
 print("COUNT PERSON TIME by week for risks")
 
 load(paste0(dirtemp,"list_outcomes_observed.RData"))
 load(paste0(dirtemp,"D3_events_ALL_OUTCOMES.RData"))
 load(paste0(dirtemp,"D3_vaxweeks_including_not_vaccinated.RData"))
-
 
 D4_persontime_risk_week <- vector(mode = 'list')
 for (subpop in subpopulations_non_empty) {  
