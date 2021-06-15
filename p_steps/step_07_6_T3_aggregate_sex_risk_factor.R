@@ -98,16 +98,6 @@ all_sex <- all_sex[, sex := "both_sexes"]
 
 D4_persontime_risk_year_RF <- rbind(D4_persontime_risk_year, all_sex)
 
-AESI <- c("Persontime", "Persontime_ACUASEARTHRITIS_broad", "Persontime_DM_broad", "Persontime_HF_narrow",            
-          "Persontime_HF_broad", "Persontime_CAD_narrow", "Persontime_CAD_broad", "Persontime_GENCONV_narrow",
-          "Persontime_GENCONV_broad", "Persontime_ANAPHYL_broad", "Persontime_Ischstroke_narrow",
-          "Persontime_Ischstroke_broad", "Persontime_VTE_narrow", "Persontime_VTE_broad", "Persontime_CONTRDIVERTIC",
-          "Persontime_CONTRHYPERT", "Persontime_DEATH", "Persontime_ArterialNoTP", "Persontime_VTENoTP",
-          "Persontime_ArterialVTENoTP", "ACUASEARTHRITIS_broad_b", "DM_broad_b", "HF_narrow_b", "HF_broad_b",
-          "CAD_narrow_b", "CAD_broad_b", "GENCONV_narrow_b","GENCONV_broad_b", "ANAPHYL_broad_b", "Ischstroke_narrow_b",
-          "Ischstroke_broad_b", "VTE_narrow_b", "VTE_broad_b", "CONTRDIVERTIC_b", "CONTRHYPERT_b", "DEATH_b",
-          "ArterialNoTP_b", "VTENoTP_b", "ArterialVTENoTP_b")
-
 setorder(D4_persontime_risk_year_RF, "week_fup")
 
 vax_dose <- unique(copy(D4_persontime_risk_year_RF)[, c("Dose", "type_vax", "week_fup")])
@@ -131,9 +121,9 @@ for (i in names(D4_persontime_risk_year_RF)){
   D4_persontime_risk_year_RF[is.na(get(i)), (i) := 0]
 }
 
-D4_persontime_risk_year_RF <- D4_persontime_risk_year_RF[, (AESI) := lapply(.SD, cumsum),
+D4_persontime_risk_year_RF <- D4_persontime_risk_year_RF[, (cols_to_sums) := lapply(.SD, cumsum),
                                                          by = c("Dose", "type_vax", "riskfactor", "sex"),
-                                                         .SDcols = AESI]
+                                                         .SDcols = cols_to_sums]
 
 save(D4_persontime_risk_year_RF,file=paste0(diroutput,"D4_persontime_risk_year_RF.RData"))
 rm(D4_persontime_risk_year, D4_persontime_risk_year_RF)
