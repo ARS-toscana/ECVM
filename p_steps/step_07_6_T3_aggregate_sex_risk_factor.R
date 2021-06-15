@@ -98,8 +98,6 @@ all_sex <- all_sex[, sex := "both_sexes"]
 
 D4_persontime_risk_year_RF <- rbind(D4_persontime_risk_year, all_sex)
 
-names(D4_persontime_risk_year_RF)
-
 AESI <- c("Persontime", "Persontime_ACUASEARTHRITIS_broad", "Persontime_DM_broad", "Persontime_HF_narrow",            
           "Persontime_HF_broad", "Persontime_CAD_narrow", "Persontime_CAD_broad", "Persontime_GENCONV_narrow",
           "Persontime_GENCONV_broad", "Persontime_ANAPHYL_broad", "Persontime_Ischstroke_narrow",
@@ -112,7 +110,11 @@ AESI <- c("Persontime", "Persontime_ACUASEARTHRITIS_broad", "Persontime_DM_broad
 
 setorder(D4_persontime_risk_year_RF, "week_fup")
 
-week_vax_dose <- unique(copy(D4_persontime_risk_year_RF)[, c("Dose", "type_vax", "week_fup")])
+vax_dose <- unique(copy(D4_persontime_risk_year_RF)[, c("Dose", "type_vax", "week_fup")])
+vax_dose <- vax_dose[, .SD[max(week_fup)], by = c("Dose", "type_vax")]
+week_vax_dose <- vax_dose[, lapply(.SD, rep, vax_dose[, week_fup])][, week_fup := unlist(
+  lapply(vax_dose[, week_fup], seq_len))]
+
 sex_vect <- rep(c("0", "1", "both_sexes"), each = nrow(week_vax_dose))
 week_vax_dose <- week_vax_dose[, lapply(.SD, rep, 3)][, sex := sex_vect]
 riskfactors <- c("CV", "COVCANCER", "COVCOPD", "COVHIV", "COVCKD", "COVDIAB", "COVOBES", "COVSICKLE", "IMMUNOSUPPR",
