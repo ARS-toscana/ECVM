@@ -39,6 +39,7 @@ for (ev in events) {
 }
 
 #D4_IR_benefit_fup_BC<-D4_persontime_benefit_year_BC[,-c(6:14)]
+
 D4_IR_benefit_fup_BC<-D4_persontime_benefit_year_BC[, !grep("^Person", names(D4_persontime_benefit_year_BC)) , with = FALSE]
 
 save(D4_IR_benefit_fup_BC,file=paste0(direxp,"D4_IR_benefit_fup_BC.RData"))
@@ -61,6 +62,7 @@ for (ev in list_outcomes_observed) {
 }
 
 #D4_IR_risk_week_BC<-D4_persontime_risk_week_BC[,-c(6:44)]
+
 D4_IR_risk_week_BC<-D4_persontime_risk_week_BC[, !grep("^Person", names(D4_persontime_risk_week_BC)) , with = FALSE]
 
 save(D4_IR_risk_week_BC,file=paste0(direxp,"D4_IR_risk_week_BC.RData"))
@@ -80,6 +82,7 @@ for (ev in list_outcomes_observed) {
 }
 
 #D4_IR_risk_fup_BC<-D4_persontime_risk_year_BC[,-c(6:44)]
+
 D4_IR_risk_fup_BC<-D4_persontime_risk_year_BC[, !grep("^Person", names(D4_persontime_risk_year_BC)) , with = FALSE]
 
 save(D4_IR_risk_fup_BC,file=paste0(direxp,"D4_IR_risk_fup_BC.RData"))
@@ -102,6 +105,7 @@ for (ev in events) {
 }
 
 #D4_IR_benefit_week_RF<-D4_persontime_benefit_week_RF[,-c(6:14)]
+
 D4_IR_benefit_week_RF<-D4_persontime_benefit_week_RF[, !grep("^Persontime", names(D4_persontime_benefit_week_RF)) , with = FALSE]
 
 save(D4_IR_benefit_week_RF,file=paste0(direxp,"D4_IR_benefit_week_RF.RData"))
@@ -121,6 +125,7 @@ for (ev in events) {
 }
 
 #D4_IR_benefit_fup_RF<-D4_persontime_benefit_year_RF[,-c(6:14)]
+
 D4_IR_benefit_fup_RF<-D4_persontime_benefit_year_RF[, !grep("^Persontime", names(D4_persontime_benefit_year_RF)) , with = FALSE]
 
 save(D4_IR_benefit_fup_RF,file=paste0(direxp,"D4_IR_benefit_fup_RF.RData"))
@@ -143,8 +148,8 @@ for (ev in list_outcomes_observed) {
 }
 
 #D4_IR_risk_week_RF<-D4_persontime_risk_week_RF[,-c(6:44)]
-D4_IR_risk_week_RF<-D4_persontime_risk_week_RF[, !grep("^Persontime", names(D4_persontime_risk_week_RF)) , with = FALSE]
 
+D4_IR_risk_week_RF<-D4_persontime_risk_week_RF[, !grep("^Persontime", names(D4_persontime_risk_week_RF)) , with = FALSE]
 
 save(D4_IR_risk_week_RF,file=paste0(direxp,"D4_IR_risk_week_RF.RData"))
 
@@ -163,6 +168,7 @@ for (ev in list_outcomes_observed) {
 }
 
 #D4_IR_risk_fup_RF<-D4_persontime_risk_year_RF[,-c(6:44)]
+
 D4_IR_risk_fup_RF<-D4_persontime_risk_year_RF[, !grep("^Persontime", names(D4_persontime_risk_year_RF)) , with = FALSE]
 
 save(D4_IR_risk_fup_RF,file=paste0(direxp,"D4_IR_risk_fup_RF.RData"))
