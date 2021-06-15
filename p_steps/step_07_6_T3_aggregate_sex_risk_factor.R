@@ -111,9 +111,11 @@ AESI <- c("Persontime", "Persontime_ACUASEARTHRITIS_broad", "Persontime_DM_broad
 setorder(D4_persontime_risk_year_RF, "week_fup")
 
 vax_dose <- unique(copy(D4_persontime_risk_year_RF)[, c("Dose", "type_vax", "week_fup")])
-vax_dose <- vax_dose[, .SD[max(week_fup)], by = c("Dose", "type_vax")]
+vax_dose <- vax_dose[, .SD[which.max(week_fup)], by = c("Dose", "type_vax")]
+vax_dose_0 <- vax_dose[week_fup == 0,]
 week_vax_dose <- vax_dose[, lapply(.SD, rep, vax_dose[, week_fup])][, week_fup := unlist(
   lapply(vax_dose[, week_fup], seq_len))]
+week_vax_dose <- rbind(week_vax_dose, vax_dose_0)
 
 sex_vect <- rep(c("0", "1", "both_sexes"), each = nrow(week_vax_dose))
 week_vax_dose <- week_vax_dose[, lapply(.SD, rep, 3)][, sex := sex_vect]
