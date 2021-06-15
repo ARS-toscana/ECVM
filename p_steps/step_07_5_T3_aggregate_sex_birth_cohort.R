@@ -83,7 +83,7 @@ week_vax_dose <- rbind(week_vax_dose, vax_dose_0)
 
 sex_vect <- rep(c("0", "1", "both_sexes"), each = nrow(week_vax_dose))
 week_vax_dose <- week_vax_dose[, lapply(.SD, rep, 3)][, sex := sex_vect]
-birthcohorts <- c("<1940", "1940-1949", "1950-1959", "1960-1969", "1970-1979", "1980-1989", "1990+")
+birthcohorts <- c("<1940", "1940-1949", "1950-1959", "1960-1969", "1970-1979", "1980-1989", "1990+", "all_birth_cohorts")
 birthcohort_vect <- rep(birthcohorts, each = nrow(week_vax_dose))
 empty_risk_year <- week_vax_dose[, lapply(.SD, rep, length(birthcohorts))][, Birthcohort_persons := birthcohort_vect]
 
