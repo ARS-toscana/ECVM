@@ -5,11 +5,13 @@
 # output: concept set datasets, one per concept set, named after the concept set itself
 
 library(logger)
-t <- paste0(dirtemp,'/logger.txt')
+t <- paste0(dirtest,'/logger.txt')
 
 if (file.exists(t)) {
   file.remove(t)
 }
+
+dirtest <- paste0(thisdir,"/g_test/")
 
 log_appender(appender_file(t))
 
@@ -130,7 +132,7 @@ time_optimized <- function() {
                            concept_set_codes =	concept_set_codes_our_study,
                            discard_from_environment = T,
                            dirinput = dirinput,
-                           diroutput = dirtemp,
+                           diroutput = dirtest,
                            extension = c("csv")
   )
   
@@ -151,7 +153,7 @@ time_optimized <- function() {
                            concept_set_codes_excl = concept_set_codes_our_study_excl,
                            discard_from_environment = T,
                            dirinput = dirinput,
-                           diroutput = dirtemp,
+                           diroutput = dirtest,
                            extension = c("csv"),
                            vocabularies_with_dot_wildcard=c("READ"))
   
@@ -171,7 +173,7 @@ time_optimized <- function() {
                            concept_set_codes_excl = concept_set_codes_our_study_excl,
                            discard_from_environment = T,
                            dirinput = dirinput,
-                           diroutput = dirtemp,
+                           diroutput = dirtest,
                            extension = c("csv"),
                            vocabularies_with_dot_wildcard = c("READ"))
   
@@ -191,7 +193,7 @@ time_optimized <- function() {
                            concept_set_codes_excl = concept_set_codes_our_study_excl,
                            discard_from_environment = T,
                            dirinput = dirinput,
-                           diroutput = dirtemp,
+                           diroutput = dirtest,
                            extension = c("csv"))
   
   
@@ -209,7 +211,7 @@ time_optimized <- function() {
                            concept_set_codes_excl = concept_set_codes_our_study_excl,
                            discard_from_environment = T,
                            dirinput = dirinput,
-                           diroutput = dirtemp,
+                           diroutput = dirtest,
                            extension = c("csv"),
                            vocabularies_with_dot_wildcard = c("READ"))
   })
@@ -225,6 +227,15 @@ p <- peakRAM::peakRAM(
 log_info(paste0("Original peak RAM: ", p[[1,4]], "MiB"))
 log_info(paste0("New peak RAM: ", p[[2,4]], "MiB"))
 log_appender()
+
+for (concept in concept_sets_of_our_study) {
+  load(paste0(dirtemp, concept, ".RData"))
+  old <- get(concept)
+  load(paste0(dirtest, concept, ".RData"))
+  new <- get(concept)
+  cond = all.equal(old, new)
+  print(paste(concept, cond))
+}
 
 readLines(t)
 unlink(t)
