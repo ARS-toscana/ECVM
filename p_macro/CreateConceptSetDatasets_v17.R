@@ -145,6 +145,10 @@ CreateConceptSetDatasets <- function(dataset, codvar, datevar, EAVtables, EAVatt
         } else {
           cod_system_indataset <- names(concept_set_codes[[concept]])
         }
+        
+        if (concept == "COVCANCER" & df2 == "SURVEY_OBSERVATIONS_COVIDDATASET") {
+          browser()
+        }
 
         if (length(cod_system_indataset) == 0) {
           used_df <- used_df[, c(col_concept, "Filter") := 0, ]
@@ -212,13 +216,12 @@ CreateConceptSetDatasets <- function(dataset, codvar, datevar, EAVtables, EAVatt
                 vocab_dom_df2_eq_type_cod <- TRUE
                 
                 if (!missing(vocabulary) && df2 %in% dataset[[dom]] && dom %in% names(vocabulary)) {
+                  column_to_search <- col
                   if (!missing(vocabularies_with_dot_wildcard) && type_cod_2 %in% vocabularies_with_dot_wildcard) {
                     pattern <- paste(pattern_base, collapse = "|")
-                    column_to_search <- col
                     vocab_dom_df2_eq_type_cod <- used_df[, get(vocabulary[[dom]][[df2]])] == type_cod_2
                   } else if (!missing(vocabularies_with_keep_dot) && type_cod_2 %in% vocabularies_with_keep_dot) {
                     pattern <- paste(gsub("\\.", "\\\\.", pattern_base), collapse = "|")
-                    column_to_search <- col
                     vocab_dom_df2_eq_type_cod <- used_df[, get(vocabulary[[dom]][[df2]])] == type_cod_2
                   }
                 }
