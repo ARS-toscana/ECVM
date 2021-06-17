@@ -33,6 +33,8 @@ for (subpop in subpopulations_non_empty) {
   endyear<- substr(study_population[,max(end_date_of_period)], 1, 4)
   end_persontime_studytime<-as.character(paste0(endyear,"1231"))
   
+  list_recurrent_outcomes <- list_outcomes[str_detect(list_outcomes, "^GENCONV_") | str_detect(list_outcomes, "^ANAPHYL_")]
+  list_outcomes <- setdiff(list_outcomes, list_recurrent_outcomes)
 
   Output_file<-CountPersonTime(
       Dataset_events = events_ALL_OUTCOMES,
@@ -49,11 +51,44 @@ for (subpop in subpopulations_non_empty) {
       Date_event = "date_event",
       #Age_bands = c(0,19,29,39,49,59,69,79),
       Increment="year",
-      Outcomes =  list_outcomes, 
+      Outcomes =  list_recurrent_outcomes, 
       Unit_of_age = "year",
       include_remaning_ages = T,
-      Aggregate = T
+      Aggregate = T,
+      Rec_events = T,
+      Rec_period = c(rep(30, length(list_recurrent_outcomes)))
     )
+  Recurrent_output_file<-Output_file
+  rm(Output_file)
+  Output_file<-CountPersonTime(
+    Dataset_events = events_ALL_OUTCOMES,
+    Dataset = study_population,
+    Person_id = "person_id",
+    Start_study_time = start_persontime_studytime,
+    End_study_time = end_persontime_studytime,
+    Start_date = "start_date_of_period",
+    End_date = "end_date_of_period",
+    #Birth_date = "date_of_birth",
+    Strata = c("sex","Birthcohort_persons","Dose","type_vax","week_fup", "CV", "COVCANCER","COVCOPD", "COVHIV",
+               "COVCKD", "COVDIAB", "COVOBES", "COVSICKLE", "IMMUNOSUPPR", "any_risk_factors"),
+    Name_event = "name_event",
+    Date_event = "date_event",
+    #Age_bands = c(0,19,29,39,49,59,69,79),
+    Increment="year",
+    Outcomes =  list_outcomes, 
+    Unit_of_age = "year",
+    include_remaning_ages = T,
+    Aggregate = T
+  )
+  
+  Output_file <- merge(Output_file, Recurrent_output_file,
+                       by = c("sex","Birthcohort_persons","Dose","type_vax","week_fup", "CV", "COVCANCER","COVCOPD",
+                              "COVHIV", "COVCKD", "COVDIAB", "COVOBES", "COVSICKLE", "IMMUNOSUPPR", "any_risk_factors"),
+                       all = T)
+  
+  for (i in names(Output_file)){
+    Output_file[is.na(get(i)), (i):=0]
+  }
 
   D4_persontime_risk_year <- Output_file
   fwrite(D4_persontime_risk_year,file=paste0(direxp,"D4_persontime_risk_year.csv"))

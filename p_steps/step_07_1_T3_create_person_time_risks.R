@@ -12,7 +12,7 @@ load(paste0(dirtemp,"D3_events_ALL_OUTCOMES.RData"))
 load(paste0(dirtemp,"D3_vaxweeks_including_not_vaccinated.RData"))
 
 D4_persontime_risk_week <- vector(mode = 'list')
-for (subpop in subpopulations_non_empty) {  
+for (subpop in subpopulations_non_empty) {
   print(subpop)
   start_week=seq.Date(as.Date("20200106","%Y%m%d"),Sys.Date(),by = "week")
   
@@ -64,7 +64,9 @@ for (subpop in subpopulations_non_empty) {
       Outcomes =  list_recurrent_outcomes, 
       Unit_of_age = "year",
       include_remaning_ages = T,
-      Aggregate = T
+      Aggregate = T,
+      Rec_events = T,
+      Rec_period = c(rep(30, length(list_recurrent_outcomes)))
     )
     )
     if (i==1) {
@@ -76,6 +78,7 @@ for (subpop in subpopulations_non_empty) {
     }
   }
   recurrent_persontime_risk_week <- persontime_risk_week
+  rm(persontime_risk_week)
   for (i in 1:length(start_week)){
     start_persontime_studytime = start_week[i]
     end_persontime_studytime = end_week[i]
@@ -110,10 +113,16 @@ for (subpop in subpopulations_non_empty) {
       rm(list=paste0("Output_file",start_week[i]))
     }
   }
-  browser()
+  
   persontime_risk_week <- merge(persontime_risk_week, recurrent_persontime_risk_week,
-                                by = c("sex", "Birthcohort_persons", "Dose", "type_vax", "week"))
-  names(D4_persontime_risk_week)
+                                by = c("sex","Birthcohort_persons","Dose","type_vax", "CV", "COVCANCER","COVCOPD",
+                                       "COVHIV", "COVCKD", "COVDIAB", "COVOBES", "COVSICKLE", "IMMUNOSUPPR",
+                                       "any_risk_factors", "week"), all = T)
+  
+  for (i in names(persontime_risk_week)){
+    persontime_risk_week[is.na(get(i)), (i):=0]
+  }
+  
   thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
   fwrite(persontime_risk_week,file=paste0(thisdirexp,"D4_persontime_risk_week.csv"))
   if (this_datasource_has_subpopulations == TRUE){ 

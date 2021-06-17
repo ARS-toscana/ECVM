@@ -86,7 +86,9 @@ CreateConceptSetDatasets <- function(dataset, codvar, datevar, EAVtables, EAVatt
       }
       path = paste0(dirinput, "/", file_name)
       if (extension == "dta") {used_df <- as.data.table(haven::read_dta(path))
-      } else if (extension == "csv") {used_df <- fread(path)
+      } else if (extension == "csv") {
+        namecorrect= codvar[[dom]][[df2]]
+        used_df <- fread(path, colClasses = list(character = namecorrect, character="person_id"))
       } else if (extension == "RData") {assign('used_df', get(load(path)))
       } else {stop("File extension not recognized. Please use a supported file")}
 
@@ -210,7 +212,7 @@ CreateConceptSetDatasets <- function(dataset, codvar, datevar, EAVtables, EAVatt
                 pattern <- gsub("\\*", ".", pattern_no_dot)
                 column_to_search <- paste0(col, "_tmp")
                 vocab_dom_df2_eq_type_cod <- TRUE
-                
+
                 if (!missing(vocabulary) && df2 %in% dataset[[dom]] && dom %in% names(vocabulary)) {
                   if (!missing(vocabularies_with_dot_wildcard) && type_cod_2 %in% vocabularies_with_dot_wildcard) {
                     pattern <- paste(pattern_base, collapse = "|")
@@ -236,13 +238,18 @@ CreateConceptSetDatasets <- function(dataset, codvar, datevar, EAVtables, EAVatt
           filtered_concept <- copy(used_df)[Filter == 1, ][, Filter := NULL]
           used_df <- used_df[, Filter := NULL]
         } else {
+          if ("Col" %in% names(used_df)) {
+            used_df[, Col := NULL]
+          }
           setnames(used_df, col_concept, "Col")
           filtered_concept <- copy(used_df)[Filter == 1, ][, c("Filter", "Table_cdm") := list(NULL, df2)]
-          used_df <- used_df[, c("Filter", "Col") := NULL]
+          used_df <- used_df[, "Filter" := NULL]
         }
 
-        if (codvar[[dom]][[df2]] %in% names(filtered_concept)) {
-          setnames(filtered_concept, col, "codvar")
+        for (col in codvar[[dom]][[df2]]) {
+          if (col %in% names(filtered_concept)) {
+            setnames(filtered_concept, col, "codvar")
+          }
         }
 
         if(!missing(rename_col)){
@@ -271,7 +278,7 @@ CreateConceptSetDatasets <- function(dataset, codvar, datevar, EAVtables, EAVatt
   }
 
   for (concept in concept_set_names) {
-    
+
     print(paste("Merging and saving the concept", concept))
     final_concept <- data.table()
 
