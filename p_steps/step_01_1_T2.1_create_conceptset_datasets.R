@@ -22,8 +22,7 @@ CreateConceptSetDatasets(concept_set_names = c(vaccine__conceptssets),
 
 
 # APPLY THE FUNCTION CreateConceptSetDatasets TO CREATE ONE DATASET PER CONCEPT SET CONTAINING ONLY RECORDS WITH A CODE OF INTEREST
-for (conceptset in OUTCOMES_conceptssets){
-  CreateConceptSetDatasets(concept_set_names = conceptset,
+CreateConceptSetDatasets(concept_set_names = OUTCOMES_conceptssets,
                            dataset = ECVM_CDM_tables,
                            codvar = ECVM_CDM_codvar,
                            datevar = ECVM_CDM_datevar,
@@ -40,10 +39,9 @@ for (conceptset in OUTCOMES_conceptssets){
                            diroutput = dirtemp,
                            extension = c("csv"),
                            vocabularies_with_dot_wildcard=c("READ"))
-}
 
-for (conceptset in COV_conceptssets){
-  CreateConceptSetDatasets(concept_set_names = conceptset,
+
+CreateConceptSetDatasets(concept_set_names = COV_conceptssets,
                            dataset = ECVM_CDM_tables,
                            codvar = ECVM_CDM_codvar,
                            datevar= ECVM_CDM_datevar,
@@ -60,10 +58,9 @@ for (conceptset in COV_conceptssets){
                            diroutput = dirtemp,
                            extension = c("csv"),
                            vocabularies_with_dot_wildcard = c("READ"))
-}
 
-for (conceptset in DRUGS_conceptssets){
-  CreateConceptSetDatasets(concept_set_names = conceptset,
+
+CreateConceptSetDatasets(concept_set_names = DRUGS_conceptssets,
                            dataset = ECVM_CDM_tables,
                            codvar = ECVM_CDM_codvar,
                            datevar = ECVM_CDM_datevar,
@@ -79,10 +76,8 @@ for (conceptset in DRUGS_conceptssets){
                            dirinput = dirinput,
                            diroutput = dirtemp,
                            extension = c("csv"))
-}
 
-for (conceptset in SEVERCOVID_conceptsets){
-  CreateConceptSetDatasets(concept_set_names = conceptset,
+CreateConceptSetDatasets(concept_set_names = SEVERCOVID_conceptsets,
                            dataset = ECVM_CDM_tables,
                            codvar = ECVM_CDM_codvar,
                            datevar= ECVM_CDM_datevar,
@@ -99,5 +94,5 @@ for (conceptset in SEVERCOVID_conceptsets){
                            diroutput = dirtemp,
                            extension = c("csv"),
                            vocabularies_with_dot_wildcard = c("READ"))
-}
+
 
