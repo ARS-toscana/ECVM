@@ -74,12 +74,39 @@ if (length(ECVM_CDM_EAV_tables)!=0 ){
   }
 }
 
-ECVM_CDM_coding_system_cols <-vector(mode="list")
+# ECVM_CDM_coding_system_cols <-vector(mode="list")
+# #coding system
+# for (dom in alldomain) {
+#   for (ds in ECVM_CDM_tables[[dom]]) {
+#     if (dom=="Diagnosis") ECVM_CDM_coding_system_cols[[dom]][[ds]] = "event_record_vocabulary"
+#     #    if (dom=="Medicines") ECVM_CDM_coding_system_cols[[dom]][[ds]] = "code_indication_vocabulary"
+#   }
+#}
+
 #coding system
-for (dom in alldomain) {
-  for (ds in ECVM_CDM_tables[[dom]]) {
-    if (dom=="Diagnosis") ECVM_CDM_coding_system_cols[[dom]][[ds]] = "event_record_vocabulary"
-    #    if (dom=="Medicines") ECVM_CDM_coding_system_cols[[dom]][[ds]] = "code_indication_vocabulary"
+ECVM_CDM_coding_system_cols <-vector(mode="list")
+if (length(ECVM_CDM_EAV_tables)!=0 ){
+  for (dom in alldomain) {
+    for (i in 1:(length(ECVM_CDM_EAV_tables[["Diagnosis"]]))){
+      for (ds in append(ECVM_CDM_tables[[dom]],ECVM_CDM_EAV_tables[["Diagnosis"]][[i]][[1]][[1]])) {
+        if (ds==ECVM_CDM_EAV_tables[["Diagnosis"]][[i]][[1]][[1]]) {
+          if (str_detect(ds,"^SURVEY_OB"))  ECVM_CDM_coding_system_cols[["Diagnosis"]][[ds]]="so_unit"
+          if (str_detect(ds,"^MEDICAL_OB"))  ECVM_CDM_coding_system_cols[["Diagnosis"]][[ds]]="mo_record_vocabulary"
+        }else{
+          # if (dom=="Medicines") ECVM_CDM_coding_system_cols[[dom]][[ds]]="product_ATCcode"
+          if (dom=="Diagnosis") ECVM_CDM_coding_system_cols[[dom]][[ds]]="event_record_vocabulary"
+          if (dom=="Procedures") ECVM_CDM_coding_system_cols[[dom]][[ds]]="procedure_code_vocabulary"
+        }
+      }
+    }
+  }
+}else{
+  for (dom in alldomain) {
+    for (ds in ECVM_CDM_tables[[dom]]) {
+      if (dom=="Diagnosis") ECVM_CDM_coding_system_cols[[dom]][[ds]] = "event_record_vocabulary"
+      if (dom=="Procedures") ECVM_CDM_coding_system_cols[[dom]][[ds]] = "procedure_code_vocabulary"
+      #    if (dom=="Medicines") ECVM_CDM_coding_system_cols[[dom]][[ds]] = "code_indication_vocabulary"
+    }
   }
 }
 
@@ -170,25 +197,127 @@ if (length(ECVM_CDM_EAV_tables)!=0 ){
 }
 
 
-#DA CMD_SOURCE
-ECVM_CDM_EAV_attributes<-vector(mode="list")
-datasources<-c("ARS","TEST")
+# #DA CMD_SOURCE
+# ECVM_CDM_EAV_attributes<-vector(mode="list")
+# datasources<-c("ARS","TEST")
+# 
+# if (length(ECVM_CDM_EAV_tables)!=0 ){
+#   for (dom in alldomain) {
+#     for (i in 1:(length(ECVM_CDM_EAV_tables[[dom]]))){
+#       for (ds in ECVM_CDM_EAV_tables[[dom]][[i]][[1]][[1]]) {
+#         for (dat in datasources) {
+#           if (dom=="Diagnosis") ECVM_CDM_EAV_attributes[[dom]][[ds]][[dat]][["ICD9"]] <-  list(list("RMR","CAUSAMORTE"))
+#           ECVM_CDM_EAV_attributes[[dom]][[ds]][[dat]][["ICD10"]] <-  list(list("RMR","CAUSAMORTE_ICDX"))
+#           ECVM_CDM_EAV_attributes[[dom]][[ds]][[dat]][["SNOMED"]] <-  list(list("AP","COD_MORF_1"),list("AP","COD_MORF_2"),list("AP","COD_MORF_3"),list("AP","COD_TOPOG"))
+#           #        if (dom=="Medicines") ECVM_CDM_EAV_attributes[[dom]][[ds]][[dat]][["ICD9"]] <-  list(list("CAP1","SETTAMEN_ARSNEW"),list("CAP1","GEST_ECO"),list("AP","COD_MORF_1"),list("AP","COD_MORF_2"),list("AP","COD_MORF_3"),list("AP","COD_TOPOG"))
+#         }
+#       }
+#     }
+#   }
+# }
 
-if (length(ECVM_CDM_EAV_tables)!=0 ){
-  for (dom in alldomain) {
-    for (i in 1:(length(ECVM_CDM_EAV_tables[[dom]]))){
-      for (ds in ECVM_CDM_EAV_tables[[dom]][[i]][[1]][[1]]) {
-        for (dat in datasources) {
-          if (dom=="Diagnosis") ECVM_CDM_EAV_attributes[[dom]][[ds]][[dat]][["ICD9"]] <-  list(list("RMR","CAUSAMORTE"))
-          ECVM_CDM_EAV_attributes[[dom]][[ds]][[dat]][["ICD10"]] <-  list(list("RMR","CAUSAMORTE_ICDX"))
-          ECVM_CDM_EAV_attributes[[dom]][[ds]][[dat]][["SNOMED"]] <-  list(list("AP","COD_MORF_1"),list("AP","COD_MORF_2"),list("AP","COD_MORF_3"),list("AP","COD_TOPOG"))
-          #        if (dom=="Medicines") ECVM_CDM_EAV_attributes[[dom]][[ds]][[dat]][["ICD9"]] <-  list(list("CAP1","SETTAMEN_ARSNEW"),list("CAP1","GEST_ECO"),list("AP","COD_MORF_1"),list("AP","COD_MORF_2"),list("AP","COD_MORF_3"),list("AP","COD_TOPOG"))
+
+#NEW ATTRIBUTES DEFINITION
+files_par<-sub('\\.RData$', '', list.files(dirpargen))
+
+if(length(files_par)>0){
+  for (i in 1:length(files_par)) {
+    if (str_detect(files_par[i],"^ECVM_CDM_EAV_attributes")) { 
+      load(paste0(dirpargen,files_par[i],".RData")) 
+      load(paste0(dirpargen,"ECVM_CDM_coding_system_list.RData")) 
+      print("upload existing EAV_attributes")
+    } else {
+      print("create EAV_attributes")
+      
+      ECVM_CDM_coding_system_list<-vector(mode="list")
+      METADATA<-fread(paste0(dirinput,"METADATA.csv"))
+      ECVM_CDM_coding_system_list<-unique(unlist(str_split(unique(METADATA[type_of_metadata=="list_of_values" & (columnname=="so_unit" | columnname=="mo_record_vocabulary"),values])," ")))
+      
+      ECVM_CDM_EAV_attributes<-vector(mode="list")
+      
+      if (length(ECVM_CDM_EAV_tables)!=0 ){
+        for (i in 1:(length(ECVM_CDM_EAV_tables[["Diagnosis"]]))){
+          for (ds in ECVM_CDM_EAV_tables[["Diagnosis"]][[i]][[1]][[1]]) {
+            temp <- fread(paste0(dirinput,ds,".csv"))
+            for( cod_syst in ECVM_CDM_coding_system_list) {
+              if ("mo_source_table" %in% names(temp) ) {
+                temp1<-unique(temp[mo_record_vocabulary %in% cod_syst,.(mo_source_table,mo_source_column)])
+                if (nrow(temp1)!=0) ECVM_CDM_EAV_attributes[["Diagnosis"]][[ds]][[thisdatasource]][[cod_syst]]<-as.list(as.data.table(t(temp1)))
+              } else{
+                temp1<-unique(temp[so_unit %in% cod_syst,.(so_source_table,so_source_column)])
+                if (nrow(temp1)!=0) ECVM_CDM_EAV_attributes[["Diagnosis"]][[ds]][[thisdatasource]][[cod_syst]]<-as.list(as.data.table(t(temp1)))
+              }
+              
+            }
+          }
+        }
+      }
+      
+      ECVM_CDM_EAV_attributes_this_datasource<-vector(mode="list")
+      
+      if (length(ECVM_CDM_EAV_attributes)!=0 ){
+        for (t in  names(ECVM_CDM_EAV_attributes)) {
+          for (f in names(ECVM_CDM_EAV_attributes[[t]])) {
+            for (s in names(ECVM_CDM_EAV_attributes[[t]][[f]])) {
+              if (s==thisdatasource ){
+                ECVM_CDM_EAV_attributes_this_datasource[[t]][[f]]<-ECVM_CDM_EAV_attributes[[t]][[f]][[s]]
+              }
+            }
+          }
+        }
+      }
+      
+      save(ECVM_CDM_EAV_attributes_this_datasource, file = paste0(dirpargen,"ECVM_CDM_EAV_attributes.RData"))
+      save(ECVM_CDM_coding_system_list, file = paste0(dirpargen,"ECVM_CDM_coding_system_list.RData"))
+      
+    }
+  }
+} else {
+  
+  print("create EAV_attributes")
+  
+  ECVM_CDM_coding_system_list<-vector(mode="list")
+  METADATA<-fread(paste0(dirinput,"METADATA.csv"))
+  ECVM_CDM_coding_system_list<-unique(unlist(str_split(unique(METADATA[type_of_metadata=="list_of_values" & (columnname=="so_unit" | columnname=="mo_record_vocabulary"),values])," ")))
+  
+  ECVM_CDM_EAV_attributes<-vector(mode="list")
+  
+  if (length(ECVM_CDM_EAV_tables)!=0 ){
+    for (i in 1:(length(ECVM_CDM_EAV_tables[["Diagnosis"]]))){
+      for (ds in ECVM_CDM_EAV_tables[["Diagnosis"]][[i]][[1]][[1]]) {
+        temp <- fread(paste0(dirinput,ds,".csv"))
+        for( cod_syst in ECVM_CDM_coding_system_list) {
+          if ("mo_source_table" %in% names(temp) ) {
+            temp1<-unique(temp[mo_record_vocabulary %in% cod_syst,.(mo_source_table,mo_source_column)])
+            if (nrow(temp1)!=0) ECVM_CDM_EAV_attributes[["Diagnosis"]][[ds]][[thisdatasource]][[cod_syst]]<-as.list(as.data.table(t(temp1)))
+          } else{
+            temp1<-unique(temp[so_unit %in% cod_syst,.(so_source_table,so_source_column)])
+            if (nrow(temp1)!=0) ECVM_CDM_EAV_attributes[["Diagnosis"]][[ds]][[thisdatasource]][[cod_syst]]<-as.list(as.data.table(t(temp1)))
+          }
+          
         }
       }
     }
   }
+  
+  ECVM_CDM_EAV_attributes_this_datasource<-vector(mode="list")
+  
+  if (length(ECVM_CDM_EAV_attributes)!=0 ){
+    for (t in  names(ECVM_CDM_EAV_attributes)) {
+      for (f in names(ECVM_CDM_EAV_attributes[[t]])) {
+        for (s in names(ECVM_CDM_EAV_attributes[[t]][[f]])) {
+          if (s==thisdatasource ){
+            ECVM_CDM_EAV_attributes_this_datasource[[t]][[f]]<-ECVM_CDM_EAV_attributes[[t]][[f]][[s]]
+          }
+        }
+      }
+    }
+  }
+  
+  save(ECVM_CDM_EAV_attributes_this_datasource, file = paste0(dirpargen,"ECVM_CDM_EAV_attributes.RData"))
+  save(ECVM_CDM_coding_system_list, file = paste0(dirpargen,"ECVM_CDM_coding_system_list.RData"))
+  
 }
-
 
 ECVM_CDM_EAV_attributes_this_datasource<-vector(mode="list")
 

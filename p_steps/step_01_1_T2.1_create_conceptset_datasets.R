@@ -20,7 +20,8 @@ CreateConceptSetDatasets(concept_set_names = c(vaccine__conceptssets),
                          extension = c("csv")
                          )
 
-CreateConceptSetDatasets(concept_set_names = c(OUTCOMES_conceptssets, COV_conceptssets, DRUGS_conceptssets, SEVERCOVID_conceptsets),
+CreateConceptSetDatasets(concept_set_names = c(OUTCOMES_conceptssets, COV_conceptssets, DRUGS_conceptssets,
+                                               SEVERCOVID_conceptsets),
                          dataset = ECVM_CDM_tables,
                          codvar = ECVM_CDM_codvar,
                          datevar = ECVM_CDM_datevar,
@@ -37,5 +38,4 @@ CreateConceptSetDatasets(concept_set_names = c(OUTCOMES_conceptssets, COV_concep
                          diroutput = dirtemp,
                          extension = c("csv"),
                          vocabularies_with_dot_wildcard=c("READ"))
-
 
