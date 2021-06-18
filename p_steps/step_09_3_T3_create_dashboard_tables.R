@@ -60,6 +60,11 @@ complete_df <- expand.grid(datasource = thisdatasource, week = monday_week, vx_m
 vaxweeks_to_dos_bir_cor <- merge(vaxweeks_to_dos_bir_cor, complete_df, all.y = T, by = c("datasource", "week", "vx_manufacturer", "dose", "birth_cohort"))
 DOSES_BIRTHCOHORTS <- vaxweeks_to_dos_bir_cor[is.na(N), N := 0][, week := format(week, "%Y%m%d")]
 
+vect_recode_birthcohort <- c("<1940" = "80+", "1940-1949" = "70-79", "1950-1959" = "60-69", "1960-1969" = "50-59",
+                             "1970-1979" = "40-49", "1980-1989" = "30-39", "1990+" = "<30",
+                             "all_birth_cohorts" = "all_birth_cohorts")
+DOSES_BIRTHCOHORTS <- DOSES_BIRTHCOHORTS[, ageband := vect_recode_birthcohort[birth_cohort]]
+
 fwrite(DOSES_BIRTHCOHORTS, file = paste0(dirdashboard, "DOSES_BIRTHCOHORTS.csv"))
 
 tot_pop_cohorts <- D3_study_population[, birth_cohort := findInterval(year(date_of_birth), c(1940, 1950, 1960, 1970, 1980, 1990))]
@@ -77,6 +82,8 @@ setorder(COVERAGE_BIRTHCOHORTS, week)
 COVERAGE_BIRTHCOHORTS <- COVERAGE_BIRTHCOHORTS[, cum_N := cumsum(N), by = c("datasource", "vx_manufacturer", "dose", "birth_cohort")]
 COVERAGE_BIRTHCOHORTS <- COVERAGE_BIRTHCOHORTS[, percentage := round(cum_N / pop_cohorts * 100, 3)]
 COVERAGE_BIRTHCOHORTS <- COVERAGE_BIRTHCOHORTS[, .(datasource, week, vx_manufacturer, dose, birth_cohort, percentage)]
+
+COVERAGE_BIRTHCOHORTS <- COVERAGE_BIRTHCOHORTS[, ageband := vect_recode_birthcohort[birth_cohort]]
 
 fwrite(COVERAGE_BIRTHCOHORTS, file = paste0(dirdashboard, "COVERAGE_BIRTHCOHORTS.csv"))
 
@@ -161,6 +168,7 @@ BBC <- BBC[, datasource := thisdatasource][sex == "both_sexes", ][, week := form
 BBC <- BBC[, .(datasource, week, vx_manufacturer, dose, birth_cohort, COVID, Numerator, IR, lb, ub)]
 vect_recode_COVID <- c("1" = "L1", "2" = "L2", "3" = "L3", "4" = "L4", "5" = "L5")
 BBC <- BBC[ , COVID := vect_recode_COVID[COVID]]
+BBC <- BBC[, ageband := vect_recode_birthcohort[birth_cohort]]
 
 fwrite(BBC, file = paste0(dirdashboard, "BENEFIT_BIRTHCOHORTS_CALENDARTIME.csv"))
 rm(BBC, D4_IR_benefit_week)
@@ -186,6 +194,7 @@ BBT <- BBT[, .(datasource, week_fup, vx_manufacturer, dose, birth_cohort, COVID,
 setnames(BBT, c("week_fup"), c("week_since_vaccination"))
 vect_recode_COVID <- c("1" = "L1", "2" = "L2", "3" = "L3", "4" = "L4", "5" = "L5")
 BBT <- BBT[ , COVID := vect_recode_COVID[COVID]]
+BBT <- BBT[, ageband := vect_recode_birthcohort[birth_cohort]]
 
 fwrite(BBT, file = paste0(dirdashboard, "BENEFIT_BIRTHCOHORTS_TIMESINCEVACCINATION.csv"))
 rm(BBT, D4_IR_benefit_fup)
@@ -265,6 +274,7 @@ RBC <- RBC[, .(datasource, week, vx_manufacturer, dose, birth_cohort, AESI, Nume
 vect_recode_AESI <- list_risk
 names(vect_recode_AESI) <- c(as.character(seq_len(length(list_risk))))
 RBC <- RBC[ , AESI := vect_recode_AESI[AESI]]
+RBC <- RBC[, ageband := vect_recode_birthcohort[birth_cohort]]
 
 fwrite(RBC, file = paste0(dirdashboard, "RISK_BIRTHCOHORTS_CALENDARTIME.csv"))
 rm(RBC, D4_IR_risk_week)
@@ -293,6 +303,7 @@ setnames(RBT, c("week_fup"), c("week_since_vaccination"))
 vect_recode_AESI <- list_risk
 names(vect_recode_AESI) <- c(as.character(seq_len(length(list_risk))))
 RBT <- RBT[ , AESI := vect_recode_AESI[AESI]]
+RBT <- RBT[, ageband := vect_recode_birthcohort[birth_cohort]]
 
 fwrite(RBT, file = paste0(dirdashboard, "RISK_BIRTHCOHORTS_TIMESINCEVACCINATION.csv"))
 rm(RBT, D4_IR_risk_fup)

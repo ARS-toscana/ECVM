@@ -72,26 +72,18 @@ all_ages <- unique(all_ages[, Birthcohort_persons := "all_birth_cohorts"])
 
 D4_persontime_risk_year_BC <- rbind(D4_persontime_risk_year, all_ages)
 
-AESI <- c("Persontime", "Persontime_ACUASEARTHRITIS_broad", "Persontime_DM_broad", "Persontime_HF_narrow",            
-          "Persontime_HF_broad", "Persontime_CAD_narrow", "Persontime_CAD_broad", "Persontime_GENCONV_narrow",
-          "Persontime_GENCONV_broad", "Persontime_ANAPHYL_broad", "Persontime_Ischstroke_narrow",
-          "Persontime_Ischstroke_broad", "Persontime_VTE_narrow", "Persontime_VTE_broad", "Persontime_CONTRDIVERTIC",
-          "Persontime_CONTRHYPERT", "Persontime_DEATH", "Persontime_ArterialNoTP", "Persontime_VTENoTP",
-          "Persontime_ArterialVTENoTP", "ACUASEARTHRITIS_broad_b", "DM_broad_b", "HF_narrow_b", "HF_broad_b",
-          "CAD_narrow_b", "CAD_broad_b", "GENCONV_narrow_b","GENCONV_broad_b", "ANAPHYL_broad_b", "Ischstroke_narrow_b",
-          "Ischstroke_broad_b", "VTE_narrow_b", "VTE_broad_b", "CONTRDIVERTIC_b", "CONTRHYPERT_b", "DEATH_b",
-          "ArterialNoTP_b", "VTENoTP_b", "ArterialVTENoTP_b")
-
 setorder(D4_persontime_risk_year_BC, "Birthcohort_persons")
 
 vax_dose <- unique(copy(D4_persontime_risk_year_BC)[, c("Dose", "type_vax", "week_fup")])
-vax_dose <- vax_dose[, .SD[max(week_fup)], by = c("Dose", "type_vax")]
+vax_dose <- vax_dose[, .SD[which.max(week_fup)], by = c("Dose", "type_vax")]
+vax_dose_0 <- vax_dose[week_fup == 0,]
 week_vax_dose <- vax_dose[, lapply(.SD, rep, vax_dose[, week_fup])][, week_fup := unlist(
   lapply(vax_dose[, week_fup], seq_len))]
+week_vax_dose <- rbind(week_vax_dose, vax_dose_0)
 
 sex_vect <- rep(c("0", "1", "both_sexes"), each = nrow(week_vax_dose))
 week_vax_dose <- week_vax_dose[, lapply(.SD, rep, 3)][, sex := sex_vect]
-birthcohorts <- c("<1940", "1940-1949", "1950-1959", "1960-1969", "1970-1979", "1980-1989", "1990+")
+birthcohorts <- c("<1940", "1940-1949", "1950-1959", "1960-1969", "1970-1979", "1980-1989", "1990+", "all_birth_cohorts")
 birthcohort_vect <- rep(birthcohorts, each = nrow(week_vax_dose))
 empty_risk_year <- week_vax_dose[, lapply(.SD, rep, length(birthcohorts))][, Birthcohort_persons := birthcohort_vect]
 
@@ -102,9 +94,9 @@ for (i in names(D4_persontime_risk_year_BC)){
   D4_persontime_risk_year_BC[is.na(get(i)), (i) := 0]
 }
 
-D4_persontime_risk_year_BC <- D4_persontime_risk_year_BC[, (AESI) := lapply(.SD, cumsum),
+D4_persontime_risk_year_BC <- D4_persontime_risk_year_BC[, (cols_to_sums) := lapply(.SD, cumsum),
                                                          by = c("Dose", "type_vax", "Birthcohort_persons", "sex"),
-                                                         .SDcols = AESI]
+                                                         .SDcols = cols_to_sums]
 
 save(D4_persontime_risk_year_BC,file=paste0(diroutput,"D4_persontime_risk_year_BC.RData"))
 rm(D4_persontime_risk_year, D4_persontime_risk_year_BC)
