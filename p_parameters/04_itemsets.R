@@ -6,7 +6,7 @@ thidatasource <- as.character(CDM_SOURCE[1,2])
 
 # -itemset_AVpair_our_study- is a nested list, with 3 levels: foreach study variable, for each coding system of its data domain, the list of AVpair is recorded
 
-study_variables_of_our_study <- c("COVID_symptoms")
+study_variables_of_our_study <- c("COVID_symptoms","COVID_hospitalised","COVID_hospitalised_date","COVID_ICU","COVID_ICU_date")
 
 itemset_AVpair_our_study <- vector(mode="list")
 datasources<-c("TEST","ARS","BIPS","BIFAP","FISABIO","SIDIAP","PEDIANET","PHARMO")
@@ -18,7 +18,14 @@ for (i in 1:length(files)) {
   if (str_detect(files[i],"^SURVEY_OB")) {
     itemset_AVpair_our_study[["COVID_symptoms"]][[files[i]]][["ARS"]] <- list("COVIDDATASET","STATOCLINICO_PIU_GRAVE")
     itemset_AVpair_our_study[["COVID_symptoms"]][[files[i]]][["TEST"]] <- list("COVIDDATASET","STATOCLINICO_PIU_GRAVE")
-    
+    itemset_AVpair_our_study[["COVID_hospitalised"]][[files[i]]][["TEST"]] <- list("Covid19_Hospitalizacion","Ingreso_hospital")
+    itemset_AVpair_our_study[["COVID_hospitalised_date"]][[files[i]]][["TEST"]] <- list("Covid19_Hospitalizacion","Fecha_ingreso_hosp")
+    itemset_AVpair_our_study[["COVID_ICU"]][[files[i]]][["TEST"]] <- list("Covid19_Hospitalizacion","Ingreso_uci")
+    itemset_AVpair_our_study[["COVID_ICU_date"]][[files[i]]][["TEST"]] <- list("Covid19_Hospitalizacion","Fecha_ingreso_uci")
+    itemset_AVpair_our_study[["COVID_hospitalised"]][[files[i]]][["BIFAP"]] <- list("Covid19_Hospitalizacion","Ingreso_hospital")
+    itemset_AVpair_our_study[["COVID_hospitalised_date"]][[files[i]]][["BIFAP"]] <- list("Covid19_Hospitalizacion","Fecha_ingreso_hosp")
+    itemset_AVpair_our_study[["COVID_ICU"]][[files[i]]][["BIFAP"]] <- list("Covid19_Hospitalizacion","Ingreso_uci")
+    itemset_AVpair_our_study[["COVID_ICU_date"]][[files[i]]][["BIFAP"]] <- list("Covid19_Hospitalizacion","Fecha_ingreso_uci")
   }
 }
 
