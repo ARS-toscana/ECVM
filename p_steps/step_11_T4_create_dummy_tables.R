@@ -91,7 +91,7 @@ fwrite(table_1b, file = paste0(direxp, "Attrition diagram 2.csv"))
 
 ageband_studystart <- fread(paste0(dirD4tables, "D4_descriptive_dataset_ageband_studystart.csv"))
 
-ageband_studystart[, Datasource := c(TEST = "test", ARS = "Italy_ARS", PHARMO = "NL_PHARMO", CPRD = "UK_CPRD",
+ageband_studystart[, Datasource := c(TEST = "Test", ARS = "Italy_ARS", PHARMO = "NL_PHARMO", CPRD = "UK_CPRD",
                                      AEMPS = "ES_BIFAP")[Datasource]]
 
 ageband_studystart[, TOTAL := sum(AgeCat_019, AgeCat_2029, AgeCat_3039, AgeCat_4049, AgeCat_5059, AgeCat_6069,
@@ -100,13 +100,13 @@ ageband_studystart[, TOTAL := sum(AgeCat_019, AgeCat_2029, AgeCat_3039, AgeCat_4
 total_pop <- ageband_studystart[, a := "Study population"][, Parameters := "N"][, .(a, Parameters, Datasource, TOTAL)]
 total_pop <- dcast(total_pop, a + Parameters ~ Datasource, value.var = 'TOTAL')
 col_to_keep <- intersect(c("a", "Parameters", "Italy_ARS", "NL_PHARMO",
-                           "UK_CPRD", "ES_BIFAP"), names(total_pop))
+                           "UK_CPRD", "ES_BIFAP", "Test"), names(total_pop))
 total_pop <- total_pop[, ..col_to_keep]
 
 
 age_studystart <- fread(paste0(dirD4tables, "D4_descriptive_dataset_age_studystart.csv"))
 
-age_studystart[, Datasource := c(TEST = "test", ARS = "Italy_ARS", PHARMO = "NL_PHARMO", CPRD = "UK_CPRD",
+age_studystart[, Datasource := c(TEST = "Test", ARS = "Italy_ARS", PHARMO = "NL_PHARMO", CPRD = "UK_CPRD",
                                  AEMPS = "ES_BIFAP")[Datasource]]
 
 pt_total <- age_studystart[, a := "Person years of follow-up"][, Parameters := "PY"][, .(a, Parameters, Datasource, Followup)]
@@ -136,7 +136,7 @@ ageband_start[, Parameters := c(AgeCat_019 = "0-19", AgeCat_2029 = "20-29", AgeC
 
 
 followup_studystart <- fread(paste0(dirD4tables, "D4_followup_fromstudystart.csv"))
-followup_studystart[, Datasource := c(TEST = "test", ARS = "Italy_ARS", PHARMO = "NL_PHARMO", CPRD = "UK_CPRD",
+followup_studystart[, Datasource := c(TEST = "Test", ARS = "Italy_ARS", PHARMO = "NL_PHARMO", CPRD = "UK_CPRD",
                                       AEMPS = "ES_BIFAP")[Datasource]]
 followup_studystart <- followup_studystart[, a := "Person years across age categories"]
 followup_start <- followup_studystart[, .(a, Datasource, Followup_0119, Followup_2029, Followup_3039, Followup_4049,
@@ -153,7 +153,7 @@ followup_start[, Parameters := c(Followup_0119 = "0-19", Followup_2029 = "20-29"
 
 
 sex_studystart <- fread(paste0(dirD4tables, "D4_descriptive_dataset_sex_studystart.csv"))
-sex_studystart[, Datasource := c(TEST = "test", ARS = "Italy_ARS",
+sex_studystart[, Datasource := c(TEST = "Test", ARS = "Italy_ARS",
                                  PHARMO = "NL_PHARMO", CPRD = "UK_CPRD",
                                  AEMPS = "ES_BIFAP")[Datasource]]
 sex_start <- sex_studystart[, a := "Person years across sex"]
@@ -165,7 +165,7 @@ sex_start[, Parameters := c(Sex_male = "Male", Sex_female = "Female")[Parameters
 
 
 risk_factors_studystart <- fread(paste0(dirD4tables, "D4_descriptive_dataset_covariate_studystart.csv"))
-risk_factors_studystart[, Datasource := c(TEST = "test", ARS = "Italy_ARS", PHARMO = "NL_PHARMO", CPRD = "UK_CPRD",
+risk_factors_studystart[, Datasource := c(TEST = "Test", ARS = "Italy_ARS", PHARMO = "NL_PHARMO", CPRD = "UK_CPRD",
                                           AEMPS = "ES_BIFAP")[Datasource]]
 risk_factors_start <- risk_factors_studystart[, a := "At risk population at January 1, 2020"]
 risk_factors_start <- melt(risk_factors_start, id.vars = c("a", "Datasource"),
@@ -179,7 +179,7 @@ risk_factors_start[, Parameters := c(CV = "Cardiovascular disease", Cancer = "Ca
                                      immunosuppressants = "Use of immunosuppressants")[Parameters]]
 
 table2 <- rbind(total_pop, pt_total, age_start, ageband_start, followup_start, sex_start, risk_factors_start)
-daps <- intersect(c("Italy_ARS", "NL_PHARMO", "UK_CPRD", "ES_BIFAP"), names(table2))
+daps <- intersect(c("Italy_ARS", "NL_PHARMO", "UK_CPRD", "ES_BIFAP", "Test"), names(table2))
 daps_perc <- paste("perc", daps, sep="_")
 col_order <- c(rbind(daps, daps_perc))
 table2 <- table2[, (daps_perc) := character(nrow(table2))]

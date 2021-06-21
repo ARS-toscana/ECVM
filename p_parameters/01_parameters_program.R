@@ -97,14 +97,14 @@ suppressWarnings(if (!file.exists(dirsmallcountsremoved)) dir.create(file.path(d
 
 files<-sub('\\.csv$', '', list.files(dirinput))
 
-if (!all(str_detect(files,"^SURVEY_ID"))) {
+if (!any(str_detect(files,"^SURVEY_ID"))) {
   print("Creating empty SURVEY_ID since none were found")
   fwrite(data.table(person_id = character(0), survey_id = character(0), survey_date = character(0),
                     survey_meaning = character(0)),
          paste0(dirinput, "SURVEY_ID", ".csv"))
 }
 
-if (!all(str_detect(files,"^SURVEY_OBSERVATIONS"))) {
+if (!any(str_detect(files,"^SURVEY_OBSERVATIONS"))) {
   print("Creating empty SURVEY_OBSERVATIONS since none were found")
   fwrite(data.table(person_id = character(0), so_date = character(0), so_source_table = character(0),
                     so_source_column = character(0), so_source_value = character(0), so_unit = character(0),
