@@ -22,6 +22,14 @@ if (thisdatasource =='ARS'){
   covid_registry_symptoms <- COVID_symptoms[,.(person_id,survey_id,so_source_value)][so_source_value == 'Asintomatico' | so_source_value == 'Pauci-sintomatico', covid_registry_symptoms := 1][(so_source_value == 'Lieve' ), covid_registry_symptoms := 2][so_source_value == 'Severo', covid_registry_symptoms := 3][so_source_value == 'Critico', covid_registry_symptoms := 4][so_source_value == 'Deceduto', covid_registry_symptoms := 5]
 }
 
+if (thisdatasource =='TEST'){
+  covid_registry_symptoms <- COVID_symptoms[,.(person_id,survey_id,so_source_value)][so_source_value == 'Asintomatico' | so_source_value == 'Pauci-sintomatico', covid_registry_symptoms := 1][(so_source_value == 'Lieve' ), covid_registry_symptoms := 2][so_source_value == 'Severo', covid_registry_symptoms := 3][so_source_value == 'Critico', covid_registry_symptoms := 4][so_source_value == 'Deceduto', covid_registry_symptoms := 5]
+  covid_registry_symptoms_icu <- COVID_ICU[,.(person_id,survey_id,so_source_column)][so_source_column == 'Ingreso_uci', covid_registry_symptoms := 4]
+  covid_registry_symptoms <- rbind(covid_registry_symptoms,covid_registry_symptoms_icu, fill = T)
+  covid_registry_symptoms_hospitalised <- COVID_hospitalised[,.(person_id,survey_id,so_source_column)][so_source_column == 'Ingreso_hospital', covid_registry_symptoms := 3]
+  covid_registry_symptoms <- rbind(covid_registry_symptoms,covid_registry_symptoms_hospitalised, fill = T)
+  covid_registry_symptoms <- covid_registry_symptoms[!is.na(covid_registry_symptoms),]
+}
 
 
 D3_components_covid_severity <- vector(mode = 'list')
