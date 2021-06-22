@@ -84,7 +84,7 @@ for (subpop in subpopulations_non_empty) {
   Output_file <- merge(Output_file, Recurrent_output_file,
                        by = c("sex","Birthcohort_persons","Dose","type_vax","week_fup", "CV", "COVCANCER","COVCOPD",
                               "COVHIV", "COVCKD", "COVDIAB", "COVOBES", "COVSICKLE", "IMMUNOSUPPR", "any_risk_factors",
-                              "year"),
+                              "year", "Persontime"),
                        all = T)
   
   for (i in names(Output_file)){
