@@ -3,10 +3,8 @@
 
 CountPersonTime<-function(Dataset_events = NULL, Dataset, Person_id, Start_study_time, End_study_time, Start_date, End_date, Birth_date = NULL,Rec_events = F,Rec_period = NULL, Strata = NULL,Outcomes = NULL, Name_event = NULL, Date_event = NULL, Age_bands = NULL, Unit_of_age = "year" , Increment = "year", include_remaning_ages = T, Aggregate = T){
   
-  print("Version 12.3")
   # Check if demanded R packages are installed, install if not,  and activate
   ################################################################################################################################
-  print("Check packages data.table and lubridate")
   if (!require("data.table")) install.packages("data.table")
   library(data.table)
   
@@ -16,7 +14,6 @@ CountPersonTime<-function(Dataset_events = NULL, Dataset, Person_id, Start_study
   
   #Set character input for study dates to date format
   ################################################################################################################################
-  print("Assign date format to Start_study_time and End_study_time")
   Start_study_time<-as.IDate(as.character(Start_study_time),"%Y%m%d")
   End_study_time<-as.IDate(as.character(End_study_time),"%Y%m%d")
   ################################################################################################################################
@@ -29,7 +26,6 @@ CountPersonTime<-function(Dataset_events = NULL, Dataset, Person_id, Start_study
   #check if study start and stop dates are valid
   ################################################################################################################################
   
-  print("Check if Start_study_time and End_study_time are valid")
   if(!sum(Start_study_time==seq.Date(as.Date("19000101","%Y%m%d"),Sys.Date(),by = Increment))==1){
     
     if(Increment == "year"){stop("Change the start date to the first of january. Wrong study start date can produce invalid results.")}
@@ -61,8 +57,6 @@ CountPersonTime<-function(Dataset_events = NULL, Dataset, Person_id, Start_study
   #Check if start, end and birth date are all filled. If end date is not filled it will be replaced by the and study date
   ################################################################################################################################
   
-
-  print("Check if date columns in input data are valid and in correct order")
   if(sum(is.na(Dataset[,.(get(Start_date))]))>0){stop("Empty start dates")}
   if(!is.null(Age_bands)){if(sum(is.na(Dataset[,.(get(Birth_date))]))>0){stop("Empty birth dates")}}
   if(sum(is.na(Dataset[,.(get(End_date))]))>0){print(paste0(sum(is.na(Dataset[,.(get(End_date))]))," empty end dates will be filled with the end study date. This may cause overlapping intervals"))}
@@ -125,9 +119,6 @@ CountPersonTime<-function(Dataset_events = NULL, Dataset, Person_id, Start_study
   #Enlarge table by time increment. If agebands, then calculate tha ages at the start and at the end of every new created time interval
   ################################################################################################################################
   
-  
-  print(paste0("Transform input date to a dataset per ", Increment, ". This step increases the size of the file with respect to the choosen increment" ))
-  
   Table_Temp <- copy(Dataset[0])
   gc()
   for(i in 1:length(Time_Increment)){
@@ -162,8 +153,6 @@ CountPersonTime<-function(Dataset_events = NULL, Dataset, Person_id, Start_study
   ################################################################################################################################
   if(!is.null(Age_bands)){
     
-    print(paste0("Calculate ages at the start and end of every observation period by ", Increment))
-    
     if (nrow(Dataset) > 0){
       
       Dataset[, age_start := floor(time_length(interval(get(Birth_date), get(Start_date)), Unit_of_age)) ]
@@ -185,7 +174,6 @@ CountPersonTime<-function(Dataset_events = NULL, Dataset, Person_id, Start_study
     #Split time interval that are switching from ageband. Those rows are doubled and start end end dates are changed
     if(Increment != "day" ){for(j in Age_bands){
       
-      print(paste0("Spliting rows that fall within several agebands for age ", j))
       if(j!= 0){
         
         if(j == Age_bands[1]){j <- j-1}
@@ -217,7 +205,6 @@ CountPersonTime<-function(Dataset_events = NULL, Dataset, Person_id, Start_study
     
     #assign age bands 
     
-    print("Assign agebands")
     for (k in 1:length(Age_bands)){
       
       #if (k==1){Dataset[age_start %between% c(0,Age_bands[k]) & age_end %between% c(0,Age_bands[k]),Ageband := paste0("0-",Age_bands[k])]}
@@ -260,7 +247,6 @@ CountPersonTime<-function(Dataset_events = NULL, Dataset, Person_id, Start_study
     Dataset_events[,Recurrent := cumsum(!is.na(get(Date_event))),by=c(Person_id,Name_event)]
     
     if(Rec_events){
-      print("If Rec_events = T then determine the censoring periods")
       it=1
       if(!length(Rec_period)==length(Outcomes)) stop("the vectors Outcomes and rec period have different lengths")
       #events_rec_list <- list()
@@ -314,7 +300,6 @@ CountPersonTime<-function(Dataset_events = NULL, Dataset, Person_id, Start_study
       
     } else {
       
-      print("If Rec_events = F then selecting only the first event")
       Dataset_events <- Dataset_events[Recurrent==1,]
       Dataset_events<-dcast(Dataset_events, get(Person_id) + Recurrent ~ get(Name_event), value.var = eval(Date_event))
       setcolorder(Dataset_events,neworder = c('Person_id','Recurrent',colls_outcomes))
@@ -362,7 +347,6 @@ CountPersonTime<-function(Dataset_events = NULL, Dataset, Person_id, Start_study
     ################################################################################################################################
     for(i in 1:nrow(p)){
       
-      print(paste0("Calculate days to subtract from persontime for ",p[i,"OUTC"]," for recurrent event ",p[i,"REC"]))
       ST<-paste0("RecSTDT_",p[i,"OUTC"])
       EN<-paste0("RecENDT_",p[i,"OUTC"])
       SUB<- paste0("SUBTRCUM_",p[i,"OUTC"])  
@@ -416,7 +400,6 @@ CountPersonTime<-function(Dataset_events = NULL, Dataset, Person_id, Start_study
     
     for(i in colls_outcomes){
       
-      print(paste0("Count the number of events per subject per ",Increment," for ", i))
       Dataset_temp <- copy(Dataset)[,c("Person_id",Start_date,End_date),with=F]
       Event_temp <- copy(Dataset_events)[!is.na(get(i)),c("Person_id",i),with=F]
       setkey(Dataset_temp,Person_id)
@@ -447,8 +430,6 @@ CountPersonTime<-function(Dataset_events = NULL, Dataset, Person_id, Start_study
   
   #Calculate persontimes
   ################################################################################################################################
-  
-  print("Calculate persontimes")
   
   if(!is.null(Dataset_events)){
   
@@ -494,13 +475,11 @@ CountPersonTime<-function(Dataset_events = NULL, Dataset, Person_id, Start_study
   #Create output table
   ################################################################################################################################
   
-  print("Create output table")
   if(Increment=="month"){Dataset[,eval(Increment) :=substr(get(Increment),1,7)]}
   if(Increment=="year"){Dataset[,eval(Increment) :=substr(get(Increment),1,4)]}
   
   setorderv(Dataset, sort_order)
   Dataset <- Dataset[,coln,with=FALSE]
-  
   
   if (Aggregate == T) {
     if (!is.null(Age_bands)) Dataset <- Dataset[, lapply(.SD, sum), .SDcols=c("Persontime",paste0("Persontime_",Outcomes),paste0(Outcomes,"_b")), by  = c(Strata, Increment, "Ageband")]
