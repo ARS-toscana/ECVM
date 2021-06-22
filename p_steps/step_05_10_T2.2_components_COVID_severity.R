@@ -7,7 +7,6 @@ print("CREATE ALGORITHMS FOR COVID SEVERITY")
 
 load(paste0(diroutput,"D4_study_population.RData")) 
 load(paste0(dirtemp,"covid_registry.RData")) 
-load(paste0(dirtemp,"COVID_symptoms.RData"))
 load(paste0(dirtemp,"D3_events_COVID_narrow.RData")) 
 load(paste0(dirtemp,"D3_events_DEATH.RData")) 
 load(paste0(dirtemp,"emptydataset"))
@@ -17,12 +16,47 @@ load(paste0(dirpargen,"subpopulations_non_empty.RData"))
 #-------------------------------------
 # symptoms from covid registry
 covid_registry_symptoms <- emptydataset
+
 # if there is a covid registry, define the symptoms an integer 1-5, in a datasource-specific way
 if (thisdatasource =='ARS'){
+  load(paste0(dirtemp,"COVID_symptoms.RData"))
   covid_registry_symptoms <- COVID_symptoms[,.(person_id,survey_id,so_source_value)][so_source_value == 'Asintomatico' | so_source_value == 'Pauci-sintomatico', covid_registry_symptoms := 1][(so_source_value == 'Lieve' ), covid_registry_symptoms := 2][so_source_value == 'Severo', covid_registry_symptoms := 3][so_source_value == 'Critico', covid_registry_symptoms := 4][so_source_value == 'Deceduto', covid_registry_symptoms := 5]
+  rm(COVID_symptoms)
 }
 
+if (thisdatasource =='BIFAP'){
+  load(paste0(dirtemp,"COVID_ICU.RData"))
+  load(paste0(dirtemp,"COVID_hospitalised.RData"))
+  covid_registry_symptoms_icu <- COVID_ICU[,.(person_id,survey_id,so_source_column)][so_source_column == 'Ingreso_uci', covid_registry_symptoms := 4]
+  covid_registry_symptoms <- covid_registry_symptoms_icu
+  covid_registry_symptoms_hospitalised <- COVID_hospitalised[,.(person_id,survey_id,so_source_column)][so_source_column == 'Ingreso_hospital', covid_registry_symptoms := 3]
+  covid_registry_symptoms <- rbind(covid_registry_symptoms,covid_registry_symptoms_hospitalised, fill = T)
+  covid_registry_symptoms <- covid_registry_symptoms[!is.na(covid_registry_symptoms),]
+  rm(covid_registry_symptoms_icu)
+  rm(covid_registry_symptoms_hospitalised)
+  rm(COVID_hospitalised)
+  rm(COVID_ICU)
+}
 
+if (thisdatasource =='TEST'){
+  load(paste0(dirtemp,"COVID_ICU.RData"))
+  load(paste0(dirtemp,"COVID_hospitalised.RData"))
+  load(paste0(dirtemp,"COVID_symptoms.RData"))
+  covid_registry_symptoms <- COVID_symptoms[,.(person_id,survey_id,so_source_value)][so_source_value == 'Asintomatico' | so_source_value == 'Pauci-sintomatico', covid_registry_symptoms := 1][(so_source_value == 'Lieve' ), covid_registry_symptoms := 2][so_source_value == 'Severo', covid_registry_symptoms := 3][so_source_value == 'Critico', covid_registry_symptoms := 4][so_source_value == 'Deceduto', covid_registry_symptoms := 5]
+  covid_registry_symptoms_icu <- COVID_ICU[,.(person_id,survey_id,so_source_column)][so_source_column == 'Ingreso_uci', covid_registry_symptoms := 4]
+  covid_registry_symptoms <- rbind(covid_registry_symptoms,covid_registry_symptoms_icu, fill = T)
+  covid_registry_symptoms_hospitalised <- COVID_hospitalised[,.(person_id,survey_id,so_source_column)][so_source_column == 'Ingreso_hospital', covid_registry_symptoms := 3]
+  covid_registry_symptoms <- rbind(covid_registry_symptoms,covid_registry_symptoms_hospitalised, fill = T)
+  covid_registry_symptoms <- covid_registry_symptoms[!is.na(covid_registry_symptoms),]
+  rm(COVID_symptoms)
+  rm(covid_registry_symptoms_icu)
+  rm(covid_registry_symptoms_hospitalised)
+  rm(COVID_hospitalised)
+  rm(COVID_ICU)
+}
+
+#-----------------------------------
+# piece together components of covid severity
 
 D3_components_covid_severity <- vector(mode = 'list')
 list_outcomes_observed_COVID <- c()
@@ -248,5 +282,5 @@ for (subpop in subpopulations_non_empty) {
 } 
 
 save(D3_components_covid_severity,file=paste0(dirtemp,"D3_components_covid_severity.RData"))
-rm(D3_components_covid_severity,events_COVID_narrow,     study_population,D4_study_population,D3_events_COVID_narrow,COVID_symptoms,D3_events_DEATH, components_covid_severity)
+rm(D3_components_covid_severity,events_COVID_narrow,     study_population,D4_study_population,D3_events_COVID_narrow,D3_events_DEATH, components_covid_severity)
 # D3_components_covid_severity

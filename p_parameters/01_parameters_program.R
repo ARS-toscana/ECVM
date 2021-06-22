@@ -91,7 +91,26 @@ suppressWarnings(if (!file.exists(dirpargen)) dir.create(file.path( dirpargen)))
 suppressWarnings(if (!file.exists(dirsmallcountsremoved)) dir.create(file.path(dirsmallcountsremoved)))
 suppressWarnings(if (!file.exists(dirsmallcountsremoved)) dir.create(file.path(dirsmallcountsremoved)))
 
+###################################################################
+# CREATE EMPTY FILES
+###################################################################
 
+files<-sub('\\.csv$', '', list.files(dirinput))
+
+if (!any(str_detect(files,"^SURVEY_ID"))) {
+  print("Creating empty SURVEY_ID since none were found")
+  fwrite(data.table(person_id = character(0), survey_id = character(0), survey_date = character(0),
+                    survey_meaning = character(0)),
+         paste0(dirinput, "SURVEY_ID", ".csv"))
+}
+
+if (!any(str_detect(files,"^SURVEY_OBSERVATIONS"))) {
+  print("Creating empty SURVEY_OBSERVATIONS since none were found")
+  fwrite(data.table(person_id = character(0), so_date = character(0), so_source_table = character(0),
+                    so_source_column = character(0), so_source_value = character(0), so_unit = character(0),
+                    survey_id = character(0)),
+         paste0(dirinput, "SURVEY_OBSERVATIONS", ".csv"))
+}
 
 #############################################
 #SAVE METADATA TO direxp

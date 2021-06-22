@@ -1,7 +1,16 @@
 #-------------------------------
 # ECVM script
-# v3.3 - 25 May 2021
-# authors: Olga Paoletti, Davide Messina, Giorgio Limoncella
+# v3.5 - 22 June 2021
+# authors: Rosa Gini, Olga Paoletti, Davide Messina, Giorgio Limoncella
+
+# changelog V3.5:
+# - Support for recurrent events
+# - CreateConceptSetDatasets V18
+# - support for COVID severity in BIFAP
+
+# changelog V3.4:
+# - Cumulative results for risks time since vaccination
+# - Inclusion of column ageband and numerator in dashboard tables
 
 # changelog V3.3:
 # - Risk factors now are in wide format, not long, for countpersontime
