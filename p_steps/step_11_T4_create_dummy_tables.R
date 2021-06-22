@@ -73,7 +73,7 @@ flow_source_1b <- flow_source[a == "B_birth_date_absurd", ]
 flow_source_1b <- rbind(flow_source_1b, table_1a[a == "end population", ][, a := "Start population"])
 flow_study <- flow_study[, row_id := rowid(Datasource)]
 flow_study <- data.table::melt(flow_study, id.vars = c("row_id", "Datasource", "N"),
-                                measure.vars = c("A_insufficient_run_in"), variable.name = "a")
+                               measure.vars = c("A_insufficient_run_in"), variable.name = "a")
 flow_study <- flow_study[value == 1, a := "end population"][, .(Datasource, N, a)]
 flow_study <- data.table::dcast(flow_study, a ~ Datasource, value.var = c("N"))
 flow_source_1b <- rbind(flow_source_1b, flow_study)
@@ -143,9 +143,9 @@ followup_start <- followup_studystart[, .(a, Datasource, Followup_0119, Followup
                                           Followup_5059, Followup_6069, Followup_7079, Followup_80)]
 
 followup_start <- melt(followup_start, id.vars = c("a", "Datasource"),
-                  measure.vars = c("Followup_0119", "Followup_2029", "Followup_3039", "Followup_4049", "Followup_5059",
-                                   "Followup_6069", "Followup_7079", "Followup_80"),
-                  variable.name = "Parameters")
+                       measure.vars = c("Followup_0119", "Followup_2029", "Followup_3039", "Followup_4049", "Followup_5059",
+                                        "Followup_6069", "Followup_7079", "Followup_80"),
+                       variable.name = "Parameters")
 followup_start <- dcast(followup_start, a + Parameters  ~ Datasource, value.var = 'value')
 followup_start[, Parameters := c(Followup_0119 = "0-19", Followup_2029 = "20-29", Followup_3039 = "30-39",
                                  Followup_4049 = "40-49", Followup_5059 = "50-59", Followup_6069 = "60-69",
@@ -196,3 +196,66 @@ setcolorder(table2, c("a", "Parameters", col_order))
 setnames(table2, "a", " ")
 
 fwrite(table2, file = paste0(direxp, "Cohort characteristics at start of study (1-1-2020).csv"))
+
+
+
+
+
+c("Moderna", "Pfizer", "AstraZeneca", "J&J")
+
+load(file = paste0(dirtemp, "D3_Vaccin_cohort.RData"))
+
+N_fup_pop <- D3_Vaccin_cohort[, .(person_id, date_vax1, type_vax_1, fup_vax1, 
+                                  age_at_date_vax_1)]
+setnames(N_fup_pop, c("date_vax1", "type_vax_1", "fup_vax1","age_at_date_vax_1"),
+         c("date_vax", "type_vax", "fup_vax","age_at_date_vax"))
+# N_fup_pop <- melt(N_fup_pop, measure = list(c("date_vax1", "date_vax2"),
+#                                             c("type_vax_1", "type_vax_2"),
+#                                             c("fup_vax1", "fup_vax2"),
+#                                             c("age_at_date_vax_1", "age_at_date_vax_2")),
+#                   value.name = c("date_vax", "type_vax", "fup_vax", "age_at_date_vax"), na.rm = T)[, variable := NULL]
+N_fup_pop[type_vax == "J&J", type_vax := "Janssen"]
+
+N_pop <- N_fup_pop[, .N, by = "type_vax"]
+N_pop <- dcast(N_pop, . ~ type_vax, value.var = "N")[, . := NULL]
+
+fup_pop <- N_fup_pop[, sum(fup_vax), by = "type_vax"][, V1 := round(as.numeric(V1) / 365.25, 0)]
+fup_pop <- dcast(fup_pop, . ~ type_vax, value.var = "V1")[, . := NULL]
+
+min_month <- N_fup_pop[, min(date_vax), by = "type_vax"][, V1 := month(V1)]
+min_month <- dcast(min_month, . ~ type_vax, value.var = "V1")[, . := NULL]
+
+year_month_pop <- N_fup_pop[, c("year", "month") := list(lubridate::year(date_vax), lubridate::month(date_vax))]
+year_month_pop <- year_month_pop[, .N, by = c("type_vax", "year", "month")]
+year_month_pop <- dcast(year_month_pop, year + month ~ type_vax, value.var = "N")
+setorder(year_month_pop, year, month)
+
+age_pop <- copy(N_fup_pop)[, .(Age_P25 = round(quantile(age_at_date_vax, probs = 0.25)),
+                               Age_P50 = round(quantile(age_at_date_vax, probs = 0.50)),
+                               Age_p75 = round(quantile(age_at_date_vax, probs = 0.75)),
+                               Age_mean = round(mean(age_at_date_vax)),
+                               Age_min = min(age_at_date_vax),
+                               Age_max = max(age_at_date_vax)),
+                           by = "type_vax"]
+
+age_pop <- melt(age_pop, id.vars = "type_vax",
+                measure.vars = c("Age_min", "Age_P25", "Age_P50", "Age_mean", "Age_p75", "Age_max"),
+                variable.name = "child", value.name = "dob")
+age_pop <- dcast(age_pop, child ~ type_vax, value.var = "dob")
+
+age_cat <- copy(N_fup_pop)[, age_at_date_vax := as.character(findInterval(age_at_date_vax, c(19, 29, 39, 49, 59, 69, 79)))]
+age_cat[, age_at_date_vax := c("0" = "0-19", "1" = "20-29", "2" = "30-39", "3" = "40-49",
+                               "4" = "50-59", "5" = "60-69", "6" = "70-79", "7" = ">80")[age_at_date_vax]]
+
+N_age_cat <- age_cat[, .N, by = c("type_vax", "age_at_date_vax")]
+N_age_cat <- dcast(N_age_cat, age_at_date_vax ~ type_vax, value.var = "N")
+
+fup_age_cat <- age_cat[, sum(fup_vax), by = c("type_vax", "age_at_date_vax")][, V1 := round(as.numeric(V1) / 365.25, 0)]
+fup_age_cat <- dcast(fup_age_cat, age_at_date_vax ~ type_vax, value.var = "V1")
+
+D4_descriptive_dataset_sex_vaccination <- fread(paste0(dirD4tables, "D4_descriptive_dataset_sex_vaccination.csv"))
+setnames(D4_descriptive_dataset_sex_vaccination, c("Sex_female", "Sex_male"), c("Female", "Male"))
+sex_pop <- melt(D4_descriptive_dataset_sex_vaccination, id.vars = "type_vax_1",
+                measure.vars = c("Female", "Male"),
+                variable.name = "child", value.name = "dob")
+sex_pop <- dcast(sex_pop, child ~ type_vax_1, value.var = "dob")
