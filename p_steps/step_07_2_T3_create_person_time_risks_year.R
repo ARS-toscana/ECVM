@@ -35,10 +35,22 @@ for (subpop in subpopulations_non_empty) {
   
   list_recurrent_outcomes <- list_outcomes[str_detect(list_outcomes, "^GENCONV_") | str_detect(list_outcomes, "^ANAPHYL_")]
   list_outcomes <- setdiff(list_outcomes, list_recurrent_outcomes)
+  
+  pop_sex_0 <- study_population[sex == 0, ]
+  save(pop_sex_0, file = paste0(dirtemp, "pop_sex_0.RData"))
+  rm(pop_sex_0)
+  pop_sex_1 <- study_population[sex == 1, ]
+  save(pop_sex_1, file = paste0(dirtemp, "pop_sex_1.RData"))
+  rm(study_population, pop_sex_1)
 
-  Output_file<-CountPersonTime(
+  
+  for (events_df_sex in c("pop_sex_0", "pop_sex_1")) {
+    print(fifelse(events_df_sex == "pop_sex_0", "Sex 0", "Sex 1"))
+    load(paste0(dirtemp, events_df_sex, ".RData"))
+    print("recurrent")
+    Recurrent_output_file<-CountPersonTime(
       Dataset_events = events_ALL_OUTCOMES,
-      Dataset = study_population,
+      Dataset = get(events_df_sex),
       Person_id = "person_id",
       Start_study_time = start_persontime_studytime,
       End_study_time = end_persontime_studytime,
@@ -58,36 +70,45 @@ for (subpop in subpopulations_non_empty) {
       Rec_events = T,
       Rec_period = c(rep(30, length(list_recurrent_outcomes)))
     )
-  Recurrent_output_file <- Output_file
-  save(Recurrent_output_file, file=paste0(dirtemp,"D3_recurrent_year.RData"))
-  rm(Output_file)
-  Output_file<-CountPersonTime(
-    Dataset_events = events_ALL_OUTCOMES,
-    Dataset = study_population,
-    Person_id = "person_id",
-    Start_study_time = start_persontime_studytime,
-    End_study_time = end_persontime_studytime,
-    Start_date = "start_date_of_period",
-    End_date = "end_date_of_period",
-    #Birth_date = "date_of_birth",
-    Strata = c("sex","Birthcohort_persons","Dose","type_vax","week_fup", "CV", "COVCANCER","COVCOPD", "COVHIV",
-               "COVCKD", "COVDIAB", "COVOBES", "COVSICKLE", "IMMUNOSUPPR", "any_risk_factors"),
-    Name_event = "name_event",
-    Date_event = "date_event",
-    #Age_bands = c(0,19,29,39,49,59,69,79),
-    Increment="year",
-    Outcomes =  list_outcomes, 
-    Unit_of_age = "year",
-    include_remaning_ages = T,
-    Aggregate = T
-  )
-  load(paste0(dirtemp,"D3_recurrent_year.RData"))
-  Output_file <- merge(Output_file, Recurrent_output_file,
-                       by = c("sex","Birthcohort_persons","Dose","type_vax","week_fup", "CV", "COVCANCER","COVCOPD",
-                              "COVHIV", "COVCKD", "COVDIAB", "COVOBES", "COVSICKLE", "IMMUNOSUPPR", "any_risk_factors",
-                              "year"),
-                       all = T)
-  rm(Recurrent_output_file)
+    save(Recurrent_output_file, file=paste0(dirtemp,"D3_recurrent_year.RData"))
+    rm(Recurrent_output_file)
+    print("normal")
+    Output_file<-CountPersonTime(
+      Dataset_events = events_ALL_OUTCOMES,
+      Dataset = get(events_df_sex),
+      Person_id = "person_id",
+      Start_study_time = start_persontime_studytime,
+      End_study_time = end_persontime_studytime,
+      Start_date = "start_date_of_period",
+      End_date = "end_date_of_period",
+      #Birth_date = "date_of_birth",
+      Strata = c("sex","Birthcohort_persons","Dose","type_vax","week_fup", "CV", "COVCANCER","COVCOPD", "COVHIV",
+                 "COVCKD", "COVDIAB", "COVOBES", "COVSICKLE", "IMMUNOSUPPR", "any_risk_factors"),
+      Name_event = "name_event",
+      Date_event = "date_event",
+      #Age_bands = c(0,19,29,39,49,59,69,79),
+      Increment="year",
+      Outcomes =  list_outcomes, 
+      Unit_of_age = "year",
+      include_remaning_ages = T,
+      Aggregate = T
+    )
+    load(paste0(dirtemp,"D3_recurrent_year.RData"))
+    Output_file <- merge(Output_file, Recurrent_output_file,
+                         by = c("sex","Birthcohort_persons","Dose","type_vax","week_fup", "CV", "COVCANCER","COVCOPD",
+                                "COVHIV", "COVCKD", "COVDIAB", "COVOBES", "COVSICKLE", "IMMUNOSUPPR", "any_risk_factors",
+                                "year", "Persontime"),
+                         all = T)
+    save(Output_file, file = paste0(dirtemp, "pop_sex_1.RData"))
+    
+    rm(Recurrent_output_file, Output_file)
+  }
+  
+  vect_df_persontime <- list()
+  for (events_df_sex in c("pop_sex_0", "pop_sex_1")) {
+    load(paste0(dirtemp, events_df_sex, ".RData"))
+    vect_df_persontime <- append(vect_df_persontime, list(Output_file))
+  }
   
   for (i in names(Output_file)){
     Output_file[is.na(get(i)), (i):=0]
@@ -115,4 +136,4 @@ for (subpop in subpopulations_non_empty){
   )
 }
 # rm(list = nameobject)
-rm(D3_vaxweeks_including_not_vaccinated,D4_persontime_risk_year,study_population,events_ALL_OUTCOMES,Output_file)
+rm(D3_vaxweeks_including_not_vaccinated,D4_persontime_risk_year,events_ALL_OUTCOMES,Output_file)
