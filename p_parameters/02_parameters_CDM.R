@@ -3,8 +3,9 @@
 ###################################################################
 
 # assign -ECVM_CDM_tables-: it is a 2-level list describing the ECVM CDM tables, and will enter the function as the first parameter. the first level is the data domain (in the example: 'Diagnosis' and 'Medicines') and the second level is the list of tables that has a column pertaining to that data domain 
+datasources_prescriptions <- c('CPRD',"PHARMO")
+thisdatasource_has_prescriptions <- ifelse(thisdatasource %in% datasources_prescriptions,TRUE,FALSE)
 
-thisdatasource_has_prescriptions = TRUE
 
 ECVM_CDM_tables <- vector(mode="list")
 
@@ -170,11 +171,11 @@ if (length(ECVM_CDM_EAV_tables)!=0 ){
           if (str_detect(ds,"^MEDICAL_OB")) date[["Diagnosis"]][[ds]]="mo_date"
         }else{
           if (dom=="Medicines") { 
-            # if (thisdatasource_has_prescriptions == TRUE){
-            #   date[[dom]][[ds]]="date_prescription"
-            # }else{
+            if (thisdatasource == "PHARMO"){
+              date[[dom]][[ds]]="date_prescription"
+            }else{
               date[[dom]][[ds]]="date_dispensing"
-            # }
+            }
           }
           if (dom=="Diagnosis") date[[dom]][[ds]]="start_date_record"
         }
