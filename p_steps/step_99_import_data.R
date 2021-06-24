@@ -20,11 +20,13 @@ list_of_DAP<-c("ARS","PHARMO","AEMPS") #"CPRD","AEMPS"
 
 files_list<-list.files(list_of_submitted_folders[[list_of_DAP[1]]], recursive = T, include.dirs = T)
 files_list<-files_list[stringr::str_detect(files_list,"\\.csv")]
-files_to_join <- c("Dummy tables for report\Cohort characteristics at start of study (1-1-2020).csv")
-files_slated <- c("table 3 Cohort characteristics at first COVID-19 vaccination Italy_ARS.csv",
-                  "table 4 Cohort characteristics at first COVID-19 vaccination Netherlands-PHARMO.csv",
-                  "table 5 Cohort characteristics at first COVID-19 vaccination UK_CPRD.csv",
-                  "table 6 Cohort characteristics at first COVID-19 vaccination ES_BIFAP.csv")
+files_to_join <- c("Attrition diagram 1.csv",
+                   "Attrition diagram 2.csv",
+                   "Dummy tables for report\Cohort characteristics at start of study (1-1-2020).csv")
+files_slated <- c("Dummy tables for report\table 3 Cohort characteristics at first COVID-19 vaccination Italy_ARS.csv",
+                  "Dummy tables for report\table 4 Cohort characteristics at first COVID-19 vaccination Netherlands-PHARMO.csv",
+                  "Dummy tables for report\table 5 Cohort characteristics at first COVID-19 vaccination UK_CPRD.csv",
+                  "Dummy tables for report\table 6 Cohort characteristics at first COVID-19 vaccination ES_BIFAP.csv")
 files_list <- files_list[!(files_list %in% files_list_exclude)]
 files_list <- files_list[!(files_list %in% files_slated)]
 files<-sub('\\.csv$', '', files_list)
@@ -65,7 +67,11 @@ for (f in files_to_join){
       if (nrow(data) == 0) {
         data <- input
       } else {
-        data <- merge(data, input, by = c("V1", "Parameters"))
+        if ("Parameters" %in% colnames(input)) {
+          data <- merge(data, input, by = c("V1", "Parameters"))
+        } else {
+          data <- merge(data, input, by = "V1")
+        }
       }
       timestamp_df <- rbind(timestamp_df, data.table(dap, str_match(list_of_submitted_folders[[dap]], "(?<=-).+?(?=/)"),
                                                      str_match(f, ".+?(?=\\.)"), as.character(Sys.time()), "Version 3.3"), use.names=FALSE)

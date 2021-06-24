@@ -81,10 +81,16 @@ empty_table_2 <- create_empty_table_1b()
 flow_source_1b <- rbind(empty_table_2, flow_source_1b, fill = T)
 table_1b <- flow_source_1b[, lapply(.SD, max, na.rm = T), by = a]
 
+setnames(table_1a, "a", " ")
 setnames(table_1b, "a", " ")
 
 fwrite(table_1a, file = paste0(dummytables, "Attrition diagram 1.csv"))
 fwrite(table_1b, file = paste0(dummytables, "Attrition diagram 2.csv"))
+
+
+
+
+
 
 # Table2 ----------------------------------------------------------------------------------------------------------
 
