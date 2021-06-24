@@ -99,7 +99,7 @@ for (subpop in subpopulations_non_empty) {
                                 "COVHIV", "COVCKD", "COVDIAB", "COVOBES", "COVSICKLE", "IMMUNOSUPPR", "any_risk_factors",
                                 "year", "Persontime"),
                          all = T)
-    save(Output_file, file = paste0(dirtemp, "pop_sex_1.RData"))
+    save(Output_file, file = paste0(dirtemp, events_df_sex, ".RData"))
     
     rm(Recurrent_output_file, Output_file)
   }
@@ -109,6 +109,9 @@ for (subpop in subpopulations_non_empty) {
     load(paste0(dirtemp, events_df_sex, ".RData"))
     vect_df_persontime <- append(vect_df_persontime, list(Output_file))
   }
+  
+  Output_file <- rbindlist(vect_df_persontime)
+  rm(vect_df_persontime)
   
   for (i in names(Output_file)){
     Output_file[is.na(get(i)), (i):=0]
