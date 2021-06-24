@@ -83,8 +83,8 @@ table_1b <- flow_source_1b[, lapply(.SD, max, na.rm = T), by = a]
 
 setnames(table_1b, "a", " ")
 
-fwrite(table_1a, file = paste0(direxp, "Attrition diagram 1.csv"))
-fwrite(table_1b, file = paste0(direxp, "Attrition diagram 2.csv"))
+fwrite(table_1a, file = paste0(dummytables, "Attrition diagram 1.csv"))
+fwrite(table_1b, file = paste0(dummytables, "Attrition diagram 2.csv"))
 
 # Table2 ----------------------------------------------------------------------------------------------------------
 
@@ -167,7 +167,7 @@ sex_start[, Parameters := c(Sex_male = "Male", Sex_female = "Female")[Parameters
 risk_factors_studystart <- fread(paste0(dirD4tables, "D4_descriptive_dataset_covariate_studystart.csv"))
 risk_factors_studystart[, Datasource := c(TEST = "Test", ARS = "Italy_ARS", PHARMO = "NL_PHARMO", CPRD = "UK_CPRD",
                                           AEMPS = "ES_BIFAP")[Datasource]]
-risk_factors_start <- risk_factors_studystart[, a := "At risk population at January 1, 2020"]
+risk_factors_start <- risk_factors_studystart[, a := "At risk population at January 1-2020"]
 risk_factors_start <- melt(risk_factors_start, id.vars = c("a", "Datasource"),
                            measure.vars = c("CV", "Cancer", "CLD", "HIV", "CKD", "Diabetes",
                                             "Obesity", "Sicklecell", "immunosuppressants"),
@@ -185,7 +185,7 @@ col_order <- c(rbind(daps, daps_perc))
 table2 <- table2[, (daps_perc) := character(nrow(table2))]
 total_pop <- total_pop[, ..daps]
 pt_total <- pt_total[, ..daps]
-table2 <- table2[a %in% c("Age in categories", "Person years across sex", "At risk population at January 1, 2020"),
+table2 <- table2[a %in% c("Age in categories", "Person years across sex", "At risk population at January 1-2020"),
                  (daps_perc) := round(.SD / as.numeric(total_pop) * 100, 3), .SDcols = daps]
 
 table2 <- table2[a == "Person years across age categories",
@@ -195,13 +195,11 @@ setcolorder(table2, c("a", "Parameters", col_order))
 
 setnames(table2, "a", " ")
 
-fwrite(table2, file = paste0(direxp, "Cohort characteristics at start of study (1-1-2020).csv"))
+fwrite(table2, file = paste0(dummytables, "Cohort characteristics at start of study (1-1-2020).csv"))
 
 
 
 
-
-c("Moderna", "Pfizer", "AstraZeneca", "J&J")
 
 load(file = paste0(dirtemp, "D3_Vaccin_cohort.RData"))
 
@@ -215,20 +213,52 @@ setnames(N_fup_pop, c("date_vax1", "type_vax_1", "fup_vax1","age_at_date_vax_1")
 #                                             c("age_at_date_vax_1", "age_at_date_vax_2")),
 #                   value.name = c("date_vax", "type_vax", "fup_vax", "age_at_date_vax"), na.rm = T)[, variable := NULL]
 N_fup_pop[type_vax == "J&J", type_vax := "Janssen"]
+N_fup_pop[, fup_vax := as.numeric(fup_vax) / 365.25]
+
+vax_man <- unique(N_fup_pop[, type_vax])
+vax_man_tot <- c("Pfizer", "Moderna", "AstraZeneca", "Janssen")
+vax_man <- intersect(vax_man_tot, vax_man)
+vax_man_perc <- paste("perc", vax_man, sep = "_")
+col_order <- c(rbind(vax_man, vax_man_perc))
+cols_to_keep = c("a", "Parameters", col_order)
 
 N_pop <- N_fup_pop[, .N, by = "type_vax"]
+total_pop <- N_pop[, sum(N)]
 N_pop <- dcast(N_pop, . ~ type_vax, value.var = "N")[, . := NULL]
+N_pop <- N_pop[, Parameters := "N"][, a := "Study population"]
+setnafill(N_pop, cols = c(vax_man), fill = 0)
+N_pop <- N_pop[, (vax_man_perc) := round(.SD / as.numeric(total_pop) * 100, 3), .SDcols = vax_man]
+N_pop <- N_pop[, (vax_man_perc) := lapply(.SD, paste0, "%"), .SDcols = vax_man_perc]
+N_pop <- N_pop[, ..cols_to_keep]
 
-fup_pop <- N_fup_pop[, sum(fup_vax), by = "type_vax"][, V1 := round(as.numeric(V1) / 365.25, 0)]
+fup_pop <- N_fup_pop[, sum(fup_vax), by = "type_vax"][, V1 := round(V1, 0)]
+pt_total <- fup_pop[, sum(V1)]
 fup_pop <- dcast(fup_pop, . ~ type_vax, value.var = "V1")[, . := NULL]
+fup_pop <- fup_pop[, Parameters := "PY"][, a := "Person-years of follow-up"]
+setnafill(fup_pop, cols = c(vax_man), fill = 0)
+fup_pop <- fup_pop[, (vax_man_perc) := round(.SD / as.numeric(pt_total) * 100, 3), .SDcols = vax_man]
+fup_pop <- fup_pop[, (vax_man_perc) := lapply(.SD, paste0, "%"), .SDcols = vax_man_perc]
+fup_pop <- fup_pop[, ..cols_to_keep]
+
 
 min_month <- N_fup_pop[, min(date_vax), by = "type_vax"][, V1 := month(V1)]
 min_month <- dcast(min_month, . ~ type_vax, value.var = "V1")[, . := NULL]
+min_month <- min_month[, Parameters := ""][, a := "Month of first vaccination"]
+min_month <- min_month[, (vax_man_perc) := character(nrow(min_month))]
+min_month <- min_month[, ..cols_to_keep]
 
 year_month_pop <- N_fup_pop[, c("year", "month") := list(lubridate::year(date_vax), lubridate::month(date_vax))]
 year_month_pop <- year_month_pop[, .N, by = c("type_vax", "year", "month")]
 year_month_pop <- dcast(year_month_pop, year + month ~ type_vax, value.var = "N")
 setorder(year_month_pop, year, month)
+year_month_pop <- year_month_pop[, Parameters := "N"][, a := paste(month.name[month], year)]
+setnafill(year_month_pop, cols = c(vax_man), fill = 0)
+total_man <- N_pop[, ..vax_man]
+year_month_pop <- year_month_pop[, (vax_man_perc) := round(.SD / total_man[rep(seq(.N),
+                                                                               nrow(year_month_pop)), ] * 100, 3),
+                       .SDcols = vax_man]
+year_month_pop <- year_month_pop[, (vax_man_perc) := lapply(.SD, paste0, "%"), .SDcols = vax_man_perc]
+year_month_pop <- year_month_pop[, ..cols_to_keep]
 
 age_pop <- copy(N_fup_pop)[, .(Age_P25 = round(quantile(age_at_date_vax, probs = 0.25)),
                                Age_P50 = round(quantile(age_at_date_vax, probs = 0.50)),
@@ -237,21 +267,35 @@ age_pop <- copy(N_fup_pop)[, .(Age_P25 = round(quantile(age_at_date_vax, probs =
                                Age_min = min(age_at_date_vax),
                                Age_max = max(age_at_date_vax)),
                            by = "type_vax"]
-
 age_pop <- melt(age_pop, id.vars = "type_vax",
                 measure.vars = c("Age_min", "Age_P25", "Age_P50", "Age_mean", "Age_p75", "Age_max"),
                 variable.name = "child", value.name = "dob")
 age_pop <- dcast(age_pop, child ~ type_vax, value.var = "dob")
+age_pop <- age_pop[, Parameters := c("Min", "P25", "P50", "Mean", "P75", "Max")][, a := "Age in years"]
+age_pop <- age_pop[, (vax_man_perc) := character(nrow(age_pop))]
+age_pop <- age_pop[, ..cols_to_keep]
 
-age_cat <- copy(N_fup_pop)[, age_at_date_vax := as.character(findInterval(age_at_date_vax, c(19, 29, 39, 49, 59, 69, 79)))]
-age_cat[, age_at_date_vax := c("0" = "0-19", "1" = "20-29", "2" = "30-39", "3" = "40-49",
-                               "4" = "50-59", "5" = "60-69", "6" = "70-79", "7" = ">80")[age_at_date_vax]]
+age_cat <- N_fup_pop[, age_at_date_vax := as.character(findInterval(age_at_date_vax, c(19, 29, 39, 49, 59, 69, 79)))]
+vect_age_cat <- c("0" = "0-19", "1" = "20-29", "2" = "30-39", "3" = "40-49",
+                  "4" = "50-59", "5" = "60-69", "6" = "70-79", "7" = ">80")
+age_cat[, age_at_date_vax := vect_age_cat[age_at_date_vax]]
 
 N_age_cat <- age_cat[, .N, by = c("type_vax", "age_at_date_vax")]
 N_age_cat <- dcast(N_age_cat, age_at_date_vax ~ type_vax, value.var = "N")
+setnames(N_age_cat, "age_at_date_vax", "Parameters")
+N_age_cat <- N_age_cat[, a := "Age in categories"]
+setnafill(N_age_cat, cols = c(vax_man), fill = 0)
+round_sum <- function(x) {paste0(round(x / sum(x) * 100, 3), "%")}
+N_age_cat <- N_age_cat[, (vax_man_perc) := lapply(.SD, round_sum), .SDcols = vax_man]
+N_age_cat <- N_age_cat[, ..cols_to_keep]
 
-fup_age_cat <- age_cat[, sum(fup_vax), by = c("type_vax", "age_at_date_vax")][, V1 := round(as.numeric(V1) / 365.25, 0)]
+fup_age_cat <- age_cat[, sum(fup_vax), by = c("type_vax", "age_at_date_vax")][, V1 := round(V1, 0)]
 fup_age_cat <- dcast(fup_age_cat, age_at_date_vax ~ type_vax, value.var = "V1")
+setnames(fup_age_cat, "age_at_date_vax", "Parameters")
+fup_age_cat <- fup_age_cat[, a := "Person years across age categories"]
+setnafill(fup_age_cat, cols = c(vax_man), fill = 0)
+fup_age_cat <- fup_age_cat[, (vax_man_perc) := lapply(.SD, round_sum), .SDcols = vax_man]
+fup_age_cat <- fup_age_cat[, ..cols_to_keep]
 
 D4_descriptive_dataset_sex_vaccination <- fread(paste0(dirD4tables, "D4_descriptive_dataset_sex_vaccination.csv"))
 setnames(D4_descriptive_dataset_sex_vaccination, c("Sex_female", "Sex_male"), c("Female", "Male"))
@@ -259,3 +303,18 @@ sex_pop <- melt(D4_descriptive_dataset_sex_vaccination, id.vars = "type_vax_1",
                 measure.vars = c("Female", "Male"),
                 variable.name = "child", value.name = "dob")
 sex_pop <- dcast(sex_pop, child ~ type_vax_1, value.var = "dob")
+setnames(sex_pop, "child", "Parameters")
+sex_pop <- sex_pop[, a := "Person years across sex"]
+setnafill(sex_pop, cols = c(vax_man), fill = 0)
+sex_pop <- sex_pop[, (vax_man_perc) := lapply(.SD, round_sum), .SDcols = vax_man]
+sex_pop <- sex_pop[, ..cols_to_keep]
+
+table3_4_5_6 <- rbind(N_pop, fup_pop, min_month, year_month_pop, age_pop, N_age_cat, fup_age_cat, sex_pop)
+setnames(table3_4_5_6, "a", " ")
+
+final_name_table3_4_5_6 <- c(TEST = "table 3", ARS = "table 3", PHARMO = "table 4",
+                             UK_CPRD = "table 5", ES_BIFAP = "table 6")[[thisdatasource]]
+
+fwrite(table3_4_5_6, file = paste0(dummytables, final_name_table3_4_5_6,
+                                   " Cohort characteristics at first COVID-19 vaccination", 
+                                   vect_recode_manufacturer[[thisdatasource]], ".csv"))

@@ -6,7 +6,7 @@
 # output: D4_persontime_risk_year (exported to csv)
 
 
-print("COUNT PERSON TIME by week for risks")
+print("COUNT PERSON TIME by year for risks")
 
 load(paste0(dirtemp,"list_outcomes_observed.RData"))
 load(paste0(dirtemp,"D3_events_ALL_OUTCOMES.RData"))
@@ -58,7 +58,8 @@ for (subpop in subpopulations_non_empty) {
       Rec_events = T,
       Rec_period = c(rep(30, length(list_recurrent_outcomes)))
     )
-  Recurrent_output_file<-Output_file
+  Recurrent_output_file <- Output_file
+  save(Recurrent_output_file, file=paste0(dirtemp,"D3_recurrent_year.RData"))
   rm(Output_file)
   Output_file<-CountPersonTime(
     Dataset_events = events_ALL_OUTCOMES,
@@ -80,12 +81,13 @@ for (subpop in subpopulations_non_empty) {
     include_remaning_ages = T,
     Aggregate = T
   )
-  
+  load(paste0(dirtemp,"D3_recurrent_year.RData"))
   Output_file <- merge(Output_file, Recurrent_output_file,
                        by = c("sex","Birthcohort_persons","Dose","type_vax","week_fup", "CV", "COVCANCER","COVCOPD",
                               "COVHIV", "COVCKD", "COVDIAB", "COVOBES", "COVSICKLE", "IMMUNOSUPPR", "any_risk_factors",
                               "year"),
                        all = T)
+  rm(Recurrent_output_file)
   
   for (i in names(Output_file)){
     Output_file[is.na(get(i)), (i):=0]
