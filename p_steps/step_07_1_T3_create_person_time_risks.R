@@ -117,7 +117,7 @@ for (subpop in subpopulations_non_empty) {
   persontime_risk_week <- merge(persontime_risk_week, recurrent_persontime_risk_week,
                                 by = c("sex","Birthcohort_persons","Dose","type_vax", "CV", "COVCANCER","COVCOPD",
                                        "COVHIV", "COVCKD", "COVDIAB", "COVOBES", "COVSICKLE", "IMMUNOSUPPR",
-                                       "any_risk_factors", "week"), all = T)
+                                       "any_risk_factors", "week", "Persontime"), all = T)
   
   for (i in names(persontime_risk_week)){
     persontime_risk_week[is.na(get(i)), (i):=0]
