@@ -197,6 +197,9 @@ table2 <- table2[a %in% c("Age in categories", "Person years across sex", "At ri
 table2 <- table2[a == "Person years across age categories",
                  (daps_perc) := round(.SD / as.numeric(pt_total) * 100, 3), .SDcols = daps]
 
+table2 <- table2[a %in% c("Age in categories", "Person years across sex", "At risk population at January 1-2020", 
+                          "Person years across age categories"), (daps_perc) := lapply(.SD, paste0, "%"), .SDcols = daps_perc]
+
 setcolorder(table2, c("a", "Parameters", col_order))
 
 setnames(table2, "a", " ")
@@ -259,9 +262,7 @@ year_month_pop <- dcast(year_month_pop, year + month ~ type_vax, value.var = "N"
 setorder(year_month_pop, year, month)
 year_month_pop <- year_month_pop[, Parameters := "N"][, a := paste(month.name[month], year)]
 setnafill(year_month_pop, cols = c(vax_man), fill = 0)
-total_man <- N_pop[, ..vax_man]
-year_month_pop <- year_month_pop[, (vax_man_perc) := round(.SD / total_man[rep(seq(.N),
-                                                                               nrow(year_month_pop)), ] * 100, 3),
+year_month_pop <- year_month_pop[, (vax_man_perc) := round(.SD / as.numeric(total_pop) * 100, 3),
                        .SDcols = vax_man]
 year_month_pop <- year_month_pop[, (vax_man_perc) := lapply(.SD, paste0, "%"), .SDcols = vax_man_perc]
 year_month_pop <- year_month_pop[, ..cols_to_keep]
@@ -291,8 +292,10 @@ N_age_cat <- dcast(N_age_cat, age_at_date_vax ~ type_vax, value.var = "N")
 setnames(N_age_cat, "age_at_date_vax", "Parameters")
 N_age_cat <- N_age_cat[, a := "Age in categories"]
 setnafill(N_age_cat, cols = c(vax_man), fill = 0)
-round_sum <- function(x) {paste0(round(x / sum(x) * 100, 3), "%")}
-N_age_cat <- N_age_cat[, (vax_man_perc) := lapply(.SD, round_sum), .SDcols = vax_man]
+# round_sum <- function(x) {paste0(round(x / sum(x) * 100, 3), "%")}
+# N_age_cat <- N_age_cat[, (vax_man_perc) := lapply(.SD, round_sum), .SDcols = vax_man]
+N_age_cat <- N_age_cat[, (vax_man_perc) := round(.SD / as.numeric(total_pop) * 100, 3), .SDcols = vax_man]
+N_age_cat <- N_age_cat[, (vax_man_perc) := lapply(.SD, paste0, "%"), .SDcols = vax_man_perc]
 N_age_cat <- N_age_cat[, ..cols_to_keep]
 
 fup_age_cat <- age_cat[, sum(fup_vax), by = c("type_vax", "age_at_date_vax")][, V1 := round(V1, 0)]
@@ -300,7 +303,9 @@ fup_age_cat <- dcast(fup_age_cat, age_at_date_vax ~ type_vax, value.var = "V1")
 setnames(fup_age_cat, "age_at_date_vax", "Parameters")
 fup_age_cat <- fup_age_cat[, a := "Person years across age categories"]
 setnafill(fup_age_cat, cols = c(vax_man), fill = 0)
-fup_age_cat <- fup_age_cat[, (vax_man_perc) := lapply(.SD, round_sum), .SDcols = vax_man]
+# fup_age_cat <- fup_age_cat[, (vax_man_perc) := lapply(.SD, round_sum), .SDcols = vax_man]
+fup_age_cat <- fup_age_cat[, (vax_man_perc) := round(.SD / as.numeric(total_pop) * 100, 3), .SDcols = vax_man]
+fup_age_cat <- fup_age_cat[, (vax_man_perc) := lapply(.SD, paste0, "%"), .SDcols = vax_man_perc]
 fup_age_cat <- fup_age_cat[, ..cols_to_keep]
 
 D4_descriptive_dataset_sex_vaccination <- fread(paste0(dirD4tables, "D4_descriptive_dataset_sex_vaccination.csv"))
@@ -312,7 +317,9 @@ sex_pop <- dcast(sex_pop, child ~ type_vax_1, value.var = "dob")
 setnames(sex_pop, "child", "Parameters")
 sex_pop <- sex_pop[, a := "Person years across sex"]
 setnafill(sex_pop, cols = c(vax_man), fill = 0)
-sex_pop <- sex_pop[, (vax_man_perc) := lapply(.SD, round_sum), .SDcols = vax_man]
+# sex_pop <- sex_pop[, (vax_man_perc) := lapply(.SD, round_sum), .SDcols = vax_man]
+sex_pop <- sex_pop[, (vax_man_perc) := round(.SD / as.numeric(total_pop) * 100, 3), .SDcols = vax_man]
+sex_pop <- sex_pop[, (vax_man_perc) := lapply(.SD, paste0, "%"), .SDcols = vax_man_perc]
 sex_pop <- sex_pop[, ..cols_to_keep]
 
 table3_4_5_6 <- rbind(N_pop, fup_pop, min_month, year_month_pop, age_pop, N_age_cat, fup_age_cat, sex_pop)
