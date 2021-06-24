@@ -315,6 +315,9 @@ setnames(table3_4_5_6, "a", " ")
 final_name_table3_4_5_6 <- c(TEST = "table 3", ARS = "table 3", PHARMO = "table 4",
                              UK_CPRD = "table 5", ES_BIFAP = "table 6")[[thisdatasource]]
 
+vect_recode_manufacturer <- c(TEST = "Italy_ARS", ARS = "Italy_ARS", PHARMO = "Netherlands-PHARMO",
+                              CPRD = "UK_CPRD", AEMPS = "ES_BIFAP")
+
 fwrite(table3_4_5_6, file = paste0(dummytables, final_name_table3_4_5_6,
-                                   " Cohort characteristics at first COVID-19 vaccination", 
+                                   " Cohort characteristics at first COVID-19 vaccination ", 
                                    vect_recode_manufacturer[[thisdatasource]], ".csv"))

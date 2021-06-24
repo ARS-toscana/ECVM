@@ -256,8 +256,7 @@ rm(BRT, vect_recode_COVID, D4_IR_benefit_fup)
 D4_IR_risk_week <- fread(paste0(direxp,"D4_IR_risk_week_BC.csv"))
 RBC <- D4_IR_risk_week[, Dose := as.character(Dose)]
 RBC <- RBC[Dose == 0, c("Dose", "type_vax") := list("no_dose", "none")]
-list_risk = list_outcomes_observed[list_outcomes_observed %not in% c("DM_broad", "HF_broad", "CAD_broad",
-                                                                     "GENCONV_broad", "VTE_broad")]
+list_risk <- list_outcomes_observed
 colA = paste0(list_risk, "_b")
 colB = paste0("IR_", list_risk)
 colC = paste0("lb_", list_risk)
@@ -283,8 +282,8 @@ rm(RBC, D4_IR_risk_week)
 D4_IR_risk_fup <- fread(paste0(direxp,"D4_IR_risk_fup_BC.csv"))
 RBT <- D4_IR_risk_fup[, Dose := as.character(Dose)]
 RBT <- RBT[Dose == 0, c("Dose", "type_vax") := list("no_dose", "none")]
-list_risk = list_outcomes_observed[list_outcomes_observed %not in% c("DM_broad", "HF_broad", "CAD_broad",
-                                                                     "GENCONV_broad", "VTE_broad")]
+list_risk <- list_outcomes_observed
+
 colA = paste0(list_risk, "_b")
 colB = paste0("IR_", list_risk)
 colC = paste0("lb_", list_risk)
@@ -312,8 +311,8 @@ rm(RBT, D4_IR_risk_fup)
 D4_IR_risk_week <- fread(paste0(direxp,"D4_IR_risk_week_RF.csv"))
 RRC <- D4_IR_risk_week[, Dose := as.character(Dose)]
 RRC <- RRC[Dose == 0, c("Dose", "type_vax") := list("no_dose", "none")]
-list_risk = list_outcomes_observed[list_outcomes_observed %not in% c("DM_broad", "HF_broad", "CAD_broad",
-                                                                     "GENCONV_broad", "VTE_broad")]
+list_risk <- list_outcomes_observed
+
 colA = paste0(list_risk, "_b")
 colB = paste0("IR_", list_risk)
 colC = paste0("lb_", list_risk)
@@ -338,8 +337,8 @@ rm(RRC, D4_IR_risk_week)
 D4_IR_risk_fup <- fread(paste0(direxp,"D4_IR_risk_fup_RF.csv"))
 RRT <- D4_IR_risk_fup[, Dose := as.character(Dose)]
 RRT <- RRT[Dose == 0, c("Dose", "type_vax") := list("no_dose", "none")]
-list_risk = list_outcomes_observed[list_outcomes_observed %not in% c("DM_broad", "HF_broad", "CAD_broad",
-                                                                     "GENCONV_broad", "VTE_broad")]
+list_risk <- list_outcomes_observed
+
 colA = paste0(list_risk, "_b")
 colB = paste0("IR_", list_risk)
 colC = paste0("lb_", list_risk)
