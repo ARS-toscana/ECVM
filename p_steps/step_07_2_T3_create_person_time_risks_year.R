@@ -36,16 +36,35 @@ for (subpop in subpopulations_non_empty) {
   list_recurrent_outcomes <- list_outcomes[str_detect(list_outcomes, "^GENCONV_") | str_detect(list_outcomes, "^ANAPHYL_")]
   list_outcomes <- setdiff(list_outcomes, list_recurrent_outcomes)
   
-  pop_sex_0 <- study_population[sex == 0, ]
-  save(pop_sex_0, file = paste0(dirtemp, "pop_sex_0.RData"))
-  rm(pop_sex_0)
-  pop_sex_1 <- study_population[sex == 1, ]
-  save(pop_sex_1, file = paste0(dirtemp, "pop_sex_1.RData"))
-  rm(study_population, pop_sex_1)
+  c("<1940", "1940-1949", "1950-1959", "1960-1969", "1970-1979",
+    "1980-1989", "1990+")
+  
+  pop_age_1940 <- study_population[Birthcohort_persons == "<1940", ]
+  save(pop_age_1940, file = paste0(dirtemp, "pop_age_1940.RData"))
+  rm(pop_age_1940)
+  pop_age_1940_1949 <- study_population[Birthcohort_persons == "1940-1949", ]
+  save(pop_age_1940_1949, file = paste0(dirtemp, "pop_age_1940_1949.RData"))
+  rm(pop_age_1940_1949)
+  pop_age_1950_1959 <- study_population[Birthcohort_persons == "1950-1959", ]
+  save(pop_age_1950_1959, file = paste0(dirtemp, "pop_age_1950_1959.RData"))
+  rm(pop_age_1950_1959)
+  pop_age_1960_1969 <- study_population[Birthcohort_persons == "1960-1969", ]
+  save(pop_age_1960_1969, file = paste0(dirtemp, "pop_age_1960_1969.RData"))
+  rm(pop_age_1960_1969)
+  pop_age_1970_1979 <- study_population[Birthcohort_persons == "1970-1979", ]
+  save(pop_age_1970_1979, file = paste0(dirtemp, "pop_age_1970_1979.RData"))
+  rm(pop_age_1970_1979)
+  pop_age_1980_1989 <- study_population[Birthcohort_persons == "1980-1989", ]
+  save(pop_age_1980_1989, file = paste0(dirtemp, "pop_age_1980_1989.RData"))
+  rm(pop_age_1980_1989)
+  pop_age_1990 <- study_population[Birthcohort_persons == "1990+", ]
+  save(pop_age_1990, file = paste0(dirtemp, "pop_age_1990.RData"))
+  rm(study_population, pop_age_1990)
 
   
-  for (events_df_sex in c("pop_sex_0", "pop_sex_1")) {
-    print(fifelse(events_df_sex == "pop_sex_0", "Sex 0", "Sex 1"))
+  for (events_df_sex in c("pop_age_1940", "pop_age_1940_1949", "pop_age_1950_1959", "pop_age_1960_1969",
+                          "pop_age_1970_1979", "pop_age_1980_1989", "pop_age_1990")) {
+    print(paste("Age", substring(events_df_sex, 9)))
     load(paste0(dirtemp, events_df_sex, ".RData"))
     print("recurrent")
     Recurrent_output_file<-CountPersonTime(
@@ -94,18 +113,21 @@ for (subpop in subpopulations_non_empty) {
       Aggregate = T
     )
     load(paste0(dirtemp,"D3_recurrent_year.RData"))
+    print("Merging")
     Output_file <- merge(Output_file, Recurrent_output_file,
                          by = c("sex","Birthcohort_persons","Dose","type_vax","week_fup", "CV", "COVCANCER","COVCOPD",
                                 "COVHIV", "COVCKD", "COVDIAB", "COVOBES", "COVSICKLE", "IMMUNOSUPPR", "any_risk_factors",
                                 "year", "Persontime"),
                          all = T)
+    print("Saving")
     save(Output_file, file = paste0(dirtemp, events_df_sex, ".RData"))
     
     rm(Recurrent_output_file, Output_file)
   }
   
   vect_df_persontime <- list()
-  for (events_df_sex in c("pop_sex_0", "pop_sex_1")) {
+  for (events_df_sex in c("pop_age_1940", "pop_age_1940_1949", "pop_age_1950_1959", "pop_age_1960_1969",
+                          "pop_age_1970_1979", "pop_age_1980_1989", "pop_age_1990")) {
     load(paste0(dirtemp, events_df_sex, ".RData"))
     vect_df_persontime <- append(vect_df_persontime, list(Output_file))
   }
