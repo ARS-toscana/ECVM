@@ -47,8 +47,9 @@ for (name_temp_df in c("cohort_to_vaxweeks_male", "cohort_to_vaxweeks_female")) 
 }
 
 cohort_to_vaxweeks <- rbindlist(vect_to_rbind)
-
 cohort_to_vaxweeks <- unique(cohort_to_vaxweeks[, person_id := NULL])
+setorder(cohort_to_vaxweeks, sex, Birthcohort_persons, Dose,
+         type_vax, start_date_of_period, at_risk_at_study_entry)
 cohort_to_vaxweeks <- merge(cohort_to_vaxweeks, tot_cohort, by = "start_date_of_period")
 cohort_to_vaxweeks <- cohort_to_vaxweeks[, Year := year(start_date_of_period)]
 cohort_to_vaxweeks <- cohort_to_vaxweeks[, Datasource := thisdatasource]
