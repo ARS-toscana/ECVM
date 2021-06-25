@@ -86,10 +86,20 @@ D4_followup_cohort <- data.table::dcast(D4_followup_cohort, Datasource ~ age_at_
 D4_followup_complete <- unique(D4_followup_fromstudystart[, .(Datasource, Followup_total, Followup_2020, Followup_2021)])
 
 D4_followup_fromstudystart <- Reduce(merge, list(D4_followup_sex, D4_followup_cohort, D4_followup_complete))
-D4_followup_fromstudystart <- D4_followup_fromstudystart[, .(Datasource, Followup_males, Followup_females, Followup_total,
-                                                             Followup_0119, Followup_2029, Followup_3039, Followup_4049,
-                                                             Followup_5059, Followup_6069, Followup_7079, Followup_80,
-                                                             Followup_2020, Followup_2021)]
+
+vect_col_to_year <- c("Followup_males", "Followup_females", "Followup_total",
+                      "Followup_0119", "Followup_2029", "Followup_3039", "Followup_4049",
+                      "Followup_5059", "Followup_6069", "Followup_7079", "Followup_80",
+                      "Followup_2020", "Followup_2021")
+
+tot_col <- c("Datasource", vect_col_to_year)
+
+D4_followup_fromstudystart <- D4_followup_fromstudystart[, lapply(.SD, as.numeric), .SDcols = vect_col_to_year]
+D4_followup_fromstudystart <- D4_followup_fromstudystart[, (vect_col_to_year) := round(.SD / 365.25),
+                                                         .SDcols = vect_col_to_year]
+D4_followup_fromstudystart <- D4_followup_fromstudystart[, Datasource := thisdatasource]
+
+D4_followup_fromstudystart <- D4_followup_fromstudystart[, ..tot_col]
 
 fwrite(D4_followup_fromstudystart, file = paste0(dirD4tables, "D4_followup_fromstudystart.csv"))
 
@@ -182,14 +192,21 @@ followup_vax2_complete <- unique(followup_vax2[, .(Datasource, Followup_total_va
 
 D4_followup_from_vax <- Reduce(merge, list(followup_vax1_sex, followup_vax2_sex, followup_vax1_cohort,
                                            followup_vax2_cohort, followup_vax1_complete, followup_vax2_complete))
-D4_followup_from_vax <- D4_followup_from_vax[, c("Datasource", "Followup_males_vax1", "Followup_males_vax2",
-                                                 "Followup_females_vax1", "Followup_females_vax2", "Followup_total_vax1",
-                                                 "Followup_total_vax2", "Followup_0119_vax1", "Followup_2029_vax1",
-                                                 "Followup_3039_vax1", "Followup_4049_vax1", "Followup_5059_vax1",
-                                                 "Followup_6069_vax1", "Followup_7079_vax1", "Followup_80_vax1",
-                                                 "Followup_0119_vax2", "Followup_2029_vax2", "Followup_3039_vax2",
-                                                 "Followup_4049_vax2", "Followup_5059_vax2", "Followup_6069_vax2",
-                                                 "Followup_7079_vax2", "Followup_80_vax2")]
+
+vect_col_to_year <- c("Followup_males_vax1", "Followup_males_vax2", "Followup_females_vax1", "Followup_females_vax2",
+                      "Followup_total_vax1", "Followup_total_vax2", "Followup_0119_vax1", "Followup_2029_vax1",
+                      "Followup_3039_vax1", "Followup_4049_vax1", "Followup_5059_vax1", "Followup_6069_vax1",
+                      "Followup_7079_vax1", "Followup_80_vax1", "Followup_0119_vax2", "Followup_2029_vax2",
+                      "Followup_3039_vax2", "Followup_4049_vax2", "Followup_5059_vax2", "Followup_6069_vax2",
+                      "Followup_7079_vax2", "Followup_80_vax2")
+
+tot_col <- c("Datasource", vect_col_to_year)
+
+D4_followup_from_vax <- D4_followup_from_vax[, lapply(.SD, as.numeric), .SDcols = vect_col_to_year]
+D4_followup_from_vax <- D4_followup_from_vax[, (vect_col_to_year) := round(.SD / 365.25), .SDcols = vect_col_to_year]
+D4_followup_from_vax <- D4_followup_from_vax[, Datasource := thisdatasource]
+
+D4_followup_from_vax <- D4_followup_from_vax[, ..tot_col]
 
 fwrite(D4_followup_from_vax, file = paste0(dirD4tables, "D4_followup_from_vax.csv"))
 
