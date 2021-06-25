@@ -18,7 +18,7 @@ D4_descriptive_dataset_age_studystart <- D4_descriptive_dataset_age_studystart[,
 D4_descriptive_dataset_age_studystart <- D4_descriptive_dataset_age_studystart[, c("Age_mean", "Age_min", "Age_max") :=
                                                                                  list(round(mean(age_at_study_entry), 0), min(age_at_study_entry), max(age_at_study_entry))]
 
-D4_descriptive_dataset_age_studystart <- D4_descriptive_dataset_age_studystart[, Followup := sum(fup_days)][, Datasource := thisdatasource]
+D4_descriptive_dataset_age_studystart <- D4_descriptive_dataset_age_studystart[, Followup := sum(fup_days) / 365.25][, Datasource := thisdatasource]
 D4_descriptive_dataset_age_studystart <- unique(D4_descriptive_dataset_age_studystart[, .(Datasource, Followup, Age_P25, Age_P50, Age_p75, Age_mean, Age_min, Age_max)])
 
 fwrite(D4_descriptive_dataset_age_studystart, file = paste0(dirD4tables, "D4_descriptive_dataset_age_studystart.csv"))
