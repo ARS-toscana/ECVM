@@ -97,7 +97,7 @@ for (f in files_slated){
   vect_rbind <- append(vect_rbind, data)
 }
 data <- rbindlist(vect_rbind)
-fwrite(data, file= paste0(dirinput_pp, f, ".csv"))
+fwrite(data, file= paste0(dirinput_pp, strsplit(f, "\\")[[1]], "\Cohort characteristics at first COVID-19 vaccination", ".csv"))
 
 save(timestamp_df, file= paste0(dirinput_pp,"timestamp_df.RData"))
 
