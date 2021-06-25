@@ -16,41 +16,76 @@ cohort_to_vaxweeks <- join_and_replace(cohort_to_vaxweeks, all_days_df, c("study
 cohort_to_vaxweeks <- join_and_replace(cohort_to_vaxweeks, all_days_df, c("study_exit_date", "all_days"), "monday_week")
 cohort_to_vaxweeks <- cohort_to_vaxweeks[, fup := as.numeric(difftime(study_exit_date, study_entry_date, units = "weeks") +  1)]
 cohort_to_vaxweeks <- cohort_to_vaxweeks[, study_exit_date := NULL]
-cohort_to_vaxweeks <- as.data.table(lapply(cohort_to_vaxweeks, rep, cohort_to_vaxweeks$fup))
 
-cohort_to_vaxweeks[, week := rowid(person_id, Dose, study_entry_date)]
-cohort_to_vaxweeks <- cohort_to_vaxweeks[, week := week - 1][, fup := NULL]
-cohort_to_vaxweeks <- cohort_to_vaxweeks[, start_date_of_period := study_entry_date + 7 * week]
-cohort_to_vaxweeks <- cohort_to_vaxweeks[, c("study_entry_date", "week") := NULL]
+pop_age_1940 <- cohort_to_vaxweeks[Birthcohort_persons == "<1940", ]
+save(pop_age_1940, file = paste0(dirtemp, "pop_age_1940.RData"))
+rm(pop_age_1940)
+pop_age_1940_1949 <- cohort_to_vaxweeks[Birthcohort_persons == "1940-1949", ]
+save(pop_age_1940_1949, file = paste0(dirtemp, "pop_age_1940_1949.RData"))
+rm(pop_age_1940_1949)
+pop_age_1950_1959 <- cohort_to_vaxweeks[Birthcohort_persons == "1950-1959", ]
+save(pop_age_1950_1959, file = paste0(dirtemp, "pop_age_1950_1959.RData"))
+rm(pop_age_1950_1959)
+pop_age_1960_1969 <- cohort_to_vaxweeks[Birthcohort_persons == "1960-1969", ]
+save(pop_age_1960_1969, file = paste0(dirtemp, "pop_age_1960_1969.RData"))
+rm(pop_age_1960_1969)
+pop_age_1970_1979 <- cohort_to_vaxweeks[Birthcohort_persons == "1970-1979", ]
+save(pop_age_1970_1979, file = paste0(dirtemp, "pop_age_1970_1979.RData"))
+rm(pop_age_1970_1979)
+pop_age_1980_1989 <- cohort_to_vaxweeks[Birthcohort_persons == "1980-1989", ]
+save(pop_age_1980_1989, file = paste0(dirtemp, "pop_age_1980_1989.RData"))
+rm(pop_age_1980_1989)
+pop_age_1990 <- cohort_to_vaxweeks[Birthcohort_persons == "1990+", ]
+save(pop_age_1990, file = paste0(dirtemp, "pop_age_1990.RData"))
+rm(cohort_to_vaxweeks, pop_age_1990)
 
-tot_cohort <- copy(cohort_to_vaxweeks)
-tot_cohort <- tot_cohort[, c("sex", "Dose", "type_vax", "Birthcohort_persons", "at_risk_at_study_entry") := NULL]
-tot_cohort <- unique(tot_cohort)
-tot_cohort <- tot_cohort[, Persons_in_week := .N, by = c("start_date_of_period")]
-tot_cohort <- unique(tot_cohort[, person_id := NULL])
-
-cohort_to_vaxweeks_male <- cohort_to_vaxweeks[sex == 0, ]
-save(cohort_to_vaxweeks_male, file = paste0(dirtemp, "cohort_to_vaxweeks_male.RData"))
-rm(cohort_to_vaxweeks_male)
-cohort_to_vaxweeks_female <- cohort_to_vaxweeks[sex == 1, ]
-save(cohort_to_vaxweeks_female, file = paste0(dirtemp, "cohort_to_vaxweeks_female.RData"))
-rm(cohort_to_vaxweeks_female, cohort_to_vaxweeks)
 
 vect_to_rbind <- c()
-for (name_temp_df in c("cohort_to_vaxweeks_male", "cohort_to_vaxweeks_female")) {
+for (name_temp_df in c("pop_age_1940", "pop_age_1940_1949", "pop_age_1950_1959", "pop_age_1960_1969",
+                       "pop_age_1970_1979", "pop_age_1980_1989", "pop_age_1990")) {
+  
+  print(paste("computing for", name_temp_df))
+  
   temp_df <- get(load(paste0(dirtemp, name_temp_df, ".RData")))
+  
+  temp_df <- as.data.table(lapply(temp_df, rep, temp_df$fup))
+  
+  temp_df <- temp_df[, week := rowid(person_id, Dose, study_entry_date)]
+  temp_df <- temp_df[, week := week - 1][, fup := NULL]
+  temp_df <- temp_df[, start_date_of_period := study_entry_date + 7 * week]
+  temp_df <- temp_df[, c("study_entry_date", "week") := NULL]
+  
+  tot_cohort <- copy(temp_df)
+  tot_cohort <- tot_cohort[, c("sex", "Dose", "type_vax", "Birthcohort_persons", "at_risk_at_study_entry") := NULL]
+  tot_cohort <- unique(tot_cohort)
+  tot_cohort <- tot_cohort[, Persons_in_week := .N, by = c("start_date_of_period")]
+  tot_cohort <- unique(tot_cohort[, person_id := NULL])
+  
   temp_df <- temp_df[, Doses_in_week := .N,
                      by = c("sex", "Birthcohort_persons", "Dose",
                             "type_vax", "start_date_of_period", "at_risk_at_study_entry")]
+  
+  
+  temp_df <- unique(temp_df[, person_id := NULL])
+  temp_df <- merge(temp_df, tot_cohort, by = "start_date_of_period")
+  
+  save(temp_df, file = paste0(dirtemp, name_temp_df, ".RData"))
+
+  rm(temp_df, name_temp_df, tot_cohort)
+}
+
+for (name_temp_df in c("pop_age_1940", "pop_age_1940_1949", "pop_age_1950_1959", "pop_age_1960_1969",
+                       "pop_age_1970_1979", "pop_age_1980_1989", "pop_age_1990")) {
+  load(paste0(dirtemp, name_temp_df, ".RData"))
   vect_to_rbind <- append(vect_to_rbind, list(temp_df))
-  rm(temp_df, name_temp_df)
 }
 
 cohort_to_vaxweeks <- rbindlist(vect_to_rbind)
-cohort_to_vaxweeks <- unique(cohort_to_vaxweeks[, person_id := NULL])
+
+
 setorder(cohort_to_vaxweeks, sex, Birthcohort_persons, Dose,
          type_vax, start_date_of_period, at_risk_at_study_entry)
-cohort_to_vaxweeks <- merge(cohort_to_vaxweeks, tot_cohort, by = "start_date_of_period")
+
 cohort_to_vaxweeks <- cohort_to_vaxweeks[, Year := year(start_date_of_period)]
 cohort_to_vaxweeks <- cohort_to_vaxweeks[, Datasource := thisdatasource]
 
@@ -63,4 +98,4 @@ D4_doses_weeks <- cohort_to_vaxweeks[, .(Datasource, Year, Week_number, Birthcoh
 
 save(D4_doses_weeks, file = paste0(diroutput, "D4_doses_weeks.RData"))
 
-rm(D3_studyweeks, all_mondays, monday_week, double_weeks, all_days_df, cohort_to_vaxweeks, tot_cohort, D4_doses_weeks)
+rm(D3_studyweeks, all_mondays, monday_week, double_weeks, all_days_df, cohort_to_vaxweeks, D4_doses_weeks)

@@ -35,10 +35,7 @@ for (subpop in subpopulations_non_empty) {
   
   list_recurrent_outcomes <- list_outcomes[str_detect(list_outcomes, "^GENCONV_") | str_detect(list_outcomes, "^ANAPHYL_")]
   list_outcomes <- setdiff(list_outcomes, list_recurrent_outcomes)
-  
-  c("<1940", "1940-1949", "1950-1959", "1960-1969", "1970-1979",
-    "1980-1989", "1990+")
-  
+
   pop_age_1940 <- study_population[Birthcohort_persons == "<1940", ]
   save(pop_age_1940, file = paste0(dirtemp, "pop_age_1940.RData"))
   rm(pop_age_1940)
