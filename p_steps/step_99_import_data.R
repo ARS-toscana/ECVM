@@ -51,7 +51,7 @@ for (f in files){
       input<-input[,datasource:=dap]
       data<-rbind(data, input, fill=T)
       timestamp_df <- rbind(timestamp_df, data.table(dap, str_match(list_of_submitted_folders[[dap]], "(?<=-).+?(?=/)"),
-                                                     str_match(f, ".+?(?=\\.)"), as.character(Sys.time()), "Version 3.3"), use.names=FALSE)
+                                                     str_match(f, ".+?(?=\\.)"), as.character(Sys.time()), "Version 3.5"), use.names=FALSE)
     }
   }
   
@@ -74,7 +74,7 @@ for (f in files_to_join){
         }
       }
       timestamp_df <- rbind(timestamp_df, data.table(dap, str_match(list_of_submitted_folders[[dap]], "(?<=-).+?(?=/)"),
-                                                     str_match(f, ".+?(?=\\.)"), as.character(Sys.time()), "Version 3.3"), use.names=FALSE)
+                                                     str_match(f, ".+?(?=\\.)"), as.character(Sys.time()), "Version 3.5"), use.names=FALSE)
     }
   }
   
@@ -91,7 +91,7 @@ for (f in files_slated){
       input<-input[,datasource:=dap]
       data <- input
       timestamp_df <- rbind(timestamp_df, data.table(dap, str_match(list_of_submitted_folders[[dap]], "(?<=-).+?(?=/)"),
-                                                     str_match(f, ".+?(?=\\.)"), as.character(Sys.time()), "Version 3.3"), use.names=FALSE)
+                                                     str_match(f, ".+?(?=\\.)"), as.character(Sys.time()), "Version 3.5"), use.names=FALSE)
     }
   }
   vect_rbind <- append(vect_rbind, data)
