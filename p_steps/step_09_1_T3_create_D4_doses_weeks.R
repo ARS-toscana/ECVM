@@ -29,9 +29,25 @@ tot_cohort <- unique(tot_cohort)
 tot_cohort <- tot_cohort[, Persons_in_week := .N, by = c("start_date_of_period")]
 tot_cohort <- unique(tot_cohort[, person_id := NULL])
 
-cohort_to_vaxweeks <- cohort_to_vaxweeks[, Doses_in_week := .N,
-                                         by = c("sex", "Birthcohort_persons", "Dose",
-                                                "type_vax", "start_date_of_period", "at_risk_at_study_entry")]
+cohort_to_vaxweeks_male <- cohort_to_vaxweeks[sex == 0, ]
+save(cohort_to_vaxweeks_male, file = paste0(dirtemp, "cohort_to_vaxweeks_male.RData"))
+rm(cohort_to_vaxweeks_male)
+cohort_to_vaxweeks_female <- cohort_to_vaxweeks[sex == 1, ]
+save(cohort_to_vaxweeks_female, file = paste0(dirtemp, "cohort_to_vaxweeks_female.RData"))
+rm(cohort_to_vaxweeks_female, cohort_to_vaxweeks)
+
+vect_to_rbind <- c()
+for (name_temp_df in c("cohort_to_vaxweeks_male", "cohort_to_vaxweeks_female")) {
+  temp_df <- get(load(paste0(dirtemp, name_temp_df, ".RData")))
+  temp_df <- temp_df[, Doses_in_week := .N,
+                     by = c("sex", "Birthcohort_persons", "Dose",
+                            "type_vax", "start_date_of_period", "at_risk_at_study_entry")]
+  vect_to_rbind <- append(vect_to_rbind, list(temp_df))
+  rm(temp_df, name_temp_df)
+}
+
+cohort_to_vaxweeks <- rbindlist(vect_to_rbind)
+
 cohort_to_vaxweeks <- unique(cohort_to_vaxweeks[, person_id := NULL])
 cohort_to_vaxweeks <- merge(cohort_to_vaxweeks, tot_cohort, by = "start_date_of_period")
 cohort_to_vaxweeks <- cohort_to_vaxweeks[, Year := year(start_date_of_period)]
