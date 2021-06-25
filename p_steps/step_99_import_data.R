@@ -27,7 +27,7 @@ files_slated <- c("Dummy tables for report\table 3 Cohort characteristics at fir
                   "Dummy tables for report\table 4 Cohort characteristics at first COVID-19 vaccination Netherlands-PHARMO.csv",
                   "Dummy tables for report\table 5 Cohort characteristics at first COVID-19 vaccination UK_CPRD.csv",
                   "Dummy tables for report\table 6 Cohort characteristics at first COVID-19 vaccination ES_BIFAP.csv")
-files_list <- files_list[!(files_list %in% files_list_exclude)]
+files_list <- files_list[!(files_list %in% files_to_join)]
 files_list <- files_list[!(files_list %in% files_slated)]
 files<-sub('\\.csv$', '', files_list)
 
