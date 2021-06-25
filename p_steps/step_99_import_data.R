@@ -50,8 +50,12 @@ for (f in files){
       }
       input<-input[,datasource:=dap]
       data<-rbind(data, input, fill=T)
+      version_n <- paste0(list_of_submitted_folders[[dap]],"/to_run.R")
+      version_n <- read.delim(version_n, header = F)
+      version_n <- strsplit(version_n[[3,1]], " ")[[1]][[2]]
       timestamp_df <- rbind(timestamp_df, data.table(dap, str_match(list_of_submitted_folders[[dap]], "(?<=-).+?(?=/)"),
-                                                     str_match(f, ".+?(?=\\.)"), as.character(Sys.time()), "Version 3.5"), use.names=FALSE)
+                                                     str_match(f, ".+?(?=\\.)"), as.character(Sys.time()),
+                                                     version_n),  use.names=FALSE)
     }
   }
   
@@ -73,8 +77,12 @@ for (f in files_to_join){
           data <- merge(data, input, by = "V1")
         }
       }
+      version_n <- paste0(list_of_submitted_folders[[dap]],"/to_run.R")
+      version_n <- read.delim(version_n, header = F)
+      version_n <- strsplit(version_n[[3,1]], " ")[[1]][[2]]
       timestamp_df <- rbind(timestamp_df, data.table(dap, str_match(list_of_submitted_folders[[dap]], "(?<=-).+?(?=/)"),
-                                                     str_match(f, ".+?(?=\\.)"), as.character(Sys.time()), "Version 3.5"), use.names=FALSE)
+                                                     str_match(f, ".+?(?=\\.)"), as.character(Sys.time()),
+                                                     version_n), use.names=FALSE)
     }
   }
   
@@ -90,8 +98,12 @@ for (f in files_slated){
       input<-fread(paste0(list_of_submitted_folders[[dap]],f,".csv") )
       input<-input[,datasource:=dap]
       data <- input
+      version_n <- paste0(list_of_submitted_folders[[dap]],"/to_run.R")
+      version_n <- read.delim(version_n, header = F)
+      version_n <- strsplit(version_n[[3,1]], " ")[[1]][[2]]
       timestamp_df <- rbind(timestamp_df, data.table(dap, str_match(list_of_submitted_folders[[dap]], "(?<=-).+?(?=/)"),
-                                                     str_match(f, ".+?(?=\\.)"), as.character(Sys.time()), "Version 3.5"), use.names=FALSE)
+                                                     str_match(f, ".+?(?=\\.)"), as.character(Sys.time()),
+                                                     version_n), use.names=FALSE)
     }
   }
   vect_rbind <- append(vect_rbind, data)
