@@ -200,6 +200,11 @@ table2 <- table2[a == "Person years across age categories",
 table2 <- table2[a %in% c("Age in categories", "Person years across sex", "At risk population at January 1-2020", 
                           "Person years across age categories"), (daps_perc) := lapply(.SD, paste0, "%"), .SDcols = daps_perc]
 
+empty_df <- table2[0,]
+empty_df <- rbindlist(list(empty_df, list("", "", "N", "%")))
+
+table2 <- rbindlist(list(empty_df, table2))
+
 setcolorder(table2, c("a", "Parameters", col_order))
 
 setnames(table2, "a", " ")
@@ -330,6 +335,11 @@ final_name_table3_4_5_6 <- c(TEST = "table 3", ARS = "table 3", PHARMO = "table 
 
 vect_recode_manufacturer <- c(TEST = "Italy_ARS", ARS = "Italy_ARS", PHARMO = "Netherlands-PHARMO",
                               CPRD = "UK_CPRD", AEMPS = "ES_BIFAP")
+
+empty_df <- table3_4_5_6[0,]
+empty_df <- rbindlist(list(empty_df, as.list(c("", "", unlist(rep(c("N", "%"), length(vax_man)))))))
+
+table3_4_5_6 <- rbindlist(list(empty_df, table3_4_5_6))
 
 fwrite(table3_4_5_6, file = paste0(dummytables, final_name_table3_4_5_6,
                                    " Cohort characteristics at first COVID-19 vaccination ", 
