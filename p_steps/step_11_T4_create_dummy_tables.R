@@ -230,7 +230,7 @@ N_fup_pop[type_vax == "J&J", type_vax := "Janssen"]
 N_fup_pop[, fup_vax := as.numeric(fup_vax) / 365.25]
 
 vax_man <- unique(N_fup_pop[, type_vax])
-vax_man_tot <- c("Pfizer", "Moderna", "AstraZeneca", "Janssen")
+vax_man_tot <- c("Pfizer", "Moderna", "AstraZeneca", "Janssen", "UKN")
 vax_man <- intersect(vax_man_tot, vax_man)
 vax_man_perc <- paste("perc", vax_man, sep = "_")
 col_order <- c(rbind(vax_man, vax_man_perc))
