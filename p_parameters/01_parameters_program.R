@@ -12,8 +12,9 @@ diroutput <- paste0(thisdir,"/g_output/")
 dirinput <- paste0(thisdir,"/i_input/")
 dirtemp <- paste0(thisdir,"/g_intermediate/")
 direxp <- paste0(thisdir,"/g_export/")
-dirdashboard <- paste0(direxp,"/dashboard tables/")
-dirD4tables <- paste0(direxp,"/D4 tables/")
+dirdashboard <- paste0(direxp,"dashboard tables/")
+dirD4tables <- paste0(direxp,"D4 tables/")
+dummytables <- paste0(direxp,"Dummy tables for report/")
 dirmacro <- paste0(thisdir,"/p_macro/")
 dirfigure <- paste0(thisdir,"/g_figure/")
 extension <- c(".csv")
@@ -86,6 +87,7 @@ suppressWarnings(if (!file.exists(dirtemp)) dir.create(file.path( dirtemp)))
 suppressWarnings(if (!file.exists(direxp)) dir.create(file.path( direxp)))
 suppressWarnings(if (!file.exists(dirdashboard)) dir.create(file.path(dirdashboard)))
 suppressWarnings(if (!file.exists(dirD4tables)) dir.create(file.path(dirD4tables)))
+suppressWarnings(if (!file.exists(dummytables)) dir.create(file.path(dummytables)))
 suppressWarnings(if (!file.exists(dirfigure)) dir.create(file.path( dirfigure)))
 suppressWarnings(if (!file.exists(dirpargen)) dir.create(file.path( dirpargen)))
 suppressWarnings(if (!file.exists(dirsmallcountsremoved)) dir.create(file.path(dirsmallcountsremoved)))
@@ -143,9 +145,6 @@ days<-ifelse(thisdatasource %in% c("ARS","TEST"),21,1)
 
 Birthcohorts =c("<1940", "1940-1949", "1950-1959", "1960-1969",
                 "1970-1979", "1980-1989", "1990+")
-
-datasources_prescriptions <- c('CPRD',"PHARMO")
-thisdatasource_has_prescriptions <- ifelse(thisdatasource %in% datasources_prescriptions,TRUE,FALSE)
 
 #############################################
 #FUNCTION TO COMPUTE AGE
