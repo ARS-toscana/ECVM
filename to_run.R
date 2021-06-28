@@ -1,7 +1,11 @@
 #-------------------------------
 # ECVM script
-# v3.6 - 28 June 2021
+# v4.0 - 28 June 2021
 # authors: Rosa Gini, Olga Paoletti, Davide Messina, Giorgio Limoncella
+
+
+# changelog V4.0:
+# included ACCESS codes
 
 # changelog V3.6:
 # - SAP tables included
