@@ -171,7 +171,7 @@ if (length(ECVM_CDM_EAV_tables)!=0 ){
           if (str_detect(ds,"^MEDICAL_OB")) date[["Diagnosis"]][[ds]]="mo_date"
         }else{
           if (dom=="Medicines") { 
-            if (thisdatasource == "PHARMO"){
+            if (thisdatasource %in% datasources_prescriptions ){
               date[[dom]][[ds]]="date_prescription"
             }else{
               date[[dom]][[ds]]="date_dispensing"
