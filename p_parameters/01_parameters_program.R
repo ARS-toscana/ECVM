@@ -144,6 +144,9 @@ days<-ifelse(thisdatasource %in% c("ARS","TEST"),21,1)
 Birthcohorts =c("<1940", "1940-1949", "1950-1959", "1960-1969",
                 "1970-1979", "1980-1989", "1990+")
 
+datasources_prescriptions <- c('CPRD',"PHARMO")
+thisdatasource_has_prescriptions <- ifelse(thisdatasource %in% datasources_prescriptions,TRUE,FALSE)
+
 #############################################
 #FUNCTION TO COMPUTE AGE
 #############################################
