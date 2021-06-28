@@ -1802,7 +1802,7 @@ TEST,20200330,none,no_dose,1950-1959,HF_broad,0,0,0,0,60-69
 TEST,20200406,none,no_dose,1950-1959,HF_broad,0,0,0,0,60-69
 TEST,20200413,none,no_dose,1950-1959,HF_broad,0,0,0,0,60-69
 TEST,20200420,none,no_dose,1950-1959,HF_broad,0,0,0,0,60-69
-TEST,20200427,none,no_dose,1950-1959,HF_broad,1,105563.58,14869.52,749430.38,60-69
+TEST,20200427,none,no_dose,1950-1959,HF_broad,0,0,0,0,60-69
 TEST,20200504,none,no_dose,1950-1959,HF_broad,0,0,0,0,60-69
 TEST,20200511,none,no_dose,1950-1959,HF_broad,0,0,0,0,60-69
 TEST,20200518,none,no_dose,1950-1959,HF_broad,0,0,0,0,60-69
@@ -2229,7 +2229,7 @@ TEST,20200330,none,no_dose,all_birth_cohorts,HF_broad,0,0,0,0,all_birth_cohorts
 TEST,20200406,none,no_dose,all_birth_cohorts,HF_broad,0,0,0,0,all_birth_cohorts
 TEST,20200413,none,no_dose,all_birth_cohorts,HF_broad,0,0,0,0,all_birth_cohorts
 TEST,20200420,none,no_dose,all_birth_cohorts,HF_broad,0,0,0,0,all_birth_cohorts
-TEST,20200427,none,no_dose,all_birth_cohorts,HF_broad,1,13940.84,1963.68,98970.58,all_birth_cohorts
+TEST,20200427,none,no_dose,all_birth_cohorts,HF_broad,0,0,0,0,all_birth_cohorts
 TEST,20200504,none,no_dose,all_birth_cohorts,HF_broad,0,0,0,0,all_birth_cohorts
 TEST,20200511,none,no_dose,all_birth_cohorts,HF_broad,0,0,0,0,all_birth_cohorts
 TEST,20200518,none,no_dose,all_birth_cohorts,HF_broad,0,0,0,0,all_birth_cohorts
@@ -5230,7 +5230,7 @@ TEST,20210308,none,no_dose,1940-1949,Ischstroke_narrow,0,0,0,0,70-79
 TEST,20210315,none,no_dose,1940-1949,Ischstroke_narrow,0,0,0,0,70-79
 TEST,20210322,none,no_dose,1940-1949,Ischstroke_narrow,0,0,0,0,70-79
 TEST,20210329,none,no_dose,1940-1949,Ischstroke_narrow,0,0,0,0,70-79
-TEST,20200106,none,no_dose,1950-1959,Ischstroke_narrow,1,102310.92,14411.35,726338.68,60-69
+TEST,20200106,none,no_dose,1950-1959,Ischstroke_narrow,0,0,0,0,60-69
 TEST,20200113,none,no_dose,1950-1959,Ischstroke_narrow,0,0,0,0,60-69
 TEST,20200120,none,no_dose,1950-1959,Ischstroke_narrow,0,0,0,0,60-69
 TEST,20200127,none,no_dose,1950-1959,Ischstroke_narrow,0,0,0,0,60-69
@@ -5584,7 +5584,7 @@ TEST,20210308,none,no_dose,1990+,Ischstroke_narrow,0,0,0,0,<30
 TEST,20210315,none,no_dose,1990+,Ischstroke_narrow,0,0,0,0,<30
 TEST,20210322,none,no_dose,1990+,Ischstroke_narrow,0,0,0,0,<30
 TEST,20210329,none,no_dose,1990+,Ischstroke_narrow,0,0,0,0,<30
-TEST,20200106,none,no_dose,<1940,Ischstroke_narrow,1,146686.75,20662.06,1041377.21,80+
+TEST,20200106,none,no_dose,<1940,Ischstroke_narrow,0,0,0,0,80+
 TEST,20200113,none,no_dose,<1940,Ischstroke_narrow,0,0,0,0,80+
 TEST,20200120,none,no_dose,<1940,Ischstroke_narrow,0,0,0,0,80+
 TEST,20200127,none,no_dose,<1940,Ischstroke_narrow,0,0,0,0,80+
@@ -5593,7 +5593,7 @@ TEST,20200210,none,no_dose,<1940,Ischstroke_narrow,0,0,0,0,80+
 TEST,20200217,none,no_dose,<1940,Ischstroke_narrow,0,0,0,0,80+
 TEST,20200224,none,no_dose,<1940,Ischstroke_narrow,0,0,0,0,80+
 TEST,20200302,none,no_dose,<1940,Ischstroke_narrow,0,0,0,0,80+
-TEST,20200309,none,no_dose,<1940,Ischstroke_narrow,1,152187.5,21436.89,1080428.84,80+
+TEST,20200309,none,no_dose,<1940,Ischstroke_narrow,1,143799.21,20255.33,1020877.62,80+
 TEST,20200316,none,no_dose,<1940,Ischstroke_narrow,0,0,0,0,80+
 TEST,20200323,none,no_dose,<1940,Ischstroke_narrow,0,0,0,0,80+
 TEST,20200330,none,no_dose,<1940,Ischstroke_narrow,0,0,0,0,80+
@@ -5657,7 +5657,7 @@ TEST,20210329,AstraZeneca,1,1940-1949,Ischstroke_narrow,0,0,0,0,70-79
 TEST,20210301,Pfizer,1,1960-1969,Ischstroke_narrow,0,0,0,0,50-59
 TEST,20210329,Pfizer,2,1960-1969,Ischstroke_narrow,0,0,0,0,50-59
 TEST,20210329,AstraZeneca,1,1970-1979,Ischstroke_narrow,0,0,0,0,40-49
-TEST,20200106,none,no_dose,all_birth_cohorts,Ischstroke_narrow,2,27135.96,6786.47,108504.22,all_birth_cohorts
+TEST,20200106,none,no_dose,all_birth_cohorts,Ischstroke_narrow,0,0,0,0,all_birth_cohorts
 TEST,20200113,none,no_dose,all_birth_cohorts,Ischstroke_narrow,0,0,0,0,all_birth_cohorts
 TEST,20200120,none,no_dose,all_birth_cohorts,Ischstroke_narrow,0,0,0,0,all_birth_cohorts
 TEST,20200127,none,no_dose,all_birth_cohorts,Ischstroke_narrow,0,0,0,0,all_birth_cohorts
@@ -5666,7 +5666,7 @@ TEST,20200210,none,no_dose,all_birth_cohorts,Ischstroke_narrow,0,0,0,0,all_birth
 TEST,20200217,none,no_dose,all_birth_cohorts,Ischstroke_narrow,0,0,0,0,all_birth_cohorts
 TEST,20200224,none,no_dose,all_birth_cohorts,Ischstroke_narrow,0,0,0,0,all_birth_cohorts
 TEST,20200302,none,no_dose,all_birth_cohorts,Ischstroke_narrow,0,0,0,0,all_birth_cohorts
-TEST,20200309,none,no_dose,all_birth_cohorts,Ischstroke_narrow,1,13850.97,1951.03,98332.57,all_birth_cohorts
+TEST,20200309,none,no_dose,all_birth_cohorts,Ischstroke_narrow,1,13705.44,1930.53,97299.4,all_birth_cohorts
 TEST,20200316,none,no_dose,all_birth_cohorts,Ischstroke_narrow,0,0,0,0,all_birth_cohorts
 TEST,20200323,none,no_dose,all_birth_cohorts,Ischstroke_narrow,0,0,0,0,all_birth_cohorts
 TEST,20200330,none,no_dose,all_birth_cohorts,Ischstroke_narrow,0,0,0,0,all_birth_cohorts
@@ -9248,7 +9248,7 @@ TEST,20210308,none,no_dose,1940-1949,ArterialNoTP,0,0,0,0,70-79
 TEST,20210315,none,no_dose,1940-1949,ArterialNoTP,0,0,0,0,70-79
 TEST,20210322,none,no_dose,1940-1949,ArterialNoTP,0,0,0,0,70-79
 TEST,20210329,none,no_dose,1940-1949,ArterialNoTP,0,0,0,0,70-79
-TEST,20200106,none,no_dose,1950-1959,ArterialNoTP,1,102310.92,14411.35,726338.68,60-69
+TEST,20200106,none,no_dose,1950-1959,ArterialNoTP,0,0,0,0,60-69
 TEST,20200113,none,no_dose,1950-1959,ArterialNoTP,0,0,0,0,60-69
 TEST,20200120,none,no_dose,1950-1959,ArterialNoTP,0,0,0,0,60-69
 TEST,20200127,none,no_dose,1950-1959,ArterialNoTP,0,0,0,0,60-69
@@ -9602,7 +9602,7 @@ TEST,20210308,none,no_dose,1990+,ArterialNoTP,0,0,0,0,<30
 TEST,20210315,none,no_dose,1990+,ArterialNoTP,0,0,0,0,<30
 TEST,20210322,none,no_dose,1990+,ArterialNoTP,0,0,0,0,<30
 TEST,20210329,none,no_dose,1990+,ArterialNoTP,0,0,0,0,<30
-TEST,20200106,none,no_dose,<1940,ArterialNoTP,1,146686.75,20662.06,1041377.21,80+
+TEST,20200106,none,no_dose,<1940,ArterialNoTP,0,0,0,0,80+
 TEST,20200113,none,no_dose,<1940,ArterialNoTP,0,0,0,0,80+
 TEST,20200120,none,no_dose,<1940,ArterialNoTP,0,0,0,0,80+
 TEST,20200127,none,no_dose,<1940,ArterialNoTP,0,0,0,0,80+
@@ -9611,7 +9611,7 @@ TEST,20200210,none,no_dose,<1940,ArterialNoTP,0,0,0,0,80+
 TEST,20200217,none,no_dose,<1940,ArterialNoTP,0,0,0,0,80+
 TEST,20200224,none,no_dose,<1940,ArterialNoTP,0,0,0,0,80+
 TEST,20200302,none,no_dose,<1940,ArterialNoTP,0,0,0,0,80+
-TEST,20200309,none,no_dose,<1940,ArterialNoTP,1,152187.5,21436.89,1080428.84,80+
+TEST,20200309,none,no_dose,<1940,ArterialNoTP,1,143799.21,20255.33,1020877.62,80+
 TEST,20200316,none,no_dose,<1940,ArterialNoTP,0,0,0,0,80+
 TEST,20200323,none,no_dose,<1940,ArterialNoTP,0,0,0,0,80+
 TEST,20200330,none,no_dose,<1940,ArterialNoTP,0,0,0,0,80+
@@ -9621,7 +9621,7 @@ TEST,20200420,none,no_dose,<1940,ArterialNoTP,0,0,0,0,80+
 TEST,20200427,none,no_dose,<1940,ArterialNoTP,0,0,0,0,80+
 TEST,20200504,none,no_dose,<1940,ArterialNoTP,0,0,0,0,80+
 TEST,20200511,none,no_dose,<1940,ArterialNoTP,0,0,0,0,80+
-TEST,20200518,none,no_dose,<1940,ArterialNoTP,1,160197.37,22565.15,1137293.52,80+
+TEST,20200518,none,no_dose,<1940,ArterialNoTP,1,150929.75,21259.73,1071499.66,80+
 TEST,20200525,none,no_dose,<1940,ArterialNoTP,0,0,0,0,80+
 TEST,20200601,none,no_dose,<1940,ArterialNoTP,0,0,0,0,80+
 TEST,20200608,none,no_dose,<1940,ArterialNoTP,0,0,0,0,80+
@@ -9675,7 +9675,7 @@ TEST,20210329,AstraZeneca,1,1940-1949,ArterialNoTP,0,0,0,0,70-79
 TEST,20210301,Pfizer,1,1960-1969,ArterialNoTP,0,0,0,0,50-59
 TEST,20210329,Pfizer,2,1960-1969,ArterialNoTP,0,0,0,0,50-59
 TEST,20210329,AstraZeneca,1,1970-1979,ArterialNoTP,0,0,0,0,40-49
-TEST,20200106,none,no_dose,all_birth_cohorts,ArterialNoTP,2,27135.96,6786.47,108504.22,all_birth_cohorts
+TEST,20200106,none,no_dose,all_birth_cohorts,ArterialNoTP,0,0,0,0,all_birth_cohorts
 TEST,20200113,none,no_dose,all_birth_cohorts,ArterialNoTP,0,0,0,0,all_birth_cohorts
 TEST,20200120,none,no_dose,all_birth_cohorts,ArterialNoTP,0,0,0,0,all_birth_cohorts
 TEST,20200127,none,no_dose,all_birth_cohorts,ArterialNoTP,0,0,0,0,all_birth_cohorts
@@ -9684,7 +9684,7 @@ TEST,20200210,none,no_dose,all_birth_cohorts,ArterialNoTP,0,0,0,0,all_birth_coho
 TEST,20200217,none,no_dose,all_birth_cohorts,ArterialNoTP,0,0,0,0,all_birth_cohorts
 TEST,20200224,none,no_dose,all_birth_cohorts,ArterialNoTP,0,0,0,0,all_birth_cohorts
 TEST,20200302,none,no_dose,all_birth_cohorts,ArterialNoTP,0,0,0,0,all_birth_cohorts
-TEST,20200309,none,no_dose,all_birth_cohorts,ArterialNoTP,1,13850.97,1951.03,98332.57,all_birth_cohorts
+TEST,20200309,none,no_dose,all_birth_cohorts,ArterialNoTP,1,13705.44,1930.53,97299.4,all_birth_cohorts
 TEST,20200316,none,no_dose,all_birth_cohorts,ArterialNoTP,0,0,0,0,all_birth_cohorts
 TEST,20200323,none,no_dose,all_birth_cohorts,ArterialNoTP,0,0,0,0,all_birth_cohorts
 TEST,20200330,none,no_dose,all_birth_cohorts,ArterialNoTP,0,0,0,0,all_birth_cohorts
@@ -9694,7 +9694,7 @@ TEST,20200420,none,no_dose,all_birth_cohorts,ArterialNoTP,0,0,0,0,all_birth_coho
 TEST,20200427,none,no_dose,all_birth_cohorts,ArterialNoTP,0,0,0,0,all_birth_cohorts
 TEST,20200504,none,no_dose,all_birth_cohorts,ArterialNoTP,0,0,0,0,all_birth_cohorts
 TEST,20200511,none,no_dose,all_birth_cohorts,ArterialNoTP,0,0,0,0,all_birth_cohorts
-TEST,20200518,none,no_dose,all_birth_cohorts,ArterialNoTP,1,14118.67,1988.73,100233.06,all_birth_cohorts
+TEST,20200518,none,no_dose,all_birth_cohorts,ArterialNoTP,1,13967.5,1967.44,99159.85,all_birth_cohorts
 TEST,20200525,none,no_dose,all_birth_cohorts,ArterialNoTP,0,0,0,0,all_birth_cohorts
 TEST,20200601,none,no_dose,all_birth_cohorts,ArterialNoTP,0,0,0,0,all_birth_cohorts
 TEST,20200608,none,no_dose,all_birth_cohorts,ArterialNoTP,0,0,0,0,all_birth_cohorts
@@ -10396,7 +10396,7 @@ TEST,20210308,none,no_dose,1940-1949,ArterialVTENoTP,0,0,0,0,70-79
 TEST,20210315,none,no_dose,1940-1949,ArterialVTENoTP,0,0,0,0,70-79
 TEST,20210322,none,no_dose,1940-1949,ArterialVTENoTP,0,0,0,0,70-79
 TEST,20210329,none,no_dose,1940-1949,ArterialVTENoTP,0,0,0,0,70-79
-TEST,20200106,none,no_dose,1950-1959,ArterialVTENoTP,1,104357.14,14699.58,740865.47,60-69
+TEST,20200106,none,no_dose,1950-1959,ArterialVTENoTP,0,0,0,0,60-69
 TEST,20200113,none,no_dose,1950-1959,ArterialVTENoTP,0,0,0,0,60-69
 TEST,20200120,none,no_dose,1950-1959,ArterialVTENoTP,0,0,0,0,60-69
 TEST,20200127,none,no_dose,1950-1959,ArterialVTENoTP,0,0,0,0,60-69
@@ -10750,7 +10750,7 @@ TEST,20210308,none,no_dose,1990+,ArterialVTENoTP,0,0,0,0,<30
 TEST,20210315,none,no_dose,1990+,ArterialVTENoTP,0,0,0,0,<30
 TEST,20210322,none,no_dose,1990+,ArterialVTENoTP,0,0,0,0,<30
 TEST,20210329,none,no_dose,1990+,ArterialVTENoTP,0,0,0,0,<30
-TEST,20200106,none,no_dose,<1940,ArterialVTENoTP,1,146686.75,20662.06,1041377.21,80+
+TEST,20200106,none,no_dose,<1940,ArterialVTENoTP,0,0,0,0,80+
 TEST,20200113,none,no_dose,<1940,ArterialVTENoTP,0,0,0,0,80+
 TEST,20200120,none,no_dose,<1940,ArterialVTENoTP,0,0,0,0,80+
 TEST,20200127,none,no_dose,<1940,ArterialVTENoTP,0,0,0,0,80+
@@ -10759,7 +10759,7 @@ TEST,20200210,none,no_dose,<1940,ArterialVTENoTP,0,0,0,0,80+
 TEST,20200217,none,no_dose,<1940,ArterialVTENoTP,0,0,0,0,80+
 TEST,20200224,none,no_dose,<1940,ArterialVTENoTP,0,0,0,0,80+
 TEST,20200302,none,no_dose,<1940,ArterialVTENoTP,0,0,0,0,80+
-TEST,20200309,none,no_dose,<1940,ArterialVTENoTP,1,152187.5,21436.89,1080428.84,80+
+TEST,20200309,none,no_dose,<1940,ArterialVTENoTP,1,143799.21,20255.33,1020877.62,80+
 TEST,20200316,none,no_dose,<1940,ArterialVTENoTP,0,0,0,0,80+
 TEST,20200323,none,no_dose,<1940,ArterialVTENoTP,0,0,0,0,80+
 TEST,20200330,none,no_dose,<1940,ArterialVTENoTP,0,0,0,0,80+
@@ -10769,7 +10769,7 @@ TEST,20200420,none,no_dose,<1940,ArterialVTENoTP,0,0,0,0,80+
 TEST,20200427,none,no_dose,<1940,ArterialVTENoTP,0,0,0,0,80+
 TEST,20200504,none,no_dose,<1940,ArterialVTENoTP,0,0,0,0,80+
 TEST,20200511,none,no_dose,<1940,ArterialVTENoTP,0,0,0,0,80+
-TEST,20200518,none,no_dose,<1940,ArterialVTENoTP,1,160197.37,22565.15,1137293.52,80+
+TEST,20200518,none,no_dose,<1940,ArterialVTENoTP,1,150929.75,21259.73,1071499.66,80+
 TEST,20200525,none,no_dose,<1940,ArterialVTENoTP,0,0,0,0,80+
 TEST,20200601,none,no_dose,<1940,ArterialVTENoTP,0,0,0,0,80+
 TEST,20200608,none,no_dose,<1940,ArterialVTENoTP,0,0,0,0,80+
@@ -10823,7 +10823,7 @@ TEST,20210329,AstraZeneca,1,1940-1949,ArterialVTENoTP,0,0,0,0,70-79
 TEST,20210301,Pfizer,1,1960-1969,ArterialVTENoTP,0,0,0,0,50-59
 TEST,20210329,Pfizer,2,1960-1969,ArterialVTENoTP,0,0,0,0,50-59
 TEST,20210329,AstraZeneca,1,1970-1979,ArterialVTENoTP,0,0,0,0,40-49
-TEST,20200106,none,no_dose,all_birth_cohorts,ArterialVTENoTP,2,27206.7,6804.16,108787.08,all_birth_cohorts
+TEST,20200106,none,no_dose,all_birth_cohorts,ArterialVTENoTP,0,0,0,0,all_birth_cohorts
 TEST,20200113,none,no_dose,all_birth_cohorts,ArterialVTENoTP,0,0,0,0,all_birth_cohorts
 TEST,20200120,none,no_dose,all_birth_cohorts,ArterialVTENoTP,0,0,0,0,all_birth_cohorts
 TEST,20200127,none,no_dose,all_birth_cohorts,ArterialVTENoTP,0,0,0,0,all_birth_cohorts
@@ -10832,7 +10832,7 @@ TEST,20200210,none,no_dose,all_birth_cohorts,ArterialVTENoTP,0,0,0,0,all_birth_c
 TEST,20200217,none,no_dose,all_birth_cohorts,ArterialVTENoTP,0,0,0,0,all_birth_cohorts
 TEST,20200224,none,no_dose,all_birth_cohorts,ArterialVTENoTP,0,0,0,0,all_birth_cohorts
 TEST,20200302,none,no_dose,all_birth_cohorts,ArterialVTENoTP,0,0,0,0,all_birth_cohorts
-TEST,20200309,none,no_dose,all_birth_cohorts,ArterialVTENoTP,1,13887.83,1956.22,98594.25,all_birth_cohorts
+TEST,20200309,none,no_dose,all_birth_cohorts,ArterialVTENoTP,1,13741.53,1935.61,97555.62,all_birth_cohorts
 TEST,20200316,none,no_dose,all_birth_cohorts,ArterialVTENoTP,0,0,0,0,all_birth_cohorts
 TEST,20200323,none,no_dose,all_birth_cohorts,ArterialVTENoTP,0,0,0,0,all_birth_cohorts
 TEST,20200330,none,no_dose,all_birth_cohorts,ArterialVTENoTP,0,0,0,0,all_birth_cohorts
@@ -10842,7 +10842,7 @@ TEST,20200420,none,no_dose,all_birth_cohorts,ArterialVTENoTP,0,0,0,0,all_birth_c
 TEST,20200427,none,no_dose,all_birth_cohorts,ArterialVTENoTP,0,0,0,0,all_birth_cohorts
 TEST,20200504,none,no_dose,all_birth_cohorts,ArterialVTENoTP,0,0,0,0,all_birth_cohorts
 TEST,20200511,none,no_dose,all_birth_cohorts,ArterialVTENoTP,0,0,0,0,all_birth_cohorts
-TEST,20200518,none,no_dose,all_birth_cohorts,ArterialVTENoTP,1,14156.98,1994.13,100505.03,all_birth_cohorts
+TEST,20200518,none,no_dose,all_birth_cohorts,ArterialVTENoTP,1,14004.98,1972.72,99425.93,all_birth_cohorts
 TEST,20200525,none,no_dose,all_birth_cohorts,ArterialVTENoTP,0,0,0,0,all_birth_cohorts
 TEST,20200601,none,no_dose,all_birth_cohorts,ArterialVTENoTP,0,0,0,0,all_birth_cohorts
 TEST,20200608,none,no_dose,all_birth_cohorts,ArterialVTENoTP,0,0,0,0,all_birth_cohorts

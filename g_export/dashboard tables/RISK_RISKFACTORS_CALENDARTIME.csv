@@ -340,7 +340,7 @@ TEST,20200224,none,no_dose,COVDIAB,ACUASEARTHRITIS_broad,0,0,0,0
 TEST,20200302,none,no_dose,COVDIAB,ACUASEARTHRITIS_broad,0,0,0,0
 TEST,20200309,none,no_dose,COVDIAB,ACUASEARTHRITIS_broad,0,0,0,0
 TEST,20200316,none,no_dose,COVDIAB,ACUASEARTHRITIS_broad,0,0,0,0
-TEST,20200323,none,no_dose,COVDIAB,ACUASEARTHRITIS_broad,1,226863.35,31955.61,1610577.12
+TEST,20200323,none,no_dose,COVDIAB,ACUASEARTHRITIS_broad,1,186352.04,26249.25,1322974.08
 TEST,20200330,none,no_dose,COVDIAB,ACUASEARTHRITIS_broad,0,0,0,0
 TEST,20200406,none,no_dose,COVDIAB,ACUASEARTHRITIS_broad,0,0,0,0
 TEST,20200413,none,no_dose,COVDIAB,ACUASEARTHRITIS_broad,0,0,0,0
@@ -471,7 +471,7 @@ TEST,20200224,none,no_dose,any_risk_factors,ACUASEARTHRITIS_broad,0,0,0,0
 TEST,20200302,none,no_dose,any_risk_factors,ACUASEARTHRITIS_broad,0,0,0,0
 TEST,20200309,none,no_dose,any_risk_factors,ACUASEARTHRITIS_broad,0,0,0,0
 TEST,20200316,none,no_dose,any_risk_factors,ACUASEARTHRITIS_broad,0,0,0,0
-TEST,20200323,none,no_dose,any_risk_factors,ACUASEARTHRITIS_broad,1,59293.83,8352.04,420946.29
+TEST,20200323,none,no_dose,any_risk_factors,ACUASEARTHRITIS_broad,1,57339.09,8076.69,407068.95
 TEST,20200330,none,no_dose,any_risk_factors,ACUASEARTHRITIS_broad,0,0,0,0
 TEST,20200406,none,no_dose,any_risk_factors,ACUASEARTHRITIS_broad,0,0,0,0
 TEST,20200413,none,no_dose,any_risk_factors,ACUASEARTHRITIS_broad,0,0,0,0
@@ -1394,7 +1394,7 @@ TEST,20200113,none,no_dose,COVDIAB,HF_narrow,0,0,0,0
 TEST,20200120,none,no_dose,COVDIAB,HF_narrow,0,0,0,0
 TEST,20200127,none,no_dose,COVDIAB,HF_narrow,0,0,0,0
 TEST,20200203,none,no_dose,COVDIAB,HF_narrow,0,0,0,0
-TEST,20200210,none,no_dose,COVDIAB,HF_narrow,1,229716.98,32357.57,1630835.97
+TEST,20200210,none,no_dose,COVDIAB,HF_narrow,1,188273.2,26519.87,1336613.02
 TEST,20200217,none,no_dose,COVDIAB,HF_narrow,0,0,0,0
 TEST,20200224,none,no_dose,COVDIAB,HF_narrow,0,0,0,0
 TEST,20200302,none,no_dose,COVDIAB,HF_narrow,0,0,0,0
@@ -1525,7 +1525,7 @@ TEST,20200113,none,no_dose,any_risk_factors,HF_narrow,0,0,0,0
 TEST,20200120,none,no_dose,any_risk_factors,HF_narrow,0,0,0,0
 TEST,20200127,none,no_dose,any_risk_factors,HF_narrow,0,0,0,0
 TEST,20200203,none,no_dose,any_risk_factors,HF_narrow,0,0,0,0
-TEST,20200210,none,no_dose,any_risk_factors,HF_narrow,1,59486.97,8379.24,422317.46
+TEST,20200210,none,no_dose,any_risk_factors,HF_narrow,1,57519.69,8102.13,408351.09
 TEST,20200217,none,no_dose,any_risk_factors,HF_narrow,0,0,0,0
 TEST,20200224,none,no_dose,any_risk_factors,HF_narrow,0,0,0,0
 TEST,20200302,none,no_dose,any_risk_factors,HF_narrow,0,0,0,0
@@ -1924,7 +1924,7 @@ TEST,20200113,none,no_dose,COVDIAB,HF_broad,0,0,0,0
 TEST,20200120,none,no_dose,COVDIAB,HF_broad,0,0,0,0
 TEST,20200127,none,no_dose,COVDIAB,HF_broad,0,0,0,0
 TEST,20200203,none,no_dose,COVDIAB,HF_broad,0,0,0,0
-TEST,20200210,none,no_dose,COVDIAB,HF_broad,1,229716.98,32357.57,1630835.97
+TEST,20200210,none,no_dose,COVDIAB,HF_broad,1,188273.2,26519.87,1336613.02
 TEST,20200217,none,no_dose,COVDIAB,HF_broad,0,0,0,0
 TEST,20200224,none,no_dose,COVDIAB,HF_broad,0,0,0,0
 TEST,20200302,none,no_dose,COVDIAB,HF_broad,0,0,0,0
@@ -2055,7 +2055,7 @@ TEST,20200113,none,no_dose,any_risk_factors,HF_broad,0,0,0,0
 TEST,20200120,none,no_dose,any_risk_factors,HF_broad,0,0,0,0
 TEST,20200127,none,no_dose,any_risk_factors,HF_broad,0,0,0,0
 TEST,20200203,none,no_dose,any_risk_factors,HF_broad,0,0,0,0
-TEST,20200210,none,no_dose,any_risk_factors,HF_broad,1,59486.97,8379.24,422317.46
+TEST,20200210,none,no_dose,any_risk_factors,HF_broad,1,57519.69,8102.13,408351.09
 TEST,20200217,none,no_dose,any_risk_factors,HF_broad,0,0,0,0
 TEST,20200224,none,no_dose,any_risk_factors,HF_broad,0,0,0,0
 TEST,20200302,none,no_dose,any_risk_factors,HF_broad,0,0,0,0
@@ -4769,7 +4769,7 @@ TEST,20210308,Pfizer,1,any_risk_factors,ANAPHYL_broad,0,0,0,0
 TEST,20210315,Pfizer,1,any_risk_factors,ANAPHYL_broad,0,0,0,0
 TEST,20210322,Pfizer,1,any_risk_factors,ANAPHYL_broad,0,0,0,0
 TEST,20210329,Pfizer,1,any_risk_factors,ANAPHYL_broad,0,0,0,0
-TEST,20200106,none,no_dose,CV,Ischstroke_narrow,1,114498.43,16128.07,812861.8
+TEST,20200106,none,no_dose,CV,Ischstroke_narrow,0,0,0,0
 TEST,20200113,none,no_dose,CV,Ischstroke_narrow,0,0,0,0
 TEST,20200120,none,no_dose,CV,Ischstroke_narrow,0,0,0,0
 TEST,20200127,none,no_dose,CV,Ischstroke_narrow,0,0,0,0
@@ -4778,7 +4778,7 @@ TEST,20200210,none,no_dose,CV,Ischstroke_narrow,0,0,0,0
 TEST,20200217,none,no_dose,CV,Ischstroke_narrow,0,0,0,0
 TEST,20200224,none,no_dose,CV,Ischstroke_narrow,0,0,0,0
 TEST,20200302,none,no_dose,CV,Ischstroke_narrow,0,0,0,0
-TEST,20200309,none,no_dose,CV,Ischstroke_narrow,1,117822.58,16596.3,836461.03
+TEST,20200309,none,no_dose,CV,Ischstroke_narrow,1,110347.43,15543.36,783392.5
 TEST,20200316,none,no_dose,CV,Ischstroke_narrow,0,0,0,0
 TEST,20200323,none,no_dose,CV,Ischstroke_narrow,0,0,0,0
 TEST,20200330,none,no_dose,CV,Ischstroke_narrow,0,0,0,0
@@ -5230,7 +5230,7 @@ TEST,20210308,none,no_dose,IMMUNOSUPPR,Ischstroke_narrow,0,0,0,0
 TEST,20210315,none,no_dose,IMMUNOSUPPR,Ischstroke_narrow,0,0,0,0
 TEST,20210322,none,no_dose,IMMUNOSUPPR,Ischstroke_narrow,0,0,0,0
 TEST,20210329,none,no_dose,IMMUNOSUPPR,Ischstroke_narrow,0,0,0,0
-TEST,20200106,none,no_dose,any_risk_factors,Ischstroke_narrow,1,60272.28,8489.86,427892.63
+TEST,20200106,none,no_dose,any_risk_factors,Ischstroke_narrow,0,0,0,0
 TEST,20200113,none,no_dose,any_risk_factors,Ischstroke_narrow,0,0,0,0
 TEST,20200120,none,no_dose,any_risk_factors,Ischstroke_narrow,0,0,0,0
 TEST,20200127,none,no_dose,any_risk_factors,Ischstroke_narrow,0,0,0,0
@@ -5239,7 +5239,7 @@ TEST,20200210,none,no_dose,any_risk_factors,Ischstroke_narrow,0,0,0,0
 TEST,20200217,none,no_dose,any_risk_factors,Ischstroke_narrow,0,0,0,0
 TEST,20200224,none,no_dose,any_risk_factors,Ischstroke_narrow,0,0,0,0
 TEST,20200302,none,no_dose,any_risk_factors,Ischstroke_narrow,0,0,0,0
-TEST,20200309,none,no_dose,any_risk_factors,Ischstroke_narrow,1,61180.9,8617.84,434343.22
+TEST,20200309,none,no_dose,any_risk_factors,Ischstroke_narrow,1,57159.62,8051.41,405794.84
 TEST,20200316,none,no_dose,any_risk_factors,Ischstroke_narrow,0,0,0,0
 TEST,20200323,none,no_dose,any_risk_factors,Ischstroke_narrow,0,0,0,0
 TEST,20200330,none,no_dose,any_risk_factors,Ischstroke_narrow,0,0,0,0
@@ -5760,7 +5760,7 @@ TEST,20210308,none,no_dose,IMMUNOSUPPR,Ischstroke_broad,0,0,0,0
 TEST,20210315,none,no_dose,IMMUNOSUPPR,Ischstroke_broad,0,0,0,0
 TEST,20210322,none,no_dose,IMMUNOSUPPR,Ischstroke_broad,0,0,0,0
 TEST,20210329,none,no_dose,IMMUNOSUPPR,Ischstroke_broad,0,0,0,0
-TEST,20200106,none,no_dose,any_risk_factors,Ischstroke_broad,1,60272.28,8489.86,427892.63
+TEST,20200106,none,no_dose,any_risk_factors,Ischstroke_broad,1,58253.59,8205.51,413561.29
 TEST,20200113,none,no_dose,any_risk_factors,Ischstroke_broad,0,0,0,0
 TEST,20200120,none,no_dose,any_risk_factors,Ischstroke_broad,0,0,0,0
 TEST,20200127,none,no_dose,any_risk_factors,Ischstroke_broad,0,0,0,0
@@ -5769,7 +5769,7 @@ TEST,20200210,none,no_dose,any_risk_factors,Ischstroke_broad,0,0,0,0
 TEST,20200217,none,no_dose,any_risk_factors,Ischstroke_broad,0,0,0,0
 TEST,20200224,none,no_dose,any_risk_factors,Ischstroke_broad,0,0,0,0
 TEST,20200302,none,no_dose,any_risk_factors,Ischstroke_broad,0,0,0,0
-TEST,20200309,none,no_dose,any_risk_factors,Ischstroke_broad,1,61180.9,8617.84,434343.22
+TEST,20200309,none,no_dose,any_risk_factors,Ischstroke_broad,1,59101.94,8325.01,419584
 TEST,20200316,none,no_dose,any_risk_factors,Ischstroke_broad,0,0,0,0
 TEST,20200323,none,no_dose,any_risk_factors,Ischstroke_broad,0,0,0,0
 TEST,20200330,none,no_dose,any_risk_factors,Ischstroke_broad,0,0,0,0
@@ -8339,7 +8339,7 @@ TEST,20210201,none,no_dose,COVDIAB,DEATH,0,0,0,0
 TEST,20210208,none,no_dose,COVDIAB,DEATH,0,0,0,0
 TEST,20210215,none,no_dose,COVDIAB,DEATH,0,0,0,0
 TEST,20210222,none,no_dose,COVDIAB,DEATH,0,0,0,0
-TEST,20210301,none,no_dose,COVDIAB,DEATH,1,257218.31,36231.36,1826076.91
+TEST,20210301,none,no_dose,COVDIAB,DEATH,1,214852.94,30263.85,1525311.29
 TEST,20210308,none,no_dose,COVDIAB,DEATH,0,0,0,0
 TEST,20210315,none,no_dose,COVDIAB,DEATH,0,0,0,0
 TEST,20210322,none,no_dose,COVDIAB,DEATH,0,0,0,0
@@ -8441,7 +8441,7 @@ TEST,20200713,none,no_dose,any_risk_factors,DEATH,0,0,0,0
 TEST,20200720,none,no_dose,any_risk_factors,DEATH,0,0,0,0
 TEST,20200727,none,no_dose,any_risk_factors,DEATH,0,0,0,0
 TEST,20200803,none,no_dose,any_risk_factors,DEATH,0,0,0,0
-TEST,20200810,none,no_dose,any_risk_factors,DEATH,1,61593.59,8675.98,437273.04
+TEST,20200810,none,no_dose,any_risk_factors,DEATH,1,59486.97,8379.24,422317.46
 TEST,20200817,none,no_dose,any_risk_factors,DEATH,0,0,0,0
 TEST,20200824,none,no_dose,any_risk_factors,DEATH,0,0,0,0
 TEST,20200831,none,no_dose,any_risk_factors,DEATH,0,0,0,0
@@ -8450,13 +8450,13 @@ TEST,20200914,none,no_dose,any_risk_factors,DEATH,0,0,0,0
 TEST,20200921,none,no_dose,any_risk_factors,DEATH,0,0,0,0
 TEST,20200928,none,no_dose,any_risk_factors,DEATH,0,0,0,0
 TEST,20201005,none,no_dose,any_risk_factors,DEATH,0,0,0,0
-TEST,20201012,none,no_dose,any_risk_factors,DEATH,1,63192.04,8901.13,448620.96
+TEST,20201012,none,no_dose,any_risk_factors,DEATH,1,60976.63,8589.07,432893.04
 TEST,20201019,none,no_dose,any_risk_factors,DEATH,0,0,0,0
 TEST,20201026,none,no_dose,any_risk_factors,DEATH,0,0,0,0
 TEST,20201102,none,no_dose,any_risk_factors,DEATH,0,0,0,0
 TEST,20201109,none,no_dose,any_risk_factors,DEATH,0,0,0,0
 TEST,20201116,none,no_dose,any_risk_factors,DEATH,0,0,0,0
-TEST,20201123,none,no_dose,any_risk_factors,DEATH,1,64531.8,9089.85,458132.35
+TEST,20201123,none,no_dose,any_risk_factors,DEATH,1,62974.14,8870.44,447074.02
 TEST,20201130,none,no_dose,any_risk_factors,DEATH,0,0,0,0
 TEST,20201207,none,no_dose,any_risk_factors,DEATH,0,0,0,0
 TEST,20201214,none,no_dose,any_risk_factors,DEATH,0,0,0,0
@@ -8466,20 +8466,20 @@ TEST,20210104,none,no_dose,any_risk_factors,DEATH,0,0,0,0
 TEST,20210111,none,no_dose,any_risk_factors,DEATH,0,0,0,0
 TEST,20210118,none,no_dose,any_risk_factors,DEATH,0,0,0,0
 TEST,20210125,none,no_dose,any_risk_factors,DEATH,0,0,0,0
-TEST,20210201,none,no_dose,any_risk_factors,DEATH,1,65692.45,9253.33,466372.19
+TEST,20210201,none,no_dose,any_risk_factors,DEATH,1,64078.95,9026.06,454917.42
 TEST,20210208,none,no_dose,any_risk_factors,DEATH,0,0,0,0
 TEST,20210215,none,no_dose,any_risk_factors,DEATH,0,0,0,0
 TEST,20210222,none,no_dose,any_risk_factors,DEATH,0,0,0,0
-TEST,20210301,none,no_dose,any_risk_factors,DEATH,1,66651.46,9388.42,473180.51
+TEST,20210301,none,no_dose,any_risk_factors,DEATH,1,64991.1,9154.54,461393.08
 TEST,20210308,none,no_dose,any_risk_factors,DEATH,0,0,0,0
 TEST,20210315,none,no_dose,any_risk_factors,DEATH,0,0,0,0
 TEST,20210322,none,no_dose,any_risk_factors,DEATH,0,0,0,0
-TEST,20210329,none,no_dose,any_risk_factors,DEATH,1,69704.2,9818.42,494852.91
+TEST,20210329,none,no_dose,any_risk_factors,DEATH,1,67890.33,9562.92,481975.66
 TEST,20210308,Pfizer,1,any_risk_factors,DEATH,0,0,0,0
 TEST,20210315,Pfizer,1,any_risk_factors,DEATH,0,0,0,0
 TEST,20210322,Pfizer,1,any_risk_factors,DEATH,0,0,0,0
 TEST,20210329,Pfizer,1,any_risk_factors,DEATH,0,0,0,0
-TEST,20200106,none,no_dose,CV,ArterialNoTP,1,114498.43,16128.07,812861.8
+TEST,20200106,none,no_dose,CV,ArterialNoTP,0,0,0,0
 TEST,20200113,none,no_dose,CV,ArterialNoTP,0,0,0,0
 TEST,20200120,none,no_dose,CV,ArterialNoTP,0,0,0,0
 TEST,20200127,none,no_dose,CV,ArterialNoTP,0,0,0,0
@@ -8488,7 +8488,7 @@ TEST,20200210,none,no_dose,CV,ArterialNoTP,0,0,0,0
 TEST,20200217,none,no_dose,CV,ArterialNoTP,0,0,0,0
 TEST,20200224,none,no_dose,CV,ArterialNoTP,0,0,0,0
 TEST,20200302,none,no_dose,CV,ArterialNoTP,0,0,0,0
-TEST,20200309,none,no_dose,CV,ArterialNoTP,1,117822.58,16596.3,836461.03
+TEST,20200309,none,no_dose,CV,ArterialNoTP,1,110347.43,15543.36,783392.5
 TEST,20200316,none,no_dose,CV,ArterialNoTP,0,0,0,0
 TEST,20200323,none,no_dose,CV,ArterialNoTP,0,0,0,0
 TEST,20200330,none,no_dose,CV,ArterialNoTP,0,0,0,0
@@ -8940,7 +8940,7 @@ TEST,20210308,none,no_dose,IMMUNOSUPPR,ArterialNoTP,0,0,0,0
 TEST,20210315,none,no_dose,IMMUNOSUPPR,ArterialNoTP,0,0,0,0
 TEST,20210322,none,no_dose,IMMUNOSUPPR,ArterialNoTP,0,0,0,0
 TEST,20210329,none,no_dose,IMMUNOSUPPR,ArterialNoTP,0,0,0,0
-TEST,20200106,none,no_dose,any_risk_factors,ArterialNoTP,1,60272.28,8489.86,427892.63
+TEST,20200106,none,no_dose,any_risk_factors,ArterialNoTP,0,0,0,0
 TEST,20200113,none,no_dose,any_risk_factors,ArterialNoTP,0,0,0,0
 TEST,20200120,none,no_dose,any_risk_factors,ArterialNoTP,0,0,0,0
 TEST,20200127,none,no_dose,any_risk_factors,ArterialNoTP,0,0,0,0
@@ -8949,7 +8949,7 @@ TEST,20200210,none,no_dose,any_risk_factors,ArterialNoTP,0,0,0,0
 TEST,20200217,none,no_dose,any_risk_factors,ArterialNoTP,0,0,0,0
 TEST,20200224,none,no_dose,any_risk_factors,ArterialNoTP,0,0,0,0
 TEST,20200302,none,no_dose,any_risk_factors,ArterialNoTP,0,0,0,0
-TEST,20200309,none,no_dose,any_risk_factors,ArterialNoTP,1,61180.9,8617.84,434343.22
+TEST,20200309,none,no_dose,any_risk_factors,ArterialNoTP,1,57159.62,8051.41,405794.84
 TEST,20200316,none,no_dose,any_risk_factors,ArterialNoTP,0,0,0,0
 TEST,20200323,none,no_dose,any_risk_factors,ArterialNoTP,0,0,0,0
 TEST,20200330,none,no_dose,any_risk_factors,ArterialNoTP,0,0,0,0
@@ -9539,7 +9539,7 @@ TEST,20210308,Pfizer,1,any_risk_factors,VTENoTP,0,0,0,0
 TEST,20210315,Pfizer,1,any_risk_factors,VTENoTP,0,0,0,0
 TEST,20210322,Pfizer,1,any_risk_factors,VTENoTP,0,0,0,0
 TEST,20210329,Pfizer,1,any_risk_factors,VTENoTP,0,0,0,0
-TEST,20200106,none,no_dose,CV,ArterialVTENoTP,1,117067.31,16489.92,831099.12
+TEST,20200106,none,no_dose,CV,ArterialVTENoTP,0,0,0,0
 TEST,20200113,none,no_dose,CV,ArterialVTENoTP,0,0,0,0
 TEST,20200120,none,no_dose,CV,ArterialVTENoTP,0,0,0,0
 TEST,20200127,none,no_dose,CV,ArterialVTENoTP,0,0,0,0
@@ -9548,7 +9548,7 @@ TEST,20200210,none,no_dose,CV,ArterialVTENoTP,0,0,0,0
 TEST,20200217,none,no_dose,CV,ArterialVTENoTP,0,0,0,0
 TEST,20200224,none,no_dose,CV,ArterialVTENoTP,0,0,0,0
 TEST,20200302,none,no_dose,CV,ArterialVTENoTP,0,0,0,0
-TEST,20200309,none,no_dose,CV,ArterialVTENoTP,1,120544.55,16979.71,855785.19
+TEST,20200309,none,no_dose,CV,ArterialVTENoTP,1,112731.48,15879.18,800317.65
 TEST,20200316,none,no_dose,CV,ArterialVTENoTP,0,0,0,0
 TEST,20200323,none,no_dose,CV,ArterialVTENoTP,0,0,0,0
 TEST,20200330,none,no_dose,CV,ArterialVTENoTP,0,0,0,0
@@ -10000,7 +10000,7 @@ TEST,20210308,none,no_dose,IMMUNOSUPPR,ArterialVTENoTP,0,0,0,0
 TEST,20210315,none,no_dose,IMMUNOSUPPR,ArterialVTENoTP,0,0,0,0
 TEST,20210322,none,no_dose,IMMUNOSUPPR,ArterialVTENoTP,0,0,0,0
 TEST,20210329,none,no_dose,IMMUNOSUPPR,ArterialVTENoTP,0,0,0,0
-TEST,20200106,none,no_dose,any_risk_factors,ArterialVTENoTP,1,60976.63,8589.07,432893.04
+TEST,20200106,none,no_dose,any_risk_factors,ArterialVTENoTP,0,0,0,0
 TEST,20200113,none,no_dose,any_risk_factors,ArterialVTENoTP,0,0,0,0
 TEST,20200120,none,no_dose,any_risk_factors,ArterialVTENoTP,0,0,0,0
 TEST,20200127,none,no_dose,any_risk_factors,ArterialVTENoTP,0,0,0,0
@@ -10009,7 +10009,7 @@ TEST,20200210,none,no_dose,any_risk_factors,ArterialVTENoTP,0,0,0,0
 TEST,20200217,none,no_dose,any_risk_factors,ArterialVTENoTP,0,0,0,0
 TEST,20200224,none,no_dose,any_risk_factors,ArterialVTENoTP,0,0,0,0
 TEST,20200302,none,no_dose,any_risk_factors,ArterialVTENoTP,0,0,0,0
-TEST,20200309,none,no_dose,any_risk_factors,ArterialVTENoTP,1,61906.78,8720.09,439496.48
+TEST,20200309,none,no_dose,any_risk_factors,ArterialVTENoTP,1,57792.72,8140.59,410289.42
 TEST,20200316,none,no_dose,any_risk_factors,ArterialVTENoTP,0,0,0,0
 TEST,20200323,none,no_dose,any_risk_factors,ArterialVTENoTP,0,0,0,0
 TEST,20200330,none,no_dose,any_risk_factors,ArterialVTENoTP,0,0,0,0
