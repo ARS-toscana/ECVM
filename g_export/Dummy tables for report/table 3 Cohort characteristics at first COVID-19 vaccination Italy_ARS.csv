@@ -1,3 +1,34 @@
+<<<<<<< HEAD
+ ,Parameters,Pfizer,perc_Pfizer,AstraZeneca,perc_AstraZeneca
+"","",N,%,N,%
+Study population,N,15,88.235%,2,11.765%
+Person-years of follow-up,PY,1,100%,0,0%
+Month of first vaccination,"",1,"",3,""
+January 2021,N,1,6.667%,0,0%
+February 2021,N,1,6.667%,0,0%
+March 2021,N,8,53.333%,1,50%
+April 2021,N,5,33.333%,1,50%
+Age in years,Min,32,"",46,""
+Age in years,P25,45,"",53,""
+Age in years,P50,58,"",60,""
+Age in years,Mean,63,"",60,""
+Age in years,P75,88,"",68,""
+Age in years,Max,99,"",75,""
+Age in categories,30-39,2,13.333%,0,0%
+Age in categories,40-49,3,20%,1,50%
+Age in categories,50-59,4,26.667%,0,0%
+Age in categories,60-69,1,6.667%,0,0%
+Age in categories,70-79,0,0%,1,50%
+Age in categories,>80,5,33.333%,0,0%
+Person years across age categories,30-39,0,NaN%,0,NaN%
+Person years across age categories,40-49,0,NaN%,0,NaN%
+Person years across age categories,50-59,0,NaN%,0,NaN%
+Person years across age categories,60-69,0,NaN%,0,NaN%
+Person years across age categories,70-79,0,NaN%,0,NaN%
+Person years across age categories,>80,0,NaN%,0,NaN%
+Person years across sex,Female,8,53.333%,0,0%
+Person years across sex,Male,7,46.667%,2,100%
+=======
  ,Parameters,UKN,perc_UKN
 "","",N,%
 Study population,N,17,100%
@@ -27,3 +58,4 @@ Person years across age categories,70-79,0,NaN%
 Person years across age categories,>80,0,NaN%
 Person years across sex,Female,8,47.059%
 Person years across sex,Male,9,52.941%
+>>>>>>> main

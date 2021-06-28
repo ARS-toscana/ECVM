@@ -230,7 +230,11 @@ N_fup_pop[type_vax == "J&J", type_vax := "Janssen"]
 N_fup_pop[, fup_vax := as.numeric(fup_vax) / 365.25]
 
 vax_man <- unique(N_fup_pop[, type_vax])
+<<<<<<< HEAD
+vax_man_tot <- c("Pfizer", "Moderna", "AstraZeneca", "Janssen")
+=======
 vax_man_tot <- c("Pfizer", "Moderna", "AstraZeneca", "Janssen", "UKN")
+>>>>>>> main
 vax_man <- intersect(vax_man_tot, vax_man)
 vax_man_perc <- paste("perc", vax_man, sep = "_")
 col_order <- c(rbind(vax_man, vax_man_perc))
@@ -323,7 +327,11 @@ table3_4_5_6 <- rbind(N_pop, fup_pop, min_month, year_month_pop, age_pop, N_age_
 setnames(table3_4_5_6, "a", " ")
 
 final_name_table3_4_5_6 <- c(TEST = "table 3", ARS = "table 3", PHARMO = "table 4",
+<<<<<<< HEAD
+                             CPRD = "table 5", AEMPS = "table 6")[[thisdatasource]]
+=======
                              UK_CPRD = "table 5", ES_BIFAP = "table 6")[[thisdatasource]]
+>>>>>>> main
 
 vect_recode_manufacturer <- c(TEST = "Italy_ARS", ARS = "Italy_ARS", PHARMO = "Netherlands-PHARMO",
                               CPRD = "UK_CPRD", AEMPS = "ES_BIFAP")

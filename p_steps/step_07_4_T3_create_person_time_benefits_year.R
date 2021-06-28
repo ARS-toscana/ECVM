@@ -6,7 +6,7 @@
 # output: D4_persontime_benefit_year (exported to csv)
 
 
-print("COUNT PERSON TIME PER COVID by week benefits")
+print("COUNT PERSON TIME PER COVID by year benefits")
 
 load(paste0(dirtemp,paste0("D3_outcomes_covid.RData")))
 load(paste0(dirtemp,"D3_vaxweeks_including_not_vaccinated.RData"))

@@ -20,7 +20,17 @@ list_of_DAP<-c("ARS","PHARMO","AEMPS") #"CPRD","AEMPS"
 
 files_list<-list.files(list_of_submitted_folders[[list_of_DAP[1]]], recursive = T, include.dirs = T)
 files_list<-files_list[stringr::str_detect(files_list,"\\.csv")]
+files_to_join <- c("Dummy tables for report\Attrition diagram 1.csv",
+                   "Dummy tables for report\Attrition diagram 2.csv",
+                   "Dummy tables for report\Cohort characteristics at start of study (1-1-2020).csv")
+files_slated <- c("Dummy tables for report\table 3 Cohort characteristics at first COVID-19 vaccination Italy_ARS.csv",
+                  "Dummy tables for report\table 4 Cohort characteristics at first COVID-19 vaccination Netherlands-PHARMO.csv",
+                  "Dummy tables for report\table 5 Cohort characteristics at first COVID-19 vaccination UK_CPRD.csv",
+                  "Dummy tables for report\table 6 Cohort characteristics at first COVID-19 vaccination ES_BIFAP.csv")
+files_list <- files_list[!(files_list %in% files_to_join)]
+files_list <- files_list[!(files_list %in% files_slated)]
 files<-sub('\\.csv$', '', files_list)
+
 
 timestamp_df <- data.table(DAP = character(), delivery_timestamp = character(), dataset = character(),
                            postprocessing_timestamp = character(), script_version = character())
@@ -40,13 +50,66 @@ for (f in files){
       }
       input<-input[,datasource:=dap]
       data<-rbind(data, input, fill=T)
+      version_n <- paste0(list_of_submitted_folders[[dap]],"/to_run.R")
+      version_n <- read.delim(version_n, header = F)
+      version_n <- strsplit(version_n[[3,1]], " ")[[1]][[2]]
       timestamp_df <- rbind(timestamp_df, data.table(dap, str_match(list_of_submitted_folders[[dap]], "(?<=-).+?(?=/)"),
-                                                     str_match(f, ".+?(?=\\.)"), as.character(Sys.time()), "Version 3.3"), use.names=FALSE)
+                                                     str_match(f, ".+?(?=\\.)"), as.character(Sys.time()),
+                                                     version_n),  use.names=FALSE)
     }
   }
   
   fwrite(data, file= paste0(dirinput_pp, f, ".csv"))
 }
+
+for (f in files_to_join){
+  print (f)
+  data<-data.table()
+  for (dap in list_of_DAP){
+    if(file.exists( paste0(list_of_submitted_folders[[dap]],f,".csv")) ){
+      input<-fread(paste0(list_of_submitted_folders[[dap]],f,".csv") )
+      if (nrow(data) == 0) {
+        data <- input
+      } else {
+        if ("Parameters" %in% colnames(input)) {
+          data <- merge(data, input, by = c("V1", "Parameters"))
+        } else {
+          data <- merge(data, input, by = "V1")
+        }
+      }
+      version_n <- paste0(list_of_submitted_folders[[dap]],"/to_run.R")
+      version_n <- read.delim(version_n, header = F)
+      version_n <- strsplit(version_n[[3,1]], " ")[[1]][[2]]
+      timestamp_df <- rbind(timestamp_df, data.table(dap, str_match(list_of_submitted_folders[[dap]], "(?<=-).+?(?=/)"),
+                                                     str_match(f, ".+?(?=\\.)"), as.character(Sys.time()),
+                                                     version_n), use.names=FALSE)
+    }
+  }
+  
+  fwrite(data, file= paste0(dirinput_pp, f, ".csv"))
+}
+
+vect_rbind <- c()
+for (f in files_slated){
+  print (f)
+  data<-data.table()
+  for (dap in list_of_DAP){
+    if(file.exists( paste0(list_of_submitted_folders[[dap]],f,".csv")) ){
+      input<-fread(paste0(list_of_submitted_folders[[dap]],f,".csv") )
+      input<-input[,datasource:=dap]
+      data <- input
+      version_n <- paste0(list_of_submitted_folders[[dap]],"/to_run.R")
+      version_n <- read.delim(version_n, header = F)
+      version_n <- strsplit(version_n[[3,1]], " ")[[1]][[2]]
+      timestamp_df <- rbind(timestamp_df, data.table(dap, str_match(list_of_submitted_folders[[dap]], "(?<=-).+?(?=/)"),
+                                                     str_match(f, ".+?(?=\\.)"), as.character(Sys.time()),
+                                                     version_n), use.names=FALSE)
+    }
+  }
+  vect_rbind <- append(vect_rbind, data)
+}
+data <- rbindlist(vect_rbind)
+fwrite(data, file= paste0(dirinput_pp, strsplit(f, "\\")[[1]], "\Cohort characteristics at first COVID-19 vaccination", ".csv"))
 
 save(timestamp_df, file= paste0(dirinput_pp,"timestamp_df.RData"))
 
