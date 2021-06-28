@@ -1,4 +1,5 @@
 #-------------------------------
+<<<<<<< HEAD
 # ECVM script
 # v3.5 - 22 June 2021
 # authors: Rosa Gini, Olga Paoletti, Davide Messina, Giorgio Limoncella
@@ -19,6 +20,12 @@
 # - Debugged Createconceptset
 # - IR dataset now in Rdata too.
 
+=======
+# ECVM script - short version to generate summary tables on top of version 3.5
+# v3.6 - 28 June 2021
+# authors: Rosa Gini, Olga Paoletti, Davide Messina, Giorgio Limoncella
+
+>>>>>>> main
 rm(list=ls(all.names=TRUE))
 
 #set the directory where the file is saved as the working directory

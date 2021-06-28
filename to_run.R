@@ -1,7 +1,10 @@
 #-------------------------------
 # ECVM script
-# v3.5 - 22 June 2021
+# v3.6 - 28 June 2021
 # authors: Rosa Gini, Olga Paoletti, Davide Messina, Giorgio Limoncella
+
+# changelog V3.6:
+# - SAP tables included
 
 # changelog V3.5:
 # - Support for recurrent events
