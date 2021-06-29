@@ -71,7 +71,7 @@ rm(D4_persontime_benefit_week, D4_persontime_benefit_week_RF)
 
 load(paste0(diroutput,"D4_persontime_risk_year.RData"))
 
-D4_persontime_risk_year <- D4_persontime_risk_year[any_risk_factors != 0][, year := NULL]
+D4_persontime_risk_year <- D4_persontime_risk_year[any_risk_factors != 0, ][Dose != 0 | year == 2020, ][, year := NULL]
 cols_to_sums = names(D4_persontime_risk_year)[16:length(D4_persontime_risk_year)]
 
 D4_persontime_risk_year <- D4_persontime_risk_year[, lapply(.SD, sum, na.rm=TRUE),
