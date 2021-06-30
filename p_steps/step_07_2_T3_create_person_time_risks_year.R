@@ -64,6 +64,31 @@ for (subpop in subpopulations_non_empty) {
     print(paste("Age", substring(events_df_sex, 9)))
     load(paste0(dirtemp, events_df_sex, ".RData"))
     print("recurrent")
+    Recurrent_output_file<-CountPersonTime(
+      Dataset_events = events_ALL_OUTCOMES,
+      Dataset = get(events_df_sex),
+      Person_id = "person_id",
+      Start_study_time = start_persontime_studytime,
+      End_study_time = end_persontime_studytime,
+      Start_date = "start_date_of_period",
+      End_date = "end_date_of_period",
+      #Birth_date = "date_of_birth",
+      Strata = c("sex","Birthcohort_persons","Dose","type_vax","week_fup", "CV", "COVCANCER","COVCOPD", "COVHIV",
+                 "COVCKD", "COVDIAB", "COVOBES", "COVSICKLE", "IMMUNOSUPPR", "any_risk_factors"),
+      Name_event = "name_event",
+      Date_event = "date_event",
+      #Age_bands = c(0,19,29,39,49,59,69,79),
+      Increment="year",
+      Outcomes =  list_recurrent_outcomes, 
+      Unit_of_age = "year",
+      include_remaning_ages = T,
+      Aggregate = T,
+      Rec_events = T,
+      Rec_period = c(rep(30, length(list_recurrent_outcomes)))
+    )
+    save(Recurrent_output_file, file=paste0(dirtemp,"D3_recurrent_year.RData"))
+    rm(Recurrent_output_file)
+    print("normal")
     Output_file<-CountPersonTime(
       Dataset_events = events_ALL_OUTCOMES,
       Dataset = get(events_df_sex),
@@ -79,14 +104,18 @@ for (subpop in subpopulations_non_empty) {
       Date_event = "date_event",
       #Age_bands = c(0,19,29,39,49,59,69,79),
       Increment="year",
-      Outcomes_nrec =  list_outcomes,
-      Outcomes_rec =  list_recurrent_outcomes, 
+      Outcomes =  list_outcomes, 
       Unit_of_age = "year",
       include_remaning_ages = T,
-      Aggregate = T,
-      Rec_period = c(rep(30, length(list_recurrent_outcomes)))
+      Aggregate = T
     )
-    
+    load(paste0(dirtemp,"D3_recurrent_year.RData"))
+    print("Merging")
+    Output_file <- merge(Output_file, Recurrent_output_file,
+                         by = c("sex","Birthcohort_persons","Dose","type_vax","week_fup", "CV", "COVCANCER","COVCOPD",
+                                "COVHIV", "COVCKD", "COVDIAB", "COVOBES", "COVSICKLE", "IMMUNOSUPPR", "any_risk_factors",
+                                "year", "Persontime"),
+                         all = T)
     print("Saving")
     save(Output_file, file = paste0(dirtemp, events_df_sex, ".RData"))
     
