@@ -61,11 +61,11 @@ for (subpop in subpopulations_non_empty) {
       Date_event = "date_event",
       #Age_bands = c(0,19,29,39,49,59,69,79),F
       Increment="week",
-      Outcomes =  list_recurrent_outcomes, 
+      Outcomes_nrec =  list_outcomes,
+      Outcomes_rec =  list_recurrent_outcomes,
       Unit_of_age = "year",
       include_remaning_ages = T,
       Aggregate = T,
-      Rec_events = T,
       Rec_period = c(rep(30, length(list_recurrent_outcomes)))
     )
     )
@@ -77,47 +77,6 @@ for (subpop in subpopulations_non_empty) {
       rm(list=paste0("Output_file",start_week[i]))
     }
   }
-  recurrent_persontime_risk_week <- persontime_risk_week
-  rm(persontime_risk_week)
-  for (i in 1:length(start_week)){
-    start_persontime_studytime = start_week[i]
-    end_persontime_studytime = end_week[i]
-    nameoutput <- paste0("Output_file",start_week[i])
-    print(nameoutput)
-    assign(nameoutput,CountPersonTime(
-      Dataset_events = events_ALL_OUTCOMES,
-      Dataset = study_population,
-      Person_id = "person_id",
-      Start_study_time = start_persontime_studytime,
-      End_study_time = end_persontime_studytime,
-      Start_date = "start_date_of_period",
-      End_date = "end_date_of_period",
-      #Birth_date = "date_of_birth",
-      Strata = c("sex","Birthcohort_persons","Dose","type_vax", "CV", "COVCANCER","COVCOPD", "COVHIV",
-                 "COVCKD", "COVDIAB", "COVOBES", "COVSICKLE", "IMMUNOSUPPR", "any_risk_factors"),
-      Name_event = "name_event",
-      Date_event = "date_event",
-      #Age_bands = c(0,19,29,39,49,59,69,79),F
-      Increment="week",
-      Outcomes =  list_outcomes, 
-      Unit_of_age = "year",
-      include_remaning_ages = T,
-      Aggregate = T
-    )
-    )
-    if (i==1) {
-      persontime_risk_week<-get(paste0("Output_file",start_week[i]))
-      rm(list=paste0("Output_file",start_week[i]))
-    }else{
-      persontime_risk_week<-rbind(persontime_risk_week,get(paste0("Output_file",start_week[i])),fill=TRUE)
-      rm(list=paste0("Output_file",start_week[i]))
-    }
-  }
-  
-  persontime_risk_week <- merge(persontime_risk_week, recurrent_persontime_risk_week,
-                                by = c("sex","Birthcohort_persons","Dose","type_vax", "CV", "COVCANCER","COVCOPD",
-                                       "COVHIV", "COVCKD", "COVDIAB", "COVOBES", "COVSICKLE", "IMMUNOSUPPR",
-                                       "any_risk_factors", "week", "Persontime"), all = T)
   
   for (i in names(persontime_risk_week)){
     persontime_risk_week[is.na(get(i)), (i):=0]
