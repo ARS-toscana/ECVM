@@ -449,5 +449,8 @@ for (event in OUTCOME_events) {
 
 table_8 <- data.table::rbindlist(list(table_8, events_table_8), use.names=TRUE)
 setnames(table_8, c("date", "Narrow", "Broad"), c("", correct_datasource, correct_datasource))
+<<<<<<< HEAD
 
 fwrite(table_8, file = paste0(dummytables, "Number of incident cases entire study period.csv"))
+=======
+>>>>>>> 8cf40973c82bcde87cdb07a0d8842d254551c72e
