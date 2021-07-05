@@ -271,6 +271,37 @@ D4_distance_doses <- D4_distance_doses[, c("Datasource", "Distance_P25_Pfizer1_2
 fwrite(D4_distance_doses, file = paste0(dirD4tables, "D4_distance_doses.csv"))
 
 
+
+loadRData <- function(fileName, name = T){
+   #loads an RData file, and returns it
+   if (name) {
+      get(load(fileName))
+   } else {
+      load(fileName)
+      get(ls()[ls() != "fileName"])
+   }
+}
+
+code_counts_in_CDMinstance = data.table(Conceptset = character(), Code = character(), Coding_system = character(),
+                                        Meaning = character(), Count_n = character())
+for (concept in concept_sets_of_our_study) {
+   df_temp <- loadRData(paste0(dirtemp, concept, ".RData"))
+   if ("event_record_vocabulary" %in% colnames(df_temp)) {
+      df_temp <- df_temp[, .(person_id, Code = codvar, Coding_system = event_record_vocabulary, Meaning = meaning_of_event)]
+   } else {
+      if (nrow(df_temp) > 0) {
+         df_temp <- df_temp[, .(person_id, Code = codvar, Coding_system = "ATC", Meaning = meaning_of_drug_record)]
+      } else {
+         df_temp <- df_temp[, .(person_id, Code = codvar, Coding_system = character(), Meaning = meaning_of_drug_record)]
+      }
+   }
+   df_temp <- df_temp[, .N, by = c("Code", "Coding_system", "Meaning")][, Conceptset := concept]
+   setnames(df_temp, "N", "Count_n")
+   code_counts_in_CDMinstance <- data.table::rbindlist(list(code_counts_in_CDMinstance, df_temp), use.names=TRUE)
+}
+
+fwrite(code_counts_in_CDMinstance, file = paste0(dircodecounts, "code_counts_in_CDMinstance.csv"))
+
 rm(D3_study_population, D3_Vaccin_cohort, D4_descriptive_dataset_age_studystart, D4_descriptive_dataset_ageband_studystart,
    D4_descriptive_dataset_sex_studystart, D4_followup_fromstudystart, dec31, jan1, D4_followup_sex, D4_followup_cohort,
    D4_followup_complete, D4_descriptive_dataset_age_vax1, D4_descriptive_dataset_ageband_vax,
