@@ -230,11 +230,7 @@ N_fup_pop[type_vax == "J&J", type_vax := "Janssen"]
 N_fup_pop[, fup_vax := as.numeric(fup_vax) / 365.25]
 
 vax_man <- unique(N_fup_pop[, type_vax])
-<<<<<<< HEAD
-vax_man_tot <- c("Pfizer", "Moderna", "AstraZeneca", "Janssen")
-=======
 vax_man_tot <- c("Pfizer", "Moderna", "AstraZeneca", "Janssen", "UKN")
->>>>>>> main
 vax_man <- intersect(vax_man_tot, vax_man)
 vax_man_perc <- paste("perc", vax_man, sep = "_")
 col_order <- c(rbind(vax_man, vax_man_perc))
@@ -327,11 +323,7 @@ table3_4_5_6 <- rbind(N_pop, fup_pop, min_month, year_month_pop, age_pop, N_age_
 setnames(table3_4_5_6, "a", " ")
 
 final_name_table3_4_5_6 <- c(TEST = "table 3", ARS = "table 3", PHARMO = "table 4",
-<<<<<<< HEAD
                              CPRD = "table 5", AEMPS = "table 6")[[thisdatasource]]
-=======
-                             UK_CPRD = "table 5", ES_BIFAP = "table 6")[[thisdatasource]]
->>>>>>> main
 
 vect_recode_manufacturer <- c(TEST = "Italy_ARS", ARS = "Italy_ARS", PHARMO = "Netherlands-PHARMO",
                               CPRD = "UK_CPRD", AEMPS = "ES_BIFAP")
@@ -344,3 +336,79 @@ table3_4_5_6 <- rbindlist(list(empty_df, table3_4_5_6))
 fwrite(table3_4_5_6, file = paste0(dummytables, final_name_table3_4_5_6,
                                    " Cohort characteristics at first COVID-19 vaccination ", 
                                    vect_recode_manufacturer[[thisdatasource]], ".csv"))
+
+
+
+
+
+# Table7 ----------------------------------------------------------------------------------------------------------
+
+empty_table_7 <- data.table(a = character(0), Parameters = character(0), N = numeric(0))
+
+vaccinated_persons <- D3_Vaccin_cohort[, .(person_id, date_vax1, date_vax2, type_vax_1, type_vax_2)]
+vaccinated_persons <-vaccinated_persons[type_vax_1 == "J&J", type_vax_1 := "Janssen"]
+
+Totals_dose_1 <- vaccinated_persons[, .N, by = "type_vax_1"]
+Totals_dose_1 <- Totals_dose_1[, index := 1]
+names_vect <- c("Pfizer", "Moderna", "AstraZeneca", "Janssen", "UKN")
+recode_rows <- paste(names_vect, "dose 1")
+names(recode_rows) <- names_vect
+Totals_dose_1 <- Totals_dose_1[, a := recode_rows[type_vax_1]][, Parameters := "Persons"]
+
+Totals <- Totals_dose_1[, .(N = sum(N))]
+Totals_df <- copy(Totals)[, a := "Total population"][, Parameters := "Persons"]
+base_table_7 <- rbindlist(list(empty_table_7, Totals_df), use.names=TRUE)
+
+df_with_second_doses  <- vaccinated_persons[!is.na(date_vax2), ]
+
+dissimilar_doses <- df_with_second_doses[type_vax_1 != type_vax_2, ]
+dissimilar_doses <- dissimilar_doses[, .N, by = "type_vax_1"]
+dissimilar_doses <- dissimilar_doses[, a := "Other vaccine dose 2"][, Parameters := "Persons"][, index := 3]
+
+distance_doses <- df_with_second_doses[type_vax_1 == type_vax_2, ]
+Totals_dose_2 <- distance_doses[, .N, by = "type_vax_1"]
+recode_rows <- paste(names_vect, "dose 2")
+names(recode_rows) <- names_vect
+Totals_dose_2 <- Totals_dose_2[, a := recode_rows[type_vax_1]][, Parameters := "Persons"][, index := 2]
+
+distance_doses <- distance_doses[, distance := correct_difftime(date_vax2 - 1, date_vax1)]
+distance_doses <- distance_doses[, .(Min = min(distance), P25 = quantile(distance, 0.25),
+                                     P50 = quantile(distance, 0.50), P75 = quantile(distance, 0.75),
+                                     Max = max(distance)), by = "type_vax_1"]
+cols_difftime <- sapply(distance_doses, is.difftime)
+cols_difftime <- names(cols_difftime)[cols_difftime]
+distance_doses <- distance_doses[, (cols_difftime) := lapply(.SD, function(x) round(as.numeric(x))), .SDcols = cols_difftime]
+vect_measures <- c("Min", "P25", "P50", "P75", "Max")
+distance_doses <- data.table::melt(distance_doses, id.vars = "type_vax_1",
+                                   measure.vars = vect_measures, variable.name = "Parameters",
+                                   value.name = "N")
+recode_rows <- paste("Amongst persons with", names_vect, "dose 2 distance")
+names(recode_rows) <- names_vect
+rows_to_index <- seq(4, 8)
+names(rows_to_index) <- vect_measures
+distance_doses <- distance_doses[, a := recode_rows[type_vax_1]][, index := rows_to_index[Parameters]]
+
+part2_table_7 <- rbindlist(list(Totals_dose_1, Totals_dose_2, dissimilar_doses, distance_doses), use.names=TRUE)
+data.table::setorder(part2_table_7, type_vax_1, index)
+
+dose_1_to_join <- Totals_dose_1[, .(type_vax_1, tot_type_1 = N)]
+
+table_7 <- rbindlist(list(base_table_7, part2_table_7), fill = TRUE)
+table_7 <- table_7[index == 1, Perc := N / Totals]
+table_7 <- merge(table_7, dose_1_to_join, by = "type_vax_1")
+table_7 <- table_7[data.table::between(index, 2, 3), Perc := N / tot_type_1]
+table_7 <- table_7[, Perc := paste0(round(Perc * 100, 3), "%")]
+table_7 <- table_7[Perc == "NA%", Perc := ""]
+
+vect_recode_manufacturer <- c(TEST = "IT-ARS", ARS = "IT-ARS", PHARMO = "NL-PHARMO",
+                              CPRD = "UK_CPRD", AEMPS = "ES_BIFAP")
+correct_datasource <- vect_recode_manufacturer[thisdatasource]
+table_7 <- table_7[, .(a, Parameters, N, Perc)]
+
+empty_df <- table_7[0,]
+empty_df <- rbindlist(list(empty_df, list("", "", "N", "%")))
+table_7 <- rbindlist(list(empty_df, table_7))
+
+setnames(table_7, c("a", "N", "Perc"), c("", correct_datasource, correct_datasource))
+
+fwrite(table_7, file = paste0(dummytables, "Doses of COVID-19 vaccines and distance betweenfirst and second dose.csv"))
