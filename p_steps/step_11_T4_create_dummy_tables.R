@@ -412,3 +412,40 @@ table_7 <- rbindlist(list(empty_df, table_7))
 setnames(table_7, c("a", "N", "Perc"), c("", correct_datasource, correct_datasource))
 
 fwrite(table_7, file = paste0(dummytables, "Doses of COVID-19 vaccines and distance betweenfirst and second dose.csv"))
+
+
+
+# Table8 ----------------------------------------------------------------------------------------------------------
+
+OUTCOME_events <- sort(OUTCOME_events)
+OUTCOME_events <- c(OUTCOME_events[OUTCOME_events != "COVID"], "COVID")
+vect_recode_type <- c(narrow = "Narrow", possible = "Broad")
+
+table_8 <- data.table::data.table(date = character(), Narrow = character(), Broad = character())
+table_8 <- data.table::rbindlist(list(table_8, list("", "Narrow", "Broad")))
+
+events_table_8 <- data.table::data.table(date = character(), Broad = character(), Narrow = character())
+
+for (event in OUTCOME_events) {
+  df_event <- data.table::data.table(date = character(), N = character(), Type = character())
+  empty_concept <- data.table::data.table(date = event, Broad = character(1), Narrow = character(1))
+  for (type in c("narrow", "possible")) {
+    concept <- paste0(event, "_", type)
+    df_temp <- loadRData(paste0(dirtemp, concept, ".RData"))
+    df_temp <- df_temp[, .(person_id, date = year(date), Code = codvar, Coding_system = event_record_vocabulary,
+                           Meaning = meaning_of_event)]
+    df_temp <- df_temp[data.table::between(date, 2020, 2021), .N, by = "date"]
+    df_temp <- df_temp[, Type := vect_recode_type[[type]]]
+    df_event <- data.table::rbindlist(list(df_event, df_temp))
+  }
+  empty_df_event <- as.data.table(expand.grid(Type = c("Narrow", "Broad"), date = c("2020", "2021")))
+  df_event <- merge(empty_df_event, df_event, by = c("Type", "date"), all.x = T)
+  df_event <- df_event[is.na(N), N := 0]
+  
+  df_event <- data.table::dcast(df_event, date ~ Type, value.var = "N", fill = "")
+  df_event <- data.table::rbindlist(list(empty_concept, df_event))
+  events_table_8 <- data.table::rbindlist(list(events_table_8, df_event))
+}
+
+table_8 <- data.table::rbindlist(list(table_8, events_table_8), use.names=TRUE)
+setnames(table_8, c("date", "Narrow", "Broad"), c("", correct_datasource, correct_datasource))
