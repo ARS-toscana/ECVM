@@ -21,7 +21,9 @@ D3_doses <- D3_doses[study_exit_date < date_vax2, c("date_vax2", "type_vax_2") :
 D3_doses <- D3_doses[!is.na(date_vax1), c("study_entry_date_vax1", "study_exit_date_vax1") := list(date_vax1, fifelse(is.na(date_vax2) | study_exit_date < date_vax2, study_exit_date, date_vax2 - 1))]
 D3_doses <- D3_doses[!is.na(date_vax2), c("study_entry_date_vax2", "study_exit_date_vax2") := list(date_vax2, study_exit_date)]
 
+firstjan2021 <- ymd(20210101)
 D3_doses <- D3_doses[, age_at_study_entry := floor(lubridate::time_length(correct_difftime(study_entry_date, date_of_birth), "years"))]
+D3_doses <- D3_doses[, age_at_1_jan_2021 := floor(lubridate::time_length(correct_difftime(firstjan2021, date_of_birth), "years"))]
 D3_doses <- D3_doses[, age_at_date_vax_1 := floor(lubridate::time_length(correct_difftime(date_vax1, date_of_birth), "years"))]
 D3_doses <- D3_doses[, fup_days := correct_difftime(study_exit_date, study_entry_date)]
 D3_doses <- D3_doses[, fup_no_vax := fifelse(is.na(study_entry_date_vax1), fup_days, correct_difftime(study_entry_date_vax1, study_entry_date) - 1)]
@@ -49,11 +51,11 @@ D3_doses <- merge(D3_doses, D3_study_population_cov_ALL, all.x = T, by="person_i
 setnames(D3_doses, "start_follow_up", "start_lookback")
 
 D3_study_population <- D3_doses[, .(person_id, sex, date_of_birth, start_lookback, study_entry_date, study_exit_date,
-                                    date_vax1, date_vax2, age_at_study_entry, CV_at_study_entry, COVCANCER_at_study_entry,
-                                    COVCOPD_at_study_entry, COVHIV_at_study_entry, COVCKD_at_study_entry,
-                                    COVDIAB_at_study_entry, COVOBES_at_study_entry, COVSICKLE_at_study_entry,
-                                    immunosuppressants_at_study_entry, at_risk_at_study_entry, age_at_date_vax_1,
-                                    type_vax_1, type_vax_2, study_entry_date_vax1, study_exit_date_vax1,
+                                    date_vax1, date_vax2, age_at_study_entry, age_at_1_jan_2021, CV_at_study_entry,
+                                    COVCANCER_at_study_entry, COVCOPD_at_study_entry, COVHIV_at_study_entry,
+                                    COVCKD_at_study_entry, COVDIAB_at_study_entry, COVOBES_at_study_entry,
+                                    COVSICKLE_at_study_entry, immunosuppressants_at_study_entry, at_risk_at_study_entry,
+                                    age_at_date_vax_1, type_vax_1, type_vax_2, study_entry_date_vax1, study_exit_date_vax1,
                                     study_entry_date_vax2, study_exit_date_vax2, fup_days, fup_no_vax, fup_vax1, fup_vax2)]
 
 save(D3_study_population, file = paste0(dirtemp, "D3_study_population.RData"))
