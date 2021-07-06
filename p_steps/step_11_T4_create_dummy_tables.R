@@ -133,12 +133,12 @@ ageband_start <- ageband_studystart[, a := "Age in categories"][, TOTAL := NULL]
 
 ageband_start <- melt(ageband_start, id.vars = c("a", "Datasource"),
                       measure.vars = c("AgeCat_019", "AgeCat_2029", "AgeCat_3039", "AgeCat_4049", "AgeCat_5059",
-                                       "AgeCat_6069", "AgeCat_7079", "Agecat_80+"),
+                                       "AgeCat_6069", "AgeCat_7079", "Agecat_80+", "Agecat_60+"),
                       variable.name = "Parameters")
 ageband_start <- dcast(ageband_start, a + Parameters  ~ Datasource, value.var = 'value')
 ageband_start[, Parameters := c(AgeCat_019 = "0-19", AgeCat_2029 = "20-29", AgeCat_3039 = "30-39", AgeCat_4049 = "40-49",
                                 AgeCat_5059 = "50-59", AgeCat_6069 = "60-69", AgeCat_7079 = "70-79",
-                                Agecat_80 = ">=80")[Parameters]]
+                                Agecat_80 = ">=80", Agecat_60 = ">=60")[Parameters]]
 
 
 followup_studystart <- fread(paste0(dirD4tables, "D4_followup_fromstudystart.csv"))
@@ -146,16 +146,16 @@ followup_studystart[, Datasource := c(TEST = "Test", ARS = "Italy_ARS", PHARMO =
                                       AEMPS = "ES_BIFAP")[Datasource]]
 followup_studystart <- followup_studystart[, a := "Person years across age categories"]
 followup_start <- followup_studystart[, .(a, Datasource, Followup_0119, Followup_2029, Followup_3039, Followup_4049,
-                                          Followup_5059, Followup_6069, Followup_7079, Followup_80)]
+                                          Followup_5059, Followup_6069, Followup_7079, Followup_80, Followup_60)]
 
 followup_start <- melt(followup_start, id.vars = c("a", "Datasource"),
                        measure.vars = c("Followup_0119", "Followup_2029", "Followup_3039", "Followup_4049", "Followup_5059",
-                                        "Followup_6069", "Followup_7079", "Followup_80"),
+                                        "Followup_6069", "Followup_7079", "Followup_80", "Followup_60"),
                        variable.name = "Parameters")
 followup_start <- dcast(followup_start, a + Parameters  ~ Datasource, value.var = 'value')
 followup_start[, Parameters := c(Followup_0119 = "0-19", Followup_2029 = "20-29", Followup_3039 = "30-39",
                                  Followup_4049 = "40-49", Followup_5059 = "50-59", Followup_6069 = "60-69",
-                                 Followup_7079 = "70-79", Followup_80 = ">=80")[Parameters]]
+                                 Followup_7079 = "70-79", Followup_80 = ">=80", Followup_60 = ">=60")[Parameters]]
 
 
 sex_studystart <- fread(paste0(dirD4tables, "D4_descriptive_dataset_sex_studystart.csv"))
@@ -267,8 +267,9 @@ year_month_pop <- dcast(year_month_pop, year + month ~ type_vax, value.var = "N"
 setorder(year_month_pop, year, month)
 year_month_pop <- year_month_pop[, Parameters := "N"][, a := paste(month.name[month], year)]
 setnafill(year_month_pop, cols = c(vax_man), fill = 0)
-round_sum <- function(x) {paste0(round(x / sum(x) * 100, 3), "%")}
+round_sum <- function(x) {round(x / sum(x) * 100, 3)}
 year_month_pop <- year_month_pop[, (vax_man_perc) := lapply(.SD, round_sum), .SDcols = vax_man]
+year_month_pop <- year_month_pop[, (vax_man_perc) := lapply(.SD, paste0, "%"), .SDcols = vax_man_perc]
 year_month_pop <- year_month_pop[, ..cols_to_keep]
 
 age_pop <- copy(N_fup_pop)[, .(Age_P25 = round(quantile(age_at_date_vax, probs = 0.25)),
@@ -297,6 +298,12 @@ setnames(N_age_cat, "age_at_date_vax", "Parameters")
 N_age_cat <- N_age_cat[, a := "Age in categories"]
 setnafill(N_age_cat, cols = c(vax_man), fill = 0)
 N_age_cat <- N_age_cat[, (vax_man_perc) := lapply(.SD, round_sum), .SDcols = vax_man]
+older60 <- copy(N_age_cat)[Parameters %in% c(">80", "70-79", "60-69"),
+                           lapply(.SD, sum, na.rm=TRUE), by = "a",
+                           .SDcols = c("AstraZeneca", "Pfizer", "perc_Pfizer", "perc_AstraZeneca")]
+older60 <- unique(older60[, Parameters := ">60"])
+N_age_cat <- rbind(N_age_cat, older60)
+N_age_cat <- N_age_cat[, (vax_man_perc) := lapply(.SD, paste0, "%"), .SDcols = vax_man_perc]
 N_age_cat <- N_age_cat[, ..cols_to_keep]
 
 fup_age_cat <- age_cat[, sum(fup_vax), by = c("type_vax", "age_at_date_vax")][, V1 := round(V1, 0)]
@@ -305,6 +312,12 @@ setnames(fup_age_cat, "age_at_date_vax", "Parameters")
 fup_age_cat <- fup_age_cat[, a := "Person years across age categories"]
 setnafill(fup_age_cat, cols = c(vax_man), fill = 0)
 fup_age_cat <- fup_age_cat[, (vax_man_perc) := lapply(.SD, round_sum), .SDcols = vax_man]
+older60 <- copy(fup_age_cat)[Parameters %in% c(">80", "70-79", "60-69"),
+                           lapply(.SD, sum, na.rm=TRUE), by = "a",
+                           .SDcols = c("AstraZeneca", "Pfizer", "perc_Pfizer", "perc_AstraZeneca")]
+older60 <- unique(older60[, Parameters := ">60"])
+fup_age_cat <- rbind(fup_age_cat, older60)
+fup_age_cat <- fup_age_cat[, (vax_man_perc) := lapply(.SD, paste0, "%"), .SDcols = vax_man_perc]
 fup_age_cat <- fup_age_cat[, ..cols_to_keep]
 
 D4_descriptive_dataset_sex_vaccination <- fread(paste0(dirD4tables, "D4_descriptive_dataset_sex_vaccination.csv"))
@@ -317,6 +330,7 @@ setnames(sex_pop, "child", "Parameters")
 sex_pop <- sex_pop[, a := "Person years across sex"]
 setnafill(sex_pop, cols = c(vax_man), fill = 0)
 sex_pop <- sex_pop[, (vax_man_perc) := lapply(.SD, round_sum), .SDcols = vax_man]
+sex_pop <- sex_pop[, (vax_man_perc) := lapply(.SD, paste0, "%"), .SDcols = vax_man_perc]
 sex_pop <- sex_pop[, ..cols_to_keep]
 
 table3_4_5_6 <- rbind(N_pop, fup_pop, min_month, year_month_pop, age_pop, N_age_cat, fup_age_cat, sex_pop)
@@ -417,40 +431,53 @@ fwrite(table_7, file = paste0(dummytables, "Doses of COVID-19 vaccines and dista
 
 # Table8 ----------------------------------------------------------------------------------------------------------
 
-OUTCOME_events <- sort(OUTCOME_events)
-OUTCOME_events <- c(OUTCOME_events[OUTCOME_events != "COVID"], "COVID")
-vect_recode_type <- c(narrow = "Narrow", possible = "Broad")
+load(paste0(dirtemp,"D3_events_ALL_OUTCOMES.RData"))
+D3_events_ALL_OUTCOMES <- D3_events_ALL_OUTCOMES[, .(name_event, year_event = year(date_event))][year_event > 2019, ]
 
-table_8 <- data.table::data.table(date = character(), Narrow = character(), Broad = character())
+list_outcomes <- c(OUTCOMES_conceptssets, CONTROL_events, SECCOMPONENTS, "DEATH")
+list_outcomes <- sort(list_outcomes)
+list_outcomes <- c(list_outcomes[list_outcomes %not in% c("COVID_narrow", "COVID_possible")], "COVID_narrow", "COVID_possible")
+
+vect_recode_type <- c(narrow = "Narrow", broad = "Broad")
+
+table_8 <- data.table::data.table(year_event = character(), Narrow = character(), Broad = character())
 table_8 <- data.table::rbindlist(list(table_8, list("", "Narrow", "Broad")))
 
-events_table_8 <- data.table::data.table(date = character(), Broad = character(), Narrow = character())
+events_table_8 <- data.table::data.table(year_event = character(), Broad = character(), Narrow = character())
+event <- ""
 
-for (event in OUTCOME_events) {
-  df_event <- data.table::data.table(date = character(), N = character(), Type = character())
-  empty_concept <- data.table::data.table(date = event, Broad = character(1), Narrow = character(1))
-  for (type in c("narrow", "possible")) {
-    concept <- paste0(event, "_", type)
-    df_temp <- loadRData(paste0(dirtemp, concept, ".RData"))
-    df_temp <- df_temp[, .(person_id, date = year(date), Code = codvar, Coding_system = event_record_vocabulary,
-                           Meaning = meaning_of_event)]
-    df_temp <- df_temp[data.table::between(date, 2020, 2021), .N, by = "date"]
-    df_temp <- df_temp[, Type := vect_recode_type[[type]]]
+for (outcome in list_outcomes) {
+  
+  splitted_outcome <- strsplit(outcome, "_")[[1]]
+  if (event == splitted_outcome[1]) {next} else {event <- splitted_outcome[1]}
+  
+  empty_concept <- data.table::data.table(year_event = event, Broad = character(1), Narrow = character(1))
+  df_event <- data.table::data.table(year_event = character(), N = character(), Type = character())
+  
+  if (is.na(splitted_outcome[2])) {
+    df_temp <- copy(D3_events_ALL_OUTCOMES)[name_event == event, ]
+    df_temp <- df_temp[, .N, by = "year_event"][, Type := "Narrow"]
     df_event <- data.table::rbindlist(list(df_event, df_temp))
+  } else {
+    for (type in c("narrow", "broad")) {
+      concept <- paste0(event, "_", type)
+      df_temp <- copy(D3_events_ALL_OUTCOMES)[name_event == concept, ]
+      df_temp <- df_temp[, .N, by = "year_event"][, Type := vect_recode_type[[type]]]
+      df_event <- data.table::rbindlist(list(df_event, df_temp))
+    }
   }
-  empty_df_event <- as.data.table(expand.grid(Type = c("Narrow", "Broad"), date = c("2020", "2021")))
-  df_event <- merge(empty_df_event, df_event, by = c("Type", "date"), all.x = T)
+  
+  empty_df_event <- as.data.table(expand.grid(Type = c("Narrow", "Broad"), year_event = c("2020", "2021")))
+  df_event <- merge(empty_df_event, df_event, by = c("Type", "year_event"), all.x = T)
   df_event <- df_event[is.na(N), N := 0]
   
-  df_event <- data.table::dcast(df_event, date ~ Type, value.var = "N", fill = "")
+  df_event <- data.table::dcast(df_event, year_event ~ Type, value.var = "N", fill = "")
   df_event <- data.table::rbindlist(list(empty_concept, df_event))
   events_table_8 <- data.table::rbindlist(list(events_table_8, df_event))
 }
 
 table_8 <- data.table::rbindlist(list(table_8, events_table_8), use.names=TRUE)
-setnames(table_8, c("date", "Narrow", "Broad"), c("", correct_datasource, correct_datasource))
-<<<<<<< HEAD
+setnames(table_8, c("year_event", "Narrow", "Broad"), c("", correct_datasource, correct_datasource))
 
 fwrite(table_8, file = paste0(dummytables, "Number of incident cases entire study period.csv"))
-=======
->>>>>>> 8cf40973c82bcde87cdb07a0d8842d254551c72e
+
