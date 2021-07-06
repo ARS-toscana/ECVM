@@ -70,6 +70,18 @@ D3_Vaccin_cohort <- D3_Vaccin_cohort[, .(person_id, sex, date_of_birth, study_en
 
 save(D3_Vaccin_cohort, file = paste0(dirtemp, "D3_Vaccin_cohort.RData"))
 
+D3_vaxweeks_vaccin_cohort <- D3_Vaccin_cohort[, .(person_id, sex, date_of_birth, study_entry_date,
+                                                  study_entry_date_vax1)]
+D3_vaxweeks_vaccin_cohort <- D3_Vaccin_cohort[, study_exit_date := study_entry_date_vax1 - 1]
+D3_vaxweeks_vaccin_cohort[, age_at_1_jan_2021 := floor(lubridate::time_length(correct_difftime(firstjan2021, date_of_birth), "years"))]
+D3_vaxweeks_vaccin_cohort[, age_at_1_jan_2021 := as.character(findInterval(age_at_1_jan_2021, c(19, 29, 39, 49, 59, 69, 79)))]
+vect_age_cat <- c("0" = "0-19", "1" = "20-29", "2" = "30-39", "3" = "40-49",
+                  "4" = "50-59", "5" = "60-69", "6" = "70-79", "7" = ">80")
+D3_vaxweeks_vaccin_cohort[, age_at_1_jan_2021 := vect_age_cat[age_at_1_jan_2021]]
+D3_vaxweeks_vaccin_cohort[, date_of_birth := NULL]
+
+save(D3_vaxweeks_vaccin_cohort, file = paste0(dirtemp, "D3_vaxweeks_vaccin_cohort.RData"))
+
 cohort_to_vaxweeks <- D3_study_population[, .(person_id, date_of_birth, sex, study_entry_date, study_exit_date,
                                               study_entry_date_vax1, study_exit_date_vax1, study_entry_date_vax2,
                                               study_exit_date_vax2, type_vax_1, type_vax_2, fup_no_vax, fup_vax1,
