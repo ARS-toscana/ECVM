@@ -16,7 +16,7 @@ for (ev in events) {
   name_cols <- paste0(c("IR_", "lb_", "ub_"), ev)
   name_count <- paste0(ev,"_b")
   name_pt <- paste0("Persontime_",ev)
-  D4_persontime_benefit_week_BC[, .(name_cols) := exactPoiCI(D4_persontime_benefit_week_BC, name_count, name_pt)]
+  D4_persontime_benefit_week_BC[, (name_cols) := exactPoiCI(D4_persontime_benefit_week_BC, name_count, name_pt)]
 }
 
 temp <- copy(D4_persontime_benefit_week_BC)
@@ -37,7 +37,7 @@ for (ev in events) {
   name_cols <- paste0(c("IR_", "lb_", "ub_"), ev)
   name_count <- paste0(ev,"_b")
   name_pt <- paste0("Persontime_",ev)
-  D4_persontime_benefit_year_BC[, .(name_cols) := exactPoiCI(D4_persontime_benefit_year_BC, name_count, name_pt)]
+  D4_persontime_benefit_year_BC[, (name_cols) := exactPoiCI(D4_persontime_benefit_year_BC, name_count, name_pt)]
 }
 
 #D4_IR_benefit_fup_BC<-D4_persontime_benefit_year_BC[,-c(6:14)]
@@ -60,7 +60,7 @@ for (ev in list_outcomes_observed) {
   name_cols <- paste0(c("IR_", "lb_", "ub_"), ev)
   name_count <- paste0(ev,"_b")
   name_pt <- paste0("Persontime_",ev)
-  D4_persontime_risk_week_BC[, .(name_cols) := exactPoiCI(D4_persontime_risk_week_BC, name_count, name_pt)]
+  D4_persontime_risk_week_BC[, (name_cols) := exactPoiCI(D4_persontime_risk_week_BC, name_count, name_pt)]
 }
 
 #D4_IR_risk_week_BC<-D4_persontime_risk_week_BC[,-c(6:44)]
@@ -80,7 +80,7 @@ for (ev in list_outcomes_observed) {
   name_cols <- paste0(c("IR_", "lb_", "ub_"), ev)
   name_count <- paste0(ev,"_b")
   name_pt <- paste0("Persontime_",ev)
-  D4_persontime_risk_year_BC[, .(name_cols) := exactPoiCI(D4_persontime_risk_year_BC, name_count, name_pt)]
+  D4_persontime_risk_year_BC[, (name_cols) := exactPoiCI(D4_persontime_risk_year_BC, name_count, name_pt)]
 }
 
 #D4_IR_risk_fup_BC<-D4_persontime_risk_year_BC[,-c(6:44)]
@@ -103,7 +103,7 @@ for (ev in events) {
   name_cols <- paste0(c("IR_", "lb_", "ub_"), ev)
   name_count <- paste0(ev,"_b")
   name_pt <- paste0("Persontime_",ev)
-  D4_persontime_benefit_week_RF[, .(name_cols) := exactPoiCI(D4_persontime_benefit_week_RF, name_count, name_pt)]
+  D4_persontime_benefit_week_RF[, (name_cols) := exactPoiCI(D4_persontime_benefit_week_RF, name_count, name_pt)]
 }
 
 #D4_IR_benefit_week_RF<-D4_persontime_benefit_week_RF[,-c(6:14)]
@@ -123,7 +123,7 @@ for (ev in events) {
   name_cols <- paste0(c("IR_", "lb_", "ub_"), ev)
   name_count <- paste0(ev,"_b")
   name_pt <- paste0("Persontime_",ev)
-  D4_persontime_benefit_year_RF[, .(name_cols) := exactPoiCI(D4_persontime_benefit_year_RF, name_count, name_pt)]
+  D4_persontime_benefit_year_RF[, (name_cols) := exactPoiCI(D4_persontime_benefit_year_RF, name_count, name_pt)]
 }
 
 #D4_IR_benefit_fup_RF<-D4_persontime_benefit_year_RF[,-c(6:14)]
@@ -146,7 +146,7 @@ for (ev in list_outcomes_observed) {
   name_cols <- paste0(c("IR_", "lb_", "ub_"), ev)
   name_count <- paste0(ev,"_b")
   name_pt <- paste0("Persontime_",ev)
-  D4_persontime_risk_week_RF[, .(name_cols) := exactPoiCI(D4_persontime_risk_week_RF, name_count, name_pt)]
+  D4_persontime_risk_week_RF[, (name_cols) := exactPoiCI(D4_persontime_risk_week_RF, name_count, name_pt)]
 }
 
 #D4_IR_risk_week_RF<-D4_persontime_risk_week_RF[,-c(6:44)]
@@ -166,7 +166,7 @@ for (ev in list_outcomes_observed) {
   name_cols <- paste0(c("IR_", "lb_", "ub_"), ev)
   name_count <- paste0(ev,"_b")
   name_pt <- paste0("Persontime_",ev)
-  D4_persontime_risk_year_RF[, .(name_cols) := exactPoiCI(D4_persontime_risk_year_RF, name_count, name_pt)]
+  D4_persontime_risk_year_RF[, (name_cols) := exactPoiCI(D4_persontime_risk_year_RF, name_count, name_pt)]
 }
 
 #D4_IR_risk_fup_RF<-D4_persontime_risk_year_RF[,-c(6:44)]
