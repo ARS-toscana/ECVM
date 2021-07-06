@@ -3,8 +3,14 @@
 # v3.6 - 28 June 2021
 # authors: Rosa Gini, Olga Paoletti, Davide Messina, Giorgio Limoncella
 
+# changelog V3.7:
+# - SAP tables included until 8
+# - Added ageband 60+
+# - Added column for age at 1 Jan 2021
+# - Implementation of exact Poisson confidence intervals for IR (Ulm, 1990)
+
 # changelog V3.6:
-# - SAP tables included
+# - SAP tables included until 6
 
 # changelog V3.5:
 # - Support for recurrent events
@@ -95,6 +101,7 @@ system.time(source(paste0(thisdir,"/p_steps/step_07_3_T3_create_person_time_bene
 system.time(source(paste0(thisdir,"/p_steps/step_07_4_T3_create_person_time_benefits_year.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_07_5_T3_aggregate_sex_birth_cohort.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_07_6_T3_aggregate_sex_risk_factor.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_07_7_T3_aggregate_vax_cohort.R")))
 
 #08 Calculate Incidence Rates
 system.time(source(paste0(thisdir,"/p_steps/step_08_T4_IR.R")))
