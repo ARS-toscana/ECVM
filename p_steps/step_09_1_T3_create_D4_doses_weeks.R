@@ -82,6 +82,14 @@ for (name_temp_df in c("pop_age_1940", "pop_age_1940_1949", "pop_age_1950_1959",
 
 cohort_to_vaxweeks <- rbindlist(vect_to_rbind)
 
+cols_to_sums <- c("Doses_in_week", "Persons_in_week")
+older60 <- copy(cohort_to_vaxweeks)[Birthcohort_persons %in% c("<1940", "1940-1949", "1950-1959"),
+                                    lapply(.SD, sum, na.rm=TRUE),
+                                    by = c("start_date_of_period", "sex", "type_vax", "at_risk_at_study_entry", "Dose"),
+                                    .SDcols = cols_to_sums]
+older60 <- unique(older60[, Birthcohort_persons := "<1960"])
+
+cohort_to_vaxweeks <- rbind(cohort_to_vaxweeks, older60)
 
 setorder(cohort_to_vaxweeks, sex, Birthcohort_persons, Dose,
          type_vax, start_date_of_period, at_risk_at_study_entry)
