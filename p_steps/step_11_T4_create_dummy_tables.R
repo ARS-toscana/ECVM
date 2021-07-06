@@ -481,3 +481,37 @@ setnames(table_8, c("year_event", "Narrow", "Broad"), c("", correct_datasource, 
 
 fwrite(table_8, file = paste0(dummytables, "Number of incident cases entire study period.csv"))
 
+
+
+
+
+# table_9 ----------------------------------------------------------------------------------------------------------
+
+load(paste0(dirtemp,"list_outcomes_observed.RData"))
+
+list_outcomes_observed <- list_outcomes_observed[list_outcomes_observed %not in% c(CONTROL_events, "DEATH")]
+
+table_9 <- data.table::data.table(meaning_of_first_event = character(), coding_system_of_code_first_event = character(),
+                                 code_first_event = character(), count_n = character(), Event = character())
+
+for (outcome in list_outcomes_observed) {
+  for (year in c(2020, 2021)) {
+    temp_df <- data.table::fread(paste0(direxp, "QC_code_counts_in_study_population", outcome, "_", year, ".csv"))
+    event <- strsplit(outcome, "_")[[1]][1]
+    temp_df <- temp_df[, Event := event]
+    table_9 <- data.table::rbindlist(list(table_9, temp_df))
+  }
+}
+
+setnames(table_9, c("meaning_of_first_event", "coding_system_of_code_first_event", "code_first_event"),
+         c("meaning_of_event", "Coding_system", "code"))
+
+table_9 <- table_9[, count_n := as.integer(count_n)]
+table_9 <- table_9[, .(sum = sum(count_n)), by = c("Event", "Coding_system", "code", "meaning_of_event")]
+
+table_9 <- table_9[, First_4_digits_of_code := stringr::str_extract(code, "^(.*?[0-9]){4}")]
+table_9 <- table_9[is.na(First_4_digits_of_code), First_4_digits_of_code := code]
+table_9 <- table_9[, .(DAP = thisdatasource, Event, Coding_system, First_4_digits_of_code, meaning_of_event, sum)]
+
+fwrite(table_9, file = paste0(dummytables, "Code counts for narrow definitions (for each event) separately.csv"))
+
