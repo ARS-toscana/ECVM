@@ -515,3 +515,45 @@ table_9 <- table_9[, .(DAP = thisdatasource, Event, Coding_system, First_4_digit
 
 fwrite(table_9, file = paste0(dummytables, "Code counts for narrow definitions (for each event) separately.csv"))
 
+
+
+
+
+# table_10 ----------------------------------------------------------------------------------------------------------
+
+load(paste0(direxp,"D4_persontime_ALL_OUTCOMES.RData"))
+
+list_risk <- list_outcomes_observed
+vect_recode_AESI <- list_outcomes_observed
+names(vect_recode_AESI) <- c(as.character(seq_len(length(list_outcomes_observed))))
+
+colA = paste0("Persontime_", list_risk)
+colB = paste0("IR_", list_risk)
+colC = paste0("lb_", list_risk)
+colD = paste0("ub_", list_risk)
+
+PT_monthly <- data.table::melt(D4_persontime_ALL_OUTCOMES, measure = list(colA, colB, colC, colD),
+                               variable.name = "AESI", value.name = c("PT", "IR", "lb", "ub"), na.rm = F)
+
+PT_monthly <- PT_monthly[, DAP := thisdatasource][ , AESI := vect_recode_AESI[AESI]]
+PT_monthly <- PT_monthly[Ageband == ">80", Ageband := "80+"][Ageband == ">60", Ageband := "60+"]
+PT_monthly <- PT_monthly[, .(DAP, sex, month, year, Ageband, AESI, PT, IR, lb, ub)]
+
+
+table_10 <- PT_monthly[year == 2020 & sex == "both_sexes" & Ageband == "all_birth_cohorts"
+                       & !stringr::str_detect(AESI, "broad"), ]
+table_10 <- table_10[, c("year", "sex", "Ageband") := NULL]
+
+setcolorder(table_10, c("DAP", "AESI", "month", "PT", "IR", "lb", "ub"))
+
+setnames(table_10, c("month", "PT", "IR", "lb", "ub"),
+         c("Month in 2020", "Person years", "IR narrow", "LL narrow", "UL narrow"))
+
+fwrite(table_10, file = paste0(dummytables, "Incidence of AESI (narrow) per 100,000 PY by calendar month in 2020.csv"))
+
+
+
+
+# table_11 ----------------------------------------------------------------------------------------------------------
+
+

@@ -178,19 +178,21 @@ fwrite(D4_IR_risk_fup_RF,file=paste0(direxp,"D4_IR_risk_fup_RF.csv"))
 
 
 #D4_persontime_risk_month-----------------------------------------------------
-load(paste0(diroutput,"D4_persontime_risk_month.RData"))
+load(paste0(diroutput,"D4_persontime_risk_month_RFBC.RData"))
 for (ev in list_outcomes_observed) {
   name_cols <- paste0(c("IR_", "lb_", "ub_"), ev)
   name_count <- paste0(ev,"_b")
   name_pt <- paste0("Persontime_",ev)
-  D4_persontime_risk_month[, (name_cols) := exactPoiCI(D4_persontime_risk_month, name_count, name_pt)]
+  D4_persontime_risk_month_RFBC[, (name_cols) := exactPoiCI(D4_persontime_risk_month_RFBC, name_count, name_pt)]
 }
 
-D4_persontime_ALL_OUTCOMES <- D4_persontime_risk_month[, !grep("^Persontime", names(D4_persontime_risk_month)) , with = FALSE]
-setnames(D4_persontime_ALL_OUTCOMES, "age_at_1_jan_2021", "Ageband")
-first_cols <- c("sex", "month", "Ageband")
+D4_persontime_ALL_OUTCOMES <- D4_persontime_risk_month_RFBC
+
+first_cols <- c("sex", "month", "year", "Ageband")
 all_cols <- colnames(D4_persontime_ALL_OUTCOMES)
-setcolorder(D4_persontime_ALL_OUTCOMES, c(first_cols, c(first_cols, all_cols[all_cols %not in% first_cols])))
+setcolorder(D4_persontime_ALL_OUTCOMES, c(first_cols, all_cols[all_cols %not in% first_cols]))
 
 save(D4_persontime_ALL_OUTCOMES,file=paste0(direxp,"D4_persontime_ALL_OUTCOMES.RData"))
 fwrite(D4_persontime_ALL_OUTCOMES,file=paste0(direxp,"D4_persontime_ALL_OUTCOMES.csv"))
+
+rm(D4_persontime_risk_month_RFBC, D4_persontime_ALL_OUTCOMES, first_cols, all_cols, name_cols, name_count, name_pt)
