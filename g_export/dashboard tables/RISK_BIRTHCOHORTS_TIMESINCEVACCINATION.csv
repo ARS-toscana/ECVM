@@ -7,6 +7,7 @@ TEST,0,none,no_dose,1980-1989,ACUASEARTHRITIS_broad,0,0,0,7109.35,30-39
 TEST,0,none,no_dose,1990+,ACUASEARTHRITIS_broad,0,0,0,3764.32,<30
 TEST,0,none,no_dose,<1940,ACUASEARTHRITIS_broad,0,0,0,8624.23,80+
 TEST,0,none,no_dose,<1960,ACUASEARTHRITIS_broad,3,1914.01,394.71,5593.54,60+
+TEST,0,none,no_dose,>1960,ACUASEARTHRITIS_broad,0,0,0,1201.61,
 TEST,0,none,no_dose,all_birth_cohorts,ACUASEARTHRITIS_broad,3,646.92,133.41,1890.58,all_birth_cohorts
 TEST,1,AstraZeneca,1,1940-1949,ACUASEARTHRITIS_broad,0,0,0,19248046.01,70-79
 TEST,1,AstraZeneca,1,1950-1959,ACUASEARTHRITIS_broad,0,0,0,Inf,60-69
@@ -16,6 +17,7 @@ TEST,1,AstraZeneca,1,1980-1989,ACUASEARTHRITIS_broad,0,0,0,Inf,30-39
 TEST,1,AstraZeneca,1,1990+,ACUASEARTHRITIS_broad,0,0,0,Inf,<30
 TEST,1,AstraZeneca,1,<1940,ACUASEARTHRITIS_broad,0,0,0,Inf,80+
 TEST,1,AstraZeneca,1,<1960,ACUASEARTHRITIS_broad,0,0,0,19248046.01,60+
+TEST,1,AstraZeneca,1,>1960,ACUASEARTHRITIS_broad,0,0,0,19248046.01,
 TEST,1,AstraZeneca,1,all_birth_cohorts,ACUASEARTHRITIS_broad,0,0,0,9624023,all_birth_cohorts
 TEST,2,AstraZeneca,1,1940-1949,ACUASEARTHRITIS_broad,0,0,0,16842040.26,70-79
 TEST,2,AstraZeneca,1,1950-1959,ACUASEARTHRITIS_broad,0,0,0,Inf,60-69
@@ -25,6 +27,7 @@ TEST,2,AstraZeneca,1,1980-1989,ACUASEARTHRITIS_broad,0,0,0,Inf,30-39
 TEST,2,AstraZeneca,1,1990+,ACUASEARTHRITIS_broad,0,0,0,Inf,<30
 TEST,2,AstraZeneca,1,<1940,ACUASEARTHRITIS_broad,0,0,0,Inf,80+
 TEST,2,AstraZeneca,1,<1960,ACUASEARTHRITIS_broad,0,0,0,16842040.26,60+
+TEST,2,AstraZeneca,1,>1960,ACUASEARTHRITIS_broad,0,0,0,9624023,
 TEST,2,AstraZeneca,1,all_birth_cohorts,ACUASEARTHRITIS_broad,0,0,0,6124378.28,all_birth_cohorts
 TEST,1,Pfizer,1,1940-1949,ACUASEARTHRITIS_broad,0,0,0,Inf,70-79
 TEST,1,Pfizer,1,1950-1959,ACUASEARTHRITIS_broad,0,0,0,Inf,60-69
@@ -34,6 +37,7 @@ TEST,1,Pfizer,1,1980-1989,ACUASEARTHRITIS_broad,0,0,0,9624023,30-39
 TEST,1,Pfizer,1,1990+,ACUASEARTHRITIS_broad,0,0,0,Inf,<30
 TEST,1,Pfizer,1,<1940,ACUASEARTHRITIS_broad,0,0,0,5858100.96,80+
 TEST,1,Pfizer,1,<1960,ACUASEARTHRITIS_broad,0,0,0,5858100.96,60+
+TEST,1,Pfizer,1,>1960,ACUASEARTHRITIS_broad,0,0,0,1924804.6,
 TEST,1,Pfizer,1,all_birth_cohorts,ACUASEARTHRITIS_broad,0,0,0,1448777.66,all_birth_cohorts
 TEST,2,Pfizer,1,1940-1949,ACUASEARTHRITIS_broad,0,0,0,Inf,70-79
 TEST,2,Pfizer,1,1950-1959,ACUASEARTHRITIS_broad,0,0,0,Inf,60-69
@@ -43,6 +47,7 @@ TEST,2,Pfizer,1,1980-1989,ACUASEARTHRITIS_broad,0,0,0,4812011.5,30-39
 TEST,2,Pfizer,1,1990+,ACUASEARTHRITIS_broad,0,0,0,Inf,<30
 TEST,2,Pfizer,1,<1940,ACUASEARTHRITIS_broad,0,0,0,4082918.85,80+
 TEST,2,Pfizer,1,<1960,ACUASEARTHRITIS_broad,0,0,0,4082918.85,60+
+TEST,2,Pfizer,1,>1960,ACUASEARTHRITIS_broad,0,0,0,1044467.61,
 TEST,2,Pfizer,1,all_birth_cohorts,ACUASEARTHRITIS_broad,0,0,0,831705.69,all_birth_cohorts
 TEST,3,Pfizer,1,1940-1949,ACUASEARTHRITIS_broad,0,0,0,Inf,70-79
 TEST,3,Pfizer,1,1950-1959,ACUASEARTHRITIS_broad,0,0,0,Inf,60-69
@@ -52,6 +57,7 @@ TEST,3,Pfizer,1,1980-1989,ACUASEARTHRITIS_broad,0,0,0,3208007.67,30-39
 TEST,3,Pfizer,1,1990+,ACUASEARTHRITIS_broad,0,0,0,Inf,<30
 TEST,3,Pfizer,1,<1940,ACUASEARTHRITIS_broad,0,0,0,3368408.05,80+
 TEST,3,Pfizer,1,<1960,ACUASEARTHRITIS_broad,0,0,0,3368408.05,60+
+TEST,3,Pfizer,1,>1960,ACUASEARTHRITIS_broad,0,0,0,756945.63,
 TEST,3,Pfizer,1,all_birth_cohorts,ACUASEARTHRITIS_broad,0,0,0,618056.52,all_birth_cohorts
 TEST,4,Pfizer,1,1940-1949,ACUASEARTHRITIS_broad,0,0,0,Inf,70-79
 TEST,4,Pfizer,1,1950-1959,ACUASEARTHRITIS_broad,0,0,0,Inf,60-69
@@ -61,6 +67,7 @@ TEST,4,Pfizer,1,1980-1989,ACUASEARTHRITIS_broad,0,0,0,2406005.75,30-39
 TEST,4,Pfizer,1,1990+,ACUASEARTHRITIS_broad,0,0,0,Inf,<30
 TEST,4,Pfizer,1,<1940,ACUASEARTHRITIS_broad,0,0,0,2866730.26,80+
 TEST,4,Pfizer,1,<1960,ACUASEARTHRITIS_broad,0,0,0,2866730.26,60+
+TEST,4,Pfizer,1,>1960,ACUASEARTHRITIS_broad,0,0,0,604198.75,
 TEST,4,Pfizer,1,all_birth_cohorts,ACUASEARTHRITIS_broad,0,0,0,499023.42,all_birth_cohorts
 TEST,5,Pfizer,1,1940-1949,ACUASEARTHRITIS_broad,0,0,0,Inf,70-79
 TEST,5,Pfizer,1,1950-1959,ACUASEARTHRITIS_broad,0,0,0,Inf,60-69
@@ -70,6 +77,7 @@ TEST,5,Pfizer,1,1980-1989,ACUASEARTHRITIS_broad,0,0,0,2105255.03,30-39
 TEST,5,Pfizer,1,1990+,ACUASEARTHRITIS_broad,0,0,0,Inf,<30
 TEST,5,Pfizer,1,<1940,ACUASEARTHRITIS_broad,0,0,0,2591083.12,80+
 TEST,5,Pfizer,1,<1960,ACUASEARTHRITIS_broad,0,0,0,2591083.12,60+
+TEST,5,Pfizer,1,>1960,ACUASEARTHRITIS_broad,0,0,0,545491.18,
 TEST,5,Pfizer,1,all_birth_cohorts,ACUASEARTHRITIS_broad,0,0,0,450623.15,all_birth_cohorts
 TEST,6,Pfizer,1,1940-1949,ACUASEARTHRITIS_broad,0,0,0,Inf,70-79
 TEST,6,Pfizer,1,1950-1959,ACUASEARTHRITIS_broad,0,0,0,Inf,60-69
@@ -79,6 +87,7 @@ TEST,6,Pfizer,1,1980-1989,ACUASEARTHRITIS_broad,0,0,0,1981416.5,30-39
 TEST,6,Pfizer,1,1990+,ACUASEARTHRITIS_broad,0,0,0,Inf,<30
 TEST,6,Pfizer,1,<1940,ACUASEARTHRITIS_broad,0,0,0,2591083.12,80+
 TEST,6,Pfizer,1,<1960,ACUASEARTHRITIS_broad,0,0,0,2591083.12,60+
+TEST,6,Pfizer,1,>1960,ACUASEARTHRITIS_broad,0,0,0,522233.81,
 TEST,6,Pfizer,1,all_birth_cohorts,ACUASEARTHRITIS_broad,0,0,0,434633.3,all_birth_cohorts
 TEST,7,Pfizer,1,1940-1949,ACUASEARTHRITIS_broad,0,0,0,Inf,70-79
 TEST,7,Pfizer,1,1950-1959,ACUASEARTHRITIS_broad,0,0,0,Inf,60-69
@@ -88,6 +97,7 @@ TEST,7,Pfizer,1,1980-1989,ACUASEARTHRITIS_broad,0,0,0,1981416.5,30-39
 TEST,7,Pfizer,1,1990+,ACUASEARTHRITIS_broad,0,0,0,Inf,<30
 TEST,7,Pfizer,1,<1940,ACUASEARTHRITIS_broad,0,0,0,2591083.12,80+
 TEST,7,Pfizer,1,<1960,ACUASEARTHRITIS_broad,0,0,0,2591083.12,60+
+TEST,7,Pfizer,1,>1960,ACUASEARTHRITIS_broad,0,0,0,508438.95,
 TEST,7,Pfizer,1,all_birth_cohorts,ACUASEARTHRITIS_broad,0,0,0,425035.72,all_birth_cohorts
 TEST,8,Pfizer,1,1940-1949,ACUASEARTHRITIS_broad,0,0,0,Inf,70-79
 TEST,8,Pfizer,1,1950-1959,ACUASEARTHRITIS_broad,0,0,0,Inf,60-69
@@ -97,6 +107,7 @@ TEST,8,Pfizer,1,1980-1989,ACUASEARTHRITIS_broad,0,0,0,1981416.5,30-39
 TEST,8,Pfizer,1,1990+,ACUASEARTHRITIS_broad,0,0,0,Inf,<30
 TEST,8,Pfizer,1,<1940,ACUASEARTHRITIS_broad,0,0,0,2591083.12,80+
 TEST,8,Pfizer,1,<1960,ACUASEARTHRITIS_broad,0,0,0,2591083.12,60+
+TEST,8,Pfizer,1,>1960,ACUASEARTHRITIS_broad,0,0,0,495354.13,
 TEST,8,Pfizer,1,all_birth_cohorts,ACUASEARTHRITIS_broad,0,0,0,415852.85,all_birth_cohorts
 TEST,9,Pfizer,1,1940-1949,ACUASEARTHRITIS_broad,0,0,0,Inf,70-79
 TEST,9,Pfizer,1,1950-1959,ACUASEARTHRITIS_broad,0,0,0,Inf,60-69
@@ -106,6 +117,7 @@ TEST,9,Pfizer,1,1980-1989,ACUASEARTHRITIS_broad,0,0,0,1981416.5,30-39
 TEST,9,Pfizer,1,1990+,ACUASEARTHRITIS_broad,0,0,0,Inf,<30
 TEST,9,Pfizer,1,<1940,ACUASEARTHRITIS_broad,0,0,0,2591083.12,80+
 TEST,9,Pfizer,1,<1960,ACUASEARTHRITIS_broad,0,0,0,2591083.12,60+
+TEST,9,Pfizer,1,>1960,ACUASEARTHRITIS_broad,0,0,0,482925.89,
 TEST,9,Pfizer,1,all_birth_cohorts,ACUASEARTHRITIS_broad,0,0,0,407058.37,all_birth_cohorts
 TEST,10,Pfizer,1,1940-1949,ACUASEARTHRITIS_broad,0,0,0,Inf,70-79
 TEST,10,Pfizer,1,1950-1959,ACUASEARTHRITIS_broad,0,0,0,Inf,60-69
@@ -115,6 +127,7 @@ TEST,10,Pfizer,1,1980-1989,ACUASEARTHRITIS_broad,0,0,0,1981416.5,30-39
 TEST,10,Pfizer,1,1990+,ACUASEARTHRITIS_broad,0,0,0,Inf,<30
 TEST,10,Pfizer,1,<1940,ACUASEARTHRITIS_broad,0,0,0,2591083.12,80+
 TEST,10,Pfizer,1,<1960,ACUASEARTHRITIS_broad,0,0,0,2591083.12,60+
+TEST,10,Pfizer,1,>1960,ACUASEARTHRITIS_broad,0,0,0,471106.02,
 TEST,10,Pfizer,1,all_birth_cohorts,ACUASEARTHRITIS_broad,0,0,0,398628.17,all_birth_cohorts
 TEST,11,Pfizer,1,1940-1949,ACUASEARTHRITIS_broad,0,0,0,Inf,70-79
 TEST,11,Pfizer,1,1950-1959,ACUASEARTHRITIS_broad,0,0,0,Inf,60-69
@@ -124,6 +137,7 @@ TEST,11,Pfizer,1,1980-1989,ACUASEARTHRITIS_broad,0,0,0,1981416.5,30-39
 TEST,11,Pfizer,1,1990+,ACUASEARTHRITIS_broad,0,0,0,Inf,<30
 TEST,11,Pfizer,1,<1940,ACUASEARTHRITIS_broad,0,0,0,2591083.12,80+
 TEST,11,Pfizer,1,<1960,ACUASEARTHRITIS_broad,0,0,0,2591083.12,60+
+TEST,11,Pfizer,1,>1960,ACUASEARTHRITIS_broad,0,0,0,459850.93,
 TEST,11,Pfizer,1,all_birth_cohorts,ACUASEARTHRITIS_broad,0,0,0,390540.06,all_birth_cohorts
 TEST,12,Pfizer,1,1940-1949,ACUASEARTHRITIS_broad,0,0,0,Inf,70-79
 TEST,12,Pfizer,1,1950-1959,ACUASEARTHRITIS_broad,0,0,0,Inf,60-69
@@ -133,6 +147,7 @@ TEST,12,Pfizer,1,1980-1989,ACUASEARTHRITIS_broad,0,0,0,1981416.5,30-39
 TEST,12,Pfizer,1,1990+,ACUASEARTHRITIS_broad,0,0,0,Inf,<30
 TEST,12,Pfizer,1,<1940,ACUASEARTHRITIS_broad,0,0,0,2591083.12,80+
 TEST,12,Pfizer,1,<1960,ACUASEARTHRITIS_broad,0,0,0,2591083.12,60+
+TEST,12,Pfizer,1,>1960,ACUASEARTHRITIS_broad,0,0,0,449121.07,
 TEST,12,Pfizer,1,all_birth_cohorts,ACUASEARTHRITIS_broad,0,0,0,382773.64,all_birth_cohorts
 TEST,13,Pfizer,1,1940-1949,ACUASEARTHRITIS_broad,0,0,0,Inf,70-79
 TEST,13,Pfizer,1,1950-1959,ACUASEARTHRITIS_broad,0,0,0,Inf,60-69
@@ -142,6 +157,7 @@ TEST,13,Pfizer,1,1980-1989,ACUASEARTHRITIS_broad,0,0,0,1981416.5,30-39
 TEST,13,Pfizer,1,1990+,ACUASEARTHRITIS_broad,0,0,0,Inf,<30
 TEST,13,Pfizer,1,<1940,ACUASEARTHRITIS_broad,0,0,0,2591083.12,80+
 TEST,13,Pfizer,1,<1960,ACUASEARTHRITIS_broad,0,0,0,2591083.12,60+
+TEST,13,Pfizer,1,>1960,ACUASEARTHRITIS_broad,0,0,0,438880.53,
 TEST,13,Pfizer,1,all_birth_cohorts,ACUASEARTHRITIS_broad,0,0,0,375310.09,all_birth_cohorts
 TEST,14,Pfizer,1,1940-1949,ACUASEARTHRITIS_broad,0,0,0,Inf,70-79
 TEST,14,Pfizer,1,1950-1959,ACUASEARTHRITIS_broad,0,0,0,Inf,60-69
@@ -151,6 +167,7 @@ TEST,14,Pfizer,1,1980-1989,ACUASEARTHRITIS_broad,0,0,0,1981416.5,30-39
 TEST,14,Pfizer,1,1990+,ACUASEARTHRITIS_broad,0,0,0,Inf,<30
 TEST,14,Pfizer,1,<1940,ACUASEARTHRITIS_broad,0,0,0,2591083.12,80+
 TEST,14,Pfizer,1,<1960,ACUASEARTHRITIS_broad,0,0,0,2591083.12,60+
+TEST,14,Pfizer,1,>1960,ACUASEARTHRITIS_broad,0,0,0,434633.3,
 TEST,14,Pfizer,1,all_birth_cohorts,ACUASEARTHRITIS_broad,0,0,0,372199.78,all_birth_cohorts
 TEST,1,Pfizer,2,1940-1949,ACUASEARTHRITIS_broad,0,0,0,Inf,70-79
 TEST,1,Pfizer,2,1950-1959,ACUASEARTHRITIS_broad,0,0,0,Inf,60-69
@@ -160,6 +177,7 @@ TEST,1,Pfizer,2,1980-1989,ACUASEARTHRITIS_broad,0,0,0,19248046.01,30-39
 TEST,1,Pfizer,2,1990+,ACUASEARTHRITIS_broad,0,0,0,Inf,<30
 TEST,1,Pfizer,2,<1940,ACUASEARTHRITIS_broad,0,0,0,Inf,80+
 TEST,1,Pfizer,2,<1960,ACUASEARTHRITIS_broad,0,0,0,Inf,60+
+TEST,1,Pfizer,2,>1960,ACUASEARTHRITIS_broad,0,0,0,6416015.34,
 TEST,1,Pfizer,2,all_birth_cohorts,ACUASEARTHRITIS_broad,0,0,0,6416015.34,all_birth_cohorts
 TEST,2,Pfizer,2,1940-1949,ACUASEARTHRITIS_broad,0,0,0,Inf,70-79
 TEST,2,Pfizer,2,1950-1959,ACUASEARTHRITIS_broad,0,0,0,Inf,60-69
@@ -169,6 +187,7 @@ TEST,2,Pfizer,2,1980-1989,ACUASEARTHRITIS_broad,0,0,0,9624023,30-39
 TEST,2,Pfizer,2,1990+,ACUASEARTHRITIS_broad,0,0,0,Inf,<30
 TEST,2,Pfizer,2,<1940,ACUASEARTHRITIS_broad,0,0,0,Inf,80+
 TEST,2,Pfizer,2,<1960,ACUASEARTHRITIS_broad,0,0,0,Inf,60+
+TEST,2,Pfizer,2,>1960,ACUASEARTHRITIS_broad,0,0,0,3962833,
 TEST,2,Pfizer,2,all_birth_cohorts,ACUASEARTHRITIS_broad,0,0,0,3962833,all_birth_cohorts
 TEST,3,Pfizer,2,1940-1949,ACUASEARTHRITIS_broad,0,0,0,Inf,70-79
 TEST,3,Pfizer,2,1950-1959,ACUASEARTHRITIS_broad,0,0,0,Inf,60-69
@@ -178,6 +197,7 @@ TEST,3,Pfizer,2,1980-1989,ACUASEARTHRITIS_broad,0,0,0,6416015.34,30-39
 TEST,3,Pfizer,2,1990+,ACUASEARTHRITIS_broad,0,0,0,Inf,<30
 TEST,3,Pfizer,2,<1940,ACUASEARTHRITIS_broad,0,0,0,Inf,80+
 TEST,3,Pfizer,2,<1960,ACUASEARTHRITIS_broad,0,0,0,Inf,60+
+TEST,3,Pfizer,2,>1960,ACUASEARTHRITIS_broad,0,0,0,3286251.76,
 TEST,3,Pfizer,2,all_birth_cohorts,ACUASEARTHRITIS_broad,0,0,0,3286251.76,all_birth_cohorts
 TEST,4,Pfizer,2,1940-1949,ACUASEARTHRITIS_broad,0,0,0,Inf,70-79
 TEST,4,Pfizer,2,1950-1959,ACUASEARTHRITIS_broad,0,0,0,Inf,60-69
@@ -187,6 +207,7 @@ TEST,4,Pfizer,2,1980-1989,ACUASEARTHRITIS_broad,0,0,0,5389452.88,30-39
 TEST,4,Pfizer,2,1990+,ACUASEARTHRITIS_broad,0,0,0,Inf,<30
 TEST,4,Pfizer,2,<1940,ACUASEARTHRITIS_broad,0,0,0,Inf,80+
 TEST,4,Pfizer,2,<1960,ACUASEARTHRITIS_broad,0,0,0,Inf,60+
+TEST,4,Pfizer,2,>1960,ACUASEARTHRITIS_broad,0,0,0,2994140.49,
 TEST,4,Pfizer,2,all_birth_cohorts,ACUASEARTHRITIS_broad,0,0,0,2994140.49,all_birth_cohorts
 TEST,0,none,no_dose,1940-1949,DM_broad,0,0,0,6853.67,70-79
 TEST,0,none,no_dose,1950-1959,DM_broad,0,0,0,5806.35,60-69
@@ -196,6 +217,7 @@ TEST,0,none,no_dose,1980-1989,DM_broad,0,0,0,7109.35,30-39
 TEST,0,none,no_dose,1990+,DM_broad,0,0,0,3764.32,<30
 TEST,0,none,no_dose,<1940,DM_broad,0,0,0,9172.6,80+
 TEST,0,none,no_dose,<1960,DM_broad,0,0,0,2341.08,60+
+TEST,0,none,no_dose,>1960,DM_broad,1,326.49,8.27,1819.07,
 TEST,0,none,no_dose,all_birth_cohorts,DM_broad,1,215.58,5.46,1201.14,all_birth_cohorts
 TEST,1,AstraZeneca,1,1940-1949,DM_broad,0,0,0,19248046.01,70-79
 TEST,1,AstraZeneca,1,1950-1959,DM_broad,0,0,0,Inf,60-69
@@ -205,6 +227,7 @@ TEST,1,AstraZeneca,1,1980-1989,DM_broad,0,0,0,Inf,30-39
 TEST,1,AstraZeneca,1,1990+,DM_broad,0,0,0,Inf,<30
 TEST,1,AstraZeneca,1,<1940,DM_broad,0,0,0,Inf,80+
 TEST,1,AstraZeneca,1,<1960,DM_broad,0,0,0,19248046.01,60+
+TEST,1,AstraZeneca,1,>1960,DM_broad,0,0,0,19248046.01,
 TEST,1,AstraZeneca,1,all_birth_cohorts,DM_broad,0,0,0,9624023,all_birth_cohorts
 TEST,2,AstraZeneca,1,1940-1949,DM_broad,0,0,0,16842040.26,70-79
 TEST,2,AstraZeneca,1,1950-1959,DM_broad,0,0,0,Inf,60-69
@@ -214,6 +237,7 @@ TEST,2,AstraZeneca,1,1980-1989,DM_broad,0,0,0,Inf,30-39
 TEST,2,AstraZeneca,1,1990+,DM_broad,0,0,0,Inf,<30
 TEST,2,AstraZeneca,1,<1940,DM_broad,0,0,0,Inf,80+
 TEST,2,AstraZeneca,1,<1960,DM_broad,0,0,0,16842040.26,60+
+TEST,2,AstraZeneca,1,>1960,DM_broad,0,0,0,9624023,
 TEST,2,AstraZeneca,1,all_birth_cohorts,DM_broad,0,0,0,6124378.28,all_birth_cohorts
 TEST,1,Pfizer,1,1940-1949,DM_broad,0,0,0,Inf,70-79
 TEST,1,Pfizer,1,1950-1959,DM_broad,0,0,0,Inf,60-69
@@ -223,6 +247,7 @@ TEST,1,Pfizer,1,1980-1989,DM_broad,0,0,0,9624023,30-39
 TEST,1,Pfizer,1,1990+,DM_broad,0,0,0,Inf,<30
 TEST,1,Pfizer,1,<1940,DM_broad,0,0,0,5858100.96,80+
 TEST,1,Pfizer,1,<1960,DM_broad,0,0,0,5858100.96,60+
+TEST,1,Pfizer,1,>1960,DM_broad,0,0,0,1924804.6,
 TEST,1,Pfizer,1,all_birth_cohorts,DM_broad,0,0,0,1448777.66,all_birth_cohorts
 TEST,2,Pfizer,1,1940-1949,DM_broad,0,0,0,Inf,70-79
 TEST,2,Pfizer,1,1950-1959,DM_broad,0,0,0,Inf,60-69
@@ -232,6 +257,7 @@ TEST,2,Pfizer,1,1980-1989,DM_broad,0,0,0,4812011.5,30-39
 TEST,2,Pfizer,1,1990+,DM_broad,0,0,0,Inf,<30
 TEST,2,Pfizer,1,<1940,DM_broad,0,0,0,4082918.85,80+
 TEST,2,Pfizer,1,<1960,DM_broad,0,0,0,4082918.85,60+
+TEST,2,Pfizer,1,>1960,DM_broad,0,0,0,1044467.61,
 TEST,2,Pfizer,1,all_birth_cohorts,DM_broad,0,0,0,831705.69,all_birth_cohorts
 TEST,3,Pfizer,1,1940-1949,DM_broad,0,0,0,Inf,70-79
 TEST,3,Pfizer,1,1950-1959,DM_broad,0,0,0,Inf,60-69
@@ -241,6 +267,7 @@ TEST,3,Pfizer,1,1980-1989,DM_broad,0,0,0,3208007.67,30-39
 TEST,3,Pfizer,1,1990+,DM_broad,0,0,0,Inf,<30
 TEST,3,Pfizer,1,<1940,DM_broad,0,0,0,3368408.05,80+
 TEST,3,Pfizer,1,<1960,DM_broad,0,0,0,3368408.05,60+
+TEST,3,Pfizer,1,>1960,DM_broad,0,0,0,756945.63,
 TEST,3,Pfizer,1,all_birth_cohorts,DM_broad,0,0,0,618056.52,all_birth_cohorts
 TEST,4,Pfizer,1,1940-1949,DM_broad,0,0,0,Inf,70-79
 TEST,4,Pfizer,1,1950-1959,DM_broad,0,0,0,Inf,60-69
@@ -250,6 +277,7 @@ TEST,4,Pfizer,1,1980-1989,DM_broad,0,0,0,2406005.75,30-39
 TEST,4,Pfizer,1,1990+,DM_broad,0,0,0,Inf,<30
 TEST,4,Pfizer,1,<1940,DM_broad,0,0,0,2866730.26,80+
 TEST,4,Pfizer,1,<1960,DM_broad,0,0,0,2866730.26,60+
+TEST,4,Pfizer,1,>1960,DM_broad,0,0,0,604198.75,
 TEST,4,Pfizer,1,all_birth_cohorts,DM_broad,0,0,0,499023.42,all_birth_cohorts
 TEST,5,Pfizer,1,1940-1949,DM_broad,0,0,0,Inf,70-79
 TEST,5,Pfizer,1,1950-1959,DM_broad,0,0,0,Inf,60-69
@@ -259,6 +287,7 @@ TEST,5,Pfizer,1,1980-1989,DM_broad,0,0,0,2105255.03,30-39
 TEST,5,Pfizer,1,1990+,DM_broad,0,0,0,Inf,<30
 TEST,5,Pfizer,1,<1940,DM_broad,0,0,0,2591083.12,80+
 TEST,5,Pfizer,1,<1960,DM_broad,0,0,0,2591083.12,60+
+TEST,5,Pfizer,1,>1960,DM_broad,0,0,0,545491.18,
 TEST,5,Pfizer,1,all_birth_cohorts,DM_broad,0,0,0,450623.15,all_birth_cohorts
 TEST,6,Pfizer,1,1940-1949,DM_broad,0,0,0,Inf,70-79
 TEST,6,Pfizer,1,1950-1959,DM_broad,0,0,0,Inf,60-69
@@ -268,6 +297,7 @@ TEST,6,Pfizer,1,1980-1989,DM_broad,0,0,0,1981416.5,30-39
 TEST,6,Pfizer,1,1990+,DM_broad,0,0,0,Inf,<30
 TEST,6,Pfizer,1,<1940,DM_broad,0,0,0,2591083.12,80+
 TEST,6,Pfizer,1,<1960,DM_broad,0,0,0,2591083.12,60+
+TEST,6,Pfizer,1,>1960,DM_broad,0,0,0,522233.81,
 TEST,6,Pfizer,1,all_birth_cohorts,DM_broad,0,0,0,434633.3,all_birth_cohorts
 TEST,7,Pfizer,1,1940-1949,DM_broad,0,0,0,Inf,70-79
 TEST,7,Pfizer,1,1950-1959,DM_broad,0,0,0,Inf,60-69
@@ -277,6 +307,7 @@ TEST,7,Pfizer,1,1980-1989,DM_broad,0,0,0,1981416.5,30-39
 TEST,7,Pfizer,1,1990+,DM_broad,0,0,0,Inf,<30
 TEST,7,Pfizer,1,<1940,DM_broad,0,0,0,2591083.12,80+
 TEST,7,Pfizer,1,<1960,DM_broad,0,0,0,2591083.12,60+
+TEST,7,Pfizer,1,>1960,DM_broad,0,0,0,508438.95,
 TEST,7,Pfizer,1,all_birth_cohorts,DM_broad,0,0,0,425035.72,all_birth_cohorts
 TEST,8,Pfizer,1,1940-1949,DM_broad,0,0,0,Inf,70-79
 TEST,8,Pfizer,1,1950-1959,DM_broad,0,0,0,Inf,60-69
@@ -286,6 +317,7 @@ TEST,8,Pfizer,1,1980-1989,DM_broad,0,0,0,1981416.5,30-39
 TEST,8,Pfizer,1,1990+,DM_broad,0,0,0,Inf,<30
 TEST,8,Pfizer,1,<1940,DM_broad,0,0,0,2591083.12,80+
 TEST,8,Pfizer,1,<1960,DM_broad,0,0,0,2591083.12,60+
+TEST,8,Pfizer,1,>1960,DM_broad,0,0,0,495354.13,
 TEST,8,Pfizer,1,all_birth_cohorts,DM_broad,0,0,0,415852.85,all_birth_cohorts
 TEST,9,Pfizer,1,1940-1949,DM_broad,0,0,0,Inf,70-79
 TEST,9,Pfizer,1,1950-1959,DM_broad,0,0,0,Inf,60-69
@@ -295,6 +327,7 @@ TEST,9,Pfizer,1,1980-1989,DM_broad,0,0,0,1981416.5,30-39
 TEST,9,Pfizer,1,1990+,DM_broad,0,0,0,Inf,<30
 TEST,9,Pfizer,1,<1940,DM_broad,0,0,0,2591083.12,80+
 TEST,9,Pfizer,1,<1960,DM_broad,0,0,0,2591083.12,60+
+TEST,9,Pfizer,1,>1960,DM_broad,0,0,0,482925.89,
 TEST,9,Pfizer,1,all_birth_cohorts,DM_broad,0,0,0,407058.37,all_birth_cohorts
 TEST,10,Pfizer,1,1940-1949,DM_broad,0,0,0,Inf,70-79
 TEST,10,Pfizer,1,1950-1959,DM_broad,0,0,0,Inf,60-69
@@ -304,6 +337,7 @@ TEST,10,Pfizer,1,1980-1989,DM_broad,0,0,0,1981416.5,30-39
 TEST,10,Pfizer,1,1990+,DM_broad,0,0,0,Inf,<30
 TEST,10,Pfizer,1,<1940,DM_broad,0,0,0,2591083.12,80+
 TEST,10,Pfizer,1,<1960,DM_broad,0,0,0,2591083.12,60+
+TEST,10,Pfizer,1,>1960,DM_broad,0,0,0,471106.02,
 TEST,10,Pfizer,1,all_birth_cohorts,DM_broad,0,0,0,398628.17,all_birth_cohorts
 TEST,11,Pfizer,1,1940-1949,DM_broad,0,0,0,Inf,70-79
 TEST,11,Pfizer,1,1950-1959,DM_broad,0,0,0,Inf,60-69
@@ -313,6 +347,7 @@ TEST,11,Pfizer,1,1980-1989,DM_broad,0,0,0,1981416.5,30-39
 TEST,11,Pfizer,1,1990+,DM_broad,0,0,0,Inf,<30
 TEST,11,Pfizer,1,<1940,DM_broad,0,0,0,2591083.12,80+
 TEST,11,Pfizer,1,<1960,DM_broad,0,0,0,2591083.12,60+
+TEST,11,Pfizer,1,>1960,DM_broad,0,0,0,459850.93,
 TEST,11,Pfizer,1,all_birth_cohorts,DM_broad,0,0,0,390540.06,all_birth_cohorts
 TEST,12,Pfizer,1,1940-1949,DM_broad,0,0,0,Inf,70-79
 TEST,12,Pfizer,1,1950-1959,DM_broad,0,0,0,Inf,60-69
@@ -322,6 +357,7 @@ TEST,12,Pfizer,1,1980-1989,DM_broad,0,0,0,1981416.5,30-39
 TEST,12,Pfizer,1,1990+,DM_broad,0,0,0,Inf,<30
 TEST,12,Pfizer,1,<1940,DM_broad,0,0,0,2591083.12,80+
 TEST,12,Pfizer,1,<1960,DM_broad,0,0,0,2591083.12,60+
+TEST,12,Pfizer,1,>1960,DM_broad,0,0,0,449121.07,
 TEST,12,Pfizer,1,all_birth_cohorts,DM_broad,0,0,0,382773.64,all_birth_cohorts
 TEST,13,Pfizer,1,1940-1949,DM_broad,0,0,0,Inf,70-79
 TEST,13,Pfizer,1,1950-1959,DM_broad,0,0,0,Inf,60-69
@@ -331,6 +367,7 @@ TEST,13,Pfizer,1,1980-1989,DM_broad,0,0,0,1981416.5,30-39
 TEST,13,Pfizer,1,1990+,DM_broad,0,0,0,Inf,<30
 TEST,13,Pfizer,1,<1940,DM_broad,0,0,0,2591083.12,80+
 TEST,13,Pfizer,1,<1960,DM_broad,0,0,0,2591083.12,60+
+TEST,13,Pfizer,1,>1960,DM_broad,0,0,0,438880.53,
 TEST,13,Pfizer,1,all_birth_cohorts,DM_broad,0,0,0,375310.09,all_birth_cohorts
 TEST,14,Pfizer,1,1940-1949,DM_broad,0,0,0,Inf,70-79
 TEST,14,Pfizer,1,1950-1959,DM_broad,0,0,0,Inf,60-69
@@ -340,6 +377,7 @@ TEST,14,Pfizer,1,1980-1989,DM_broad,0,0,0,1981416.5,30-39
 TEST,14,Pfizer,1,1990+,DM_broad,0,0,0,Inf,<30
 TEST,14,Pfizer,1,<1940,DM_broad,0,0,0,2591083.12,80+
 TEST,14,Pfizer,1,<1960,DM_broad,0,0,0,2591083.12,60+
+TEST,14,Pfizer,1,>1960,DM_broad,0,0,0,434633.3,
 TEST,14,Pfizer,1,all_birth_cohorts,DM_broad,0,0,0,372199.78,all_birth_cohorts
 TEST,1,Pfizer,2,1940-1949,DM_broad,0,0,0,Inf,70-79
 TEST,1,Pfizer,2,1950-1959,DM_broad,0,0,0,Inf,60-69
@@ -349,6 +387,7 @@ TEST,1,Pfizer,2,1980-1989,DM_broad,0,0,0,19248046.01,30-39
 TEST,1,Pfizer,2,1990+,DM_broad,0,0,0,Inf,<30
 TEST,1,Pfizer,2,<1940,DM_broad,0,0,0,Inf,80+
 TEST,1,Pfizer,2,<1960,DM_broad,0,0,0,Inf,60+
+TEST,1,Pfizer,2,>1960,DM_broad,0,0,0,6416015.34,
 TEST,1,Pfizer,2,all_birth_cohorts,DM_broad,0,0,0,6416015.34,all_birth_cohorts
 TEST,2,Pfizer,2,1940-1949,DM_broad,0,0,0,Inf,70-79
 TEST,2,Pfizer,2,1950-1959,DM_broad,0,0,0,Inf,60-69
@@ -358,6 +397,7 @@ TEST,2,Pfizer,2,1980-1989,DM_broad,0,0,0,9624023,30-39
 TEST,2,Pfizer,2,1990+,DM_broad,0,0,0,Inf,<30
 TEST,2,Pfizer,2,<1940,DM_broad,0,0,0,Inf,80+
 TEST,2,Pfizer,2,<1960,DM_broad,0,0,0,Inf,60+
+TEST,2,Pfizer,2,>1960,DM_broad,0,0,0,3962833,
 TEST,2,Pfizer,2,all_birth_cohorts,DM_broad,0,0,0,3962833,all_birth_cohorts
 TEST,3,Pfizer,2,1940-1949,DM_broad,0,0,0,Inf,70-79
 TEST,3,Pfizer,2,1950-1959,DM_broad,0,0,0,Inf,60-69
@@ -367,6 +407,7 @@ TEST,3,Pfizer,2,1980-1989,DM_broad,0,0,0,6416015.34,30-39
 TEST,3,Pfizer,2,1990+,DM_broad,0,0,0,Inf,<30
 TEST,3,Pfizer,2,<1940,DM_broad,0,0,0,Inf,80+
 TEST,3,Pfizer,2,<1960,DM_broad,0,0,0,Inf,60+
+TEST,3,Pfizer,2,>1960,DM_broad,0,0,0,3286251.76,
 TEST,3,Pfizer,2,all_birth_cohorts,DM_broad,0,0,0,3286251.76,all_birth_cohorts
 TEST,4,Pfizer,2,1940-1949,DM_broad,0,0,0,Inf,70-79
 TEST,4,Pfizer,2,1950-1959,DM_broad,0,0,0,Inf,60-69
@@ -376,6 +417,7 @@ TEST,4,Pfizer,2,1980-1989,DM_broad,0,0,0,5389452.88,30-39
 TEST,4,Pfizer,2,1990+,DM_broad,0,0,0,Inf,<30
 TEST,4,Pfizer,2,<1940,DM_broad,0,0,0,Inf,80+
 TEST,4,Pfizer,2,<1960,DM_broad,0,0,0,Inf,60+
+TEST,4,Pfizer,2,>1960,DM_broad,0,0,0,2994140.49,
 TEST,4,Pfizer,2,all_birth_cohorts,DM_broad,0,0,0,2994140.49,all_birth_cohorts
 TEST,0,none,no_dose,1940-1949,HF_narrow,0,0,0,6853.67,70-79
 TEST,0,none,no_dose,1950-1959,HF_narrow,0,0,0,5806.35,60-69
@@ -385,6 +427,7 @@ TEST,0,none,no_dose,1980-1989,HF_narrow,0,0,0,7109.35,30-39
 TEST,0,none,no_dose,1990+,HF_narrow,0,0,0,3764.32,<30
 TEST,0,none,no_dose,<1940,HF_narrow,1,2478.96,62.76,13811.88,80+
 TEST,0,none,no_dose,<1960,HF_narrow,1,634.14,16.05,3533.18,60+
+TEST,0,none,no_dose,>1960,HF_narrow,0,0,0,1201.61,
 TEST,0,none,no_dose,all_birth_cohorts,HF_narrow,1,215.2,5.45,1199,all_birth_cohorts
 TEST,1,AstraZeneca,1,1940-1949,HF_narrow,0,0,0,19248046.01,70-79
 TEST,1,AstraZeneca,1,1950-1959,HF_narrow,0,0,0,Inf,60-69
@@ -394,6 +437,7 @@ TEST,1,AstraZeneca,1,1980-1989,HF_narrow,0,0,0,Inf,30-39
 TEST,1,AstraZeneca,1,1990+,HF_narrow,0,0,0,Inf,<30
 TEST,1,AstraZeneca,1,<1940,HF_narrow,0,0,0,Inf,80+
 TEST,1,AstraZeneca,1,<1960,HF_narrow,0,0,0,19248046.01,60+
+TEST,1,AstraZeneca,1,>1960,HF_narrow,0,0,0,19248046.01,
 TEST,1,AstraZeneca,1,all_birth_cohorts,HF_narrow,0,0,0,9624023,all_birth_cohorts
 TEST,2,AstraZeneca,1,1940-1949,HF_narrow,0,0,0,16842040.26,70-79
 TEST,2,AstraZeneca,1,1950-1959,HF_narrow,0,0,0,Inf,60-69
@@ -403,6 +447,7 @@ TEST,2,AstraZeneca,1,1980-1989,HF_narrow,0,0,0,Inf,30-39
 TEST,2,AstraZeneca,1,1990+,HF_narrow,0,0,0,Inf,<30
 TEST,2,AstraZeneca,1,<1940,HF_narrow,0,0,0,Inf,80+
 TEST,2,AstraZeneca,1,<1960,HF_narrow,0,0,0,16842040.26,60+
+TEST,2,AstraZeneca,1,>1960,HF_narrow,0,0,0,9624023,
 TEST,2,AstraZeneca,1,all_birth_cohorts,HF_narrow,0,0,0,6124378.28,all_birth_cohorts
 TEST,1,Pfizer,1,1940-1949,HF_narrow,0,0,0,Inf,70-79
 TEST,1,Pfizer,1,1950-1959,HF_narrow,0,0,0,Inf,60-69
@@ -412,6 +457,7 @@ TEST,1,Pfizer,1,1980-1989,HF_narrow,0,0,0,9624023,30-39
 TEST,1,Pfizer,1,1990+,HF_narrow,0,0,0,Inf,<30
 TEST,1,Pfizer,1,<1940,HF_narrow,0,0,0,5858100.96,80+
 TEST,1,Pfizer,1,<1960,HF_narrow,0,0,0,5858100.96,60+
+TEST,1,Pfizer,1,>1960,HF_narrow,0,0,0,1924804.6,
 TEST,1,Pfizer,1,all_birth_cohorts,HF_narrow,0,0,0,1448777.66,all_birth_cohorts
 TEST,2,Pfizer,1,1940-1949,HF_narrow,0,0,0,Inf,70-79
 TEST,2,Pfizer,1,1950-1959,HF_narrow,0,0,0,Inf,60-69
@@ -421,6 +467,7 @@ TEST,2,Pfizer,1,1980-1989,HF_narrow,0,0,0,4812011.5,30-39
 TEST,2,Pfizer,1,1990+,HF_narrow,0,0,0,Inf,<30
 TEST,2,Pfizer,1,<1940,HF_narrow,0,0,0,4082918.85,80+
 TEST,2,Pfizer,1,<1960,HF_narrow,0,0,0,4082918.85,60+
+TEST,2,Pfizer,1,>1960,HF_narrow,0,0,0,1044467.61,
 TEST,2,Pfizer,1,all_birth_cohorts,HF_narrow,0,0,0,831705.69,all_birth_cohorts
 TEST,3,Pfizer,1,1940-1949,HF_narrow,0,0,0,Inf,70-79
 TEST,3,Pfizer,1,1950-1959,HF_narrow,0,0,0,Inf,60-69
@@ -430,6 +477,7 @@ TEST,3,Pfizer,1,1980-1989,HF_narrow,0,0,0,3208007.67,30-39
 TEST,3,Pfizer,1,1990+,HF_narrow,0,0,0,Inf,<30
 TEST,3,Pfizer,1,<1940,HF_narrow,0,0,0,3368408.05,80+
 TEST,3,Pfizer,1,<1960,HF_narrow,0,0,0,3368408.05,60+
+TEST,3,Pfizer,1,>1960,HF_narrow,0,0,0,756945.63,
 TEST,3,Pfizer,1,all_birth_cohorts,HF_narrow,0,0,0,618056.52,all_birth_cohorts
 TEST,4,Pfizer,1,1940-1949,HF_narrow,0,0,0,Inf,70-79
 TEST,4,Pfizer,1,1950-1959,HF_narrow,0,0,0,Inf,60-69
@@ -439,6 +487,7 @@ TEST,4,Pfizer,1,1980-1989,HF_narrow,0,0,0,2406005.75,30-39
 TEST,4,Pfizer,1,1990+,HF_narrow,0,0,0,Inf,<30
 TEST,4,Pfizer,1,<1940,HF_narrow,0,0,0,2866730.26,80+
 TEST,4,Pfizer,1,<1960,HF_narrow,0,0,0,2866730.26,60+
+TEST,4,Pfizer,1,>1960,HF_narrow,0,0,0,604198.75,
 TEST,4,Pfizer,1,all_birth_cohorts,HF_narrow,0,0,0,499023.42,all_birth_cohorts
 TEST,5,Pfizer,1,1940-1949,HF_narrow,0,0,0,Inf,70-79
 TEST,5,Pfizer,1,1950-1959,HF_narrow,0,0,0,Inf,60-69
@@ -448,6 +497,7 @@ TEST,5,Pfizer,1,1980-1989,HF_narrow,0,0,0,2105255.03,30-39
 TEST,5,Pfizer,1,1990+,HF_narrow,0,0,0,Inf,<30
 TEST,5,Pfizer,1,<1940,HF_narrow,0,0,0,2591083.12,80+
 TEST,5,Pfizer,1,<1960,HF_narrow,0,0,0,2591083.12,60+
+TEST,5,Pfizer,1,>1960,HF_narrow,0,0,0,545491.18,
 TEST,5,Pfizer,1,all_birth_cohorts,HF_narrow,0,0,0,450623.15,all_birth_cohorts
 TEST,6,Pfizer,1,1940-1949,HF_narrow,0,0,0,Inf,70-79
 TEST,6,Pfizer,1,1950-1959,HF_narrow,0,0,0,Inf,60-69
@@ -457,6 +507,7 @@ TEST,6,Pfizer,1,1980-1989,HF_narrow,0,0,0,1981416.5,30-39
 TEST,6,Pfizer,1,1990+,HF_narrow,0,0,0,Inf,<30
 TEST,6,Pfizer,1,<1940,HF_narrow,0,0,0,2591083.12,80+
 TEST,6,Pfizer,1,<1960,HF_narrow,0,0,0,2591083.12,60+
+TEST,6,Pfizer,1,>1960,HF_narrow,0,0,0,522233.81,
 TEST,6,Pfizer,1,all_birth_cohorts,HF_narrow,0,0,0,434633.3,all_birth_cohorts
 TEST,7,Pfizer,1,1940-1949,HF_narrow,0,0,0,Inf,70-79
 TEST,7,Pfizer,1,1950-1959,HF_narrow,0,0,0,Inf,60-69
@@ -466,6 +517,7 @@ TEST,7,Pfizer,1,1980-1989,HF_narrow,0,0,0,1981416.5,30-39
 TEST,7,Pfizer,1,1990+,HF_narrow,0,0,0,Inf,<30
 TEST,7,Pfizer,1,<1940,HF_narrow,0,0,0,2591083.12,80+
 TEST,7,Pfizer,1,<1960,HF_narrow,0,0,0,2591083.12,60+
+TEST,7,Pfizer,1,>1960,HF_narrow,0,0,0,508438.95,
 TEST,7,Pfizer,1,all_birth_cohorts,HF_narrow,0,0,0,425035.72,all_birth_cohorts
 TEST,8,Pfizer,1,1940-1949,HF_narrow,0,0,0,Inf,70-79
 TEST,8,Pfizer,1,1950-1959,HF_narrow,0,0,0,Inf,60-69
@@ -475,6 +527,7 @@ TEST,8,Pfizer,1,1980-1989,HF_narrow,0,0,0,1981416.5,30-39
 TEST,8,Pfizer,1,1990+,HF_narrow,0,0,0,Inf,<30
 TEST,8,Pfizer,1,<1940,HF_narrow,0,0,0,2591083.12,80+
 TEST,8,Pfizer,1,<1960,HF_narrow,0,0,0,2591083.12,60+
+TEST,8,Pfizer,1,>1960,HF_narrow,0,0,0,495354.13,
 TEST,8,Pfizer,1,all_birth_cohorts,HF_narrow,0,0,0,415852.85,all_birth_cohorts
 TEST,9,Pfizer,1,1940-1949,HF_narrow,0,0,0,Inf,70-79
 TEST,9,Pfizer,1,1950-1959,HF_narrow,0,0,0,Inf,60-69
@@ -484,6 +537,7 @@ TEST,9,Pfizer,1,1980-1989,HF_narrow,0,0,0,1981416.5,30-39
 TEST,9,Pfizer,1,1990+,HF_narrow,0,0,0,Inf,<30
 TEST,9,Pfizer,1,<1940,HF_narrow,0,0,0,2591083.12,80+
 TEST,9,Pfizer,1,<1960,HF_narrow,0,0,0,2591083.12,60+
+TEST,9,Pfizer,1,>1960,HF_narrow,0,0,0,482925.89,
 TEST,9,Pfizer,1,all_birth_cohorts,HF_narrow,0,0,0,407058.37,all_birth_cohorts
 TEST,10,Pfizer,1,1940-1949,HF_narrow,0,0,0,Inf,70-79
 TEST,10,Pfizer,1,1950-1959,HF_narrow,0,0,0,Inf,60-69
@@ -493,6 +547,7 @@ TEST,10,Pfizer,1,1980-1989,HF_narrow,0,0,0,1981416.5,30-39
 TEST,10,Pfizer,1,1990+,HF_narrow,0,0,0,Inf,<30
 TEST,10,Pfizer,1,<1940,HF_narrow,0,0,0,2591083.12,80+
 TEST,10,Pfizer,1,<1960,HF_narrow,0,0,0,2591083.12,60+
+TEST,10,Pfizer,1,>1960,HF_narrow,0,0,0,471106.02,
 TEST,10,Pfizer,1,all_birth_cohorts,HF_narrow,0,0,0,398628.17,all_birth_cohorts
 TEST,11,Pfizer,1,1940-1949,HF_narrow,0,0,0,Inf,70-79
 TEST,11,Pfizer,1,1950-1959,HF_narrow,0,0,0,Inf,60-69
@@ -502,6 +557,7 @@ TEST,11,Pfizer,1,1980-1989,HF_narrow,0,0,0,1981416.5,30-39
 TEST,11,Pfizer,1,1990+,HF_narrow,0,0,0,Inf,<30
 TEST,11,Pfizer,1,<1940,HF_narrow,0,0,0,2591083.12,80+
 TEST,11,Pfizer,1,<1960,HF_narrow,0,0,0,2591083.12,60+
+TEST,11,Pfizer,1,>1960,HF_narrow,0,0,0,459850.93,
 TEST,11,Pfizer,1,all_birth_cohorts,HF_narrow,0,0,0,390540.06,all_birth_cohorts
 TEST,12,Pfizer,1,1940-1949,HF_narrow,0,0,0,Inf,70-79
 TEST,12,Pfizer,1,1950-1959,HF_narrow,0,0,0,Inf,60-69
@@ -511,6 +567,7 @@ TEST,12,Pfizer,1,1980-1989,HF_narrow,0,0,0,1981416.5,30-39
 TEST,12,Pfizer,1,1990+,HF_narrow,0,0,0,Inf,<30
 TEST,12,Pfizer,1,<1940,HF_narrow,0,0,0,2591083.12,80+
 TEST,12,Pfizer,1,<1960,HF_narrow,0,0,0,2591083.12,60+
+TEST,12,Pfizer,1,>1960,HF_narrow,0,0,0,449121.07,
 TEST,12,Pfizer,1,all_birth_cohorts,HF_narrow,0,0,0,382773.64,all_birth_cohorts
 TEST,13,Pfizer,1,1940-1949,HF_narrow,0,0,0,Inf,70-79
 TEST,13,Pfizer,1,1950-1959,HF_narrow,0,0,0,Inf,60-69
@@ -520,6 +577,7 @@ TEST,13,Pfizer,1,1980-1989,HF_narrow,0,0,0,1981416.5,30-39
 TEST,13,Pfizer,1,1990+,HF_narrow,0,0,0,Inf,<30
 TEST,13,Pfizer,1,<1940,HF_narrow,0,0,0,2591083.12,80+
 TEST,13,Pfizer,1,<1960,HF_narrow,0,0,0,2591083.12,60+
+TEST,13,Pfizer,1,>1960,HF_narrow,0,0,0,438880.53,
 TEST,13,Pfizer,1,all_birth_cohorts,HF_narrow,0,0,0,375310.09,all_birth_cohorts
 TEST,14,Pfizer,1,1940-1949,HF_narrow,0,0,0,Inf,70-79
 TEST,14,Pfizer,1,1950-1959,HF_narrow,0,0,0,Inf,60-69
@@ -529,6 +587,7 @@ TEST,14,Pfizer,1,1980-1989,HF_narrow,0,0,0,1981416.5,30-39
 TEST,14,Pfizer,1,1990+,HF_narrow,0,0,0,Inf,<30
 TEST,14,Pfizer,1,<1940,HF_narrow,0,0,0,2591083.12,80+
 TEST,14,Pfizer,1,<1960,HF_narrow,0,0,0,2591083.12,60+
+TEST,14,Pfizer,1,>1960,HF_narrow,0,0,0,434633.3,
 TEST,14,Pfizer,1,all_birth_cohorts,HF_narrow,0,0,0,372199.78,all_birth_cohorts
 TEST,1,Pfizer,2,1940-1949,HF_narrow,0,0,0,Inf,70-79
 TEST,1,Pfizer,2,1950-1959,HF_narrow,0,0,0,Inf,60-69
@@ -538,6 +597,7 @@ TEST,1,Pfizer,2,1980-1989,HF_narrow,0,0,0,19248046.01,30-39
 TEST,1,Pfizer,2,1990+,HF_narrow,0,0,0,Inf,<30
 TEST,1,Pfizer,2,<1940,HF_narrow,0,0,0,Inf,80+
 TEST,1,Pfizer,2,<1960,HF_narrow,0,0,0,Inf,60+
+TEST,1,Pfizer,2,>1960,HF_narrow,0,0,0,6416015.34,
 TEST,1,Pfizer,2,all_birth_cohorts,HF_narrow,0,0,0,6416015.34,all_birth_cohorts
 TEST,2,Pfizer,2,1940-1949,HF_narrow,0,0,0,Inf,70-79
 TEST,2,Pfizer,2,1950-1959,HF_narrow,0,0,0,Inf,60-69
@@ -547,6 +607,7 @@ TEST,2,Pfizer,2,1980-1989,HF_narrow,0,0,0,9624023,30-39
 TEST,2,Pfizer,2,1990+,HF_narrow,0,0,0,Inf,<30
 TEST,2,Pfizer,2,<1940,HF_narrow,0,0,0,Inf,80+
 TEST,2,Pfizer,2,<1960,HF_narrow,0,0,0,Inf,60+
+TEST,2,Pfizer,2,>1960,HF_narrow,0,0,0,3962833,
 TEST,2,Pfizer,2,all_birth_cohorts,HF_narrow,0,0,0,3962833,all_birth_cohorts
 TEST,3,Pfizer,2,1940-1949,HF_narrow,0,0,0,Inf,70-79
 TEST,3,Pfizer,2,1950-1959,HF_narrow,0,0,0,Inf,60-69
@@ -556,6 +617,7 @@ TEST,3,Pfizer,2,1980-1989,HF_narrow,0,0,0,6416015.34,30-39
 TEST,3,Pfizer,2,1990+,HF_narrow,0,0,0,Inf,<30
 TEST,3,Pfizer,2,<1940,HF_narrow,0,0,0,Inf,80+
 TEST,3,Pfizer,2,<1960,HF_narrow,0,0,0,Inf,60+
+TEST,3,Pfizer,2,>1960,HF_narrow,0,0,0,3286251.76,
 TEST,3,Pfizer,2,all_birth_cohorts,HF_narrow,0,0,0,3286251.76,all_birth_cohorts
 TEST,4,Pfizer,2,1940-1949,HF_narrow,0,0,0,Inf,70-79
 TEST,4,Pfizer,2,1950-1959,HF_narrow,0,0,0,Inf,60-69
@@ -565,6 +627,7 @@ TEST,4,Pfizer,2,1980-1989,HF_narrow,0,0,0,5389452.88,30-39
 TEST,4,Pfizer,2,1990+,HF_narrow,0,0,0,Inf,<30
 TEST,4,Pfizer,2,<1940,HF_narrow,0,0,0,Inf,80+
 TEST,4,Pfizer,2,<1960,HF_narrow,0,0,0,Inf,60+
+TEST,4,Pfizer,2,>1960,HF_narrow,0,0,0,2994140.49,
 TEST,4,Pfizer,2,all_birth_cohorts,HF_narrow,0,0,0,2994140.49,all_birth_cohorts
 TEST,0,none,no_dose,1940-1949,HF_broad,0,0,0,6853.67,70-79
 TEST,0,none,no_dose,1950-1959,HF_broad,1,1597.91,40.46,8902.98,60-69
@@ -574,6 +637,7 @@ TEST,0,none,no_dose,1980-1989,HF_broad,0,0,0,7109.35,30-39
 TEST,0,none,no_dose,1990+,HF_broad,0,0,0,3764.32,<30
 TEST,0,none,no_dose,<1940,HF_broad,1,2478.96,62.76,13811.88,80+
 TEST,0,none,no_dose,<1960,HF_broad,2,1275.96,154.52,4609.21,60+
+TEST,0,none,no_dose,>1960,HF_broad,0,0,0,1201.61,
 TEST,0,none,no_dose,all_birth_cohorts,HF_broad,2,431.28,52.23,1557.92,all_birth_cohorts
 TEST,1,AstraZeneca,1,1940-1949,HF_broad,0,0,0,19248046.01,70-79
 TEST,1,AstraZeneca,1,1950-1959,HF_broad,0,0,0,Inf,60-69
@@ -583,6 +647,7 @@ TEST,1,AstraZeneca,1,1980-1989,HF_broad,0,0,0,Inf,30-39
 TEST,1,AstraZeneca,1,1990+,HF_broad,0,0,0,Inf,<30
 TEST,1,AstraZeneca,1,<1940,HF_broad,0,0,0,Inf,80+
 TEST,1,AstraZeneca,1,<1960,HF_broad,0,0,0,19248046.01,60+
+TEST,1,AstraZeneca,1,>1960,HF_broad,0,0,0,19248046.01,
 TEST,1,AstraZeneca,1,all_birth_cohorts,HF_broad,0,0,0,9624023,all_birth_cohorts
 TEST,2,AstraZeneca,1,1940-1949,HF_broad,0,0,0,16842040.26,70-79
 TEST,2,AstraZeneca,1,1950-1959,HF_broad,0,0,0,Inf,60-69
@@ -592,6 +657,7 @@ TEST,2,AstraZeneca,1,1980-1989,HF_broad,0,0,0,Inf,30-39
 TEST,2,AstraZeneca,1,1990+,HF_broad,0,0,0,Inf,<30
 TEST,2,AstraZeneca,1,<1940,HF_broad,0,0,0,Inf,80+
 TEST,2,AstraZeneca,1,<1960,HF_broad,0,0,0,16842040.26,60+
+TEST,2,AstraZeneca,1,>1960,HF_broad,0,0,0,9624023,
 TEST,2,AstraZeneca,1,all_birth_cohorts,HF_broad,0,0,0,6124378.28,all_birth_cohorts
 TEST,1,Pfizer,1,1940-1949,HF_broad,0,0,0,Inf,70-79
 TEST,1,Pfizer,1,1950-1959,HF_broad,0,0,0,Inf,60-69
@@ -601,6 +667,7 @@ TEST,1,Pfizer,1,1980-1989,HF_broad,0,0,0,9624023,30-39
 TEST,1,Pfizer,1,1990+,HF_broad,0,0,0,Inf,<30
 TEST,1,Pfizer,1,<1940,HF_broad,0,0,0,5858100.96,80+
 TEST,1,Pfizer,1,<1960,HF_broad,0,0,0,5858100.96,60+
+TEST,1,Pfizer,1,>1960,HF_broad,0,0,0,1924804.6,
 TEST,1,Pfizer,1,all_birth_cohorts,HF_broad,0,0,0,1448777.66,all_birth_cohorts
 TEST,2,Pfizer,1,1940-1949,HF_broad,0,0,0,Inf,70-79
 TEST,2,Pfizer,1,1950-1959,HF_broad,0,0,0,Inf,60-69
@@ -610,6 +677,7 @@ TEST,2,Pfizer,1,1980-1989,HF_broad,0,0,0,4812011.5,30-39
 TEST,2,Pfizer,1,1990+,HF_broad,0,0,0,Inf,<30
 TEST,2,Pfizer,1,<1940,HF_broad,0,0,0,4082918.85,80+
 TEST,2,Pfizer,1,<1960,HF_broad,0,0,0,4082918.85,60+
+TEST,2,Pfizer,1,>1960,HF_broad,0,0,0,1044467.61,
 TEST,2,Pfizer,1,all_birth_cohorts,HF_broad,0,0,0,831705.69,all_birth_cohorts
 TEST,3,Pfizer,1,1940-1949,HF_broad,0,0,0,Inf,70-79
 TEST,3,Pfizer,1,1950-1959,HF_broad,0,0,0,Inf,60-69
@@ -619,6 +687,7 @@ TEST,3,Pfizer,1,1980-1989,HF_broad,0,0,0,3208007.67,30-39
 TEST,3,Pfizer,1,1990+,HF_broad,0,0,0,Inf,<30
 TEST,3,Pfizer,1,<1940,HF_broad,0,0,0,3368408.05,80+
 TEST,3,Pfizer,1,<1960,HF_broad,0,0,0,3368408.05,60+
+TEST,3,Pfizer,1,>1960,HF_broad,0,0,0,756945.63,
 TEST,3,Pfizer,1,all_birth_cohorts,HF_broad,0,0,0,618056.52,all_birth_cohorts
 TEST,4,Pfizer,1,1940-1949,HF_broad,0,0,0,Inf,70-79
 TEST,4,Pfizer,1,1950-1959,HF_broad,0,0,0,Inf,60-69
@@ -628,6 +697,7 @@ TEST,4,Pfizer,1,1980-1989,HF_broad,0,0,0,2406005.75,30-39
 TEST,4,Pfizer,1,1990+,HF_broad,0,0,0,Inf,<30
 TEST,4,Pfizer,1,<1940,HF_broad,0,0,0,2866730.26,80+
 TEST,4,Pfizer,1,<1960,HF_broad,0,0,0,2866730.26,60+
+TEST,4,Pfizer,1,>1960,HF_broad,0,0,0,604198.75,
 TEST,4,Pfizer,1,all_birth_cohorts,HF_broad,0,0,0,499023.42,all_birth_cohorts
 TEST,5,Pfizer,1,1940-1949,HF_broad,0,0,0,Inf,70-79
 TEST,5,Pfizer,1,1950-1959,HF_broad,0,0,0,Inf,60-69
@@ -637,6 +707,7 @@ TEST,5,Pfizer,1,1980-1989,HF_broad,0,0,0,2105255.03,30-39
 TEST,5,Pfizer,1,1990+,HF_broad,0,0,0,Inf,<30
 TEST,5,Pfizer,1,<1940,HF_broad,0,0,0,2591083.12,80+
 TEST,5,Pfizer,1,<1960,HF_broad,0,0,0,2591083.12,60+
+TEST,5,Pfizer,1,>1960,HF_broad,0,0,0,545491.18,
 TEST,5,Pfizer,1,all_birth_cohorts,HF_broad,0,0,0,450623.15,all_birth_cohorts
 TEST,6,Pfizer,1,1940-1949,HF_broad,0,0,0,Inf,70-79
 TEST,6,Pfizer,1,1950-1959,HF_broad,0,0,0,Inf,60-69
@@ -646,6 +717,7 @@ TEST,6,Pfizer,1,1980-1989,HF_broad,0,0,0,1981416.5,30-39
 TEST,6,Pfizer,1,1990+,HF_broad,0,0,0,Inf,<30
 TEST,6,Pfizer,1,<1940,HF_broad,0,0,0,2591083.12,80+
 TEST,6,Pfizer,1,<1960,HF_broad,0,0,0,2591083.12,60+
+TEST,6,Pfizer,1,>1960,HF_broad,0,0,0,522233.81,
 TEST,6,Pfizer,1,all_birth_cohorts,HF_broad,0,0,0,434633.3,all_birth_cohorts
 TEST,7,Pfizer,1,1940-1949,HF_broad,0,0,0,Inf,70-79
 TEST,7,Pfizer,1,1950-1959,HF_broad,0,0,0,Inf,60-69
@@ -655,6 +727,7 @@ TEST,7,Pfizer,1,1980-1989,HF_broad,0,0,0,1981416.5,30-39
 TEST,7,Pfizer,1,1990+,HF_broad,0,0,0,Inf,<30
 TEST,7,Pfizer,1,<1940,HF_broad,0,0,0,2591083.12,80+
 TEST,7,Pfizer,1,<1960,HF_broad,0,0,0,2591083.12,60+
+TEST,7,Pfizer,1,>1960,HF_broad,0,0,0,508438.95,
 TEST,7,Pfizer,1,all_birth_cohorts,HF_broad,0,0,0,425035.72,all_birth_cohorts
 TEST,8,Pfizer,1,1940-1949,HF_broad,0,0,0,Inf,70-79
 TEST,8,Pfizer,1,1950-1959,HF_broad,0,0,0,Inf,60-69
@@ -664,6 +737,7 @@ TEST,8,Pfizer,1,1980-1989,HF_broad,0,0,0,1981416.5,30-39
 TEST,8,Pfizer,1,1990+,HF_broad,0,0,0,Inf,<30
 TEST,8,Pfizer,1,<1940,HF_broad,0,0,0,2591083.12,80+
 TEST,8,Pfizer,1,<1960,HF_broad,0,0,0,2591083.12,60+
+TEST,8,Pfizer,1,>1960,HF_broad,0,0,0,495354.13,
 TEST,8,Pfizer,1,all_birth_cohorts,HF_broad,0,0,0,415852.85,all_birth_cohorts
 TEST,9,Pfizer,1,1940-1949,HF_broad,0,0,0,Inf,70-79
 TEST,9,Pfizer,1,1950-1959,HF_broad,0,0,0,Inf,60-69
@@ -673,6 +747,7 @@ TEST,9,Pfizer,1,1980-1989,HF_broad,0,0,0,1981416.5,30-39
 TEST,9,Pfizer,1,1990+,HF_broad,0,0,0,Inf,<30
 TEST,9,Pfizer,1,<1940,HF_broad,0,0,0,2591083.12,80+
 TEST,9,Pfizer,1,<1960,HF_broad,0,0,0,2591083.12,60+
+TEST,9,Pfizer,1,>1960,HF_broad,0,0,0,482925.89,
 TEST,9,Pfizer,1,all_birth_cohorts,HF_broad,0,0,0,407058.37,all_birth_cohorts
 TEST,10,Pfizer,1,1940-1949,HF_broad,0,0,0,Inf,70-79
 TEST,10,Pfizer,1,1950-1959,HF_broad,0,0,0,Inf,60-69
@@ -682,6 +757,7 @@ TEST,10,Pfizer,1,1980-1989,HF_broad,0,0,0,1981416.5,30-39
 TEST,10,Pfizer,1,1990+,HF_broad,0,0,0,Inf,<30
 TEST,10,Pfizer,1,<1940,HF_broad,0,0,0,2591083.12,80+
 TEST,10,Pfizer,1,<1960,HF_broad,0,0,0,2591083.12,60+
+TEST,10,Pfizer,1,>1960,HF_broad,0,0,0,471106.02,
 TEST,10,Pfizer,1,all_birth_cohorts,HF_broad,0,0,0,398628.17,all_birth_cohorts
 TEST,11,Pfizer,1,1940-1949,HF_broad,0,0,0,Inf,70-79
 TEST,11,Pfizer,1,1950-1959,HF_broad,0,0,0,Inf,60-69
@@ -691,6 +767,7 @@ TEST,11,Pfizer,1,1980-1989,HF_broad,0,0,0,1981416.5,30-39
 TEST,11,Pfizer,1,1990+,HF_broad,0,0,0,Inf,<30
 TEST,11,Pfizer,1,<1940,HF_broad,0,0,0,2591083.12,80+
 TEST,11,Pfizer,1,<1960,HF_broad,0,0,0,2591083.12,60+
+TEST,11,Pfizer,1,>1960,HF_broad,0,0,0,459850.93,
 TEST,11,Pfizer,1,all_birth_cohorts,HF_broad,0,0,0,390540.06,all_birth_cohorts
 TEST,12,Pfizer,1,1940-1949,HF_broad,0,0,0,Inf,70-79
 TEST,12,Pfizer,1,1950-1959,HF_broad,0,0,0,Inf,60-69
@@ -700,6 +777,7 @@ TEST,12,Pfizer,1,1980-1989,HF_broad,0,0,0,1981416.5,30-39
 TEST,12,Pfizer,1,1990+,HF_broad,0,0,0,Inf,<30
 TEST,12,Pfizer,1,<1940,HF_broad,0,0,0,2591083.12,80+
 TEST,12,Pfizer,1,<1960,HF_broad,0,0,0,2591083.12,60+
+TEST,12,Pfizer,1,>1960,HF_broad,0,0,0,449121.07,
 TEST,12,Pfizer,1,all_birth_cohorts,HF_broad,0,0,0,382773.64,all_birth_cohorts
 TEST,13,Pfizer,1,1940-1949,HF_broad,0,0,0,Inf,70-79
 TEST,13,Pfizer,1,1950-1959,HF_broad,0,0,0,Inf,60-69
@@ -709,6 +787,7 @@ TEST,13,Pfizer,1,1980-1989,HF_broad,0,0,0,1981416.5,30-39
 TEST,13,Pfizer,1,1990+,HF_broad,0,0,0,Inf,<30
 TEST,13,Pfizer,1,<1940,HF_broad,0,0,0,2591083.12,80+
 TEST,13,Pfizer,1,<1960,HF_broad,0,0,0,2591083.12,60+
+TEST,13,Pfizer,1,>1960,HF_broad,0,0,0,438880.53,
 TEST,13,Pfizer,1,all_birth_cohorts,HF_broad,0,0,0,375310.09,all_birth_cohorts
 TEST,14,Pfizer,1,1940-1949,HF_broad,0,0,0,Inf,70-79
 TEST,14,Pfizer,1,1950-1959,HF_broad,0,0,0,Inf,60-69
@@ -718,6 +797,7 @@ TEST,14,Pfizer,1,1980-1989,HF_broad,0,0,0,1981416.5,30-39
 TEST,14,Pfizer,1,1990+,HF_broad,0,0,0,Inf,<30
 TEST,14,Pfizer,1,<1940,HF_broad,0,0,0,2591083.12,80+
 TEST,14,Pfizer,1,<1960,HF_broad,0,0,0,2591083.12,60+
+TEST,14,Pfizer,1,>1960,HF_broad,0,0,0,434633.3,
 TEST,14,Pfizer,1,all_birth_cohorts,HF_broad,0,0,0,372199.78,all_birth_cohorts
 TEST,1,Pfizer,2,1940-1949,HF_broad,0,0,0,Inf,70-79
 TEST,1,Pfizer,2,1950-1959,HF_broad,0,0,0,Inf,60-69
@@ -727,6 +807,7 @@ TEST,1,Pfizer,2,1980-1989,HF_broad,0,0,0,19248046.01,30-39
 TEST,1,Pfizer,2,1990+,HF_broad,0,0,0,Inf,<30
 TEST,1,Pfizer,2,<1940,HF_broad,0,0,0,Inf,80+
 TEST,1,Pfizer,2,<1960,HF_broad,0,0,0,Inf,60+
+TEST,1,Pfizer,2,>1960,HF_broad,0,0,0,6416015.34,
 TEST,1,Pfizer,2,all_birth_cohorts,HF_broad,0,0,0,6416015.34,all_birth_cohorts
 TEST,2,Pfizer,2,1940-1949,HF_broad,0,0,0,Inf,70-79
 TEST,2,Pfizer,2,1950-1959,HF_broad,0,0,0,Inf,60-69
@@ -736,6 +817,7 @@ TEST,2,Pfizer,2,1980-1989,HF_broad,0,0,0,9624023,30-39
 TEST,2,Pfizer,2,1990+,HF_broad,0,0,0,Inf,<30
 TEST,2,Pfizer,2,<1940,HF_broad,0,0,0,Inf,80+
 TEST,2,Pfizer,2,<1960,HF_broad,0,0,0,Inf,60+
+TEST,2,Pfizer,2,>1960,HF_broad,0,0,0,3962833,
 TEST,2,Pfizer,2,all_birth_cohorts,HF_broad,0,0,0,3962833,all_birth_cohorts
 TEST,3,Pfizer,2,1940-1949,HF_broad,0,0,0,Inf,70-79
 TEST,3,Pfizer,2,1950-1959,HF_broad,0,0,0,Inf,60-69
@@ -745,6 +827,7 @@ TEST,3,Pfizer,2,1980-1989,HF_broad,0,0,0,6416015.34,30-39
 TEST,3,Pfizer,2,1990+,HF_broad,0,0,0,Inf,<30
 TEST,3,Pfizer,2,<1940,HF_broad,0,0,0,Inf,80+
 TEST,3,Pfizer,2,<1960,HF_broad,0,0,0,Inf,60+
+TEST,3,Pfizer,2,>1960,HF_broad,0,0,0,3286251.76,
 TEST,3,Pfizer,2,all_birth_cohorts,HF_broad,0,0,0,3286251.76,all_birth_cohorts
 TEST,4,Pfizer,2,1940-1949,HF_broad,0,0,0,Inf,70-79
 TEST,4,Pfizer,2,1950-1959,HF_broad,0,0,0,Inf,60-69
@@ -754,6 +837,7 @@ TEST,4,Pfizer,2,1980-1989,HF_broad,0,0,0,5389452.88,30-39
 TEST,4,Pfizer,2,1990+,HF_broad,0,0,0,Inf,<30
 TEST,4,Pfizer,2,<1940,HF_broad,0,0,0,Inf,80+
 TEST,4,Pfizer,2,<1960,HF_broad,0,0,0,Inf,60+
+TEST,4,Pfizer,2,>1960,HF_broad,0,0,0,2994140.49,
 TEST,4,Pfizer,2,all_birth_cohorts,HF_broad,0,0,0,2994140.49,all_birth_cohorts
 TEST,0,none,no_dose,1940-1949,CAD_narrow,0,0,0,6853.67,70-79
 TEST,0,none,no_dose,1950-1959,CAD_narrow,0,0,0,5806.35,60-69
@@ -763,6 +847,7 @@ TEST,0,none,no_dose,1980-1989,CAD_narrow,0,0,0,7109.35,30-39
 TEST,0,none,no_dose,1990+,CAD_narrow,0,0,0,3764.32,<30
 TEST,0,none,no_dose,<1940,CAD_narrow,1,2387.57,60.45,13302.67,80+
 TEST,0,none,no_dose,<1960,CAD_narrow,1,627.99,15.9,3498.92,60+
+TEST,0,none,no_dose,>1960,CAD_narrow,0,0,0,1201.61,
 TEST,0,none,no_dose,all_birth_cohorts,CAD_narrow,1,214.48,5.43,1195.03,all_birth_cohorts
 TEST,1,AstraZeneca,1,1940-1949,CAD_narrow,0,0,0,19248046.01,70-79
 TEST,1,AstraZeneca,1,1950-1959,CAD_narrow,0,0,0,Inf,60-69
@@ -772,6 +857,7 @@ TEST,1,AstraZeneca,1,1980-1989,CAD_narrow,0,0,0,Inf,30-39
 TEST,1,AstraZeneca,1,1990+,CAD_narrow,0,0,0,Inf,<30
 TEST,1,AstraZeneca,1,<1940,CAD_narrow,0,0,0,Inf,80+
 TEST,1,AstraZeneca,1,<1960,CAD_narrow,0,0,0,19248046.01,60+
+TEST,1,AstraZeneca,1,>1960,CAD_narrow,0,0,0,19248046.01,
 TEST,1,AstraZeneca,1,all_birth_cohorts,CAD_narrow,0,0,0,9624023,all_birth_cohorts
 TEST,2,AstraZeneca,1,1940-1949,CAD_narrow,0,0,0,16842040.26,70-79
 TEST,2,AstraZeneca,1,1950-1959,CAD_narrow,0,0,0,Inf,60-69
@@ -781,6 +867,7 @@ TEST,2,AstraZeneca,1,1980-1989,CAD_narrow,0,0,0,Inf,30-39
 TEST,2,AstraZeneca,1,1990+,CAD_narrow,0,0,0,Inf,<30
 TEST,2,AstraZeneca,1,<1940,CAD_narrow,0,0,0,Inf,80+
 TEST,2,AstraZeneca,1,<1960,CAD_narrow,0,0,0,16842040.26,60+
+TEST,2,AstraZeneca,1,>1960,CAD_narrow,0,0,0,9624023,
 TEST,2,AstraZeneca,1,all_birth_cohorts,CAD_narrow,0,0,0,6124378.28,all_birth_cohorts
 TEST,1,Pfizer,1,1940-1949,CAD_narrow,0,0,0,Inf,70-79
 TEST,1,Pfizer,1,1950-1959,CAD_narrow,0,0,0,Inf,60-69
@@ -790,6 +877,7 @@ TEST,1,Pfizer,1,1980-1989,CAD_narrow,0,0,0,9624023,30-39
 TEST,1,Pfizer,1,1990+,CAD_narrow,0,0,0,Inf,<30
 TEST,1,Pfizer,1,<1940,CAD_narrow,0,0,0,5858100.96,80+
 TEST,1,Pfizer,1,<1960,CAD_narrow,0,0,0,5858100.96,60+
+TEST,1,Pfizer,1,>1960,CAD_narrow,0,0,0,1924804.6,
 TEST,1,Pfizer,1,all_birth_cohorts,CAD_narrow,0,0,0,1448777.66,all_birth_cohorts
 TEST,2,Pfizer,1,1940-1949,CAD_narrow,0,0,0,Inf,70-79
 TEST,2,Pfizer,1,1950-1959,CAD_narrow,0,0,0,Inf,60-69
@@ -799,6 +887,7 @@ TEST,2,Pfizer,1,1980-1989,CAD_narrow,0,0,0,4812011.5,30-39
 TEST,2,Pfizer,1,1990+,CAD_narrow,0,0,0,Inf,<30
 TEST,2,Pfizer,1,<1940,CAD_narrow,0,0,0,4082918.85,80+
 TEST,2,Pfizer,1,<1960,CAD_narrow,0,0,0,4082918.85,60+
+TEST,2,Pfizer,1,>1960,CAD_narrow,0,0,0,1044467.61,
 TEST,2,Pfizer,1,all_birth_cohorts,CAD_narrow,0,0,0,831705.69,all_birth_cohorts
 TEST,3,Pfizer,1,1940-1949,CAD_narrow,0,0,0,Inf,70-79
 TEST,3,Pfizer,1,1950-1959,CAD_narrow,0,0,0,Inf,60-69
@@ -808,6 +897,7 @@ TEST,3,Pfizer,1,1980-1989,CAD_narrow,0,0,0,3208007.67,30-39
 TEST,3,Pfizer,1,1990+,CAD_narrow,0,0,0,Inf,<30
 TEST,3,Pfizer,1,<1940,CAD_narrow,0,0,0,3368408.05,80+
 TEST,3,Pfizer,1,<1960,CAD_narrow,0,0,0,3368408.05,60+
+TEST,3,Pfizer,1,>1960,CAD_narrow,0,0,0,756945.63,
 TEST,3,Pfizer,1,all_birth_cohorts,CAD_narrow,0,0,0,618056.52,all_birth_cohorts
 TEST,4,Pfizer,1,1940-1949,CAD_narrow,0,0,0,Inf,70-79
 TEST,4,Pfizer,1,1950-1959,CAD_narrow,0,0,0,Inf,60-69
@@ -817,6 +907,7 @@ TEST,4,Pfizer,1,1980-1989,CAD_narrow,0,0,0,2406005.75,30-39
 TEST,4,Pfizer,1,1990+,CAD_narrow,0,0,0,Inf,<30
 TEST,4,Pfizer,1,<1940,CAD_narrow,0,0,0,2866730.26,80+
 TEST,4,Pfizer,1,<1960,CAD_narrow,0,0,0,2866730.26,60+
+TEST,4,Pfizer,1,>1960,CAD_narrow,0,0,0,604198.75,
 TEST,4,Pfizer,1,all_birth_cohorts,CAD_narrow,0,0,0,499023.42,all_birth_cohorts
 TEST,5,Pfizer,1,1940-1949,CAD_narrow,0,0,0,Inf,70-79
 TEST,5,Pfizer,1,1950-1959,CAD_narrow,0,0,0,Inf,60-69
@@ -826,6 +917,7 @@ TEST,5,Pfizer,1,1980-1989,CAD_narrow,0,0,0,2105255.03,30-39
 TEST,5,Pfizer,1,1990+,CAD_narrow,0,0,0,Inf,<30
 TEST,5,Pfizer,1,<1940,CAD_narrow,0,0,0,2591083.12,80+
 TEST,5,Pfizer,1,<1960,CAD_narrow,0,0,0,2591083.12,60+
+TEST,5,Pfizer,1,>1960,CAD_narrow,0,0,0,545491.18,
 TEST,5,Pfizer,1,all_birth_cohorts,CAD_narrow,0,0,0,450623.15,all_birth_cohorts
 TEST,6,Pfizer,1,1940-1949,CAD_narrow,0,0,0,Inf,70-79
 TEST,6,Pfizer,1,1950-1959,CAD_narrow,0,0,0,Inf,60-69
@@ -835,6 +927,7 @@ TEST,6,Pfizer,1,1980-1989,CAD_narrow,0,0,0,1981416.5,30-39
 TEST,6,Pfizer,1,1990+,CAD_narrow,0,0,0,Inf,<30
 TEST,6,Pfizer,1,<1940,CAD_narrow,0,0,0,2591083.12,80+
 TEST,6,Pfizer,1,<1960,CAD_narrow,0,0,0,2591083.12,60+
+TEST,6,Pfizer,1,>1960,CAD_narrow,0,0,0,522233.81,
 TEST,6,Pfizer,1,all_birth_cohorts,CAD_narrow,0,0,0,434633.3,all_birth_cohorts
 TEST,7,Pfizer,1,1940-1949,CAD_narrow,0,0,0,Inf,70-79
 TEST,7,Pfizer,1,1950-1959,CAD_narrow,0,0,0,Inf,60-69
@@ -844,6 +937,7 @@ TEST,7,Pfizer,1,1980-1989,CAD_narrow,0,0,0,1981416.5,30-39
 TEST,7,Pfizer,1,1990+,CAD_narrow,0,0,0,Inf,<30
 TEST,7,Pfizer,1,<1940,CAD_narrow,0,0,0,2591083.12,80+
 TEST,7,Pfizer,1,<1960,CAD_narrow,0,0,0,2591083.12,60+
+TEST,7,Pfizer,1,>1960,CAD_narrow,0,0,0,508438.95,
 TEST,7,Pfizer,1,all_birth_cohorts,CAD_narrow,0,0,0,425035.72,all_birth_cohorts
 TEST,8,Pfizer,1,1940-1949,CAD_narrow,0,0,0,Inf,70-79
 TEST,8,Pfizer,1,1950-1959,CAD_narrow,0,0,0,Inf,60-69
@@ -853,6 +947,7 @@ TEST,8,Pfizer,1,1980-1989,CAD_narrow,0,0,0,1981416.5,30-39
 TEST,8,Pfizer,1,1990+,CAD_narrow,0,0,0,Inf,<30
 TEST,8,Pfizer,1,<1940,CAD_narrow,0,0,0,2591083.12,80+
 TEST,8,Pfizer,1,<1960,CAD_narrow,0,0,0,2591083.12,60+
+TEST,8,Pfizer,1,>1960,CAD_narrow,0,0,0,495354.13,
 TEST,8,Pfizer,1,all_birth_cohorts,CAD_narrow,0,0,0,415852.85,all_birth_cohorts
 TEST,9,Pfizer,1,1940-1949,CAD_narrow,0,0,0,Inf,70-79
 TEST,9,Pfizer,1,1950-1959,CAD_narrow,0,0,0,Inf,60-69
@@ -862,6 +957,7 @@ TEST,9,Pfizer,1,1980-1989,CAD_narrow,0,0,0,1981416.5,30-39
 TEST,9,Pfizer,1,1990+,CAD_narrow,0,0,0,Inf,<30
 TEST,9,Pfizer,1,<1940,CAD_narrow,0,0,0,2591083.12,80+
 TEST,9,Pfizer,1,<1960,CAD_narrow,0,0,0,2591083.12,60+
+TEST,9,Pfizer,1,>1960,CAD_narrow,0,0,0,482925.89,
 TEST,9,Pfizer,1,all_birth_cohorts,CAD_narrow,0,0,0,407058.37,all_birth_cohorts
 TEST,10,Pfizer,1,1940-1949,CAD_narrow,0,0,0,Inf,70-79
 TEST,10,Pfizer,1,1950-1959,CAD_narrow,0,0,0,Inf,60-69
@@ -871,6 +967,7 @@ TEST,10,Pfizer,1,1980-1989,CAD_narrow,0,0,0,1981416.5,30-39
 TEST,10,Pfizer,1,1990+,CAD_narrow,0,0,0,Inf,<30
 TEST,10,Pfizer,1,<1940,CAD_narrow,0,0,0,2591083.12,80+
 TEST,10,Pfizer,1,<1960,CAD_narrow,0,0,0,2591083.12,60+
+TEST,10,Pfizer,1,>1960,CAD_narrow,0,0,0,471106.02,
 TEST,10,Pfizer,1,all_birth_cohorts,CAD_narrow,0,0,0,398628.17,all_birth_cohorts
 TEST,11,Pfizer,1,1940-1949,CAD_narrow,0,0,0,Inf,70-79
 TEST,11,Pfizer,1,1950-1959,CAD_narrow,0,0,0,Inf,60-69
@@ -880,6 +977,7 @@ TEST,11,Pfizer,1,1980-1989,CAD_narrow,0,0,0,1981416.5,30-39
 TEST,11,Pfizer,1,1990+,CAD_narrow,0,0,0,Inf,<30
 TEST,11,Pfizer,1,<1940,CAD_narrow,0,0,0,2591083.12,80+
 TEST,11,Pfizer,1,<1960,CAD_narrow,0,0,0,2591083.12,60+
+TEST,11,Pfizer,1,>1960,CAD_narrow,0,0,0,459850.93,
 TEST,11,Pfizer,1,all_birth_cohorts,CAD_narrow,0,0,0,390540.06,all_birth_cohorts
 TEST,12,Pfizer,1,1940-1949,CAD_narrow,0,0,0,Inf,70-79
 TEST,12,Pfizer,1,1950-1959,CAD_narrow,0,0,0,Inf,60-69
@@ -889,6 +987,7 @@ TEST,12,Pfizer,1,1980-1989,CAD_narrow,0,0,0,1981416.5,30-39
 TEST,12,Pfizer,1,1990+,CAD_narrow,0,0,0,Inf,<30
 TEST,12,Pfizer,1,<1940,CAD_narrow,0,0,0,2591083.12,80+
 TEST,12,Pfizer,1,<1960,CAD_narrow,0,0,0,2591083.12,60+
+TEST,12,Pfizer,1,>1960,CAD_narrow,0,0,0,449121.07,
 TEST,12,Pfizer,1,all_birth_cohorts,CAD_narrow,0,0,0,382773.64,all_birth_cohorts
 TEST,13,Pfizer,1,1940-1949,CAD_narrow,0,0,0,Inf,70-79
 TEST,13,Pfizer,1,1950-1959,CAD_narrow,0,0,0,Inf,60-69
@@ -898,6 +997,7 @@ TEST,13,Pfizer,1,1980-1989,CAD_narrow,0,0,0,1981416.5,30-39
 TEST,13,Pfizer,1,1990+,CAD_narrow,0,0,0,Inf,<30
 TEST,13,Pfizer,1,<1940,CAD_narrow,0,0,0,2591083.12,80+
 TEST,13,Pfizer,1,<1960,CAD_narrow,0,0,0,2591083.12,60+
+TEST,13,Pfizer,1,>1960,CAD_narrow,0,0,0,438880.53,
 TEST,13,Pfizer,1,all_birth_cohorts,CAD_narrow,0,0,0,375310.09,all_birth_cohorts
 TEST,14,Pfizer,1,1940-1949,CAD_narrow,0,0,0,Inf,70-79
 TEST,14,Pfizer,1,1950-1959,CAD_narrow,0,0,0,Inf,60-69
@@ -907,6 +1007,7 @@ TEST,14,Pfizer,1,1980-1989,CAD_narrow,0,0,0,1981416.5,30-39
 TEST,14,Pfizer,1,1990+,CAD_narrow,0,0,0,Inf,<30
 TEST,14,Pfizer,1,<1940,CAD_narrow,0,0,0,2591083.12,80+
 TEST,14,Pfizer,1,<1960,CAD_narrow,0,0,0,2591083.12,60+
+TEST,14,Pfizer,1,>1960,CAD_narrow,0,0,0,434633.3,
 TEST,14,Pfizer,1,all_birth_cohorts,CAD_narrow,0,0,0,372199.78,all_birth_cohorts
 TEST,1,Pfizer,2,1940-1949,CAD_narrow,0,0,0,Inf,70-79
 TEST,1,Pfizer,2,1950-1959,CAD_narrow,0,0,0,Inf,60-69
@@ -916,6 +1017,7 @@ TEST,1,Pfizer,2,1980-1989,CAD_narrow,0,0,0,19248046.01,30-39
 TEST,1,Pfizer,2,1990+,CAD_narrow,0,0,0,Inf,<30
 TEST,1,Pfizer,2,<1940,CAD_narrow,0,0,0,Inf,80+
 TEST,1,Pfizer,2,<1960,CAD_narrow,0,0,0,Inf,60+
+TEST,1,Pfizer,2,>1960,CAD_narrow,0,0,0,6416015.34,
 TEST,1,Pfizer,2,all_birth_cohorts,CAD_narrow,0,0,0,6416015.34,all_birth_cohorts
 TEST,2,Pfizer,2,1940-1949,CAD_narrow,0,0,0,Inf,70-79
 TEST,2,Pfizer,2,1950-1959,CAD_narrow,0,0,0,Inf,60-69
@@ -925,6 +1027,7 @@ TEST,2,Pfizer,2,1980-1989,CAD_narrow,0,0,0,9624023,30-39
 TEST,2,Pfizer,2,1990+,CAD_narrow,0,0,0,Inf,<30
 TEST,2,Pfizer,2,<1940,CAD_narrow,0,0,0,Inf,80+
 TEST,2,Pfizer,2,<1960,CAD_narrow,0,0,0,Inf,60+
+TEST,2,Pfizer,2,>1960,CAD_narrow,0,0,0,3962833,
 TEST,2,Pfizer,2,all_birth_cohorts,CAD_narrow,0,0,0,3962833,all_birth_cohorts
 TEST,3,Pfizer,2,1940-1949,CAD_narrow,0,0,0,Inf,70-79
 TEST,3,Pfizer,2,1950-1959,CAD_narrow,0,0,0,Inf,60-69
@@ -934,6 +1037,7 @@ TEST,3,Pfizer,2,1980-1989,CAD_narrow,0,0,0,6416015.34,30-39
 TEST,3,Pfizer,2,1990+,CAD_narrow,0,0,0,Inf,<30
 TEST,3,Pfizer,2,<1940,CAD_narrow,0,0,0,Inf,80+
 TEST,3,Pfizer,2,<1960,CAD_narrow,0,0,0,Inf,60+
+TEST,3,Pfizer,2,>1960,CAD_narrow,0,0,0,3286251.76,
 TEST,3,Pfizer,2,all_birth_cohorts,CAD_narrow,0,0,0,3286251.76,all_birth_cohorts
 TEST,4,Pfizer,2,1940-1949,CAD_narrow,0,0,0,Inf,70-79
 TEST,4,Pfizer,2,1950-1959,CAD_narrow,0,0,0,Inf,60-69
@@ -943,6 +1047,7 @@ TEST,4,Pfizer,2,1980-1989,CAD_narrow,0,0,0,5389452.88,30-39
 TEST,4,Pfizer,2,1990+,CAD_narrow,0,0,0,Inf,<30
 TEST,4,Pfizer,2,<1940,CAD_narrow,0,0,0,Inf,80+
 TEST,4,Pfizer,2,<1960,CAD_narrow,0,0,0,Inf,60+
+TEST,4,Pfizer,2,>1960,CAD_narrow,0,0,0,2994140.49,
 TEST,4,Pfizer,2,all_birth_cohorts,CAD_narrow,0,0,0,2994140.49,all_birth_cohorts
 TEST,0,none,no_dose,1940-1949,CAD_broad,0,0,0,6853.67,70-79
 TEST,0,none,no_dose,1950-1959,CAD_broad,0,0,0,5806.35,60-69
@@ -952,6 +1057,7 @@ TEST,0,none,no_dose,1980-1989,CAD_broad,0,0,0,7109.35,30-39
 TEST,0,none,no_dose,1990+,CAD_broad,0,0,0,3764.32,<30
 TEST,0,none,no_dose,<1940,CAD_broad,1,2387.57,60.45,13302.67,80+
 TEST,0,none,no_dose,<1960,CAD_broad,1,627.99,15.9,3498.92,60+
+TEST,0,none,no_dose,>1960,CAD_broad,0,0,0,1201.61,
 TEST,0,none,no_dose,all_birth_cohorts,CAD_broad,1,214.48,5.43,1195.03,all_birth_cohorts
 TEST,1,AstraZeneca,1,1940-1949,CAD_broad,0,0,0,19248046.01,70-79
 TEST,1,AstraZeneca,1,1950-1959,CAD_broad,0,0,0,Inf,60-69
@@ -961,6 +1067,7 @@ TEST,1,AstraZeneca,1,1980-1989,CAD_broad,0,0,0,Inf,30-39
 TEST,1,AstraZeneca,1,1990+,CAD_broad,0,0,0,Inf,<30
 TEST,1,AstraZeneca,1,<1940,CAD_broad,0,0,0,Inf,80+
 TEST,1,AstraZeneca,1,<1960,CAD_broad,0,0,0,19248046.01,60+
+TEST,1,AstraZeneca,1,>1960,CAD_broad,0,0,0,19248046.01,
 TEST,1,AstraZeneca,1,all_birth_cohorts,CAD_broad,0,0,0,9624023,all_birth_cohorts
 TEST,2,AstraZeneca,1,1940-1949,CAD_broad,0,0,0,16842040.26,70-79
 TEST,2,AstraZeneca,1,1950-1959,CAD_broad,0,0,0,Inf,60-69
@@ -970,6 +1077,7 @@ TEST,2,AstraZeneca,1,1980-1989,CAD_broad,0,0,0,Inf,30-39
 TEST,2,AstraZeneca,1,1990+,CAD_broad,0,0,0,Inf,<30
 TEST,2,AstraZeneca,1,<1940,CAD_broad,0,0,0,Inf,80+
 TEST,2,AstraZeneca,1,<1960,CAD_broad,0,0,0,16842040.26,60+
+TEST,2,AstraZeneca,1,>1960,CAD_broad,0,0,0,9624023,
 TEST,2,AstraZeneca,1,all_birth_cohorts,CAD_broad,0,0,0,6124378.28,all_birth_cohorts
 TEST,1,Pfizer,1,1940-1949,CAD_broad,0,0,0,Inf,70-79
 TEST,1,Pfizer,1,1950-1959,CAD_broad,0,0,0,Inf,60-69
@@ -979,6 +1087,7 @@ TEST,1,Pfizer,1,1980-1989,CAD_broad,0,0,0,9624023,30-39
 TEST,1,Pfizer,1,1990+,CAD_broad,0,0,0,Inf,<30
 TEST,1,Pfizer,1,<1940,CAD_broad,0,0,0,5858100.96,80+
 TEST,1,Pfizer,1,<1960,CAD_broad,0,0,0,5858100.96,60+
+TEST,1,Pfizer,1,>1960,CAD_broad,0,0,0,1924804.6,
 TEST,1,Pfizer,1,all_birth_cohorts,CAD_broad,0,0,0,1448777.66,all_birth_cohorts
 TEST,2,Pfizer,1,1940-1949,CAD_broad,0,0,0,Inf,70-79
 TEST,2,Pfizer,1,1950-1959,CAD_broad,0,0,0,Inf,60-69
@@ -988,6 +1097,7 @@ TEST,2,Pfizer,1,1980-1989,CAD_broad,0,0,0,4812011.5,30-39
 TEST,2,Pfizer,1,1990+,CAD_broad,0,0,0,Inf,<30
 TEST,2,Pfizer,1,<1940,CAD_broad,0,0,0,4082918.85,80+
 TEST,2,Pfizer,1,<1960,CAD_broad,0,0,0,4082918.85,60+
+TEST,2,Pfizer,1,>1960,CAD_broad,0,0,0,1044467.61,
 TEST,2,Pfizer,1,all_birth_cohorts,CAD_broad,0,0,0,831705.69,all_birth_cohorts
 TEST,3,Pfizer,1,1940-1949,CAD_broad,0,0,0,Inf,70-79
 TEST,3,Pfizer,1,1950-1959,CAD_broad,0,0,0,Inf,60-69
@@ -997,6 +1107,7 @@ TEST,3,Pfizer,1,1980-1989,CAD_broad,0,0,0,3208007.67,30-39
 TEST,3,Pfizer,1,1990+,CAD_broad,0,0,0,Inf,<30
 TEST,3,Pfizer,1,<1940,CAD_broad,0,0,0,3368408.05,80+
 TEST,3,Pfizer,1,<1960,CAD_broad,0,0,0,3368408.05,60+
+TEST,3,Pfizer,1,>1960,CAD_broad,0,0,0,756945.63,
 TEST,3,Pfizer,1,all_birth_cohorts,CAD_broad,0,0,0,618056.52,all_birth_cohorts
 TEST,4,Pfizer,1,1940-1949,CAD_broad,0,0,0,Inf,70-79
 TEST,4,Pfizer,1,1950-1959,CAD_broad,0,0,0,Inf,60-69
@@ -1006,6 +1117,7 @@ TEST,4,Pfizer,1,1980-1989,CAD_broad,0,0,0,2406005.75,30-39
 TEST,4,Pfizer,1,1990+,CAD_broad,0,0,0,Inf,<30
 TEST,4,Pfizer,1,<1940,CAD_broad,0,0,0,2866730.26,80+
 TEST,4,Pfizer,1,<1960,CAD_broad,0,0,0,2866730.26,60+
+TEST,4,Pfizer,1,>1960,CAD_broad,0,0,0,604198.75,
 TEST,4,Pfizer,1,all_birth_cohorts,CAD_broad,0,0,0,499023.42,all_birth_cohorts
 TEST,5,Pfizer,1,1940-1949,CAD_broad,0,0,0,Inf,70-79
 TEST,5,Pfizer,1,1950-1959,CAD_broad,0,0,0,Inf,60-69
@@ -1015,6 +1127,7 @@ TEST,5,Pfizer,1,1980-1989,CAD_broad,0,0,0,2105255.03,30-39
 TEST,5,Pfizer,1,1990+,CAD_broad,0,0,0,Inf,<30
 TEST,5,Pfizer,1,<1940,CAD_broad,0,0,0,2591083.12,80+
 TEST,5,Pfizer,1,<1960,CAD_broad,0,0,0,2591083.12,60+
+TEST,5,Pfizer,1,>1960,CAD_broad,0,0,0,545491.18,
 TEST,5,Pfizer,1,all_birth_cohorts,CAD_broad,0,0,0,450623.15,all_birth_cohorts
 TEST,6,Pfizer,1,1940-1949,CAD_broad,0,0,0,Inf,70-79
 TEST,6,Pfizer,1,1950-1959,CAD_broad,0,0,0,Inf,60-69
@@ -1024,6 +1137,7 @@ TEST,6,Pfizer,1,1980-1989,CAD_broad,0,0,0,1981416.5,30-39
 TEST,6,Pfizer,1,1990+,CAD_broad,0,0,0,Inf,<30
 TEST,6,Pfizer,1,<1940,CAD_broad,0,0,0,2591083.12,80+
 TEST,6,Pfizer,1,<1960,CAD_broad,0,0,0,2591083.12,60+
+TEST,6,Pfizer,1,>1960,CAD_broad,0,0,0,522233.81,
 TEST,6,Pfizer,1,all_birth_cohorts,CAD_broad,0,0,0,434633.3,all_birth_cohorts
 TEST,7,Pfizer,1,1940-1949,CAD_broad,0,0,0,Inf,70-79
 TEST,7,Pfizer,1,1950-1959,CAD_broad,0,0,0,Inf,60-69
@@ -1033,6 +1147,7 @@ TEST,7,Pfizer,1,1980-1989,CAD_broad,0,0,0,1981416.5,30-39
 TEST,7,Pfizer,1,1990+,CAD_broad,0,0,0,Inf,<30
 TEST,7,Pfizer,1,<1940,CAD_broad,0,0,0,2591083.12,80+
 TEST,7,Pfizer,1,<1960,CAD_broad,0,0,0,2591083.12,60+
+TEST,7,Pfizer,1,>1960,CAD_broad,0,0,0,508438.95,
 TEST,7,Pfizer,1,all_birth_cohorts,CAD_broad,0,0,0,425035.72,all_birth_cohorts
 TEST,8,Pfizer,1,1940-1949,CAD_broad,0,0,0,Inf,70-79
 TEST,8,Pfizer,1,1950-1959,CAD_broad,0,0,0,Inf,60-69
@@ -1042,6 +1157,7 @@ TEST,8,Pfizer,1,1980-1989,CAD_broad,0,0,0,1981416.5,30-39
 TEST,8,Pfizer,1,1990+,CAD_broad,0,0,0,Inf,<30
 TEST,8,Pfizer,1,<1940,CAD_broad,0,0,0,2591083.12,80+
 TEST,8,Pfizer,1,<1960,CAD_broad,0,0,0,2591083.12,60+
+TEST,8,Pfizer,1,>1960,CAD_broad,0,0,0,495354.13,
 TEST,8,Pfizer,1,all_birth_cohorts,CAD_broad,0,0,0,415852.85,all_birth_cohorts
 TEST,9,Pfizer,1,1940-1949,CAD_broad,0,0,0,Inf,70-79
 TEST,9,Pfizer,1,1950-1959,CAD_broad,0,0,0,Inf,60-69
@@ -1051,6 +1167,7 @@ TEST,9,Pfizer,1,1980-1989,CAD_broad,0,0,0,1981416.5,30-39
 TEST,9,Pfizer,1,1990+,CAD_broad,0,0,0,Inf,<30
 TEST,9,Pfizer,1,<1940,CAD_broad,0,0,0,2591083.12,80+
 TEST,9,Pfizer,1,<1960,CAD_broad,0,0,0,2591083.12,60+
+TEST,9,Pfizer,1,>1960,CAD_broad,0,0,0,482925.89,
 TEST,9,Pfizer,1,all_birth_cohorts,CAD_broad,0,0,0,407058.37,all_birth_cohorts
 TEST,10,Pfizer,1,1940-1949,CAD_broad,0,0,0,Inf,70-79
 TEST,10,Pfizer,1,1950-1959,CAD_broad,0,0,0,Inf,60-69
@@ -1060,6 +1177,7 @@ TEST,10,Pfizer,1,1980-1989,CAD_broad,0,0,0,1981416.5,30-39
 TEST,10,Pfizer,1,1990+,CAD_broad,0,0,0,Inf,<30
 TEST,10,Pfizer,1,<1940,CAD_broad,0,0,0,2591083.12,80+
 TEST,10,Pfizer,1,<1960,CAD_broad,0,0,0,2591083.12,60+
+TEST,10,Pfizer,1,>1960,CAD_broad,0,0,0,471106.02,
 TEST,10,Pfizer,1,all_birth_cohorts,CAD_broad,0,0,0,398628.17,all_birth_cohorts
 TEST,11,Pfizer,1,1940-1949,CAD_broad,0,0,0,Inf,70-79
 TEST,11,Pfizer,1,1950-1959,CAD_broad,0,0,0,Inf,60-69
@@ -1069,6 +1187,7 @@ TEST,11,Pfizer,1,1980-1989,CAD_broad,0,0,0,1981416.5,30-39
 TEST,11,Pfizer,1,1990+,CAD_broad,0,0,0,Inf,<30
 TEST,11,Pfizer,1,<1940,CAD_broad,0,0,0,2591083.12,80+
 TEST,11,Pfizer,1,<1960,CAD_broad,0,0,0,2591083.12,60+
+TEST,11,Pfizer,1,>1960,CAD_broad,0,0,0,459850.93,
 TEST,11,Pfizer,1,all_birth_cohorts,CAD_broad,0,0,0,390540.06,all_birth_cohorts
 TEST,12,Pfizer,1,1940-1949,CAD_broad,0,0,0,Inf,70-79
 TEST,12,Pfizer,1,1950-1959,CAD_broad,0,0,0,Inf,60-69
@@ -1078,6 +1197,7 @@ TEST,12,Pfizer,1,1980-1989,CAD_broad,0,0,0,1981416.5,30-39
 TEST,12,Pfizer,1,1990+,CAD_broad,0,0,0,Inf,<30
 TEST,12,Pfizer,1,<1940,CAD_broad,0,0,0,2591083.12,80+
 TEST,12,Pfizer,1,<1960,CAD_broad,0,0,0,2591083.12,60+
+TEST,12,Pfizer,1,>1960,CAD_broad,0,0,0,449121.07,
 TEST,12,Pfizer,1,all_birth_cohorts,CAD_broad,0,0,0,382773.64,all_birth_cohorts
 TEST,13,Pfizer,1,1940-1949,CAD_broad,0,0,0,Inf,70-79
 TEST,13,Pfizer,1,1950-1959,CAD_broad,0,0,0,Inf,60-69
@@ -1087,6 +1207,7 @@ TEST,13,Pfizer,1,1980-1989,CAD_broad,0,0,0,1981416.5,30-39
 TEST,13,Pfizer,1,1990+,CAD_broad,0,0,0,Inf,<30
 TEST,13,Pfizer,1,<1940,CAD_broad,0,0,0,2591083.12,80+
 TEST,13,Pfizer,1,<1960,CAD_broad,0,0,0,2591083.12,60+
+TEST,13,Pfizer,1,>1960,CAD_broad,0,0,0,438880.53,
 TEST,13,Pfizer,1,all_birth_cohorts,CAD_broad,0,0,0,375310.09,all_birth_cohorts
 TEST,14,Pfizer,1,1940-1949,CAD_broad,0,0,0,Inf,70-79
 TEST,14,Pfizer,1,1950-1959,CAD_broad,0,0,0,Inf,60-69
@@ -1096,6 +1217,7 @@ TEST,14,Pfizer,1,1980-1989,CAD_broad,0,0,0,1981416.5,30-39
 TEST,14,Pfizer,1,1990+,CAD_broad,0,0,0,Inf,<30
 TEST,14,Pfizer,1,<1940,CAD_broad,0,0,0,2591083.12,80+
 TEST,14,Pfizer,1,<1960,CAD_broad,0,0,0,2591083.12,60+
+TEST,14,Pfizer,1,>1960,CAD_broad,0,0,0,434633.3,
 TEST,14,Pfizer,1,all_birth_cohorts,CAD_broad,0,0,0,372199.78,all_birth_cohorts
 TEST,1,Pfizer,2,1940-1949,CAD_broad,0,0,0,Inf,70-79
 TEST,1,Pfizer,2,1950-1959,CAD_broad,0,0,0,Inf,60-69
@@ -1105,6 +1227,7 @@ TEST,1,Pfizer,2,1980-1989,CAD_broad,0,0,0,19248046.01,30-39
 TEST,1,Pfizer,2,1990+,CAD_broad,0,0,0,Inf,<30
 TEST,1,Pfizer,2,<1940,CAD_broad,0,0,0,Inf,80+
 TEST,1,Pfizer,2,<1960,CAD_broad,0,0,0,Inf,60+
+TEST,1,Pfizer,2,>1960,CAD_broad,0,0,0,6416015.34,
 TEST,1,Pfizer,2,all_birth_cohorts,CAD_broad,0,0,0,6416015.34,all_birth_cohorts
 TEST,2,Pfizer,2,1940-1949,CAD_broad,0,0,0,Inf,70-79
 TEST,2,Pfizer,2,1950-1959,CAD_broad,0,0,0,Inf,60-69
@@ -1114,6 +1237,7 @@ TEST,2,Pfizer,2,1980-1989,CAD_broad,0,0,0,9624023,30-39
 TEST,2,Pfizer,2,1990+,CAD_broad,0,0,0,Inf,<30
 TEST,2,Pfizer,2,<1940,CAD_broad,0,0,0,Inf,80+
 TEST,2,Pfizer,2,<1960,CAD_broad,0,0,0,Inf,60+
+TEST,2,Pfizer,2,>1960,CAD_broad,0,0,0,3962833,
 TEST,2,Pfizer,2,all_birth_cohorts,CAD_broad,0,0,0,3962833,all_birth_cohorts
 TEST,3,Pfizer,2,1940-1949,CAD_broad,0,0,0,Inf,70-79
 TEST,3,Pfizer,2,1950-1959,CAD_broad,0,0,0,Inf,60-69
@@ -1123,6 +1247,7 @@ TEST,3,Pfizer,2,1980-1989,CAD_broad,0,0,0,6416015.34,30-39
 TEST,3,Pfizer,2,1990+,CAD_broad,0,0,0,Inf,<30
 TEST,3,Pfizer,2,<1940,CAD_broad,0,0,0,Inf,80+
 TEST,3,Pfizer,2,<1960,CAD_broad,0,0,0,Inf,60+
+TEST,3,Pfizer,2,>1960,CAD_broad,0,0,0,3286251.76,
 TEST,3,Pfizer,2,all_birth_cohorts,CAD_broad,0,0,0,3286251.76,all_birth_cohorts
 TEST,4,Pfizer,2,1940-1949,CAD_broad,0,0,0,Inf,70-79
 TEST,4,Pfizer,2,1950-1959,CAD_broad,0,0,0,Inf,60-69
@@ -1132,6 +1257,7 @@ TEST,4,Pfizer,2,1980-1989,CAD_broad,0,0,0,5389452.88,30-39
 TEST,4,Pfizer,2,1990+,CAD_broad,0,0,0,Inf,<30
 TEST,4,Pfizer,2,<1940,CAD_broad,0,0,0,Inf,80+
 TEST,4,Pfizer,2,<1960,CAD_broad,0,0,0,Inf,60+
+TEST,4,Pfizer,2,>1960,CAD_broad,0,0,0,2994140.49,
 TEST,4,Pfizer,2,all_birth_cohorts,CAD_broad,0,0,0,2994140.49,all_birth_cohorts
 TEST,0,none,no_dose,1940-1949,GENCONV_narrow,0,0,0,6853.67,70-79
 TEST,0,none,no_dose,1950-1959,GENCONV_narrow,0,0,0,5806.35,60-69
@@ -1141,6 +1267,7 @@ TEST,0,none,no_dose,1980-1989,GENCONV_narrow,0,0,0,7109.35,30-39
 TEST,0,none,no_dose,1990+,GENCONV_narrow,0,0,0,3764.32,<30
 TEST,0,none,no_dose,<1940,GENCONV_narrow,0,0,0,8624.23,80+
 TEST,0,none,no_dose,<1960,GENCONV_narrow,0,0,0,2303.7,60+
+TEST,0,none,no_dose,>1960,GENCONV_narrow,0,0,0,1201.61,
 TEST,0,none,no_dose,all_birth_cohorts,GENCONV_narrow,0,0,0,789.7,all_birth_cohorts
 TEST,1,AstraZeneca,1,1940-1949,GENCONV_narrow,0,0,0,19248046.01,70-79
 TEST,1,AstraZeneca,1,1950-1959,GENCONV_narrow,0,0,0,Inf,60-69
@@ -1150,6 +1277,7 @@ TEST,1,AstraZeneca,1,1980-1989,GENCONV_narrow,0,0,0,Inf,30-39
 TEST,1,AstraZeneca,1,1990+,GENCONV_narrow,0,0,0,Inf,<30
 TEST,1,AstraZeneca,1,<1940,GENCONV_narrow,0,0,0,Inf,80+
 TEST,1,AstraZeneca,1,<1960,GENCONV_narrow,0,0,0,19248046.01,60+
+TEST,1,AstraZeneca,1,>1960,GENCONV_narrow,0,0,0,19248046.01,
 TEST,1,AstraZeneca,1,all_birth_cohorts,GENCONV_narrow,0,0,0,9624023,all_birth_cohorts
 TEST,2,AstraZeneca,1,1940-1949,GENCONV_narrow,0,0,0,16842040.26,70-79
 TEST,2,AstraZeneca,1,1950-1959,GENCONV_narrow,0,0,0,Inf,60-69
@@ -1159,6 +1287,7 @@ TEST,2,AstraZeneca,1,1980-1989,GENCONV_narrow,0,0,0,Inf,30-39
 TEST,2,AstraZeneca,1,1990+,GENCONV_narrow,0,0,0,Inf,<30
 TEST,2,AstraZeneca,1,<1940,GENCONV_narrow,0,0,0,Inf,80+
 TEST,2,AstraZeneca,1,<1960,GENCONV_narrow,0,0,0,16842040.26,60+
+TEST,2,AstraZeneca,1,>1960,GENCONV_narrow,0,0,0,9624023,
 TEST,2,AstraZeneca,1,all_birth_cohorts,GENCONV_narrow,0,0,0,6124378.28,all_birth_cohorts
 TEST,1,Pfizer,1,1940-1949,GENCONV_narrow,0,0,0,Inf,70-79
 TEST,1,Pfizer,1,1950-1959,GENCONV_narrow,0,0,0,Inf,60-69
@@ -1168,6 +1297,7 @@ TEST,1,Pfizer,1,1980-1989,GENCONV_narrow,0,0,0,9624023,30-39
 TEST,1,Pfizer,1,1990+,GENCONV_narrow,0,0,0,Inf,<30
 TEST,1,Pfizer,1,<1940,GENCONV_narrow,0,0,0,5858100.96,80+
 TEST,1,Pfizer,1,<1960,GENCONV_narrow,0,0,0,5858100.96,60+
+TEST,1,Pfizer,1,>1960,GENCONV_narrow,0,0,0,1924804.6,
 TEST,1,Pfizer,1,all_birth_cohorts,GENCONV_narrow,0,0,0,1448777.66,all_birth_cohorts
 TEST,2,Pfizer,1,1940-1949,GENCONV_narrow,0,0,0,Inf,70-79
 TEST,2,Pfizer,1,1950-1959,GENCONV_narrow,0,0,0,Inf,60-69
@@ -1177,6 +1307,7 @@ TEST,2,Pfizer,1,1980-1989,GENCONV_narrow,0,0,0,4812011.5,30-39
 TEST,2,Pfizer,1,1990+,GENCONV_narrow,0,0,0,Inf,<30
 TEST,2,Pfizer,1,<1940,GENCONV_narrow,0,0,0,4082918.85,80+
 TEST,2,Pfizer,1,<1960,GENCONV_narrow,0,0,0,4082918.85,60+
+TEST,2,Pfizer,1,>1960,GENCONV_narrow,0,0,0,1044467.61,
 TEST,2,Pfizer,1,all_birth_cohorts,GENCONV_narrow,0,0,0,831705.69,all_birth_cohorts
 TEST,3,Pfizer,1,1940-1949,GENCONV_narrow,0,0,0,Inf,70-79
 TEST,3,Pfizer,1,1950-1959,GENCONV_narrow,0,0,0,Inf,60-69
@@ -1186,6 +1317,7 @@ TEST,3,Pfizer,1,1980-1989,GENCONV_narrow,0,0,0,3208007.67,30-39
 TEST,3,Pfizer,1,1990+,GENCONV_narrow,0,0,0,Inf,<30
 TEST,3,Pfizer,1,<1940,GENCONV_narrow,0,0,0,3368408.05,80+
 TEST,3,Pfizer,1,<1960,GENCONV_narrow,0,0,0,3368408.05,60+
+TEST,3,Pfizer,1,>1960,GENCONV_narrow,0,0,0,756945.63,
 TEST,3,Pfizer,1,all_birth_cohorts,GENCONV_narrow,0,0,0,618056.52,all_birth_cohorts
 TEST,4,Pfizer,1,1940-1949,GENCONV_narrow,0,0,0,Inf,70-79
 TEST,4,Pfizer,1,1950-1959,GENCONV_narrow,0,0,0,Inf,60-69
@@ -1195,6 +1327,7 @@ TEST,4,Pfizer,1,1980-1989,GENCONV_narrow,0,0,0,2406005.75,30-39
 TEST,4,Pfizer,1,1990+,GENCONV_narrow,0,0,0,Inf,<30
 TEST,4,Pfizer,1,<1940,GENCONV_narrow,0,0,0,2866730.26,80+
 TEST,4,Pfizer,1,<1960,GENCONV_narrow,0,0,0,2866730.26,60+
+TEST,4,Pfizer,1,>1960,GENCONV_narrow,0,0,0,604198.75,
 TEST,4,Pfizer,1,all_birth_cohorts,GENCONV_narrow,0,0,0,499023.42,all_birth_cohorts
 TEST,5,Pfizer,1,1940-1949,GENCONV_narrow,0,0,0,Inf,70-79
 TEST,5,Pfizer,1,1950-1959,GENCONV_narrow,0,0,0,Inf,60-69
@@ -1204,6 +1337,7 @@ TEST,5,Pfizer,1,1980-1989,GENCONV_narrow,0,0,0,2105255.03,30-39
 TEST,5,Pfizer,1,1990+,GENCONV_narrow,0,0,0,Inf,<30
 TEST,5,Pfizer,1,<1940,GENCONV_narrow,0,0,0,2591083.12,80+
 TEST,5,Pfizer,1,<1960,GENCONV_narrow,0,0,0,2591083.12,60+
+TEST,5,Pfizer,1,>1960,GENCONV_narrow,0,0,0,545491.18,
 TEST,5,Pfizer,1,all_birth_cohorts,GENCONV_narrow,0,0,0,450623.15,all_birth_cohorts
 TEST,6,Pfizer,1,1940-1949,GENCONV_narrow,0,0,0,Inf,70-79
 TEST,6,Pfizer,1,1950-1959,GENCONV_narrow,0,0,0,Inf,60-69
@@ -1213,6 +1347,7 @@ TEST,6,Pfizer,1,1980-1989,GENCONV_narrow,0,0,0,1981416.5,30-39
 TEST,6,Pfizer,1,1990+,GENCONV_narrow,0,0,0,Inf,<30
 TEST,6,Pfizer,1,<1940,GENCONV_narrow,0,0,0,2591083.12,80+
 TEST,6,Pfizer,1,<1960,GENCONV_narrow,0,0,0,2591083.12,60+
+TEST,6,Pfizer,1,>1960,GENCONV_narrow,0,0,0,522233.81,
 TEST,6,Pfizer,1,all_birth_cohorts,GENCONV_narrow,0,0,0,434633.3,all_birth_cohorts
 TEST,7,Pfizer,1,1940-1949,GENCONV_narrow,0,0,0,Inf,70-79
 TEST,7,Pfizer,1,1950-1959,GENCONV_narrow,0,0,0,Inf,60-69
@@ -1222,6 +1357,7 @@ TEST,7,Pfizer,1,1980-1989,GENCONV_narrow,0,0,0,1981416.5,30-39
 TEST,7,Pfizer,1,1990+,GENCONV_narrow,0,0,0,Inf,<30
 TEST,7,Pfizer,1,<1940,GENCONV_narrow,0,0,0,2591083.12,80+
 TEST,7,Pfizer,1,<1960,GENCONV_narrow,0,0,0,2591083.12,60+
+TEST,7,Pfizer,1,>1960,GENCONV_narrow,0,0,0,508438.95,
 TEST,7,Pfizer,1,all_birth_cohorts,GENCONV_narrow,0,0,0,425035.72,all_birth_cohorts
 TEST,8,Pfizer,1,1940-1949,GENCONV_narrow,0,0,0,Inf,70-79
 TEST,8,Pfizer,1,1950-1959,GENCONV_narrow,0,0,0,Inf,60-69
@@ -1231,6 +1367,7 @@ TEST,8,Pfizer,1,1980-1989,GENCONV_narrow,0,0,0,1981416.5,30-39
 TEST,8,Pfizer,1,1990+,GENCONV_narrow,0,0,0,Inf,<30
 TEST,8,Pfizer,1,<1940,GENCONV_narrow,0,0,0,2591083.12,80+
 TEST,8,Pfizer,1,<1960,GENCONV_narrow,0,0,0,2591083.12,60+
+TEST,8,Pfizer,1,>1960,GENCONV_narrow,0,0,0,495354.13,
 TEST,8,Pfizer,1,all_birth_cohorts,GENCONV_narrow,0,0,0,415852.85,all_birth_cohorts
 TEST,9,Pfizer,1,1940-1949,GENCONV_narrow,0,0,0,Inf,70-79
 TEST,9,Pfizer,1,1950-1959,GENCONV_narrow,0,0,0,Inf,60-69
@@ -1240,6 +1377,7 @@ TEST,9,Pfizer,1,1980-1989,GENCONV_narrow,0,0,0,1981416.5,30-39
 TEST,9,Pfizer,1,1990+,GENCONV_narrow,0,0,0,Inf,<30
 TEST,9,Pfizer,1,<1940,GENCONV_narrow,0,0,0,2591083.12,80+
 TEST,9,Pfizer,1,<1960,GENCONV_narrow,0,0,0,2591083.12,60+
+TEST,9,Pfizer,1,>1960,GENCONV_narrow,0,0,0,482925.89,
 TEST,9,Pfizer,1,all_birth_cohorts,GENCONV_narrow,0,0,0,407058.37,all_birth_cohorts
 TEST,10,Pfizer,1,1940-1949,GENCONV_narrow,0,0,0,Inf,70-79
 TEST,10,Pfizer,1,1950-1959,GENCONV_narrow,0,0,0,Inf,60-69
@@ -1249,6 +1387,7 @@ TEST,10,Pfizer,1,1980-1989,GENCONV_narrow,0,0,0,1981416.5,30-39
 TEST,10,Pfizer,1,1990+,GENCONV_narrow,0,0,0,Inf,<30
 TEST,10,Pfizer,1,<1940,GENCONV_narrow,0,0,0,2591083.12,80+
 TEST,10,Pfizer,1,<1960,GENCONV_narrow,0,0,0,2591083.12,60+
+TEST,10,Pfizer,1,>1960,GENCONV_narrow,0,0,0,471106.02,
 TEST,10,Pfizer,1,all_birth_cohorts,GENCONV_narrow,0,0,0,398628.17,all_birth_cohorts
 TEST,11,Pfizer,1,1940-1949,GENCONV_narrow,0,0,0,Inf,70-79
 TEST,11,Pfizer,1,1950-1959,GENCONV_narrow,0,0,0,Inf,60-69
@@ -1258,6 +1397,7 @@ TEST,11,Pfizer,1,1980-1989,GENCONV_narrow,0,0,0,1981416.5,30-39
 TEST,11,Pfizer,1,1990+,GENCONV_narrow,0,0,0,Inf,<30
 TEST,11,Pfizer,1,<1940,GENCONV_narrow,0,0,0,2591083.12,80+
 TEST,11,Pfizer,1,<1960,GENCONV_narrow,0,0,0,2591083.12,60+
+TEST,11,Pfizer,1,>1960,GENCONV_narrow,0,0,0,459850.93,
 TEST,11,Pfizer,1,all_birth_cohorts,GENCONV_narrow,0,0,0,390540.06,all_birth_cohorts
 TEST,12,Pfizer,1,1940-1949,GENCONV_narrow,0,0,0,Inf,70-79
 TEST,12,Pfizer,1,1950-1959,GENCONV_narrow,0,0,0,Inf,60-69
@@ -1267,6 +1407,7 @@ TEST,12,Pfizer,1,1980-1989,GENCONV_narrow,0,0,0,1981416.5,30-39
 TEST,12,Pfizer,1,1990+,GENCONV_narrow,0,0,0,Inf,<30
 TEST,12,Pfizer,1,<1940,GENCONV_narrow,0,0,0,2591083.12,80+
 TEST,12,Pfizer,1,<1960,GENCONV_narrow,0,0,0,2591083.12,60+
+TEST,12,Pfizer,1,>1960,GENCONV_narrow,0,0,0,449121.07,
 TEST,12,Pfizer,1,all_birth_cohorts,GENCONV_narrow,0,0,0,382773.64,all_birth_cohorts
 TEST,13,Pfizer,1,1940-1949,GENCONV_narrow,0,0,0,Inf,70-79
 TEST,13,Pfizer,1,1950-1959,GENCONV_narrow,0,0,0,Inf,60-69
@@ -1276,6 +1417,7 @@ TEST,13,Pfizer,1,1980-1989,GENCONV_narrow,0,0,0,1981416.5,30-39
 TEST,13,Pfizer,1,1990+,GENCONV_narrow,0,0,0,Inf,<30
 TEST,13,Pfizer,1,<1940,GENCONV_narrow,0,0,0,2591083.12,80+
 TEST,13,Pfizer,1,<1960,GENCONV_narrow,0,0,0,2591083.12,60+
+TEST,13,Pfizer,1,>1960,GENCONV_narrow,0,0,0,438880.53,
 TEST,13,Pfizer,1,all_birth_cohorts,GENCONV_narrow,0,0,0,375310.09,all_birth_cohorts
 TEST,14,Pfizer,1,1940-1949,GENCONV_narrow,0,0,0,Inf,70-79
 TEST,14,Pfizer,1,1950-1959,GENCONV_narrow,0,0,0,Inf,60-69
@@ -1285,6 +1427,7 @@ TEST,14,Pfizer,1,1980-1989,GENCONV_narrow,0,0,0,1981416.5,30-39
 TEST,14,Pfizer,1,1990+,GENCONV_narrow,0,0,0,Inf,<30
 TEST,14,Pfizer,1,<1940,GENCONV_narrow,0,0,0,2591083.12,80+
 TEST,14,Pfizer,1,<1960,GENCONV_narrow,0,0,0,2591083.12,60+
+TEST,14,Pfizer,1,>1960,GENCONV_narrow,0,0,0,434633.3,
 TEST,14,Pfizer,1,all_birth_cohorts,GENCONV_narrow,0,0,0,372199.78,all_birth_cohorts
 TEST,1,Pfizer,2,1940-1949,GENCONV_narrow,0,0,0,Inf,70-79
 TEST,1,Pfizer,2,1950-1959,GENCONV_narrow,0,0,0,Inf,60-69
@@ -1294,6 +1437,7 @@ TEST,1,Pfizer,2,1980-1989,GENCONV_narrow,0,0,0,19248046.01,30-39
 TEST,1,Pfizer,2,1990+,GENCONV_narrow,0,0,0,Inf,<30
 TEST,1,Pfizer,2,<1940,GENCONV_narrow,0,0,0,Inf,80+
 TEST,1,Pfizer,2,<1960,GENCONV_narrow,0,0,0,Inf,60+
+TEST,1,Pfizer,2,>1960,GENCONV_narrow,0,0,0,6416015.34,
 TEST,1,Pfizer,2,all_birth_cohorts,GENCONV_narrow,0,0,0,6416015.34,all_birth_cohorts
 TEST,2,Pfizer,2,1940-1949,GENCONV_narrow,0,0,0,Inf,70-79
 TEST,2,Pfizer,2,1950-1959,GENCONV_narrow,0,0,0,Inf,60-69
@@ -1303,6 +1447,7 @@ TEST,2,Pfizer,2,1980-1989,GENCONV_narrow,0,0,0,9624023,30-39
 TEST,2,Pfizer,2,1990+,GENCONV_narrow,0,0,0,Inf,<30
 TEST,2,Pfizer,2,<1940,GENCONV_narrow,0,0,0,Inf,80+
 TEST,2,Pfizer,2,<1960,GENCONV_narrow,0,0,0,Inf,60+
+TEST,2,Pfizer,2,>1960,GENCONV_narrow,0,0,0,3962833,
 TEST,2,Pfizer,2,all_birth_cohorts,GENCONV_narrow,0,0,0,3962833,all_birth_cohorts
 TEST,3,Pfizer,2,1940-1949,GENCONV_narrow,0,0,0,Inf,70-79
 TEST,3,Pfizer,2,1950-1959,GENCONV_narrow,0,0,0,Inf,60-69
@@ -1312,6 +1457,7 @@ TEST,3,Pfizer,2,1980-1989,GENCONV_narrow,0,0,0,6416015.34,30-39
 TEST,3,Pfizer,2,1990+,GENCONV_narrow,0,0,0,Inf,<30
 TEST,3,Pfizer,2,<1940,GENCONV_narrow,0,0,0,Inf,80+
 TEST,3,Pfizer,2,<1960,GENCONV_narrow,0,0,0,Inf,60+
+TEST,3,Pfizer,2,>1960,GENCONV_narrow,0,0,0,3286251.76,
 TEST,3,Pfizer,2,all_birth_cohorts,GENCONV_narrow,0,0,0,3286251.76,all_birth_cohorts
 TEST,4,Pfizer,2,1940-1949,GENCONV_narrow,0,0,0,Inf,70-79
 TEST,4,Pfizer,2,1950-1959,GENCONV_narrow,0,0,0,Inf,60-69
@@ -1321,6 +1467,7 @@ TEST,4,Pfizer,2,1980-1989,GENCONV_narrow,0,0,0,5389452.88,30-39
 TEST,4,Pfizer,2,1990+,GENCONV_narrow,0,0,0,Inf,<30
 TEST,4,Pfizer,2,<1940,GENCONV_narrow,0,0,0,Inf,80+
 TEST,4,Pfizer,2,<1960,GENCONV_narrow,0,0,0,Inf,60+
+TEST,4,Pfizer,2,>1960,GENCONV_narrow,0,0,0,2994140.49,
 TEST,4,Pfizer,2,all_birth_cohorts,GENCONV_narrow,0,0,0,2994140.49,all_birth_cohorts
 TEST,0,none,no_dose,1940-1949,GENCONV_broad,0,0,0,6853.67,70-79
 TEST,0,none,no_dose,1950-1959,GENCONV_broad,0,0,0,5806.35,60-69
@@ -1330,6 +1477,7 @@ TEST,0,none,no_dose,1980-1989,GENCONV_broad,0,0,0,7109.35,30-39
 TEST,0,none,no_dose,1990+,GENCONV_broad,0,0,0,3764.32,<30
 TEST,0,none,no_dose,<1940,GENCONV_broad,0,0,0,8624.23,80+
 TEST,0,none,no_dose,<1960,GENCONV_broad,0,0,0,2303.7,60+
+TEST,0,none,no_dose,>1960,GENCONV_broad,0,0,0,1201.61,
 TEST,0,none,no_dose,all_birth_cohorts,GENCONV_broad,0,0,0,789.7,all_birth_cohorts
 TEST,1,AstraZeneca,1,1940-1949,GENCONV_broad,0,0,0,19248046.01,70-79
 TEST,1,AstraZeneca,1,1950-1959,GENCONV_broad,0,0,0,Inf,60-69
@@ -1339,6 +1487,7 @@ TEST,1,AstraZeneca,1,1980-1989,GENCONV_broad,0,0,0,Inf,30-39
 TEST,1,AstraZeneca,1,1990+,GENCONV_broad,0,0,0,Inf,<30
 TEST,1,AstraZeneca,1,<1940,GENCONV_broad,0,0,0,Inf,80+
 TEST,1,AstraZeneca,1,<1960,GENCONV_broad,0,0,0,19248046.01,60+
+TEST,1,AstraZeneca,1,>1960,GENCONV_broad,0,0,0,19248046.01,
 TEST,1,AstraZeneca,1,all_birth_cohorts,GENCONV_broad,0,0,0,9624023,all_birth_cohorts
 TEST,2,AstraZeneca,1,1940-1949,GENCONV_broad,0,0,0,16842040.26,70-79
 TEST,2,AstraZeneca,1,1950-1959,GENCONV_broad,0,0,0,Inf,60-69
@@ -1348,6 +1497,7 @@ TEST,2,AstraZeneca,1,1980-1989,GENCONV_broad,0,0,0,Inf,30-39
 TEST,2,AstraZeneca,1,1990+,GENCONV_broad,0,0,0,Inf,<30
 TEST,2,AstraZeneca,1,<1940,GENCONV_broad,0,0,0,Inf,80+
 TEST,2,AstraZeneca,1,<1960,GENCONV_broad,0,0,0,16842040.26,60+
+TEST,2,AstraZeneca,1,>1960,GENCONV_broad,0,0,0,9624023,
 TEST,2,AstraZeneca,1,all_birth_cohorts,GENCONV_broad,0,0,0,6124378.28,all_birth_cohorts
 TEST,1,Pfizer,1,1940-1949,GENCONV_broad,0,0,0,Inf,70-79
 TEST,1,Pfizer,1,1950-1959,GENCONV_broad,0,0,0,Inf,60-69
@@ -1357,6 +1507,7 @@ TEST,1,Pfizer,1,1980-1989,GENCONV_broad,0,0,0,9624023,30-39
 TEST,1,Pfizer,1,1990+,GENCONV_broad,0,0,0,Inf,<30
 TEST,1,Pfizer,1,<1940,GENCONV_broad,0,0,0,5858100.96,80+
 TEST,1,Pfizer,1,<1960,GENCONV_broad,0,0,0,5858100.96,60+
+TEST,1,Pfizer,1,>1960,GENCONV_broad,0,0,0,1924804.6,
 TEST,1,Pfizer,1,all_birth_cohorts,GENCONV_broad,0,0,0,1448777.66,all_birth_cohorts
 TEST,2,Pfizer,1,1940-1949,GENCONV_broad,0,0,0,Inf,70-79
 TEST,2,Pfizer,1,1950-1959,GENCONV_broad,0,0,0,Inf,60-69
@@ -1366,6 +1517,7 @@ TEST,2,Pfizer,1,1980-1989,GENCONV_broad,0,0,0,4812011.5,30-39
 TEST,2,Pfizer,1,1990+,GENCONV_broad,0,0,0,Inf,<30
 TEST,2,Pfizer,1,<1940,GENCONV_broad,0,0,0,4082918.85,80+
 TEST,2,Pfizer,1,<1960,GENCONV_broad,0,0,0,4082918.85,60+
+TEST,2,Pfizer,1,>1960,GENCONV_broad,0,0,0,1044467.61,
 TEST,2,Pfizer,1,all_birth_cohorts,GENCONV_broad,0,0,0,831705.69,all_birth_cohorts
 TEST,3,Pfizer,1,1940-1949,GENCONV_broad,0,0,0,Inf,70-79
 TEST,3,Pfizer,1,1950-1959,GENCONV_broad,0,0,0,Inf,60-69
@@ -1375,6 +1527,7 @@ TEST,3,Pfizer,1,1980-1989,GENCONV_broad,0,0,0,3208007.67,30-39
 TEST,3,Pfizer,1,1990+,GENCONV_broad,0,0,0,Inf,<30
 TEST,3,Pfizer,1,<1940,GENCONV_broad,0,0,0,3368408.05,80+
 TEST,3,Pfizer,1,<1960,GENCONV_broad,0,0,0,3368408.05,60+
+TEST,3,Pfizer,1,>1960,GENCONV_broad,0,0,0,756945.63,
 TEST,3,Pfizer,1,all_birth_cohorts,GENCONV_broad,0,0,0,618056.52,all_birth_cohorts
 TEST,4,Pfizer,1,1940-1949,GENCONV_broad,0,0,0,Inf,70-79
 TEST,4,Pfizer,1,1950-1959,GENCONV_broad,0,0,0,Inf,60-69
@@ -1384,6 +1537,7 @@ TEST,4,Pfizer,1,1980-1989,GENCONV_broad,0,0,0,2406005.75,30-39
 TEST,4,Pfizer,1,1990+,GENCONV_broad,0,0,0,Inf,<30
 TEST,4,Pfizer,1,<1940,GENCONV_broad,0,0,0,2866730.26,80+
 TEST,4,Pfizer,1,<1960,GENCONV_broad,0,0,0,2866730.26,60+
+TEST,4,Pfizer,1,>1960,GENCONV_broad,0,0,0,604198.75,
 TEST,4,Pfizer,1,all_birth_cohorts,GENCONV_broad,0,0,0,499023.42,all_birth_cohorts
 TEST,5,Pfizer,1,1940-1949,GENCONV_broad,0,0,0,Inf,70-79
 TEST,5,Pfizer,1,1950-1959,GENCONV_broad,0,0,0,Inf,60-69
@@ -1393,6 +1547,7 @@ TEST,5,Pfizer,1,1980-1989,GENCONV_broad,0,0,0,2105255.03,30-39
 TEST,5,Pfizer,1,1990+,GENCONV_broad,0,0,0,Inf,<30
 TEST,5,Pfizer,1,<1940,GENCONV_broad,0,0,0,2591083.12,80+
 TEST,5,Pfizer,1,<1960,GENCONV_broad,0,0,0,2591083.12,60+
+TEST,5,Pfizer,1,>1960,GENCONV_broad,0,0,0,545491.18,
 TEST,5,Pfizer,1,all_birth_cohorts,GENCONV_broad,0,0,0,450623.15,all_birth_cohorts
 TEST,6,Pfizer,1,1940-1949,GENCONV_broad,0,0,0,Inf,70-79
 TEST,6,Pfizer,1,1950-1959,GENCONV_broad,0,0,0,Inf,60-69
@@ -1402,6 +1557,7 @@ TEST,6,Pfizer,1,1980-1989,GENCONV_broad,0,0,0,1981416.5,30-39
 TEST,6,Pfizer,1,1990+,GENCONV_broad,0,0,0,Inf,<30
 TEST,6,Pfizer,1,<1940,GENCONV_broad,0,0,0,2591083.12,80+
 TEST,6,Pfizer,1,<1960,GENCONV_broad,0,0,0,2591083.12,60+
+TEST,6,Pfizer,1,>1960,GENCONV_broad,0,0,0,522233.81,
 TEST,6,Pfizer,1,all_birth_cohorts,GENCONV_broad,0,0,0,434633.3,all_birth_cohorts
 TEST,7,Pfizer,1,1940-1949,GENCONV_broad,0,0,0,Inf,70-79
 TEST,7,Pfizer,1,1950-1959,GENCONV_broad,0,0,0,Inf,60-69
@@ -1411,6 +1567,7 @@ TEST,7,Pfizer,1,1980-1989,GENCONV_broad,0,0,0,1981416.5,30-39
 TEST,7,Pfizer,1,1990+,GENCONV_broad,0,0,0,Inf,<30
 TEST,7,Pfizer,1,<1940,GENCONV_broad,0,0,0,2591083.12,80+
 TEST,7,Pfizer,1,<1960,GENCONV_broad,0,0,0,2591083.12,60+
+TEST,7,Pfizer,1,>1960,GENCONV_broad,0,0,0,508438.95,
 TEST,7,Pfizer,1,all_birth_cohorts,GENCONV_broad,0,0,0,425035.72,all_birth_cohorts
 TEST,8,Pfizer,1,1940-1949,GENCONV_broad,0,0,0,Inf,70-79
 TEST,8,Pfizer,1,1950-1959,GENCONV_broad,0,0,0,Inf,60-69
@@ -1420,6 +1577,7 @@ TEST,8,Pfizer,1,1980-1989,GENCONV_broad,0,0,0,1981416.5,30-39
 TEST,8,Pfizer,1,1990+,GENCONV_broad,0,0,0,Inf,<30
 TEST,8,Pfizer,1,<1940,GENCONV_broad,0,0,0,2591083.12,80+
 TEST,8,Pfizer,1,<1960,GENCONV_broad,0,0,0,2591083.12,60+
+TEST,8,Pfizer,1,>1960,GENCONV_broad,0,0,0,495354.13,
 TEST,8,Pfizer,1,all_birth_cohorts,GENCONV_broad,0,0,0,415852.85,all_birth_cohorts
 TEST,9,Pfizer,1,1940-1949,GENCONV_broad,0,0,0,Inf,70-79
 TEST,9,Pfizer,1,1950-1959,GENCONV_broad,0,0,0,Inf,60-69
@@ -1429,6 +1587,7 @@ TEST,9,Pfizer,1,1980-1989,GENCONV_broad,0,0,0,1981416.5,30-39
 TEST,9,Pfizer,1,1990+,GENCONV_broad,0,0,0,Inf,<30
 TEST,9,Pfizer,1,<1940,GENCONV_broad,0,0,0,2591083.12,80+
 TEST,9,Pfizer,1,<1960,GENCONV_broad,0,0,0,2591083.12,60+
+TEST,9,Pfizer,1,>1960,GENCONV_broad,0,0,0,482925.89,
 TEST,9,Pfizer,1,all_birth_cohorts,GENCONV_broad,0,0,0,407058.37,all_birth_cohorts
 TEST,10,Pfizer,1,1940-1949,GENCONV_broad,0,0,0,Inf,70-79
 TEST,10,Pfizer,1,1950-1959,GENCONV_broad,0,0,0,Inf,60-69
@@ -1438,6 +1597,7 @@ TEST,10,Pfizer,1,1980-1989,GENCONV_broad,0,0,0,1981416.5,30-39
 TEST,10,Pfizer,1,1990+,GENCONV_broad,0,0,0,Inf,<30
 TEST,10,Pfizer,1,<1940,GENCONV_broad,0,0,0,2591083.12,80+
 TEST,10,Pfizer,1,<1960,GENCONV_broad,0,0,0,2591083.12,60+
+TEST,10,Pfizer,1,>1960,GENCONV_broad,0,0,0,471106.02,
 TEST,10,Pfizer,1,all_birth_cohorts,GENCONV_broad,0,0,0,398628.17,all_birth_cohorts
 TEST,11,Pfizer,1,1940-1949,GENCONV_broad,0,0,0,Inf,70-79
 TEST,11,Pfizer,1,1950-1959,GENCONV_broad,0,0,0,Inf,60-69
@@ -1447,6 +1607,7 @@ TEST,11,Pfizer,1,1980-1989,GENCONV_broad,0,0,0,1981416.5,30-39
 TEST,11,Pfizer,1,1990+,GENCONV_broad,0,0,0,Inf,<30
 TEST,11,Pfizer,1,<1940,GENCONV_broad,0,0,0,2591083.12,80+
 TEST,11,Pfizer,1,<1960,GENCONV_broad,0,0,0,2591083.12,60+
+TEST,11,Pfizer,1,>1960,GENCONV_broad,0,0,0,459850.93,
 TEST,11,Pfizer,1,all_birth_cohorts,GENCONV_broad,0,0,0,390540.06,all_birth_cohorts
 TEST,12,Pfizer,1,1940-1949,GENCONV_broad,0,0,0,Inf,70-79
 TEST,12,Pfizer,1,1950-1959,GENCONV_broad,0,0,0,Inf,60-69
@@ -1456,6 +1617,7 @@ TEST,12,Pfizer,1,1980-1989,GENCONV_broad,0,0,0,1981416.5,30-39
 TEST,12,Pfizer,1,1990+,GENCONV_broad,0,0,0,Inf,<30
 TEST,12,Pfizer,1,<1940,GENCONV_broad,0,0,0,2591083.12,80+
 TEST,12,Pfizer,1,<1960,GENCONV_broad,0,0,0,2591083.12,60+
+TEST,12,Pfizer,1,>1960,GENCONV_broad,0,0,0,449121.07,
 TEST,12,Pfizer,1,all_birth_cohorts,GENCONV_broad,0,0,0,382773.64,all_birth_cohorts
 TEST,13,Pfizer,1,1940-1949,GENCONV_broad,0,0,0,Inf,70-79
 TEST,13,Pfizer,1,1950-1959,GENCONV_broad,0,0,0,Inf,60-69
@@ -1465,6 +1627,7 @@ TEST,13,Pfizer,1,1980-1989,GENCONV_broad,0,0,0,1981416.5,30-39
 TEST,13,Pfizer,1,1990+,GENCONV_broad,0,0,0,Inf,<30
 TEST,13,Pfizer,1,<1940,GENCONV_broad,0,0,0,2591083.12,80+
 TEST,13,Pfizer,1,<1960,GENCONV_broad,0,0,0,2591083.12,60+
+TEST,13,Pfizer,1,>1960,GENCONV_broad,0,0,0,438880.53,
 TEST,13,Pfizer,1,all_birth_cohorts,GENCONV_broad,0,0,0,375310.09,all_birth_cohorts
 TEST,14,Pfizer,1,1940-1949,GENCONV_broad,0,0,0,Inf,70-79
 TEST,14,Pfizer,1,1950-1959,GENCONV_broad,0,0,0,Inf,60-69
@@ -1474,6 +1637,7 @@ TEST,14,Pfizer,1,1980-1989,GENCONV_broad,0,0,0,1981416.5,30-39
 TEST,14,Pfizer,1,1990+,GENCONV_broad,0,0,0,Inf,<30
 TEST,14,Pfizer,1,<1940,GENCONV_broad,0,0,0,2591083.12,80+
 TEST,14,Pfizer,1,<1960,GENCONV_broad,0,0,0,2591083.12,60+
+TEST,14,Pfizer,1,>1960,GENCONV_broad,0,0,0,434633.3,
 TEST,14,Pfizer,1,all_birth_cohorts,GENCONV_broad,0,0,0,372199.78,all_birth_cohorts
 TEST,1,Pfizer,2,1940-1949,GENCONV_broad,0,0,0,Inf,70-79
 TEST,1,Pfizer,2,1950-1959,GENCONV_broad,0,0,0,Inf,60-69
@@ -1483,6 +1647,7 @@ TEST,1,Pfizer,2,1980-1989,GENCONV_broad,0,0,0,19248046.01,30-39
 TEST,1,Pfizer,2,1990+,GENCONV_broad,0,0,0,Inf,<30
 TEST,1,Pfizer,2,<1940,GENCONV_broad,0,0,0,Inf,80+
 TEST,1,Pfizer,2,<1960,GENCONV_broad,0,0,0,Inf,60+
+TEST,1,Pfizer,2,>1960,GENCONV_broad,0,0,0,6416015.34,
 TEST,1,Pfizer,2,all_birth_cohorts,GENCONV_broad,0,0,0,6416015.34,all_birth_cohorts
 TEST,2,Pfizer,2,1940-1949,GENCONV_broad,0,0,0,Inf,70-79
 TEST,2,Pfizer,2,1950-1959,GENCONV_broad,0,0,0,Inf,60-69
@@ -1492,6 +1657,7 @@ TEST,2,Pfizer,2,1980-1989,GENCONV_broad,0,0,0,9624023,30-39
 TEST,2,Pfizer,2,1990+,GENCONV_broad,0,0,0,Inf,<30
 TEST,2,Pfizer,2,<1940,GENCONV_broad,0,0,0,Inf,80+
 TEST,2,Pfizer,2,<1960,GENCONV_broad,0,0,0,Inf,60+
+TEST,2,Pfizer,2,>1960,GENCONV_broad,0,0,0,3962833,
 TEST,2,Pfizer,2,all_birth_cohorts,GENCONV_broad,0,0,0,3962833,all_birth_cohorts
 TEST,3,Pfizer,2,1940-1949,GENCONV_broad,0,0,0,Inf,70-79
 TEST,3,Pfizer,2,1950-1959,GENCONV_broad,0,0,0,Inf,60-69
@@ -1501,6 +1667,7 @@ TEST,3,Pfizer,2,1980-1989,GENCONV_broad,0,0,0,6416015.34,30-39
 TEST,3,Pfizer,2,1990+,GENCONV_broad,0,0,0,Inf,<30
 TEST,3,Pfizer,2,<1940,GENCONV_broad,0,0,0,Inf,80+
 TEST,3,Pfizer,2,<1960,GENCONV_broad,0,0,0,Inf,60+
+TEST,3,Pfizer,2,>1960,GENCONV_broad,0,0,0,3286251.76,
 TEST,3,Pfizer,2,all_birth_cohorts,GENCONV_broad,0,0,0,3286251.76,all_birth_cohorts
 TEST,4,Pfizer,2,1940-1949,GENCONV_broad,0,0,0,Inf,70-79
 TEST,4,Pfizer,2,1950-1959,GENCONV_broad,0,0,0,Inf,60-69
@@ -1510,6 +1677,7 @@ TEST,4,Pfizer,2,1980-1989,GENCONV_broad,0,0,0,5389452.88,30-39
 TEST,4,Pfizer,2,1990+,GENCONV_broad,0,0,0,Inf,<30
 TEST,4,Pfizer,2,<1940,GENCONV_broad,0,0,0,Inf,80+
 TEST,4,Pfizer,2,<1960,GENCONV_broad,0,0,0,Inf,60+
+TEST,4,Pfizer,2,>1960,GENCONV_broad,0,0,0,2994140.49,
 TEST,4,Pfizer,2,all_birth_cohorts,GENCONV_broad,0,0,0,2994140.49,all_birth_cohorts
 TEST,0,none,no_dose,1940-1949,ANAPHYL_broad,0,0,0,6853.67,70-79
 TEST,0,none,no_dose,1950-1959,ANAPHYL_broad,0,0,0,5806.35,60-69
@@ -1519,6 +1687,7 @@ TEST,0,none,no_dose,1980-1989,ANAPHYL_broad,1,1930.29,48.87,10754.9,30-39
 TEST,0,none,no_dose,1990+,ANAPHYL_broad,0,0,0,3764.32,<30
 TEST,0,none,no_dose,<1940,ANAPHYL_broad,0,0,0,8624.23,80+
 TEST,0,none,no_dose,<1960,ANAPHYL_broad,0,0,0,2303.7,60+
+TEST,0,none,no_dose,>1960,ANAPHYL_broad,1,325.83,8.25,1815.38,
 TEST,0,none,no_dose,all_birth_cohorts,ANAPHYL_broad,1,214.11,5.42,1192.96,all_birth_cohorts
 TEST,1,AstraZeneca,1,1940-1949,ANAPHYL_broad,0,0,0,19248046.01,70-79
 TEST,1,AstraZeneca,1,1950-1959,ANAPHYL_broad,0,0,0,Inf,60-69
@@ -1528,6 +1697,7 @@ TEST,1,AstraZeneca,1,1980-1989,ANAPHYL_broad,0,0,0,Inf,30-39
 TEST,1,AstraZeneca,1,1990+,ANAPHYL_broad,0,0,0,Inf,<30
 TEST,1,AstraZeneca,1,<1940,ANAPHYL_broad,0,0,0,Inf,80+
 TEST,1,AstraZeneca,1,<1960,ANAPHYL_broad,0,0,0,19248046.01,60+
+TEST,1,AstraZeneca,1,>1960,ANAPHYL_broad,0,0,0,19248046.01,
 TEST,1,AstraZeneca,1,all_birth_cohorts,ANAPHYL_broad,0,0,0,9624023,all_birth_cohorts
 TEST,2,AstraZeneca,1,1940-1949,ANAPHYL_broad,0,0,0,16842040.26,70-79
 TEST,2,AstraZeneca,1,1950-1959,ANAPHYL_broad,0,0,0,Inf,60-69
@@ -1537,6 +1707,7 @@ TEST,2,AstraZeneca,1,1980-1989,ANAPHYL_broad,0,0,0,Inf,30-39
 TEST,2,AstraZeneca,1,1990+,ANAPHYL_broad,0,0,0,Inf,<30
 TEST,2,AstraZeneca,1,<1940,ANAPHYL_broad,0,0,0,Inf,80+
 TEST,2,AstraZeneca,1,<1960,ANAPHYL_broad,0,0,0,16842040.26,60+
+TEST,2,AstraZeneca,1,>1960,ANAPHYL_broad,0,0,0,9624023,
 TEST,2,AstraZeneca,1,all_birth_cohorts,ANAPHYL_broad,0,0,0,6124378.28,all_birth_cohorts
 TEST,1,Pfizer,1,1940-1949,ANAPHYL_broad,0,0,0,Inf,70-79
 TEST,1,Pfizer,1,1950-1959,ANAPHYL_broad,0,0,0,Inf,60-69
@@ -1546,6 +1717,7 @@ TEST,1,Pfizer,1,1980-1989,ANAPHYL_broad,0,0,0,9624023,30-39
 TEST,1,Pfizer,1,1990+,ANAPHYL_broad,0,0,0,Inf,<30
 TEST,1,Pfizer,1,<1940,ANAPHYL_broad,0,0,0,5858100.96,80+
 TEST,1,Pfizer,1,<1960,ANAPHYL_broad,0,0,0,5858100.96,60+
+TEST,1,Pfizer,1,>1960,ANAPHYL_broad,0,0,0,1924804.6,
 TEST,1,Pfizer,1,all_birth_cohorts,ANAPHYL_broad,0,0,0,1448777.66,all_birth_cohorts
 TEST,2,Pfizer,1,1940-1949,ANAPHYL_broad,0,0,0,Inf,70-79
 TEST,2,Pfizer,1,1950-1959,ANAPHYL_broad,0,0,0,Inf,60-69
@@ -1555,6 +1727,7 @@ TEST,2,Pfizer,1,1980-1989,ANAPHYL_broad,0,0,0,4812011.5,30-39
 TEST,2,Pfizer,1,1990+,ANAPHYL_broad,0,0,0,Inf,<30
 TEST,2,Pfizer,1,<1940,ANAPHYL_broad,0,0,0,4082918.85,80+
 TEST,2,Pfizer,1,<1960,ANAPHYL_broad,0,0,0,4082918.85,60+
+TEST,2,Pfizer,1,>1960,ANAPHYL_broad,0,0,0,1044467.61,
 TEST,2,Pfizer,1,all_birth_cohorts,ANAPHYL_broad,0,0,0,831705.69,all_birth_cohorts
 TEST,3,Pfizer,1,1940-1949,ANAPHYL_broad,0,0,0,Inf,70-79
 TEST,3,Pfizer,1,1950-1959,ANAPHYL_broad,0,0,0,Inf,60-69
@@ -1564,6 +1737,7 @@ TEST,3,Pfizer,1,1980-1989,ANAPHYL_broad,0,0,0,3208007.67,30-39
 TEST,3,Pfizer,1,1990+,ANAPHYL_broad,0,0,0,Inf,<30
 TEST,3,Pfizer,1,<1940,ANAPHYL_broad,0,0,0,3368408.05,80+
 TEST,3,Pfizer,1,<1960,ANAPHYL_broad,0,0,0,3368408.05,60+
+TEST,3,Pfizer,1,>1960,ANAPHYL_broad,0,0,0,756945.63,
 TEST,3,Pfizer,1,all_birth_cohorts,ANAPHYL_broad,0,0,0,618056.52,all_birth_cohorts
 TEST,4,Pfizer,1,1940-1949,ANAPHYL_broad,0,0,0,Inf,70-79
 TEST,4,Pfizer,1,1950-1959,ANAPHYL_broad,0,0,0,Inf,60-69
@@ -1573,6 +1747,7 @@ TEST,4,Pfizer,1,1980-1989,ANAPHYL_broad,0,0,0,2406005.75,30-39
 TEST,4,Pfizer,1,1990+,ANAPHYL_broad,0,0,0,Inf,<30
 TEST,4,Pfizer,1,<1940,ANAPHYL_broad,0,0,0,2866730.26,80+
 TEST,4,Pfizer,1,<1960,ANAPHYL_broad,0,0,0,2866730.26,60+
+TEST,4,Pfizer,1,>1960,ANAPHYL_broad,0,0,0,604198.75,
 TEST,4,Pfizer,1,all_birth_cohorts,ANAPHYL_broad,0,0,0,499023.42,all_birth_cohorts
 TEST,5,Pfizer,1,1940-1949,ANAPHYL_broad,0,0,0,Inf,70-79
 TEST,5,Pfizer,1,1950-1959,ANAPHYL_broad,0,0,0,Inf,60-69
@@ -1582,6 +1757,7 @@ TEST,5,Pfizer,1,1980-1989,ANAPHYL_broad,0,0,0,2105255.03,30-39
 TEST,5,Pfizer,1,1990+,ANAPHYL_broad,0,0,0,Inf,<30
 TEST,5,Pfizer,1,<1940,ANAPHYL_broad,0,0,0,2591083.12,80+
 TEST,5,Pfizer,1,<1960,ANAPHYL_broad,0,0,0,2591083.12,60+
+TEST,5,Pfizer,1,>1960,ANAPHYL_broad,0,0,0,545491.18,
 TEST,5,Pfizer,1,all_birth_cohorts,ANAPHYL_broad,0,0,0,450623.15,all_birth_cohorts
 TEST,6,Pfizer,1,1940-1949,ANAPHYL_broad,0,0,0,Inf,70-79
 TEST,6,Pfizer,1,1950-1959,ANAPHYL_broad,0,0,0,Inf,60-69
@@ -1591,6 +1767,7 @@ TEST,6,Pfizer,1,1980-1989,ANAPHYL_broad,0,0,0,1981416.5,30-39
 TEST,6,Pfizer,1,1990+,ANAPHYL_broad,0,0,0,Inf,<30
 TEST,6,Pfizer,1,<1940,ANAPHYL_broad,0,0,0,2591083.12,80+
 TEST,6,Pfizer,1,<1960,ANAPHYL_broad,0,0,0,2591083.12,60+
+TEST,6,Pfizer,1,>1960,ANAPHYL_broad,0,0,0,522233.81,
 TEST,6,Pfizer,1,all_birth_cohorts,ANAPHYL_broad,0,0,0,434633.3,all_birth_cohorts
 TEST,7,Pfizer,1,1940-1949,ANAPHYL_broad,0,0,0,Inf,70-79
 TEST,7,Pfizer,1,1950-1959,ANAPHYL_broad,0,0,0,Inf,60-69
@@ -1600,6 +1777,7 @@ TEST,7,Pfizer,1,1980-1989,ANAPHYL_broad,0,0,0,1981416.5,30-39
 TEST,7,Pfizer,1,1990+,ANAPHYL_broad,0,0,0,Inf,<30
 TEST,7,Pfizer,1,<1940,ANAPHYL_broad,0,0,0,2591083.12,80+
 TEST,7,Pfizer,1,<1960,ANAPHYL_broad,0,0,0,2591083.12,60+
+TEST,7,Pfizer,1,>1960,ANAPHYL_broad,0,0,0,508438.95,
 TEST,7,Pfizer,1,all_birth_cohorts,ANAPHYL_broad,0,0,0,425035.72,all_birth_cohorts
 TEST,8,Pfizer,1,1940-1949,ANAPHYL_broad,0,0,0,Inf,70-79
 TEST,8,Pfizer,1,1950-1959,ANAPHYL_broad,0,0,0,Inf,60-69
@@ -1609,6 +1787,7 @@ TEST,8,Pfizer,1,1980-1989,ANAPHYL_broad,0,0,0,1981416.5,30-39
 TEST,8,Pfizer,1,1990+,ANAPHYL_broad,0,0,0,Inf,<30
 TEST,8,Pfizer,1,<1940,ANAPHYL_broad,0,0,0,2591083.12,80+
 TEST,8,Pfizer,1,<1960,ANAPHYL_broad,0,0,0,2591083.12,60+
+TEST,8,Pfizer,1,>1960,ANAPHYL_broad,0,0,0,495354.13,
 TEST,8,Pfizer,1,all_birth_cohorts,ANAPHYL_broad,0,0,0,415852.85,all_birth_cohorts
 TEST,9,Pfizer,1,1940-1949,ANAPHYL_broad,0,0,0,Inf,70-79
 TEST,9,Pfizer,1,1950-1959,ANAPHYL_broad,0,0,0,Inf,60-69
@@ -1618,6 +1797,7 @@ TEST,9,Pfizer,1,1980-1989,ANAPHYL_broad,0,0,0,1981416.5,30-39
 TEST,9,Pfizer,1,1990+,ANAPHYL_broad,0,0,0,Inf,<30
 TEST,9,Pfizer,1,<1940,ANAPHYL_broad,0,0,0,2591083.12,80+
 TEST,9,Pfizer,1,<1960,ANAPHYL_broad,0,0,0,2591083.12,60+
+TEST,9,Pfizer,1,>1960,ANAPHYL_broad,0,0,0,482925.89,
 TEST,9,Pfizer,1,all_birth_cohorts,ANAPHYL_broad,0,0,0,407058.37,all_birth_cohorts
 TEST,10,Pfizer,1,1940-1949,ANAPHYL_broad,0,0,0,Inf,70-79
 TEST,10,Pfizer,1,1950-1959,ANAPHYL_broad,0,0,0,Inf,60-69
@@ -1627,6 +1807,7 @@ TEST,10,Pfizer,1,1980-1989,ANAPHYL_broad,0,0,0,1981416.5,30-39
 TEST,10,Pfizer,1,1990+,ANAPHYL_broad,0,0,0,Inf,<30
 TEST,10,Pfizer,1,<1940,ANAPHYL_broad,0,0,0,2591083.12,80+
 TEST,10,Pfizer,1,<1960,ANAPHYL_broad,0,0,0,2591083.12,60+
+TEST,10,Pfizer,1,>1960,ANAPHYL_broad,0,0,0,471106.02,
 TEST,10,Pfizer,1,all_birth_cohorts,ANAPHYL_broad,0,0,0,398628.17,all_birth_cohorts
 TEST,11,Pfizer,1,1940-1949,ANAPHYL_broad,0,0,0,Inf,70-79
 TEST,11,Pfizer,1,1950-1959,ANAPHYL_broad,0,0,0,Inf,60-69
@@ -1636,6 +1817,7 @@ TEST,11,Pfizer,1,1980-1989,ANAPHYL_broad,0,0,0,1981416.5,30-39
 TEST,11,Pfizer,1,1990+,ANAPHYL_broad,0,0,0,Inf,<30
 TEST,11,Pfizer,1,<1940,ANAPHYL_broad,0,0,0,2591083.12,80+
 TEST,11,Pfizer,1,<1960,ANAPHYL_broad,0,0,0,2591083.12,60+
+TEST,11,Pfizer,1,>1960,ANAPHYL_broad,0,0,0,459850.93,
 TEST,11,Pfizer,1,all_birth_cohorts,ANAPHYL_broad,0,0,0,390540.06,all_birth_cohorts
 TEST,12,Pfizer,1,1940-1949,ANAPHYL_broad,0,0,0,Inf,70-79
 TEST,12,Pfizer,1,1950-1959,ANAPHYL_broad,0,0,0,Inf,60-69
@@ -1645,6 +1827,7 @@ TEST,12,Pfizer,1,1980-1989,ANAPHYL_broad,0,0,0,1981416.5,30-39
 TEST,12,Pfizer,1,1990+,ANAPHYL_broad,0,0,0,Inf,<30
 TEST,12,Pfizer,1,<1940,ANAPHYL_broad,0,0,0,2591083.12,80+
 TEST,12,Pfizer,1,<1960,ANAPHYL_broad,0,0,0,2591083.12,60+
+TEST,12,Pfizer,1,>1960,ANAPHYL_broad,0,0,0,449121.07,
 TEST,12,Pfizer,1,all_birth_cohorts,ANAPHYL_broad,0,0,0,382773.64,all_birth_cohorts
 TEST,13,Pfizer,1,1940-1949,ANAPHYL_broad,0,0,0,Inf,70-79
 TEST,13,Pfizer,1,1950-1959,ANAPHYL_broad,0,0,0,Inf,60-69
@@ -1654,6 +1837,7 @@ TEST,13,Pfizer,1,1980-1989,ANAPHYL_broad,0,0,0,1981416.5,30-39
 TEST,13,Pfizer,1,1990+,ANAPHYL_broad,0,0,0,Inf,<30
 TEST,13,Pfizer,1,<1940,ANAPHYL_broad,0,0,0,2591083.12,80+
 TEST,13,Pfizer,1,<1960,ANAPHYL_broad,0,0,0,2591083.12,60+
+TEST,13,Pfizer,1,>1960,ANAPHYL_broad,0,0,0,438880.53,
 TEST,13,Pfizer,1,all_birth_cohorts,ANAPHYL_broad,0,0,0,375310.09,all_birth_cohorts
 TEST,14,Pfizer,1,1940-1949,ANAPHYL_broad,0,0,0,Inf,70-79
 TEST,14,Pfizer,1,1950-1959,ANAPHYL_broad,0,0,0,Inf,60-69
@@ -1663,6 +1847,7 @@ TEST,14,Pfizer,1,1980-1989,ANAPHYL_broad,0,0,0,1981416.5,30-39
 TEST,14,Pfizer,1,1990+,ANAPHYL_broad,0,0,0,Inf,<30
 TEST,14,Pfizer,1,<1940,ANAPHYL_broad,0,0,0,2591083.12,80+
 TEST,14,Pfizer,1,<1960,ANAPHYL_broad,0,0,0,2591083.12,60+
+TEST,14,Pfizer,1,>1960,ANAPHYL_broad,0,0,0,434633.3,
 TEST,14,Pfizer,1,all_birth_cohorts,ANAPHYL_broad,0,0,0,372199.78,all_birth_cohorts
 TEST,1,Pfizer,2,1940-1949,ANAPHYL_broad,0,0,0,Inf,70-79
 TEST,1,Pfizer,2,1950-1959,ANAPHYL_broad,0,0,0,Inf,60-69
@@ -1672,6 +1857,7 @@ TEST,1,Pfizer,2,1980-1989,ANAPHYL_broad,0,0,0,19248046.01,30-39
 TEST,1,Pfizer,2,1990+,ANAPHYL_broad,0,0,0,Inf,<30
 TEST,1,Pfizer,2,<1940,ANAPHYL_broad,0,0,0,Inf,80+
 TEST,1,Pfizer,2,<1960,ANAPHYL_broad,0,0,0,Inf,60+
+TEST,1,Pfizer,2,>1960,ANAPHYL_broad,0,0,0,6416015.34,
 TEST,1,Pfizer,2,all_birth_cohorts,ANAPHYL_broad,0,0,0,6416015.34,all_birth_cohorts
 TEST,2,Pfizer,2,1940-1949,ANAPHYL_broad,0,0,0,Inf,70-79
 TEST,2,Pfizer,2,1950-1959,ANAPHYL_broad,0,0,0,Inf,60-69
@@ -1681,6 +1867,7 @@ TEST,2,Pfizer,2,1980-1989,ANAPHYL_broad,0,0,0,9624023,30-39
 TEST,2,Pfizer,2,1990+,ANAPHYL_broad,0,0,0,Inf,<30
 TEST,2,Pfizer,2,<1940,ANAPHYL_broad,0,0,0,Inf,80+
 TEST,2,Pfizer,2,<1960,ANAPHYL_broad,0,0,0,Inf,60+
+TEST,2,Pfizer,2,>1960,ANAPHYL_broad,0,0,0,3962833,
 TEST,2,Pfizer,2,all_birth_cohorts,ANAPHYL_broad,0,0,0,3962833,all_birth_cohorts
 TEST,3,Pfizer,2,1940-1949,ANAPHYL_broad,0,0,0,Inf,70-79
 TEST,3,Pfizer,2,1950-1959,ANAPHYL_broad,0,0,0,Inf,60-69
@@ -1690,6 +1877,7 @@ TEST,3,Pfizer,2,1980-1989,ANAPHYL_broad,0,0,0,6416015.34,30-39
 TEST,3,Pfizer,2,1990+,ANAPHYL_broad,0,0,0,Inf,<30
 TEST,3,Pfizer,2,<1940,ANAPHYL_broad,0,0,0,Inf,80+
 TEST,3,Pfizer,2,<1960,ANAPHYL_broad,0,0,0,Inf,60+
+TEST,3,Pfizer,2,>1960,ANAPHYL_broad,0,0,0,3286251.76,
 TEST,3,Pfizer,2,all_birth_cohorts,ANAPHYL_broad,0,0,0,3286251.76,all_birth_cohorts
 TEST,4,Pfizer,2,1940-1949,ANAPHYL_broad,0,0,0,Inf,70-79
 TEST,4,Pfizer,2,1950-1959,ANAPHYL_broad,0,0,0,Inf,60-69
@@ -1699,6 +1887,7 @@ TEST,4,Pfizer,2,1980-1989,ANAPHYL_broad,0,0,0,5389452.88,30-39
 TEST,4,Pfizer,2,1990+,ANAPHYL_broad,0,0,0,Inf,<30
 TEST,4,Pfizer,2,<1940,ANAPHYL_broad,0,0,0,Inf,80+
 TEST,4,Pfizer,2,<1960,ANAPHYL_broad,0,0,0,Inf,60+
+TEST,4,Pfizer,2,>1960,ANAPHYL_broad,0,0,0,2994140.49,
 TEST,4,Pfizer,2,all_birth_cohorts,ANAPHYL_broad,0,0,0,2994140.49,all_birth_cohorts
 TEST,0,none,no_dose,1940-1949,Ischstroke_narrow,0,0,0,7020.44,70-79
 TEST,0,none,no_dose,1950-1959,Ischstroke_narrow,1,1605.71,40.65,8946.42,60-69
@@ -1708,6 +1897,7 @@ TEST,0,none,no_dose,1980-1989,Ischstroke_narrow,0,0,0,7109.35,30-39
 TEST,0,none,no_dose,1990+,Ischstroke_narrow,0,0,0,3764.32,<30
 TEST,0,none,no_dose,<1940,Ischstroke_narrow,2,5108.03,618.61,18451.98,80+
 TEST,0,none,no_dose,<1960,Ischstroke_narrow,3,1948.35,401.8,5693.89,60+
+TEST,0,none,no_dose,>1960,Ischstroke_narrow,0,0,0,1201.61,
 TEST,0,none,no_dose,all_birth_cohorts,Ischstroke_narrow,3,650.8,134.21,1901.91,all_birth_cohorts
 TEST,1,AstraZeneca,1,1940-1949,Ischstroke_narrow,0,0,0,19248046.01,70-79
 TEST,1,AstraZeneca,1,1950-1959,Ischstroke_narrow,0,0,0,Inf,60-69
@@ -1717,6 +1907,7 @@ TEST,1,AstraZeneca,1,1980-1989,Ischstroke_narrow,0,0,0,Inf,30-39
 TEST,1,AstraZeneca,1,1990+,Ischstroke_narrow,0,0,0,Inf,<30
 TEST,1,AstraZeneca,1,<1940,Ischstroke_narrow,0,0,0,Inf,80+
 TEST,1,AstraZeneca,1,<1960,Ischstroke_narrow,0,0,0,19248046.01,60+
+TEST,1,AstraZeneca,1,>1960,Ischstroke_narrow,0,0,0,19248046.01,
 TEST,1,AstraZeneca,1,all_birth_cohorts,Ischstroke_narrow,0,0,0,9624023,all_birth_cohorts
 TEST,2,AstraZeneca,1,1940-1949,Ischstroke_narrow,0,0,0,16842040.26,70-79
 TEST,2,AstraZeneca,1,1950-1959,Ischstroke_narrow,0,0,0,Inf,60-69
@@ -1726,6 +1917,7 @@ TEST,2,AstraZeneca,1,1980-1989,Ischstroke_narrow,0,0,0,Inf,30-39
 TEST,2,AstraZeneca,1,1990+,Ischstroke_narrow,0,0,0,Inf,<30
 TEST,2,AstraZeneca,1,<1940,Ischstroke_narrow,0,0,0,Inf,80+
 TEST,2,AstraZeneca,1,<1960,Ischstroke_narrow,0,0,0,16842040.26,60+
+TEST,2,AstraZeneca,1,>1960,Ischstroke_narrow,0,0,0,9624023,
 TEST,2,AstraZeneca,1,all_birth_cohorts,Ischstroke_narrow,0,0,0,6124378.28,all_birth_cohorts
 TEST,1,Pfizer,1,1940-1949,Ischstroke_narrow,0,0,0,Inf,70-79
 TEST,1,Pfizer,1,1950-1959,Ischstroke_narrow,0,0,0,Inf,60-69
@@ -1735,6 +1927,7 @@ TEST,1,Pfizer,1,1980-1989,Ischstroke_narrow,0,0,0,9624023,30-39
 TEST,1,Pfizer,1,1990+,Ischstroke_narrow,0,0,0,Inf,<30
 TEST,1,Pfizer,1,<1940,Ischstroke_narrow,0,0,0,5858100.96,80+
 TEST,1,Pfizer,1,<1960,Ischstroke_narrow,0,0,0,5858100.96,60+
+TEST,1,Pfizer,1,>1960,Ischstroke_narrow,0,0,0,1924804.6,
 TEST,1,Pfizer,1,all_birth_cohorts,Ischstroke_narrow,0,0,0,1448777.66,all_birth_cohorts
 TEST,2,Pfizer,1,1940-1949,Ischstroke_narrow,0,0,0,Inf,70-79
 TEST,2,Pfizer,1,1950-1959,Ischstroke_narrow,0,0,0,Inf,60-69
@@ -1744,6 +1937,7 @@ TEST,2,Pfizer,1,1980-1989,Ischstroke_narrow,0,0,0,4812011.5,30-39
 TEST,2,Pfizer,1,1990+,Ischstroke_narrow,0,0,0,Inf,<30
 TEST,2,Pfizer,1,<1940,Ischstroke_narrow,0,0,0,4082918.85,80+
 TEST,2,Pfizer,1,<1960,Ischstroke_narrow,0,0,0,4082918.85,60+
+TEST,2,Pfizer,1,>1960,Ischstroke_narrow,0,0,0,1044467.61,
 TEST,2,Pfizer,1,all_birth_cohorts,Ischstroke_narrow,0,0,0,831705.69,all_birth_cohorts
 TEST,3,Pfizer,1,1940-1949,Ischstroke_narrow,0,0,0,Inf,70-79
 TEST,3,Pfizer,1,1950-1959,Ischstroke_narrow,0,0,0,Inf,60-69
@@ -1753,6 +1947,7 @@ TEST,3,Pfizer,1,1980-1989,Ischstroke_narrow,0,0,0,3208007.67,30-39
 TEST,3,Pfizer,1,1990+,Ischstroke_narrow,0,0,0,Inf,<30
 TEST,3,Pfizer,1,<1940,Ischstroke_narrow,0,0,0,3368408.05,80+
 TEST,3,Pfizer,1,<1960,Ischstroke_narrow,0,0,0,3368408.05,60+
+TEST,3,Pfizer,1,>1960,Ischstroke_narrow,0,0,0,756945.63,
 TEST,3,Pfizer,1,all_birth_cohorts,Ischstroke_narrow,0,0,0,618056.52,all_birth_cohorts
 TEST,4,Pfizer,1,1940-1949,Ischstroke_narrow,0,0,0,Inf,70-79
 TEST,4,Pfizer,1,1950-1959,Ischstroke_narrow,0,0,0,Inf,60-69
@@ -1762,6 +1957,7 @@ TEST,4,Pfizer,1,1980-1989,Ischstroke_narrow,0,0,0,2406005.75,30-39
 TEST,4,Pfizer,1,1990+,Ischstroke_narrow,0,0,0,Inf,<30
 TEST,4,Pfizer,1,<1940,Ischstroke_narrow,0,0,0,2866730.26,80+
 TEST,4,Pfizer,1,<1960,Ischstroke_narrow,0,0,0,2866730.26,60+
+TEST,4,Pfizer,1,>1960,Ischstroke_narrow,0,0,0,604198.75,
 TEST,4,Pfizer,1,all_birth_cohorts,Ischstroke_narrow,0,0,0,499023.42,all_birth_cohorts
 TEST,5,Pfizer,1,1940-1949,Ischstroke_narrow,0,0,0,Inf,70-79
 TEST,5,Pfizer,1,1950-1959,Ischstroke_narrow,0,0,0,Inf,60-69
@@ -1771,6 +1967,7 @@ TEST,5,Pfizer,1,1980-1989,Ischstroke_narrow,0,0,0,2105255.03,30-39
 TEST,5,Pfizer,1,1990+,Ischstroke_narrow,0,0,0,Inf,<30
 TEST,5,Pfizer,1,<1940,Ischstroke_narrow,0,0,0,2591083.12,80+
 TEST,5,Pfizer,1,<1960,Ischstroke_narrow,0,0,0,2591083.12,60+
+TEST,5,Pfizer,1,>1960,Ischstroke_narrow,0,0,0,545491.18,
 TEST,5,Pfizer,1,all_birth_cohorts,Ischstroke_narrow,0,0,0,450623.15,all_birth_cohorts
 TEST,6,Pfizer,1,1940-1949,Ischstroke_narrow,0,0,0,Inf,70-79
 TEST,6,Pfizer,1,1950-1959,Ischstroke_narrow,0,0,0,Inf,60-69
@@ -1780,6 +1977,7 @@ TEST,6,Pfizer,1,1980-1989,Ischstroke_narrow,0,0,0,1981416.5,30-39
 TEST,6,Pfizer,1,1990+,Ischstroke_narrow,0,0,0,Inf,<30
 TEST,6,Pfizer,1,<1940,Ischstroke_narrow,0,0,0,2591083.12,80+
 TEST,6,Pfizer,1,<1960,Ischstroke_narrow,0,0,0,2591083.12,60+
+TEST,6,Pfizer,1,>1960,Ischstroke_narrow,0,0,0,522233.81,
 TEST,6,Pfizer,1,all_birth_cohorts,Ischstroke_narrow,0,0,0,434633.3,all_birth_cohorts
 TEST,7,Pfizer,1,1940-1949,Ischstroke_narrow,0,0,0,Inf,70-79
 TEST,7,Pfizer,1,1950-1959,Ischstroke_narrow,0,0,0,Inf,60-69
@@ -1789,6 +1987,7 @@ TEST,7,Pfizer,1,1980-1989,Ischstroke_narrow,0,0,0,1981416.5,30-39
 TEST,7,Pfizer,1,1990+,Ischstroke_narrow,0,0,0,Inf,<30
 TEST,7,Pfizer,1,<1940,Ischstroke_narrow,0,0,0,2591083.12,80+
 TEST,7,Pfizer,1,<1960,Ischstroke_narrow,0,0,0,2591083.12,60+
+TEST,7,Pfizer,1,>1960,Ischstroke_narrow,0,0,0,508438.95,
 TEST,7,Pfizer,1,all_birth_cohorts,Ischstroke_narrow,0,0,0,425035.72,all_birth_cohorts
 TEST,8,Pfizer,1,1940-1949,Ischstroke_narrow,0,0,0,Inf,70-79
 TEST,8,Pfizer,1,1950-1959,Ischstroke_narrow,0,0,0,Inf,60-69
@@ -1798,6 +1997,7 @@ TEST,8,Pfizer,1,1980-1989,Ischstroke_narrow,0,0,0,1981416.5,30-39
 TEST,8,Pfizer,1,1990+,Ischstroke_narrow,0,0,0,Inf,<30
 TEST,8,Pfizer,1,<1940,Ischstroke_narrow,0,0,0,2591083.12,80+
 TEST,8,Pfizer,1,<1960,Ischstroke_narrow,0,0,0,2591083.12,60+
+TEST,8,Pfizer,1,>1960,Ischstroke_narrow,0,0,0,495354.13,
 TEST,8,Pfizer,1,all_birth_cohorts,Ischstroke_narrow,0,0,0,415852.85,all_birth_cohorts
 TEST,9,Pfizer,1,1940-1949,Ischstroke_narrow,0,0,0,Inf,70-79
 TEST,9,Pfizer,1,1950-1959,Ischstroke_narrow,0,0,0,Inf,60-69
@@ -1807,6 +2007,7 @@ TEST,9,Pfizer,1,1980-1989,Ischstroke_narrow,0,0,0,1981416.5,30-39
 TEST,9,Pfizer,1,1990+,Ischstroke_narrow,0,0,0,Inf,<30
 TEST,9,Pfizer,1,<1940,Ischstroke_narrow,0,0,0,2591083.12,80+
 TEST,9,Pfizer,1,<1960,Ischstroke_narrow,0,0,0,2591083.12,60+
+TEST,9,Pfizer,1,>1960,Ischstroke_narrow,0,0,0,482925.89,
 TEST,9,Pfizer,1,all_birth_cohorts,Ischstroke_narrow,0,0,0,407058.37,all_birth_cohorts
 TEST,10,Pfizer,1,1940-1949,Ischstroke_narrow,0,0,0,Inf,70-79
 TEST,10,Pfizer,1,1950-1959,Ischstroke_narrow,0,0,0,Inf,60-69
@@ -1816,6 +2017,7 @@ TEST,10,Pfizer,1,1980-1989,Ischstroke_narrow,0,0,0,1981416.5,30-39
 TEST,10,Pfizer,1,1990+,Ischstroke_narrow,0,0,0,Inf,<30
 TEST,10,Pfizer,1,<1940,Ischstroke_narrow,0,0,0,2591083.12,80+
 TEST,10,Pfizer,1,<1960,Ischstroke_narrow,0,0,0,2591083.12,60+
+TEST,10,Pfizer,1,>1960,Ischstroke_narrow,0,0,0,471106.02,
 TEST,10,Pfizer,1,all_birth_cohorts,Ischstroke_narrow,0,0,0,398628.17,all_birth_cohorts
 TEST,11,Pfizer,1,1940-1949,Ischstroke_narrow,0,0,0,Inf,70-79
 TEST,11,Pfizer,1,1950-1959,Ischstroke_narrow,0,0,0,Inf,60-69
@@ -1825,6 +2027,7 @@ TEST,11,Pfizer,1,1980-1989,Ischstroke_narrow,0,0,0,1981416.5,30-39
 TEST,11,Pfizer,1,1990+,Ischstroke_narrow,0,0,0,Inf,<30
 TEST,11,Pfizer,1,<1940,Ischstroke_narrow,0,0,0,2591083.12,80+
 TEST,11,Pfizer,1,<1960,Ischstroke_narrow,0,0,0,2591083.12,60+
+TEST,11,Pfizer,1,>1960,Ischstroke_narrow,0,0,0,459850.93,
 TEST,11,Pfizer,1,all_birth_cohorts,Ischstroke_narrow,0,0,0,390540.06,all_birth_cohorts
 TEST,12,Pfizer,1,1940-1949,Ischstroke_narrow,0,0,0,Inf,70-79
 TEST,12,Pfizer,1,1950-1959,Ischstroke_narrow,0,0,0,Inf,60-69
@@ -1834,6 +2037,7 @@ TEST,12,Pfizer,1,1980-1989,Ischstroke_narrow,0,0,0,1981416.5,30-39
 TEST,12,Pfizer,1,1990+,Ischstroke_narrow,0,0,0,Inf,<30
 TEST,12,Pfizer,1,<1940,Ischstroke_narrow,0,0,0,2591083.12,80+
 TEST,12,Pfizer,1,<1960,Ischstroke_narrow,0,0,0,2591083.12,60+
+TEST,12,Pfizer,1,>1960,Ischstroke_narrow,0,0,0,449121.07,
 TEST,12,Pfizer,1,all_birth_cohorts,Ischstroke_narrow,0,0,0,382773.64,all_birth_cohorts
 TEST,13,Pfizer,1,1940-1949,Ischstroke_narrow,0,0,0,Inf,70-79
 TEST,13,Pfizer,1,1950-1959,Ischstroke_narrow,0,0,0,Inf,60-69
@@ -1843,6 +2047,7 @@ TEST,13,Pfizer,1,1980-1989,Ischstroke_narrow,0,0,0,1981416.5,30-39
 TEST,13,Pfizer,1,1990+,Ischstroke_narrow,0,0,0,Inf,<30
 TEST,13,Pfizer,1,<1940,Ischstroke_narrow,0,0,0,2591083.12,80+
 TEST,13,Pfizer,1,<1960,Ischstroke_narrow,0,0,0,2591083.12,60+
+TEST,13,Pfizer,1,>1960,Ischstroke_narrow,0,0,0,438880.53,
 TEST,13,Pfizer,1,all_birth_cohorts,Ischstroke_narrow,0,0,0,375310.09,all_birth_cohorts
 TEST,14,Pfizer,1,1940-1949,Ischstroke_narrow,0,0,0,Inf,70-79
 TEST,14,Pfizer,1,1950-1959,Ischstroke_narrow,0,0,0,Inf,60-69
@@ -1852,6 +2057,7 @@ TEST,14,Pfizer,1,1980-1989,Ischstroke_narrow,0,0,0,1981416.5,30-39
 TEST,14,Pfizer,1,1990+,Ischstroke_narrow,0,0,0,Inf,<30
 TEST,14,Pfizer,1,<1940,Ischstroke_narrow,0,0,0,2591083.12,80+
 TEST,14,Pfizer,1,<1960,Ischstroke_narrow,0,0,0,2591083.12,60+
+TEST,14,Pfizer,1,>1960,Ischstroke_narrow,0,0,0,434633.3,
 TEST,14,Pfizer,1,all_birth_cohorts,Ischstroke_narrow,0,0,0,372199.78,all_birth_cohorts
 TEST,1,Pfizer,2,1940-1949,Ischstroke_narrow,0,0,0,Inf,70-79
 TEST,1,Pfizer,2,1950-1959,Ischstroke_narrow,0,0,0,Inf,60-69
@@ -1861,6 +2067,7 @@ TEST,1,Pfizer,2,1980-1989,Ischstroke_narrow,0,0,0,19248046.01,30-39
 TEST,1,Pfizer,2,1990+,Ischstroke_narrow,0,0,0,Inf,<30
 TEST,1,Pfizer,2,<1940,Ischstroke_narrow,0,0,0,Inf,80+
 TEST,1,Pfizer,2,<1960,Ischstroke_narrow,0,0,0,Inf,60+
+TEST,1,Pfizer,2,>1960,Ischstroke_narrow,0,0,0,6416015.34,
 TEST,1,Pfizer,2,all_birth_cohorts,Ischstroke_narrow,0,0,0,6416015.34,all_birth_cohorts
 TEST,2,Pfizer,2,1940-1949,Ischstroke_narrow,0,0,0,Inf,70-79
 TEST,2,Pfizer,2,1950-1959,Ischstroke_narrow,0,0,0,Inf,60-69
@@ -1870,6 +2077,7 @@ TEST,2,Pfizer,2,1980-1989,Ischstroke_narrow,0,0,0,9624023,30-39
 TEST,2,Pfizer,2,1990+,Ischstroke_narrow,0,0,0,Inf,<30
 TEST,2,Pfizer,2,<1940,Ischstroke_narrow,0,0,0,Inf,80+
 TEST,2,Pfizer,2,<1960,Ischstroke_narrow,0,0,0,Inf,60+
+TEST,2,Pfizer,2,>1960,Ischstroke_narrow,0,0,0,3962833,
 TEST,2,Pfizer,2,all_birth_cohorts,Ischstroke_narrow,0,0,0,3962833,all_birth_cohorts
 TEST,3,Pfizer,2,1940-1949,Ischstroke_narrow,0,0,0,Inf,70-79
 TEST,3,Pfizer,2,1950-1959,Ischstroke_narrow,0,0,0,Inf,60-69
@@ -1879,6 +2087,7 @@ TEST,3,Pfizer,2,1980-1989,Ischstroke_narrow,0,0,0,6416015.34,30-39
 TEST,3,Pfizer,2,1990+,Ischstroke_narrow,0,0,0,Inf,<30
 TEST,3,Pfizer,2,<1940,Ischstroke_narrow,0,0,0,Inf,80+
 TEST,3,Pfizer,2,<1960,Ischstroke_narrow,0,0,0,Inf,60+
+TEST,3,Pfizer,2,>1960,Ischstroke_narrow,0,0,0,3286251.76,
 TEST,3,Pfizer,2,all_birth_cohorts,Ischstroke_narrow,0,0,0,3286251.76,all_birth_cohorts
 TEST,4,Pfizer,2,1940-1949,Ischstroke_narrow,0,0,0,Inf,70-79
 TEST,4,Pfizer,2,1950-1959,Ischstroke_narrow,0,0,0,Inf,60-69
@@ -1888,6 +2097,7 @@ TEST,4,Pfizer,2,1980-1989,Ischstroke_narrow,0,0,0,5389452.88,30-39
 TEST,4,Pfizer,2,1990+,Ischstroke_narrow,0,0,0,Inf,<30
 TEST,4,Pfizer,2,<1940,Ischstroke_narrow,0,0,0,Inf,80+
 TEST,4,Pfizer,2,<1960,Ischstroke_narrow,0,0,0,Inf,60+
+TEST,4,Pfizer,2,>1960,Ischstroke_narrow,0,0,0,2994140.49,
 TEST,4,Pfizer,2,all_birth_cohorts,Ischstroke_narrow,0,0,0,2994140.49,all_birth_cohorts
 TEST,0,none,no_dose,1940-1949,Ischstroke_broad,0,0,0,7020.44,70-79
 TEST,0,none,no_dose,1950-1959,Ischstroke_broad,1,1605.71,40.65,8946.42,60-69
@@ -1897,6 +2107,7 @@ TEST,0,none,no_dose,1980-1989,Ischstroke_broad,0,0,0,7109.35,30-39
 TEST,0,none,no_dose,1990+,Ischstroke_broad,0,0,0,3764.32,<30
 TEST,0,none,no_dose,<1940,Ischstroke_broad,2,5108.03,618.61,18451.98,80+
 TEST,0,none,no_dose,<1960,Ischstroke_broad,3,1948.35,401.8,5693.89,60+
+TEST,0,none,no_dose,>1960,Ischstroke_broad,0,0,0,1201.61,
 TEST,0,none,no_dose,all_birth_cohorts,Ischstroke_broad,3,650.8,134.21,1901.91,all_birth_cohorts
 TEST,1,AstraZeneca,1,1940-1949,Ischstroke_broad,0,0,0,19248046.01,70-79
 TEST,1,AstraZeneca,1,1950-1959,Ischstroke_broad,0,0,0,Inf,60-69
@@ -1906,6 +2117,7 @@ TEST,1,AstraZeneca,1,1980-1989,Ischstroke_broad,0,0,0,Inf,30-39
 TEST,1,AstraZeneca,1,1990+,Ischstroke_broad,0,0,0,Inf,<30
 TEST,1,AstraZeneca,1,<1940,Ischstroke_broad,0,0,0,Inf,80+
 TEST,1,AstraZeneca,1,<1960,Ischstroke_broad,0,0,0,19248046.01,60+
+TEST,1,AstraZeneca,1,>1960,Ischstroke_broad,0,0,0,19248046.01,
 TEST,1,AstraZeneca,1,all_birth_cohorts,Ischstroke_broad,0,0,0,9624023,all_birth_cohorts
 TEST,2,AstraZeneca,1,1940-1949,Ischstroke_broad,0,0,0,16842040.26,70-79
 TEST,2,AstraZeneca,1,1950-1959,Ischstroke_broad,0,0,0,Inf,60-69
@@ -1915,6 +2127,7 @@ TEST,2,AstraZeneca,1,1980-1989,Ischstroke_broad,0,0,0,Inf,30-39
 TEST,2,AstraZeneca,1,1990+,Ischstroke_broad,0,0,0,Inf,<30
 TEST,2,AstraZeneca,1,<1940,Ischstroke_broad,0,0,0,Inf,80+
 TEST,2,AstraZeneca,1,<1960,Ischstroke_broad,0,0,0,16842040.26,60+
+TEST,2,AstraZeneca,1,>1960,Ischstroke_broad,0,0,0,9624023,
 TEST,2,AstraZeneca,1,all_birth_cohorts,Ischstroke_broad,0,0,0,6124378.28,all_birth_cohorts
 TEST,1,Pfizer,1,1940-1949,Ischstroke_broad,0,0,0,Inf,70-79
 TEST,1,Pfizer,1,1950-1959,Ischstroke_broad,0,0,0,Inf,60-69
@@ -1924,6 +2137,7 @@ TEST,1,Pfizer,1,1980-1989,Ischstroke_broad,0,0,0,9624023,30-39
 TEST,1,Pfizer,1,1990+,Ischstroke_broad,0,0,0,Inf,<30
 TEST,1,Pfizer,1,<1940,Ischstroke_broad,0,0,0,5858100.96,80+
 TEST,1,Pfizer,1,<1960,Ischstroke_broad,0,0,0,5858100.96,60+
+TEST,1,Pfizer,1,>1960,Ischstroke_broad,0,0,0,1924804.6,
 TEST,1,Pfizer,1,all_birth_cohorts,Ischstroke_broad,0,0,0,1448777.66,all_birth_cohorts
 TEST,2,Pfizer,1,1940-1949,Ischstroke_broad,0,0,0,Inf,70-79
 TEST,2,Pfizer,1,1950-1959,Ischstroke_broad,0,0,0,Inf,60-69
@@ -1933,6 +2147,7 @@ TEST,2,Pfizer,1,1980-1989,Ischstroke_broad,0,0,0,4812011.5,30-39
 TEST,2,Pfizer,1,1990+,Ischstroke_broad,0,0,0,Inf,<30
 TEST,2,Pfizer,1,<1940,Ischstroke_broad,0,0,0,4082918.85,80+
 TEST,2,Pfizer,1,<1960,Ischstroke_broad,0,0,0,4082918.85,60+
+TEST,2,Pfizer,1,>1960,Ischstroke_broad,0,0,0,1044467.61,
 TEST,2,Pfizer,1,all_birth_cohorts,Ischstroke_broad,0,0,0,831705.69,all_birth_cohorts
 TEST,3,Pfizer,1,1940-1949,Ischstroke_broad,0,0,0,Inf,70-79
 TEST,3,Pfizer,1,1950-1959,Ischstroke_broad,0,0,0,Inf,60-69
@@ -1942,6 +2157,7 @@ TEST,3,Pfizer,1,1980-1989,Ischstroke_broad,0,0,0,3208007.67,30-39
 TEST,3,Pfizer,1,1990+,Ischstroke_broad,0,0,0,Inf,<30
 TEST,3,Pfizer,1,<1940,Ischstroke_broad,0,0,0,3368408.05,80+
 TEST,3,Pfizer,1,<1960,Ischstroke_broad,0,0,0,3368408.05,60+
+TEST,3,Pfizer,1,>1960,Ischstroke_broad,0,0,0,756945.63,
 TEST,3,Pfizer,1,all_birth_cohorts,Ischstroke_broad,0,0,0,618056.52,all_birth_cohorts
 TEST,4,Pfizer,1,1940-1949,Ischstroke_broad,0,0,0,Inf,70-79
 TEST,4,Pfizer,1,1950-1959,Ischstroke_broad,0,0,0,Inf,60-69
@@ -1951,6 +2167,7 @@ TEST,4,Pfizer,1,1980-1989,Ischstroke_broad,0,0,0,2406005.75,30-39
 TEST,4,Pfizer,1,1990+,Ischstroke_broad,0,0,0,Inf,<30
 TEST,4,Pfizer,1,<1940,Ischstroke_broad,0,0,0,2866730.26,80+
 TEST,4,Pfizer,1,<1960,Ischstroke_broad,0,0,0,2866730.26,60+
+TEST,4,Pfizer,1,>1960,Ischstroke_broad,0,0,0,604198.75,
 TEST,4,Pfizer,1,all_birth_cohorts,Ischstroke_broad,0,0,0,499023.42,all_birth_cohorts
 TEST,5,Pfizer,1,1940-1949,Ischstroke_broad,0,0,0,Inf,70-79
 TEST,5,Pfizer,1,1950-1959,Ischstroke_broad,0,0,0,Inf,60-69
@@ -1960,6 +2177,7 @@ TEST,5,Pfizer,1,1980-1989,Ischstroke_broad,0,0,0,2105255.03,30-39
 TEST,5,Pfizer,1,1990+,Ischstroke_broad,0,0,0,Inf,<30
 TEST,5,Pfizer,1,<1940,Ischstroke_broad,0,0,0,2591083.12,80+
 TEST,5,Pfizer,1,<1960,Ischstroke_broad,0,0,0,2591083.12,60+
+TEST,5,Pfizer,1,>1960,Ischstroke_broad,0,0,0,545491.18,
 TEST,5,Pfizer,1,all_birth_cohorts,Ischstroke_broad,0,0,0,450623.15,all_birth_cohorts
 TEST,6,Pfizer,1,1940-1949,Ischstroke_broad,0,0,0,Inf,70-79
 TEST,6,Pfizer,1,1950-1959,Ischstroke_broad,0,0,0,Inf,60-69
@@ -1969,6 +2187,7 @@ TEST,6,Pfizer,1,1980-1989,Ischstroke_broad,0,0,0,1981416.5,30-39
 TEST,6,Pfizer,1,1990+,Ischstroke_broad,0,0,0,Inf,<30
 TEST,6,Pfizer,1,<1940,Ischstroke_broad,0,0,0,2591083.12,80+
 TEST,6,Pfizer,1,<1960,Ischstroke_broad,0,0,0,2591083.12,60+
+TEST,6,Pfizer,1,>1960,Ischstroke_broad,0,0,0,522233.81,
 TEST,6,Pfizer,1,all_birth_cohorts,Ischstroke_broad,0,0,0,434633.3,all_birth_cohorts
 TEST,7,Pfizer,1,1940-1949,Ischstroke_broad,0,0,0,Inf,70-79
 TEST,7,Pfizer,1,1950-1959,Ischstroke_broad,0,0,0,Inf,60-69
@@ -1978,6 +2197,7 @@ TEST,7,Pfizer,1,1980-1989,Ischstroke_broad,0,0,0,1981416.5,30-39
 TEST,7,Pfizer,1,1990+,Ischstroke_broad,0,0,0,Inf,<30
 TEST,7,Pfizer,1,<1940,Ischstroke_broad,0,0,0,2591083.12,80+
 TEST,7,Pfizer,1,<1960,Ischstroke_broad,0,0,0,2591083.12,60+
+TEST,7,Pfizer,1,>1960,Ischstroke_broad,0,0,0,508438.95,
 TEST,7,Pfizer,1,all_birth_cohorts,Ischstroke_broad,0,0,0,425035.72,all_birth_cohorts
 TEST,8,Pfizer,1,1940-1949,Ischstroke_broad,0,0,0,Inf,70-79
 TEST,8,Pfizer,1,1950-1959,Ischstroke_broad,0,0,0,Inf,60-69
@@ -1987,6 +2207,7 @@ TEST,8,Pfizer,1,1980-1989,Ischstroke_broad,0,0,0,1981416.5,30-39
 TEST,8,Pfizer,1,1990+,Ischstroke_broad,0,0,0,Inf,<30
 TEST,8,Pfizer,1,<1940,Ischstroke_broad,0,0,0,2591083.12,80+
 TEST,8,Pfizer,1,<1960,Ischstroke_broad,0,0,0,2591083.12,60+
+TEST,8,Pfizer,1,>1960,Ischstroke_broad,0,0,0,495354.13,
 TEST,8,Pfizer,1,all_birth_cohorts,Ischstroke_broad,0,0,0,415852.85,all_birth_cohorts
 TEST,9,Pfizer,1,1940-1949,Ischstroke_broad,0,0,0,Inf,70-79
 TEST,9,Pfizer,1,1950-1959,Ischstroke_broad,0,0,0,Inf,60-69
@@ -1996,6 +2217,7 @@ TEST,9,Pfizer,1,1980-1989,Ischstroke_broad,0,0,0,1981416.5,30-39
 TEST,9,Pfizer,1,1990+,Ischstroke_broad,0,0,0,Inf,<30
 TEST,9,Pfizer,1,<1940,Ischstroke_broad,0,0,0,2591083.12,80+
 TEST,9,Pfizer,1,<1960,Ischstroke_broad,0,0,0,2591083.12,60+
+TEST,9,Pfizer,1,>1960,Ischstroke_broad,0,0,0,482925.89,
 TEST,9,Pfizer,1,all_birth_cohorts,Ischstroke_broad,0,0,0,407058.37,all_birth_cohorts
 TEST,10,Pfizer,1,1940-1949,Ischstroke_broad,0,0,0,Inf,70-79
 TEST,10,Pfizer,1,1950-1959,Ischstroke_broad,0,0,0,Inf,60-69
@@ -2005,6 +2227,7 @@ TEST,10,Pfizer,1,1980-1989,Ischstroke_broad,0,0,0,1981416.5,30-39
 TEST,10,Pfizer,1,1990+,Ischstroke_broad,0,0,0,Inf,<30
 TEST,10,Pfizer,1,<1940,Ischstroke_broad,0,0,0,2591083.12,80+
 TEST,10,Pfizer,1,<1960,Ischstroke_broad,0,0,0,2591083.12,60+
+TEST,10,Pfizer,1,>1960,Ischstroke_broad,0,0,0,471106.02,
 TEST,10,Pfizer,1,all_birth_cohorts,Ischstroke_broad,0,0,0,398628.17,all_birth_cohorts
 TEST,11,Pfizer,1,1940-1949,Ischstroke_broad,0,0,0,Inf,70-79
 TEST,11,Pfizer,1,1950-1959,Ischstroke_broad,0,0,0,Inf,60-69
@@ -2014,6 +2237,7 @@ TEST,11,Pfizer,1,1980-1989,Ischstroke_broad,0,0,0,1981416.5,30-39
 TEST,11,Pfizer,1,1990+,Ischstroke_broad,0,0,0,Inf,<30
 TEST,11,Pfizer,1,<1940,Ischstroke_broad,0,0,0,2591083.12,80+
 TEST,11,Pfizer,1,<1960,Ischstroke_broad,0,0,0,2591083.12,60+
+TEST,11,Pfizer,1,>1960,Ischstroke_broad,0,0,0,459850.93,
 TEST,11,Pfizer,1,all_birth_cohorts,Ischstroke_broad,0,0,0,390540.06,all_birth_cohorts
 TEST,12,Pfizer,1,1940-1949,Ischstroke_broad,0,0,0,Inf,70-79
 TEST,12,Pfizer,1,1950-1959,Ischstroke_broad,0,0,0,Inf,60-69
@@ -2023,6 +2247,7 @@ TEST,12,Pfizer,1,1980-1989,Ischstroke_broad,0,0,0,1981416.5,30-39
 TEST,12,Pfizer,1,1990+,Ischstroke_broad,0,0,0,Inf,<30
 TEST,12,Pfizer,1,<1940,Ischstroke_broad,0,0,0,2591083.12,80+
 TEST,12,Pfizer,1,<1960,Ischstroke_broad,0,0,0,2591083.12,60+
+TEST,12,Pfizer,1,>1960,Ischstroke_broad,0,0,0,449121.07,
 TEST,12,Pfizer,1,all_birth_cohorts,Ischstroke_broad,0,0,0,382773.64,all_birth_cohorts
 TEST,13,Pfizer,1,1940-1949,Ischstroke_broad,0,0,0,Inf,70-79
 TEST,13,Pfizer,1,1950-1959,Ischstroke_broad,0,0,0,Inf,60-69
@@ -2032,6 +2257,7 @@ TEST,13,Pfizer,1,1980-1989,Ischstroke_broad,0,0,0,1981416.5,30-39
 TEST,13,Pfizer,1,1990+,Ischstroke_broad,0,0,0,Inf,<30
 TEST,13,Pfizer,1,<1940,Ischstroke_broad,0,0,0,2591083.12,80+
 TEST,13,Pfizer,1,<1960,Ischstroke_broad,0,0,0,2591083.12,60+
+TEST,13,Pfizer,1,>1960,Ischstroke_broad,0,0,0,438880.53,
 TEST,13,Pfizer,1,all_birth_cohorts,Ischstroke_broad,0,0,0,375310.09,all_birth_cohorts
 TEST,14,Pfizer,1,1940-1949,Ischstroke_broad,0,0,0,Inf,70-79
 TEST,14,Pfizer,1,1950-1959,Ischstroke_broad,0,0,0,Inf,60-69
@@ -2041,6 +2267,7 @@ TEST,14,Pfizer,1,1980-1989,Ischstroke_broad,0,0,0,1981416.5,30-39
 TEST,14,Pfizer,1,1990+,Ischstroke_broad,0,0,0,Inf,<30
 TEST,14,Pfizer,1,<1940,Ischstroke_broad,0,0,0,2591083.12,80+
 TEST,14,Pfizer,1,<1960,Ischstroke_broad,0,0,0,2591083.12,60+
+TEST,14,Pfizer,1,>1960,Ischstroke_broad,0,0,0,434633.3,
 TEST,14,Pfizer,1,all_birth_cohorts,Ischstroke_broad,0,0,0,372199.78,all_birth_cohorts
 TEST,1,Pfizer,2,1940-1949,Ischstroke_broad,0,0,0,Inf,70-79
 TEST,1,Pfizer,2,1950-1959,Ischstroke_broad,0,0,0,Inf,60-69
@@ -2050,6 +2277,7 @@ TEST,1,Pfizer,2,1980-1989,Ischstroke_broad,0,0,0,19248046.01,30-39
 TEST,1,Pfizer,2,1990+,Ischstroke_broad,0,0,0,Inf,<30
 TEST,1,Pfizer,2,<1940,Ischstroke_broad,0,0,0,Inf,80+
 TEST,1,Pfizer,2,<1960,Ischstroke_broad,0,0,0,Inf,60+
+TEST,1,Pfizer,2,>1960,Ischstroke_broad,0,0,0,6416015.34,
 TEST,1,Pfizer,2,all_birth_cohorts,Ischstroke_broad,0,0,0,6416015.34,all_birth_cohorts
 TEST,2,Pfizer,2,1940-1949,Ischstroke_broad,0,0,0,Inf,70-79
 TEST,2,Pfizer,2,1950-1959,Ischstroke_broad,0,0,0,Inf,60-69
@@ -2059,6 +2287,7 @@ TEST,2,Pfizer,2,1980-1989,Ischstroke_broad,0,0,0,9624023,30-39
 TEST,2,Pfizer,2,1990+,Ischstroke_broad,0,0,0,Inf,<30
 TEST,2,Pfizer,2,<1940,Ischstroke_broad,0,0,0,Inf,80+
 TEST,2,Pfizer,2,<1960,Ischstroke_broad,0,0,0,Inf,60+
+TEST,2,Pfizer,2,>1960,Ischstroke_broad,0,0,0,3962833,
 TEST,2,Pfizer,2,all_birth_cohorts,Ischstroke_broad,0,0,0,3962833,all_birth_cohorts
 TEST,3,Pfizer,2,1940-1949,Ischstroke_broad,0,0,0,Inf,70-79
 TEST,3,Pfizer,2,1950-1959,Ischstroke_broad,0,0,0,Inf,60-69
@@ -2068,6 +2297,7 @@ TEST,3,Pfizer,2,1980-1989,Ischstroke_broad,0,0,0,6416015.34,30-39
 TEST,3,Pfizer,2,1990+,Ischstroke_broad,0,0,0,Inf,<30
 TEST,3,Pfizer,2,<1940,Ischstroke_broad,0,0,0,Inf,80+
 TEST,3,Pfizer,2,<1960,Ischstroke_broad,0,0,0,Inf,60+
+TEST,3,Pfizer,2,>1960,Ischstroke_broad,0,0,0,3286251.76,
 TEST,3,Pfizer,2,all_birth_cohorts,Ischstroke_broad,0,0,0,3286251.76,all_birth_cohorts
 TEST,4,Pfizer,2,1940-1949,Ischstroke_broad,0,0,0,Inf,70-79
 TEST,4,Pfizer,2,1950-1959,Ischstroke_broad,0,0,0,Inf,60-69
@@ -2077,6 +2307,7 @@ TEST,4,Pfizer,2,1980-1989,Ischstroke_broad,0,0,0,5389452.88,30-39
 TEST,4,Pfizer,2,1990+,Ischstroke_broad,0,0,0,Inf,<30
 TEST,4,Pfizer,2,<1940,Ischstroke_broad,0,0,0,Inf,80+
 TEST,4,Pfizer,2,<1960,Ischstroke_broad,0,0,0,Inf,60+
+TEST,4,Pfizer,2,>1960,Ischstroke_broad,0,0,0,2994140.49,
 TEST,4,Pfizer,2,all_birth_cohorts,Ischstroke_broad,0,0,0,2994140.49,all_birth_cohorts
 TEST,0,none,no_dose,1940-1949,VTE_narrow,0,0,0,6853.67,70-79
 TEST,0,none,no_dose,1950-1959,VTE_narrow,0,0,0,5925.6,60-69
@@ -2086,6 +2317,7 @@ TEST,0,none,no_dose,1980-1989,VTE_narrow,0,0,0,7109.35,30-39
 TEST,0,none,no_dose,1990+,VTE_narrow,0,0,0,3764.32,<30
 TEST,0,none,no_dose,<1940,VTE_narrow,0,0,0,8624.23,80+
 TEST,0,none,no_dose,<1960,VTE_narrow,0,0,0,2322.24,60+
+TEST,0,none,no_dose,>1960,VTE_narrow,0,0,0,1201.61,
 TEST,0,none,no_dose,all_birth_cohorts,VTE_narrow,0,0,0,791.87,all_birth_cohorts
 TEST,1,AstraZeneca,1,1940-1949,VTE_narrow,0,0,0,19248046.01,70-79
 TEST,1,AstraZeneca,1,1950-1959,VTE_narrow,0,0,0,Inf,60-69
@@ -2095,6 +2327,7 @@ TEST,1,AstraZeneca,1,1980-1989,VTE_narrow,0,0,0,Inf,30-39
 TEST,1,AstraZeneca,1,1990+,VTE_narrow,0,0,0,Inf,<30
 TEST,1,AstraZeneca,1,<1940,VTE_narrow,0,0,0,Inf,80+
 TEST,1,AstraZeneca,1,<1960,VTE_narrow,0,0,0,19248046.01,60+
+TEST,1,AstraZeneca,1,>1960,VTE_narrow,0,0,0,19248046.01,
 TEST,1,AstraZeneca,1,all_birth_cohorts,VTE_narrow,0,0,0,9624023,all_birth_cohorts
 TEST,2,AstraZeneca,1,1940-1949,VTE_narrow,0,0,0,16842040.26,70-79
 TEST,2,AstraZeneca,1,1950-1959,VTE_narrow,0,0,0,Inf,60-69
@@ -2104,6 +2337,7 @@ TEST,2,AstraZeneca,1,1980-1989,VTE_narrow,0,0,0,Inf,30-39
 TEST,2,AstraZeneca,1,1990+,VTE_narrow,0,0,0,Inf,<30
 TEST,2,AstraZeneca,1,<1940,VTE_narrow,0,0,0,Inf,80+
 TEST,2,AstraZeneca,1,<1960,VTE_narrow,0,0,0,16842040.26,60+
+TEST,2,AstraZeneca,1,>1960,VTE_narrow,0,0,0,9624023,
 TEST,2,AstraZeneca,1,all_birth_cohorts,VTE_narrow,0,0,0,6124378.28,all_birth_cohorts
 TEST,1,Pfizer,1,1940-1949,VTE_narrow,0,0,0,Inf,70-79
 TEST,1,Pfizer,1,1950-1959,VTE_narrow,0,0,0,Inf,60-69
@@ -2113,6 +2347,7 @@ TEST,1,Pfizer,1,1980-1989,VTE_narrow,0,0,0,9624023,30-39
 TEST,1,Pfizer,1,1990+,VTE_narrow,0,0,0,Inf,<30
 TEST,1,Pfizer,1,<1940,VTE_narrow,0,0,0,5858100.96,80+
 TEST,1,Pfizer,1,<1960,VTE_narrow,0,0,0,5858100.96,60+
+TEST,1,Pfizer,1,>1960,VTE_narrow,0,0,0,1924804.6,
 TEST,1,Pfizer,1,all_birth_cohorts,VTE_narrow,0,0,0,1448777.66,all_birth_cohorts
 TEST,2,Pfizer,1,1940-1949,VTE_narrow,0,0,0,Inf,70-79
 TEST,2,Pfizer,1,1950-1959,VTE_narrow,0,0,0,Inf,60-69
@@ -2122,6 +2357,7 @@ TEST,2,Pfizer,1,1980-1989,VTE_narrow,0,0,0,4812011.5,30-39
 TEST,2,Pfizer,1,1990+,VTE_narrow,0,0,0,Inf,<30
 TEST,2,Pfizer,1,<1940,VTE_narrow,0,0,0,4082918.85,80+
 TEST,2,Pfizer,1,<1960,VTE_narrow,0,0,0,4082918.85,60+
+TEST,2,Pfizer,1,>1960,VTE_narrow,0,0,0,1044467.61,
 TEST,2,Pfizer,1,all_birth_cohorts,VTE_narrow,0,0,0,831705.69,all_birth_cohorts
 TEST,3,Pfizer,1,1940-1949,VTE_narrow,0,0,0,Inf,70-79
 TEST,3,Pfizer,1,1950-1959,VTE_narrow,0,0,0,Inf,60-69
@@ -2131,6 +2367,7 @@ TEST,3,Pfizer,1,1980-1989,VTE_narrow,0,0,0,3208007.67,30-39
 TEST,3,Pfizer,1,1990+,VTE_narrow,0,0,0,Inf,<30
 TEST,3,Pfizer,1,<1940,VTE_narrow,0,0,0,3368408.05,80+
 TEST,3,Pfizer,1,<1960,VTE_narrow,0,0,0,3368408.05,60+
+TEST,3,Pfizer,1,>1960,VTE_narrow,0,0,0,756945.63,
 TEST,3,Pfizer,1,all_birth_cohorts,VTE_narrow,0,0,0,618056.52,all_birth_cohorts
 TEST,4,Pfizer,1,1940-1949,VTE_narrow,0,0,0,Inf,70-79
 TEST,4,Pfizer,1,1950-1959,VTE_narrow,0,0,0,Inf,60-69
@@ -2140,6 +2377,7 @@ TEST,4,Pfizer,1,1980-1989,VTE_narrow,0,0,0,2406005.75,30-39
 TEST,4,Pfizer,1,1990+,VTE_narrow,0,0,0,Inf,<30
 TEST,4,Pfizer,1,<1940,VTE_narrow,0,0,0,2866730.26,80+
 TEST,4,Pfizer,1,<1960,VTE_narrow,0,0,0,2866730.26,60+
+TEST,4,Pfizer,1,>1960,VTE_narrow,0,0,0,604198.75,
 TEST,4,Pfizer,1,all_birth_cohorts,VTE_narrow,0,0,0,499023.42,all_birth_cohorts
 TEST,5,Pfizer,1,1940-1949,VTE_narrow,0,0,0,Inf,70-79
 TEST,5,Pfizer,1,1950-1959,VTE_narrow,0,0,0,Inf,60-69
@@ -2149,6 +2387,7 @@ TEST,5,Pfizer,1,1980-1989,VTE_narrow,0,0,0,2105255.03,30-39
 TEST,5,Pfizer,1,1990+,VTE_narrow,0,0,0,Inf,<30
 TEST,5,Pfizer,1,<1940,VTE_narrow,0,0,0,2591083.12,80+
 TEST,5,Pfizer,1,<1960,VTE_narrow,0,0,0,2591083.12,60+
+TEST,5,Pfizer,1,>1960,VTE_narrow,0,0,0,545491.18,
 TEST,5,Pfizer,1,all_birth_cohorts,VTE_narrow,0,0,0,450623.15,all_birth_cohorts
 TEST,6,Pfizer,1,1940-1949,VTE_narrow,0,0,0,Inf,70-79
 TEST,6,Pfizer,1,1950-1959,VTE_narrow,0,0,0,Inf,60-69
@@ -2158,6 +2397,7 @@ TEST,6,Pfizer,1,1980-1989,VTE_narrow,0,0,0,1981416.5,30-39
 TEST,6,Pfizer,1,1990+,VTE_narrow,0,0,0,Inf,<30
 TEST,6,Pfizer,1,<1940,VTE_narrow,0,0,0,2591083.12,80+
 TEST,6,Pfizer,1,<1960,VTE_narrow,0,0,0,2591083.12,60+
+TEST,6,Pfizer,1,>1960,VTE_narrow,0,0,0,522233.81,
 TEST,6,Pfizer,1,all_birth_cohorts,VTE_narrow,0,0,0,434633.3,all_birth_cohorts
 TEST,7,Pfizer,1,1940-1949,VTE_narrow,0,0,0,Inf,70-79
 TEST,7,Pfizer,1,1950-1959,VTE_narrow,0,0,0,Inf,60-69
@@ -2167,6 +2407,7 @@ TEST,7,Pfizer,1,1980-1989,VTE_narrow,0,0,0,1981416.5,30-39
 TEST,7,Pfizer,1,1990+,VTE_narrow,0,0,0,Inf,<30
 TEST,7,Pfizer,1,<1940,VTE_narrow,0,0,0,2591083.12,80+
 TEST,7,Pfizer,1,<1960,VTE_narrow,0,0,0,2591083.12,60+
+TEST,7,Pfizer,1,>1960,VTE_narrow,0,0,0,508438.95,
 TEST,7,Pfizer,1,all_birth_cohorts,VTE_narrow,0,0,0,425035.72,all_birth_cohorts
 TEST,8,Pfizer,1,1940-1949,VTE_narrow,0,0,0,Inf,70-79
 TEST,8,Pfizer,1,1950-1959,VTE_narrow,0,0,0,Inf,60-69
@@ -2176,6 +2417,7 @@ TEST,8,Pfizer,1,1980-1989,VTE_narrow,0,0,0,1981416.5,30-39
 TEST,8,Pfizer,1,1990+,VTE_narrow,0,0,0,Inf,<30
 TEST,8,Pfizer,1,<1940,VTE_narrow,0,0,0,2591083.12,80+
 TEST,8,Pfizer,1,<1960,VTE_narrow,0,0,0,2591083.12,60+
+TEST,8,Pfizer,1,>1960,VTE_narrow,0,0,0,495354.13,
 TEST,8,Pfizer,1,all_birth_cohorts,VTE_narrow,0,0,0,415852.85,all_birth_cohorts
 TEST,9,Pfizer,1,1940-1949,VTE_narrow,0,0,0,Inf,70-79
 TEST,9,Pfizer,1,1950-1959,VTE_narrow,0,0,0,Inf,60-69
@@ -2185,6 +2427,7 @@ TEST,9,Pfizer,1,1980-1989,VTE_narrow,0,0,0,1981416.5,30-39
 TEST,9,Pfizer,1,1990+,VTE_narrow,0,0,0,Inf,<30
 TEST,9,Pfizer,1,<1940,VTE_narrow,0,0,0,2591083.12,80+
 TEST,9,Pfizer,1,<1960,VTE_narrow,0,0,0,2591083.12,60+
+TEST,9,Pfizer,1,>1960,VTE_narrow,0,0,0,482925.89,
 TEST,9,Pfizer,1,all_birth_cohorts,VTE_narrow,0,0,0,407058.37,all_birth_cohorts
 TEST,10,Pfizer,1,1940-1949,VTE_narrow,0,0,0,Inf,70-79
 TEST,10,Pfizer,1,1950-1959,VTE_narrow,0,0,0,Inf,60-69
@@ -2194,6 +2437,7 @@ TEST,10,Pfizer,1,1980-1989,VTE_narrow,0,0,0,1981416.5,30-39
 TEST,10,Pfizer,1,1990+,VTE_narrow,0,0,0,Inf,<30
 TEST,10,Pfizer,1,<1940,VTE_narrow,0,0,0,2591083.12,80+
 TEST,10,Pfizer,1,<1960,VTE_narrow,0,0,0,2591083.12,60+
+TEST,10,Pfizer,1,>1960,VTE_narrow,0,0,0,471106.02,
 TEST,10,Pfizer,1,all_birth_cohorts,VTE_narrow,0,0,0,398628.17,all_birth_cohorts
 TEST,11,Pfizer,1,1940-1949,VTE_narrow,0,0,0,Inf,70-79
 TEST,11,Pfizer,1,1950-1959,VTE_narrow,0,0,0,Inf,60-69
@@ -2203,6 +2447,7 @@ TEST,11,Pfizer,1,1980-1989,VTE_narrow,0,0,0,1981416.5,30-39
 TEST,11,Pfizer,1,1990+,VTE_narrow,0,0,0,Inf,<30
 TEST,11,Pfizer,1,<1940,VTE_narrow,0,0,0,2591083.12,80+
 TEST,11,Pfizer,1,<1960,VTE_narrow,0,0,0,2591083.12,60+
+TEST,11,Pfizer,1,>1960,VTE_narrow,0,0,0,459850.93,
 TEST,11,Pfizer,1,all_birth_cohorts,VTE_narrow,0,0,0,390540.06,all_birth_cohorts
 TEST,12,Pfizer,1,1940-1949,VTE_narrow,0,0,0,Inf,70-79
 TEST,12,Pfizer,1,1950-1959,VTE_narrow,0,0,0,Inf,60-69
@@ -2212,6 +2457,7 @@ TEST,12,Pfizer,1,1980-1989,VTE_narrow,0,0,0,1981416.5,30-39
 TEST,12,Pfizer,1,1990+,VTE_narrow,0,0,0,Inf,<30
 TEST,12,Pfizer,1,<1940,VTE_narrow,0,0,0,2591083.12,80+
 TEST,12,Pfizer,1,<1960,VTE_narrow,0,0,0,2591083.12,60+
+TEST,12,Pfizer,1,>1960,VTE_narrow,0,0,0,449121.07,
 TEST,12,Pfizer,1,all_birth_cohorts,VTE_narrow,0,0,0,382773.64,all_birth_cohorts
 TEST,13,Pfizer,1,1940-1949,VTE_narrow,0,0,0,Inf,70-79
 TEST,13,Pfizer,1,1950-1959,VTE_narrow,0,0,0,Inf,60-69
@@ -2221,6 +2467,7 @@ TEST,13,Pfizer,1,1980-1989,VTE_narrow,0,0,0,1981416.5,30-39
 TEST,13,Pfizer,1,1990+,VTE_narrow,0,0,0,Inf,<30
 TEST,13,Pfizer,1,<1940,VTE_narrow,0,0,0,2591083.12,80+
 TEST,13,Pfizer,1,<1960,VTE_narrow,0,0,0,2591083.12,60+
+TEST,13,Pfizer,1,>1960,VTE_narrow,0,0,0,438880.53,
 TEST,13,Pfizer,1,all_birth_cohorts,VTE_narrow,0,0,0,375310.09,all_birth_cohorts
 TEST,14,Pfizer,1,1940-1949,VTE_narrow,0,0,0,Inf,70-79
 TEST,14,Pfizer,1,1950-1959,VTE_narrow,0,0,0,Inf,60-69
@@ -2230,6 +2477,7 @@ TEST,14,Pfizer,1,1980-1989,VTE_narrow,0,0,0,1981416.5,30-39
 TEST,14,Pfizer,1,1990+,VTE_narrow,0,0,0,Inf,<30
 TEST,14,Pfizer,1,<1940,VTE_narrow,0,0,0,2591083.12,80+
 TEST,14,Pfizer,1,<1960,VTE_narrow,0,0,0,2591083.12,60+
+TEST,14,Pfizer,1,>1960,VTE_narrow,0,0,0,434633.3,
 TEST,14,Pfizer,1,all_birth_cohorts,VTE_narrow,0,0,0,372199.78,all_birth_cohorts
 TEST,1,Pfizer,2,1940-1949,VTE_narrow,0,0,0,Inf,70-79
 TEST,1,Pfizer,2,1950-1959,VTE_narrow,0,0,0,Inf,60-69
@@ -2239,6 +2487,7 @@ TEST,1,Pfizer,2,1980-1989,VTE_narrow,0,0,0,19248046.01,30-39
 TEST,1,Pfizer,2,1990+,VTE_narrow,0,0,0,Inf,<30
 TEST,1,Pfizer,2,<1940,VTE_narrow,0,0,0,Inf,80+
 TEST,1,Pfizer,2,<1960,VTE_narrow,0,0,0,Inf,60+
+TEST,1,Pfizer,2,>1960,VTE_narrow,0,0,0,6416015.34,
 TEST,1,Pfizer,2,all_birth_cohorts,VTE_narrow,0,0,0,6416015.34,all_birth_cohorts
 TEST,2,Pfizer,2,1940-1949,VTE_narrow,0,0,0,Inf,70-79
 TEST,2,Pfizer,2,1950-1959,VTE_narrow,0,0,0,Inf,60-69
@@ -2248,6 +2497,7 @@ TEST,2,Pfizer,2,1980-1989,VTE_narrow,0,0,0,9624023,30-39
 TEST,2,Pfizer,2,1990+,VTE_narrow,0,0,0,Inf,<30
 TEST,2,Pfizer,2,<1940,VTE_narrow,0,0,0,Inf,80+
 TEST,2,Pfizer,2,<1960,VTE_narrow,0,0,0,Inf,60+
+TEST,2,Pfizer,2,>1960,VTE_narrow,0,0,0,3962833,
 TEST,2,Pfizer,2,all_birth_cohorts,VTE_narrow,0,0,0,3962833,all_birth_cohorts
 TEST,3,Pfizer,2,1940-1949,VTE_narrow,0,0,0,Inf,70-79
 TEST,3,Pfizer,2,1950-1959,VTE_narrow,0,0,0,Inf,60-69
@@ -2257,6 +2507,7 @@ TEST,3,Pfizer,2,1980-1989,VTE_narrow,0,0,0,6416015.34,30-39
 TEST,3,Pfizer,2,1990+,VTE_narrow,0,0,0,Inf,<30
 TEST,3,Pfizer,2,<1940,VTE_narrow,0,0,0,Inf,80+
 TEST,3,Pfizer,2,<1960,VTE_narrow,0,0,0,Inf,60+
+TEST,3,Pfizer,2,>1960,VTE_narrow,0,0,0,3286251.76,
 TEST,3,Pfizer,2,all_birth_cohorts,VTE_narrow,0,0,0,3286251.76,all_birth_cohorts
 TEST,4,Pfizer,2,1940-1949,VTE_narrow,0,0,0,Inf,70-79
 TEST,4,Pfizer,2,1950-1959,VTE_narrow,0,0,0,Inf,60-69
@@ -2266,6 +2517,7 @@ TEST,4,Pfizer,2,1980-1989,VTE_narrow,0,0,0,5389452.88,30-39
 TEST,4,Pfizer,2,1990+,VTE_narrow,0,0,0,Inf,<30
 TEST,4,Pfizer,2,<1940,VTE_narrow,0,0,0,Inf,80+
 TEST,4,Pfizer,2,<1960,VTE_narrow,0,0,0,Inf,60+
+TEST,4,Pfizer,2,>1960,VTE_narrow,0,0,0,2994140.49,
 TEST,4,Pfizer,2,all_birth_cohorts,VTE_narrow,0,0,0,2994140.49,all_birth_cohorts
 TEST,0,none,no_dose,1940-1949,VTE_broad,0,0,0,6853.67,70-79
 TEST,0,none,no_dose,1950-1959,VTE_broad,0,0,0,5925.6,60-69
@@ -2275,6 +2527,7 @@ TEST,0,none,no_dose,1980-1989,VTE_broad,0,0,0,7109.35,30-39
 TEST,0,none,no_dose,1990+,VTE_broad,0,0,0,3764.32,<30
 TEST,0,none,no_dose,<1940,VTE_broad,0,0,0,8624.23,80+
 TEST,0,none,no_dose,<1960,VTE_broad,0,0,0,2322.24,60+
+TEST,0,none,no_dose,>1960,VTE_broad,0,0,0,1201.61,
 TEST,0,none,no_dose,all_birth_cohorts,VTE_broad,0,0,0,791.87,all_birth_cohorts
 TEST,1,AstraZeneca,1,1940-1949,VTE_broad,0,0,0,19248046.01,70-79
 TEST,1,AstraZeneca,1,1950-1959,VTE_broad,0,0,0,Inf,60-69
@@ -2284,6 +2537,7 @@ TEST,1,AstraZeneca,1,1980-1989,VTE_broad,0,0,0,Inf,30-39
 TEST,1,AstraZeneca,1,1990+,VTE_broad,0,0,0,Inf,<30
 TEST,1,AstraZeneca,1,<1940,VTE_broad,0,0,0,Inf,80+
 TEST,1,AstraZeneca,1,<1960,VTE_broad,0,0,0,19248046.01,60+
+TEST,1,AstraZeneca,1,>1960,VTE_broad,0,0,0,19248046.01,
 TEST,1,AstraZeneca,1,all_birth_cohorts,VTE_broad,0,0,0,9624023,all_birth_cohorts
 TEST,2,AstraZeneca,1,1940-1949,VTE_broad,0,0,0,16842040.26,70-79
 TEST,2,AstraZeneca,1,1950-1959,VTE_broad,0,0,0,Inf,60-69
@@ -2293,6 +2547,7 @@ TEST,2,AstraZeneca,1,1980-1989,VTE_broad,0,0,0,Inf,30-39
 TEST,2,AstraZeneca,1,1990+,VTE_broad,0,0,0,Inf,<30
 TEST,2,AstraZeneca,1,<1940,VTE_broad,0,0,0,Inf,80+
 TEST,2,AstraZeneca,1,<1960,VTE_broad,0,0,0,16842040.26,60+
+TEST,2,AstraZeneca,1,>1960,VTE_broad,0,0,0,9624023,
 TEST,2,AstraZeneca,1,all_birth_cohorts,VTE_broad,0,0,0,6124378.28,all_birth_cohorts
 TEST,1,Pfizer,1,1940-1949,VTE_broad,0,0,0,Inf,70-79
 TEST,1,Pfizer,1,1950-1959,VTE_broad,0,0,0,Inf,60-69
@@ -2302,6 +2557,7 @@ TEST,1,Pfizer,1,1980-1989,VTE_broad,0,0,0,9624023,30-39
 TEST,1,Pfizer,1,1990+,VTE_broad,0,0,0,Inf,<30
 TEST,1,Pfizer,1,<1940,VTE_broad,0,0,0,5858100.96,80+
 TEST,1,Pfizer,1,<1960,VTE_broad,0,0,0,5858100.96,60+
+TEST,1,Pfizer,1,>1960,VTE_broad,0,0,0,1924804.6,
 TEST,1,Pfizer,1,all_birth_cohorts,VTE_broad,0,0,0,1448777.66,all_birth_cohorts
 TEST,2,Pfizer,1,1940-1949,VTE_broad,0,0,0,Inf,70-79
 TEST,2,Pfizer,1,1950-1959,VTE_broad,0,0,0,Inf,60-69
@@ -2311,6 +2567,7 @@ TEST,2,Pfizer,1,1980-1989,VTE_broad,0,0,0,4812011.5,30-39
 TEST,2,Pfizer,1,1990+,VTE_broad,0,0,0,Inf,<30
 TEST,2,Pfizer,1,<1940,VTE_broad,0,0,0,4082918.85,80+
 TEST,2,Pfizer,1,<1960,VTE_broad,0,0,0,4082918.85,60+
+TEST,2,Pfizer,1,>1960,VTE_broad,0,0,0,1044467.61,
 TEST,2,Pfizer,1,all_birth_cohorts,VTE_broad,0,0,0,831705.69,all_birth_cohorts
 TEST,3,Pfizer,1,1940-1949,VTE_broad,0,0,0,Inf,70-79
 TEST,3,Pfizer,1,1950-1959,VTE_broad,0,0,0,Inf,60-69
@@ -2320,6 +2577,7 @@ TEST,3,Pfizer,1,1980-1989,VTE_broad,0,0,0,3208007.67,30-39
 TEST,3,Pfizer,1,1990+,VTE_broad,0,0,0,Inf,<30
 TEST,3,Pfizer,1,<1940,VTE_broad,0,0,0,3368408.05,80+
 TEST,3,Pfizer,1,<1960,VTE_broad,0,0,0,3368408.05,60+
+TEST,3,Pfizer,1,>1960,VTE_broad,0,0,0,756945.63,
 TEST,3,Pfizer,1,all_birth_cohorts,VTE_broad,0,0,0,618056.52,all_birth_cohorts
 TEST,4,Pfizer,1,1940-1949,VTE_broad,0,0,0,Inf,70-79
 TEST,4,Pfizer,1,1950-1959,VTE_broad,0,0,0,Inf,60-69
@@ -2329,6 +2587,7 @@ TEST,4,Pfizer,1,1980-1989,VTE_broad,0,0,0,2406005.75,30-39
 TEST,4,Pfizer,1,1990+,VTE_broad,0,0,0,Inf,<30
 TEST,4,Pfizer,1,<1940,VTE_broad,0,0,0,2866730.26,80+
 TEST,4,Pfizer,1,<1960,VTE_broad,0,0,0,2866730.26,60+
+TEST,4,Pfizer,1,>1960,VTE_broad,0,0,0,604198.75,
 TEST,4,Pfizer,1,all_birth_cohorts,VTE_broad,0,0,0,499023.42,all_birth_cohorts
 TEST,5,Pfizer,1,1940-1949,VTE_broad,0,0,0,Inf,70-79
 TEST,5,Pfizer,1,1950-1959,VTE_broad,0,0,0,Inf,60-69
@@ -2338,6 +2597,7 @@ TEST,5,Pfizer,1,1980-1989,VTE_broad,0,0,0,2105255.03,30-39
 TEST,5,Pfizer,1,1990+,VTE_broad,0,0,0,Inf,<30
 TEST,5,Pfizer,1,<1940,VTE_broad,0,0,0,2591083.12,80+
 TEST,5,Pfizer,1,<1960,VTE_broad,0,0,0,2591083.12,60+
+TEST,5,Pfizer,1,>1960,VTE_broad,0,0,0,545491.18,
 TEST,5,Pfizer,1,all_birth_cohorts,VTE_broad,0,0,0,450623.15,all_birth_cohorts
 TEST,6,Pfizer,1,1940-1949,VTE_broad,0,0,0,Inf,70-79
 TEST,6,Pfizer,1,1950-1959,VTE_broad,0,0,0,Inf,60-69
@@ -2347,6 +2607,7 @@ TEST,6,Pfizer,1,1980-1989,VTE_broad,0,0,0,1981416.5,30-39
 TEST,6,Pfizer,1,1990+,VTE_broad,0,0,0,Inf,<30
 TEST,6,Pfizer,1,<1940,VTE_broad,0,0,0,2591083.12,80+
 TEST,6,Pfizer,1,<1960,VTE_broad,0,0,0,2591083.12,60+
+TEST,6,Pfizer,1,>1960,VTE_broad,0,0,0,522233.81,
 TEST,6,Pfizer,1,all_birth_cohorts,VTE_broad,0,0,0,434633.3,all_birth_cohorts
 TEST,7,Pfizer,1,1940-1949,VTE_broad,0,0,0,Inf,70-79
 TEST,7,Pfizer,1,1950-1959,VTE_broad,0,0,0,Inf,60-69
@@ -2356,6 +2617,7 @@ TEST,7,Pfizer,1,1980-1989,VTE_broad,0,0,0,1981416.5,30-39
 TEST,7,Pfizer,1,1990+,VTE_broad,0,0,0,Inf,<30
 TEST,7,Pfizer,1,<1940,VTE_broad,0,0,0,2591083.12,80+
 TEST,7,Pfizer,1,<1960,VTE_broad,0,0,0,2591083.12,60+
+TEST,7,Pfizer,1,>1960,VTE_broad,0,0,0,508438.95,
 TEST,7,Pfizer,1,all_birth_cohorts,VTE_broad,0,0,0,425035.72,all_birth_cohorts
 TEST,8,Pfizer,1,1940-1949,VTE_broad,0,0,0,Inf,70-79
 TEST,8,Pfizer,1,1950-1959,VTE_broad,0,0,0,Inf,60-69
@@ -2365,6 +2627,7 @@ TEST,8,Pfizer,1,1980-1989,VTE_broad,0,0,0,1981416.5,30-39
 TEST,8,Pfizer,1,1990+,VTE_broad,0,0,0,Inf,<30
 TEST,8,Pfizer,1,<1940,VTE_broad,0,0,0,2591083.12,80+
 TEST,8,Pfizer,1,<1960,VTE_broad,0,0,0,2591083.12,60+
+TEST,8,Pfizer,1,>1960,VTE_broad,0,0,0,495354.13,
 TEST,8,Pfizer,1,all_birth_cohorts,VTE_broad,0,0,0,415852.85,all_birth_cohorts
 TEST,9,Pfizer,1,1940-1949,VTE_broad,0,0,0,Inf,70-79
 TEST,9,Pfizer,1,1950-1959,VTE_broad,0,0,0,Inf,60-69
@@ -2374,6 +2637,7 @@ TEST,9,Pfizer,1,1980-1989,VTE_broad,0,0,0,1981416.5,30-39
 TEST,9,Pfizer,1,1990+,VTE_broad,0,0,0,Inf,<30
 TEST,9,Pfizer,1,<1940,VTE_broad,0,0,0,2591083.12,80+
 TEST,9,Pfizer,1,<1960,VTE_broad,0,0,0,2591083.12,60+
+TEST,9,Pfizer,1,>1960,VTE_broad,0,0,0,482925.89,
 TEST,9,Pfizer,1,all_birth_cohorts,VTE_broad,0,0,0,407058.37,all_birth_cohorts
 TEST,10,Pfizer,1,1940-1949,VTE_broad,0,0,0,Inf,70-79
 TEST,10,Pfizer,1,1950-1959,VTE_broad,0,0,0,Inf,60-69
@@ -2383,6 +2647,7 @@ TEST,10,Pfizer,1,1980-1989,VTE_broad,0,0,0,1981416.5,30-39
 TEST,10,Pfizer,1,1990+,VTE_broad,0,0,0,Inf,<30
 TEST,10,Pfizer,1,<1940,VTE_broad,0,0,0,2591083.12,80+
 TEST,10,Pfizer,1,<1960,VTE_broad,0,0,0,2591083.12,60+
+TEST,10,Pfizer,1,>1960,VTE_broad,0,0,0,471106.02,
 TEST,10,Pfizer,1,all_birth_cohorts,VTE_broad,0,0,0,398628.17,all_birth_cohorts
 TEST,11,Pfizer,1,1940-1949,VTE_broad,0,0,0,Inf,70-79
 TEST,11,Pfizer,1,1950-1959,VTE_broad,0,0,0,Inf,60-69
@@ -2392,6 +2657,7 @@ TEST,11,Pfizer,1,1980-1989,VTE_broad,0,0,0,1981416.5,30-39
 TEST,11,Pfizer,1,1990+,VTE_broad,0,0,0,Inf,<30
 TEST,11,Pfizer,1,<1940,VTE_broad,0,0,0,2591083.12,80+
 TEST,11,Pfizer,1,<1960,VTE_broad,0,0,0,2591083.12,60+
+TEST,11,Pfizer,1,>1960,VTE_broad,0,0,0,459850.93,
 TEST,11,Pfizer,1,all_birth_cohorts,VTE_broad,0,0,0,390540.06,all_birth_cohorts
 TEST,12,Pfizer,1,1940-1949,VTE_broad,0,0,0,Inf,70-79
 TEST,12,Pfizer,1,1950-1959,VTE_broad,0,0,0,Inf,60-69
@@ -2401,6 +2667,7 @@ TEST,12,Pfizer,1,1980-1989,VTE_broad,0,0,0,1981416.5,30-39
 TEST,12,Pfizer,1,1990+,VTE_broad,0,0,0,Inf,<30
 TEST,12,Pfizer,1,<1940,VTE_broad,0,0,0,2591083.12,80+
 TEST,12,Pfizer,1,<1960,VTE_broad,0,0,0,2591083.12,60+
+TEST,12,Pfizer,1,>1960,VTE_broad,0,0,0,449121.07,
 TEST,12,Pfizer,1,all_birth_cohorts,VTE_broad,0,0,0,382773.64,all_birth_cohorts
 TEST,13,Pfizer,1,1940-1949,VTE_broad,0,0,0,Inf,70-79
 TEST,13,Pfizer,1,1950-1959,VTE_broad,0,0,0,Inf,60-69
@@ -2410,6 +2677,7 @@ TEST,13,Pfizer,1,1980-1989,VTE_broad,0,0,0,1981416.5,30-39
 TEST,13,Pfizer,1,1990+,VTE_broad,0,0,0,Inf,<30
 TEST,13,Pfizer,1,<1940,VTE_broad,0,0,0,2591083.12,80+
 TEST,13,Pfizer,1,<1960,VTE_broad,0,0,0,2591083.12,60+
+TEST,13,Pfizer,1,>1960,VTE_broad,0,0,0,438880.53,
 TEST,13,Pfizer,1,all_birth_cohorts,VTE_broad,0,0,0,375310.09,all_birth_cohorts
 TEST,14,Pfizer,1,1940-1949,VTE_broad,0,0,0,Inf,70-79
 TEST,14,Pfizer,1,1950-1959,VTE_broad,0,0,0,Inf,60-69
@@ -2419,6 +2687,7 @@ TEST,14,Pfizer,1,1980-1989,VTE_broad,0,0,0,1981416.5,30-39
 TEST,14,Pfizer,1,1990+,VTE_broad,0,0,0,Inf,<30
 TEST,14,Pfizer,1,<1940,VTE_broad,0,0,0,2591083.12,80+
 TEST,14,Pfizer,1,<1960,VTE_broad,0,0,0,2591083.12,60+
+TEST,14,Pfizer,1,>1960,VTE_broad,0,0,0,434633.3,
 TEST,14,Pfizer,1,all_birth_cohorts,VTE_broad,0,0,0,372199.78,all_birth_cohorts
 TEST,1,Pfizer,2,1940-1949,VTE_broad,0,0,0,Inf,70-79
 TEST,1,Pfizer,2,1950-1959,VTE_broad,0,0,0,Inf,60-69
@@ -2428,6 +2697,7 @@ TEST,1,Pfizer,2,1980-1989,VTE_broad,0,0,0,19248046.01,30-39
 TEST,1,Pfizer,2,1990+,VTE_broad,0,0,0,Inf,<30
 TEST,1,Pfizer,2,<1940,VTE_broad,0,0,0,Inf,80+
 TEST,1,Pfizer,2,<1960,VTE_broad,0,0,0,Inf,60+
+TEST,1,Pfizer,2,>1960,VTE_broad,0,0,0,6416015.34,
 TEST,1,Pfizer,2,all_birth_cohorts,VTE_broad,0,0,0,6416015.34,all_birth_cohorts
 TEST,2,Pfizer,2,1940-1949,VTE_broad,0,0,0,Inf,70-79
 TEST,2,Pfizer,2,1950-1959,VTE_broad,0,0,0,Inf,60-69
@@ -2437,6 +2707,7 @@ TEST,2,Pfizer,2,1980-1989,VTE_broad,0,0,0,9624023,30-39
 TEST,2,Pfizer,2,1990+,VTE_broad,0,0,0,Inf,<30
 TEST,2,Pfizer,2,<1940,VTE_broad,0,0,0,Inf,80+
 TEST,2,Pfizer,2,<1960,VTE_broad,0,0,0,Inf,60+
+TEST,2,Pfizer,2,>1960,VTE_broad,0,0,0,3962833,
 TEST,2,Pfizer,2,all_birth_cohorts,VTE_broad,0,0,0,3962833,all_birth_cohorts
 TEST,3,Pfizer,2,1940-1949,VTE_broad,0,0,0,Inf,70-79
 TEST,3,Pfizer,2,1950-1959,VTE_broad,0,0,0,Inf,60-69
@@ -2446,6 +2717,7 @@ TEST,3,Pfizer,2,1980-1989,VTE_broad,0,0,0,6416015.34,30-39
 TEST,3,Pfizer,2,1990+,VTE_broad,0,0,0,Inf,<30
 TEST,3,Pfizer,2,<1940,VTE_broad,0,0,0,Inf,80+
 TEST,3,Pfizer,2,<1960,VTE_broad,0,0,0,Inf,60+
+TEST,3,Pfizer,2,>1960,VTE_broad,0,0,0,3286251.76,
 TEST,3,Pfizer,2,all_birth_cohorts,VTE_broad,0,0,0,3286251.76,all_birth_cohorts
 TEST,4,Pfizer,2,1940-1949,VTE_broad,0,0,0,Inf,70-79
 TEST,4,Pfizer,2,1950-1959,VTE_broad,0,0,0,Inf,60-69
@@ -2455,6 +2727,7 @@ TEST,4,Pfizer,2,1980-1989,VTE_broad,0,0,0,5389452.88,30-39
 TEST,4,Pfizer,2,1990+,VTE_broad,0,0,0,Inf,<30
 TEST,4,Pfizer,2,<1940,VTE_broad,0,0,0,Inf,80+
 TEST,4,Pfizer,2,<1960,VTE_broad,0,0,0,Inf,60+
+TEST,4,Pfizer,2,>1960,VTE_broad,0,0,0,2994140.49,
 TEST,4,Pfizer,2,all_birth_cohorts,VTE_broad,0,0,0,2994140.49,all_birth_cohorts
 TEST,0,none,no_dose,1940-1949,CONTRDIVERTIC,0,0,0,6853.67,70-79
 TEST,0,none,no_dose,1950-1959,CONTRDIVERTIC,0,0,0,5806.35,60-69
@@ -2464,6 +2737,7 @@ TEST,0,none,no_dose,1980-1989,CONTRDIVERTIC,0,0,0,7109.35,30-39
 TEST,0,none,no_dose,1990+,CONTRDIVERTIC,0,0,0,3764.32,<30
 TEST,0,none,no_dose,<1940,CONTRDIVERTIC,0,0,0,8624.23,80+
 TEST,0,none,no_dose,<1960,CONTRDIVERTIC,0,0,0,2303.7,60+
+TEST,0,none,no_dose,>1960,CONTRDIVERTIC,0,0,0,1201.61,
 TEST,0,none,no_dose,all_birth_cohorts,CONTRDIVERTIC,0,0,0,789.7,all_birth_cohorts
 TEST,1,AstraZeneca,1,1940-1949,CONTRDIVERTIC,0,0,0,19248046.01,70-79
 TEST,1,AstraZeneca,1,1950-1959,CONTRDIVERTIC,0,0,0,Inf,60-69
@@ -2473,6 +2747,7 @@ TEST,1,AstraZeneca,1,1980-1989,CONTRDIVERTIC,0,0,0,Inf,30-39
 TEST,1,AstraZeneca,1,1990+,CONTRDIVERTIC,0,0,0,Inf,<30
 TEST,1,AstraZeneca,1,<1940,CONTRDIVERTIC,0,0,0,Inf,80+
 TEST,1,AstraZeneca,1,<1960,CONTRDIVERTIC,0,0,0,19248046.01,60+
+TEST,1,AstraZeneca,1,>1960,CONTRDIVERTIC,0,0,0,19248046.01,
 TEST,1,AstraZeneca,1,all_birth_cohorts,CONTRDIVERTIC,0,0,0,9624023,all_birth_cohorts
 TEST,2,AstraZeneca,1,1940-1949,CONTRDIVERTIC,0,0,0,16842040.26,70-79
 TEST,2,AstraZeneca,1,1950-1959,CONTRDIVERTIC,0,0,0,Inf,60-69
@@ -2482,6 +2757,7 @@ TEST,2,AstraZeneca,1,1980-1989,CONTRDIVERTIC,0,0,0,Inf,30-39
 TEST,2,AstraZeneca,1,1990+,CONTRDIVERTIC,0,0,0,Inf,<30
 TEST,2,AstraZeneca,1,<1940,CONTRDIVERTIC,0,0,0,Inf,80+
 TEST,2,AstraZeneca,1,<1960,CONTRDIVERTIC,0,0,0,16842040.26,60+
+TEST,2,AstraZeneca,1,>1960,CONTRDIVERTIC,0,0,0,9624023,
 TEST,2,AstraZeneca,1,all_birth_cohorts,CONTRDIVERTIC,0,0,0,6124378.28,all_birth_cohorts
 TEST,1,Pfizer,1,1940-1949,CONTRDIVERTIC,0,0,0,Inf,70-79
 TEST,1,Pfizer,1,1950-1959,CONTRDIVERTIC,0,0,0,Inf,60-69
@@ -2491,6 +2767,7 @@ TEST,1,Pfizer,1,1980-1989,CONTRDIVERTIC,0,0,0,9624023,30-39
 TEST,1,Pfizer,1,1990+,CONTRDIVERTIC,0,0,0,Inf,<30
 TEST,1,Pfizer,1,<1940,CONTRDIVERTIC,0,0,0,5858100.96,80+
 TEST,1,Pfizer,1,<1960,CONTRDIVERTIC,0,0,0,5858100.96,60+
+TEST,1,Pfizer,1,>1960,CONTRDIVERTIC,0,0,0,1924804.6,
 TEST,1,Pfizer,1,all_birth_cohorts,CONTRDIVERTIC,0,0,0,1448777.66,all_birth_cohorts
 TEST,2,Pfizer,1,1940-1949,CONTRDIVERTIC,0,0,0,Inf,70-79
 TEST,2,Pfizer,1,1950-1959,CONTRDIVERTIC,0,0,0,Inf,60-69
@@ -2500,6 +2777,7 @@ TEST,2,Pfizer,1,1980-1989,CONTRDIVERTIC,0,0,0,4812011.5,30-39
 TEST,2,Pfizer,1,1990+,CONTRDIVERTIC,0,0,0,Inf,<30
 TEST,2,Pfizer,1,<1940,CONTRDIVERTIC,0,0,0,4082918.85,80+
 TEST,2,Pfizer,1,<1960,CONTRDIVERTIC,0,0,0,4082918.85,60+
+TEST,2,Pfizer,1,>1960,CONTRDIVERTIC,0,0,0,1044467.61,
 TEST,2,Pfizer,1,all_birth_cohorts,CONTRDIVERTIC,0,0,0,831705.69,all_birth_cohorts
 TEST,3,Pfizer,1,1940-1949,CONTRDIVERTIC,0,0,0,Inf,70-79
 TEST,3,Pfizer,1,1950-1959,CONTRDIVERTIC,0,0,0,Inf,60-69
@@ -2509,6 +2787,7 @@ TEST,3,Pfizer,1,1980-1989,CONTRDIVERTIC,0,0,0,3208007.67,30-39
 TEST,3,Pfizer,1,1990+,CONTRDIVERTIC,0,0,0,Inf,<30
 TEST,3,Pfizer,1,<1940,CONTRDIVERTIC,0,0,0,3368408.05,80+
 TEST,3,Pfizer,1,<1960,CONTRDIVERTIC,0,0,0,3368408.05,60+
+TEST,3,Pfizer,1,>1960,CONTRDIVERTIC,0,0,0,756945.63,
 TEST,3,Pfizer,1,all_birth_cohorts,CONTRDIVERTIC,0,0,0,618056.52,all_birth_cohorts
 TEST,4,Pfizer,1,1940-1949,CONTRDIVERTIC,0,0,0,Inf,70-79
 TEST,4,Pfizer,1,1950-1959,CONTRDIVERTIC,0,0,0,Inf,60-69
@@ -2518,6 +2797,7 @@ TEST,4,Pfizer,1,1980-1989,CONTRDIVERTIC,0,0,0,2406005.75,30-39
 TEST,4,Pfizer,1,1990+,CONTRDIVERTIC,0,0,0,Inf,<30
 TEST,4,Pfizer,1,<1940,CONTRDIVERTIC,0,0,0,2866730.26,80+
 TEST,4,Pfizer,1,<1960,CONTRDIVERTIC,0,0,0,2866730.26,60+
+TEST,4,Pfizer,1,>1960,CONTRDIVERTIC,0,0,0,604198.75,
 TEST,4,Pfizer,1,all_birth_cohorts,CONTRDIVERTIC,0,0,0,499023.42,all_birth_cohorts
 TEST,5,Pfizer,1,1940-1949,CONTRDIVERTIC,0,0,0,Inf,70-79
 TEST,5,Pfizer,1,1950-1959,CONTRDIVERTIC,0,0,0,Inf,60-69
@@ -2527,6 +2807,7 @@ TEST,5,Pfizer,1,1980-1989,CONTRDIVERTIC,0,0,0,2105255.03,30-39
 TEST,5,Pfizer,1,1990+,CONTRDIVERTIC,0,0,0,Inf,<30
 TEST,5,Pfizer,1,<1940,CONTRDIVERTIC,0,0,0,2591083.12,80+
 TEST,5,Pfizer,1,<1960,CONTRDIVERTIC,0,0,0,2591083.12,60+
+TEST,5,Pfizer,1,>1960,CONTRDIVERTIC,0,0,0,545491.18,
 TEST,5,Pfizer,1,all_birth_cohorts,CONTRDIVERTIC,0,0,0,450623.15,all_birth_cohorts
 TEST,6,Pfizer,1,1940-1949,CONTRDIVERTIC,0,0,0,Inf,70-79
 TEST,6,Pfizer,1,1950-1959,CONTRDIVERTIC,0,0,0,Inf,60-69
@@ -2536,6 +2817,7 @@ TEST,6,Pfizer,1,1980-1989,CONTRDIVERTIC,0,0,0,1981416.5,30-39
 TEST,6,Pfizer,1,1990+,CONTRDIVERTIC,0,0,0,Inf,<30
 TEST,6,Pfizer,1,<1940,CONTRDIVERTIC,0,0,0,2591083.12,80+
 TEST,6,Pfizer,1,<1960,CONTRDIVERTIC,0,0,0,2591083.12,60+
+TEST,6,Pfizer,1,>1960,CONTRDIVERTIC,0,0,0,522233.81,
 TEST,6,Pfizer,1,all_birth_cohorts,CONTRDIVERTIC,0,0,0,434633.3,all_birth_cohorts
 TEST,7,Pfizer,1,1940-1949,CONTRDIVERTIC,0,0,0,Inf,70-79
 TEST,7,Pfizer,1,1950-1959,CONTRDIVERTIC,0,0,0,Inf,60-69
@@ -2545,6 +2827,7 @@ TEST,7,Pfizer,1,1980-1989,CONTRDIVERTIC,0,0,0,1981416.5,30-39
 TEST,7,Pfizer,1,1990+,CONTRDIVERTIC,0,0,0,Inf,<30
 TEST,7,Pfizer,1,<1940,CONTRDIVERTIC,0,0,0,2591083.12,80+
 TEST,7,Pfizer,1,<1960,CONTRDIVERTIC,0,0,0,2591083.12,60+
+TEST,7,Pfizer,1,>1960,CONTRDIVERTIC,0,0,0,508438.95,
 TEST,7,Pfizer,1,all_birth_cohorts,CONTRDIVERTIC,0,0,0,425035.72,all_birth_cohorts
 TEST,8,Pfizer,1,1940-1949,CONTRDIVERTIC,0,0,0,Inf,70-79
 TEST,8,Pfizer,1,1950-1959,CONTRDIVERTIC,0,0,0,Inf,60-69
@@ -2554,6 +2837,7 @@ TEST,8,Pfizer,1,1980-1989,CONTRDIVERTIC,0,0,0,1981416.5,30-39
 TEST,8,Pfizer,1,1990+,CONTRDIVERTIC,0,0,0,Inf,<30
 TEST,8,Pfizer,1,<1940,CONTRDIVERTIC,0,0,0,2591083.12,80+
 TEST,8,Pfizer,1,<1960,CONTRDIVERTIC,0,0,0,2591083.12,60+
+TEST,8,Pfizer,1,>1960,CONTRDIVERTIC,0,0,0,495354.13,
 TEST,8,Pfizer,1,all_birth_cohorts,CONTRDIVERTIC,0,0,0,415852.85,all_birth_cohorts
 TEST,9,Pfizer,1,1940-1949,CONTRDIVERTIC,0,0,0,Inf,70-79
 TEST,9,Pfizer,1,1950-1959,CONTRDIVERTIC,0,0,0,Inf,60-69
@@ -2563,6 +2847,7 @@ TEST,9,Pfizer,1,1980-1989,CONTRDIVERTIC,0,0,0,1981416.5,30-39
 TEST,9,Pfizer,1,1990+,CONTRDIVERTIC,0,0,0,Inf,<30
 TEST,9,Pfizer,1,<1940,CONTRDIVERTIC,0,0,0,2591083.12,80+
 TEST,9,Pfizer,1,<1960,CONTRDIVERTIC,0,0,0,2591083.12,60+
+TEST,9,Pfizer,1,>1960,CONTRDIVERTIC,0,0,0,482925.89,
 TEST,9,Pfizer,1,all_birth_cohorts,CONTRDIVERTIC,0,0,0,407058.37,all_birth_cohorts
 TEST,10,Pfizer,1,1940-1949,CONTRDIVERTIC,0,0,0,Inf,70-79
 TEST,10,Pfizer,1,1950-1959,CONTRDIVERTIC,0,0,0,Inf,60-69
@@ -2572,6 +2857,7 @@ TEST,10,Pfizer,1,1980-1989,CONTRDIVERTIC,0,0,0,1981416.5,30-39
 TEST,10,Pfizer,1,1990+,CONTRDIVERTIC,0,0,0,Inf,<30
 TEST,10,Pfizer,1,<1940,CONTRDIVERTIC,0,0,0,2591083.12,80+
 TEST,10,Pfizer,1,<1960,CONTRDIVERTIC,0,0,0,2591083.12,60+
+TEST,10,Pfizer,1,>1960,CONTRDIVERTIC,0,0,0,471106.02,
 TEST,10,Pfizer,1,all_birth_cohorts,CONTRDIVERTIC,0,0,0,398628.17,all_birth_cohorts
 TEST,11,Pfizer,1,1940-1949,CONTRDIVERTIC,0,0,0,Inf,70-79
 TEST,11,Pfizer,1,1950-1959,CONTRDIVERTIC,0,0,0,Inf,60-69
@@ -2581,6 +2867,7 @@ TEST,11,Pfizer,1,1980-1989,CONTRDIVERTIC,0,0,0,1981416.5,30-39
 TEST,11,Pfizer,1,1990+,CONTRDIVERTIC,0,0,0,Inf,<30
 TEST,11,Pfizer,1,<1940,CONTRDIVERTIC,0,0,0,2591083.12,80+
 TEST,11,Pfizer,1,<1960,CONTRDIVERTIC,0,0,0,2591083.12,60+
+TEST,11,Pfizer,1,>1960,CONTRDIVERTIC,0,0,0,459850.93,
 TEST,11,Pfizer,1,all_birth_cohorts,CONTRDIVERTIC,0,0,0,390540.06,all_birth_cohorts
 TEST,12,Pfizer,1,1940-1949,CONTRDIVERTIC,0,0,0,Inf,70-79
 TEST,12,Pfizer,1,1950-1959,CONTRDIVERTIC,0,0,0,Inf,60-69
@@ -2590,6 +2877,7 @@ TEST,12,Pfizer,1,1980-1989,CONTRDIVERTIC,0,0,0,1981416.5,30-39
 TEST,12,Pfizer,1,1990+,CONTRDIVERTIC,0,0,0,Inf,<30
 TEST,12,Pfizer,1,<1940,CONTRDIVERTIC,0,0,0,2591083.12,80+
 TEST,12,Pfizer,1,<1960,CONTRDIVERTIC,0,0,0,2591083.12,60+
+TEST,12,Pfizer,1,>1960,CONTRDIVERTIC,0,0,0,449121.07,
 TEST,12,Pfizer,1,all_birth_cohorts,CONTRDIVERTIC,0,0,0,382773.64,all_birth_cohorts
 TEST,13,Pfizer,1,1940-1949,CONTRDIVERTIC,0,0,0,Inf,70-79
 TEST,13,Pfizer,1,1950-1959,CONTRDIVERTIC,0,0,0,Inf,60-69
@@ -2599,6 +2887,7 @@ TEST,13,Pfizer,1,1980-1989,CONTRDIVERTIC,0,0,0,1981416.5,30-39
 TEST,13,Pfizer,1,1990+,CONTRDIVERTIC,0,0,0,Inf,<30
 TEST,13,Pfizer,1,<1940,CONTRDIVERTIC,0,0,0,2591083.12,80+
 TEST,13,Pfizer,1,<1960,CONTRDIVERTIC,0,0,0,2591083.12,60+
+TEST,13,Pfizer,1,>1960,CONTRDIVERTIC,0,0,0,438880.53,
 TEST,13,Pfizer,1,all_birth_cohorts,CONTRDIVERTIC,0,0,0,375310.09,all_birth_cohorts
 TEST,14,Pfizer,1,1940-1949,CONTRDIVERTIC,0,0,0,Inf,70-79
 TEST,14,Pfizer,1,1950-1959,CONTRDIVERTIC,0,0,0,Inf,60-69
@@ -2608,6 +2897,7 @@ TEST,14,Pfizer,1,1980-1989,CONTRDIVERTIC,0,0,0,1981416.5,30-39
 TEST,14,Pfizer,1,1990+,CONTRDIVERTIC,0,0,0,Inf,<30
 TEST,14,Pfizer,1,<1940,CONTRDIVERTIC,0,0,0,2591083.12,80+
 TEST,14,Pfizer,1,<1960,CONTRDIVERTIC,0,0,0,2591083.12,60+
+TEST,14,Pfizer,1,>1960,CONTRDIVERTIC,0,0,0,434633.3,
 TEST,14,Pfizer,1,all_birth_cohorts,CONTRDIVERTIC,0,0,0,372199.78,all_birth_cohorts
 TEST,1,Pfizer,2,1940-1949,CONTRDIVERTIC,0,0,0,Inf,70-79
 TEST,1,Pfizer,2,1950-1959,CONTRDIVERTIC,0,0,0,Inf,60-69
@@ -2617,6 +2907,7 @@ TEST,1,Pfizer,2,1980-1989,CONTRDIVERTIC,0,0,0,19248046.01,30-39
 TEST,1,Pfizer,2,1990+,CONTRDIVERTIC,0,0,0,Inf,<30
 TEST,1,Pfizer,2,<1940,CONTRDIVERTIC,0,0,0,Inf,80+
 TEST,1,Pfizer,2,<1960,CONTRDIVERTIC,0,0,0,Inf,60+
+TEST,1,Pfizer,2,>1960,CONTRDIVERTIC,0,0,0,6416015.34,
 TEST,1,Pfizer,2,all_birth_cohorts,CONTRDIVERTIC,0,0,0,6416015.34,all_birth_cohorts
 TEST,2,Pfizer,2,1940-1949,CONTRDIVERTIC,0,0,0,Inf,70-79
 TEST,2,Pfizer,2,1950-1959,CONTRDIVERTIC,0,0,0,Inf,60-69
@@ -2626,6 +2917,7 @@ TEST,2,Pfizer,2,1980-1989,CONTRDIVERTIC,0,0,0,9624023,30-39
 TEST,2,Pfizer,2,1990+,CONTRDIVERTIC,0,0,0,Inf,<30
 TEST,2,Pfizer,2,<1940,CONTRDIVERTIC,0,0,0,Inf,80+
 TEST,2,Pfizer,2,<1960,CONTRDIVERTIC,0,0,0,Inf,60+
+TEST,2,Pfizer,2,>1960,CONTRDIVERTIC,0,0,0,3962833,
 TEST,2,Pfizer,2,all_birth_cohorts,CONTRDIVERTIC,0,0,0,3962833,all_birth_cohorts
 TEST,3,Pfizer,2,1940-1949,CONTRDIVERTIC,0,0,0,Inf,70-79
 TEST,3,Pfizer,2,1950-1959,CONTRDIVERTIC,0,0,0,Inf,60-69
@@ -2635,6 +2927,7 @@ TEST,3,Pfizer,2,1980-1989,CONTRDIVERTIC,0,0,0,6416015.34,30-39
 TEST,3,Pfizer,2,1990+,CONTRDIVERTIC,0,0,0,Inf,<30
 TEST,3,Pfizer,2,<1940,CONTRDIVERTIC,0,0,0,Inf,80+
 TEST,3,Pfizer,2,<1960,CONTRDIVERTIC,0,0,0,Inf,60+
+TEST,3,Pfizer,2,>1960,CONTRDIVERTIC,0,0,0,3286251.76,
 TEST,3,Pfizer,2,all_birth_cohorts,CONTRDIVERTIC,0,0,0,3286251.76,all_birth_cohorts
 TEST,4,Pfizer,2,1940-1949,CONTRDIVERTIC,0,0,0,Inf,70-79
 TEST,4,Pfizer,2,1950-1959,CONTRDIVERTIC,0,0,0,Inf,60-69
@@ -2644,6 +2937,7 @@ TEST,4,Pfizer,2,1980-1989,CONTRDIVERTIC,0,0,0,5389452.88,30-39
 TEST,4,Pfizer,2,1990+,CONTRDIVERTIC,0,0,0,Inf,<30
 TEST,4,Pfizer,2,<1940,CONTRDIVERTIC,0,0,0,Inf,80+
 TEST,4,Pfizer,2,<1960,CONTRDIVERTIC,0,0,0,Inf,60+
+TEST,4,Pfizer,2,>1960,CONTRDIVERTIC,0,0,0,2994140.49,
 TEST,4,Pfizer,2,all_birth_cohorts,CONTRDIVERTIC,0,0,0,2994140.49,all_birth_cohorts
 TEST,0,none,no_dose,1940-1949,CONTRHYPERT,0,0,0,19910.79,70-79
 TEST,0,none,no_dose,1950-1959,CONTRHYPERT,0,0,0,8201.13,60-69
@@ -2653,6 +2947,7 @@ TEST,0,none,no_dose,1980-1989,CONTRHYPERT,0,0,0,7109.35,30-39
 TEST,0,none,no_dose,1990+,CONTRHYPERT,0,0,0,3764.32,<30
 TEST,0,none,no_dose,<1940,CONTRHYPERT,0,0,0,44103.54,80+
 TEST,0,none,no_dose,<1960,CONTRHYPERT,0,0,0,5132.62,60+
+TEST,0,none,no_dose,>1960,CONTRHYPERT,0,0,0,1305.69,
 TEST,0,none,no_dose,all_birth_cohorts,CONTRHYPERT,0,0,0,1040.89,all_birth_cohorts
 TEST,1,AstraZeneca,1,1940-1949,CONTRHYPERT,0,0,0,19248046.01,70-79
 TEST,1,AstraZeneca,1,1950-1959,CONTRHYPERT,0,0,0,Inf,60-69
@@ -2662,6 +2957,7 @@ TEST,1,AstraZeneca,1,1980-1989,CONTRHYPERT,0,0,0,Inf,30-39
 TEST,1,AstraZeneca,1,1990+,CONTRHYPERT,0,0,0,Inf,<30
 TEST,1,AstraZeneca,1,<1940,CONTRHYPERT,0,0,0,Inf,80+
 TEST,1,AstraZeneca,1,<1960,CONTRHYPERT,0,0,0,19248046.01,60+
+TEST,1,AstraZeneca,1,>1960,CONTRHYPERT,0,0,0,19248046.01,
 TEST,1,AstraZeneca,1,all_birth_cohorts,CONTRHYPERT,0,0,0,9624023,all_birth_cohorts
 TEST,2,AstraZeneca,1,1940-1949,CONTRHYPERT,0,0,0,16842040.26,70-79
 TEST,2,AstraZeneca,1,1950-1959,CONTRHYPERT,0,0,0,Inf,60-69
@@ -2671,6 +2967,7 @@ TEST,2,AstraZeneca,1,1980-1989,CONTRHYPERT,0,0,0,Inf,30-39
 TEST,2,AstraZeneca,1,1990+,CONTRHYPERT,0,0,0,Inf,<30
 TEST,2,AstraZeneca,1,<1940,CONTRHYPERT,0,0,0,Inf,80+
 TEST,2,AstraZeneca,1,<1960,CONTRHYPERT,0,0,0,16842040.26,60+
+TEST,2,AstraZeneca,1,>1960,CONTRHYPERT,0,0,0,9624023,
 TEST,2,AstraZeneca,1,all_birth_cohorts,CONTRHYPERT,0,0,0,6124378.28,all_birth_cohorts
 TEST,1,Pfizer,1,1940-1949,CONTRHYPERT,0,0,0,Inf,70-79
 TEST,1,Pfizer,1,1950-1959,CONTRHYPERT,0,0,0,Inf,60-69
@@ -2680,6 +2977,7 @@ TEST,1,Pfizer,1,1980-1989,CONTRHYPERT,0,0,0,9624023,30-39
 TEST,1,Pfizer,1,1990+,CONTRHYPERT,0,0,0,Inf,<30
 TEST,1,Pfizer,1,<1940,CONTRHYPERT,0,0,0,13473632.21,80+
 TEST,1,Pfizer,1,<1960,CONTRHYPERT,0,0,0,13473632.21,60+
+TEST,1,Pfizer,1,>1960,CONTRHYPERT,0,0,0,2406005.75,
 TEST,1,Pfizer,1,all_birth_cohorts,CONTRHYPERT,0,0,0,2041459.43,all_birth_cohorts
 TEST,2,Pfizer,1,1940-1949,CONTRHYPERT,0,0,0,Inf,70-79
 TEST,2,Pfizer,1,1950-1959,CONTRHYPERT,0,0,0,Inf,60-69
@@ -2689,6 +2987,7 @@ TEST,2,Pfizer,1,1980-1989,CONTRHYPERT,0,0,0,4812011.5,30-39
 TEST,2,Pfizer,1,1990+,CONTRHYPERT,0,0,0,Inf,<30
 TEST,2,Pfizer,1,<1940,CONTRHYPERT,0,0,0,7925666,80+
 TEST,2,Pfizer,1,<1960,CONTRHYPERT,0,0,0,7925666,60+
+TEST,2,Pfizer,1,>1960,CONTRHYPERT,0,0,0,1247558.54,
 TEST,2,Pfizer,1,all_birth_cohorts,CONTRHYPERT,0,0,0,1077890.58,all_birth_cohorts
 TEST,3,Pfizer,1,1940-1949,CONTRHYPERT,0,0,0,Inf,70-79
 TEST,3,Pfizer,1,1950-1959,CONTRHYPERT,0,0,0,Inf,60-69
@@ -2698,6 +2997,7 @@ TEST,3,Pfizer,1,1980-1989,CONTRHYPERT,0,0,0,3208007.67,30-39
 TEST,3,Pfizer,1,1990+,CONTRHYPERT,0,0,0,Inf,<30
 TEST,3,Pfizer,1,<1940,CONTRHYPERT,0,0,0,5614013.42,80+
 TEST,3,Pfizer,1,<1960,CONTRHYPERT,0,0,0,5614013.42,60+
+TEST,3,Pfizer,1,>1960,CONTRHYPERT,0,0,0,898242.15,
 TEST,3,Pfizer,1,all_birth_cohorts,CONTRHYPERT,0,0,0,774346.68,all_birth_cohorts
 TEST,4,Pfizer,1,1940-1949,CONTRHYPERT,0,0,0,Inf,70-79
 TEST,4,Pfizer,1,1950-1959,CONTRHYPERT,0,0,0,Inf,60-69
@@ -2707,6 +3007,7 @@ TEST,4,Pfizer,1,1980-1989,CONTRHYPERT,0,0,0,2406005.75,30-39
 TEST,4,Pfizer,1,1990+,CONTRHYPERT,0,0,0,Inf,<30
 TEST,4,Pfizer,1,<1940,CONTRHYPERT,0,0,0,4346332.97,80+
 TEST,4,Pfizer,1,<1960,CONTRHYPERT,0,0,0,4346332.97,60+
+TEST,4,Pfizer,1,>1960,CONTRHYPERT,0,0,0,716682.56,
 TEST,4,Pfizer,1,all_birth_cohorts,CONTRHYPERT,0,0,0,615234.35,all_birth_cohorts
 TEST,5,Pfizer,1,1940-1949,CONTRHYPERT,0,0,0,Inf,70-79
 TEST,5,Pfizer,1,1950-1959,CONTRHYPERT,0,0,0,Inf,60-69
@@ -2716,6 +3017,7 @@ TEST,5,Pfizer,1,1980-1989,CONTRHYPERT,0,0,0,2105255.03,30-39
 TEST,5,Pfizer,1,1990+,CONTRHYPERT,0,0,0,Inf,<30
 TEST,5,Pfizer,1,<1940,CONTRHYPERT,0,0,0,3742675.61,80+
 TEST,5,Pfizer,1,<1960,CONTRHYPERT,0,0,0,3742675.61,60+
+TEST,5,Pfizer,1,>1960,CONTRHYPERT,0,0,0,657250.35,
 TEST,5,Pfizer,1,all_birth_cohorts,CONTRHYPERT,0,0,0,559071.88,all_birth_cohorts
 TEST,6,Pfizer,1,1940-1949,CONTRHYPERT,0,0,0,Inf,70-79
 TEST,6,Pfizer,1,1950-1959,CONTRHYPERT,0,0,0,Inf,60-69
@@ -2725,6 +3027,7 @@ TEST,6,Pfizer,1,1980-1989,CONTRHYPERT,0,0,0,1981416.5,30-39
 TEST,6,Pfizer,1,1990+,CONTRHYPERT,0,0,0,Inf,<30
 TEST,6,Pfizer,1,<1940,CONTRHYPERT,0,0,0,3742675.61,80+
 TEST,6,Pfizer,1,<1960,CONTRHYPERT,0,0,0,3742675.61,60+
+TEST,6,Pfizer,1,>1960,CONTRHYPERT,0,0,0,623779.27,
 TEST,6,Pfizer,1,all_birth_cohorts,CONTRHYPERT,0,0,0,534667.94,all_birth_cohorts
 TEST,7,Pfizer,1,1940-1949,CONTRHYPERT,0,0,0,Inf,70-79
 TEST,7,Pfizer,1,1950-1959,CONTRHYPERT,0,0,0,Inf,60-69
@@ -2734,6 +3037,7 @@ TEST,7,Pfizer,1,1980-1989,CONTRHYPERT,0,0,0,1981416.5,30-39
 TEST,7,Pfizer,1,1990+,CONTRHYPERT,0,0,0,Inf,<30
 TEST,7,Pfizer,1,<1940,CONTRHYPERT,0,0,0,3742675.61,80+
 TEST,7,Pfizer,1,<1960,CONTRHYPERT,0,0,0,3742675.61,60+
+TEST,7,Pfizer,1,>1960,CONTRHYPERT,0,0,0,604198.75,
 TEST,7,Pfizer,1,all_birth_cohorts,CONTRHYPERT,0,0,0,520217.46,all_birth_cohorts
 TEST,8,Pfizer,1,1940-1949,CONTRHYPERT,0,0,0,Inf,70-79
 TEST,8,Pfizer,1,1950-1959,CONTRHYPERT,0,0,0,Inf,60-69
@@ -2743,6 +3047,7 @@ TEST,8,Pfizer,1,1980-1989,CONTRHYPERT,0,0,0,1981416.5,30-39
 TEST,8,Pfizer,1,1990+,CONTRHYPERT,0,0,0,Inf,<30
 TEST,8,Pfizer,1,<1940,CONTRHYPERT,0,0,0,3742675.61,80+
 TEST,8,Pfizer,1,<1960,CONTRHYPERT,0,0,0,3742675.61,60+
+TEST,8,Pfizer,1,>1960,CONTRHYPERT,0,0,0,585810.1,
 TEST,8,Pfizer,1,all_birth_cohorts,CONTRHYPERT,0,0,0,506527.53,all_birth_cohorts
 TEST,9,Pfizer,1,1940-1949,CONTRHYPERT,0,0,0,Inf,70-79
 TEST,9,Pfizer,1,1950-1959,CONTRHYPERT,0,0,0,Inf,60-69
@@ -2752,6 +3057,7 @@ TEST,9,Pfizer,1,1980-1989,CONTRHYPERT,0,0,0,1981416.5,30-39
 TEST,9,Pfizer,1,1990+,CONTRHYPERT,0,0,0,Inf,<30
 TEST,9,Pfizer,1,<1940,CONTRHYPERT,0,0,0,3742675.61,80+
 TEST,9,Pfizer,1,<1960,CONTRHYPERT,0,0,0,3742675.61,60+
+TEST,9,Pfizer,1,>1960,CONTRHYPERT,0,0,0,568507.69,
 TEST,9,Pfizer,1,all_birth_cohorts,CONTRHYPERT,0,0,0,493539.64,all_birth_cohorts
 TEST,10,Pfizer,1,1940-1949,CONTRHYPERT,0,0,0,Inf,70-79
 TEST,10,Pfizer,1,1950-1959,CONTRHYPERT,0,0,0,Inf,60-69
@@ -2761,6 +3067,7 @@ TEST,10,Pfizer,1,1980-1989,CONTRHYPERT,0,0,0,1981416.5,30-39
 TEST,10,Pfizer,1,1990+,CONTRHYPERT,0,0,0,Inf,<30
 TEST,10,Pfizer,1,<1940,CONTRHYPERT,0,0,0,3742675.61,80+
 TEST,10,Pfizer,1,<1960,CONTRHYPERT,0,0,0,3742675.61,60+
+TEST,10,Pfizer,1,>1960,CONTRHYPERT,0,0,0,552198.04,
 TEST,10,Pfizer,1,all_birth_cohorts,CONTRHYPERT,0,0,0,481201.15,all_birth_cohorts
 TEST,11,Pfizer,1,1940-1949,CONTRHYPERT,0,0,0,Inf,70-79
 TEST,11,Pfizer,1,1950-1959,CONTRHYPERT,0,0,0,Inf,60-69
@@ -2770,6 +3077,7 @@ TEST,11,Pfizer,1,1980-1989,CONTRHYPERT,0,0,0,1981416.5,30-39
 TEST,11,Pfizer,1,1990+,CONTRHYPERT,0,0,0,Inf,<30
 TEST,11,Pfizer,1,<1940,CONTRHYPERT,0,0,0,3742675.61,80+
 TEST,11,Pfizer,1,<1960,CONTRHYPERT,0,0,0,3742675.61,60+
+TEST,11,Pfizer,1,>1960,CONTRHYPERT,0,0,0,536798.1,
 TEST,11,Pfizer,1,all_birth_cohorts,CONTRHYPERT,0,0,0,469464.54,all_birth_cohorts
 TEST,12,Pfizer,1,1940-1949,CONTRHYPERT,0,0,0,Inf,70-79
 TEST,12,Pfizer,1,1950-1959,CONTRHYPERT,0,0,0,Inf,60-69
@@ -2779,6 +3087,7 @@ TEST,12,Pfizer,1,1980-1989,CONTRHYPERT,0,0,0,1981416.5,30-39
 TEST,12,Pfizer,1,1990+,CONTRHYPERT,0,0,0,Inf,<30
 TEST,12,Pfizer,1,<1940,CONTRHYPERT,0,0,0,3742675.61,80+
 TEST,12,Pfizer,1,<1960,CONTRHYPERT,0,0,0,3742675.61,60+
+TEST,12,Pfizer,1,>1960,CONTRHYPERT,0,0,0,522233.81,
 TEST,12,Pfizer,1,all_birth_cohorts,CONTRHYPERT,0,0,0,458286.81,all_birth_cohorts
 TEST,13,Pfizer,1,1940-1949,CONTRHYPERT,0,0,0,Inf,70-79
 TEST,13,Pfizer,1,1950-1959,CONTRHYPERT,0,0,0,Inf,60-69
@@ -2788,6 +3097,7 @@ TEST,13,Pfizer,1,1980-1989,CONTRHYPERT,0,0,0,1981416.5,30-39
 TEST,13,Pfizer,1,1990+,CONTRHYPERT,0,0,0,Inf,<30
 TEST,13,Pfizer,1,<1940,CONTRHYPERT,0,0,0,3742675.61,80+
 TEST,13,Pfizer,1,<1960,CONTRHYPERT,0,0,0,3742675.61,60+
+TEST,13,Pfizer,1,>1960,CONTRHYPERT,0,0,0,508438.95,
 TEST,13,Pfizer,1,all_birth_cohorts,CONTRHYPERT,0,0,0,447628.98,all_birth_cohorts
 TEST,14,Pfizer,1,1940-1949,CONTRHYPERT,0,0,0,Inf,70-79
 TEST,14,Pfizer,1,1950-1959,CONTRHYPERT,0,0,0,Inf,60-69
@@ -2797,6 +3107,7 @@ TEST,14,Pfizer,1,1980-1989,CONTRHYPERT,0,0,0,1981416.5,30-39
 TEST,14,Pfizer,1,1990+,CONTRHYPERT,0,0,0,Inf,<30
 TEST,14,Pfizer,1,<1940,CONTRHYPERT,0,0,0,3742675.61,80+
 TEST,14,Pfizer,1,<1960,CONTRHYPERT,0,0,0,3742675.61,60+
+TEST,14,Pfizer,1,>1960,CONTRHYPERT,0,0,0,502747.47,
 TEST,14,Pfizer,1,all_birth_cohorts,CONTRHYPERT,0,0,0,443211.59,all_birth_cohorts
 TEST,1,Pfizer,2,1940-1949,CONTRHYPERT,0,0,0,Inf,70-79
 TEST,1,Pfizer,2,1950-1959,CONTRHYPERT,0,0,0,Inf,60-69
@@ -2806,6 +3117,7 @@ TEST,1,Pfizer,2,1980-1989,CONTRHYPERT,0,0,0,19248046.01,30-39
 TEST,1,Pfizer,2,1990+,CONTRHYPERT,0,0,0,Inf,<30
 TEST,1,Pfizer,2,<1940,CONTRHYPERT,0,0,0,Inf,80+
 TEST,1,Pfizer,2,<1960,CONTRHYPERT,0,0,0,Inf,60+
+TEST,1,Pfizer,2,>1960,CONTRHYPERT,0,0,0,6416015.34,
 TEST,1,Pfizer,2,all_birth_cohorts,CONTRHYPERT,0,0,0,6416015.34,all_birth_cohorts
 TEST,2,Pfizer,2,1940-1949,CONTRHYPERT,0,0,0,Inf,70-79
 TEST,2,Pfizer,2,1950-1959,CONTRHYPERT,0,0,0,Inf,60-69
@@ -2815,6 +3127,7 @@ TEST,2,Pfizer,2,1980-1989,CONTRHYPERT,0,0,0,9624023,30-39
 TEST,2,Pfizer,2,1990+,CONTRHYPERT,0,0,0,Inf,<30
 TEST,2,Pfizer,2,<1940,CONTRHYPERT,0,0,0,Inf,80+
 TEST,2,Pfizer,2,<1960,CONTRHYPERT,0,0,0,Inf,60+
+TEST,2,Pfizer,2,>1960,CONTRHYPERT,0,0,0,3962833,
 TEST,2,Pfizer,2,all_birth_cohorts,CONTRHYPERT,0,0,0,3962833,all_birth_cohorts
 TEST,3,Pfizer,2,1940-1949,CONTRHYPERT,0,0,0,Inf,70-79
 TEST,3,Pfizer,2,1950-1959,CONTRHYPERT,0,0,0,Inf,60-69
@@ -2824,6 +3137,7 @@ TEST,3,Pfizer,2,1980-1989,CONTRHYPERT,0,0,0,6416015.34,30-39
 TEST,3,Pfizer,2,1990+,CONTRHYPERT,0,0,0,Inf,<30
 TEST,3,Pfizer,2,<1940,CONTRHYPERT,0,0,0,Inf,80+
 TEST,3,Pfizer,2,<1960,CONTRHYPERT,0,0,0,Inf,60+
+TEST,3,Pfizer,2,>1960,CONTRHYPERT,0,0,0,3286251.76,
 TEST,3,Pfizer,2,all_birth_cohorts,CONTRHYPERT,0,0,0,3286251.76,all_birth_cohorts
 TEST,4,Pfizer,2,1940-1949,CONTRHYPERT,0,0,0,Inf,70-79
 TEST,4,Pfizer,2,1950-1959,CONTRHYPERT,0,0,0,Inf,60-69
@@ -2833,6 +3147,7 @@ TEST,4,Pfizer,2,1980-1989,CONTRHYPERT,0,0,0,5389452.88,30-39
 TEST,4,Pfizer,2,1990+,CONTRHYPERT,0,0,0,Inf,<30
 TEST,4,Pfizer,2,<1940,CONTRHYPERT,0,0,0,Inf,80+
 TEST,4,Pfizer,2,<1960,CONTRHYPERT,0,0,0,Inf,60+
+TEST,4,Pfizer,2,>1960,CONTRHYPERT,0,0,0,2994140.49,
 TEST,4,Pfizer,2,all_birth_cohorts,CONTRHYPERT,0,0,0,2994140.49,all_birth_cohorts
 TEST,0,none,no_dose,1940-1949,DEATH,2,3715.86,450.01,13422.95,70-79
 TEST,0,none,no_dose,1950-1959,DEATH,1,1574.01,39.85,8769.85,60-69
@@ -2842,6 +3157,7 @@ TEST,0,none,no_dose,1980-1989,DEATH,0,0,0,7109.35,30-39
 TEST,0,none,no_dose,1990+,DEATH,0,0,0,3764.32,<30
 TEST,0,none,no_dose,<1940,DEATH,4,9351.6,2548,23943.8,80+
 TEST,0,none,no_dose,<1960,DEATH,7,4371.48,1757.56,9006.93,60+
+TEST,0,none,no_dose,>1960,DEATH,1,325.74,8.25,1814.9,
 TEST,0,none,no_dose,all_birth_cohorts,DEATH,8,1712.61,739.38,3374.52,all_birth_cohorts
 TEST,1,AstraZeneca,1,1940-1949,DEATH,0,0,0,19248046.01,70-79
 TEST,1,AstraZeneca,1,1950-1959,DEATH,0,0,0,Inf,60-69
@@ -2851,6 +3167,7 @@ TEST,1,AstraZeneca,1,1980-1989,DEATH,0,0,0,Inf,30-39
 TEST,1,AstraZeneca,1,1990+,DEATH,0,0,0,Inf,<30
 TEST,1,AstraZeneca,1,<1940,DEATH,0,0,0,Inf,80+
 TEST,1,AstraZeneca,1,<1960,DEATH,0,0,0,19248046.01,60+
+TEST,1,AstraZeneca,1,>1960,DEATH,0,0,0,19248046.01,
 TEST,1,AstraZeneca,1,all_birth_cohorts,DEATH,0,0,0,9624023,all_birth_cohorts
 TEST,2,AstraZeneca,1,1940-1949,DEATH,0,0,0,16842040.26,70-79
 TEST,2,AstraZeneca,1,1950-1959,DEATH,0,0,0,Inf,60-69
@@ -2860,6 +3177,7 @@ TEST,2,AstraZeneca,1,1980-1989,DEATH,0,0,0,Inf,30-39
 TEST,2,AstraZeneca,1,1990+,DEATH,0,0,0,Inf,<30
 TEST,2,AstraZeneca,1,<1940,DEATH,0,0,0,Inf,80+
 TEST,2,AstraZeneca,1,<1960,DEATH,0,0,0,16842040.26,60+
+TEST,2,AstraZeneca,1,>1960,DEATH,0,0,0,9624023,
 TEST,2,AstraZeneca,1,all_birth_cohorts,DEATH,0,0,0,6124378.28,all_birth_cohorts
 TEST,1,Pfizer,1,1940-1949,DEATH,0,0,0,Inf,70-79
 TEST,1,Pfizer,1,1950-1959,DEATH,0,0,0,Inf,60-69
@@ -2869,6 +3187,7 @@ TEST,1,Pfizer,1,1980-1989,DEATH,0,0,0,9624023,30-39
 TEST,1,Pfizer,1,1990+,DEATH,0,0,0,Inf,<30
 TEST,1,Pfizer,1,<1940,DEATH,0,0,0,5858100.96,80+
 TEST,1,Pfizer,1,<1960,DEATH,0,0,0,5858100.96,60+
+TEST,1,Pfizer,1,>1960,DEATH,0,0,0,1924804.6,
 TEST,1,Pfizer,1,all_birth_cohorts,DEATH,0,0,0,1448777.66,all_birth_cohorts
 TEST,2,Pfizer,1,1940-1949,DEATH,0,0,0,Inf,70-79
 TEST,2,Pfizer,1,1950-1959,DEATH,0,0,0,Inf,60-69
@@ -2878,6 +3197,7 @@ TEST,2,Pfizer,1,1980-1989,DEATH,0,0,0,4812011.5,30-39
 TEST,2,Pfizer,1,1990+,DEATH,0,0,0,Inf,<30
 TEST,2,Pfizer,1,<1940,DEATH,0,0,0,4082918.85,80+
 TEST,2,Pfizer,1,<1960,DEATH,0,0,0,4082918.85,60+
+TEST,2,Pfizer,1,>1960,DEATH,0,0,0,1044467.61,
 TEST,2,Pfizer,1,all_birth_cohorts,DEATH,0,0,0,831705.69,all_birth_cohorts
 TEST,3,Pfizer,1,1940-1949,DEATH,0,0,0,Inf,70-79
 TEST,3,Pfizer,1,1950-1959,DEATH,0,0,0,Inf,60-69
@@ -2887,6 +3207,7 @@ TEST,3,Pfizer,1,1980-1989,DEATH,0,0,0,3208007.67,30-39
 TEST,3,Pfizer,1,1990+,DEATH,0,0,0,Inf,<30
 TEST,3,Pfizer,1,<1940,DEATH,0,0,0,3368408.05,80+
 TEST,3,Pfizer,1,<1960,DEATH,0,0,0,3368408.05,60+
+TEST,3,Pfizer,1,>1960,DEATH,0,0,0,756945.63,
 TEST,3,Pfizer,1,all_birth_cohorts,DEATH,0,0,0,618056.52,all_birth_cohorts
 TEST,4,Pfizer,1,1940-1949,DEATH,0,0,0,Inf,70-79
 TEST,4,Pfizer,1,1950-1959,DEATH,0,0,0,Inf,60-69
@@ -2896,6 +3217,7 @@ TEST,4,Pfizer,1,1980-1989,DEATH,0,0,0,2406005.75,30-39
 TEST,4,Pfizer,1,1990+,DEATH,0,0,0,Inf,<30
 TEST,4,Pfizer,1,<1940,DEATH,0,0,0,2866730.26,80+
 TEST,4,Pfizer,1,<1960,DEATH,0,0,0,2866730.26,60+
+TEST,4,Pfizer,1,>1960,DEATH,0,0,0,604198.75,
 TEST,4,Pfizer,1,all_birth_cohorts,DEATH,0,0,0,499023.42,all_birth_cohorts
 TEST,5,Pfizer,1,1940-1949,DEATH,0,0,0,Inf,70-79
 TEST,5,Pfizer,1,1950-1959,DEATH,0,0,0,Inf,60-69
@@ -2905,6 +3227,7 @@ TEST,5,Pfizer,1,1980-1989,DEATH,0,0,0,2105255.03,30-39
 TEST,5,Pfizer,1,1990+,DEATH,0,0,0,Inf,<30
 TEST,5,Pfizer,1,<1940,DEATH,0,0,0,2591083.12,80+
 TEST,5,Pfizer,1,<1960,DEATH,0,0,0,2591083.12,60+
+TEST,5,Pfizer,1,>1960,DEATH,0,0,0,545491.18,
 TEST,5,Pfizer,1,all_birth_cohorts,DEATH,0,0,0,450623.15,all_birth_cohorts
 TEST,6,Pfizer,1,1940-1949,DEATH,0,0,0,Inf,70-79
 TEST,6,Pfizer,1,1950-1959,DEATH,0,0,0,Inf,60-69
@@ -2914,6 +3237,7 @@ TEST,6,Pfizer,1,1980-1989,DEATH,0,0,0,1981416.5,30-39
 TEST,6,Pfizer,1,1990+,DEATH,0,0,0,Inf,<30
 TEST,6,Pfizer,1,<1940,DEATH,0,0,0,2591083.12,80+
 TEST,6,Pfizer,1,<1960,DEATH,0,0,0,2591083.12,60+
+TEST,6,Pfizer,1,>1960,DEATH,0,0,0,522233.81,
 TEST,6,Pfizer,1,all_birth_cohorts,DEATH,0,0,0,434633.3,all_birth_cohorts
 TEST,7,Pfizer,1,1940-1949,DEATH,0,0,0,Inf,70-79
 TEST,7,Pfizer,1,1950-1959,DEATH,0,0,0,Inf,60-69
@@ -2923,6 +3247,7 @@ TEST,7,Pfizer,1,1980-1989,DEATH,0,0,0,1981416.5,30-39
 TEST,7,Pfizer,1,1990+,DEATH,0,0,0,Inf,<30
 TEST,7,Pfizer,1,<1940,DEATH,0,0,0,2591083.12,80+
 TEST,7,Pfizer,1,<1960,DEATH,0,0,0,2591083.12,60+
+TEST,7,Pfizer,1,>1960,DEATH,0,0,0,508438.95,
 TEST,7,Pfizer,1,all_birth_cohorts,DEATH,0,0,0,425035.72,all_birth_cohorts
 TEST,8,Pfizer,1,1940-1949,DEATH,0,0,0,Inf,70-79
 TEST,8,Pfizer,1,1950-1959,DEATH,0,0,0,Inf,60-69
@@ -2932,6 +3257,7 @@ TEST,8,Pfizer,1,1980-1989,DEATH,0,0,0,1981416.5,30-39
 TEST,8,Pfizer,1,1990+,DEATH,0,0,0,Inf,<30
 TEST,8,Pfizer,1,<1940,DEATH,0,0,0,2591083.12,80+
 TEST,8,Pfizer,1,<1960,DEATH,0,0,0,2591083.12,60+
+TEST,8,Pfizer,1,>1960,DEATH,0,0,0,495354.13,
 TEST,8,Pfizer,1,all_birth_cohorts,DEATH,0,0,0,415852.85,all_birth_cohorts
 TEST,9,Pfizer,1,1940-1949,DEATH,0,0,0,Inf,70-79
 TEST,9,Pfizer,1,1950-1959,DEATH,0,0,0,Inf,60-69
@@ -2941,6 +3267,7 @@ TEST,9,Pfizer,1,1980-1989,DEATH,0,0,0,1981416.5,30-39
 TEST,9,Pfizer,1,1990+,DEATH,0,0,0,Inf,<30
 TEST,9,Pfizer,1,<1940,DEATH,0,0,0,2591083.12,80+
 TEST,9,Pfizer,1,<1960,DEATH,0,0,0,2591083.12,60+
+TEST,9,Pfizer,1,>1960,DEATH,0,0,0,482925.89,
 TEST,9,Pfizer,1,all_birth_cohorts,DEATH,0,0,0,407058.37,all_birth_cohorts
 TEST,10,Pfizer,1,1940-1949,DEATH,0,0,0,Inf,70-79
 TEST,10,Pfizer,1,1950-1959,DEATH,0,0,0,Inf,60-69
@@ -2950,6 +3277,7 @@ TEST,10,Pfizer,1,1980-1989,DEATH,0,0,0,1981416.5,30-39
 TEST,10,Pfizer,1,1990+,DEATH,0,0,0,Inf,<30
 TEST,10,Pfizer,1,<1940,DEATH,0,0,0,2591083.12,80+
 TEST,10,Pfizer,1,<1960,DEATH,0,0,0,2591083.12,60+
+TEST,10,Pfizer,1,>1960,DEATH,0,0,0,471106.02,
 TEST,10,Pfizer,1,all_birth_cohorts,DEATH,0,0,0,398628.17,all_birth_cohorts
 TEST,11,Pfizer,1,1940-1949,DEATH,0,0,0,Inf,70-79
 TEST,11,Pfizer,1,1950-1959,DEATH,0,0,0,Inf,60-69
@@ -2959,6 +3287,7 @@ TEST,11,Pfizer,1,1980-1989,DEATH,0,0,0,1981416.5,30-39
 TEST,11,Pfizer,1,1990+,DEATH,0,0,0,Inf,<30
 TEST,11,Pfizer,1,<1940,DEATH,0,0,0,2591083.12,80+
 TEST,11,Pfizer,1,<1960,DEATH,0,0,0,2591083.12,60+
+TEST,11,Pfizer,1,>1960,DEATH,0,0,0,459850.93,
 TEST,11,Pfizer,1,all_birth_cohorts,DEATH,0,0,0,390540.06,all_birth_cohorts
 TEST,12,Pfizer,1,1940-1949,DEATH,0,0,0,Inf,70-79
 TEST,12,Pfizer,1,1950-1959,DEATH,0,0,0,Inf,60-69
@@ -2968,6 +3297,7 @@ TEST,12,Pfizer,1,1980-1989,DEATH,0,0,0,1981416.5,30-39
 TEST,12,Pfizer,1,1990+,DEATH,0,0,0,Inf,<30
 TEST,12,Pfizer,1,<1940,DEATH,0,0,0,2591083.12,80+
 TEST,12,Pfizer,1,<1960,DEATH,0,0,0,2591083.12,60+
+TEST,12,Pfizer,1,>1960,DEATH,0,0,0,449121.07,
 TEST,12,Pfizer,1,all_birth_cohorts,DEATH,0,0,0,382773.64,all_birth_cohorts
 TEST,13,Pfizer,1,1940-1949,DEATH,0,0,0,Inf,70-79
 TEST,13,Pfizer,1,1950-1959,DEATH,0,0,0,Inf,60-69
@@ -2977,6 +3307,7 @@ TEST,13,Pfizer,1,1980-1989,DEATH,0,0,0,1981416.5,30-39
 TEST,13,Pfizer,1,1990+,DEATH,0,0,0,Inf,<30
 TEST,13,Pfizer,1,<1940,DEATH,0,0,0,2591083.12,80+
 TEST,13,Pfizer,1,<1960,DEATH,0,0,0,2591083.12,60+
+TEST,13,Pfizer,1,>1960,DEATH,0,0,0,438880.53,
 TEST,13,Pfizer,1,all_birth_cohorts,DEATH,0,0,0,375310.09,all_birth_cohorts
 TEST,14,Pfizer,1,1940-1949,DEATH,0,0,0,Inf,70-79
 TEST,14,Pfizer,1,1950-1959,DEATH,0,0,0,Inf,60-69
@@ -2986,6 +3317,7 @@ TEST,14,Pfizer,1,1980-1989,DEATH,0,0,0,1981416.5,30-39
 TEST,14,Pfizer,1,1990+,DEATH,0,0,0,Inf,<30
 TEST,14,Pfizer,1,<1940,DEATH,0,0,0,2591083.12,80+
 TEST,14,Pfizer,1,<1960,DEATH,0,0,0,2591083.12,60+
+TEST,14,Pfizer,1,>1960,DEATH,0,0,0,434633.3,
 TEST,14,Pfizer,1,all_birth_cohorts,DEATH,0,0,0,372199.78,all_birth_cohorts
 TEST,1,Pfizer,2,1940-1949,DEATH,0,0,0,Inf,70-79
 TEST,1,Pfizer,2,1950-1959,DEATH,0,0,0,Inf,60-69
@@ -2995,6 +3327,7 @@ TEST,1,Pfizer,2,1980-1989,DEATH,0,0,0,19248046.01,30-39
 TEST,1,Pfizer,2,1990+,DEATH,0,0,0,Inf,<30
 TEST,1,Pfizer,2,<1940,DEATH,0,0,0,Inf,80+
 TEST,1,Pfizer,2,<1960,DEATH,0,0,0,Inf,60+
+TEST,1,Pfizer,2,>1960,DEATH,0,0,0,6416015.34,
 TEST,1,Pfizer,2,all_birth_cohorts,DEATH,0,0,0,6416015.34,all_birth_cohorts
 TEST,2,Pfizer,2,1940-1949,DEATH,0,0,0,Inf,70-79
 TEST,2,Pfizer,2,1950-1959,DEATH,0,0,0,Inf,60-69
@@ -3004,6 +3337,7 @@ TEST,2,Pfizer,2,1980-1989,DEATH,0,0,0,9624023,30-39
 TEST,2,Pfizer,2,1990+,DEATH,0,0,0,Inf,<30
 TEST,2,Pfizer,2,<1940,DEATH,0,0,0,Inf,80+
 TEST,2,Pfizer,2,<1960,DEATH,0,0,0,Inf,60+
+TEST,2,Pfizer,2,>1960,DEATH,0,0,0,3962833,
 TEST,2,Pfizer,2,all_birth_cohorts,DEATH,0,0,0,3962833,all_birth_cohorts
 TEST,3,Pfizer,2,1940-1949,DEATH,0,0,0,Inf,70-79
 TEST,3,Pfizer,2,1950-1959,DEATH,0,0,0,Inf,60-69
@@ -3013,6 +3347,7 @@ TEST,3,Pfizer,2,1980-1989,DEATH,0,0,0,6416015.34,30-39
 TEST,3,Pfizer,2,1990+,DEATH,0,0,0,Inf,<30
 TEST,3,Pfizer,2,<1940,DEATH,0,0,0,Inf,80+
 TEST,3,Pfizer,2,<1960,DEATH,0,0,0,Inf,60+
+TEST,3,Pfizer,2,>1960,DEATH,0,0,0,3286251.76,
 TEST,3,Pfizer,2,all_birth_cohorts,DEATH,0,0,0,3286251.76,all_birth_cohorts
 TEST,4,Pfizer,2,1940-1949,DEATH,0,0,0,Inf,70-79
 TEST,4,Pfizer,2,1950-1959,DEATH,0,0,0,Inf,60-69
@@ -3022,6 +3357,7 @@ TEST,4,Pfizer,2,1980-1989,DEATH,0,0,0,5389452.88,30-39
 TEST,4,Pfizer,2,1990+,DEATH,0,0,0,Inf,<30
 TEST,4,Pfizer,2,<1940,DEATH,0,0,0,Inf,80+
 TEST,4,Pfizer,2,<1960,DEATH,0,0,0,Inf,60+
+TEST,4,Pfizer,2,>1960,DEATH,0,0,0,2994140.49,
 TEST,4,Pfizer,2,all_birth_cohorts,DEATH,0,0,0,2994140.49,all_birth_cohorts
 TEST,0,none,no_dose,1940-1949,ArterialNoTP,0,0,0,7020.44,70-79
 TEST,0,none,no_dose,1950-1959,ArterialNoTP,1,1605.71,40.65,8946.42,60-69
@@ -3031,6 +3367,7 @@ TEST,0,none,no_dose,1980-1989,ArterialNoTP,0,0,0,7109.35,30-39
 TEST,0,none,no_dose,1990+,ArterialNoTP,0,0,0,3764.32,<30
 TEST,0,none,no_dose,<1940,ArterialNoTP,3,7840.23,1616.84,22912.47,80+
 TEST,0,none,no_dose,<1960,ArterialNoTP,4,2612.89,711.93,6690.05,60+
+TEST,0,none,no_dose,>1960,ArterialNoTP,0,0,0,1201.61,
 TEST,0,none,no_dose,all_birth_cohorts,ArterialNoTP,4,869.41,236.88,2226.03,all_birth_cohorts
 TEST,1,AstraZeneca,1,1940-1949,ArterialNoTP,0,0,0,19248046.01,70-79
 TEST,1,AstraZeneca,1,1950-1959,ArterialNoTP,0,0,0,Inf,60-69
@@ -3040,6 +3377,7 @@ TEST,1,AstraZeneca,1,1980-1989,ArterialNoTP,0,0,0,Inf,30-39
 TEST,1,AstraZeneca,1,1990+,ArterialNoTP,0,0,0,Inf,<30
 TEST,1,AstraZeneca,1,<1940,ArterialNoTP,0,0,0,Inf,80+
 TEST,1,AstraZeneca,1,<1960,ArterialNoTP,0,0,0,19248046.01,60+
+TEST,1,AstraZeneca,1,>1960,ArterialNoTP,0,0,0,19248046.01,
 TEST,1,AstraZeneca,1,all_birth_cohorts,ArterialNoTP,0,0,0,9624023,all_birth_cohorts
 TEST,2,AstraZeneca,1,1940-1949,ArterialNoTP,0,0,0,16842040.26,70-79
 TEST,2,AstraZeneca,1,1950-1959,ArterialNoTP,0,0,0,Inf,60-69
@@ -3049,6 +3387,7 @@ TEST,2,AstraZeneca,1,1980-1989,ArterialNoTP,0,0,0,Inf,30-39
 TEST,2,AstraZeneca,1,1990+,ArterialNoTP,0,0,0,Inf,<30
 TEST,2,AstraZeneca,1,<1940,ArterialNoTP,0,0,0,Inf,80+
 TEST,2,AstraZeneca,1,<1960,ArterialNoTP,0,0,0,16842040.26,60+
+TEST,2,AstraZeneca,1,>1960,ArterialNoTP,0,0,0,9624023,
 TEST,2,AstraZeneca,1,all_birth_cohorts,ArterialNoTP,0,0,0,6124378.28,all_birth_cohorts
 TEST,1,Pfizer,1,1940-1949,ArterialNoTP,0,0,0,Inf,70-79
 TEST,1,Pfizer,1,1950-1959,ArterialNoTP,0,0,0,Inf,60-69
@@ -3058,6 +3397,7 @@ TEST,1,Pfizer,1,1980-1989,ArterialNoTP,0,0,0,9624023,30-39
 TEST,1,Pfizer,1,1990+,ArterialNoTP,0,0,0,Inf,<30
 TEST,1,Pfizer,1,<1940,ArterialNoTP,0,0,0,5858100.96,80+
 TEST,1,Pfizer,1,<1960,ArterialNoTP,0,0,0,5858100.96,60+
+TEST,1,Pfizer,1,>1960,ArterialNoTP,0,0,0,1924804.6,
 TEST,1,Pfizer,1,all_birth_cohorts,ArterialNoTP,0,0,0,1448777.66,all_birth_cohorts
 TEST,2,Pfizer,1,1940-1949,ArterialNoTP,0,0,0,Inf,70-79
 TEST,2,Pfizer,1,1950-1959,ArterialNoTP,0,0,0,Inf,60-69
@@ -3067,6 +3407,7 @@ TEST,2,Pfizer,1,1980-1989,ArterialNoTP,0,0,0,4812011.5,30-39
 TEST,2,Pfizer,1,1990+,ArterialNoTP,0,0,0,Inf,<30
 TEST,2,Pfizer,1,<1940,ArterialNoTP,0,0,0,4082918.85,80+
 TEST,2,Pfizer,1,<1960,ArterialNoTP,0,0,0,4082918.85,60+
+TEST,2,Pfizer,1,>1960,ArterialNoTP,0,0,0,1044467.61,
 TEST,2,Pfizer,1,all_birth_cohorts,ArterialNoTP,0,0,0,831705.69,all_birth_cohorts
 TEST,3,Pfizer,1,1940-1949,ArterialNoTP,0,0,0,Inf,70-79
 TEST,3,Pfizer,1,1950-1959,ArterialNoTP,0,0,0,Inf,60-69
@@ -3076,6 +3417,7 @@ TEST,3,Pfizer,1,1980-1989,ArterialNoTP,0,0,0,3208007.67,30-39
 TEST,3,Pfizer,1,1990+,ArterialNoTP,0,0,0,Inf,<30
 TEST,3,Pfizer,1,<1940,ArterialNoTP,0,0,0,3368408.05,80+
 TEST,3,Pfizer,1,<1960,ArterialNoTP,0,0,0,3368408.05,60+
+TEST,3,Pfizer,1,>1960,ArterialNoTP,0,0,0,756945.63,
 TEST,3,Pfizer,1,all_birth_cohorts,ArterialNoTP,0,0,0,618056.52,all_birth_cohorts
 TEST,4,Pfizer,1,1940-1949,ArterialNoTP,0,0,0,Inf,70-79
 TEST,4,Pfizer,1,1950-1959,ArterialNoTP,0,0,0,Inf,60-69
@@ -3085,6 +3427,7 @@ TEST,4,Pfizer,1,1980-1989,ArterialNoTP,0,0,0,2406005.75,30-39
 TEST,4,Pfizer,1,1990+,ArterialNoTP,0,0,0,Inf,<30
 TEST,4,Pfizer,1,<1940,ArterialNoTP,0,0,0,2866730.26,80+
 TEST,4,Pfizer,1,<1960,ArterialNoTP,0,0,0,2866730.26,60+
+TEST,4,Pfizer,1,>1960,ArterialNoTP,0,0,0,604198.75,
 TEST,4,Pfizer,1,all_birth_cohorts,ArterialNoTP,0,0,0,499023.42,all_birth_cohorts
 TEST,5,Pfizer,1,1940-1949,ArterialNoTP,0,0,0,Inf,70-79
 TEST,5,Pfizer,1,1950-1959,ArterialNoTP,0,0,0,Inf,60-69
@@ -3094,6 +3437,7 @@ TEST,5,Pfizer,1,1980-1989,ArterialNoTP,0,0,0,2105255.03,30-39
 TEST,5,Pfizer,1,1990+,ArterialNoTP,0,0,0,Inf,<30
 TEST,5,Pfizer,1,<1940,ArterialNoTP,0,0,0,2591083.12,80+
 TEST,5,Pfizer,1,<1960,ArterialNoTP,0,0,0,2591083.12,60+
+TEST,5,Pfizer,1,>1960,ArterialNoTP,0,0,0,545491.18,
 TEST,5,Pfizer,1,all_birth_cohorts,ArterialNoTP,0,0,0,450623.15,all_birth_cohorts
 TEST,6,Pfizer,1,1940-1949,ArterialNoTP,0,0,0,Inf,70-79
 TEST,6,Pfizer,1,1950-1959,ArterialNoTP,0,0,0,Inf,60-69
@@ -3103,6 +3447,7 @@ TEST,6,Pfizer,1,1980-1989,ArterialNoTP,0,0,0,1981416.5,30-39
 TEST,6,Pfizer,1,1990+,ArterialNoTP,0,0,0,Inf,<30
 TEST,6,Pfizer,1,<1940,ArterialNoTP,0,0,0,2591083.12,80+
 TEST,6,Pfizer,1,<1960,ArterialNoTP,0,0,0,2591083.12,60+
+TEST,6,Pfizer,1,>1960,ArterialNoTP,0,0,0,522233.81,
 TEST,6,Pfizer,1,all_birth_cohorts,ArterialNoTP,0,0,0,434633.3,all_birth_cohorts
 TEST,7,Pfizer,1,1940-1949,ArterialNoTP,0,0,0,Inf,70-79
 TEST,7,Pfizer,1,1950-1959,ArterialNoTP,0,0,0,Inf,60-69
@@ -3112,6 +3457,7 @@ TEST,7,Pfizer,1,1980-1989,ArterialNoTP,0,0,0,1981416.5,30-39
 TEST,7,Pfizer,1,1990+,ArterialNoTP,0,0,0,Inf,<30
 TEST,7,Pfizer,1,<1940,ArterialNoTP,0,0,0,2591083.12,80+
 TEST,7,Pfizer,1,<1960,ArterialNoTP,0,0,0,2591083.12,60+
+TEST,7,Pfizer,1,>1960,ArterialNoTP,0,0,0,508438.95,
 TEST,7,Pfizer,1,all_birth_cohorts,ArterialNoTP,0,0,0,425035.72,all_birth_cohorts
 TEST,8,Pfizer,1,1940-1949,ArterialNoTP,0,0,0,Inf,70-79
 TEST,8,Pfizer,1,1950-1959,ArterialNoTP,0,0,0,Inf,60-69
@@ -3121,6 +3467,7 @@ TEST,8,Pfizer,1,1980-1989,ArterialNoTP,0,0,0,1981416.5,30-39
 TEST,8,Pfizer,1,1990+,ArterialNoTP,0,0,0,Inf,<30
 TEST,8,Pfizer,1,<1940,ArterialNoTP,0,0,0,2591083.12,80+
 TEST,8,Pfizer,1,<1960,ArterialNoTP,0,0,0,2591083.12,60+
+TEST,8,Pfizer,1,>1960,ArterialNoTP,0,0,0,495354.13,
 TEST,8,Pfizer,1,all_birth_cohorts,ArterialNoTP,0,0,0,415852.85,all_birth_cohorts
 TEST,9,Pfizer,1,1940-1949,ArterialNoTP,0,0,0,Inf,70-79
 TEST,9,Pfizer,1,1950-1959,ArterialNoTP,0,0,0,Inf,60-69
@@ -3130,6 +3477,7 @@ TEST,9,Pfizer,1,1980-1989,ArterialNoTP,0,0,0,1981416.5,30-39
 TEST,9,Pfizer,1,1990+,ArterialNoTP,0,0,0,Inf,<30
 TEST,9,Pfizer,1,<1940,ArterialNoTP,0,0,0,2591083.12,80+
 TEST,9,Pfizer,1,<1960,ArterialNoTP,0,0,0,2591083.12,60+
+TEST,9,Pfizer,1,>1960,ArterialNoTP,0,0,0,482925.89,
 TEST,9,Pfizer,1,all_birth_cohorts,ArterialNoTP,0,0,0,407058.37,all_birth_cohorts
 TEST,10,Pfizer,1,1940-1949,ArterialNoTP,0,0,0,Inf,70-79
 TEST,10,Pfizer,1,1950-1959,ArterialNoTP,0,0,0,Inf,60-69
@@ -3139,6 +3487,7 @@ TEST,10,Pfizer,1,1980-1989,ArterialNoTP,0,0,0,1981416.5,30-39
 TEST,10,Pfizer,1,1990+,ArterialNoTP,0,0,0,Inf,<30
 TEST,10,Pfizer,1,<1940,ArterialNoTP,0,0,0,2591083.12,80+
 TEST,10,Pfizer,1,<1960,ArterialNoTP,0,0,0,2591083.12,60+
+TEST,10,Pfizer,1,>1960,ArterialNoTP,0,0,0,471106.02,
 TEST,10,Pfizer,1,all_birth_cohorts,ArterialNoTP,0,0,0,398628.17,all_birth_cohorts
 TEST,11,Pfizer,1,1940-1949,ArterialNoTP,0,0,0,Inf,70-79
 TEST,11,Pfizer,1,1950-1959,ArterialNoTP,0,0,0,Inf,60-69
@@ -3148,6 +3497,7 @@ TEST,11,Pfizer,1,1980-1989,ArterialNoTP,0,0,0,1981416.5,30-39
 TEST,11,Pfizer,1,1990+,ArterialNoTP,0,0,0,Inf,<30
 TEST,11,Pfizer,1,<1940,ArterialNoTP,0,0,0,2591083.12,80+
 TEST,11,Pfizer,1,<1960,ArterialNoTP,0,0,0,2591083.12,60+
+TEST,11,Pfizer,1,>1960,ArterialNoTP,0,0,0,459850.93,
 TEST,11,Pfizer,1,all_birth_cohorts,ArterialNoTP,0,0,0,390540.06,all_birth_cohorts
 TEST,12,Pfizer,1,1940-1949,ArterialNoTP,0,0,0,Inf,70-79
 TEST,12,Pfizer,1,1950-1959,ArterialNoTP,0,0,0,Inf,60-69
@@ -3157,6 +3507,7 @@ TEST,12,Pfizer,1,1980-1989,ArterialNoTP,0,0,0,1981416.5,30-39
 TEST,12,Pfizer,1,1990+,ArterialNoTP,0,0,0,Inf,<30
 TEST,12,Pfizer,1,<1940,ArterialNoTP,0,0,0,2591083.12,80+
 TEST,12,Pfizer,1,<1960,ArterialNoTP,0,0,0,2591083.12,60+
+TEST,12,Pfizer,1,>1960,ArterialNoTP,0,0,0,449121.07,
 TEST,12,Pfizer,1,all_birth_cohorts,ArterialNoTP,0,0,0,382773.64,all_birth_cohorts
 TEST,13,Pfizer,1,1940-1949,ArterialNoTP,0,0,0,Inf,70-79
 TEST,13,Pfizer,1,1950-1959,ArterialNoTP,0,0,0,Inf,60-69
@@ -3166,6 +3517,7 @@ TEST,13,Pfizer,1,1980-1989,ArterialNoTP,0,0,0,1981416.5,30-39
 TEST,13,Pfizer,1,1990+,ArterialNoTP,0,0,0,Inf,<30
 TEST,13,Pfizer,1,<1940,ArterialNoTP,0,0,0,2591083.12,80+
 TEST,13,Pfizer,1,<1960,ArterialNoTP,0,0,0,2591083.12,60+
+TEST,13,Pfizer,1,>1960,ArterialNoTP,0,0,0,438880.53,
 TEST,13,Pfizer,1,all_birth_cohorts,ArterialNoTP,0,0,0,375310.09,all_birth_cohorts
 TEST,14,Pfizer,1,1940-1949,ArterialNoTP,0,0,0,Inf,70-79
 TEST,14,Pfizer,1,1950-1959,ArterialNoTP,0,0,0,Inf,60-69
@@ -3175,6 +3527,7 @@ TEST,14,Pfizer,1,1980-1989,ArterialNoTP,0,0,0,1981416.5,30-39
 TEST,14,Pfizer,1,1990+,ArterialNoTP,0,0,0,Inf,<30
 TEST,14,Pfizer,1,<1940,ArterialNoTP,0,0,0,2591083.12,80+
 TEST,14,Pfizer,1,<1960,ArterialNoTP,0,0,0,2591083.12,60+
+TEST,14,Pfizer,1,>1960,ArterialNoTP,0,0,0,434633.3,
 TEST,14,Pfizer,1,all_birth_cohorts,ArterialNoTP,0,0,0,372199.78,all_birth_cohorts
 TEST,1,Pfizer,2,1940-1949,ArterialNoTP,0,0,0,Inf,70-79
 TEST,1,Pfizer,2,1950-1959,ArterialNoTP,0,0,0,Inf,60-69
@@ -3184,6 +3537,7 @@ TEST,1,Pfizer,2,1980-1989,ArterialNoTP,0,0,0,19248046.01,30-39
 TEST,1,Pfizer,2,1990+,ArterialNoTP,0,0,0,Inf,<30
 TEST,1,Pfizer,2,<1940,ArterialNoTP,0,0,0,Inf,80+
 TEST,1,Pfizer,2,<1960,ArterialNoTP,0,0,0,Inf,60+
+TEST,1,Pfizer,2,>1960,ArterialNoTP,0,0,0,6416015.34,
 TEST,1,Pfizer,2,all_birth_cohorts,ArterialNoTP,0,0,0,6416015.34,all_birth_cohorts
 TEST,2,Pfizer,2,1940-1949,ArterialNoTP,0,0,0,Inf,70-79
 TEST,2,Pfizer,2,1950-1959,ArterialNoTP,0,0,0,Inf,60-69
@@ -3193,6 +3547,7 @@ TEST,2,Pfizer,2,1980-1989,ArterialNoTP,0,0,0,9624023,30-39
 TEST,2,Pfizer,2,1990+,ArterialNoTP,0,0,0,Inf,<30
 TEST,2,Pfizer,2,<1940,ArterialNoTP,0,0,0,Inf,80+
 TEST,2,Pfizer,2,<1960,ArterialNoTP,0,0,0,Inf,60+
+TEST,2,Pfizer,2,>1960,ArterialNoTP,0,0,0,3962833,
 TEST,2,Pfizer,2,all_birth_cohorts,ArterialNoTP,0,0,0,3962833,all_birth_cohorts
 TEST,3,Pfizer,2,1940-1949,ArterialNoTP,0,0,0,Inf,70-79
 TEST,3,Pfizer,2,1950-1959,ArterialNoTP,0,0,0,Inf,60-69
@@ -3202,6 +3557,7 @@ TEST,3,Pfizer,2,1980-1989,ArterialNoTP,0,0,0,6416015.34,30-39
 TEST,3,Pfizer,2,1990+,ArterialNoTP,0,0,0,Inf,<30
 TEST,3,Pfizer,2,<1940,ArterialNoTP,0,0,0,Inf,80+
 TEST,3,Pfizer,2,<1960,ArterialNoTP,0,0,0,Inf,60+
+TEST,3,Pfizer,2,>1960,ArterialNoTP,0,0,0,3286251.76,
 TEST,3,Pfizer,2,all_birth_cohorts,ArterialNoTP,0,0,0,3286251.76,all_birth_cohorts
 TEST,4,Pfizer,2,1940-1949,ArterialNoTP,0,0,0,Inf,70-79
 TEST,4,Pfizer,2,1950-1959,ArterialNoTP,0,0,0,Inf,60-69
@@ -3211,6 +3567,7 @@ TEST,4,Pfizer,2,1980-1989,ArterialNoTP,0,0,0,5389452.88,30-39
 TEST,4,Pfizer,2,1990+,ArterialNoTP,0,0,0,Inf,<30
 TEST,4,Pfizer,2,<1940,ArterialNoTP,0,0,0,Inf,80+
 TEST,4,Pfizer,2,<1960,ArterialNoTP,0,0,0,Inf,60+
+TEST,4,Pfizer,2,>1960,ArterialNoTP,0,0,0,2994140.49,
 TEST,4,Pfizer,2,all_birth_cohorts,ArterialNoTP,0,0,0,2994140.49,all_birth_cohorts
 TEST,0,none,no_dose,1940-1949,VTENoTP,0,0,0,6853.67,70-79
 TEST,0,none,no_dose,1950-1959,VTENoTP,0,0,0,5925.6,60-69
@@ -3220,6 +3577,7 @@ TEST,0,none,no_dose,1980-1989,VTENoTP,0,0,0,7109.35,30-39
 TEST,0,none,no_dose,1990+,VTENoTP,0,0,0,3764.32,<30
 TEST,0,none,no_dose,<1940,VTENoTP,0,0,0,8624.23,80+
 TEST,0,none,no_dose,<1960,VTENoTP,0,0,0,2322.24,60+
+TEST,0,none,no_dose,>1960,VTENoTP,0,0,0,1201.61,
 TEST,0,none,no_dose,all_birth_cohorts,VTENoTP,0,0,0,791.87,all_birth_cohorts
 TEST,1,AstraZeneca,1,1940-1949,VTENoTP,0,0,0,19248046.01,70-79
 TEST,1,AstraZeneca,1,1950-1959,VTENoTP,0,0,0,Inf,60-69
@@ -3229,6 +3587,7 @@ TEST,1,AstraZeneca,1,1980-1989,VTENoTP,0,0,0,Inf,30-39
 TEST,1,AstraZeneca,1,1990+,VTENoTP,0,0,0,Inf,<30
 TEST,1,AstraZeneca,1,<1940,VTENoTP,0,0,0,Inf,80+
 TEST,1,AstraZeneca,1,<1960,VTENoTP,0,0,0,19248046.01,60+
+TEST,1,AstraZeneca,1,>1960,VTENoTP,0,0,0,19248046.01,
 TEST,1,AstraZeneca,1,all_birth_cohorts,VTENoTP,0,0,0,9624023,all_birth_cohorts
 TEST,2,AstraZeneca,1,1940-1949,VTENoTP,0,0,0,16842040.26,70-79
 TEST,2,AstraZeneca,1,1950-1959,VTENoTP,0,0,0,Inf,60-69
@@ -3238,6 +3597,7 @@ TEST,2,AstraZeneca,1,1980-1989,VTENoTP,0,0,0,Inf,30-39
 TEST,2,AstraZeneca,1,1990+,VTENoTP,0,0,0,Inf,<30
 TEST,2,AstraZeneca,1,<1940,VTENoTP,0,0,0,Inf,80+
 TEST,2,AstraZeneca,1,<1960,VTENoTP,0,0,0,16842040.26,60+
+TEST,2,AstraZeneca,1,>1960,VTENoTP,0,0,0,9624023,
 TEST,2,AstraZeneca,1,all_birth_cohorts,VTENoTP,0,0,0,6124378.28,all_birth_cohorts
 TEST,1,Pfizer,1,1940-1949,VTENoTP,0,0,0,Inf,70-79
 TEST,1,Pfizer,1,1950-1959,VTENoTP,0,0,0,Inf,60-69
@@ -3247,6 +3607,7 @@ TEST,1,Pfizer,1,1980-1989,VTENoTP,0,0,0,9624023,30-39
 TEST,1,Pfizer,1,1990+,VTENoTP,0,0,0,Inf,<30
 TEST,1,Pfizer,1,<1940,VTENoTP,0,0,0,5858100.96,80+
 TEST,1,Pfizer,1,<1960,VTENoTP,0,0,0,5858100.96,60+
+TEST,1,Pfizer,1,>1960,VTENoTP,0,0,0,1924804.6,
 TEST,1,Pfizer,1,all_birth_cohorts,VTENoTP,0,0,0,1448777.66,all_birth_cohorts
 TEST,2,Pfizer,1,1940-1949,VTENoTP,0,0,0,Inf,70-79
 TEST,2,Pfizer,1,1950-1959,VTENoTP,0,0,0,Inf,60-69
@@ -3256,6 +3617,7 @@ TEST,2,Pfizer,1,1980-1989,VTENoTP,0,0,0,4812011.5,30-39
 TEST,2,Pfizer,1,1990+,VTENoTP,0,0,0,Inf,<30
 TEST,2,Pfizer,1,<1940,VTENoTP,0,0,0,4082918.85,80+
 TEST,2,Pfizer,1,<1960,VTENoTP,0,0,0,4082918.85,60+
+TEST,2,Pfizer,1,>1960,VTENoTP,0,0,0,1044467.61,
 TEST,2,Pfizer,1,all_birth_cohorts,VTENoTP,0,0,0,831705.69,all_birth_cohorts
 TEST,3,Pfizer,1,1940-1949,VTENoTP,0,0,0,Inf,70-79
 TEST,3,Pfizer,1,1950-1959,VTENoTP,0,0,0,Inf,60-69
@@ -3265,6 +3627,7 @@ TEST,3,Pfizer,1,1980-1989,VTENoTP,0,0,0,3208007.67,30-39
 TEST,3,Pfizer,1,1990+,VTENoTP,0,0,0,Inf,<30
 TEST,3,Pfizer,1,<1940,VTENoTP,0,0,0,3368408.05,80+
 TEST,3,Pfizer,1,<1960,VTENoTP,0,0,0,3368408.05,60+
+TEST,3,Pfizer,1,>1960,VTENoTP,0,0,0,756945.63,
 TEST,3,Pfizer,1,all_birth_cohorts,VTENoTP,0,0,0,618056.52,all_birth_cohorts
 TEST,4,Pfizer,1,1940-1949,VTENoTP,0,0,0,Inf,70-79
 TEST,4,Pfizer,1,1950-1959,VTENoTP,0,0,0,Inf,60-69
@@ -3274,6 +3637,7 @@ TEST,4,Pfizer,1,1980-1989,VTENoTP,0,0,0,2406005.75,30-39
 TEST,4,Pfizer,1,1990+,VTENoTP,0,0,0,Inf,<30
 TEST,4,Pfizer,1,<1940,VTENoTP,0,0,0,2866730.26,80+
 TEST,4,Pfizer,1,<1960,VTENoTP,0,0,0,2866730.26,60+
+TEST,4,Pfizer,1,>1960,VTENoTP,0,0,0,604198.75,
 TEST,4,Pfizer,1,all_birth_cohorts,VTENoTP,0,0,0,499023.42,all_birth_cohorts
 TEST,5,Pfizer,1,1940-1949,VTENoTP,0,0,0,Inf,70-79
 TEST,5,Pfizer,1,1950-1959,VTENoTP,0,0,0,Inf,60-69
@@ -3283,6 +3647,7 @@ TEST,5,Pfizer,1,1980-1989,VTENoTP,0,0,0,2105255.03,30-39
 TEST,5,Pfizer,1,1990+,VTENoTP,0,0,0,Inf,<30
 TEST,5,Pfizer,1,<1940,VTENoTP,0,0,0,2591083.12,80+
 TEST,5,Pfizer,1,<1960,VTENoTP,0,0,0,2591083.12,60+
+TEST,5,Pfizer,1,>1960,VTENoTP,0,0,0,545491.18,
 TEST,5,Pfizer,1,all_birth_cohorts,VTENoTP,0,0,0,450623.15,all_birth_cohorts
 TEST,6,Pfizer,1,1940-1949,VTENoTP,0,0,0,Inf,70-79
 TEST,6,Pfizer,1,1950-1959,VTENoTP,0,0,0,Inf,60-69
@@ -3292,6 +3657,7 @@ TEST,6,Pfizer,1,1980-1989,VTENoTP,0,0,0,1981416.5,30-39
 TEST,6,Pfizer,1,1990+,VTENoTP,0,0,0,Inf,<30
 TEST,6,Pfizer,1,<1940,VTENoTP,0,0,0,2591083.12,80+
 TEST,6,Pfizer,1,<1960,VTENoTP,0,0,0,2591083.12,60+
+TEST,6,Pfizer,1,>1960,VTENoTP,0,0,0,522233.81,
 TEST,6,Pfizer,1,all_birth_cohorts,VTENoTP,0,0,0,434633.3,all_birth_cohorts
 TEST,7,Pfizer,1,1940-1949,VTENoTP,0,0,0,Inf,70-79
 TEST,7,Pfizer,1,1950-1959,VTENoTP,0,0,0,Inf,60-69
@@ -3301,6 +3667,7 @@ TEST,7,Pfizer,1,1980-1989,VTENoTP,0,0,0,1981416.5,30-39
 TEST,7,Pfizer,1,1990+,VTENoTP,0,0,0,Inf,<30
 TEST,7,Pfizer,1,<1940,VTENoTP,0,0,0,2591083.12,80+
 TEST,7,Pfizer,1,<1960,VTENoTP,0,0,0,2591083.12,60+
+TEST,7,Pfizer,1,>1960,VTENoTP,0,0,0,508438.95,
 TEST,7,Pfizer,1,all_birth_cohorts,VTENoTP,0,0,0,425035.72,all_birth_cohorts
 TEST,8,Pfizer,1,1940-1949,VTENoTP,0,0,0,Inf,70-79
 TEST,8,Pfizer,1,1950-1959,VTENoTP,0,0,0,Inf,60-69
@@ -3310,6 +3677,7 @@ TEST,8,Pfizer,1,1980-1989,VTENoTP,0,0,0,1981416.5,30-39
 TEST,8,Pfizer,1,1990+,VTENoTP,0,0,0,Inf,<30
 TEST,8,Pfizer,1,<1940,VTENoTP,0,0,0,2591083.12,80+
 TEST,8,Pfizer,1,<1960,VTENoTP,0,0,0,2591083.12,60+
+TEST,8,Pfizer,1,>1960,VTENoTP,0,0,0,495354.13,
 TEST,8,Pfizer,1,all_birth_cohorts,VTENoTP,0,0,0,415852.85,all_birth_cohorts
 TEST,9,Pfizer,1,1940-1949,VTENoTP,0,0,0,Inf,70-79
 TEST,9,Pfizer,1,1950-1959,VTENoTP,0,0,0,Inf,60-69
@@ -3319,6 +3687,7 @@ TEST,9,Pfizer,1,1980-1989,VTENoTP,0,0,0,1981416.5,30-39
 TEST,9,Pfizer,1,1990+,VTENoTP,0,0,0,Inf,<30
 TEST,9,Pfizer,1,<1940,VTENoTP,0,0,0,2591083.12,80+
 TEST,9,Pfizer,1,<1960,VTENoTP,0,0,0,2591083.12,60+
+TEST,9,Pfizer,1,>1960,VTENoTP,0,0,0,482925.89,
 TEST,9,Pfizer,1,all_birth_cohorts,VTENoTP,0,0,0,407058.37,all_birth_cohorts
 TEST,10,Pfizer,1,1940-1949,VTENoTP,0,0,0,Inf,70-79
 TEST,10,Pfizer,1,1950-1959,VTENoTP,0,0,0,Inf,60-69
@@ -3328,6 +3697,7 @@ TEST,10,Pfizer,1,1980-1989,VTENoTP,0,0,0,1981416.5,30-39
 TEST,10,Pfizer,1,1990+,VTENoTP,0,0,0,Inf,<30
 TEST,10,Pfizer,1,<1940,VTENoTP,0,0,0,2591083.12,80+
 TEST,10,Pfizer,1,<1960,VTENoTP,0,0,0,2591083.12,60+
+TEST,10,Pfizer,1,>1960,VTENoTP,0,0,0,471106.02,
 TEST,10,Pfizer,1,all_birth_cohorts,VTENoTP,0,0,0,398628.17,all_birth_cohorts
 TEST,11,Pfizer,1,1940-1949,VTENoTP,0,0,0,Inf,70-79
 TEST,11,Pfizer,1,1950-1959,VTENoTP,0,0,0,Inf,60-69
@@ -3337,6 +3707,7 @@ TEST,11,Pfizer,1,1980-1989,VTENoTP,0,0,0,1981416.5,30-39
 TEST,11,Pfizer,1,1990+,VTENoTP,0,0,0,Inf,<30
 TEST,11,Pfizer,1,<1940,VTENoTP,0,0,0,2591083.12,80+
 TEST,11,Pfizer,1,<1960,VTENoTP,0,0,0,2591083.12,60+
+TEST,11,Pfizer,1,>1960,VTENoTP,0,0,0,459850.93,
 TEST,11,Pfizer,1,all_birth_cohorts,VTENoTP,0,0,0,390540.06,all_birth_cohorts
 TEST,12,Pfizer,1,1940-1949,VTENoTP,0,0,0,Inf,70-79
 TEST,12,Pfizer,1,1950-1959,VTENoTP,0,0,0,Inf,60-69
@@ -3346,6 +3717,7 @@ TEST,12,Pfizer,1,1980-1989,VTENoTP,0,0,0,1981416.5,30-39
 TEST,12,Pfizer,1,1990+,VTENoTP,0,0,0,Inf,<30
 TEST,12,Pfizer,1,<1940,VTENoTP,0,0,0,2591083.12,80+
 TEST,12,Pfizer,1,<1960,VTENoTP,0,0,0,2591083.12,60+
+TEST,12,Pfizer,1,>1960,VTENoTP,0,0,0,449121.07,
 TEST,12,Pfizer,1,all_birth_cohorts,VTENoTP,0,0,0,382773.64,all_birth_cohorts
 TEST,13,Pfizer,1,1940-1949,VTENoTP,0,0,0,Inf,70-79
 TEST,13,Pfizer,1,1950-1959,VTENoTP,0,0,0,Inf,60-69
@@ -3355,6 +3727,7 @@ TEST,13,Pfizer,1,1980-1989,VTENoTP,0,0,0,1981416.5,30-39
 TEST,13,Pfizer,1,1990+,VTENoTP,0,0,0,Inf,<30
 TEST,13,Pfizer,1,<1940,VTENoTP,0,0,0,2591083.12,80+
 TEST,13,Pfizer,1,<1960,VTENoTP,0,0,0,2591083.12,60+
+TEST,13,Pfizer,1,>1960,VTENoTP,0,0,0,438880.53,
 TEST,13,Pfizer,1,all_birth_cohorts,VTENoTP,0,0,0,375310.09,all_birth_cohorts
 TEST,14,Pfizer,1,1940-1949,VTENoTP,0,0,0,Inf,70-79
 TEST,14,Pfizer,1,1950-1959,VTENoTP,0,0,0,Inf,60-69
@@ -3364,6 +3737,7 @@ TEST,14,Pfizer,1,1980-1989,VTENoTP,0,0,0,1981416.5,30-39
 TEST,14,Pfizer,1,1990+,VTENoTP,0,0,0,Inf,<30
 TEST,14,Pfizer,1,<1940,VTENoTP,0,0,0,2591083.12,80+
 TEST,14,Pfizer,1,<1960,VTENoTP,0,0,0,2591083.12,60+
+TEST,14,Pfizer,1,>1960,VTENoTP,0,0,0,434633.3,
 TEST,14,Pfizer,1,all_birth_cohorts,VTENoTP,0,0,0,372199.78,all_birth_cohorts
 TEST,1,Pfizer,2,1940-1949,VTENoTP,0,0,0,Inf,70-79
 TEST,1,Pfizer,2,1950-1959,VTENoTP,0,0,0,Inf,60-69
@@ -3373,6 +3747,7 @@ TEST,1,Pfizer,2,1980-1989,VTENoTP,0,0,0,19248046.01,30-39
 TEST,1,Pfizer,2,1990+,VTENoTP,0,0,0,Inf,<30
 TEST,1,Pfizer,2,<1940,VTENoTP,0,0,0,Inf,80+
 TEST,1,Pfizer,2,<1960,VTENoTP,0,0,0,Inf,60+
+TEST,1,Pfizer,2,>1960,VTENoTP,0,0,0,6416015.34,
 TEST,1,Pfizer,2,all_birth_cohorts,VTENoTP,0,0,0,6416015.34,all_birth_cohorts
 TEST,2,Pfizer,2,1940-1949,VTENoTP,0,0,0,Inf,70-79
 TEST,2,Pfizer,2,1950-1959,VTENoTP,0,0,0,Inf,60-69
@@ -3382,6 +3757,7 @@ TEST,2,Pfizer,2,1980-1989,VTENoTP,0,0,0,9624023,30-39
 TEST,2,Pfizer,2,1990+,VTENoTP,0,0,0,Inf,<30
 TEST,2,Pfizer,2,<1940,VTENoTP,0,0,0,Inf,80+
 TEST,2,Pfizer,2,<1960,VTENoTP,0,0,0,Inf,60+
+TEST,2,Pfizer,2,>1960,VTENoTP,0,0,0,3962833,
 TEST,2,Pfizer,2,all_birth_cohorts,VTENoTP,0,0,0,3962833,all_birth_cohorts
 TEST,3,Pfizer,2,1940-1949,VTENoTP,0,0,0,Inf,70-79
 TEST,3,Pfizer,2,1950-1959,VTENoTP,0,0,0,Inf,60-69
@@ -3391,6 +3767,7 @@ TEST,3,Pfizer,2,1980-1989,VTENoTP,0,0,0,6416015.34,30-39
 TEST,3,Pfizer,2,1990+,VTENoTP,0,0,0,Inf,<30
 TEST,3,Pfizer,2,<1940,VTENoTP,0,0,0,Inf,80+
 TEST,3,Pfizer,2,<1960,VTENoTP,0,0,0,Inf,60+
+TEST,3,Pfizer,2,>1960,VTENoTP,0,0,0,3286251.76,
 TEST,3,Pfizer,2,all_birth_cohorts,VTENoTP,0,0,0,3286251.76,all_birth_cohorts
 TEST,4,Pfizer,2,1940-1949,VTENoTP,0,0,0,Inf,70-79
 TEST,4,Pfizer,2,1950-1959,VTENoTP,0,0,0,Inf,60-69
@@ -3400,6 +3777,7 @@ TEST,4,Pfizer,2,1980-1989,VTENoTP,0,0,0,5389452.88,30-39
 TEST,4,Pfizer,2,1990+,VTENoTP,0,0,0,Inf,<30
 TEST,4,Pfizer,2,<1940,VTENoTP,0,0,0,Inf,80+
 TEST,4,Pfizer,2,<1960,VTENoTP,0,0,0,Inf,60+
+TEST,4,Pfizer,2,>1960,VTENoTP,0,0,0,2994140.49,
 TEST,4,Pfizer,2,all_birth_cohorts,VTENoTP,0,0,0,2994140.49,all_birth_cohorts
 TEST,0,none,no_dose,1940-1949,ArterialVTENoTP,0,0,0,7020.44,70-79
 TEST,0,none,no_dose,1950-1959,ArterialVTENoTP,1,1639.36,41.51,9133.94,60-69
@@ -3409,6 +3787,7 @@ TEST,0,none,no_dose,1980-1989,ArterialVTENoTP,0,0,0,7109.35,30-39
 TEST,0,none,no_dose,1990+,ArterialVTENoTP,0,0,0,3764.32,<30
 TEST,0,none,no_dose,<1940,ArterialVTENoTP,3,7840.23,1616.84,22912.47,80+
 TEST,0,none,no_dose,<1960,ArterialVTENoTP,4,2634.9,717.92,6746.39,60+
+TEST,0,none,no_dose,>1960,ArterialVTENoTP,0,0,0,1201.61,
 TEST,0,none,no_dose,all_birth_cohorts,ArterialVTENoTP,4,871.83,237.55,2232.24,all_birth_cohorts
 TEST,1,AstraZeneca,1,1940-1949,ArterialVTENoTP,0,0,0,19248046.01,70-79
 TEST,1,AstraZeneca,1,1950-1959,ArterialVTENoTP,0,0,0,Inf,60-69
@@ -3418,6 +3797,7 @@ TEST,1,AstraZeneca,1,1980-1989,ArterialVTENoTP,0,0,0,Inf,30-39
 TEST,1,AstraZeneca,1,1990+,ArterialVTENoTP,0,0,0,Inf,<30
 TEST,1,AstraZeneca,1,<1940,ArterialVTENoTP,0,0,0,Inf,80+
 TEST,1,AstraZeneca,1,<1960,ArterialVTENoTP,0,0,0,19248046.01,60+
+TEST,1,AstraZeneca,1,>1960,ArterialVTENoTP,0,0,0,19248046.01,
 TEST,1,AstraZeneca,1,all_birth_cohorts,ArterialVTENoTP,0,0,0,9624023,all_birth_cohorts
 TEST,2,AstraZeneca,1,1940-1949,ArterialVTENoTP,0,0,0,16842040.26,70-79
 TEST,2,AstraZeneca,1,1950-1959,ArterialVTENoTP,0,0,0,Inf,60-69
@@ -3427,6 +3807,7 @@ TEST,2,AstraZeneca,1,1980-1989,ArterialVTENoTP,0,0,0,Inf,30-39
 TEST,2,AstraZeneca,1,1990+,ArterialVTENoTP,0,0,0,Inf,<30
 TEST,2,AstraZeneca,1,<1940,ArterialVTENoTP,0,0,0,Inf,80+
 TEST,2,AstraZeneca,1,<1960,ArterialVTENoTP,0,0,0,16842040.26,60+
+TEST,2,AstraZeneca,1,>1960,ArterialVTENoTP,0,0,0,9624023,
 TEST,2,AstraZeneca,1,all_birth_cohorts,ArterialVTENoTP,0,0,0,6124378.28,all_birth_cohorts
 TEST,1,Pfizer,1,1940-1949,ArterialVTENoTP,0,0,0,Inf,70-79
 TEST,1,Pfizer,1,1950-1959,ArterialVTENoTP,0,0,0,Inf,60-69
@@ -3436,6 +3817,7 @@ TEST,1,Pfizer,1,1980-1989,ArterialVTENoTP,0,0,0,9624023,30-39
 TEST,1,Pfizer,1,1990+,ArterialVTENoTP,0,0,0,Inf,<30
 TEST,1,Pfizer,1,<1940,ArterialVTENoTP,0,0,0,5858100.96,80+
 TEST,1,Pfizer,1,<1960,ArterialVTENoTP,0,0,0,5858100.96,60+
+TEST,1,Pfizer,1,>1960,ArterialVTENoTP,0,0,0,1924804.6,
 TEST,1,Pfizer,1,all_birth_cohorts,ArterialVTENoTP,0,0,0,1448777.66,all_birth_cohorts
 TEST,2,Pfizer,1,1940-1949,ArterialVTENoTP,0,0,0,Inf,70-79
 TEST,2,Pfizer,1,1950-1959,ArterialVTENoTP,0,0,0,Inf,60-69
@@ -3445,6 +3827,7 @@ TEST,2,Pfizer,1,1980-1989,ArterialVTENoTP,0,0,0,4812011.5,30-39
 TEST,2,Pfizer,1,1990+,ArterialVTENoTP,0,0,0,Inf,<30
 TEST,2,Pfizer,1,<1940,ArterialVTENoTP,0,0,0,4082918.85,80+
 TEST,2,Pfizer,1,<1960,ArterialVTENoTP,0,0,0,4082918.85,60+
+TEST,2,Pfizer,1,>1960,ArterialVTENoTP,0,0,0,1044467.61,
 TEST,2,Pfizer,1,all_birth_cohorts,ArterialVTENoTP,0,0,0,831705.69,all_birth_cohorts
 TEST,3,Pfizer,1,1940-1949,ArterialVTENoTP,0,0,0,Inf,70-79
 TEST,3,Pfizer,1,1950-1959,ArterialVTENoTP,0,0,0,Inf,60-69
@@ -3454,6 +3837,7 @@ TEST,3,Pfizer,1,1980-1989,ArterialVTENoTP,0,0,0,3208007.67,30-39
 TEST,3,Pfizer,1,1990+,ArterialVTENoTP,0,0,0,Inf,<30
 TEST,3,Pfizer,1,<1940,ArterialVTENoTP,0,0,0,3368408.05,80+
 TEST,3,Pfizer,1,<1960,ArterialVTENoTP,0,0,0,3368408.05,60+
+TEST,3,Pfizer,1,>1960,ArterialVTENoTP,0,0,0,756945.63,
 TEST,3,Pfizer,1,all_birth_cohorts,ArterialVTENoTP,0,0,0,618056.52,all_birth_cohorts
 TEST,4,Pfizer,1,1940-1949,ArterialVTENoTP,0,0,0,Inf,70-79
 TEST,4,Pfizer,1,1950-1959,ArterialVTENoTP,0,0,0,Inf,60-69
@@ -3463,6 +3847,7 @@ TEST,4,Pfizer,1,1980-1989,ArterialVTENoTP,0,0,0,2406005.75,30-39
 TEST,4,Pfizer,1,1990+,ArterialVTENoTP,0,0,0,Inf,<30
 TEST,4,Pfizer,1,<1940,ArterialVTENoTP,0,0,0,2866730.26,80+
 TEST,4,Pfizer,1,<1960,ArterialVTENoTP,0,0,0,2866730.26,60+
+TEST,4,Pfizer,1,>1960,ArterialVTENoTP,0,0,0,604198.75,
 TEST,4,Pfizer,1,all_birth_cohorts,ArterialVTENoTP,0,0,0,499023.42,all_birth_cohorts
 TEST,5,Pfizer,1,1940-1949,ArterialVTENoTP,0,0,0,Inf,70-79
 TEST,5,Pfizer,1,1950-1959,ArterialVTENoTP,0,0,0,Inf,60-69
@@ -3472,6 +3857,7 @@ TEST,5,Pfizer,1,1980-1989,ArterialVTENoTP,0,0,0,2105255.03,30-39
 TEST,5,Pfizer,1,1990+,ArterialVTENoTP,0,0,0,Inf,<30
 TEST,5,Pfizer,1,<1940,ArterialVTENoTP,0,0,0,2591083.12,80+
 TEST,5,Pfizer,1,<1960,ArterialVTENoTP,0,0,0,2591083.12,60+
+TEST,5,Pfizer,1,>1960,ArterialVTENoTP,0,0,0,545491.18,
 TEST,5,Pfizer,1,all_birth_cohorts,ArterialVTENoTP,0,0,0,450623.15,all_birth_cohorts
 TEST,6,Pfizer,1,1940-1949,ArterialVTENoTP,0,0,0,Inf,70-79
 TEST,6,Pfizer,1,1950-1959,ArterialVTENoTP,0,0,0,Inf,60-69
@@ -3481,6 +3867,7 @@ TEST,6,Pfizer,1,1980-1989,ArterialVTENoTP,0,0,0,1981416.5,30-39
 TEST,6,Pfizer,1,1990+,ArterialVTENoTP,0,0,0,Inf,<30
 TEST,6,Pfizer,1,<1940,ArterialVTENoTP,0,0,0,2591083.12,80+
 TEST,6,Pfizer,1,<1960,ArterialVTENoTP,0,0,0,2591083.12,60+
+TEST,6,Pfizer,1,>1960,ArterialVTENoTP,0,0,0,522233.81,
 TEST,6,Pfizer,1,all_birth_cohorts,ArterialVTENoTP,0,0,0,434633.3,all_birth_cohorts
 TEST,7,Pfizer,1,1940-1949,ArterialVTENoTP,0,0,0,Inf,70-79
 TEST,7,Pfizer,1,1950-1959,ArterialVTENoTP,0,0,0,Inf,60-69
@@ -3490,6 +3877,7 @@ TEST,7,Pfizer,1,1980-1989,ArterialVTENoTP,0,0,0,1981416.5,30-39
 TEST,7,Pfizer,1,1990+,ArterialVTENoTP,0,0,0,Inf,<30
 TEST,7,Pfizer,1,<1940,ArterialVTENoTP,0,0,0,2591083.12,80+
 TEST,7,Pfizer,1,<1960,ArterialVTENoTP,0,0,0,2591083.12,60+
+TEST,7,Pfizer,1,>1960,ArterialVTENoTP,0,0,0,508438.95,
 TEST,7,Pfizer,1,all_birth_cohorts,ArterialVTENoTP,0,0,0,425035.72,all_birth_cohorts
 TEST,8,Pfizer,1,1940-1949,ArterialVTENoTP,0,0,0,Inf,70-79
 TEST,8,Pfizer,1,1950-1959,ArterialVTENoTP,0,0,0,Inf,60-69
@@ -3499,6 +3887,7 @@ TEST,8,Pfizer,1,1980-1989,ArterialVTENoTP,0,0,0,1981416.5,30-39
 TEST,8,Pfizer,1,1990+,ArterialVTENoTP,0,0,0,Inf,<30
 TEST,8,Pfizer,1,<1940,ArterialVTENoTP,0,0,0,2591083.12,80+
 TEST,8,Pfizer,1,<1960,ArterialVTENoTP,0,0,0,2591083.12,60+
+TEST,8,Pfizer,1,>1960,ArterialVTENoTP,0,0,0,495354.13,
 TEST,8,Pfizer,1,all_birth_cohorts,ArterialVTENoTP,0,0,0,415852.85,all_birth_cohorts
 TEST,9,Pfizer,1,1940-1949,ArterialVTENoTP,0,0,0,Inf,70-79
 TEST,9,Pfizer,1,1950-1959,ArterialVTENoTP,0,0,0,Inf,60-69
@@ -3508,6 +3897,7 @@ TEST,9,Pfizer,1,1980-1989,ArterialVTENoTP,0,0,0,1981416.5,30-39
 TEST,9,Pfizer,1,1990+,ArterialVTENoTP,0,0,0,Inf,<30
 TEST,9,Pfizer,1,<1940,ArterialVTENoTP,0,0,0,2591083.12,80+
 TEST,9,Pfizer,1,<1960,ArterialVTENoTP,0,0,0,2591083.12,60+
+TEST,9,Pfizer,1,>1960,ArterialVTENoTP,0,0,0,482925.89,
 TEST,9,Pfizer,1,all_birth_cohorts,ArterialVTENoTP,0,0,0,407058.37,all_birth_cohorts
 TEST,10,Pfizer,1,1940-1949,ArterialVTENoTP,0,0,0,Inf,70-79
 TEST,10,Pfizer,1,1950-1959,ArterialVTENoTP,0,0,0,Inf,60-69
@@ -3517,6 +3907,7 @@ TEST,10,Pfizer,1,1980-1989,ArterialVTENoTP,0,0,0,1981416.5,30-39
 TEST,10,Pfizer,1,1990+,ArterialVTENoTP,0,0,0,Inf,<30
 TEST,10,Pfizer,1,<1940,ArterialVTENoTP,0,0,0,2591083.12,80+
 TEST,10,Pfizer,1,<1960,ArterialVTENoTP,0,0,0,2591083.12,60+
+TEST,10,Pfizer,1,>1960,ArterialVTENoTP,0,0,0,471106.02,
 TEST,10,Pfizer,1,all_birth_cohorts,ArterialVTENoTP,0,0,0,398628.17,all_birth_cohorts
 TEST,11,Pfizer,1,1940-1949,ArterialVTENoTP,0,0,0,Inf,70-79
 TEST,11,Pfizer,1,1950-1959,ArterialVTENoTP,0,0,0,Inf,60-69
@@ -3526,6 +3917,7 @@ TEST,11,Pfizer,1,1980-1989,ArterialVTENoTP,0,0,0,1981416.5,30-39
 TEST,11,Pfizer,1,1990+,ArterialVTENoTP,0,0,0,Inf,<30
 TEST,11,Pfizer,1,<1940,ArterialVTENoTP,0,0,0,2591083.12,80+
 TEST,11,Pfizer,1,<1960,ArterialVTENoTP,0,0,0,2591083.12,60+
+TEST,11,Pfizer,1,>1960,ArterialVTENoTP,0,0,0,459850.93,
 TEST,11,Pfizer,1,all_birth_cohorts,ArterialVTENoTP,0,0,0,390540.06,all_birth_cohorts
 TEST,12,Pfizer,1,1940-1949,ArterialVTENoTP,0,0,0,Inf,70-79
 TEST,12,Pfizer,1,1950-1959,ArterialVTENoTP,0,0,0,Inf,60-69
@@ -3535,6 +3927,7 @@ TEST,12,Pfizer,1,1980-1989,ArterialVTENoTP,0,0,0,1981416.5,30-39
 TEST,12,Pfizer,1,1990+,ArterialVTENoTP,0,0,0,Inf,<30
 TEST,12,Pfizer,1,<1940,ArterialVTENoTP,0,0,0,2591083.12,80+
 TEST,12,Pfizer,1,<1960,ArterialVTENoTP,0,0,0,2591083.12,60+
+TEST,12,Pfizer,1,>1960,ArterialVTENoTP,0,0,0,449121.07,
 TEST,12,Pfizer,1,all_birth_cohorts,ArterialVTENoTP,0,0,0,382773.64,all_birth_cohorts
 TEST,13,Pfizer,1,1940-1949,ArterialVTENoTP,0,0,0,Inf,70-79
 TEST,13,Pfizer,1,1950-1959,ArterialVTENoTP,0,0,0,Inf,60-69
@@ -3544,6 +3937,7 @@ TEST,13,Pfizer,1,1980-1989,ArterialVTENoTP,0,0,0,1981416.5,30-39
 TEST,13,Pfizer,1,1990+,ArterialVTENoTP,0,0,0,Inf,<30
 TEST,13,Pfizer,1,<1940,ArterialVTENoTP,0,0,0,2591083.12,80+
 TEST,13,Pfizer,1,<1960,ArterialVTENoTP,0,0,0,2591083.12,60+
+TEST,13,Pfizer,1,>1960,ArterialVTENoTP,0,0,0,438880.53,
 TEST,13,Pfizer,1,all_birth_cohorts,ArterialVTENoTP,0,0,0,375310.09,all_birth_cohorts
 TEST,14,Pfizer,1,1940-1949,ArterialVTENoTP,0,0,0,Inf,70-79
 TEST,14,Pfizer,1,1950-1959,ArterialVTENoTP,0,0,0,Inf,60-69
@@ -3553,6 +3947,7 @@ TEST,14,Pfizer,1,1980-1989,ArterialVTENoTP,0,0,0,1981416.5,30-39
 TEST,14,Pfizer,1,1990+,ArterialVTENoTP,0,0,0,Inf,<30
 TEST,14,Pfizer,1,<1940,ArterialVTENoTP,0,0,0,2591083.12,80+
 TEST,14,Pfizer,1,<1960,ArterialVTENoTP,0,0,0,2591083.12,60+
+TEST,14,Pfizer,1,>1960,ArterialVTENoTP,0,0,0,434633.3,
 TEST,14,Pfizer,1,all_birth_cohorts,ArterialVTENoTP,0,0,0,372199.78,all_birth_cohorts
 TEST,1,Pfizer,2,1940-1949,ArterialVTENoTP,0,0,0,Inf,70-79
 TEST,1,Pfizer,2,1950-1959,ArterialVTENoTP,0,0,0,Inf,60-69
@@ -3562,6 +3957,7 @@ TEST,1,Pfizer,2,1980-1989,ArterialVTENoTP,0,0,0,19248046.01,30-39
 TEST,1,Pfizer,2,1990+,ArterialVTENoTP,0,0,0,Inf,<30
 TEST,1,Pfizer,2,<1940,ArterialVTENoTP,0,0,0,Inf,80+
 TEST,1,Pfizer,2,<1960,ArterialVTENoTP,0,0,0,Inf,60+
+TEST,1,Pfizer,2,>1960,ArterialVTENoTP,0,0,0,6416015.34,
 TEST,1,Pfizer,2,all_birth_cohorts,ArterialVTENoTP,0,0,0,6416015.34,all_birth_cohorts
 TEST,2,Pfizer,2,1940-1949,ArterialVTENoTP,0,0,0,Inf,70-79
 TEST,2,Pfizer,2,1950-1959,ArterialVTENoTP,0,0,0,Inf,60-69
@@ -3571,6 +3967,7 @@ TEST,2,Pfizer,2,1980-1989,ArterialVTENoTP,0,0,0,9624023,30-39
 TEST,2,Pfizer,2,1990+,ArterialVTENoTP,0,0,0,Inf,<30
 TEST,2,Pfizer,2,<1940,ArterialVTENoTP,0,0,0,Inf,80+
 TEST,2,Pfizer,2,<1960,ArterialVTENoTP,0,0,0,Inf,60+
+TEST,2,Pfizer,2,>1960,ArterialVTENoTP,0,0,0,3962833,
 TEST,2,Pfizer,2,all_birth_cohorts,ArterialVTENoTP,0,0,0,3962833,all_birth_cohorts
 TEST,3,Pfizer,2,1940-1949,ArterialVTENoTP,0,0,0,Inf,70-79
 TEST,3,Pfizer,2,1950-1959,ArterialVTENoTP,0,0,0,Inf,60-69
@@ -3580,6 +3977,7 @@ TEST,3,Pfizer,2,1980-1989,ArterialVTENoTP,0,0,0,6416015.34,30-39
 TEST,3,Pfizer,2,1990+,ArterialVTENoTP,0,0,0,Inf,<30
 TEST,3,Pfizer,2,<1940,ArterialVTENoTP,0,0,0,Inf,80+
 TEST,3,Pfizer,2,<1960,ArterialVTENoTP,0,0,0,Inf,60+
+TEST,3,Pfizer,2,>1960,ArterialVTENoTP,0,0,0,3286251.76,
 TEST,3,Pfizer,2,all_birth_cohorts,ArterialVTENoTP,0,0,0,3286251.76,all_birth_cohorts
 TEST,4,Pfizer,2,1940-1949,ArterialVTENoTP,0,0,0,Inf,70-79
 TEST,4,Pfizer,2,1950-1959,ArterialVTENoTP,0,0,0,Inf,60-69
@@ -3589,4 +3987,5 @@ TEST,4,Pfizer,2,1980-1989,ArterialVTENoTP,0,0,0,5389452.88,30-39
 TEST,4,Pfizer,2,1990+,ArterialVTENoTP,0,0,0,Inf,<30
 TEST,4,Pfizer,2,<1940,ArterialVTENoTP,0,0,0,Inf,80+
 TEST,4,Pfizer,2,<1960,ArterialVTENoTP,0,0,0,Inf,60+
+TEST,4,Pfizer,2,>1960,ArterialVTENoTP,0,0,0,2994140.49,
 TEST,4,Pfizer,2,all_birth_cohorts,ArterialVTENoTP,0,0,0,2994140.49,all_birth_cohorts

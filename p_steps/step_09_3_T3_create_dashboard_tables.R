@@ -164,7 +164,7 @@ rm(D3_vaxweeks, cohort_to_doses_weeks, all_mondays, monday_week, double_weeks, a
 # Benefit ------------------------------------------------------------------------------------------------------------
 
 D4_IR_benefit_week <- fread(paste0(direxp,"D4_IR_benefit_week_BC.csv"))
-BBC <- D4_IR_benefit_week[, Dose := as.character(Dose)]
+BBC <- D4_IR_benefit_week[, Dose := as.character(Dose)][Birthcohort_persons != ">1960", ]
 BBC <- BBC[Dose == 0, c("Dose", "type_vax") := list("no_dose", "none")]
 colA = paste("COVID_L", 1:5, "plus_b", sep = "")
 colB = paste("IR_COVID_L", 1:5, "plus", sep = "")
@@ -189,7 +189,7 @@ rm(BBC, D4_IR_benefit_week)
 
 
 D4_IR_benefit_fup <- fread(paste0(direxp,"D4_IR_benefit_fup_BC.csv"))
-BBT <- D4_IR_benefit_fup[, Dose := as.character(Dose)]
+BBT <- D4_IR_benefit_fup[, Dose := as.character(Dose)][Birthcohort_persons != ">1960", ]
 BBT <- BBT[Dose == 0, c("Dose", "type_vax") := list("no_dose", "none")]
 colA = paste("COVID_L", 1:5, "plus_b", sep = "")
 colB = paste("IR_COVID_L", 1:5, "plus", sep = "")

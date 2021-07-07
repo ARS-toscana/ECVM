@@ -102,6 +102,7 @@ system.time(source(paste0(thisdir,"/p_steps/step_07_4_T3_create_person_time_bene
 system.time(source(paste0(thisdir,"/p_steps/step_07_5_T3_aggregate_sex_birth_cohort.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_07_6_T3_aggregate_sex_risk_factor.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_07_7_T3_create_person_time_vax_cohort.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_07_8_T3_aggregate_monthly.R")))
 
 #08 Calculate Incidence Rates
 system.time(source(paste0(thisdir,"/p_steps/step_08_T4_IR.R")))

@@ -1,0 +1,25 @@
+DAP,AESI,Month in 2021,Person years,IR narrow,LL narrow,UL narrow
+TEST,HF_narrow,January,503,0,0,267865.45
+TEST,HF_narrow,February,426,0,0,316282.45
+TEST,HF_narrow,March,327,0,0,412037.68
+TEST,CAD_narrow,January,503,0,0,267865.45
+TEST,CAD_narrow,February,426,0,0,316282.45
+TEST,CAD_narrow,March,327,0,0,412037.68
+TEST,GENCONV_narrow,January,503,0,0,267865.45
+TEST,GENCONV_narrow,February,426,0,0,316282.45
+TEST,GENCONV_narrow,March,327,0,0,412037.68
+TEST,Ischstroke_narrow,January,503,0,0,267865.45
+TEST,Ischstroke_narrow,February,426,0,0,316282.45
+TEST,Ischstroke_narrow,March,327,0,0,412037.68
+TEST,VTE_narrow,January,503,0,0,267865.45
+TEST,VTE_narrow,February,426,0,0,316282.45
+TEST,VTE_narrow,March,327,0,0,412037.68
+TEST,ArterialNoTP,January,503,0,0,267865.45
+TEST,ArterialNoTP,February,426,0,0,316282.45
+TEST,ArterialNoTP,March,327,0,0,412037.68
+TEST,VTENoTP,January,503,0,0,267865.45
+TEST,VTENoTP,February,426,0,0,316282.45
+TEST,VTENoTP,March,327,0,0,412037.68
+TEST,ArterialVTENoTP,January,503,0,0,267865.45
+TEST,ArterialVTENoTP,February,426,0,0,316282.45
+TEST,ArterialVTENoTP,March,327,0,0,412037.68
