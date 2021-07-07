@@ -540,7 +540,7 @@ PT_monthly <- PT_monthly[Ageband == ">80", Ageband := "80+"][Ageband == ">60", A
 PT_monthly <- PT_monthly[, .(DAP, sex, month, year, Ageband, AESI, PT, IR, lb, ub)]
 
 
-table_10 <- PT_monthly[year == 2020 & sex == "both_sexes" & Ageband == "all_birth_cohorts"
+table_10 <- PT_monthly[year == 2020 & sex == "both_sexes" & Ageband == "all_birth_cohorts" & month != "all_months"
                        & !stringr::str_detect(AESI, "broad"), ]
 table_10 <- table_10[, c("year", "sex", "Ageband") := NULL]
 
@@ -556,4 +556,133 @@ fwrite(table_10, file = paste0(dummytables, "Incidence of AESI (narrow) per 100,
 
 # table_11 ----------------------------------------------------------------------------------------------------------
 
+table_11 <- PT_monthly[year == 2020 & sex == "both_sexes" & Ageband != "all_birth_cohorts" & month == "all_months"
+                       & !stringr::str_detect(AESI, "broad"), ]
+table_11 <- table_11[, c("year", "sex", "month") := NULL]
 
+setcolorder(table_11, c("DAP", "AESI", "Ageband", "PT", "IR", "lb", "ub"))
+
+setnames(table_11, c("Ageband", "PT", "IR", "lb", "ub"),
+         c("Age in 2020", "Person years", "IR narrow", "LL narrow", "UL narrow"))
+
+fwrite(table_11, file = paste0(dummytables, "Incidence of AESI (narrow) per 100,000 PY by age in 2020.csv"))
+
+
+
+
+# table_12 ----------------------------------------------------------------------------------------------------------
+
+table_12 <- PT_monthly[year == 2020 & sex != "both_sexes" & Ageband != "all_birth_cohorts" & month == "all_months"
+                       & !stringr::str_detect(AESI, "broad"), ]
+table_12 <- table_12[, c("year", "month") := NULL]
+
+vect_recode_gender <- c("Male", "Female")
+names(vect_recode_gender) <- c(1, 0)
+table_12 <- table_12[ , sex := vect_recode_gender[sex]]
+
+setcolorder(table_12, c("DAP", "AESI", "Ageband", "sex", "PT", "IR", "lb", "ub"))
+
+setorder(table_12, DAP, AESI, Ageband, sex)
+
+setnames(table_12, c("Ageband", "sex", "PT", "IR", "lb", "ub"),
+         c("Age in 2020", "Sex", "Person years", "IR narrow", "LL narrow", "UL narrow"))
+
+fwrite(table_12, file = paste0(dummytables, "Incidence of AESI (narrow) per 100,000 PY by age & sex in 2020.csv"))
+
+
+
+
+
+
+# table_13 ----------------------------------------------------------------------------------------------------------
+
+table_13 <- PT_monthly[year == 2020 & sex != "both_sexes" & Ageband != "all_birth_cohorts" & month == "all_months"
+                       & !stringr::str_detect(AESI, "broad"), ]
+table_13 <- table_13[, c("year", "month") := NULL]
+
+table_13 <- table_13[ , sex := vect_recode_gender[sex]]
+
+setcolorder(table_13, c("DAP", "AESI", "Ageband", "sex", "PT", "IR", "lb", "ub"))
+
+setorder(table_13, DAP, AESI, Ageband, sex)
+
+setnames(table_13, c("Ageband", "sex", "PT", "IR", "lb", "ub"),
+         c("Age in 2020", "Sex", "Person years", "IR narrow", "LL narrow", "UL narrow"))
+
+fwrite(table_13,file = paste0(dummytables,"Incidence of AESI (narrow) per 100,000 PY by age & sex in 2020 in at risk population.csv"))
+
+
+
+
+
+
+# table_14 ----------------------------------------------------------------------------------------------------------
+
+table_14 <- PT_monthly[year == 2021 & sex == "both_sexes" & Ageband == "all_birth_cohorts" & month != "all_months"
+                       & !stringr::str_detect(AESI, "broad"), ]
+table_14 <- table_14[, c("year", "sex", "Ageband") := NULL]
+
+setcolorder(table_14, c("DAP", "AESI", "month", "PT", "IR", "lb", "ub"))
+
+setnames(table_14, c("month", "PT", "IR", "lb", "ub"),
+         c("Month in 2021", "Person years", "IR narrow", "LL narrow", "UL narrow"))
+
+fwrite(table_14,file = paste0(dummytables,"Incidence of AESI (narrow) per 100,000 PY by month in 2021 (non-vaccinated).csv"))
+
+
+
+
+# table_15 ----------------------------------------------------------------------------------------------------------
+
+# load(paste0(diroutput, "D4_doses_weeks.RData"))
+# 
+# setorder(D4_doses_weeks, Week_number)
+# table_15 <- D4_doses_weeks[Year < 2021, index := .GRP, by = "Week_number"]
+# table_15 <- table_15[Year == 2021, index := .GRP, by = "Week_number"][, Week_number := NULL]
+# 
+# 
+# table_15 <- unique(copy(table_15)[, lapply(.SD, sum, na.rm=TRUE),
+#                                   by = c("Datasource", "Year", "index", "Type_vax", "Dose"),
+#                                   .SDcols = c("Persons_in_week", "Doses_in_week")])
+# 
+# table_15 <- table_15[, cum_N := cumsum(N), by = c("Datasource", "Type_vax", "Year")]
+# 
+# table_15 <- table_15[Dose == 1, ][, c("Dose", "Week_number") := NULL]
+# 
+# setcolorder(table_15, c("Datasource", "Type_vax", "Year", "index", "Doses_in_week", "Persons_in_week"))
+# 
+# D4_persontime_risk_week <- rbind(D4_persontime_risk_week, all_ages)
+
+
+# table_16 ----------------------------------------------------------------------------------------------------------
+
+D4_IR_risk_fup <- fread(paste0(direxp,"D4_IR_risk_fup_BC.csv"))
+table_16 <- D4_IR_risk_fup[Birthcohort_persons %in% c("<1960", ">1960"), ]
+table_16 <- table_16[Birthcohort_persons %in% c("<1960", ">1960") & Dose > 0 & sex != "both_sexes", ]
+vect_recode_age <- c("<1960" = ">60", ">1960" = "<60")
+table_16 <- table_16[, Birthcohort_persons := vect_recode_age[Birthcohort_persons]]
+table_16 <- table_16[, vax_man_dose := paste(type_vax, "dose", Dose)][, c("type_vax", "Dose", "Persontime") := NULL]
+
+list_risk <- list_outcomes_observed
+
+colA = paste0(list_risk, "_b")
+colB = paste0("Persontime_", list_risk)
+colC = paste0("IR_", list_risk)
+colD = paste0("lb_", list_risk)
+colE = paste0("ub_", list_risk)
+
+table_16 <- data.table::melt(table_16, measure = list(colA, colB, colC, colD, colE), variable.name = "AESI",
+                        value.name = c("Cases", "PT", "IR", "lb", "ub"), na.rm = F)
+table_16 <- table_16[ , AESI := vect_recode_AESI[AESI]][ , sex := vect_recode_gender[sex]]
+table_16 <- table_16[ , days_since_vax := paste((week_fup -1) * 7, (week_fup * 7 - 1), sep = "-")]
+table_16 <- table_16[ , week_fup := NULL]
+table_16 <- table_16[, DAP := thisdatasource]
+
+setcolorder(table_16, c("DAP", "AESI", "vax_man_dose", "days_since_vax", "Birthcohort_persons",
+                        "sex", "Cases", "PT", "IR", "lb", "ub"))
+
+setnames(table_16, c("sex", "vax_man_dose", "days_since_vax", "Birthcohort_persons", "PT", "IR", "lb", "ub"),
+         c("Sex", "Vaccine & dose", "Days since vaccination", "Age", "Person days", "IR narrow", "LL narrow", "UL narrow"))
+
+fwrite(table_16, file = paste0(dirdashboard, "Incidence of AESI (narrow) per 100,000 PY by week since vaccination.csv"))
+rm(table_16, D4_IR_risk_fup)

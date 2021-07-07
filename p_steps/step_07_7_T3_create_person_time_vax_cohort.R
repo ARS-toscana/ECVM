@@ -1,4 +1,4 @@
-print("COUNT PERSON TIME by week for risks")
+print("COUNT PERSON TIME by month for risks")
 
 load(paste0(dirtemp,"list_outcomes_observed.RData"))
 load(paste0(dirtemp,"D3_events_ALL_OUTCOMES.RData"))

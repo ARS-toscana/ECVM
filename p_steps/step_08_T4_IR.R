@@ -85,7 +85,7 @@ for (ev in list_outcomes_observed) {
 
 #D4_IR_risk_fup_BC<-D4_persontime_risk_year_BC[,-c(6:44)]
 
-D4_IR_risk_fup_BC<-D4_persontime_risk_year_BC[, !grep("^Person", names(D4_persontime_risk_year_BC)) , with = FALSE]
+D4_IR_risk_fup_BC <- D4_persontime_risk_year_BC
 
 save(D4_IR_risk_fup_BC,file=paste0(direxp,"D4_IR_risk_fup_BC.RData"))
 fwrite(D4_IR_risk_fup_BC,file=paste0(direxp,"D4_IR_risk_fup_BC.csv"))
