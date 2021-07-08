@@ -99,4 +99,4 @@ for (i in names(D3_concepts_QC_criteria)){
 }
 
 save(D3_concepts_QC_criteria, file = paste0(dirtemp, "D3_concepts_QC_criteria.RData"))
-rm(concepts, concepts_wider, D3_concepts_QC_criteria, QC_dose_derived)
+rm(concepts, concepts_wider, D3_concepts_QC_criteria, QC_dose_derived, table_QC_dose_derived)

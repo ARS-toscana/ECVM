@@ -13,12 +13,14 @@ load(paste0(dirtemp,"list_outcomes_observed.RData"))
 events<-c("COVID_L1plus","COVID_L2plus", "COVID_L3plus","COVID_L4plus","COVID_L5plus")
 
 for (ev in events) {
-  D4_persontime_benefit_week_BC[, paste0("IR_",ev) :=  round(100000*(get(paste0(ev,"_b")))/(get(paste0("Persontime_",ev))/365.25), 2)]
-  D4_persontime_benefit_week_BC <- D4_persontime_benefit_week_BC[, c(paste0("lb_",ev), paste0("ub_",ev)) := list(
-    round(get(paste0("IR_",ev))*exp(-1.96/sqrt(get(paste0(ev,"_b")))), 2),
-    round(get(paste0("IR_",ev))*exp(+1.96/sqrt(get(paste0(ev,"_b")))), 2))]
+  name_cols <- paste0(c("IR_", "lb_", "ub_"), ev)
+  name_count <- paste0(ev,"_b")
+  name_pt <- paste0("Persontime_",ev)
+  D4_persontime_benefit_week_BC[, (name_cols) := exactPoiCI(D4_persontime_benefit_week_BC, name_count, name_pt)]
 }
 
+temp <- copy(D4_persontime_benefit_week_BC)
+all.equal(temp, D4_persontime_benefit_week_BC)
 #D4_IR_benefit_week_BC<-D4_persontime_benefit_week_BC[,-c(6:14)]
 D4_IR_benefit_week_BC<-D4_persontime_benefit_week_BC[, !grep("^Person", names(D4_persontime_benefit_week_BC)) , with = FALSE]
 
@@ -32,10 +34,10 @@ fwrite(D4_IR_benefit_week_BC,file=paste0(direxp,"D4_IR_benefit_week_BC.csv"))
 #D4_persontime_benefit_year-----------------------------------------------------
 load(paste0(diroutput,"D4_persontime_benefit_year_BC.RData"))
 for (ev in events) {
-  D4_persontime_benefit_year_BC[, paste0("IR_",ev) :=  round(100000*(get(paste0(ev,"_b")))/(get(paste0("Persontime_",ev))/365.25), 2)]
-  D4_persontime_benefit_year_BC <- D4_persontime_benefit_year_BC[, c(paste0("lb_",ev), paste0("ub_",ev)) := list(
-    round(get(paste0("IR_",ev))*exp(-1.96/sqrt(get(paste0(ev,"_b")))), 2),
-    round(get(paste0("IR_",ev))*exp(+1.96/sqrt(get(paste0(ev,"_b")))), 2))]
+  name_cols <- paste0(c("IR_", "lb_", "ub_"), ev)
+  name_count <- paste0(ev,"_b")
+  name_pt <- paste0("Persontime_",ev)
+  D4_persontime_benefit_year_BC[, (name_cols) := exactPoiCI(D4_persontime_benefit_year_BC, name_count, name_pt)]
 }
 
 #D4_IR_benefit_fup_BC<-D4_persontime_benefit_year_BC[,-c(6:14)]
@@ -55,10 +57,10 @@ load(paste0(diroutput,"D4_persontime_risk_week_BC.RData"))
 
 
 for (ev in list_outcomes_observed) {
-  D4_persontime_risk_week_BC[, paste0("IR_",ev) :=  round(100000*(get(paste0(ev,"_b")))/(get(paste0("Persontime_",ev))/365.25), 2)]
-  D4_persontime_risk_week_BC <- D4_persontime_risk_week_BC[, c(paste0("lb_",ev), paste0("ub_",ev)) := list(
-    round(get(paste0("IR_",ev))*exp(-1.96/sqrt(get(paste0(ev,"_b")))), 2),
-    round(get(paste0("IR_",ev))*exp(+1.96/sqrt(get(paste0(ev,"_b")))), 2))]
+  name_cols <- paste0(c("IR_", "lb_", "ub_"), ev)
+  name_count <- paste0(ev,"_b")
+  name_pt <- paste0("Persontime_",ev)
+  D4_persontime_risk_week_BC[, (name_cols) := exactPoiCI(D4_persontime_risk_week_BC, name_count, name_pt)]
 }
 
 #D4_IR_risk_week_BC<-D4_persontime_risk_week_BC[,-c(6:44)]
@@ -75,15 +77,15 @@ fwrite(D4_IR_risk_week_BC,file=paste0(direxp,"D4_IR_risk_week_BC.csv"))
 #D4_persontime_risk_year-----------------------------------------------------
 load(paste0(diroutput,"D4_persontime_risk_year_BC.RData"))
 for (ev in list_outcomes_observed) {
-  D4_persontime_risk_year_BC[, paste0("IR_",ev) :=  round(100000*(get(paste0(ev,"_b")))/(get(paste0("Persontime_",ev))/365.25), 2)]
-  D4_persontime_risk_year_BC <- D4_persontime_risk_year_BC[, c(paste0("lb_",ev), paste0("ub_",ev)) := list(
-    round(get(paste0("IR_",ev))*exp(-1.96/sqrt(get(paste0(ev,"_b")))), 2),
-    round(get(paste0("IR_",ev))*exp(+1.96/sqrt(get(paste0(ev,"_b")))), 2))]
+  name_cols <- paste0(c("IR_", "lb_", "ub_"), ev)
+  name_count <- paste0(ev,"_b")
+  name_pt <- paste0("Persontime_",ev)
+  D4_persontime_risk_year_BC[, (name_cols) := exactPoiCI(D4_persontime_risk_year_BC, name_count, name_pt)]
 }
 
 #D4_IR_risk_fup_BC<-D4_persontime_risk_year_BC[,-c(6:44)]
 
-D4_IR_risk_fup_BC<-D4_persontime_risk_year_BC[, !grep("^Person", names(D4_persontime_risk_year_BC)) , with = FALSE]
+D4_IR_risk_fup_BC <- D4_persontime_risk_year_BC
 
 save(D4_IR_risk_fup_BC,file=paste0(direxp,"D4_IR_risk_fup_BC.RData"))
 fwrite(D4_IR_risk_fup_BC,file=paste0(direxp,"D4_IR_risk_fup_BC.csv"))
@@ -98,10 +100,10 @@ load(paste0(dirtemp,"list_outcomes_observed.RData"))
 events<-c("COVID_L1plus","COVID_L2plus", "COVID_L3plus","COVID_L4plus","COVID_L5plus")
 
 for (ev in events) {
-  D4_persontime_benefit_week_RF[, paste0("IR_",ev) :=  round(100000*(get(paste0(ev,"_b")))/(get(paste0("Persontime_",ev))/365.25), 2)]
-  D4_persontime_benefit_week_RF <- D4_persontime_benefit_week_RF[, c(paste0("lb_",ev), paste0("ub_",ev)) := list(
-    round(get(paste0("IR_",ev))*exp(-1.96/sqrt(get(paste0(ev,"_b")))), 2),
-    round(get(paste0("IR_",ev))*exp(+1.96/sqrt(get(paste0(ev,"_b")))), 2))]
+  name_cols <- paste0(c("IR_", "lb_", "ub_"), ev)
+  name_count <- paste0(ev,"_b")
+  name_pt <- paste0("Persontime_",ev)
+  D4_persontime_benefit_week_RF[, (name_cols) := exactPoiCI(D4_persontime_benefit_week_RF, name_count, name_pt)]
 }
 
 #D4_IR_benefit_week_RF<-D4_persontime_benefit_week_RF[,-c(6:14)]
@@ -118,10 +120,10 @@ fwrite(D4_IR_benefit_week_RF,file=paste0(direxp,"D4_IR_benefit_week_RF.csv"))
 #D4_persontime_benefit_year-----------------------------------------------------
 load(paste0(diroutput,"D4_persontime_benefit_year_RF.RData"))
 for (ev in events) {
-  D4_persontime_benefit_year_RF[, paste0("IR_",ev) :=  round(100000*(get(paste0(ev,"_b")))/(get(paste0("Persontime_",ev))/365.25), 2)]
-  D4_persontime_benefit_year_RF <- D4_persontime_benefit_year_RF[, c(paste0("lb_",ev), paste0("ub_",ev)) := list(
-    round(get(paste0("IR_",ev))*exp(-1.96/sqrt(get(paste0(ev,"_b")))), 2),
-    round(get(paste0("IR_",ev))*exp(+1.96/sqrt(get(paste0(ev,"_b")))), 2))]
+  name_cols <- paste0(c("IR_", "lb_", "ub_"), ev)
+  name_count <- paste0(ev,"_b")
+  name_pt <- paste0("Persontime_",ev)
+  D4_persontime_benefit_year_RF[, (name_cols) := exactPoiCI(D4_persontime_benefit_year_RF, name_count, name_pt)]
 }
 
 #D4_IR_benefit_fup_RF<-D4_persontime_benefit_year_RF[,-c(6:14)]
@@ -141,10 +143,10 @@ load(paste0(diroutput,"D4_persontime_risk_week_RF.RData"))
 
 
 for (ev in list_outcomes_observed) {
-  D4_persontime_risk_week_RF[, paste0("IR_",ev) :=  round(100000*(get(paste0(ev,"_b")))/(get(paste0("Persontime_",ev))/365.25), 2)]
-  D4_persontime_risk_week_RF <- D4_persontime_risk_week_RF[, c(paste0("lb_",ev), paste0("ub_",ev)) := list(
-    round(get(paste0("IR_",ev))*exp(-1.96/sqrt(get(paste0(ev,"_b")))), 2),
-    round(get(paste0("IR_",ev))*exp(+1.96/sqrt(get(paste0(ev,"_b")))), 2))]
+  name_cols <- paste0(c("IR_", "lb_", "ub_"), ev)
+  name_count <- paste0(ev,"_b")
+  name_pt <- paste0("Persontime_",ev)
+  D4_persontime_risk_week_RF[, (name_cols) := exactPoiCI(D4_persontime_risk_week_RF, name_count, name_pt)]
 }
 
 #D4_IR_risk_week_RF<-D4_persontime_risk_week_RF[,-c(6:44)]
@@ -161,10 +163,10 @@ fwrite(D4_IR_risk_week_RF,file=paste0(direxp,"D4_IR_risk_week_RF.csv"))
 #D4_persontime_risk_year-----------------------------------------------------
 load(paste0(diroutput,"D4_persontime_risk_year_RF.RData"))
 for (ev in list_outcomes_observed) {
-  D4_persontime_risk_year_RF[, paste0("IR_",ev) :=  round(100000*(get(paste0(ev,"_b")))/(get(paste0("Persontime_",ev))/365.25), 2)]
-  D4_persontime_risk_year_RF <- D4_persontime_risk_year_RF[, c(paste0("lb_",ev), paste0("ub_",ev)) := list(
-    round(get(paste0("IR_",ev))*exp(-1.96/sqrt(get(paste0(ev,"_b")))), 2),
-    round(get(paste0("IR_",ev))*exp(+1.96/sqrt(get(paste0(ev,"_b")))), 2))]
+  name_cols <- paste0(c("IR_", "lb_", "ub_"), ev)
+  name_count <- paste0(ev,"_b")
+  name_pt <- paste0("Persontime_",ev)
+  D4_persontime_risk_year_RF[, (name_cols) := exactPoiCI(D4_persontime_risk_year_RF, name_count, name_pt)]
 }
 
 #D4_IR_risk_fup_RF<-D4_persontime_risk_year_RF[,-c(6:44)]
@@ -175,3 +177,22 @@ save(D4_IR_risk_fup_RF,file=paste0(direxp,"D4_IR_risk_fup_RF.RData"))
 fwrite(D4_IR_risk_fup_RF,file=paste0(direxp,"D4_IR_risk_fup_RF.csv"))
 
 
+#D4_persontime_risk_month-----------------------------------------------------
+load(paste0(diroutput,"D4_persontime_risk_month_RFBC.RData"))
+for (ev in list_outcomes_observed) {
+  name_cols <- paste0(c("IR_", "lb_", "ub_"), ev)
+  name_count <- paste0(ev,"_b")
+  name_pt <- paste0("Persontime_",ev)
+  D4_persontime_risk_month_RFBC[, (name_cols) := exactPoiCI(D4_persontime_risk_month_RFBC, name_count, name_pt)]
+}
+
+D4_persontime_ALL_OUTCOMES <- D4_persontime_risk_month_RFBC
+
+first_cols <- c("sex", "month", "year", "Ageband")
+all_cols <- colnames(D4_persontime_ALL_OUTCOMES)
+setcolorder(D4_persontime_ALL_OUTCOMES, c(first_cols, all_cols[all_cols %not in% first_cols]))
+
+save(D4_persontime_ALL_OUTCOMES,file=paste0(direxp,"D4_persontime_ALL_OUTCOMES.RData"))
+fwrite(D4_persontime_ALL_OUTCOMES,file=paste0(direxp,"D4_persontime_ALL_OUTCOMES.csv"))
+
+rm(D4_persontime_risk_month_RFBC, D4_persontime_ALL_OUTCOMES, first_cols, all_cols, name_cols, name_count, name_pt)

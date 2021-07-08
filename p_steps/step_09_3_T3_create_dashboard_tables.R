@@ -40,11 +40,14 @@ vaxweeks_to_dos_bir_cor <- vaxweeks_to_dos_bir_cor[.(Birthcohort_persons = c("0"
                                                      to = c("<1940", "1940-1949", "1950-1959", "1960-1969", "1970-1979",
                                                             "1980-1989", "1990+")),
                                                    on = "Birthcohort_persons", Birthcohort_persons := i.to]
+
 vaxweeks_to_dos_bir_cor <- vaxweeks_to_dos_bir_cor[, vx_manufacturer := fifelse(Dose == 1, type_vax_1, type_vax_2)]
 vaxweeks_to_dos_bir_cor <- vaxweeks_to_dos_bir_cor[, Datasource := thisdatasource]
 
 vaxweeks_to_dos_bir_cor <- vaxweeks_to_dos_bir_cor[, .(Datasource, monday_week, vx_manufacturer, Dose, Birthcohort_persons)]
-setnames(vaxweeks_to_dos_bir_cor, c("Datasource", "monday_week", "Dose", "Birthcohort_persons"), c("datasource", "week", "dose", "birth_cohort"))
+
+setnames(vaxweeks_to_dos_bir_cor, c("Datasource", "monday_week", "Dose", "Birthcohort_persons"),
+         c("datasource", "week", "dose", "birth_cohort"))
 
 vaxweeks_to_dos_bir_cor <- vaxweeks_to_dos_bir_cor[, .(N = .N), by = c("datasource", "week", "vx_manufacturer", "dose", "birth_cohort")]
 
@@ -53,16 +56,23 @@ all_ages <- unique(all_ages[, birth_cohort:="all_birth_cohorts"][, c("datasource
 
 vaxweeks_to_dos_bir_cor <- rbind(vaxweeks_to_dos_bir_cor, all_ages)
 
+older60 <- copy(vaxweeks_to_dos_bir_cor)[birth_cohort %in% c("<1940", "1940-1949", "1950-1959"),
+                                         lapply(.SD, sum, na.rm=TRUE),
+                                         by = c("datasource", "week", "vx_manufacturer", "dose"),
+                                         .SDcols = "N"]
+older60 <- unique(older60[, birth_cohort := "<1960"])
+vaxweeks_to_dos_bir_cor <- rbind(vaxweeks_to_dos_bir_cor, older60)
+
 complete_df <- expand.grid(datasource = thisdatasource, week = monday_week, vx_manufacturer = c("Moderna", "Pfizer", "AstraZeneca", "J&J", "UKN"),
                            dose = c("1", "2"), birth_cohort = c("<1940", "1940-1949", "1950-1959", "1960-1969", "1970-1979",
-                                                                "1980-1989", "1990+", "all_birth_cohorts"))
+                                                                "1980-1989", "1990+", "all_birth_cohorts", "<1960"))
 
 vaxweeks_to_dos_bir_cor <- merge(vaxweeks_to_dos_bir_cor, complete_df, all.y = T, by = c("datasource", "week", "vx_manufacturer", "dose", "birth_cohort"))
 DOSES_BIRTHCOHORTS <- vaxweeks_to_dos_bir_cor[is.na(N), N := 0][, week := format(week, "%Y%m%d")]
 
 vect_recode_birthcohort <- c("<1940" = "80+", "1940-1949" = "70-79", "1950-1959" = "60-69", "1960-1969" = "50-59",
                              "1970-1979" = "40-49", "1980-1989" = "30-39", "1990+" = "<30",
-                             "all_birth_cohorts" = "all_birth_cohorts")
+                             "all_birth_cohorts" = "all_birth_cohorts", "<1960" = "60+")
 DOSES_BIRTHCOHORTS <- DOSES_BIRTHCOHORTS[, ageband := vect_recode_birthcohort[birth_cohort]]
 
 fwrite(DOSES_BIRTHCOHORTS, file = paste0(dirdashboard, "DOSES_BIRTHCOHORTS.csv"))
@@ -76,6 +86,10 @@ tot_pop_cohorts <- tot_pop_cohorts[.(birth_cohort = c("0", "1", "2", "3", "4", "
 tot_pop_cohorts <- tot_pop_cohorts[, .(pop_cohorts = .N), by = c("birth_cohort")]
 all_pop <- unique(copy(tot_pop_cohorts)[, pop_cohorts := sum(pop_cohorts)][, birth_cohort := "all_birth_cohorts"])
 tot_pop_cohorts <- rbind(tot_pop_cohorts, all_pop)
+older60 <- copy(tot_pop_cohorts)[birth_cohort %in% c("<1940", "1940-1949", "1950-1959"), sum(pop_cohorts)]
+older60 <- data.table::data.table(birth_cohort = "<1960", pop_cohorts = older60)
+tot_pop_cohorts <- rbind(tot_pop_cohorts, older60)
+
 COVERAGE_BIRTHCOHORTS <- merge(DOSES_BIRTHCOHORTS, tot_pop_cohorts, by = "birth_cohort", all.x = T)
 setorder(COVERAGE_BIRTHCOHORTS, week)
 
@@ -150,7 +164,7 @@ rm(D3_vaxweeks, cohort_to_doses_weeks, all_mondays, monday_week, double_weeks, a
 # Benefit ------------------------------------------------------------------------------------------------------------
 
 D4_IR_benefit_week <- fread(paste0(direxp,"D4_IR_benefit_week_BC.csv"))
-BBC <- D4_IR_benefit_week[, Dose := as.character(Dose)]
+BBC <- D4_IR_benefit_week[, Dose := as.character(Dose)][Birthcohort_persons != ">1960", ]
 BBC <- BBC[Dose == 0, c("Dose", "type_vax") := list("no_dose", "none")]
 colA = paste("COVID_L", 1:5, "plus_b", sep = "")
 colB = paste("IR_COVID_L", 1:5, "plus", sep = "")
@@ -175,7 +189,7 @@ rm(BBC, D4_IR_benefit_week)
 
 
 D4_IR_benefit_fup <- fread(paste0(direxp,"D4_IR_benefit_fup_BC.csv"))
-BBT <- D4_IR_benefit_fup[, Dose := as.character(Dose)]
+BBT <- D4_IR_benefit_fup[, Dose := as.character(Dose)][Birthcohort_persons != ">1960", ]
 BBT <- BBT[Dose == 0, c("Dose", "type_vax") := list("no_dose", "none")]
 colA = paste("COVID_L", 1:5, "plus_b", sep = "")
 colB = paste("IR_COVID_L", 1:5, "plus", sep = "")
