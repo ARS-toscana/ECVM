@@ -369,7 +369,8 @@ recode_rows <- paste(names_vect, "dose 1")
 names(recode_rows) <- names_vect
 Totals_dose_1 <- Totals_dose_1[, a := recode_rows[type_vax_1]][, Parameters := "Persons"]
 
-Totals <- Totals_dose_1[, .(N = sum(N))]
+Totals <- Totals_dose_1[, sum(N)]
+Totals_df <- data.table::data.table(N = Totals, a = "Total population", Parameters = "Persons")
 Totals_df <- copy(Totals)[, a := "Total population"][, Parameters := "Persons"]
 base_table_7 <- rbindlist(list(empty_table_7, Totals_df), use.names=TRUE)
 
@@ -670,6 +671,8 @@ colB = paste0("Persontime_", list_risk)
 colC = paste0("IR_", list_risk)
 colD = paste0("lb_", list_risk)
 colE = paste0("ub_", list_risk)
+
+table_16 <- correct_col_type(table_16)
 
 table_16 <- data.table::melt(table_16, measure = list(colA, colB, colC, colD, colE), variable.name = "AESI",
                         value.name = c("Cases", "PT", "IR", "lb", "ub"), na.rm = F)
