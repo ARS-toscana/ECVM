@@ -660,7 +660,7 @@ fwrite(table_14,file = paste0(dummytables,"Incidence of AESI (narrow) per 100,00
 D4_IR_risk_fup <- fread(paste0(direxp,"D4_IR_risk_fup_BC.csv"))
 table_16 <- D4_IR_risk_fup[Birthcohort_persons %in% c("<1960", ">1960"), ]
 table_16 <- table_16[Birthcohort_persons %in% c("<1960", ">1960") & Dose > 0 & sex != "both_sexes", ]
-vect_recode_age <- c("<1960" = ">60", ">1960" = "<60")
+vect_recode_age <- c("<1960" = "60+", ">1960" = "<60")
 table_16 <- table_16[, Birthcohort_persons := vect_recode_age[Birthcohort_persons]]
 table_16 <- table_16[, vax_man_dose := paste(type_vax, "dose", Dose)][, c("type_vax", "Dose", "Persontime") := NULL]
 
