@@ -300,7 +300,7 @@ setnafill(N_age_cat, cols = c(vax_man), fill = 0)
 N_age_cat <- N_age_cat[, (vax_man_perc) := lapply(.SD, round_sum), .SDcols = vax_man]
 older60 <- copy(N_age_cat)[Parameters %in% c(">80", "70-79", "60-69"),
                            lapply(.SD, sum, na.rm=TRUE), by = "a",
-                           .SDcols = c("AstraZeneca", "Pfizer", "perc_Pfizer", "perc_AstraZeneca")]
+                           .SDcols = c(vax_man, vax_man_perc)]
 older60 <- unique(older60[, Parameters := ">60"])
 N_age_cat <- rbind(N_age_cat, older60)
 N_age_cat <- N_age_cat[, (vax_man_perc) := lapply(.SD, paste0, "%"), .SDcols = vax_man_perc]
@@ -314,7 +314,7 @@ setnafill(fup_age_cat, cols = c(vax_man), fill = 0)
 fup_age_cat <- fup_age_cat[, (vax_man_perc) := lapply(.SD, round_sum), .SDcols = vax_man]
 older60 <- copy(fup_age_cat)[Parameters %in% c(">80", "70-79", "60-69"),
                            lapply(.SD, sum, na.rm=TRUE), by = "a",
-                           .SDcols = c("AstraZeneca", "Pfizer", "perc_Pfizer", "perc_AstraZeneca")]
+                           .SDcols = c(vax_man, vax_man_perc)]
 older60 <- unique(older60[, Parameters := ">60"])
 fup_age_cat <- rbind(fup_age_cat, older60)
 fup_age_cat <- fup_age_cat[, (vax_man_perc) := lapply(.SD, paste0, "%"), .SDcols = vax_man_perc]
