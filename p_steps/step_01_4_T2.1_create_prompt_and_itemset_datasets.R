@@ -50,4 +50,4 @@ save(covid_registry,file = paste0(dirtemp,"covid_registry.RData"))
 #save(COVID_symptoms,file = paste0(dirtemp,"COVID_symptoms.RData"))
 
 #rm(SURVEY_ID_COVID, covid_registry, SURVEY_OBS_COVIDSYMPT,COVID_symptoms)
-rm(SURVEY_ID_COVID, covid_registry,COVID_symptoms)
+rm(SURVEY_ID_COVID, covid_registry, COVID_symptoms, files)

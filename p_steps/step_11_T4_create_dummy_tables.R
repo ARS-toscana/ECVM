@@ -437,7 +437,7 @@ D3_events_ALL_OUTCOMES <- D3_events_ALL_OUTCOMES[, .(name_event, year_event = ye
 
 list_outcomes <- c(OUTCOMES_conceptssets, CONTROL_events, SECCOMPONENTS, "DEATH")
 list_outcomes <- sort(list_outcomes)
-list_outcomes <- c(list_outcomes[list_outcomes %not in% c("COVID_narrow", "COVID_possible")], "COVID_narrow", "COVID_possible")
+list_outcomes <- list_outcomes[list_outcomes %not in% c("COVID_narrow", "COVID_possible")]
 
 vect_recode_type <- c(narrow = "Narrow", broad = "Broad")
 
@@ -538,11 +538,11 @@ PT_monthly <- data.table::melt(D4_persontime_ALL_OUTCOMES, measure = list(colA, 
 
 PT_monthly <- PT_monthly[, DAP := thisdatasource][ , AESI := vect_recode_AESI[AESI]]
 PT_monthly <- PT_monthly[Ageband == ">80", Ageband := "80+"][Ageband == ">60", Ageband := "60+"]
-PT_monthly <- PT_monthly[, .(DAP, sex, month, year, Ageband, AESI, PT, IR, lb, ub)]
+PT_monthly <- PT_monthly[, .(DAP, sex, month, year, at_risk_at_study_entry, Ageband, AESI, PT, IR, lb, ub)]
 
 
 table_10 <- PT_monthly[year == 2020 & sex == "both_sexes" & Ageband == "all_birth_cohorts" & month != "all_months"
-                       & !stringr::str_detect(AESI, "broad"), ]
+                       & at_risk_at_study_entry == "total" & !stringr::str_detect(AESI, "broad"), ]
 table_10 <- table_10[, c("year", "sex", "Ageband") := NULL]
 
 setcolorder(table_10, c("DAP", "AESI", "month", "PT", "IR", "lb", "ub"))
@@ -558,7 +558,7 @@ fwrite(table_10, file = paste0(dummytables, "Incidence of AESI (narrow) per 100,
 # table_11 ----------------------------------------------------------------------------------------------------------
 
 table_11 <- PT_monthly[year == 2020 & sex == "both_sexes" & Ageband != "all_birth_cohorts" & month == "all_months"
-                       & !stringr::str_detect(AESI, "broad"), ]
+                       & at_risk_at_study_entry == "total" & !stringr::str_detect(AESI, "broad"), ]
 table_11 <- table_11[, c("year", "sex", "month") := NULL]
 
 setcolorder(table_11, c("DAP", "AESI", "Ageband", "PT", "IR", "lb", "ub"))
@@ -574,7 +574,7 @@ fwrite(table_11, file = paste0(dummytables, "Incidence of AESI (narrow) per 100,
 # table_12 ----------------------------------------------------------------------------------------------------------
 
 table_12 <- PT_monthly[year == 2020 & sex != "both_sexes" & Ageband != "all_birth_cohorts" & month == "all_months"
-                       & !stringr::str_detect(AESI, "broad"), ]
+                       & at_risk_at_study_entry == "total" & !stringr::str_detect(AESI, "broad"), ]
 table_12 <- table_12[, c("year", "month") := NULL]
 
 vect_recode_gender <- c("Male", "Female")
@@ -598,9 +598,11 @@ fwrite(table_12, file = paste0(dummytables, "Incidence of AESI (narrow) per 100,
 # table_13 ----------------------------------------------------------------------------------------------------------
 
 table_13 <- PT_monthly[year == 2020 & sex != "both_sexes" & Ageband != "all_birth_cohorts" & month == "all_months"
-                       & !stringr::str_detect(AESI, "broad"), ]
-table_13 <- table_13[, c("year", "month") := NULL]
+                       & at_risk_at_study_entry == "1" & !stringr::str_detect(AESI, "broad"), ]
+table_13 <- table_13[, c("year", "month", "at_risk_at_study_entry") := NULL]
 
+vect_recode_gender <- c("Male", "Female")
+names(vect_recode_gender) <- c(1, 0)
 table_13 <- table_13[ , sex := vect_recode_gender[sex]]
 
 setcolorder(table_13, c("DAP", "AESI", "Ageband", "sex", "PT", "IR", "lb", "ub"))
@@ -610,9 +612,7 @@ setorder(table_13, DAP, AESI, Ageband, sex)
 setnames(table_13, c("Ageband", "sex", "PT", "IR", "lb", "ub"),
          c("Age in 2020", "Sex", "Person years", "IR narrow", "LL narrow", "UL narrow"))
 
-fwrite(table_13,file = paste0(dummytables,"Incidence of AESI (narrow) per 100,000 PY by age & sex in 2020 in at risk population.csv"))
-
-
+fwrite(table_13, file = paste0(dummytables, "Incidence of AESI (narrow) per 100,000 PY by age & sex in 2020.csv"))
 
 
 
@@ -620,7 +620,7 @@ fwrite(table_13,file = paste0(dummytables,"Incidence of AESI (narrow) per 100,00
 # table_14 ----------------------------------------------------------------------------------------------------------
 
 table_14 <- PT_monthly[year == 2021 & sex == "both_sexes" & Ageband == "all_birth_cohorts" & month != "all_months"
-                       & !stringr::str_detect(AESI, "broad"), ]
+                       & at_risk_at_study_entry == "total" & !stringr::str_detect(AESI, "broad"), ]
 table_14 <- table_14[, c("year", "sex", "Ageband") := NULL]
 
 setcolorder(table_14, c("DAP", "AESI", "month", "PT", "IR", "lb", "ub"))

@@ -19,7 +19,6 @@ for (subpop in subpopulations_non_empty) {
     list_outcomes <- list_outcomes_observed
   }
   
-  
   max_exit<-study_population[,max(study_exit_date)]
   last_event<-events_ALL_OUTCOMES[,max(date_event)]
   if (last_event<ymd("20200101")) {
@@ -48,7 +47,7 @@ for (subpop in subpopulations_non_empty) {
       Start_date = "study_entry_date",
       End_date = "study_exit_date",
       #Birth_date = "date_of_birth",
-      Strata = c("sex", "age_at_1_jan_2021"),
+      Strata = c("sex", "age_at_1_jan_2021", "at_risk_at_study_entry"),
       Name_event = "name_event",
       Date_event = "date_event",
       #Age_bands = c(0,19,29,39,49,59,69,79),F
@@ -85,7 +84,7 @@ for (subpop in subpopulations_non_empty) {
       Start_date = "study_entry_date",
       End_date = "study_exit_date",
       #Birth_date = "date_of_birth",
-      Strata = c("sex", "age_at_1_jan_2021"),
+      Strata = c("sex", "age_at_1_jan_2021", "at_risk_at_study_entry"),
       Name_event = "name_event",
       Date_event = "date_event",
       #Age_bands = c(0,19,29,39,49,59,69,79),F
@@ -106,7 +105,7 @@ for (subpop in subpopulations_non_empty) {
   }
   
   persontime_risk_month <- merge(persontime_risk_month, recurrent_persontime_risk_month,
-                                by = c("sex","age_at_1_jan_2021", "month", "Persontime"), all = T)
+                                by = c("sex","age_at_1_jan_2021", "month", "at_risk_at_study_entry", "Persontime"), all = T)
   
   for (i in names(persontime_risk_month)){
     persontime_risk_month[is.na(get(i)), (i):=0]
