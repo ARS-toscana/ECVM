@@ -687,5 +687,5 @@ setcolorder(table_16, c("DAP", "AESI", "vax_man_dose", "days_since_vax", "Birthc
 setnames(table_16, c("sex", "vax_man_dose", "days_since_vax", "Birthcohort_persons", "PT", "IR", "lb", "ub"),
          c("Sex", "Vaccine & dose", "Days since vaccination", "Age", "Person days", "IR narrow", "LL narrow", "UL narrow"))
 
-fwrite(table_16, file = paste0(dirdashboard, "Incidence of AESI (narrow) per 100,000 PY by week since vaccination.csv"))
+fwrite(table_16, file = paste0(dummytables, "Incidence of AESI (narrow) per 100,000 PY by week since vaccination.csv"))
 rm(table_16, D4_IR_risk_fup)
