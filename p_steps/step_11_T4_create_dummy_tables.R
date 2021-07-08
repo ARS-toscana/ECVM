@@ -373,7 +373,6 @@ Totals_dose_1 <- Totals_dose_1[, a := recode_rows[type_vax_1]][, Parameters := "
 
 Totals <- Totals_dose_1[, sum(N)]
 Totals_df <- data.table::data.table(N = Totals, a = "Total population", Parameters = "Persons")
-Totals_df <- copy(Totals)[, a := "Total population"][, Parameters := "Persons"]
 base_table_7 <- rbindlist(list(empty_table_7, Totals_df), use.names=TRUE)
 
 df_with_second_doses  <- vaccinated_persons[!is.na(date_vax2), ]
