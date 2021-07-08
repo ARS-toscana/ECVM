@@ -65,7 +65,7 @@ for (OUTCOME in OUTCOME_events) {
       }
       nameconceptsetdatasetOUTCOMEtype <- paste0(OUTCOME, "_",type)
       components <- MergeFilterAndCollapse(
-        listdatasetL= list(get(load(paste0(dirtemp,nameconceptsetdatasetOUTCOMEtype,".RData")))),
+        listdatasetL= list(get(load(paste0(dirtemp,nameconceptsetdatasetOUTCOMEtype,".RData"))[[1]])),
         condition = selectionOUTCOME,
         key = c("person_id"),
         datasetS = COHORT_TMP,

@@ -83,7 +83,8 @@ load(paste0(diroutput,"D4_persontime_risk_year.RData"))
 D4_persontime_risk_year <- D4_persontime_risk_year[, c("CV", "COVCANCER", "COVCOPD", "COVHIV", "COVCKD", "COVDIAB", "COVOBES", "COVSICKLE", "IMMUNOSUPPR",
                                                        "any_risk_factors") := NULL]
 
-D4_persontime_risk_year <- D4_persontime_risk_year[, year := NULL]
+
+D4_persontime_risk_year <- D4_persontime_risk_year[Dose != 0 | year == 2020,][, year := NULL]
 cols_to_sums = names(D4_persontime_risk_year)[6:length(D4_persontime_risk_year)]
 
 all_sex <- copy(D4_persontime_risk_year)[, lapply(.SD, sum, na.rm=TRUE),
@@ -151,7 +152,7 @@ load(paste0(diroutput,"D4_persontime_benefit_year.RData"))
 D4_persontime_benefit_year <- D4_persontime_benefit_year[, c("CV", "COVCANCER", "COVCOPD", "COVHIV", "COVCKD", "COVDIAB", "COVOBES", "COVSICKLE", "IMMUNOSUPPR",
                                                              "any_risk_factors") := NULL]
 
-D4_persontime_benefit_year <- D4_persontime_benefit_year[, year := NULL]
+D4_persontime_benefit_year <- D4_persontime_benefit_year[Dose != 0 | year == 2020,][, year := NULL]
 cols_to_sums = names(D4_persontime_benefit_year)[6:length(D4_persontime_benefit_year)]
 
 all_sex <- copy(D4_persontime_benefit_year)[, lapply(.SD, sum, na.rm=TRUE),

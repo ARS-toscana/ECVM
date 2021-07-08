@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 Datasource,type_vax_1,AgeCat_3039,AgeCat_4049,AgeCat_5059,AgeCat_6069,AgeCat_7079,Agecat_60+,Agecat_80+
 TEST,AstraZeneca,,1,,,1,1,
 TEST,Pfizer,2,3,4,1,,6,5
+=======
+Datasource,type_vax_1,AgeCat_3039,AgeCat_4049,AgeCat_5059,AgeCat_6069,AgeCat_7079,Agecat_80+
+TEST,AstraZeneca,,1,,,1,
+TEST,Pfizer,2,3,4,1,,5
+>>>>>>> main

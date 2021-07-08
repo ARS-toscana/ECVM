@@ -1,13 +1,19 @@
 #-------------------------------
 # ECVM script
-# v3.6 - 28 June 2021
+# v4.0 - 28 June 2021
 # authors: Rosa Gini, Olga Paoletti, Davide Messina, Giorgio Limoncella
 
+<<<<<<< HEAD
 # changelog V3.7:
 # - SAP tables included until 8
 # - Added ageband 60+
 # - Added column for age at 1 Jan 2021
 # - Implementation of exact Poisson confidence intervals for IR (Ulm, 1990)
+=======
+
+# changelog V4.0:
+# included ACCESS codes
+>>>>>>> main
 
 # changelog V3.6:
 # - SAP tables included until 6
