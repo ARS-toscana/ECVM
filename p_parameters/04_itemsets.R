@@ -20,12 +20,12 @@ for (i in 1:length(files)) {
     itemset_AVpair_our_study[["COVID_symptoms"]][[files[i]]][["TEST"]] <- list(list("COVIDDATASET","STATOCLINICO_PIU_GRAVE"))
     itemset_AVpair_our_study[["COVID_hospitalised"]][[files[i]]][["TEST"]] <- list(list("Covid19_Hospitalizacion","Ingreso_hospital"))
     itemset_AVpair_our_study[["COVID_hospitalised_date"]][[files[i]]][["TEST"]] <- list(list("Covid19_Hospitalizacion","Fecha_ingreso_hosp"))
-    itemset_AVpair_our_study[["COVID_ICU"]][[files[i]]][["TEST"]] <- list(list("Covid19_Hospitalizacion","Ingreso_uci"))
-    itemset_AVpair_our_study[["COVID_ICU_date"]][[files[i]]][["TEST"]] <- list(list("Covid19_Hospitalizacion","Fecha_ingreso_uci"))
+    itemset_AVpair_our_study[["COVID_ICU"]][[files[i]]][["TEST"]] <- list(list("Covid19_UCI","Ingreso_uci"))
+    itemset_AVpair_our_study[["COVID_ICU_date"]][[files[i]]][["TEST"]] <- list(list("Covid19_UCI","Fecha_ingreso_uci"))
     itemset_AVpair_our_study[["COVID_hospitalised"]][[files[i]]][["BIFAP"]] <- list(list("Covid19_Hospitalizacion","Ingreso_hospital"))
     itemset_AVpair_our_study[["COVID_hospitalised_date"]][[files[i]]][["BIFAP"]] <- list(list("Covid19_Hospitalizacion","Fecha_ingreso_hosp"))
-    itemset_AVpair_our_study[["COVID_ICU"]][[files[i]]][["BIFAP"]] <- list(list("Covid19_Hospitalizacion","Ingreso_uci"))
-    itemset_AVpair_our_study[["COVID_ICU_date"]][[files[i]]][["BIFAP"]] <- list(list("Covid19_Hospitalizacion","Fecha_ingreso_uci"))
+    itemset_AVpair_our_study[["COVID_ICU"]][[files[i]]][["BIFAP"]] <- list(list("Covid19_UCI","Ingreso_uci"))
+    itemset_AVpair_our_study[["COVID_ICU_date"]][[files[i]]][["BIFAP"]] <- list(list("Covid19_UCI","Fecha_ingreso_uci"))
   }
 }
 
