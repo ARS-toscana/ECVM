@@ -2,7 +2,7 @@
 # DESCRIBE THE ATTRIBUTE-VALUE PAIRS
 ###################################################################
 CDM_SOURCE<- fread(paste0(dirinput,"CDM_SOURCE.csv"))
-thidatasource <- as.character(CDM_SOURCE[1,2])
+thidatasource <- as.character(CDM_SOURCE[1,3])
 
 # -itemset_AVpair_our_study- is a nested list, with 3 levels: foreach study variable, for each coding system of its data domain, the list of AVpair is recorded
 
