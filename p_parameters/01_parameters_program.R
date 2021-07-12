@@ -52,7 +52,8 @@ library(ggplot2)
 # load macros
 
 source(paste0(dirmacro,"CreateConceptSetDatasets_v18.R"))
-source(paste0(dirmacro,"RetrieveRecordsFromEAVDatasets.R"))
+#source(paste0(dirmacro,"RetrieveRecordsFromEAVDatasets.R"))
+# source(paste0(dirmacro,"CreateItemsetDatasets.R"))
 source(paste0(dirmacro,"CreateItemsetDatasets_v02.R"))
 source(paste0(dirmacro,"MergeFilterAndCollapse_v5.R"))
 source(paste0(dirmacro,"CreateSpells_v14.R"))
@@ -70,7 +71,7 @@ date_format <- "%Y%m%d"
 # understand which datasource the script is querying
 
 CDM_SOURCE<- fread(paste0(dirinput,"CDM_SOURCE.csv"))
-thisdatasource <- as.character(CDM_SOURCE[1,2])
+thisdatasource <- as.character(CDM_SOURCE[1,3])
 
 study_start <- as.Date(as.character(20200101), date_format)
 
@@ -201,4 +202,15 @@ import_concepts <- function(dirtemp, concept_set) {
     }
   }
   return(concepts)
+}
+
+
+exactPoiCI <- function (df, X, PT, conf.level = 0.95) {
+  alpha <- 1 - conf.level
+  IR <- df[, get(X)]
+  upper <- df[, 0.5 * qchisq((1-(alpha/2)), 2*(get(X)+1))]
+  lower <- df[, 0.5 * qchisq(alpha/2, 2*get(X))]
+  temp_list <- lapply(list(IR, lower, upper), `/`, df[, get(PT)/365.25])
+  temp_list <- lapply(temp_list, `*`, 100000)
+  return(lapply(temp_list, round, 2))
 }
