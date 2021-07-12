@@ -1,7 +1,13 @@
 #-------------------------------
 # ECVM script
-# v4.2 - 12 July 2021
+
+# v4.2 - 8 July 2021
+
 # authors: Rosa Gini, Olga Paoletti, Davide Messina, Giorgio Limoncella
+
+# changelog V4.2:
+# new codes ICPC and italian ICD9 codes
+# improved BIFAP covid registry
 
 # changelog V4.0.2:
 # bugfix
