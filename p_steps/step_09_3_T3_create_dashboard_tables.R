@@ -3,18 +3,6 @@ load(paste0(dirtemp, "D3_Vaccin_cohort.RData"))
 load(paste0(dirtemp, "D3_study_population.RData"))
 load(paste0(dirtemp,"list_outcomes_observed.RData"))
 
-correct_col_type <- function(df) {
-  for (i in names(df)){
-    df[is.na(get(i)), (i) := 0]
-    if (!inherits(df[, get(i)], "IDate")) {
-      df[is.integer(get(i)), (i) := as.numeric(get(i))]
-    }
-    df[is.logical(get(i)), (i) := as.numeric(get(i))]
-  }
-  return(df)
-}
-
-
 # Birth Cohort ----------------------------------------------------------------------------------------------------
 
 cohort_to_doses_weeks <- D3_Vaccin_cohort[, .(person_id, sex, type_vax_1, type_vax_2, date_of_birth)]

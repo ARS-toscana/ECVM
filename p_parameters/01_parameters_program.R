@@ -190,7 +190,6 @@ join_and_replace <- function(df1, df2, join_cond, old_name) {
   setnames(temp, old_name, join_cond[1])
 }
 
-
 import_concepts <- function(dirtemp, concept_set) {
   concepts<-data.table()
   for (concept in concept_set) {
@@ -204,7 +203,6 @@ import_concepts <- function(dirtemp, concept_set) {
   return(concepts)
 }
 
-
 exactPoiCI <- function (df, X, PT, conf.level = 0.95) {
   alpha <- 1 - conf.level
   IR <- df[, get(X)]
@@ -213,4 +211,15 @@ exactPoiCI <- function (df, X, PT, conf.level = 0.95) {
   temp_list <- lapply(list(IR, lower, upper), `/`, df[, get(PT)/365.25])
   temp_list <- lapply(temp_list, `*`, 100000)
   return(lapply(temp_list, round, 2))
+}
+
+correct_col_type <- function(df) {
+  for (i in names(df)){
+    df[is.na(get(i)), (i) := 0]
+    if (!inherits(df[, get(i)], "IDate")) {
+      df[is.integer(get(i)), (i) := as.numeric(get(i))]
+    }
+    df[is.logical(get(i)), (i) := as.numeric(get(i))]
+  }
+  return(df)
 }
