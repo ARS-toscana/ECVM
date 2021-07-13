@@ -142,22 +142,24 @@ DOSES_RISKFACTORS <- vaxweeks_to_dos_risk[is.na(N), N := 0][, week := format(wee
 
 fwrite(DOSES_RISKFACTORS, file = paste0(dirdashboard, "DOSES_RISKFACTORS.csv"))
 
-tot_pop_cohorts <- D3_study_population_cov_ALL[, .(pop_cohorts = .N), by = c("riskfactor")]
-COVERAGE_RISKFACTORS <- merge(DOSES_RISKFACTORS, tot_pop_cohorts, by = "riskfactor", all.x = T)
-setorder(COVERAGE_RISKFACTORS, week)
-
-COVERAGE_RISKFACTORS <- COVERAGE_RISKFACTORS[, cum_N := cumsum(N), by = c("datasource", "vx_manufacturer", "dose", "riskfactor")]
-COVERAGE_RISKFACTORS <- COVERAGE_RISKFACTORS[, percentage := round(cum_N / pop_cohorts * 100, 3)]
-COVERAGE_RISKFACTORS <- COVERAGE_RISKFACTORS[, .(datasource, week, vx_manufacturer, dose, riskfactor, percentage)]
-
-fwrite(COVERAGE_RISKFACTORS, file = paste0(dirdashboard, "COVERAGE_RISKFACTORS.csv"))
+# tot_pop_cohorts <- D3_study_population_cov_ALL[, .(pop_cohorts = .N), by = c("riskfactor")]
+# COVERAGE_RISKFACTORS <- merge(DOSES_RISKFACTORS, tot_pop_cohorts, by = "riskfactor", all.x = T)
+# setorder(COVERAGE_RISKFACTORS, week)
+# 
+# COVERAGE_RISKFACTORS <- COVERAGE_RISKFACTORS[, cum_N := cumsum(N), by = c("datasource", "vx_manufacturer", "dose", "riskfactor")]
+# COVERAGE_RISKFACTORS <- COVERAGE_RISKFACTORS[, percentage := round(cum_N / pop_cohorts * 100, 3)]
+# COVERAGE_RISKFACTORS <- COVERAGE_RISKFACTORS[, .(datasource, week, vx_manufacturer, dose, riskfactor, percentage)]
+# 
+# fwrite(COVERAGE_RISKFACTORS, file = paste0(dirdashboard, "COVERAGE_RISKFACTORS.csv"))
+# 
+# rm(D3_vaxweeks, cohort_to_doses_weeks, all_mondays, monday_week, double_weeks, all_days_df, vaxweeks_to_dos_bir_cor,
+#    all_ages, complete_df, DOSES_BIRTHCOHORTS, D3_study_population, tot_pop_cohorts, all_pop, COVERAGE_BIRTHCOHORTS,
+#    D3_Vaccin_cohort, D3_study_population_cov_ALL, vaxweeks_to_dos_bir_cor_base, vaxweeks_to_dos_risk, DOSES_RISKFACTORS,
+#    COVERAGE_RISKFACTORS)
 
 rm(D3_vaxweeks, cohort_to_doses_weeks, all_mondays, monday_week, double_weeks, all_days_df, vaxweeks_to_dos_bir_cor,
    all_ages, complete_df, DOSES_BIRTHCOHORTS, D3_study_population, tot_pop_cohorts, all_pop, COVERAGE_BIRTHCOHORTS,
-   D3_Vaccin_cohort, D3_study_population_cov_ALL, vaxweeks_to_dos_bir_cor_base, vaxweeks_to_dos_risk, DOSES_RISKFACTORS,
-   COVERAGE_RISKFACTORS)
-
-
+   D3_Vaccin_cohort, D3_study_population_cov_ALL, vaxweeks_to_dos_bir_cor_base, vaxweeks_to_dos_risk, DOSES_RISKFACTORS)
 
 # Benefit ------------------------------------------------------------------------------------------------------------
 
