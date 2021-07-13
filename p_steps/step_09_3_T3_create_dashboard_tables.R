@@ -2,6 +2,7 @@ load(paste0(dirtemp, "D3_vaxweeks.RData"))
 load(paste0(dirtemp, "D3_Vaccin_cohort.RData"))
 load(paste0(dirtemp, "D3_study_population.RData"))
 load(paste0(dirtemp,"list_outcomes_observed.RData"))
+load(paste0(diroutput, "D4_doses_weeks.RData"))
 
 # Birth Cohort ----------------------------------------------------------------------------------------------------
 
@@ -64,25 +65,34 @@ vect_recode_birthcohort <- c("<1940" = "80+", "1940-1949" = "70-79", "1950-1959"
 DOSES_BIRTHCOHORTS <- DOSES_BIRTHCOHORTS[, ageband := vect_recode_birthcohort[birth_cohort]]
 
 fwrite(DOSES_BIRTHCOHORTS, file = paste0(dirdashboard, "DOSES_BIRTHCOHORTS.csv"))
+# 
+# tot_pop_cohorts <- D3_study_population[, birth_cohort := findInterval(year(date_of_birth), c(1940, 1950, 1960, 1970, 1980, 1990))]
+# tot_pop_cohorts$birth_cohort <- as.character(tot_pop_cohorts$birth_cohort)
+# tot_pop_cohorts <- tot_pop_cohorts[.(birth_cohort = c("0", "1", "2", "3", "4", "5", "6"),
+#                                      to = c("<1940", "1940-1949", "1950-1959", "1960-1969", "1970-1979",
+#                                             "1980-1989", "1990+")),
+#                                    on = "birth_cohort", birth_cohort := i.to]
+# tot_pop_cohorts <- tot_pop_cohorts[, .(pop_cohorts = .N), by = c("birth_cohort")]
+# all_pop <- unique(copy(tot_pop_cohorts)[, pop_cohorts := sum(pop_cohorts)][, birth_cohort := "all_birth_cohorts"])
+# tot_pop_cohorts <- rbind(tot_pop_cohorts, all_pop)
+# older60 <- copy(tot_pop_cohorts)[birth_cohort %in% c("<1940", "1940-1949", "1950-1959"), sum(pop_cohorts)]
+# older60 <- data.table::data.table(birth_cohort = "<1960", pop_cohorts = older60)
+# tot_pop_cohorts <- rbind(tot_pop_cohorts, older60)
 
-tot_pop_cohorts <- D3_study_population[, birth_cohort := findInterval(year(date_of_birth), c(1940, 1950, 1960, 1970, 1980, 1990))]
-tot_pop_cohorts$birth_cohort <- as.character(tot_pop_cohorts$birth_cohort)
-tot_pop_cohorts <- tot_pop_cohorts[.(birth_cohort = c("0", "1", "2", "3", "4", "5", "6"),
-                                     to = c("<1940", "1940-1949", "1950-1959", "1960-1969", "1970-1979",
-                                            "1980-1989", "1990+")),
-                                   on = "birth_cohort", birth_cohort := i.to]
-tot_pop_cohorts <- tot_pop_cohorts[, .(pop_cohorts = .N), by = c("birth_cohort")]
-all_pop <- unique(copy(tot_pop_cohorts)[, pop_cohorts := sum(pop_cohorts)][, birth_cohort := "all_birth_cohorts"])
+
+tot_pop_cohorts <- unique(D4_doses_weeks[, .(week = format(Week_number, "%Y%m%d"), birth_cohort = Birthcohort_persons,
+                                             Persons_in_week)])
+all_pop <- copy(tot_pop_cohorts)[birth_cohort %in% c("<1940", "1940-1949", "1950-1959", "1960-1969",
+                                                     "1970-1979", "1980-1989", "1990+"),
+                                 .(Persons_in_week = sum(Persons_in_week)), by = "week"][, birth_cohort := "all_birth_cohorts"]
 tot_pop_cohorts <- rbind(tot_pop_cohorts, all_pop)
-older60 <- copy(tot_pop_cohorts)[birth_cohort %in% c("<1940", "1940-1949", "1950-1959"), sum(pop_cohorts)]
-older60 <- data.table::data.table(birth_cohort = "<1960", pop_cohorts = older60)
-tot_pop_cohorts <- rbind(tot_pop_cohorts, older60)
 
-COVERAGE_BIRTHCOHORTS <- merge(DOSES_BIRTHCOHORTS, tot_pop_cohorts, by = "birth_cohort", all.x = T)
+
+COVERAGE_BIRTHCOHORTS <- merge(DOSES_BIRTHCOHORTS, tot_pop_cohorts, by = c("week", "birth_cohort"), all.x = T)
 setorder(COVERAGE_BIRTHCOHORTS, week)
 
 COVERAGE_BIRTHCOHORTS <- COVERAGE_BIRTHCOHORTS[, cum_N := cumsum(N), by = c("datasource", "vx_manufacturer", "dose", "birth_cohort")]
-COVERAGE_BIRTHCOHORTS <- COVERAGE_BIRTHCOHORTS[, percentage := round(cum_N / pop_cohorts * 100, 3)]
+COVERAGE_BIRTHCOHORTS <- COVERAGE_BIRTHCOHORTS[, percentage := round(cum_N / Persons_in_week  * 100, 3)]
 COVERAGE_BIRTHCOHORTS <- COVERAGE_BIRTHCOHORTS[, .(datasource, week, vx_manufacturer, dose, birth_cohort, percentage)]
 
 COVERAGE_BIRTHCOHORTS <- COVERAGE_BIRTHCOHORTS[, ageband := vect_recode_birthcohort[birth_cohort]]

@@ -5,6 +5,9 @@
 
 # authors: Rosa Gini, Olga Paoletti, Davide Messina, Giorgio Limoncella
 
+# changelog V4.3:
+# fixed coverage. Now with dynamic population
+
 # changelog V4.2:
 # new codes ICPC and italian ICD9 codes
 # improved BIFAP covid registry
