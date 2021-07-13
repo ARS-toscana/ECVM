@@ -1,4 +1,4 @@
-year_event,Narrow,Broad
+"",IT-ARS,IT-ARS
 "",Narrow,Broad
 ACUASEARTHRITIS,"",""
 2020,0,3
@@ -34,6 +34,9 @@ ArterialVTENoTP,"",""
 2020,3,0
 2021,0,0
 ArterialVTETP,"",""
+2020,0,0
+2021,0,0
+BP,"",""
 2020,0,0
 2021,0,0
 CAD,"",""
