@@ -323,6 +323,7 @@ fup_age_cat <- fup_age_cat[, (vax_man_perc) := lapply(.SD, paste0, "%"), .SDcols
 fup_age_cat <- fup_age_cat[, ..cols_to_keep]
 
 D4_descriptive_dataset_sex_vaccination <- fread(paste0(dirD4tables, "D4_descriptive_dataset_sex_vaccination.csv"))
+D4_descriptive_dataset_sex_vaccination[type_vax_1 == "J&J", type_vax_1 := "Janssen"]
 setnames(D4_descriptive_dataset_sex_vaccination, c("Sex_female", "Sex_male"), c("Female", "Male"))
 sex_pop <- melt(D4_descriptive_dataset_sex_vaccination, id.vars = "type_vax_1",
                 measure.vars = c("Female", "Male"),
