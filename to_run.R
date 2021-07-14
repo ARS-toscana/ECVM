@@ -7,6 +7,7 @@
 
 # changelog V4.3.1:
 # fixed numerator for coverage. Now with vaccinated excluded when exit study
+# bugfix for table 3_4_5_6
 
 # changelog V4.3:
 # fixed denominator for coverage. Now with dynamic population

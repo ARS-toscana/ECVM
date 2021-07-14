@@ -1,12 +1,15 @@
 #-------------------------------
 # ECVM script
 
-# v4.3 - 13 July 2021
+# v4.3.1 - 13 July 2021
 
 # authors: Rosa Gini, Olga Paoletti, Davide Messina, Giorgio Limoncella
 
+# changelog V4.3.1:
+# fixed numerator for coverage. Now with vaccinated excluded when exit study
+
 # changelog V4.3:
-# fixed coverage. Now with dynamic population
+# fixed denominator for coverage. Now with dynamic population
 
 # changelog V4.2:
 # new codes ICPC and italian ICD9 codes
