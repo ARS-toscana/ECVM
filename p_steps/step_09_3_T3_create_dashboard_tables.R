@@ -86,8 +86,16 @@ older60 <- copy(exited_pop_birth_cohorts)[birth_cohort %in% c("<1940", "1940-194
                                           .SDcols = "N"]
 older60 <- unique(older60[, birth_cohort := "<1960"])
 exited_pop_birth_cohorts <- rbind(exited_pop_birth_cohorts, older60)
+
+
+test <- copy(exited_pop_birth_cohorts)[, week := week - 7]
+exited_pop_birth_cohorts <- rbind(exited_pop_birth_cohorts, test)
+
+setorder(exited_pop_birth_cohorts, week)
+exited_pop_birth_cohorts <- exited_pop_birth_cohorts[, exited := cumsum(N),
+                                                     by = c("dose", "birth_cohort", "vx_manufacturer")][, N := NULL]
 exited_pop_birth_cohorts <- exited_pop_birth_cohorts[, week := format(week, "%Y%m%d")]
-setnames(exited_pop_birth_cohorts, "N", "exited")
+
 
 
 
