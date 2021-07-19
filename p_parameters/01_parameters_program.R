@@ -207,6 +207,7 @@ exactPoiCI <- function (df, X, PT, conf.level = 0.95) {
   alpha <- 1 - conf.level
   IR <- df[, get(X)]
   upper <- df[, 0.5 * qchisq((1-(alpha/2)), 2*(get(X)+1))]
+  upper <- fifelse(upper == Inf, 0, upper)
   lower <- df[, 0.5 * qchisq(alpha/2, 2*get(X))]
   temp_list <- lapply(list(IR, lower, upper), `/`, df[, get(PT)/365.25])
   temp_list <- lapply(temp_list, `*`, 100000)
