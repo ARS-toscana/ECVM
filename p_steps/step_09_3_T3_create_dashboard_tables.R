@@ -181,6 +181,9 @@ COVERAGE_BIRTHCOHORTS <- COVERAGE_BIRTHCOHORTS[, ageband := vect_recode_birthcoh
 
 fwrite(COVERAGE_BIRTHCOHORTS, file = paste0(dirdashboard, "COVERAGE_BIRTHCOHORTS.csv"))
 
+if (any(COVERAGE_BIRTHCOHORTS[, percentage] > 100)) {
+  stop("Percentage in COVERAGE_BIRTHCOHORTS > 100")
+}
 
 
 # Risk Factors ----------------------------------------------------------------------------------------------------
