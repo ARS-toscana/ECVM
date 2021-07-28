@@ -69,8 +69,7 @@ out_spells_start_2019 <- copy(out_spells)[exit_spell_category < study_start, ]
 out_spells_start_2019 <- out_spells_start_2019[, exit_spell_category := as.Date(exit_spell_category)]
 
 g <- ggplot(out_spells_start_2019, aes(exit_spell_category)) +
-  geom_histogram(aes(y=..density..), alpha=0.5, 
-                 position="identity", binwidth = 1) +
+  geom_histogram(alpha=0.5, position="identity", binwidth = 1) +
   geom_density(alpha=0.2) +
   labs(title = "Density plot of spell end date", 
        subtitle = "End date of last spell <2020",
@@ -84,9 +83,8 @@ out_spells <- out_spells[N_spell == 2, ][, .(entry_spell_category = max(entry_sp
 out_spells <- out_spells[, distance := as.numeric(entry_spell_category - exit_spell_category, units="days")]
 
 g <- ggplot(out_spells, aes(distance)) +
-  geom_histogram(aes(y=..density..), alpha=0.5, 
-                 position="identity", binwidth = 1) +
-  geom_density(alpha=0.2) + 
+  geom_histogram(alpha=0.5, position="identity", binwidth = 1) +
+  geom_density(alpha=0.2) +
   scale_x_continuous(limits = c(out_spells[, min(distance)] - 5,
                                 out_spells[, max(distance)] + 5),
                      oob = scales::oob_keep) +
