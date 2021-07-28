@@ -1,9 +1,12 @@
 #-------------------------------
 # ECVM script
 
-# v4.3.1 - 13 July 2021
+# v4.3.2 - 22 July 2021
 
 # authors: Rosa Gini, Olga Paoletti, Davide Messina, Giorgio Limoncella
+
+# changelog V4.3.2:
+# changed severity level algorithm for BIFAP
 
 # changelog V4.3.1:
 # fixed numerator for coverage. Now with vaccinated excluded when exit study
