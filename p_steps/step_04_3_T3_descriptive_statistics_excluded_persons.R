@@ -67,6 +67,8 @@ fwrite(number_criteria_excluded, file = paste0(direxp, "number_criteria_excluded
 
 out_spells_start_2019 <- copy(out_spells)[exit_spell_category < study_start, ]
 out_spells_start_2019 <- out_spells_start_2019[, exit_spell_category := as.Date(exit_spell_category)]
+fifth_percentile <- as.Date(out_spells_start_2019[, quantile(exit_spell_category, probs = 0.05, type = 1)[[1]]] + 5)
+out_spells_start_2019 <- out_spells_start_2019[exit_spell_category >= fifth_percentile, ]
 
 g <- ggplot(out_spells_start_2019, aes(exit_spell_category)) +
   geom_histogram(alpha=0.5, position="identity", binwidth = 1) +
