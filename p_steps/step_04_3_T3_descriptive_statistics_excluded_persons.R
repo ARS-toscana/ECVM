@@ -86,7 +86,7 @@ g <- ggplot(out_spells, aes(distance)) +
   geom_histogram(alpha=0.5, position="identity", binwidth = 1) +
   geom_density(alpha=0.2) +
   scale_x_continuous(limits = c(out_spells[, min(distance)] - 5,
-                                out_spells[, max(distance)] + 5),
+                                out_spells[, quantile(distance, probs = 0.95)] + 5),
                      oob = scales::oob_keep) +
   labs(title = "Density plot of distances", 
        subtitle = "Distances between last spell <2020 and first spell >=2020",
