@@ -9,7 +9,6 @@ dirinput <- paste0(thisdir,"/i_input/")
 
 # set other directories
 diroutput <- paste0(thisdir,"/g_output/")
-dirinput <- paste0(thisdir,"/i_input/")
 dirtemp <- paste0(thisdir,"/g_intermediate/")
 direxp <- paste0(thisdir,"/g_export/")
 dirdashboard <- paste0(direxp,"dashboard tables/")

@@ -360,9 +360,12 @@ fwrite(table3_4_5_6, file = paste0(dummytables, final_name_table3_4_5_6,
 
 # Table7 ----------------------------------------------------------------------------------------------------------
 
+last_useful_date = ymd(20210425)
 empty_table_7 <- data.table(a = character(0), Parameters = character(0), N = numeric(0))
 
 vaccinated_persons <- D3_Vaccin_cohort[, .(person_id, date_vax1, date_vax2, type_vax_1, type_vax_2)]
+vaccinated_persons <- vaccinated_persons[date_vax1 <= last_useful_date, ]
+vaccinated_persons <- vaccinated_persons[date_vax2 > last_useful_date, c("date_vax2", "type_vax_2") := NA]
 vaccinated_persons <-vaccinated_persons[type_vax_1 == "J&J", type_vax_1 := "Janssen"]
 
 Totals_dose_1 <- vaccinated_persons[, .N, by = "type_vax_1"]
