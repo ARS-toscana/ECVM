@@ -116,6 +116,9 @@ system.time(source(paste0(thisdir,"/p_steps/step_05_11_T2.3_algorithms_COVID_sev
 #06 create D3 for doses and coverage
 system.time(source(paste0(thisdir,"/p_steps/step_06_T2_create_D3_datasets.R")))
 
+#06 create D3 MIS population
+system.time(source(paste0(thisdir,"/p_steps/step_06_2_MIS_population.R")))
+
 #07 create persontime
 system.time(source(paste0(thisdir,"/p_steps/step_07_1_T3_create_person_time_risks.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_07_2_T3_create_person_time_risks_year.R")))
