@@ -3,7 +3,7 @@
 # setwd("..")
 # setwd("..")
 # dirbase<-getwd()
-# dirinput <- paste0(dirbase,"/CDMInstances/ECVM2104/")
+# dirinput <- paste0(dirbase,"/CDMInstances/ECVM2108/")
 
 dirinput <- paste0(thisdir,"/i_input/")
 
@@ -146,10 +146,15 @@ days<-ifelse(thisdatasource %in% c("ARS","TEST"),21,1)
 Birthcohorts =c("<1940", "1940-1949", "1950-1959", "1960-1969",
                 "1970-1979", "1980-1989", "1990+")
 
+
+
 #############################################
 #FUNCTION TO COMPUTE AGE
 #############################################
 Agebands =c(-1, 19, 29, 39, 49, 59, 69, 80, Inf)
+Agebands_MIS =c(-1, 11, 17, 19,29, 39, 49, 59, 69, 80, Inf)
+
+Agebands_lables_MIS =c("0-11","12-17","18-19","20-29", "30-39", "40-49","50-59","60-69", "70-79","80+")
 
 age_fast = function(from, to) {
   from_lt = as.POSIXlt(from)

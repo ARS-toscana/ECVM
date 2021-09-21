@@ -128,9 +128,12 @@ system.time(source(paste0(thisdir,"/p_steps/step_07_5_T3_aggregate_sex_birth_coh
 system.time(source(paste0(thisdir,"/p_steps/step_07_6_T3_aggregate_sex_risk_factor.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_07_7_T3_create_person_time_vax_cohort.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_07_8_T3_aggregate_monthly.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_07_9_T3_create_person_time_MIS_year.R")))
+
 
 #08 Calculate Incidence Rates
 system.time(source(paste0(thisdir,"/p_steps/step_08_T4_IR.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_08_T4_IR_MIS.R")))
 
 #09 create D4 for doses and coverage
 system.time(source(paste0(thisdir,"/p_steps/step_09_1_T3_create_D4_doses_weeks.R")))
