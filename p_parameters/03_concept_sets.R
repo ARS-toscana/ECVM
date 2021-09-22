@@ -818,7 +818,7 @@ concept_set_codes_our_study_pre[["COVCANCER"]][["READ"]] <- c("5953.00","596..00
                                                                                                                               #--------------------------
                                                                                                                               # MIS_possible
                                                                                                                               concept_set_domains[["MIS_possible"]] = "Diagnosis"
-                                                                                                                              concept_set_codes_our_study_pre[["MIS_possible"]][["ICD9"]] <- c("785.50")
+                                                                                                                              concept_set_codes_our_study_pre[["MIS_possible"]][["ICD9"]] <- c("785.50","785.59")
                                                                                                                                          concept_set_codes_our_study_pre[["MIS_possible"]][["ICD10"]] <- c("R57.9","R57.1")    
                                                                                                                               concept_set_codes_our_study_pre[["MIS_possible"]][["READ"]] <- c("R0550","XM00r","XM1C7")
                                                                                                                               concept_set_codes_our_study_pre[["MIS_possible"]][["ICPC"]] <- c()
