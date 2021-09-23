@@ -20,7 +20,7 @@ OUTCOME_events <- c("GBS","ADEM","NARCOLEPSY","ACUASEARTHRITIS","DM","MICROANGIO
 CONTROL_events <-list()
 CONTROL_events <-c("CONTRDIVERTIC","CONTRHYPERT")
 
-OUTCOMES_conceptssets <- c("GBS_narrow","GBS_possible","ADEM_narrow","ADEM_possible","NARCOLEPSY_narrow","NARCOLEPSY_possible","ACUASEARTHRITIS_narrow","ACUASEARTHRITIS_possible","DM_narrow","DM_possible","MICROANGIO_narrow","MICROANGIO_possible","HF_narrow","HF_possible","STRCARD_narrow","STRCARD_possible","CAD_narrow","CAD_possible","ARR_narrow","ARR_possible","MYOCARD_narrow","MYOCARD_possible","SOCV_narrow","SOCV_possible","ALI_narrow","ALI_possible","AKI_narrow","AKI_possible","GENCONV_narrow","GENCONV_possible","MENINGOENC_narrow","MENINGOENC_possible","ARD_narrow","ARD_possible","ERYTH_narrow","ERYTH_possible","CHILBLAIN_narrow","CHILBLAIN_possible","ANOSMIA_narrow","ANOSMIA_possible","ANAPHYL_narrow","ANAPHYL_possible","KD_narrow","MIS_narrow","MIS_possible","SUDDENDEAT_narrow","SUDDENDEAT_possible","TRANSMYELITIS_narrow","TRANSMYELITIS_possible","DIC_narrow","DIC_possible","Hemostroke_narrow","Hemostroke_possible","Ischstroke_narrow","Ischstroke_possible","Sinusthrom_narrow","Sinusthrom_possible","VTE_narrow","VTE_possible","TP_narrow","TP_possible","TMA_narrow","TMA_possible","COVID_narrow","COVID_possible","Myocardalone_narrow","Myocardalone_possible","BP_narrow","BP_possible")
+OUTCOMES_conceptssets <- c("GBS_narrow","GBS_possible","ADEM_narrow","ADEM_possible","NARCOLEPSY_narrow","NARCOLEPSY_possible","ACUASEARTHRITIS_narrow","ACUASEARTHRITIS_possible","DM_narrow","DM_possible","MICROANGIO_narrow","MICROANGIO_possible","HF_narrow","HF_possible","STRCARD_narrow","STRCARD_possible","CAD_narrow","CAD_possible","ARR_narrow","ARR_possible","MYOCARD_narrow","MYOCARD_possible","SOCV_narrow","SOCV_possible","ALI_narrow","ALI_possible","AKI_narrow","AKI_possible","GENCONV_narrow","GENCONV_possible","MENINGOENC_narrow","MENINGOENC_possible","ARD_narrow","ARD_possible","ERYTH_narrow","ERYTH_possible","CHILBLAIN_narrow","CHILBLAIN_possible","ANOSMIA_narrow","ANOSMIA_possible","ANAPHYL_narrow","ANAPHYL_possible","KD_narrow","KD_possible","MIS_narrow","MIS_possible","SUDDENDEAT_narrow","SUDDENDEAT_possible","TRANSMYELITIS_narrow","TRANSMYELITIS_possible","DIC_narrow","DIC_possible","Hemostroke_narrow","Hemostroke_possible","Ischstroke_narrow","Ischstroke_possible","Sinusthrom_narrow","Sinusthrom_possible","VTE_narrow","VTE_possible","TP_narrow","TP_possible","TMA_narrow","TMA_possible","COVID_narrow","COVID_possible","Myocardalone_narrow","Myocardalone_possible","BP_narrow","BP_possible")
 
 
 COV_conceptssets <- c("COVCANCER","COVCOPD","COVHIV","COVCKD","COVDIAB","COVOBES","COVSICKLE","CONTRDIVERTIC","CONTRHYPERT")
@@ -786,8 +786,8 @@ concept_set_codes_our_study_pre[["COVCANCER"]][["READ"]] <- c("5953.00","596..00
                                                                                                                               concept_set_codes_our_study_pre[["MISCC_narrow"]][["ICPC"]] <- c()
                                                                                                                               concept_set_codes_our_study_pre[["MISCC_narrow"]][["ICPC2P"]] <- c("B99022")
                                                                                                                               concept_set_codes_our_study_pre[["MISCC_narrow"]][["SNOMED"]] <- c("155444003","195348009","195349001","75053002","195349001","75053002")
-
-
+                                                                                                                              
+                                                                                                                              
                                                                                                                               #--------------------------
                                                                                                                               # MISCC_possible
                                                                                                                               concept_set_domains[["MISCC_possible"]] = "Diagnosis"
@@ -804,7 +804,7 @@ concept_set_codes_our_study_pre[["COVCANCER"]][["READ"]] <- c("5953.00","596..00
                                                                                                                               concept_set_codes_our_study_pre_excl[["MISCC_possible"]][["SNOMED"]] <- c("155444003","195348009","195349001","75053002","195349001","75053002")
                                                                                                                               
                                                                                                                               
-                                                                                                                            #--------------------------
+                                                                                                                              #--------------------------
                                                                                                                               # MIS_narrow
                                                                                                                               concept_set_domains[["MIS_narrow"]] = "Diagnosis"
                                                                                                                               concept_set_codes_our_study_pre[["MIS_narrow"]][["ICD9"]] <- c()
@@ -819,14 +819,14 @@ concept_set_codes_our_study_pre[["COVCANCER"]][["READ"]] <- c("5953.00","596..00
                                                                                                                               # MIS_possible
                                                                                                                               concept_set_domains[["MIS_possible"]] = "Diagnosis"
                                                                                                                               concept_set_codes_our_study_pre[["MIS_possible"]][["ICD9"]] <- c("785.50","785.59")
-                                                                                                                                         concept_set_codes_our_study_pre[["MIS_possible"]][["ICD10"]] <- c("R57.9","R57.1")    
+                                                                                                                              concept_set_codes_our_study_pre[["MIS_possible"]][["ICD10"]] <- c("R57.9","R57.1")    
                                                                                                                               concept_set_codes_our_study_pre[["MIS_possible"]][["READ"]] <- c("R0550","XM00r","XM1C7")
                                                                                                                               concept_set_codes_our_study_pre[["MIS_possible"]][["ICPC"]] <- c()
                                                                                                                               concept_set_codes_our_study_pre[["MIS_possible"]][["ICPC2P"]] <- c() 
                                                                                                                               concept_set_codes_our_study_pre[["MIS_possible"]][["SNOMED"]] <- c("158354004","207026006","267302008","274729009","27942005","39419009","355001")  
                                                                                                                               
-
-#--------------------------KD_narrow
+                                                                                                                              
+                                                                                                                              #--------------------------KD_narrow
                                                                                                                               concept_set_domains[["KD_narrow"]] = "Diagnosis"
                                                                                                                               concept_set_codes_our_study_pre[["KD_narrow"]][["ICD9"]] <- c("446.1")
                                                                                                                               concept_set_codes_our_study_pre[["KD_narrow"]][["ICD10"]] <- c("M30.3")
@@ -836,12 +836,14 @@ concept_set_codes_our_study_pre[["COVCANCER"]][["READ"]] <- c("5953.00","596..00
                                                                                                                               concept_set_codes_our_study_pre[["KD_narrow"]][["SNOMED"]] <- c("155444003","195348009","195349001","75053002")
                                                                                                                               
                                                                                                                               
-#-------------------------- KD_possible
-                                                                                                                              # concept_set_domains[["KD_possible"]] = "Diagnosis"
-                                                                                                                              # concept_set_codes_our_study_pre[["KD_possible"]][["ICD9"]] <- c() 
-                                                                                                                              # concept_set_codes_our_study_pre[["KD_possible"]][["ICD10"]] <- c()                                                                                                                                                                                                                concept_set_codes_our_study_pre[["KD_possible"]][["READ"]] <- c()
-                                                                                                                              # concept_set_codes_our_study_pre[["KD_possible"]][["ICPC"]] <- c()
-                                                                                                                              # concept_set_codes_our_study_pre[["KD_possible"]][["ICPC2P"]] <- c()                                                                                                                                                                                                               concept_set_codes_our_study_pre[["KD_possible"]][["SNOMED"]] <- c() 
+                                                                                                                              #-------------------------- KD_possible
+                                                                                                                              concept_set_domains[["KD_possible"]] = "Diagnosis"
+                                                                                                                              concept_set_codes_our_study_pre[["KD_possible"]][["ICD9"]] <- c()
+                                                                                                                              concept_set_codes_our_study_pre[["KD_possible"]][["ICD10"]] <- c()
+                                                                                                                              concept_set_codes_our_study_pre[["KD_possible"]][["READ"]] <- c()
+                                                                                                                              concept_set_codes_our_study_pre[["KD_possible"]][["ICPC"]] <- c()
+                                                                                                                              concept_set_codes_our_study_pre[["KD_possible"]][["ICPC2P"]] <- c()   
+                                                                                                                              concept_set_codes_our_study_pre[["KD_possible"]][["SNOMED"]] <- c()
                                                                                                                               # 
                                                                                                                               
                                                                                                                               
