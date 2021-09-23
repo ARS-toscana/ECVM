@@ -1,0 +1,607 @@
+person_id,start_date_record,end_date_record,event_code,event_record_vocabulary,text_linked_to_event_code,event_free_text,present_on_admission,meaning_of_event,laterality_of_event,origin_of_event,visit_occurrence_id
+ECVM210500003,20190630,20190630,8300,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_1
+ECVM210500003,20190630,20190630,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_2
+ECVM210500003,20201021,20201021,99591,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_3
+ECVM210500003,20201021,20201021,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_4
+ECVM210500006,20200109,20200109,4359,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_5
+ECVM210500006,20200109,20200109,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_6
+ECVM210500008,20200921,20200921,9309,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_7
+ECVM210500008,20200921,20200921,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_8
+ECVM210500010,20190617,20190617,4359,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_9
+ECVM210500010,20190617,20190617,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_10
+ECVM210500010,20190912,20190912,9239,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_11
+ECVM210500010,20190912,20190912,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_12
+ECVM210500010,20191030,20191030,8058,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_13
+ECVM210500010,20191030,20191030,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_14
+ECVM210500011,20191002,20191002,V658,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_15
+ECVM210500011,20191002,20191002,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_16
+ECVM210500011,20191004,20191004,78900,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_17
+ECVM210500011,20191004,20191004,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_18
+ECVM210500011,20191006,20191006,81383,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_19
+ECVM210500011,20191006,20191006,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_20
+ECVM210500011,20191008,20191008,82020,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_21
+ECVM210500011,20191008,20191008,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_22
+ECVM210500011,20200405,20200405,5609,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_23
+ECVM210500011,20200405,20200405,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_24
+ECVM210500012,20190309,20190309,6266,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_25
+ECVM210500012,20190309,20190309,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_26
+ECVM210500016,20210102,20210102,485,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_27
+ECVM210500016,20210102,20210102,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_28
+ECVM210500019,20200316,20200316,485,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_29
+ECVM210500019,20200316,20200316,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_30
+ECVM210500023,20200517,20200517,60490,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_31
+ECVM210500023,20200517,20200517,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_32
+ECVM210500023,20200623,20200623,60820,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_33
+ECVM210500023,20200623,20200623,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_34
+ECVM210500026,20200109,20200109,7804,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_35
+ECVM210500026,20200109,20200109,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_36
+ECVM210500029,20190502,20190502,81200,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_37
+ECVM210500029,20190502,20190502,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_38
+ECVM210500029,20200119,20200119,73300,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_39
+ECVM210500029,20200119,20200119,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_40
+ECVM210500029,20201012,20201012,51881,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_41
+ECVM210500029,20201012,20201012,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_42
+ECVM210500033,20190919,20190919,3804,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_43
+ECVM210500033,20190919,20190919,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_44
+ECVM210500033,20201231,20201231,36132,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_45
+ECVM210500033,20201231,20201231,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_46
+ECVM210500037,20190910,20190910,78820,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_47
+ECVM210500037,20190910,20190910,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_48
+ECVM210500038,20200329,20200329,9245,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_49
+ECVM210500038,20200329,20200329,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_50
+ECVM210500041,20190807,20190807,81600,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_51
+ECVM210500041,20190807,20190807,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_52
+ECVM210500048,20190521,20190521,920,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_53
+ECVM210500048,20190521,20190521,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_54
+ECVM210500051,20190707,20190707,9245,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_55
+ECVM210500051,20190707,20190707,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_56
+ECVM210500051,20191228,20191228,72610,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_57
+ECVM210500051,20191228,20191228,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_58
+ECVM210500053,20210103,20210103,37990,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_59
+ECVM210500053,20210103,20210103,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_60
+ECVM210500055,20210113,20210113,29699,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_61
+ECVM210500055,20210113,20210113,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_62
+ECVM210500060,20191129,20191129,78650,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_63
+ECVM210500060,20191129,20191129,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_64
+ECVM210500060,20200615,20200615,485,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_65
+ECVM210500060,20200615,20200615,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_66
+ECVM210500064,20200830,20200830,8500,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_67
+ECVM210500064,20200830,20200830,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_68
+ECVM210500070,20191214,20191214,78095,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_69
+ECVM210500070,20191214,20191214,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_70
+ECVM210500073,20200127,20200127,9245,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_71
+ECVM210500073,20200127,20200127,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_72
+ECVM210500075,20210313,20210313,78650,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_73
+ECVM210500075,20210313,20210313,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_74
+ECVM210500076,20200307,20200307,78900,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_75
+ECVM210500076,20200307,20200307,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_76
+ECVM210500076,20200726,20200726,41071,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_77
+ECVM210500076,20200726,20200726,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_78
+ECVM210500076,20201008,20201008,82020,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_79
+ECVM210500076,20201008,20201008,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_80
+ECVM210500078,20190720,20190720,78650,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_81
+ECVM210500078,20190720,20190720,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_82
+ECVM210500078,20190825,20190825,72700,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_83
+ECVM210500078,20190825,20190825,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_84
+ECVM210500078,20191105,20191105,78650,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_85
+ECVM210500078,20191105,20191105,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_86
+ECVM210500080,20200711,20200711,9309,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_87
+ECVM210500080,20200711,20200711,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_88
+ECVM210500082,20190407,20190407,5859,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_89
+ECVM210500082,20190407,20190407,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_90
+ECVM210500082,20190702,20190702,72700,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_91
+ECVM210500082,20190702,20190702,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_92
+ECVM210500083,20190616,20190616,69271,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_93
+ECVM210500083,20190616,20190616,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_94
+ECVM210500091,20200215,20200215,8820,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_95
+ECVM210500091,20200215,20200215,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_96
+ECVM210500092,20190504,20190504,51881,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_97
+ECVM210500092,20190504,20190504,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_98
+ECVM210500093,20191225,20191225,7851,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_99
+ECVM210500093,20191225,20191225,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_100
+ECVM210500094,20191022,20191022,81600,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_101
+ECVM210500094,20191022,20191022,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_102
+ECVM210500094,20191116,20191116,71940,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_103
+ECVM210500094,20191116,20191116,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_104
+ECVM210500094,20200623,20200623,4011,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_105
+ECVM210500094,20200623,20200623,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_106
+ECVM210500094,20200925,20200925,035,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_107
+ECVM210500094,20200925,20200925,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_108
+ECVM210500095,20190430,20190430,V658,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_109
+ECVM210500095,20190430,20190430,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_110
+ECVM210500095,20190519,20190519,37271,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_111
+ECVM210500095,20190519,20190519,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_112
+ECVM210500095,20190614,20190614,9309,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_113
+ECVM210500095,20190614,20190614,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_114
+ECVM210500095,20190921,20190921,9245,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_115
+ECVM210500095,20190921,20190921,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_116
+ECVM210500095,20200718,20200718,V658,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_117
+ECVM210500095,20200718,20200718,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_118
+ECVM210500104,20190623,20190623,38010,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_119
+ECVM210500104,20190623,20190623,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_120
+ECVM210500106,20200609,20200609,78900,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_121
+ECVM210500106,20200609,20200609,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_122
+ECVM210500107,20200126,20200126,8439,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_123
+ECVM210500107,20200126,20200126,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_124
+ECVM210500111,20190331,20190331,5780,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_125
+ECVM210500111,20190331,20190331,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_126
+ECVM210500113,20190727,20190727,V643,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_127
+ECVM210500113,20190727,20190727,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_128
+ECVM210500113,20190913,20190913,84200,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_129
+ECVM210500113,20190913,20190913,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_130
+ECVM210500115,20190920,20190920,56039,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_131
+ECVM210500115,20190920,20190920,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_132
+ECVM210500117,20200916,20200916,8500,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_133
+ECVM210500117,20200916,20200916,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_134
+ECVM210500117,20210109,20210109,8500,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_135
+ECVM210500117,20210109,20210109,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_136
+ECVM210500119,20190801,20190801,8500,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_137
+ECVM210500119,20190801,20190801,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_138
+ECVM210500119,20200206,20200206,8500,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_139
+ECVM210500119,20200206,20200206,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_140
+ECVM210500119,20200318,20200318,4660,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_141
+ECVM210500119,20200318,20200318,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_142
+ECVM210500123,20190425,20190425,71940,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_143
+ECVM210500123,20190425,20190425,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_144
+ECVM210500123,20200519,20200519,5781,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_145
+ECVM210500123,20200519,20200519,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_146
+ECVM210500123,20200521,20200521,41091,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_147
+ECVM210500123,20200521,20200521,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_148
+ECVM210500123,20200522,20200522,92231,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_149
+ECVM210500123,20200522,20200522,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_150
+ECVM210500133,20190806,20190806,51881,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_151
+ECVM210500133,20190806,20190806,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_152
+ECVM210500133,20200908,20200908,37020,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_153
+ECVM210500133,20200908,20200908,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_154
+ECVM210500140,20200412,20200412,8449,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_155
+ECVM210500140,20200412,20200412,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_156
+ECVM210500141,20200516,20200516,7802,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_157
+ECVM210500141,20200516,20200516,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_158
+ECVM210500142,20200815,20200815,9245,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_159
+ECVM210500142,20200815,20200815,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_160
+ECVM210500145,20190519,20190519,78900,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_161
+ECVM210500145,20190519,20190519,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_162
+ECVM210500145,20190524,20190524,78791,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_163
+ECVM210500145,20190524,20190524,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_164
+ECVM210500148,20200513,20200513,7802,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_165
+ECVM210500148,20200513,20200513,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_166
+ECVM210500148,20201210,20201210,V679,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_167
+ECVM210500148,20201210,20201210,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_168
+ECVM210500149,20191113,20191113,80700,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_169
+ECVM210500149,20191113,20191113,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_170
+ECVM210500149,20200408,20200408,V679,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_171
+ECVM210500149,20200408,20200408,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_172
+ECVM210500149,20200717,20200717,51881,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_173
+ECVM210500149,20200717,20200717,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_174
+ECVM210500149,20200830,20200830,99591,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_175
+ECVM210500149,20200830,20200830,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_176
+ECVM210500151,20190606,20190606,5589,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_177
+ECVM210500151,20190606,20190606,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_178
+ECVM210500159,20201215,20201215,9245,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_179
+ECVM210500159,20201215,20201215,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_180
+ECVM210500164,20190701,20190701,7994,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_181
+ECVM210500164,20190701,20190701,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_182
+ECVM210500166,20190310,20190310,34590,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_183
+ECVM210500166,20190310,20190310,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_184
+ECVM210500166,20190704,20190704,34590,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_185
+ECVM210500166,20190704,20190704,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_186
+ECVM210500166,20190804,20190804,V658,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_187
+ECVM210500166,20190804,20190804,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_188
+ECVM210500166,20190912,20190912,34590,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_189
+ECVM210500166,20190912,20190912,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_190
+ECVM210500166,20200314,20200314,34590,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_191
+ECVM210500166,20200314,20200314,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_192
+ECVM210500166,20201014,20201014,34590,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_193
+ECVM210500166,20201014,20201014,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_194
+ECVM210500170,20191120,20191120,9233,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_195
+ECVM210500170,20191120,20191120,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_196
+ECVM210500170,20201214,20201214,7851,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_197
+ECVM210500170,20201214,20201214,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_198
+ECVM210500171,20190410,20190410,3212,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_199
+ECVM210500171,20190410,20190410,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_200
+ECVM210500171,20190624,20190624,9181,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_201
+ECVM210500171,20190624,20190624,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_202
+ECVM210500171,20190808,20190808,9181,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_203
+ECVM210500171,20190808,20190808,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_204
+ECVM210500171,20190828,20190828,9181,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_205
+ECVM210500171,20190828,20190828,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_206
+ECVM210500171,20190904,20190904,9181,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_207
+ECVM210500171,20190904,20190904,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_208
+ECVM210500171,20190912,20190912,9181,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_209
+ECVM210500171,20190912,20190912,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_210
+ECVM210500176,20190330,20190330,4870,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_211
+ECVM210500176,20190330,20190330,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_212
+ECVM210500186,20191226,20191226,55090,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_213
+ECVM210500186,20191226,20191226,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_214
+ECVM210500190,20190407,20190407,38870,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_215
+ECVM210500190,20190407,20190407,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_216
+ECVM210500191,20190816,20190816,78650,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_217
+ECVM210500191,20190816,20190816,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_218
+ECVM210500195,20190609,20190609,8470,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_219
+ECVM210500195,20190609,20190609,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_220
+ECVM210500200,20190719,20190719,4510,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_221
+ECVM210500200,20190719,20190719,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_222
+ECVM210500200,20200601,20200601,9239,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_223
+ECVM210500200,20200601,20200601,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_224
+ECVM210500205,20190415,20190415,53500,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_225
+ECVM210500205,20190415,20190415,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_226
+ECVM210500205,20190430,20190430,7871,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_227
+ECVM210500205,20190430,20190430,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_228
+ECVM210500205,20190616,20190616,V643,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_229
+ECVM210500205,20190616,20190616,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_230
+ECVM210500205,20200209,20200209,V643,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_231
+ECVM210500205,20200209,20200209,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_232
+ECVM210500205,20200220,20200220,8020,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_233
+ECVM210500205,20200220,20200220,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_234
+ECVM210500205,20200916,20200916,8500,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_235
+ECVM210500205,20200916,20200916,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_236
+ECVM210500205,20201030,20201030,8500,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_237
+ECVM210500205,20201030,20201030,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_238
+ECVM210500205,20201206,20201206,7851,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_239
+ECVM210500205,20201206,20201206,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_240
+ECVM210500207,20201022,20201022,78900,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_241
+ECVM210500207,20201022,20201022,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_242
+ECVM210500207,20201029,20201029,53500,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_243
+ECVM210500207,20201029,20201029,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_244
+ECVM210500207,20201117,20201117,5770,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_245
+ECVM210500207,20201117,20201117,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_246
+ECVM210500209,20200505,20200505,7802,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_247
+ECVM210500209,20200505,20200505,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_248
+ECVM210500215,20190411,20190411,3682,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_249
+ECVM210500215,20190411,20190411,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_250
+ECVM210500219,20200524,20200524,7802,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_251
+ECVM210500219,20200524,20200524,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_252
+ECVM210500222,20190825,20190825,8910,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_253
+ECVM210500222,20190825,20190825,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_254
+ECVM210500225,20191121,20191121,7848,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_255
+ECVM210500225,20191121,20191121,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_256
+ECVM210500225,20191214,20191214,9245,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_257
+ECVM210500225,20191214,20191214,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_258
+ECVM210500226,20190326,20190326,V658,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_259
+ECVM210500226,20190326,20190326,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_260
+ECVM210500226,20190802,20190802,9239,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_261
+ECVM210500226,20190802,20190802,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_262
+ECVM210500229,20190701,20190701,486,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_263
+ECVM210500229,20190701,20190701,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_264
+ECVM210500230,20190126,20190126,5997,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_265
+ECVM210500230,20190126,20190126,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_266
+ECVM210500230,20190304,20190304,5997,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_267
+ECVM210500230,20190304,20190304,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_268
+ECVM210500230,20190405,20190405,4414,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_269
+ECVM210500230,20190405,20190405,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_270
+ECVM210500230,20190411,20190411,5990,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_271
+ECVM210500230,20190411,20190411,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_272
+ECVM210500230,20190416,20190416,5997,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_273
+ECVM210500230,20190416,20190416,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_274
+ECVM210500230,20190714,20190714,5119,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_275
+ECVM210500230,20190714,20190714,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_276
+ECVM210500232,20200209,20200209,5770,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_277
+ECVM210500232,20200209,20200209,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_278
+ECVM210500232,20200411,20200411,78703,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_279
+ECVM210500232,20200411,20200411,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_280
+ECVM210500239,20200413,20200413,38200,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_281
+ECVM210500239,20200413,20200413,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_282
+ECVM210500241,20190522,20190522,9245,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_283
+ECVM210500241,20190522,20190522,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_284
+ECVM210500241,20201007,20201007,8449,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_285
+ECVM210500241,20201007,20201007,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_286
+ECVM210500242,20201209,20201209,7802,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_287
+ECVM210500242,20201209,20201209,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_288
+ECVM210500245,20201113,20201113,8930,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_289
+ECVM210500245,20201113,20201113,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_290
+ECVM210500247,20190225,20190225,V658,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_291
+ECVM210500247,20190225,20190225,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_292
+ECVM210500247,20190929,20190929,38010,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_293
+ECVM210500247,20190929,20190929,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_294
+ECVM210500252,20200125,20200125,4659,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_295
+ECVM210500252,20200125,20200125,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_296
+ECVM210500255,20190311,20190311,36810,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_297
+ECVM210500255,20190311,20190311,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_298
+ECVM210500255,20190718,20190718,63490,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_299
+ECVM210500255,20190718,20190718,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_300
+ECVM210500259,20191116,20191116,4011,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_301
+ECVM210500259,20191116,20191116,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_302
+ECVM210500261,20190619,20190619,485,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_303
+ECVM210500261,20190619,20190619,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_304
+ECVM210500261,20200917,20200917,5990,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_305
+ECVM210500261,20200917,20200917,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_306
+ECVM210500261,20201026,20201026,7802,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_307
+ECVM210500261,20201026,20201026,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_308
+ECVM210500261,20201117,20201117,9245,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_309
+ECVM210500261,20201117,20201117,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_310
+ECVM210500261,20201217,20201217,7802,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_311
+ECVM210500261,20201217,20201217,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_312
+ECVM210500269,20190319,20190319,61610,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_313
+ECVM210500269,20190319,20190319,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_314
+ECVM210500269,20190822,20190822,9245,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_315
+ECVM210500269,20190822,20190822,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_316
+ECVM210500275,20200627,20200627,8260,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_317
+ECVM210500275,20200627,20200627,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_318
+ECVM210500277,20190311,20190311,33811,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_319
+ECVM210500277,20190311,20190311,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_320
+ECVM210500278,20200321,20200321,81381,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_321
+ECVM210500278,20200321,20200321,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_322
+ECVM210500278,20200510,20200510,81341,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_323
+ECVM210500278,20200510,20200510,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_324
+ECVM210500279,20190826,20190826,9233,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_325
+ECVM210500279,20190826,20190826,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_326
+ECVM210500283,20190727,20190727,V658,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_327
+ECVM210500283,20190727,20190727,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_328
+ECVM210500283,20191209,20191209,78650,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_329
+ECVM210500283,20191209,20191209,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_330
+ECVM210500283,20200110,20200110,78650,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_331
+ECVM210500283,20200110,20200110,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_332
+ECVM210500286,20190727,20190727,78900,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_333
+ECVM210500286,20190727,20190727,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_334
+ECVM210500286,20210211,20210211,78900,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_335
+ECVM210500286,20210211,20210211,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_336
+ECVM210500292,20190127,20190127,5259,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_337
+ECVM210500292,20190127,20190127,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_338
+ECVM210500292,20190622,20190622,7856,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_339
+ECVM210500292,20190622,20190622,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_340
+ECVM210500296,20190430,20190430,9245,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_341
+ECVM210500296,20190430,20190430,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_342
+ECVM210500296,20191218,20191218,V643,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_343
+ECVM210500296,20191218,20191218,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_344
+ECVM210500297,20190428,20190428,9248,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_345
+ECVM210500297,20190428,20190428,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_346
+ECVM210500297,20191023,20191023,7242,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_347
+ECVM210500297,20191023,20191023,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_348
+ECVM210500297,20201217,20201217,9181,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_349
+ECVM210500297,20201217,20201217,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_350
+ECVM210500298,20191205,20191205,30789,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_351
+ECVM210500298,20191205,20191205,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_352
+ECVM210500298,20200205,20200205,81600,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_353
+ECVM210500298,20200205,20200205,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_354
+ECVM210500298,20200922,20200922,9245,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_355
+ECVM210500298,20200922,20200922,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_356
+ECVM210500300,20190621,20190621,4377,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_357
+ECVM210500300,20190621,20190621,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_358
+ECVM210500300,20200503,20200503,8910,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_359
+ECVM210500300,20200503,20200503,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_360
+ECVM210500308,20190320,20190320,4659,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_361
+ECVM210500308,20190320,20190320,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_362
+ECVM210500308,20190903,20190903,84500,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_363
+ECVM210500308,20190903,20190903,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_364
+ECVM210500310,20190923,20190923,78650,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_365
+ECVM210500310,20190923,20190923,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_366
+ECVM210500310,20191012,20191012,4280,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_367
+ECVM210500310,20191012,20191012,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_368
+ECVM210500310,20200310,20200310,43491,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_369
+ECVM210500310,20200310,20200310,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_370
+ECVM210500313,20191116,20191116,37921,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_371
+ECVM210500313,20191116,20191116,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_372
+ECVM210500319,20200214,20200214,4280,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_373
+ECVM210500319,20200214,20200214,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_374
+ECVM210500319,20200217,20200217,4280,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_375
+ECVM210500319,20200217,20200217,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_376
+ECVM210500319,20200322,20200322,4280,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_377
+ECVM210500319,20200322,20200322,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_378
+ECVM210500319,20200519,20200519,80700,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_379
+ECVM210500319,20200519,20200519,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_380
+ECVM210500319,20200814,20200814,V679,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_381
+ECVM210500319,20200814,20200814,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_382
+ECVM210500319,20200907,20200907,4280,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_383
+ECVM210500319,20200907,20200907,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_384
+ECVM210500320,20200615,20200615,V1585,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_385
+ECVM210500320,20200615,20200615,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_386
+ECVM210500321,20190723,20190723,30000,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_387
+ECVM210500321,20190723,20190723,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_388
+ECVM210500322,20191203,20191203,7291,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_389
+ECVM210500322,20191203,20191203,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_390
+ECVM210500324,20191017,20191017,9239,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_391
+ECVM210500324,20191017,20191017,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_392
+ECVM210500326,20200321,20200321,51881,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_393
+ECVM210500326,20200321,20200321,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_394
+ECVM210500328,20190327,20190327,462,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_395
+ECVM210500328,20190327,20190327,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_396
+ECVM210500328,20190628,20190628,38200,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_397
+ECVM210500328,20190628,20190628,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_398
+ECVM210500328,20191011,20191011,463,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_399
+ECVM210500328,20191011,20191011,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_400
+ECVM210500328,20200316,20200316,38200,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_401
+ECVM210500328,20200316,20200316,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_402
+ECVM210500332,20190618,20190618,87340,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_403
+ECVM210500332,20190618,20190618,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_404
+ECVM210500332,20190626,20190626,37200,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_405
+ECVM210500332,20190626,20190626,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_406
+ECVM210500335,20190902,20190902,8820,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_407
+ECVM210500335,20190902,20190902,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_408
+ECVM210500335,20200126,20200126,9953,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_409
+ECVM210500335,20200126,20200126,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_410
+ECVM210500336,20190505,20190505,920,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_411
+ECVM210500336,20190505,20190505,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_412
+ECVM210500336,20190524,20190524,7806,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_413
+ECVM210500336,20190524,20190524,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_414
+ECVM210500336,20190605,20190605,78002,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_415
+ECVM210500336,20190605,20190605,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_416
+ECVM210500338,20200103,20200103,485,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_417
+ECVM210500338,20200103,20200103,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_418
+ECVM210500338,20201101,20201101,4660,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_419
+ECVM210500338,20201101,20201101,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_420
+ECVM210500338,20201130,20201130,V679,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_421
+ECVM210500338,20201130,20201130,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_422
+ECVM210500339,20190821,20190821,30000,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_423
+ECVM210500339,20190821,20190821,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_424
+ECVM210500340,20190507,20190507,7862,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_425
+ECVM210500340,20190507,20190507,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_426
+ECVM210500340,20190520,20190520,78092,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_427
+ECVM210500340,20190520,20190520,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_428
+ECVM210500340,20190728,20190728,4660,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_429
+ECVM210500340,20190728,20190728,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_430
+ECVM210500340,20200109,20200109,46619,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_431
+ECVM210500340,20200109,20200109,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_432
+ECVM210500340,20200331,20200331,8500,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_433
+ECVM210500340,20200331,20200331,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_434
+ECVM210500340,20200417,20200417,V679,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_435
+ECVM210500340,20200417,20200417,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_436
+ECVM210500340,20210224,20210224,78031,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_437
+ECVM210500340,20210224,20210224,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_438
+ECVM210500341,20201108,20201108,8208,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_439
+ECVM210500341,20201108,20201108,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_440
+ECVM210500344,20201019,20201019,7242,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_441
+ECVM210500344,20201019,20201019,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_442
+ECVM210500344,20201203,20201203,7242,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_443
+ECVM210500344,20201203,20201203,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_444
+ECVM210500344,20210124,20210124,340,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_445
+ECVM210500344,20210124,20210124,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_446
+ECVM210500346,20201228,20201228,82321,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_447
+ECVM210500346,20201228,20201228,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_448
+ECVM210500357,20200213,20200213,84500,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_449
+ECVM210500357,20200213,20200213,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_450
+ECVM210500362,20190305,20190305,84500,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_451
+ECVM210500362,20190305,20190305,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_452
+ECVM210500365,20201229,20201229,37272,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_453
+ECVM210500365,20201229,20201229,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_454
+ECVM210500366,20190115,20190115,V222,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_455
+ECVM210500366,20190115,20190115,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_456
+ECVM210500366,20190131,20190131,V222,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_457
+ECVM210500366,20190131,20190131,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_458
+ECVM210500370,20200212,20200212,36283,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_459
+ECVM210500370,20200212,20200212,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_460
+ECVM210500371,20190522,20190522,30924,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_461
+ECVM210500371,20190522,20190522,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_462
+ECVM210500373,20190730,20190730,9300,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_463
+ECVM210500373,20190730,20190730,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_464
+ECVM210500373,20200708,20200708,9999,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_465
+ECVM210500373,20200708,20200708,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_466
+ECVM210500373,20201002,20201002,8900,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_467
+ECVM210500373,20201002,20201002,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_468
+ECVM210500375,20190502,20190502,83400,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_469
+ECVM210500375,20190502,20190502,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_470
+ECVM210500375,20190511,20190511,9245,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_471
+ECVM210500375,20190511,20190511,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_472
+ECVM210500377,20200328,20200328,7242,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_473
+ECVM210500377,20200328,20200328,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_474
+ECVM210500382,20190616,20190616,56039,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_475
+ECVM210500382,20190616,20190616,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_476
+ECVM210500382,20200801,20200801,78079,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_477
+ECVM210500382,20200801,20200801,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_478
+ECVM210500382,20210119,20210119,462,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_479
+ECVM210500382,20210119,20210119,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_480
+ECVM210500383,20190821,20190821,8820,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_481
+ECVM210500383,20190821,20190821,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_482
+ECVM210500383,20200109,20200109,4359,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_483
+ECVM210500383,20200109,20200109,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_484
+ECVM210500383,20200310,20200310,2740,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_485
+ECVM210500383,20200310,20200310,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_486
+ECVM210500385,20190718,20190718,4359,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_487
+ECVM210500385,20190718,20190718,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_488
+ECVM210500385,20201026,20201026,7062,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_489
+ECVM210500385,20201026,20201026,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_490
+ECVM210500386,20200226,20200226,32744,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_491
+ECVM210500386,20200226,20200226,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_492
+ECVM210500390,20190518,20190518,9800,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_493
+ECVM210500390,20190518,20190518,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_494
+ECVM210500394,20190307,20190307,34590,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_495
+ECVM210500394,20190307,20190307,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_496
+ECVM210500394,20200329,20200329,71690,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_497
+ECVM210500394,20200329,20200329,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_498
+ECVM210500395,20190515,20190515,7873,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_499
+ECVM210500395,20190515,20190515,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_500
+ECVM210500395,20191026,20191026,9194,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_501
+ECVM210500395,20191026,20191026,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_502
+ECVM210500400,20191106,20191106,8409,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_503
+ECVM210500400,20191106,20191106,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_504
+ECVM210500404,20190306,20190306,71940,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_505
+ECVM210500404,20190306,20190306,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_506
+ECVM210500404,20191211,20191211,V658,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_507
+ECVM210500404,20191211,20191211,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_508
+ECVM210500405,20191108,20191108,84500,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_509
+ECVM210500405,20191108,20191108,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_510
+ECVM210500405,20200904,20200904,5609,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_511
+ECVM210500405,20200904,20200904,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_512
+ECVM210500409,20190321,20190321,56211,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_513
+ECVM210500409,20190321,20190321,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_514
+ECVM210500410,20200213,20200213,53081,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_515
+ECVM210500410,20200213,20200213,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_516
+ECVM210500417,20190308,20190308,8470,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_517
+ECVM210500417,20190308,20190308,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_518
+ECVM210500417,20200123,20200123,7242,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_519
+ECVM210500417,20200123,20200123,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_520
+ECVM210500419,20191116,20191116,684,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_521
+ECVM210500419,20191116,20191116,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_522
+ECVM210500419,20200223,20200223,78703,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_523
+ECVM210500419,20200223,20200223,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_524
+ECVM210500421,20190529,20190529,4870,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_525
+ECVM210500421,20190529,20190529,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_526
+ECVM210500421,20191102,20191102,V658,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_527
+ECVM210500421,20191102,20191102,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_528
+ECVM210500424,20190728,20190728,71516,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_529
+ECVM210500424,20190728,20190728,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_530
+ECVM210500425,20191117,20191117,25080,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_531
+ECVM210500425,20191117,20191117,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_532
+ECVM210500426,20190129,20190129,92231,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_533
+ECVM210500426,20190129,20190129,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_534
+ECVM210500426,20190302,20190302,41071,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_535
+ECVM210500426,20190302,20190302,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_536
+ECVM210500426,20190829,20190829,5859,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_537
+ECVM210500426,20190829,20190829,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_538
+ECVM210500426,20191026,20191026,78842,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_539
+ECVM210500426,20191026,20191026,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_540
+ECVM210500426,20200131,20200131,8088,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_541
+ECVM210500426,20200131,20200131,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_542
+ECVM210500426,20200319,20200319,85220,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_543
+ECVM210500426,20200319,20200319,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_544
+ECVM210500426,20200323,20200323,41071,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_545
+ECVM210500426,20200323,20200323,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_546
+ECVM210500435,20190516,20190516,82300,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_547
+ECVM210500435,20190516,20190516,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_548
+ECVM210500444,20190201,20190201,4660,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_549
+ECVM210500444,20190201,20190201,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_550
+ECVM210500449,20200401,20200401,78703,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_551
+ECVM210500449,20200401,20200401,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_552
+ECVM210500455,20191121,20191121,37271,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_553
+ECVM210500455,20191121,20191121,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_554
+ECVM210500455,20200113,20200113,37200,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_555
+ECVM210500455,20200113,20200113,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_556
+ECVM210500455,20200126,20200126,36810,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_557
+ECVM210500455,20200126,20200126,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_558
+ECVM210500463,20201114,20201114,7806,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_559
+ECVM210500463,20201114,20201114,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_560
+ECVM210500463,20201125,20201125,7806,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_561
+ECVM210500463,20201125,20201125,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_562
+ECVM210500466,20200915,20200915,8020,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_563
+ECVM210500466,20200915,20200915,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_564
+ECVM210500471,20200215,20200215,8479,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_565
+ECVM210500471,20200215,20200215,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_566
+ECVM210500476,20190921,20190921,9245,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_567
+ECVM210500476,20190921,20190921,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_568
+ECVM210500477,20201228,20201228,7802,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_569
+ECVM210500477,20201228,20201228,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_570
+ECVM210500478,20190715,20190715,8832,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_571
+ECVM210500478,20190715,20190715,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_572
+ECVM210500478,20190723,20190723,88120,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_573
+ECVM210500478,20190723,20190723,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_574
+ECVM210500478,20200621,20200621,9181,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_575
+ECVM210500478,20200621,20200621,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_576
+ECVM210500479,20210111,20210111,99591,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_577
+ECVM210500479,20210111,20210111,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_578
+ECVM210500484,20190824,20190824,7806,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_579
+ECVM210500484,20190824,20190824,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_580
+ECVM210500487,20201118,20201118,60490,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_581
+ECVM210500487,20201118,20201118,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_582
+ECVM210500487,20210206,20210206,09833,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_583
+ECVM210500487,20210206,20210206,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_584
+ECVM210500488,20190622,20190622,78650,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_585
+ECVM210500488,20190622,20190622,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_586
+ECVM210500489,20190813,20190813,U10.9,ICD10,"","","",emergency_room_diagnosis,"",PS,PS_587
+ECVM210500489,20190813,20190813,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_588
+ECVM210500489,20191031,20191031,446.1,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_589
+ECVM210500489,20191031,20191031,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_590
+ECVM210500489,20200121,20200121,U10.9,ICD10,"","","",emergency_room_diagnosis,"",PS,PS_591
+ECVM210500489,20200121,20200121,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_592
+ECVM210500489,20200421,20200421,446.1,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_593
+ECVM210500489,20200421,20200421,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_594
+ECVM210500491,20190618,20190618,446.1,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_595
+ECVM210500491,20190618,20190618,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_596
+ECVM210500491,20190806,20190806,446.1,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_597
+ECVM210500491,20190806,20190806,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_598
+ECVM210500491,20200104,20200104,785.50,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_599
+ECVM210500491,20200104,20200104,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_600
+ECVM210500492,20200306,20200306,446.1,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_601
+ECVM210500492,20200306,20200306,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_602
+ECVM210500492,20200511,20200511,R57.1,ICD10,"","","",emergency_room_diagnosis,"",PS,PS_603
+ECVM210500492,20200511,20200511,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_604
+ECVM210500494,20200210,20200210,446.1,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_605
+ECVM210500494,20200210,20200210,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_606
