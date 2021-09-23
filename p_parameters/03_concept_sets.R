@@ -808,7 +808,7 @@ concept_set_codes_our_study_pre[["COVCANCER"]][["READ"]] <- c("5953.00","596..00
                                                                                                                               # MIS_narrow
                                                                                                                               concept_set_domains[["MIS_narrow"]] = "Diagnosis"
                                                                                                                               concept_set_codes_our_study_pre[["MIS_narrow"]][["ICD9"]] <- c()
-                                                                                                                              concept_set_codes_our_study_pre[["MIS_narrow"]][["ICD10"]] <- c("R65", "U10.9", "M35.81")
+                                                                                                                              concept_set_codes_our_study_pre[["MIS_narrow"]][["ICD10"]] <- c("R65.1","R65.10","R65.11", "U10.9", "M35.81")
                                                                                                                               concept_set_codes_our_study_pre[["MIS_narrow"]][["READ"]] <- c()
                                                                                                                               concept_set_codes_our_study_pre[["MIS_narrow"]][["ICPC"]] <- c()
                                                                                                                               concept_set_codes_our_study_pre[["MIS_narrow"]][["ICPC2P"]] <- c()
@@ -820,6 +820,8 @@ concept_set_codes_our_study_pre[["COVCANCER"]][["READ"]] <- c("5953.00","596..00
                                                                                                                               concept_set_domains[["MIS_possible"]] = "Diagnosis"
                                                                                                                               concept_set_codes_our_study_pre[["MIS_possible"]][["ICD9"]] <- c("785.50","785.59")
                                                                                                                               concept_set_codes_our_study_pre[["MIS_possible"]][["ICD10"]] <- c("R57.9","R57.1")    
+                                                                                                                          
+                                                                                                                              concept_set_codes_our_study_pre_excl[["MIS_possible"]][["ICD10"]] <- c("R65.1","R65.10","R65.11", "U10.9", "M35.81")
                                                                                                                               concept_set_codes_our_study_pre[["MIS_possible"]][["READ"]] <- c("R0550","XM00r","XM1C7")
                                                                                                                               concept_set_codes_our_study_pre[["MIS_possible"]][["ICPC"]] <- c()
                                                                                                                               concept_set_codes_our_study_pre[["MIS_possible"]][["ICPC2P"]] <- c() 
