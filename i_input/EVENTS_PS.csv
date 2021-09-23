@@ -585,23 +585,23 @@ ECVM210500487,20210206,20210206,09833,ICD9,"","","",emergency_room_diagnosis,"",
 ECVM210500487,20210206,20210206,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_584
 ECVM210500488,20190622,20190622,78650,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_585
 ECVM210500488,20190622,20190622,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_586
-ECVM210500489,20190813,20190813,V222,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_587
+ECVM210500489,20190813,20190813,U10.9,ICD10,"","","",emergency_room_diagnosis,"",PS,PS_587
 ECVM210500489,20190813,20190813,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_588
-ECVM210500489,20191031,20191031,V222,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_589
+ECVM210500489,20191031,20191031,446.1,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_589
 ECVM210500489,20191031,20191031,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_590
-ECVM210500489,20200121,20200121,V222,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_591
+ECVM210500489,20200121,20200121,U10.9,ICD10,"","","",emergency_room_diagnosis,"",PS,PS_591
 ECVM210500489,20200121,20200121,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_592
-ECVM210500489,20200421,20200421,V222,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_593
+ECVM210500489,20200421,20200421,446.1,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_593
 ECVM210500489,20200421,20200421,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_594
-ECVM210500491,20190618,20190618,7873,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_595
+ECVM210500491,20190618,20190618,446.1,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_595
 ECVM210500491,20190618,20190618,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_596
-ECVM210500491,20190806,20190806,33829,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_597
+ECVM210500491,20190806,20190806,446.1,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_597
 ECVM210500491,20190806,20190806,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_598
-ECVM210500491,20200104,20200104,2740,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_599
+ECVM210500491,20200104,20200104,785.50,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_599
 ECVM210500491,20200104,20200104,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_600
-ECVM210500492,20200306,20200306,9245,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_601
+ECVM210500492,20200306,20200306,446.1,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_601
 ECVM210500492,20200306,20200306,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_602
-ECVM210500492,20200511,20200511,9239,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_603
+ECVM210500492,20200511,20200511,R57.1,ICD10,"","","",emergency_room_diagnosis,"",PS,PS_603
 ECVM210500492,20200511,20200511,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_604
-ECVM210500494,20200210,20200210,92320,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_605
+ECVM210500494,20200210,20200210,446.1,ICD9,"","","",emergency_room_diagnosis,"",PS,PS_605
 ECVM210500494,20200210,20200210,"","","","xxxx x x, x",yes,emergency_room_presentation,"",PS,PS_606

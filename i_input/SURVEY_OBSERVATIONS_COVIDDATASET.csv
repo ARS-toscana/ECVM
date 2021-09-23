@@ -231,3 +231,5 @@ ECVM210500054;20210228;Covid19_Hospitalizacion;Ingreso_hospital;;1;covid_registr
 ECVM210500054;20210228;Covid19_Hospitalizacion;Fecha_ingreso_hosp;;20210301;covid_registry_BIFAP_4;
 ECVM210500054;20210228;Covid19_UCI;Ingreso_uci;;1;covid_registry_BIFAP_4;
 ECVM210500054;20210228;Covid19_UCI;Fecha_ingreso_uci;;20210301;covid_registry_BIFAP_4;
+ECVM210500489;20210228;Covid19_UCI;Ingreso_uci;;1;covid_registry_BIFAP_4;
+ECVM210500491;20210228;Covid19_UCI;Ingreso_uci;;1;covid_registry_BIFAP_4;

@@ -122,6 +122,8 @@ system.time(source(paste0(thisdir,"/p_steps/step_06_T2_create_D3_datasets.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_06_2_MIS_population.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_07_9_T3_create_person_time_MIS_year.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_08_T4_IR_MIS.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_09_2_T3_create_D4_descriptive_tables.R")))
+
 
 #07 create persontime
 system.time(source(paste0(thisdir,"/p_steps/step_07_1_T3_create_person_time_risks.R")))
@@ -142,7 +144,6 @@ system.time(source(paste0(thisdir,"/p_steps/step_08_T4_IR.R")))
 #09 create D4 for doses and coverage
 system.time(source(paste0(thisdir,"/p_steps/step_09_1_T3_create_D4_doses_weeks.R")))
 
-system.time(source(paste0(thisdir,"/p_steps/step_09_2_T3_create_D4_descriptive_tables.R")))
 
 system.time(source(paste0(thisdir,"/p_steps/step_09_3_T3_create_dashboard_tables.R")))
 
