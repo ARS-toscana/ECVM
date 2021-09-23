@@ -7,6 +7,17 @@ na_to_0 = function(DT) {
 load(file = paste0(dirtemp, "D3_study_population.RData"))
 load(file = paste0(dirtemp, "D3_Vaccin_cohort.RData"))
 load(paste0(diroutput, "D3_study_population_cov_ALL.RData"))
+load(paste0(diroutput, "D4_population_b.RData"))
+load(paste0(diroutput, "D4_population_c.RData"))
+load(paste0(diroutput, "D4_population_d.RData"))
+
+D4_population_c <- D4_population_c[, .(person_id, age_at_1_jan_2021, agebands_at_1_jan_2021)]
+D4_population_d <- D4_population_d[, .(person_id, age_at_1_jan_2021, agebands_at_1_jan_2021)]
+
+D4_population_b <- D4_population_b[, .(person_id, age_at_1_jan_2021, agebands_at_1_jan_2021)]
+setnames(D4_population_b, c("agebands_at_1_jan_2021", "age_at_1_jan_2021"), c("ageband_at_study_entry", "age_at_study_entry"))
+D3_study_population <- D3_study_population[, age_at_study_entry := NULL]
+D3_study_population <- merge(D3_study_population, D4_population_b, by = "person_id")
 
 D4_descriptive_dataset_age_studystart <- D3_study_population[, .(person_id, age_at_study_entry, fup_days)]
 D4_descriptive_dataset_age_studystart <- D4_descriptive_dataset_age_studystart[,c("Age_P25", "Age_P50", "Age_p75") :=
@@ -17,25 +28,21 @@ D4_descriptive_dataset_age_studystart <- D4_descriptive_dataset_age_studystart[,
 D4_descriptive_dataset_age_studystart <- D4_descriptive_dataset_age_studystart[, Followup := round(sum(fup_days) / 365.25)][, Datasource := thisdatasource]
 D4_descriptive_dataset_age_studystart <- unique(D4_descriptive_dataset_age_studystart[, .(Datasource, Followup, Age_P25, Age_P50, Age_p75, Age_mean, Age_min, Age_max)])
 
-fwrite(D4_descriptive_dataset_age_studystart, file = paste0(dirD4tables, "D4_descriptive_dataset_age_studystart.csv"))
+fwrite(D4_descriptive_dataset_age_studystart, file = paste0(dirD4tables, "D4_descriptive_dataset_age_studystart_MIS.csv"))
 
-D4_descriptive_dataset_ageband_studystart <- D3_study_population[, .(person_id, age_at_study_entry)]
-D4_descriptive_dataset_ageband_studystart <- D4_descriptive_dataset_ageband_studystart[, age_at_study_entry := findInterval(age_at_study_entry, c(20, 30, 40, 50, 60, 70, 80))]
-D4_descriptive_dataset_ageband_studystart$age_at_study_entry <- as.character(D4_descriptive_dataset_ageband_studystart$age_at_study_entry)
-D4_descriptive_dataset_ageband_studystart <- D4_descriptive_dataset_ageband_studystart[.(age_at_study_entry = c("0", "1", "2", "3", "4", "5", "6", "7"),
-                                           to = c("AgeCat_019", "AgeCat_2029", "AgeCat_3039", "AgeCat_4049", "AgeCat_5059",
-                                                  "AgeCat_6069", "AgeCat_7079", "Agecat_80+")),
-                                         on = "age_at_study_entry", age_at_study_entry := i.to]
+D4_descriptive_dataset_ageband_studystart <- D3_study_population[, .(person_id, ageband_at_study_entry)]
+setnames(D4_descriptive_dataset_ageband_studystart, "ageband_at_study_entry", "age_at_study_entry")
+
+recode_age_vect <- c("0-11" = "AgeCat_011", "12-17" = "AgeCat_1217", "18-19" = "AgeCat_1819", "20-29" = "AgeCat_2029",
+                     "30-39" = "AgeCat_3039", "40-49" = "AgeCat_4049", "50-59" = "AgeCat_5059", "60-69" = "Agecat_6069",
+                     "70-79" = "Agecat_7079", "80+" = "Agecat_80+")
+D4_descriptive_dataset_ageband_studystart[, age_at_study_entry := recode_age_vect[age_at_study_entry]]
 
 D4_descriptive_dataset_ageband_studystart <- unique(D4_descriptive_dataset_ageband_studystart[, N := .N, by = "age_at_study_entry"][, person_id := NULL])
-older60 <- copy(D4_descriptive_dataset_ageband_studystart)[age_at_study_entry %in% c("Agecat_80+", "AgeCat_7079",
-                                                                                     "AgeCat_6069"), sum(N)]
-older60 <- data.table::data.table(age_at_study_entry = "Agecat_60+", N = older60)
-D4_descriptive_dataset_ageband_studystart <- rbind(D4_descriptive_dataset_ageband_studystart, older60)
 D4_descriptive_dataset_ageband_studystart <- D4_descriptive_dataset_ageband_studystart[, Datasource := thisdatasource]
 D4_descriptive_dataset_ageband_studystart <- data.table::dcast(D4_descriptive_dataset_ageband_studystart, Datasource ~ age_at_study_entry, value.var = "N")
 
-fwrite(D4_descriptive_dataset_ageband_studystart, file = paste0(dirD4tables, "D4_descriptive_dataset_ageband_studystart.csv"))
+fwrite(D4_descriptive_dataset_ageband_studystart, file = paste0(dirD4tables, "D4_descriptive_dataset_ageband_studystart_MIS.csv"))
 
 D4_descriptive_dataset_sex_studystart <- D3_study_population[, .(person_id, sex)]
 D4_descriptive_dataset_sex_studystart <- unique(D4_descriptive_dataset_sex_studystart[, N := .N, by = "sex"][, person_id := NULL])
@@ -43,7 +50,7 @@ D4_descriptive_dataset_sex_studystart <- D4_descriptive_dataset_sex_studystart[,
 D4_descriptive_dataset_sex_studystart <- D4_descriptive_dataset_sex_studystart[, sex := fifelse(sex == 1, "Sex_male", "Sex_female")]
 D4_descriptive_dataset_sex_studystart <- data.table::dcast(D4_descriptive_dataset_sex_studystart, Datasource ~ sex, value.var = "N")
 
-fwrite(D4_descriptive_dataset_sex_studystart, file = paste0(dirD4tables, "D4_descriptive_dataset_sex_studystart.csv"))
+fwrite(D4_descriptive_dataset_sex_studystart, file = paste0(dirD4tables, "D4_descriptive_dataset_sex_studystart_MIS.csv"))
 
 setnames(D3_study_population_cov_ALL,
          c("CV_either_DX_or_DP", "COVCANCER_either_DX_or_DP", "COVCOPD_either_DX_or_DP", "COVHIV_either_DX_or_DP",
@@ -56,7 +63,7 @@ D4_descriptive_dataset_covariate_studystart <- D3_study_population_cov_ALL[, lap
 D4_descriptive_dataset_covariate_studystart <- D4_descriptive_dataset_covariate_studystart[, Datasource := thisdatasource]
 D4_descriptive_dataset_covariate_studystart <- D4_descriptive_dataset_covariate_studystart[, .(Datasource, CV, Cancer, CLD, HIV, CKD, Diabetes, Obesity, Sicklecell, immunosuppressants)]
 
-fwrite(D4_descriptive_dataset_covariate_studystart, file = paste0(dirD4tables, "D4_descriptive_dataset_covariate_studystart.csv"))
+fwrite(D4_descriptive_dataset_covariate_studystart, file = paste0(dirD4tables, "D4_descriptive_dataset_covariate_studystart_MIS.csv"))
 
 D4_followup_fromstudystart <- D3_study_population[, .(person_id, sex, age_at_study_entry, study_entry_date, study_exit_date, fup_days)]
 dec31 = ymd(20201231)
@@ -126,15 +133,15 @@ D4_descriptive_dataset_ageband_vax <- D3_Vaccin_cohort[, .(person_id, type_vax_1
 D4_descriptive_dataset_ageband_vax <- D4_descriptive_dataset_ageband_vax[, age_at_date_vax_1 := findInterval(age_at_date_vax_1, c(20, 30, 40, 50, 60, 70, 80))]
 D4_descriptive_dataset_ageband_vax$age_at_date_vax_1 <- as.character(D4_descriptive_dataset_ageband_vax$age_at_date_vax_1)
 D4_descriptive_dataset_ageband_vax <- D4_descriptive_dataset_ageband_vax[.(age_at_date_vax_1 = c("0", "1", "2", "3", "4", "5", "6", "7"),
-                                                                                         to = c("AgeCat_019", "AgeCat_2029", "AgeCat_3039", "AgeCat_4049", "AgeCat_5059",
-                                                                                                "AgeCat_6069", "AgeCat_7079", "Agecat_80+")),
-                                                                                       on = "age_at_date_vax_1", age_at_date_vax_1 := i.to]
+                                                                           to = c("AgeCat_019", "AgeCat_2029", "AgeCat_3039", "AgeCat_4049", "AgeCat_5059",
+                                                                                  "AgeCat_6069", "AgeCat_7079", "Agecat_80+")),
+                                                                         on = "age_at_date_vax_1", age_at_date_vax_1 := i.to]
 
 D4_descriptive_dataset_ageband_vax <- unique(D4_descriptive_dataset_ageband_vax[, N := .N, by = c("age_at_date_vax_1", "type_vax_1")][, person_id := NULL])
 
 older60 <- copy(D4_descriptive_dataset_ageband_vax)[age_at_date_vax_1 %in% c("Agecat_80+", "AgeCat_7079", "AgeCat_6069"),
-                                            lapply(.SD, sum, na.rm=TRUE), by = c("type_vax_1"),
-                                            .SDcols = "N"]
+                                                    lapply(.SD, sum, na.rm=TRUE), by = c("type_vax_1"),
+                                                    .SDcols = "N"]
 older60 <- unique(older60[, age_at_date_vax_1 := "Agecat_60+"])
 D4_descriptive_dataset_ageband_vax <- rbind(D4_descriptive_dataset_ageband_vax, older60)
 
@@ -161,13 +168,13 @@ followup_vax2 <- D4_followup_from_vax[!is.na(fup_vax2), ][, sex := fifelse(sex =
 followup_vax1 <- followup_vax1[, sex_value := sum(fup_vax1), by = "sex"]
 followup_vax2 <- followup_vax2[, sex_value := sum(fup_vax2), by = "sex"]
 followup_vax1 <- followup_vax1[.(age_at_study_entry = c("0", "1", "2", "3", "4", "5", "6", "7"),
-                                               to = c("Followup_0119_vax1", "Followup_2029_vax1", "Followup_3039_vax1", "Followup_4049_vax1", "Followup_5059_vax1",
-                                                      "Followup_6069_vax1", "Followup_7079_vax1", "Followup_80_vax1")),
-                                             on = "age_at_study_entry", age_at_study_entry := i.to]
+                                 to = c("Followup_0119_vax1", "Followup_2029_vax1", "Followup_3039_vax1", "Followup_4049_vax1", "Followup_5059_vax1",
+                                        "Followup_6069_vax1", "Followup_7079_vax1", "Followup_80_vax1")),
+                               on = "age_at_study_entry", age_at_study_entry := i.to]
 followup_vax2 <- followup_vax2[.(age_at_study_entry = c("0", "1", "2", "3", "4", "5", "6", "7"),
-                                               to = c("Followup_0119_vax2", "Followup_2029_vax2", "Followup_3039_vax2", "Followup_4049_vax2", "Followup_5059_vax2",
-                                                      "Followup_6069_vax2", "Followup_7079_vax2", "Followup_80_vax2")),
-                                             on = "age_at_study_entry", age_at_study_entry := i.to]
+                                 to = c("Followup_0119_vax2", "Followup_2029_vax2", "Followup_3039_vax2", "Followup_4049_vax2", "Followup_5059_vax2",
+                                        "Followup_6069_vax2", "Followup_7079_vax2", "Followup_80_vax2")),
+                               on = "age_at_study_entry", age_at_study_entry := i.to]
 
 followup_vax1 <- followup_vax1[, cohort_value := sum(fup_vax1), by = "age_at_study_entry"]
 followup_vax2 <- followup_vax2[, cohort_value := sum(fup_vax2), by = "age_at_study_entry"]
@@ -241,32 +248,32 @@ theme_set(theme_bw())
 
 # Plot
 g <- ggplot(D4_distance_doses, aes(as.numeric(distance), fill = factor(type_vax_1))) +
-   geom_histogram(aes(y=..density..), alpha=0.5, 
-                  position="identity", binwidth = 1) +
-   geom_density(alpha=0.2) + 
-   scale_x_continuous(limits = c(as.numeric(D4_distance_doses[, min(distance)]) - 5,
-                                 as.numeric(D4_distance_doses[, max(distance)]) + 5),
-                      oob = scales::oob_keep) +
-   labs(title = "Density plot of distances", 
-        subtitle = "Distances between First and Second Doses Grouped by Manufacturers",
-        caption = "Source: D4_distance_doses",
-        x = "Distance",
-        fill = "Manufacturers")
+  geom_histogram(aes(y=..density..), alpha=0.5, 
+                 position="identity", binwidth = 1) +
+  geom_density(alpha=0.2) + 
+  scale_x_continuous(limits = c(as.numeric(D4_distance_doses[, min(distance)]) - 5,
+                                as.numeric(D4_distance_doses[, max(distance)]) + 5),
+                     oob = scales::oob_keep) +
+  labs(title = "Density plot of distances", 
+       subtitle = "Distances between First and Second Doses Grouped by Manufacturers",
+       caption = "Source: D4_distance_doses",
+       x = "Distance",
+       fill = "Manufacturers")
 suppressMessages(ggsave(paste0(direxp, "Density_plot_distance_doses.png"), plot = g,
                         units = c("cm"), dpi = 600))
 
 g <- ggplot(D4_distance_doses, aes(as.numeric(distance), fill = factor(type_vax_1))) +
-   geom_histogram(alpha=0.5, 
-                  position="identity", binwidth = 1) +
-   geom_density(alpha=0.2) + 
-   scale_x_continuous(limits = c(as.numeric(D4_distance_doses[, min(distance)]) - 5,
-                                 as.numeric(D4_distance_doses[, max(distance)]) + 5),
-                      oob = scales::oob_keep) +
-   labs(title = "Density plot of distances", 
-        subtitle = "Distances between First and Second Doses Grouped by Manufacturers",
-        caption = "Source: D4_distance_doses",
-        x = "Distance",
-        fill = "Manufacturers")
+  geom_histogram(alpha=0.5, 
+                 position="identity", binwidth = 1) +
+  geom_density(alpha=0.2) + 
+  scale_x_continuous(limits = c(as.numeric(D4_distance_doses[, min(distance)]) - 5,
+                                as.numeric(D4_distance_doses[, max(distance)]) + 5),
+                     oob = scales::oob_keep) +
+  labs(title = "Density plot of distances", 
+       subtitle = "Distances between First and Second Doses Grouped by Manufacturers",
+       caption = "Source: D4_distance_doses",
+       x = "Distance",
+       fill = "Manufacturers")
 suppressMessages(ggsave(paste0(direxp, "Histogram_distance_doses.png"), plot = g,
                         units = c("cm"), dpi = 600))
 

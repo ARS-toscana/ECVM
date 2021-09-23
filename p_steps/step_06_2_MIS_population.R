@@ -31,14 +31,15 @@ D3_study_variables_for_MIS<-D3_study_variables_for_MIS [,agebands_at_1_jan_2021:
 
 save(D3_study_variables_for_MIS, file = paste0(dirtemp, "D3_study_variables_for_MIS.RData"))
 
-
 #COHORT B
 #add the study entry date for MIS
 D3_study_variables_for_MIS[,study_entry_date_MIS_b:=max(first_jan_2020,study_entry_date,na.rm = T),by="person_id"]
 #add the study exit date for MIS
 D3_study_variables_for_MIS[,study_exit_date_MIS_b:=min(end_dic_2021,study_exit_date,covid_date-1, date_vax1-1,na.rm = T),by="person_id"]
-#select the variables and save                           
-D4_population_b<-D3_study_variables_for_MIS[,.(person_id,sex,age_at_1_jan_2021,agebands_at_1_jan_2021,study_entry_date_MIS_b, study_exit_date_MIS_b, MIS_date_narrow,MIS_date_broad)]
+# calculate correct fup_days
+D3_study_variables_for_MIS[, fup_days := correct_difftime(study_exit_date_MIS_b, study_entry_date_MIS_b)]
+#select the variables and save
+D4_population_b<-D3_study_variables_for_MIS[,.(person_id,sex,age_at_1_jan_2021,agebands_at_1_jan_2021,study_entry_date_MIS_b, study_exit_date_MIS_b, MIS_date_narrow,MIS_date_broad, fup_days)]
 #save(D3_cohort_b, file = paste0(dirtemp, "D3_cohort_b.RData"))
 
 # D4_population_b[, age_at_study_entry := as.character(findInterval(age_at_study_entry, c(11,17, 29, 39, 49, 59, 69, 79)))]
@@ -54,6 +55,8 @@ save(D4_population_b, file = paste0(diroutput, "D4_population_b.RData"))
 D3_study_variables_for_MIS[,study_entry_date_MIS_c:=study_entry_date,by="person_id"]
 #add the study exit date for MIS
 D3_study_variables_for_MIS[,study_exit_date_MIS_c:=min(end_dic_2021,study_exit_date,date_vax1-1,na.rm = T),by="person_id"]
+# calculate correct fup_days
+D3_study_variables_for_MIS[, fup_days := correct_difftime(study_exit_date_MIS_c, study_entry_date_MIS_c)]
 #select the variables and save                           
 
 D3_selection_criteria_c <- D3_study_variables_for_MIS[is.na(covid_date) , not_in_cohort_c:=1]
@@ -61,7 +64,7 @@ D3_selection_criteria_c <- D3_selection_criteria_c[, not_in_cohort_c := replace(
 save(D3_selection_criteria_c, file = paste0(dirtemp, "D3_selection_criteria_c.RData"))
 
 D4_population_c <- CreateFlowChart(
-  dataset = D3_selection_criteria_c[,.(person_id,sex,age_at_1_jan_2021,agebands_at_1_jan_2021,study_entry_date_MIS_c, study_exit_date_MIS_c, MIS_date_narrow,MIS_date_broad,not_in_cohort_c)],
+  dataset = D3_selection_criteria_c[,.(person_id,sex,age_at_1_jan_2021,agebands_at_1_jan_2021,study_entry_date_MIS_c, study_exit_date_MIS_c, MIS_date_narrow,MIS_date_broad,not_in_cohort_c, fup_days)],
   listcriteria = c("not_in_cohort_c"),
   flowchartname = "Flowchart_cohort_c")
 
@@ -98,7 +101,10 @@ D4_population_d[covid_date<=date_vax1,history_covid:=1][covid_date>date_vax1 | i
 D4_population_d[covid_date>date_vax1 & !is.na(covid_date),study_exit_date_MIS_d:=min(covid_date-1,study_end,study_exit_date),by="person_id"]
 D4_population_d[covid_date<date_vax1 | is.na(covid_date),study_exit_date_MIS_d:=min(study_end,study_exit_date),by="person_id"]
 
-D4_population_d<-D4_population_d[,.(person_id,sex,age_at_1_jan_2021,agebands_at_1_jan_2021,study_entry_date_MIS_d,study_exit_date_MIS_d,MIS_date_broad,date_vax1,covid_date,history_covid,age_at_date_vax_1,type_vax_1,not_in_cohort_d)]
+# calculate correct fup_days
+D4_population_d[, fup_days := correct_difftime(study_exit_date_MIS_d, study_entry_date_MIS_d)]
+
+D4_population_d<-D4_population_d[,.(person_id,sex,age_at_1_jan_2021,agebands_at_1_jan_2021,study_entry_date_MIS_d,study_exit_date_MIS_d,MIS_date_broad,date_vax1,covid_date,history_covid,age_at_date_vax_1,type_vax_1,not_in_cohort_d, fup_days)]
 
 D4_population_d<-D4_population_d[study_exit_date_MIS_d>study_entry_date_MIS_d,]
 # D4_population_d[, age_at_1_jan_2021 := as.character(findInterval(age_at_1_jan_2021, c(19, 29, 39, 49, 59, 69, 79)))]
