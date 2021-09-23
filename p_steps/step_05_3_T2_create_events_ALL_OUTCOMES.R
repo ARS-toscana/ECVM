@@ -139,7 +139,16 @@ for (subpop in subpopulations_non_empty) {
     rm(list = CONTROL)
     rm(filecovariate)
   }
-  
+  #add composite events
+  events_MIS_KD_narrow<-events_ALL_OUTCOMES[name_event=="MIS_narrow" | name_event=="KD_narrow"]
+  events_MIS_KD_narrow<-events_MIS_KD_narrow[,name_event:="MIS_KD_narrow"]
+  events_MIS_KD_broad<-events_ALL_OUTCOMES[name_event=="MIS_broad" | name_event=="KD_broad",]
+  events_MIS_KD_broad<-events_MIS_KD_broad[,name_event:="MIS_KD_broad"]
+  events_ALL_OUTCOMES <- as.data.table(rbind(events_ALL_OUTCOMES,events_MIS_KD_narrow,fill = T))
+  events_ALL_OUTCOMES <- as.data.table(rbind(events_ALL_OUTCOMES,events_MIS_KD_broad,fill = T))
+  running_list_outcomes_observed <- c(running_list_outcomes_observed,"MIS_KD_narrow","MIS_KD_broad")
+  rm(events_MIS_KD_narrow)
+  rm(events_MIS_KD_broad)
   
   # add DEATH
   load(paste0(dirtemp,"D3_events_DEATH.RData"))
