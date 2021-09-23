@@ -5,6 +5,9 @@
 
 # authors: Rosa Gini, Olga Paoletti, Davide Messina, Giorgio Limoncella
 
+# changelog V5.1_MIS:
+# changed codes for MIS and added a specifi to_run for BIFAP (to correct for subpopulations)
+
 # changelog V5_MIS:
 # added MIS section
 
