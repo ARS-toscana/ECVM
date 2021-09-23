@@ -76,8 +76,8 @@ source(paste0(thisdir,"/p_parameters/06_algorithms.R"))
 #run scripts
 
 # 01 RETRIEVE RECORDS FRM CDM
-system.time(source(paste0(thisdir,"/p_steps/step_01_1_T2.1_create_conceptset_datasets.R")))
-system.time(source(paste0(thisdir,"/p_steps/step_01_2_T2.1_create_spells.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_01_1_T2.1_create_conceptset_datasets_MIS_BIFAP.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_01_2_T2.1_create_spells_for_MIS_BIFAP.R")))
 
 system.time(source(paste0(thisdir,"/p_steps/step_01_3_T2.1_create_dates_in_PERSONS.R")))
 
