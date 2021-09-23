@@ -179,8 +179,8 @@ find_last_monday <- function(tmp_date, monday_week) {
   return(tmp_date)
 }
 
-correct_difftime <- function(t1, t2, t_period = "years") {
-  return(difftime(t1, t2, units = "days") + 1)
+correct_difftime <- function(t1, t2, t_period = "days") {
+  return(difftime(t1, t2, units = t_period) + 1)
 }
 
 calc_precise_week <- function(time_diff) {
