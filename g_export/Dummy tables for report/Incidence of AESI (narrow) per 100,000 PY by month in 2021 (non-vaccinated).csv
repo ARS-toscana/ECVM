@@ -8,6 +8,12 @@ TEST,CAD_narrow,March,327,0,0,412037.68,total
 TEST,GENCONV_narrow,January,503,0,0,267865.45,total
 TEST,GENCONV_narrow,February,426,0,0,316282.45,total
 TEST,GENCONV_narrow,March,327,0,0,412037.68,total
+TEST,KD_narrow,January,503,0,0,267865.45,total
+TEST,KD_narrow,February,426,0,0,316282.45,total
+TEST,KD_narrow,March,327,0,0,412037.68,total
+TEST,MIS_narrow,January,503,0,0,267865.45,total
+TEST,MIS_narrow,February,426,0,0,316282.45,total
+TEST,MIS_narrow,March,327,0,0,412037.68,total
 TEST,Ischstroke_narrow,January,503,0,0,267865.45,total
 TEST,Ischstroke_narrow,February,426,0,0,316282.45,total
 TEST,Ischstroke_narrow,March,327,0,0,412037.68,total

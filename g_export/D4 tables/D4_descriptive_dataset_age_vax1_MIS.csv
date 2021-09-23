@@ -1,0 +1,7 @@
+Datasource,Vax_dose1,Month_vax1,Followup_vax1,Age_P25,Age_P50,Age_p75,Age_mean,Age_min,Age_max
+TEST,Pfizer,3,203,46,55,58,54,33,84
+TEST,Pfizer,4,26,92,92,97,88,60,99
+TEST,AstraZeneca,3,14,46,46,46,46,46,46
+TEST,AstraZeneca,4,8,75,75,75,75,75,75
+TEST,Pfizer,1,94,43,43,43,43,43,43
+TEST,Pfizer,2,39,32,32,32,32,32,32
