@@ -81,7 +81,7 @@ system.time(source(paste0(thisdir,"/p_steps/step_01_2_T2.1_create_spells_for_MIS
 
 system.time(source(paste0(thisdir,"/p_steps/step_01_3_T2.1_create_dates_in_PERSONS.R")))
 
-system.time(source(paste0(thisdir,"/p_steps/step_01_4_T2.1_create_prompt_and_itemset_datasets.R")))
+#system.time(source(paste0(thisdir,"/p_steps/step_01_4_T2.1_create_prompt_and_itemset_datasets.R")))
 
 #02 quality checks
 system.time(source(paste0(thisdir,"/p_steps/step_02_1_T2_create_QC_criteria.R")))
