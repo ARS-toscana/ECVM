@@ -29,7 +29,7 @@ empty_spells <- empty_spells[op_meaning!="test",]
 
   
   if (thisdatasource == "BIFAP") {
-  OBSERVATION_PERIODS <- OBSERVATION_PERIODS[op_meaning=="region2_HOSP"| op_meaning=="region6_HOSP",]
+  OBSERVATION_PERIODS <- OBSERVATION_PERIODS[op_meaning=="region3_HOSP"| op_meaning=="region7_HOSP",]
   }else{
   OBSERVATION_PERIODS <- OBSERVATION_PERIODS[,op_meaning:="all"]
 }
