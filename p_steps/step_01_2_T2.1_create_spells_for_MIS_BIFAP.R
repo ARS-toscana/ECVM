@@ -28,10 +28,9 @@ empty_spells <- empty_spells[op_meaning!="test",]
 #if (this_datasource_has_subpopulations == FALSE){
 
   
-  if thisdatasource == "BIFAP"{
+  if (thisdatasource == "BIFAP") {
   OBSERVATION_PERIODS <- OBSERVATION_PERIODS[op_meaning=="region2_HOSP"| op_meaning=="region6_HOSP",]
-  }
-else{
+  }else{
   OBSERVATION_PERIODS <- OBSERVATION_PERIODS[,op_meaning:="all"]
 }
   output_spells_category <- CreateSpells(
