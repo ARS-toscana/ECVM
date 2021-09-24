@@ -218,10 +218,10 @@ fwrite(table2, file = paste0(dummytables_MIS, "Cohort characteristics at start o
 
 load(file = paste0(diroutput, "D4_population_d.RData"))
 load(file = paste0(dirtemp, "D3_study_population.RData"))
-N_fup_pop <- D4_population_d[, .(person_id, date_vax1, type_vax_1, fup_days, age_at_date_vax_1)]
+N_fup_pop <- D4_population_d[, .(person_id, date_vax1, type_vax_1, fup_days, age_at_1_jan_2021)]
 
 
-setnames(N_fup_pop, c("date_vax1", "type_vax_1", "fup_days","age_at_date_vax_1"),
+setnames(N_fup_pop, c("date_vax1", "type_vax_1", "fup_days","age_at_1_jan_2021"),
          c("date_vax", "type_vax", "fup_vax","age_at_date_vax"))
 # N_fup_pop <- melt(N_fup_pop, measure = list(c("date_vax1", "date_vax2"),
 #                                             c("type_vax_1", "type_vax_2"),
