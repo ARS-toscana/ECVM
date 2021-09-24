@@ -355,7 +355,7 @@ empty_df <- rbindlist(list(empty_df, as.list(c("", "", unlist(rep(c("N", "%"), l
 
 table3_4_5_6 <- rbindlist(list(empty_df, table3_4_5_6))
 
-fwrite(table3_4_5_6, file = paste0(dummytables, final_name_table3_4_5_6,
+fwrite(table3_4_5_6, file = paste0(dummytables_MIS, final_name_table3_4_5_6,
                                    " Cohort characteristics at first COVID-19 vaccination ", 
                                    vect_recode_manufacturer[[thisdatasource]], ".csv"))
 
