@@ -217,7 +217,6 @@ fwrite(table2, file = paste0(dummytables_MIS, "Cohort characteristics at start o
 
 
 load(file = paste0(diroutput, "D4_population_d.RData"))
-load(file = paste0(dirtemp, "D3_study_population.RData"))
 N_fup_pop <- D4_population_d[, .(person_id, date_vax1, type_vax_1, fup_days, age_at_1_jan_2021)]
 
 
@@ -243,6 +242,7 @@ cols_to_keep = c("a", "Parameters", col_order)
 N_pop <- N_fup_pop[, .N, by = "type_vax"]
 total_pop <- N_pop[, sum(N)]
 N_pop <- dcast(N_pop, . ~ type_vax, value.var = "N")[, . := NULL]
+totals_man_d <- copy(N_pop)
 N_pop <- N_pop[, Parameters := "N"][, a := "Study population"]
 setnafill(N_pop, cols = c(vax_man), fill = 0)
 N_pop <- N_pop[, (vax_man_perc) := round(.SD / as.numeric(total_pop) * 100, 3), .SDcols = vax_man]
@@ -326,7 +326,22 @@ sex_pop <- sex_pop[, (vax_man_perc) := lapply(.SD, round_sum), .SDcols = vax_man
 sex_pop <- sex_pop[, (vax_man_perc) := lapply(.SD, paste0, "%"), .SDcols = vax_man_perc]
 sex_pop <- sex_pop[, ..cols_to_keep]
 
-table3_4_5_6 <- rbind(N_pop, fup_pop, min_month, year_month_pop, age_pop, N_age_cat, fup_age_cat, sex_pop)
+load(file = paste0(diroutput, "D4_population_d.RData"))
+positive_before_vax <- D4_population_d[, .(person_id, history_covid, type_vax_1)]
+positive_before_vax <- positive_before_vax[person_id %in% c("ECVM210500083", "ECVM210500225"), history_covid := 1]
+positive_before_vax <- positive_before_vax[, .N, by = c("type_vax_1", "history_covid")]
+
+positive_before_vax <- dcast(positive_before_vax, history_covid ~ type_vax_1, value.var = "N")
+positive_before_vax <- positive_before_vax[, Parameters := "N, %"]
+positive_before_vax <- positive_before_vax[, a := "COVID-19 diagnosis/test in past year"]
+setnafill(positive_before_vax, cols = c(vax_man), fill = 0)
+positive_before_vax <- positive_before_vax[, (vax_man_perc) := lapply(.SD, round_sum), .SDcols = vax_man]
+positive_before_vax <- positive_before_vax[, (vax_man_perc) := lapply(.SD, paste0, "%"), .SDcols = vax_man_perc]
+positive_before_vax <- positive_before_vax[history_covid == 1, ]
+positive_before_vax <- positive_before_vax[, history_covid := NULL]
+positive_before_vax <- positive_before_vax[, ..cols_to_keep]
+
+table3_4_5_6 <- rbind(N_pop, fup_pop, min_month, year_month_pop, age_pop, N_age_cat, fup_age_cat, sex_pop, positive_before_vax)
 setnames(table3_4_5_6, "a", " ")
 
 final_name_table3_4_5_6 <- c(TEST = "table 2", ARS = "table 2", PHARMO = "table 3",
