@@ -11,9 +11,14 @@ all_sex <- copy(D4_persontime_monthly_b)[, lapply(.SD, sum), by = c("Ageband", "
 all_sex <- all_sex[, sex := "both_sexes"]
 D4_persontime_monthly_b <- rbind(D4_persontime_monthly_b, all_sex)
 
-all_year <- copy(D4_persontime_monthly_b)[, lapply(.SD, sum), by = c("sex", "Ageband", "year"),
+all_month <- copy(D4_persontime_monthly_b)[, lapply(.SD, sum), by = c("sex", "Ageband", "year"),
                                            .SDcols = cols_to_sums]
-all_year <- all_year[, month := "all_months"]
+all_month <- all_month[, month := "all_months"]
+D4_persontime_monthly_b <- rbind(D4_persontime_monthly_b, all_month)
+
+all_year <- copy(D4_persontime_monthly_b)[, lapply(.SD, sum), by = c("sex", "Ageband", "month"),
+                                          .SDcols = cols_to_sums]
+all_year <- all_year[, year := "all_years"]
 D4_persontime_monthly_b <- rbind(D4_persontime_monthly_b, all_year)
 
 all_ages <- copy(D4_persontime_monthly_b)[, lapply(.SD, sum), by = c("sex", "month", "year"),
@@ -40,9 +45,14 @@ all_sex <- copy(D4_persontime_monthly_c)[, lapply(.SD, sum), by = c("Ageband", "
 all_sex <- all_sex[, sex := "both_sexes"]
 D4_persontime_monthly_c <- rbind(D4_persontime_monthly_c, all_sex)
 
-all_year <- copy(D4_persontime_monthly_c)[, lapply(.SD, sum), by = c("sex", "Ageband", "year"),
+all_month <- copy(D4_persontime_monthly_c)[, lapply(.SD, sum), by = c("sex", "Ageband", "year"),
+                                           .SDcols = cols_to_sums]
+all_month <- all_month[, month := "all_months"]
+D4_persontime_monthly_c <- rbind(D4_persontime_monthly_c, all_month)
+
+all_year <- copy(D4_persontime_monthly_c)[, lapply(.SD, sum), by = c("sex", "Ageband", "month"),
                                           .SDcols = cols_to_sums]
-all_year <- all_year[, month := "all_months"]
+all_year <- all_year[, year := "all_years"]
 D4_persontime_monthly_c <- rbind(D4_persontime_monthly_c, all_year)
 
 all_ages <- copy(D4_persontime_monthly_c)[, lapply(.SD, sum), by = c("sex", "month", "year"),
@@ -69,9 +79,14 @@ all_sex <- copy(D4_persontime_monthly_d)[, lapply(.SD, sum), by = c("Ageband", "
 all_sex <- all_sex[, sex := "both_sexes"]
 D4_persontime_monthly_d <- rbind(D4_persontime_monthly_d, all_sex)
 
-all_year <- copy(D4_persontime_monthly_d)[, lapply(.SD, sum), by = c("sex", "Ageband", "year", "type_vax_1", "history_covid"),
+all_month <- copy(D4_persontime_monthly_d)[, lapply(.SD, sum), by = c("sex", "Ageband", "year", "type_vax_1", "history_covid"),
                                           .SDcols = cols_to_sums]
-all_year <- all_year[, month := "all_months"]
+all_month <- all_month[, month := "all_months"]
+D4_persontime_monthly_d <- rbind(D4_persontime_monthly_d, all_month)
+
+all_year <- copy(D4_persontime_monthly_d)[, lapply(.SD, sum), by = c("sex", "Ageband", "month", "type_vax_1", "history_covid"),
+                                          .SDcols = cols_to_sums]
+all_year <- all_year[, year := "all_years"]
 D4_persontime_monthly_d <- rbind(D4_persontime_monthly_d, all_year)
 
 all_ages <- copy(D4_persontime_monthly_d)[, lapply(.SD, sum), by = c("sex", "month", "year", "type_vax_1", "history_covid"),
