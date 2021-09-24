@@ -218,10 +218,10 @@ fwrite(table2, file = paste0(dummytables_MIS, "Cohort characteristics at start o
 
 load(file = paste0(diroutput, "D4_population_d.RData"))
 load(file = paste0(dirtemp, "D3_study_population.RData"))
-N_fup_pop <- D4_population_d[, .(person_id, date_vax1, type_vax_1, fup_days, age_at_date_vax_1)]
+N_fup_pop <- D4_population_d[, .(person_id, date_vax1, type_vax_1, fup_days, age_at_1_jan_2021)]
 
 
-setnames(N_fup_pop, c("date_vax1", "type_vax_1", "fup_days","age_at_date_vax_1"),
+setnames(N_fup_pop, c("date_vax1", "type_vax_1", "fup_days","age_at_1_jan_2021"),
          c("date_vax", "type_vax", "fup_vax","age_at_date_vax"))
 # N_fup_pop <- melt(N_fup_pop, measure = list(c("date_vax1", "date_vax2"),
 #                                             c("type_vax_1", "type_vax_2"),
@@ -312,7 +312,7 @@ fup_age_cat <- fup_age_cat[, (vax_man_perc) := lapply(.SD, round_sum), .SDcols =
 fup_age_cat <- fup_age_cat[, (vax_man_perc) := lapply(.SD, paste0, "%"), .SDcols = vax_man_perc]
 fup_age_cat <- fup_age_cat[, ..cols_to_keep]
 
-D4_descriptive_dataset_sex_vaccination_MIS <- fread(paste0(dirD4tables, "D4_descriptive_dataset_sex_vaccination_MIS.csv"))
+D4_descriptive_dataset_sex_vaccination_MIS <- fread(paste0(dirD4tables, "D4_descriptive_dataset_sex_vaccination.csv"))
 D4_descriptive_dataset_sex_vaccination_MIS[type_vax_1 == "J&J", type_vax_1 := "Janssen"]
 setnames(D4_descriptive_dataset_sex_vaccination_MIS, c("Sex_female", "Sex_male"), c("Female", "Male"))
 sex_pop <- melt(D4_descriptive_dataset_sex_vaccination_MIS, id.vars = "type_vax_1",
