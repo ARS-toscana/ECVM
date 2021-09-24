@@ -4,6 +4,8 @@ na_to_0 = function(DT) {
   return(DT)
 }
 
+list_outcomes_MIS <- c("MIS_narrow","KD_narrow","MIS_KD_narrow","MISCC_narrow", "MIS_broad","KD_broad","MIS_KD_broad","MISCC_broad")
+
 load(file = paste0(dirtemp, "D3_study_population.RData"))
 load(file = paste0(dirtemp, "D3_Vaccin_cohort.RData"))
 load(paste0(diroutput, "D3_study_population_cov_ALL.RData"))
