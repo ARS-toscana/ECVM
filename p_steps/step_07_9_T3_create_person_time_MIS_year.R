@@ -47,6 +47,29 @@ Output_file<-CountPersonTime(
 D4_persontime_b<-Output_file
 save(D4_persontime_b, file = paste0(diroutput, "D4_persontime_b.RData"))
 
+Output_file<-CountPersonTime(
+  Dataset_events = events_ALL_OUTCOMES,
+  Dataset = D4_population_b,
+  Person_id = "person_id",
+  Start_study_time = start_persontime_studytime,
+  End_study_time = end_persontime_studytime,
+  Start_date = "cohort_entry_date_MIS_b",
+  End_date = "study_exit_date_MIS_b",
+  #Birth_date = "date_of_birth",
+  Strata = c("sex","agebands_at_1_jan_2021"),
+  Name_event = "name_event",
+  Date_event = "date_event",
+  #Age_bands = c(0,19,29,39,49,59,69,79),
+  Increment="month",
+  Outcomes =  list_outcomes_MIS, 
+  #Unit_of_age = "year",
+  #include_remaning_ages = T,
+  Aggregate = T
+)
+
+D4_persontime_monthly_b<-Output_file
+save(D4_persontime_monthly_b, file = paste0(diroutput, "D4_persontime_monthly_b.RData"))
+
 # for (subpop in subpopulations_non_empty){
 #   thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
 #   thisdirsmallcountsremoved <- ifelse(this_datasource_has_subpopulations == FALSE,dirsmallcountsremoved,dirsmallcountsremovedsubpop[[subpop]])
@@ -105,6 +128,30 @@ Output_file<-CountPersonTime(
 D4_persontime_c<-Output_file
 save(D4_persontime_c, file = paste0(diroutput, "D4_persontime_c.RData"))
 
+Output_file<-CountPersonTime(
+  Dataset_events = events_ALL_OUTCOMES,
+  Dataset = D4_population_c,
+  Person_id = "person_id",
+  Start_study_time = start_persontime_studytime,
+  End_study_time = end_persontime_studytime,
+  Start_date = "cohort_entry_date_MIS_c",
+  End_date = "study_exit_date_MIS_c",
+  #Birth_date = "date_of_birth",
+  Strata = c("sex","agebands_at_1_jan_2021"),
+  Name_event = "name_event",
+  Date_event = "date_event",
+  #Age_bands = c(0,19,29,39,49,59,69,79),
+  Increment="month",
+  Outcomes =  list_outcomes_MIS, 
+  #Unit_of_age = "year",
+  #include_remaning_ages = T,
+  Aggregate = T
+)
+
+D4_persontime_monthly_c<-Output_file
+save(D4_persontime_monthly_c, file = paste0(diroutput, "D4_persontime_monthly_c.RData"))
+
+
 # for (subpop in subpopulations_non_empty){
 #   thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
 #   thisdirsmallcountsremoved <- ifelse(this_datasource_has_subpopulations == FALSE,dirsmallcountsremoved,dirsmallcountsremovedsubpop[[subpop]])
@@ -152,6 +199,29 @@ Output_file<-CountPersonTime(
 
 D4_persontime_d<-Output_file
 save(D4_persontime_d, file = paste0(diroutput, "D4_persontime_d.RData"))
+
+Output_file<-CountPersonTime(
+  Dataset_events = events_ALL_OUTCOMES,
+  Dataset = D4_population_d,
+  Person_id = "person_id",
+  Start_study_time = start_persontime_studytime,
+  End_study_time = end_persontime_studytime,
+  Start_date = "cohort_entry_date_MIS_d",
+  End_date = "study_exit_date_MIS_d",
+  #Birth_date = "date_of_birth",
+  Strata = c("sex","agebands_at_1_jan_2021","type_vax_1","history_covid"), #add covid before vaccine
+  Name_event = "name_event",
+  Date_event = "date_event",
+  #Age_bands = c(0,19,29,39,49,59,69,79),
+  Increment="month",
+  Outcomes =  list_outcomes_MIS, 
+  #Unit_of_age = "year",
+  #include_remaning_ages = T,
+  Aggregate = T
+)
+
+D4_persontime_monthly_d<-Output_file
+save(D4_persontime_monthly_d, file = paste0(diroutput, "D4_persontime_monthly_d.RData"))
 
 # for (subpop in subpopulations_non_empty){
 #   thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
