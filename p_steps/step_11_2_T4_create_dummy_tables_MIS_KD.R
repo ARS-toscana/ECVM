@@ -332,3 +332,44 @@ setnames(table5, "a", " ")
 fwrite(table5, file = paste0(dummytables_MIS, "Cohort characteristics at first occurrence of COVID-19 prior to vaccination (cohort c).csv"))
 
 
+<<<<<<< HEAD
+=======
+# load(file =paste0(dirtemp, "D3_selection_criteria_c.RData"))
+# load(file = paste0(dirtemp, "D4_population_c.RData"))
+# 
+# D4_population_c_all<-merge(D3_selection_criteria_c,D4_population_c,by="person_id",all=F)
+
+
+
+
+
+# Table7 ----------------------------------------------------------------------------------------------------------
+
+load(paste0(dirtemp,"list_outcomes_observed.RData"))
+
+list_outcomes_observed <- intersect(list_outcomes_observed, list_outcomes_MIS)
+list_outcomes_observed <- list_outcomes_observed[list_outcomes_observed %in% c("KD_narrow", "MIS_narrow")]
+
+table_7 <- data.table::data.table(meaning_of_first_event = character(), coding_system_of_code_first_event = character(),
+                                  code_first_event = character(), count_n = character(), Event = character())
+
+for (outcome in list_outcomes_observed) {
+  for (year in c(2020, 2021)) {
+    temp_df <- data.table::fread(paste0(direxp, "QC_code_counts_in_study_population", outcome, "_", year, ".csv"))
+    event <- strsplit(outcome, "_")[[1]][1]
+    temp_df <- temp_df[, Event := event]
+    table_7 <- data.table::rbindlist(list(table_7, temp_df))
+  }
+}
+
+setnames(table_7, c("meaning_of_first_event", "coding_system_of_code_first_event", "code_first_event"),
+         c("meaning_of_event", "Coding_system", "code"))
+
+table_7 <- table_7[, count_n := as.integer(count_n)]
+table_7 <- table_7[, .(sum = sum(count_n)), by = c("Event", "Coding_system", "code", "meaning_of_event")]
+
+table_7 <- table_7[, Code := code]
+table_7 <- table_7[, .(DAP = thisdatasource, Event, Coding_system, Code, meaning_of_event, sum)]
+
+fwrite(table_7, file = paste0(dummytables_MIS, "Code counts for narrow definitions (for each event) separately.csv"))
+>>>>>>> 235c9a5bb946ed748eaa50257cdfb5aabae01629

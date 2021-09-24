@@ -127,6 +127,7 @@ system.time(source(paste0(thisdir,"/p_steps/step_06_T2_create_D3_datasets.R")))
 # create D3 MIS population
 system.time(source(paste0(thisdir,"/p_steps/step_06_2_MIS_population.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_07_9_T3_create_person_time_MIS_year.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_07_10_T3_aggregate_monthly_MIS.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_08_T4_IR_MIS.R")))
 
 #descriptive
