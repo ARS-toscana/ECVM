@@ -5,6 +5,13 @@
 
 # authors: Rosa Gini, Olga Paoletti, Davide Messina, Giorgio Limoncella
 
+# changelog V5.3_MIS:
+# addition of final tables 1-7
+
+# changelog V5.2_MIS:
+# correction: start of countpersontime at cohort entry and not at study entry
+
+
 # changelog V5.1_MIS:
 # changed codes for MIS and added a specifi to_run for BIFAP (to correct for subpopulations)
 
