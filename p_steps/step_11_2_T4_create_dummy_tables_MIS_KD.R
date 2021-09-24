@@ -213,16 +213,259 @@ fwrite(table2, file = paste0(dummytables_MIS, "Cohort characteristics at start o
 
 
 
+# table2b ------------------------------------------------------------------
+
+
+load(file = paste0(diroutput, "D4_population_d.RData"))
+load(file = paste0(dirtemp, "D3_study_population.RData"))
+N_fup_pop <- D4_population_d[, .(person_id, date_vax1, type_vax_1, fup_days, age_at_date_vax_1)]
+
+
+setnames(N_fup_pop, c("date_vax1", "type_vax_1", "fup_days","age_at_date_vax_1"),
+         c("date_vax", "type_vax", "fup_vax","age_at_date_vax"))
+# N_fup_pop <- melt(N_fup_pop, measure = list(c("date_vax1", "date_vax2"),
+#                                             c("type_vax_1", "type_vax_2"),
+#                                             c("fup_vax1", "fup_vax2"),
+#                                             c("age_at_date_vax_1", "age_at_date_vax_2")),
+#                   value.name = c("date_vax", "type_vax", "fup_vax", "age_at_date_vax"), na.rm = T)[, variable := NULL]
+N_fup_pop[type_vax == "J&J", type_vax := "Janssen"]
+N_fup_pop[, fup_vax := as.numeric(fup_vax) / 365.25]
+
+vax_man <- unique(N_fup_pop[, type_vax])
+
+vax_man_tot <- c("Pfizer", "Moderna", "AstraZeneca", "Janssen", "UKN")
+
+vax_man <- intersect(vax_man_tot, vax_man)
+vax_man_perc <- paste("perc", vax_man, sep = "_")
+col_order <- c(rbind(vax_man, vax_man_perc))
+cols_to_keep = c("a", "Parameters", col_order)
+
+N_pop <- N_fup_pop[, .N, by = "type_vax"]
+total_pop <- N_pop[, sum(N)]
+N_pop <- dcast(N_pop, . ~ type_vax, value.var = "N")[, . := NULL]
+N_pop <- N_pop[, Parameters := "N"][, a := "Study population"]
+setnafill(N_pop, cols = c(vax_man), fill = 0)
+N_pop <- N_pop[, (vax_man_perc) := round(.SD / as.numeric(total_pop) * 100, 3), .SDcols = vax_man]
+N_pop <- N_pop[, (vax_man_perc) := lapply(.SD, paste0, "%"), .SDcols = vax_man_perc]
+N_pop <- N_pop[, ..cols_to_keep]
+
+fup_pop <- N_fup_pop[, sum(fup_vax), by = "type_vax"][, V1 := round(V1, 0)]
+pt_total <- fup_pop[, sum(V1)]
+fup_pop <- dcast(fup_pop, . ~ type_vax, value.var = "V1")[, . := NULL]
+fup_pop <- fup_pop[, Parameters := "PY"][, a := "Person-years of follow-up"]
+setnafill(fup_pop, cols = c(vax_man), fill = 0)
+fup_pop <- fup_pop[, (vax_man_perc) := round(.SD / as.numeric(pt_total) * 100, 3), .SDcols = vax_man]
+fup_pop <- fup_pop[, (vax_man_perc) := lapply(.SD, paste0, "%"), .SDcols = vax_man_perc]
+fup_pop <- fup_pop[, ..cols_to_keep]
+
+
+min_month <- N_fup_pop[, min(date_vax), by = "type_vax"][, V1 := month(V1)]
+min_month <- dcast(min_month, . ~ type_vax, value.var = "V1")[, . := NULL]
+min_month <- min_month[, Parameters := ""][, a := "Month of first vaccination"]
+min_month <- min_month[, (vax_man_perc) := character(nrow(min_month))]
+min_month <- min_month[, ..cols_to_keep]
+
+year_month_pop <- N_fup_pop[, c("year", "month") := list(lubridate::year(date_vax), lubridate::month(date_vax))]
+year_month_pop <- year_month_pop[, .N, by = c("type_vax", "year", "month")]
+year_month_pop <- dcast(year_month_pop, year + month ~ type_vax, value.var = "N")
+setorder(year_month_pop, year, month)
+year_month_pop <- year_month_pop[, Parameters := "N"][, a := paste(month.name[month], year)]
+setnafill(year_month_pop, cols = c(vax_man), fill = 0)
+round_sum <- function(x) {round(x / sum(x) * 100, 3)}
+year_month_pop <- year_month_pop[, (vax_man_perc) := lapply(.SD, round_sum), .SDcols = vax_man]
+year_month_pop <- year_month_pop[, (vax_man_perc) := lapply(.SD, paste0, "%"), .SDcols = vax_man_perc]
+year_month_pop <- year_month_pop[, ..cols_to_keep]
+
+age_pop <- copy(N_fup_pop)[, .(Age_P25 = round(quantile(age_at_date_vax, probs = 0.25)),
+                               Age_P50 = round(quantile(age_at_date_vax, probs = 0.50)),
+                               Age_p75 = round(quantile(age_at_date_vax, probs = 0.75)),
+                               Age_mean = round(mean(age_at_date_vax)),
+                               Age_min = min(age_at_date_vax),
+                               Age_max = max(age_at_date_vax)),
+                           by = "type_vax"]
+age_pop <- melt(age_pop, id.vars = "type_vax",
+                measure.vars = c("Age_min", "Age_P25", "Age_P50", "Age_mean", "Age_p75", "Age_max"),
+                variable.name = "child", value.name = "dob")
+age_pop <- dcast(age_pop, child ~ type_vax, value.var = "dob")
+age_pop <- age_pop[, Parameters := c("Min", "P25", "P50", "Mean", "P75", "Max")][, a := "Age in years"]
+age_pop <- age_pop[, (vax_man_perc) := character(nrow(age_pop))]
+age_pop <- age_pop[, ..cols_to_keep]
+
+age_cat <- N_fup_pop[,age_at_date_vax := as.character(cut(age_at_date_vax, breaks = Agebands_MIS, labels = Agebands_lables_MIS))]
+
+
+N_age_cat <- age_cat[, .N, by = c("type_vax", "age_at_date_vax")]
+N_age_cat <- dcast(N_age_cat, age_at_date_vax ~ type_vax, value.var = "N")
+setnames(N_age_cat, "age_at_date_vax", "Parameters")
+N_age_cat <- N_age_cat[, a := "Age in categories"]
+setnafill(N_age_cat, cols = c(vax_man), fill = 0)
+N_age_cat <- N_age_cat[, (vax_man_perc) := lapply(.SD, round_sum), .SDcols = vax_man]
+N_age_cat <- N_age_cat[, (vax_man_perc) := lapply(.SD, paste0, "%"), .SDcols = vax_man_perc]
+N_age_cat <- N_age_cat[, ..cols_to_keep]
+
+fup_age_cat <- age_cat[, sum(fup_vax), by = c("type_vax", "age_at_date_vax")][, V1 := round(V1, 0)]
+fup_age_cat <- dcast(fup_age_cat, age_at_date_vax ~ type_vax, value.var = "V1")
+setnames(fup_age_cat, "age_at_date_vax", "Parameters")
+fup_age_cat <- fup_age_cat[, a := "Person years across age categories"]
+setnafill(fup_age_cat, cols = c(vax_man), fill = 0)
+fup_age_cat <- fup_age_cat[, (vax_man_perc) := lapply(.SD, round_sum), .SDcols = vax_man]
+fup_age_cat <- fup_age_cat[, (vax_man_perc) := lapply(.SD, paste0, "%"), .SDcols = vax_man_perc]
+fup_age_cat <- fup_age_cat[, ..cols_to_keep]
+
+D4_descriptive_dataset_sex_vaccination_MIS <- fread(paste0(dirD4tables, "D4_descriptive_dataset_sex_vaccination_MIS.csv"))
+D4_descriptive_dataset_sex_vaccination_MIS[type_vax_1 == "J&J", type_vax_1 := "Janssen"]
+setnames(D4_descriptive_dataset_sex_vaccination_MIS, c("Sex_female", "Sex_male"), c("Female", "Male"))
+sex_pop <- melt(D4_descriptive_dataset_sex_vaccination_MIS, id.vars = "type_vax_1",
+                measure.vars = c("Female", "Male"),
+                variable.name = "child", value.name = "dob")
+sex_pop <- dcast(sex_pop, child ~ type_vax_1, value.var = "dob")
+setnames(sex_pop, "child", "Parameters")
+sex_pop <- sex_pop[, a := "Person years across sex"]
+setnafill(sex_pop, cols = c(vax_man), fill = 0)
+sex_pop <- sex_pop[, (vax_man_perc) := lapply(.SD, round_sum), .SDcols = vax_man]
+sex_pop <- sex_pop[, (vax_man_perc) := lapply(.SD, paste0, "%"), .SDcols = vax_man_perc]
+sex_pop <- sex_pop[, ..cols_to_keep]
+
+table3_4_5_6 <- rbind(N_pop, fup_pop, min_month, year_month_pop, age_pop, N_age_cat, fup_age_cat, sex_pop)
+setnames(table3_4_5_6, "a", " ")
+
+final_name_table3_4_5_6 <- c(TEST = "table 2", ARS = "table 2", PHARMO = "table 3",
+                             CPRD = "table 3", BIFAP = "table 4")[[thisdatasource]]
+
+vect_recode_manufacturer <- c(TEST = "Italy_ARS", ARS = "Italy_ARS", PHARMO = "Netherlands-PHARMO",
+                              CPRD = "UK_CPRD", BIFAP = "ES_BIFAP")
+
+empty_df <- table3_4_5_6[0,]
+empty_df <- rbindlist(list(empty_df, as.list(c("", "", unlist(rep(c("N", "%"), length(vax_man)))))))
+
+table3_4_5_6 <- rbindlist(list(empty_df, table3_4_5_6))
+
+fwrite(table3_4_5_6, file = paste0(dummytables, final_name_table3_4_5_6,
+                                   " Cohort characteristics at first COVID-19 vaccination ", 
+                                   vect_recode_manufacturer[[thisdatasource]], ".csv"))
 
 
 
+# table5 ------------------------------------------------------------------
 
-#table 5
 
-# load(file =paste0(dirtemp, "D3_selection_criteria_c.RData"))
-# load(file = paste0(dirtemp, "D4_population_c.RData"))
-# 
-# D4_population_c_all<-merge(D3_selection_criteria_c,D4_population_c,by="person_id",all=F)
+ageband_studystart_c <- fread(paste0(dirD4tables, "D4_descriptive_dataset_ageband_studystart_c_MIS.csv"))
+
+ageband_studystart_c[, Datasource := c(TEST = "Test", ARS = "Italy_ARS", PHARMO = "NL_PHARMO", CPRD = "UK_CPRD",
+                                       BIFAP = "ES_BIFAP")[Datasource]]
+
+'%!in%' <- function(x,y)!('%in%'(x,y))
+
+if ("AgeCat_011" %!in% colnames(ageband_studystart_c)) ageband_studystart_c[,AgeCat_011:=0]
+if ("AgeCat_1217" %!in% colnames(ageband_studystart_c)) ageband_studystart_c[,AgeCat_1217:=0]
+if ("AgeCat_1819" %!in% colnames(ageband_studystart_c)) ageband_studystart_c[,AgeCat_1819:=0]
+if ("AgeCat_2029" %!in% colnames(ageband_studystart_c)) ageband_studystart_c[,AgeCat_2029:=0]
+if ("AgeCat_3039" %!in% colnames(ageband_studystart_c)) ageband_studystart_c[,AgeCat_3039:=0]
+if ("AgeCat_4049" %!in% colnames(ageband_studystart_c)) ageband_studystart_c[,AgeCat_4049:=0]
+if ("AgeCat_5059" %!in% colnames(ageband_studystart_c)) ageband_studystart_c[,AgeCat_5059:=0]
+if ("AgeCat_6069" %!in% colnames(ageband_studystart_c)) ageband_studystart_c[,AgeCat_6069:=0]
+if ("AgeCat_7079" %!in% colnames(ageband_studystart_c)) ageband_studystart_c[,AgeCat_7079:=0]
+
+ageband_studystart_c[, TOTAL := sum(AgeCat_011, AgeCat_1217, AgeCat_1819, AgeCat_2029, AgeCat_3039, AgeCat_4049,
+                                    AgeCat_5059, AgeCat_6069, AgeCat_7079, get("AgeCat_80+")), by = Datasource]
+
+total_pop_c <- ageband_studystart_c[, a := "Study population"][, Parameters := "N"][, .(a, Parameters, Datasource, TOTAL)]
+total_pop_c <- dcast(total_pop_c, a + Parameters ~ Datasource, value.var = 'TOTAL')
+col_to_keep <- intersect(c("a", "Parameters", "Italy_ARS", "NL_PHARMO",
+                           "UK_CPRD", "ES_BIFAP", "Test"), names(total_pop_c))
+total_pop_c <- total_pop_c[, ..col_to_keep]
+
+
+age_studystart_c <- fread(paste0(dirD4tables, "D4_descriptive_dataset_age_studystart_c_MIS.csv"))
+
+age_studystart_c[, Datasource := c(TEST = "Test", ARS = "Italy_ARS", PHARMO = "NL_PHARMO", CPRD = "UK_CPRD",
+                                   BIFAP = "ES_BIFAP")[Datasource]]
+
+pt_total_c <- age_studystart_c[, a := "Person years of follow-up"][, Parameters := "PY"][, .(a, Parameters, Datasource, Followup)]
+pt_total_c <- dcast(pt_total_c, a + Parameters ~ Datasource, value.var = 'Followup')
+pt_total_c <- pt_total_c[, ..col_to_keep]
+
+age_start_c <- copy(age_studystart_c)[, a := "Age in years"][, Followup := NULL]
+age_start_c <- melt(age_start_c, id.vars = c("a", "Datasource"),
+                    measure.vars = c("Age_min", "Age_P25", "Age_P50", "Age_mean", "Age_p75", "Age_max"),
+                    variable.name = "Parameters")
+age_start_c <- dcast(age_start_c, a + Parameters  ~ Datasource, value.var = 'value')
+age_start_c[, Parameters := c(Age_min = "Min", Age_P25 = "P25", Age_P50 = "P50", Age_mean = "Mean", Age_p75 = "P75",
+                              Age_max = "Max")[Parameters]]
+age_start_c <- age_start_c[, ..col_to_keep]
+
+
+ageband_start_c <- ageband_studystart_c[, a := "Age in categories"][, TOTAL := NULL]
+ageband_start_c <- melt(ageband_start_c, id.vars = c("a", "Datasource"),
+                        measure.vars = c("AgeCat_011", "AgeCat_1217", "AgeCat_1819", "AgeCat_2029", "AgeCat_3039",
+                                         "AgeCat_4049", "AgeCat_5059", "AgeCat_6069", "AgeCat_7079", "AgeCat_80+"),
+                        variable.name = "Parameters")
+ageband_start_c <- dcast(ageband_start_c, a + Parameters  ~ Datasource, value.var = 'value')
+ageband_start_c[, Parameters := c(AgeCat_011 = "0-11", AgeCat_1217 = "12-17", AgeCat_0119 = "18-19", AgeCat_2029 = "20-29",
+                                  AgeCat_3039 = "30-39", AgeCat_4049 = "40-49", AgeCat_5059 = "50-59", AgeCat_6069 = "60-69",
+                                  AgeCat_7079 = "70-79", "Agecat_80+" = ">=80")[Parameters]]
+
+
+
+D4_descriptive_dataset_covid_studystart_c_MIS <- fread(paste0(dirD4tables, "D4_descriptive_dataset_covid_studystart_c_MIS.csv"))
+D4_descriptive_dataset_covid_studystart_c_MIS[, Datasource := c(TEST = "Test", ARS = "Italy_ARS",
+                                                                PHARMO = "NL_PHARMO", CPRD = "UK_CPRD",
+                                                                BIFAP = "ES_BIFAP")[Datasource]]
+
+
+covid_month <- D4_descriptive_dataset_covid_studystart_c_MIS[, a := "Month of first diagnosis"]
+x<-colnames(covid_month)
+cols_covid<-x[grepl("-", x)]
+
+covid_month <- melt(covid_month, id.vars = c("a", "Datasource"),
+                    measure.vars = cols_covid,
+                    variable.name = "Parameters")
+covid_month <- dcast(covid_month, a + Parameters  ~ Datasource, value.var = 'value')
+#covid_month[, Parameters := c(Sex_male = "Male", Sex_female = "Female")[Parameters]]
+
+
+risk_factors_studystart_c <- fread(paste0(dirD4tables, "D4_descriptive_dataset_covariate_studystart_c_MIS.csv"))
+risk_factors_studystart_c[, Datasource := c(TEST = "Test", ARS = "Italy_ARS", PHARMO = "NL_PHARMO", CPRD = "UK_CPRD",
+                                            BIFAP = "ES_BIFAP")[Datasource]]
+risk_factors_start_c <- risk_factors_studystart_c[, a := "At risk population at January 1-2020"]
+risk_factors_start_c <- melt(risk_factors_start_c, id.vars = c("a", "Datasource"),
+                             measure.vars = c("CV", "Cancer", "CLD", "HIV", "CKD", "Diabetes",
+                                              "Obesity", "Sicklecell", "immunosuppressants"),
+                             variable.name = "Parameters")
+risk_factors_start_c <- dcast(risk_factors_start_c, a + Parameters  ~ Datasource, value.var = 'value')
+risk_factors_start_c[, Parameters := c(CV = "Cardiovascular disease", Cancer = "Cancer", CLD = "Chronic lung disease",
+                                       HIV = "HIV", CKD = "Chronic kidney disease", Diabetes = "Diabetes",
+                                       Obesity = "Severe obesity", Sicklecell = "Sickle cell disease",
+                                       immunosuppressants = "Use of immunosuppressants")[Parameters]]
+
+table5 <- rbind(total_pop_c, pt_total_c,covid_month, age_start_c, ageband_start_c,  risk_factors_start_c)
+daps <- intersect(c("Italy_ARS", "NL_PHARMO", "UK_CPRD", "ES_BIFAP", "Test"), names(table5))
+daps_perc <- paste("perc", daps, sep="_")
+col_order <- c(rbind(daps, daps_perc))
+table5 <- table5[, (daps_perc) := character(nrow(table5))]
+total_pop_c <- total_pop_c[, ..daps]
+pt_total_c <- pt_total_c[, ..daps]
+table5 <- table5[a %in% c("Age in categories", "Month of first diagnosis", "At risk population at January 1-2020"),
+                 (daps_perc) := round(.SD / as.numeric(total_pop_c) * 100, 3), .SDcols = daps]
+
+table5 <- table5[a == "Person years across age categories",
+                 (daps_perc) := round(.SD / as.numeric(pt_total_c) * 100, 3), .SDcols = daps]
+
+table5 <- table5[a %in% c("Age in categories", "Person years across sex", "At risk population at January 1-2020", 
+                          "Person years across age categories"), (daps_perc) := lapply(.SD, paste0, "%"), .SDcols = daps_perc]
+
+empty_df <- table5[0,]
+empty_df <- rbindlist(list(empty_df, list("", "", "N", "%")))
+
+table5 <- rbindlist(list(empty_df, table5))
+
+setcolorder(table5, c("a", "Parameters", col_order))
+
+setnames(table5, "a", " ")
+
+fwrite(table5, file = paste0(dummytables_MIS, "Cohort characteristics at first occurrence of COVID-19 prior to vaccination (cohort c).csv"))
+
+
 
 
 
@@ -259,38 +502,40 @@ table_7 <- table_7[, .(DAP = thisdatasource, Event, Coding_system, Code, meaning
 fwrite(table_7, file = paste0(dummytables_MIS, "Code counts for narrow definitions (for each event) separately.csv"))
 
 
-# Table8 ----------------------------------------------------------------------------------------------------------
 
-load(paste0(direxp,"D4_IR_monthly_MIS_b.RData"))
-load(paste0(dirtemp,"list_outcomes_observed.RData"))
+# # Table8 ----------------------------------------------------------------------------------------------------------
+# 
+# load(paste0(direxp,"D4_IR_monthly_MIS_b.RData"))
+# load(paste0(dirtemp,"list_outcomes_observed.RData"))
+# 
+# list_outcomes_observed <- intersect(list_outcomes_observed, list_outcomes_MIS)
+# list_outcomes_observed <- list_outcomes_observed[list_outcomes_observed %in% c("KD_narrow", "MIS_narrow", "MIS_KD_narrow")]
+# 
+# list_risk <- list_outcomes_observed
+# vect_recode_AESI <- list_outcomes_observed
+# names(vect_recode_AESI) <- c(as.character(seq_len(length(list_outcomes_observed))))
+# 
+# colA = paste0("Persontime_", list_risk)
+# colB = paste0("IR_", list_risk)
+# colC = paste0("lb_", list_risk)
+# colD = paste0("ub_", list_risk)
+# 
+# PT_monthly <- data.table::melt(D4_IR_monthly_MIS_b, measure = list(colA, colB, colC, colD),
+#                                variable.name = "AESI", value.name = c("PT", "IR", "lb", "ub"), na.rm = F)
+# 
+# setnames(PT_monthly, "agebands_at_1_jan_2021", "Ageband")
+# PT_monthly <- PT_monthly[, DAP := thisdatasource][ , AESI := vect_recode_AESI[AESI]]
+# PT_monthly <- PT_monthly[, .(DAP, sex, month, year, Ageband, AESI, PT, IR, lb, ub)]
+# 
+# 
+# table_10 <- PT_monthly[year == 2020 & sex == "both_sexes" & Ageband == "all_birth_cohorts" & month != "all_months"
+#                        & !stringr::str_detect(AESI, "broad"), ]
+# table_10 <- table_10[, c("year", "sex", "Ageband") := NULL]
+# 
+# setcolorder(table_10, c("DAP", "AESI", "month", "PT", "IR", "lb", "ub"))
+# 
+# setnames(table_10, c("month", "PT", "IR", "lb", "ub"),
+#          c("Month in 2020", "Person years", "IR narrow", "LL narrow", "UL narrow"))
+# 
+# fwrite(table_10, file = paste0(dummytables, "Incidence of AESI (narrow) per 100,000 PY by calendar month in 2020.csv"))
 
-list_outcomes_observed <- intersect(list_outcomes_observed, list_outcomes_MIS)
-list_outcomes_observed <- list_outcomes_observed[list_outcomes_observed %in% c("KD_narrow", "MIS_narrow", "MIS_KD_narrow")]
-
-list_risk <- list_outcomes_observed
-vect_recode_AESI <- list_outcomes_observed
-names(vect_recode_AESI) <- c(as.character(seq_len(length(list_outcomes_observed))))
-
-colA = paste0("Persontime_", list_risk)
-colB = paste0("IR_", list_risk)
-colC = paste0("lb_", list_risk)
-colD = paste0("ub_", list_risk)
-
-PT_monthly <- data.table::melt(D4_IR_monthly_MIS_b, measure = list(colA, colB, colC, colD),
-                               variable.name = "AESI", value.name = c("PT", "IR", "lb", "ub"), na.rm = F)
-
-setnames(PT_monthly, "agebands_at_1_jan_2021", "Ageband")
-PT_monthly <- PT_monthly[, DAP := thisdatasource][ , AESI := vect_recode_AESI[AESI]]
-PT_monthly <- PT_monthly[, .(DAP, sex, month, year, Ageband, AESI, PT, IR, lb, ub)]
-
-
-table_10 <- PT_monthly[year == 2020 & sex == "both_sexes" & Ageband == "all_birth_cohorts" & month != "all_months"
-                       & !stringr::str_detect(AESI, "broad"), ]
-table_10 <- table_10[, c("year", "sex", "Ageband") := NULL]
-
-setcolorder(table_10, c("DAP", "AESI", "month", "PT", "IR", "lb", "ub"))
-
-setnames(table_10, c("month", "PT", "IR", "lb", "ub"),
-         c("Month in 2020", "Person years", "IR narrow", "LL narrow", "UL narrow"))
-
-fwrite(table_10, file = paste0(dummytables, "Incidence of AESI (narrow) per 100,000 PY by calendar month in 2020.csv"))
