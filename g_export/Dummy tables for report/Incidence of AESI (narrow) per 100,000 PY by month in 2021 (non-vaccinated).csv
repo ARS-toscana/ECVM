@@ -20,6 +20,9 @@ TEST,Ischstroke_narrow,March,327,0,0,412037.68,total
 TEST,VTE_narrow,January,503,0,0,267865.45,total
 TEST,VTE_narrow,February,426,0,0,316282.45,total
 TEST,VTE_narrow,March,327,0,0,412037.68,total
+TEST,MIS_KD_narrow,January,503,0,0,267865.45,total
+TEST,MIS_KD_narrow,February,426,0,0,316282.45,total
+TEST,MIS_KD_narrow,March,327,0,0,412037.68,total
 TEST,ArterialNoTP,January,503,0,0,267865.45,total
 TEST,ArterialNoTP,February,426,0,0,316282.45,total
 TEST,ArterialNoTP,March,327,0,0,412037.68,total
