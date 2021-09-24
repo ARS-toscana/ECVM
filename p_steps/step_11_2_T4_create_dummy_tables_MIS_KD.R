@@ -257,3 +257,40 @@ table_7 <- table_7[, Code := code]
 table_7 <- table_7[, .(DAP = thisdatasource, Event, Coding_system, Code, meaning_of_event, sum)]
 
 fwrite(table_7, file = paste0(dummytables_MIS, "Code counts for narrow definitions (for each event) separately.csv"))
+
+
+# Table8 ----------------------------------------------------------------------------------------------------------
+
+load(paste0(direxp,"D4_IR_monthly_MIS_b.RData"))
+load(paste0(dirtemp,"list_outcomes_observed.RData"))
+
+list_outcomes_observed <- intersect(list_outcomes_observed, list_outcomes_MIS)
+list_outcomes_observed <- list_outcomes_observed[list_outcomes_observed %in% c("KD_narrow", "MIS_narrow", "MIS_KD_narrow")]
+
+list_risk <- list_outcomes_observed
+vect_recode_AESI <- list_outcomes_observed
+names(vect_recode_AESI) <- c(as.character(seq_len(length(list_outcomes_observed))))
+
+colA = paste0("Persontime_", list_risk)
+colB = paste0("IR_", list_risk)
+colC = paste0("lb_", list_risk)
+colD = paste0("ub_", list_risk)
+
+PT_monthly <- data.table::melt(D4_IR_monthly_MIS_b, measure = list(colA, colB, colC, colD),
+                               variable.name = "AESI", value.name = c("PT", "IR", "lb", "ub"), na.rm = F)
+
+setnames(PT_monthly, "agebands_at_1_jan_2021", "Ageband")
+PT_monthly <- PT_monthly[, DAP := thisdatasource][ , AESI := vect_recode_AESI[AESI]]
+PT_monthly <- PT_monthly[, .(DAP, sex, month, year, Ageband, AESI, PT, IR, lb, ub)]
+
+
+table_10 <- PT_monthly[year == 2020 & sex == "both_sexes" & Ageband == "all_birth_cohorts" & month != "all_months"
+                       & !stringr::str_detect(AESI, "broad"), ]
+table_10 <- table_10[, c("year", "sex", "Ageband") := NULL]
+
+setcolorder(table_10, c("DAP", "AESI", "month", "PT", "IR", "lb", "ub"))
+
+setnames(table_10, c("month", "PT", "IR", "lb", "ub"),
+         c("Month in 2020", "Person years", "IR narrow", "LL narrow", "UL narrow"))
+
+fwrite(table_10, file = paste0(dummytables, "Incidence of AESI (narrow) per 100,000 PY by calendar month in 2020.csv"))
