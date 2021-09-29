@@ -29,7 +29,7 @@ empty_spells <- empty_spells[op_meaning!="test",]
 
 if (this_datasource_has_subpopulations == TRUE){
   # for each op_meaning_set, create the dataset of the corresponding spells
-  output_spells_category_meaning_set <- vector(mode="list")
+  output_spells_category <- vector(mode="list")
   for (op_meaning_set in op_meaning_sets[[thisdatasource]]){
     periods_op_meaning_set <- OBSERVATION_PERIODS
     cond_op_meaning_set <- ""
@@ -61,15 +61,15 @@ if (this_datasource_has_subpopulations == TRUE){
       output_spells_op_meaning_set <- empty_spells
     }
     
-    assign(paste0("output_spells_category_meaning_set_",op_meaning_set), output_spells_op_meaning_set)
-    save(list=paste0("output_spells_category_meaning_set_",op_meaning_set),file=paste0(dirtemp,paste0("output_spells_category_meaning_set_",op_meaning_set,".RData")))
+    assign(paste0("output_spells_category_",op_meaning_set), output_spells_op_meaning_set)
+    save(list=paste0("output_spells_category_",op_meaning_set),file=paste0(dirtemp,paste0("output_spells_category_",op_meaning_set,".RData")))
     #rm(output_spells_op_meaning_set,periods_op_meaning_set)
   }
   
-  #rm(output_spells_category_meaning_set)
+  #rm(output_spells_category)
   
   # creates spells of overlapping op_meaning sets
-  #load(paste0(dirtemp,"output_spells_category_meaning_set.RData"))
+  #load(paste0(dirtemp,"output_spells_category.RData"))
   for (subpop in subpopulations_non_empty){
     op_meaning_sets_in_subpop <- op_meaning_sets_in_subpopulations[[thisdatasource]][[subpop]]
     if (length(op_meaning_sets_in_subpop)>1){
@@ -87,11 +87,11 @@ if (this_datasource_has_subpopulations == TRUE){
         # compute spells overlap corresponding to overlap_op_meaning_sets, unless it has been already computed
         if (!(overlap_op_meaning_sets %in% op_meaning_sets[[thisdatasource]] )){
           print(paste0("COMPUTE SPELLS OF TIME FOR ",overlap_op_meaning_sets))
-          inputfirst <- get(paste0("output_spells_category_meaning_set_",op_meaning_set_first))
-          inputsecond <- get(paste0("output_spells_category_meaning_set_",op_meaning_set_second))
+          inputfirst <- get(paste0("output_spells_category_",op_meaning_set_first))
+          inputsecond <- get(paste0("output_spells_category_",op_meaning_set_second))
           # check whether one of the two composing input files is empty (if so, the overlap is also empty), otherwise use CreateSpells again
           if(nrow(inputfirst)==0 | nrow(inputsecond)==0){
-            output_spells_category_meaning_set[[overlap_op_meaning_sets]] <- empty_spells
+            output_spells_category[[overlap_op_meaning_sets]] <- empty_spells
           }else{
             input_observation_periods_overlap <- as.data.table(rbind(inputfirst,inputsecond,fill = T))
             temp <- CreateSpells(
@@ -106,8 +106,8 @@ if (this_datasource_has_subpopulations == TRUE){
               only_overlaps = T,
               gap_allowed = 21
             )
-            assign(paste0("output_spells_category_meaning_set",overlap_op_meaning_sets), get("overlap"))
-            #output_spells_category_meaning_set[[overlap_op_meaning_sets]]  
+            assign(paste0("output_spells_category_",overlap_op_meaning_sets), get("overlap"))
+            #output_spells_category[[overlap_op_meaning_sets]]  
           }
           rm(inputfirst,inputsecond, temp)
         }
@@ -116,11 +116,11 @@ if (this_datasource_has_subpopulations == TRUE){
       
     }
   }
-  save(list=paste0("output_spells_category_meaning_set",overlap_op_meaning_sets),file=paste0(dirtemp,paste0("output_spells_category_meaning_set",overlap_op_meaning_sets,".RData")))
-  #rm(output_spells_category_meaning_set)
+  save(list=paste0("output_spells_category_",overlap_op_meaning_sets),file=paste0(dirtemp,paste0("output_spells_category_",overlap_op_meaning_sets,".RData")))
+  #rm(output_spells_category)
   
   # if the datasource has subpopulations, assign to each subpopulation its spells
-  load(paste0(dirtemp,"output_spells_category_meaning_set.RData"))
+  #load(paste0(dirtemp,"output_spells_category.RData"))
   output_spells_category <- vector(mode="list")
   for (subpop in subpopulations_non_empty){
     print(subpop)
@@ -128,23 +128,24 @@ if (this_datasource_has_subpopulations == TRUE){
     print(op_meaning_sets_in_subpop)
     print(length(op_meaning_sets_in_subpop))
     if (length(op_meaning_sets_in_subpop)==1){
-      assign(paste0("output_spells_category",subpop),output_spells_category_meaning_set[[op_meaning_sets_in_subpop]])
-      
+      assign(paste0("output_spells_category_",subpop),output_spells_category[[op_meaning_sets_in_subpop]])
+      save(list=paste0("output_spells_category_",subpop),file=paste0(dirtemp,paste0("output_spells_category_",subpop,".RData")))
     }
     if (length(op_meaning_sets_in_subpop)>1){
       concat_op_meaning_sets_in_subpop = op_meaning_sets_in_subpop[1]
       for (j in 2:length(op_meaning_sets_in_subpop)){
         concat_op_meaning_sets_in_subpop = paste0(concat_op_meaning_sets_in_subpop,'_',op_meaning_sets_in_subpop[j])
       }
-      assign(paste0("output_spells_category",subpop),output_spells_category_meaning_set[[concat_op_meaning_sets_in_subpop]])
+      assign(paste0("output_spells_category_",subpop),output_spells_category[[concat_op_meaning_sets_in_subpop]])
+      save(list=paste0("output_spells_category_",subpop),file=paste0(dirtemp,paste0("output_spells_category_",subpop,".RData")))
     }
   }
-  save(list=paste0("output_spells_category",subpop),file=paste0(dirtemp,paste0("output_spells_category",subpop,".RData")))
-  #rm(output_spells_category_meaning_set,output_spells_category)
+
+  #rm(output_spells_category,output_spells_category)
 }else{
   
   OBSERVATION_PERIODS <- OBSERVATION_PERIODS[,op_meaning:="all"]
-  output_spells_category <- CreateSpells(
+  assign("output_spells_category_ALL" ,CreateSpells(
     dataset=OBSERVATION_PERIODS,
     id="person_id" ,
     start_date = "op_start_date",
@@ -153,17 +154,18 @@ if (this_datasource_has_subpopulations == TRUE){
     replace_missing_end_date = study_end,
     gap_allowed = days
   )
+  )
   
   
-  output_spells_category<-as.data.table(output_spells_category)
+  output_spells_category_ALL<-as.data.table(output_spells_category_ALL)
   setkeyv(
-    output_spells_category,
+    output_spells_category_ALL,
     c("person_id", "entry_spell_category", "exit_spell_category", "num_spell", "op_meaning")
   )
   
-  save(output_spells_category,file=paste0(dirtemp,"output_spells_category.RData"))
+  save(output_spells_category_ALL,file=paste0(dirtemp,"output_spells_category_ALL.RData"))
   
-  rm(OBSERVATION_PERIODS,output_spells_category)
+  rm(OBSERVATION_PERIODS,output_spells_category_ALL)
 }
 
 
