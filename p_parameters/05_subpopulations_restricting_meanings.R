@@ -4,7 +4,7 @@
 
 # datasources_with_subpopulations lists the datasources where some meanings of events should be excluded during some observation periods, associated with some op_meanings
 # datasources_with_subpopulations <- c("TEST","BIFAP","SIDIAP","PHARMO")
-datasources_with_subpopulations <- c()
+datasources_with_subpopulations <- c("TEST")
 
 this_datasource_has_subpopulations <- ifelse(thisdatasource %in% datasources_with_subpopulations,TRUE,FALSE) 
 
@@ -30,6 +30,7 @@ exclude_meaning_of_event <- vector(mode="list")
 
 # datasource TEST
 subpopulations[["TEST"]] = c("HOSP","ER_HOSP")
+
 
 op_meaning_sets[["TEST"]] <- c("meaningsHOSP","meaningsER")
 op_meanings_list_per_set[["TEST"]][["meaningsHOSP"]] <- c("REGION_1_HOSP","REGION_2_HOSP","REGION_3_HOSP")
@@ -124,11 +125,26 @@ if (this_datasource_has_subpopulations == TRUE){
   }
 }
 
-if (this_datasource_has_subpopulations == FALSE) { 
+# if (this_datasource_has_subpopulations == FALSE) { 
+#   subpopulations_non_empty <- c('ALL')
+#   subpopulations[[thisdatasource]] <- c('ALL')
+#   save(subpopulations_non_empty,file=paste0(dirpargen,"subpopulations_non_empty.RData"))
+# }
+
+suffix<-vector(mode="list")
+
+if (this_datasource_has_subpopulations == FALSE) {
   subpopulations_non_empty <- c('ALL')
   subpopulations[[thisdatasource]] <- c('ALL')
+  suffix[['ALL']] <- ''
   save(subpopulations_non_empty,file=paste0(dirpargen,"subpopulations_non_empty.RData"))
+}else{
+  subpopulations_non_empty<-subpopulations[[thisdatasource]]
+  for (subpop in subpopulations_non_empty) {
+    suffix[[subpop]] <- paste0('_',subpop)
+  }
 }
+
 
 
 
