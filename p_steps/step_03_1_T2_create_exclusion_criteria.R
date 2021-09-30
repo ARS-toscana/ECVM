@@ -66,7 +66,10 @@ load(paste0(dirtemp,"output_spells_category.RData"))
 start_follow_up = study_start - 365
 na_date = lubridate::ymd(99991231)
 
+
+
 output_spells_category_enriched <- merge(D3_inclusion_from_PERSONS, output_spells_category, all.x = T, by="person_id")
+# output_spells_category_enriched <- output_spells_category_enriched[entry_spell_category < date_of_birth + 60, entry_spell_category := date_of_birth]
 output_spells_category_enriched <- output_spells_category_enriched[, death_before_study_entry := fifelse(!is.na(date_of_death) & date_of_death < study_start, 1, 0)]
 output_spells_category_enriched <- output_spells_category_enriched[!is.na(entry_spell_category) & !is.na(exit_spell_category), no_observation_period_including_study_start := fifelse(study_start %between% list(entry_spell_category,exit_spell_category) & entry_spell_category < exit_spell_category, 0, 1)]
 output_spells_category_enriched <- output_spells_category_enriched[is.na(entry_spell_category) | is.na(exit_spell_category), no_observation_period_including_study_start := 1]

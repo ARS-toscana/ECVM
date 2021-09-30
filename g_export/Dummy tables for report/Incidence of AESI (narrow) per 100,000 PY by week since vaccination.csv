@@ -1,10 +1,19 @@
 DAP,AESI,Vaccine & dose,Days since vaccination,Age,Sex,Cases,Person days,IR narrow,LL narrow,UL narrow,Persontime_CONTRDIVERTIC,Persontime_CONTRHYPERT,Persontime_DEATH,CONTRDIVERTIC_b,CONTRHYPERT_b,DEATH_b,IR_CONTRDIVERTIC,lb_CONTRDIVERTIC,ub_CONTRDIVERTIC,IR_CONTRHYPERT,lb_CONTRHYPERT,ub_CONTRHYPERT,IR_DEATH,lb_DEATH,ub_DEATH
+<<<<<<< HEAD
 TEST,ACUASEARTHRITIS_broad,AstraZeneca dose 1,0-6,60+,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 TEST,ACUASEARTHRITIS_broad,AstraZeneca dose 1,0-6,<60,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 TEST,ACUASEARTHRITIS_broad,AstraZeneca dose 1,0-6,60+,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
 TEST,ACUASEARTHRITIS_broad,AstraZeneca dose 1,0-6,<60,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
 TEST,ACUASEARTHRITIS_broad,AstraZeneca dose 1,7-13,60+,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 TEST,ACUASEARTHRITIS_broad,AstraZeneca dose 1,7-13,<60,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+=======
+TEST,ACUASEARTHRITIS_broad,AstraZeneca dose 1,0-6,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,ACUASEARTHRITIS_broad,AstraZeneca dose 1,0-6,<60,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,ACUASEARTHRITIS_broad,AstraZeneca dose 1,0-6,60+,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,ACUASEARTHRITIS_broad,AstraZeneca dose 1,0-6,<60,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,ACUASEARTHRITIS_broad,AstraZeneca dose 1,7-13,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,ACUASEARTHRITIS_broad,AstraZeneca dose 1,7-13,<60,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+>>>>>>> development
 TEST,ACUASEARTHRITIS_broad,AstraZeneca dose 1,7-13,60+,Male,0,8,0,0,16842040.26,8,8,8,0,0,0,0,0,16842040.26,0,0,16842040.26,0,0,16842040.26
 TEST,ACUASEARTHRITIS_broad,AstraZeneca dose 1,7-13,<60,Male,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
 TEST,ACUASEARTHRITIS_broad,Pfizer dose 1,0-6,60+,Female,0,11,0,0,12248756.55,11,7,11,0,0,0,0,0,12248756.55,0,0,19248046.01,0,0,12248756.55
@@ -63,6 +72,7 @@ TEST,ACUASEARTHRITIS_broad,Pfizer dose 1,91-97,60+,Female,0,37,0,0,3641522.22,37
 TEST,ACUASEARTHRITIS_broad,Pfizer dose 1,91-97,<60,Female,0,239,0,0,563750.3,239,204,239,0,0,0,0,0,563750.3,0,0,660472.17,0,0,563750.3
 TEST,ACUASEARTHRITIS_broad,Pfizer dose 1,91-97,60+,Male,0,15,0,0,8982421.47,15,3,15,0,0,0,0,0,8982421.47,0,0,44912107.35,0,0,8982421.47
 TEST,ACUASEARTHRITIS_broad,Pfizer dose 1,91-97,<60,Male,0,71,0,0,1897694.68,71,64,71,0,0,0,0,0,1897694.68,0,0,2105255.03,0,0,1897694.68
+<<<<<<< HEAD
 TEST,ACUASEARTHRITIS_broad,Pfizer dose 2,0-6,60+,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 TEST,ACUASEARTHRITIS_broad,Pfizer dose 2,0-6,<60,Female,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
 TEST,ACUASEARTHRITIS_broad,Pfizer dose 2,0-6,60+,Male,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
@@ -85,6 +95,30 @@ TEST,DM_broad,AstraZeneca dose 1,0-6,60+,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,
 TEST,DM_broad,AstraZeneca dose 1,0-6,<60,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
 TEST,DM_broad,AstraZeneca dose 1,7-13,60+,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 TEST,DM_broad,AstraZeneca dose 1,7-13,<60,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+=======
+TEST,ACUASEARTHRITIS_broad,Pfizer dose 2,0-6,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,ACUASEARTHRITIS_broad,Pfizer dose 2,0-6,<60,Female,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,ACUASEARTHRITIS_broad,Pfizer dose 2,0-6,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,ACUASEARTHRITIS_broad,Pfizer dose 2,0-6,<60,Male,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
+TEST,ACUASEARTHRITIS_broad,Pfizer dose 2,7-13,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,ACUASEARTHRITIS_broad,Pfizer dose 2,7-13,<60,Female,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
+TEST,ACUASEARTHRITIS_broad,Pfizer dose 2,7-13,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,ACUASEARTHRITIS_broad,Pfizer dose 2,7-13,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,ACUASEARTHRITIS_broad,Pfizer dose 2,14-20,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,ACUASEARTHRITIS_broad,Pfizer dose 2,14-20,<60,Female,0,21,0,0,6416015.34,21,21,21,0,0,0,0,0,6416015.34,0,0,6416015.34,0,0,6416015.34
+TEST,ACUASEARTHRITIS_broad,Pfizer dose 2,14-20,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,ACUASEARTHRITIS_broad,Pfizer dose 2,14-20,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,ACUASEARTHRITIS_broad,Pfizer dose 2,21-27,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,ACUASEARTHRITIS_broad,Pfizer dose 2,21-27,<60,Female,0,25,0,0,5389452.88,25,25,25,0,0,0,0,0,5389452.88,0,0,5389452.88,0,0,5389452.88
+TEST,ACUASEARTHRITIS_broad,Pfizer dose 2,21-27,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,ACUASEARTHRITIS_broad,Pfizer dose 2,21-27,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,DM_broad,AstraZeneca dose 1,0-6,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,DM_broad,AstraZeneca dose 1,0-6,<60,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,DM_broad,AstraZeneca dose 1,0-6,60+,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,DM_broad,AstraZeneca dose 1,0-6,<60,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,DM_broad,AstraZeneca dose 1,7-13,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,DM_broad,AstraZeneca dose 1,7-13,<60,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+>>>>>>> development
 TEST,DM_broad,AstraZeneca dose 1,7-13,60+,Male,0,8,0,0,16842040.26,8,8,8,0,0,0,0,0,16842040.26,0,0,16842040.26,0,0,16842040.26
 TEST,DM_broad,AstraZeneca dose 1,7-13,<60,Male,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
 TEST,DM_broad,Pfizer dose 1,0-6,60+,Female,0,11,0,0,12248756.55,11,7,11,0,0,0,0,0,12248756.55,0,0,19248046.01,0,0,12248756.55
@@ -143,6 +177,7 @@ TEST,DM_broad,Pfizer dose 1,91-97,60+,Female,0,37,0,0,3641522.22,37,33,37,0,0,0,
 TEST,DM_broad,Pfizer dose 1,91-97,<60,Female,0,239,0,0,563750.3,239,204,239,0,0,0,0,0,563750.3,0,0,660472.17,0,0,563750.3
 TEST,DM_broad,Pfizer dose 1,91-97,60+,Male,0,15,0,0,8982421.47,15,3,15,0,0,0,0,0,8982421.47,0,0,44912107.35,0,0,8982421.47
 TEST,DM_broad,Pfizer dose 1,91-97,<60,Male,0,71,0,0,1897694.68,71,64,71,0,0,0,0,0,1897694.68,0,0,2105255.03,0,0,1897694.68
+<<<<<<< HEAD
 TEST,DM_broad,Pfizer dose 2,0-6,60+,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 TEST,DM_broad,Pfizer dose 2,0-6,<60,Female,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
 TEST,DM_broad,Pfizer dose 2,0-6,60+,Male,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
@@ -165,6 +200,30 @@ TEST,HF_narrow,AstraZeneca dose 1,0-6,60+,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0
 TEST,HF_narrow,AstraZeneca dose 1,0-6,<60,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
 TEST,HF_narrow,AstraZeneca dose 1,7-13,60+,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 TEST,HF_narrow,AstraZeneca dose 1,7-13,<60,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+=======
+TEST,DM_broad,Pfizer dose 2,0-6,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,DM_broad,Pfizer dose 2,0-6,<60,Female,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,DM_broad,Pfizer dose 2,0-6,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,DM_broad,Pfizer dose 2,0-6,<60,Male,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
+TEST,DM_broad,Pfizer dose 2,7-13,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,DM_broad,Pfizer dose 2,7-13,<60,Female,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
+TEST,DM_broad,Pfizer dose 2,7-13,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,DM_broad,Pfizer dose 2,7-13,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,DM_broad,Pfizer dose 2,14-20,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,DM_broad,Pfizer dose 2,14-20,<60,Female,0,21,0,0,6416015.34,21,21,21,0,0,0,0,0,6416015.34,0,0,6416015.34,0,0,6416015.34
+TEST,DM_broad,Pfizer dose 2,14-20,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,DM_broad,Pfizer dose 2,14-20,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,DM_broad,Pfizer dose 2,21-27,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,DM_broad,Pfizer dose 2,21-27,<60,Female,0,25,0,0,5389452.88,25,25,25,0,0,0,0,0,5389452.88,0,0,5389452.88,0,0,5389452.88
+TEST,DM_broad,Pfizer dose 2,21-27,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,DM_broad,Pfizer dose 2,21-27,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,HF_narrow,AstraZeneca dose 1,0-6,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,HF_narrow,AstraZeneca dose 1,0-6,<60,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,HF_narrow,AstraZeneca dose 1,0-6,60+,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,HF_narrow,AstraZeneca dose 1,0-6,<60,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,HF_narrow,AstraZeneca dose 1,7-13,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,HF_narrow,AstraZeneca dose 1,7-13,<60,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+>>>>>>> development
 TEST,HF_narrow,AstraZeneca dose 1,7-13,60+,Male,0,8,0,0,16842040.26,8,8,8,0,0,0,0,0,16842040.26,0,0,16842040.26,0,0,16842040.26
 TEST,HF_narrow,AstraZeneca dose 1,7-13,<60,Male,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
 TEST,HF_narrow,Pfizer dose 1,0-6,60+,Female,0,11,0,0,12248756.55,11,7,11,0,0,0,0,0,12248756.55,0,0,19248046.01,0,0,12248756.55
@@ -223,6 +282,7 @@ TEST,HF_narrow,Pfizer dose 1,91-97,60+,Female,0,37,0,0,3641522.22,37,33,37,0,0,0
 TEST,HF_narrow,Pfizer dose 1,91-97,<60,Female,0,239,0,0,563750.3,239,204,239,0,0,0,0,0,563750.3,0,0,660472.17,0,0,563750.3
 TEST,HF_narrow,Pfizer dose 1,91-97,60+,Male,0,15,0,0,8982421.47,15,3,15,0,0,0,0,0,8982421.47,0,0,44912107.35,0,0,8982421.47
 TEST,HF_narrow,Pfizer dose 1,91-97,<60,Male,0,71,0,0,1897694.68,71,64,71,0,0,0,0,0,1897694.68,0,0,2105255.03,0,0,1897694.68
+<<<<<<< HEAD
 TEST,HF_narrow,Pfizer dose 2,0-6,60+,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 TEST,HF_narrow,Pfizer dose 2,0-6,<60,Female,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
 TEST,HF_narrow,Pfizer dose 2,0-6,60+,Male,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
@@ -245,6 +305,30 @@ TEST,HF_broad,AstraZeneca dose 1,0-6,60+,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,
 TEST,HF_broad,AstraZeneca dose 1,0-6,<60,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
 TEST,HF_broad,AstraZeneca dose 1,7-13,60+,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 TEST,HF_broad,AstraZeneca dose 1,7-13,<60,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+=======
+TEST,HF_narrow,Pfizer dose 2,0-6,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,HF_narrow,Pfizer dose 2,0-6,<60,Female,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,HF_narrow,Pfizer dose 2,0-6,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,HF_narrow,Pfizer dose 2,0-6,<60,Male,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
+TEST,HF_narrow,Pfizer dose 2,7-13,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,HF_narrow,Pfizer dose 2,7-13,<60,Female,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
+TEST,HF_narrow,Pfizer dose 2,7-13,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,HF_narrow,Pfizer dose 2,7-13,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,HF_narrow,Pfizer dose 2,14-20,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,HF_narrow,Pfizer dose 2,14-20,<60,Female,0,21,0,0,6416015.34,21,21,21,0,0,0,0,0,6416015.34,0,0,6416015.34,0,0,6416015.34
+TEST,HF_narrow,Pfizer dose 2,14-20,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,HF_narrow,Pfizer dose 2,14-20,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,HF_narrow,Pfizer dose 2,21-27,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,HF_narrow,Pfizer dose 2,21-27,<60,Female,0,25,0,0,5389452.88,25,25,25,0,0,0,0,0,5389452.88,0,0,5389452.88,0,0,5389452.88
+TEST,HF_narrow,Pfizer dose 2,21-27,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,HF_narrow,Pfizer dose 2,21-27,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,HF_broad,AstraZeneca dose 1,0-6,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,HF_broad,AstraZeneca dose 1,0-6,<60,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,HF_broad,AstraZeneca dose 1,0-6,60+,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,HF_broad,AstraZeneca dose 1,0-6,<60,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,HF_broad,AstraZeneca dose 1,7-13,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,HF_broad,AstraZeneca dose 1,7-13,<60,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+>>>>>>> development
 TEST,HF_broad,AstraZeneca dose 1,7-13,60+,Male,0,8,0,0,16842040.26,8,8,8,0,0,0,0,0,16842040.26,0,0,16842040.26,0,0,16842040.26
 TEST,HF_broad,AstraZeneca dose 1,7-13,<60,Male,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
 TEST,HF_broad,Pfizer dose 1,0-6,60+,Female,0,11,0,0,12248756.55,11,7,11,0,0,0,0,0,12248756.55,0,0,19248046.01,0,0,12248756.55
@@ -303,6 +387,7 @@ TEST,HF_broad,Pfizer dose 1,91-97,60+,Female,0,37,0,0,3641522.22,37,33,37,0,0,0,
 TEST,HF_broad,Pfizer dose 1,91-97,<60,Female,0,239,0,0,563750.3,239,204,239,0,0,0,0,0,563750.3,0,0,660472.17,0,0,563750.3
 TEST,HF_broad,Pfizer dose 1,91-97,60+,Male,0,15,0,0,8982421.47,15,3,15,0,0,0,0,0,8982421.47,0,0,44912107.35,0,0,8982421.47
 TEST,HF_broad,Pfizer dose 1,91-97,<60,Male,0,71,0,0,1897694.68,71,64,71,0,0,0,0,0,1897694.68,0,0,2105255.03,0,0,1897694.68
+<<<<<<< HEAD
 TEST,HF_broad,Pfizer dose 2,0-6,60+,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 TEST,HF_broad,Pfizer dose 2,0-6,<60,Female,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
 TEST,HF_broad,Pfizer dose 2,0-6,60+,Male,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
@@ -325,6 +410,30 @@ TEST,CAD_narrow,AstraZeneca dose 1,0-6,60+,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,
 TEST,CAD_narrow,AstraZeneca dose 1,0-6,<60,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
 TEST,CAD_narrow,AstraZeneca dose 1,7-13,60+,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 TEST,CAD_narrow,AstraZeneca dose 1,7-13,<60,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+=======
+TEST,HF_broad,Pfizer dose 2,0-6,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,HF_broad,Pfizer dose 2,0-6,<60,Female,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,HF_broad,Pfizer dose 2,0-6,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,HF_broad,Pfizer dose 2,0-6,<60,Male,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
+TEST,HF_broad,Pfizer dose 2,7-13,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,HF_broad,Pfizer dose 2,7-13,<60,Female,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
+TEST,HF_broad,Pfizer dose 2,7-13,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,HF_broad,Pfizer dose 2,7-13,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,HF_broad,Pfizer dose 2,14-20,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,HF_broad,Pfizer dose 2,14-20,<60,Female,0,21,0,0,6416015.34,21,21,21,0,0,0,0,0,6416015.34,0,0,6416015.34,0,0,6416015.34
+TEST,HF_broad,Pfizer dose 2,14-20,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,HF_broad,Pfizer dose 2,14-20,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,HF_broad,Pfizer dose 2,21-27,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,HF_broad,Pfizer dose 2,21-27,<60,Female,0,25,0,0,5389452.88,25,25,25,0,0,0,0,0,5389452.88,0,0,5389452.88,0,0,5389452.88
+TEST,HF_broad,Pfizer dose 2,21-27,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,HF_broad,Pfizer dose 2,21-27,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,CAD_narrow,AstraZeneca dose 1,0-6,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,CAD_narrow,AstraZeneca dose 1,0-6,<60,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,CAD_narrow,AstraZeneca dose 1,0-6,60+,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,CAD_narrow,AstraZeneca dose 1,0-6,<60,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,CAD_narrow,AstraZeneca dose 1,7-13,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,CAD_narrow,AstraZeneca dose 1,7-13,<60,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+>>>>>>> development
 TEST,CAD_narrow,AstraZeneca dose 1,7-13,60+,Male,0,8,0,0,16842040.26,8,8,8,0,0,0,0,0,16842040.26,0,0,16842040.26,0,0,16842040.26
 TEST,CAD_narrow,AstraZeneca dose 1,7-13,<60,Male,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
 TEST,CAD_narrow,Pfizer dose 1,0-6,60+,Female,0,11,0,0,12248756.55,11,7,11,0,0,0,0,0,12248756.55,0,0,19248046.01,0,0,12248756.55
@@ -383,6 +492,7 @@ TEST,CAD_narrow,Pfizer dose 1,91-97,60+,Female,0,37,0,0,3641522.22,37,33,37,0,0,
 TEST,CAD_narrow,Pfizer dose 1,91-97,<60,Female,0,239,0,0,563750.3,239,204,239,0,0,0,0,0,563750.3,0,0,660472.17,0,0,563750.3
 TEST,CAD_narrow,Pfizer dose 1,91-97,60+,Male,0,15,0,0,8982421.47,15,3,15,0,0,0,0,0,8982421.47,0,0,44912107.35,0,0,8982421.47
 TEST,CAD_narrow,Pfizer dose 1,91-97,<60,Male,0,71,0,0,1897694.68,71,64,71,0,0,0,0,0,1897694.68,0,0,2105255.03,0,0,1897694.68
+<<<<<<< HEAD
 TEST,CAD_narrow,Pfizer dose 2,0-6,60+,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 TEST,CAD_narrow,Pfizer dose 2,0-6,<60,Female,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
 TEST,CAD_narrow,Pfizer dose 2,0-6,60+,Male,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
@@ -405,6 +515,30 @@ TEST,CAD_broad,AstraZeneca dose 1,0-6,60+,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0
 TEST,CAD_broad,AstraZeneca dose 1,0-6,<60,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
 TEST,CAD_broad,AstraZeneca dose 1,7-13,60+,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 TEST,CAD_broad,AstraZeneca dose 1,7-13,<60,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+=======
+TEST,CAD_narrow,Pfizer dose 2,0-6,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,CAD_narrow,Pfizer dose 2,0-6,<60,Female,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,CAD_narrow,Pfizer dose 2,0-6,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,CAD_narrow,Pfizer dose 2,0-6,<60,Male,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
+TEST,CAD_narrow,Pfizer dose 2,7-13,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,CAD_narrow,Pfizer dose 2,7-13,<60,Female,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
+TEST,CAD_narrow,Pfizer dose 2,7-13,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,CAD_narrow,Pfizer dose 2,7-13,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,CAD_narrow,Pfizer dose 2,14-20,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,CAD_narrow,Pfizer dose 2,14-20,<60,Female,0,21,0,0,6416015.34,21,21,21,0,0,0,0,0,6416015.34,0,0,6416015.34,0,0,6416015.34
+TEST,CAD_narrow,Pfizer dose 2,14-20,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,CAD_narrow,Pfizer dose 2,14-20,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,CAD_narrow,Pfizer dose 2,21-27,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,CAD_narrow,Pfizer dose 2,21-27,<60,Female,0,25,0,0,5389452.88,25,25,25,0,0,0,0,0,5389452.88,0,0,5389452.88,0,0,5389452.88
+TEST,CAD_narrow,Pfizer dose 2,21-27,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,CAD_narrow,Pfizer dose 2,21-27,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,CAD_broad,AstraZeneca dose 1,0-6,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,CAD_broad,AstraZeneca dose 1,0-6,<60,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,CAD_broad,AstraZeneca dose 1,0-6,60+,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,CAD_broad,AstraZeneca dose 1,0-6,<60,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,CAD_broad,AstraZeneca dose 1,7-13,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,CAD_broad,AstraZeneca dose 1,7-13,<60,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+>>>>>>> development
 TEST,CAD_broad,AstraZeneca dose 1,7-13,60+,Male,0,8,0,0,16842040.26,8,8,8,0,0,0,0,0,16842040.26,0,0,16842040.26,0,0,16842040.26
 TEST,CAD_broad,AstraZeneca dose 1,7-13,<60,Male,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
 TEST,CAD_broad,Pfizer dose 1,0-6,60+,Female,0,11,0,0,12248756.55,11,7,11,0,0,0,0,0,12248756.55,0,0,19248046.01,0,0,12248756.55
@@ -463,6 +597,7 @@ TEST,CAD_broad,Pfizer dose 1,91-97,60+,Female,0,37,0,0,3641522.22,37,33,37,0,0,0
 TEST,CAD_broad,Pfizer dose 1,91-97,<60,Female,0,239,0,0,563750.3,239,204,239,0,0,0,0,0,563750.3,0,0,660472.17,0,0,563750.3
 TEST,CAD_broad,Pfizer dose 1,91-97,60+,Male,0,15,0,0,8982421.47,15,3,15,0,0,0,0,0,8982421.47,0,0,44912107.35,0,0,8982421.47
 TEST,CAD_broad,Pfizer dose 1,91-97,<60,Male,0,71,0,0,1897694.68,71,64,71,0,0,0,0,0,1897694.68,0,0,2105255.03,0,0,1897694.68
+<<<<<<< HEAD
 TEST,CAD_broad,Pfizer dose 2,0-6,60+,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 TEST,CAD_broad,Pfizer dose 2,0-6,<60,Female,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
 TEST,CAD_broad,Pfizer dose 2,0-6,60+,Male,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
@@ -485,6 +620,30 @@ TEST,GENCONV_narrow,AstraZeneca dose 1,0-6,60+,Male,0,7,0,0,19248046.01,7,7,7,0,
 TEST,GENCONV_narrow,AstraZeneca dose 1,0-6,<60,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
 TEST,GENCONV_narrow,AstraZeneca dose 1,7-13,60+,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 TEST,GENCONV_narrow,AstraZeneca dose 1,7-13,<60,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+=======
+TEST,CAD_broad,Pfizer dose 2,0-6,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,CAD_broad,Pfizer dose 2,0-6,<60,Female,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,CAD_broad,Pfizer dose 2,0-6,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,CAD_broad,Pfizer dose 2,0-6,<60,Male,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
+TEST,CAD_broad,Pfizer dose 2,7-13,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,CAD_broad,Pfizer dose 2,7-13,<60,Female,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
+TEST,CAD_broad,Pfizer dose 2,7-13,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,CAD_broad,Pfizer dose 2,7-13,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,CAD_broad,Pfizer dose 2,14-20,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,CAD_broad,Pfizer dose 2,14-20,<60,Female,0,21,0,0,6416015.34,21,21,21,0,0,0,0,0,6416015.34,0,0,6416015.34,0,0,6416015.34
+TEST,CAD_broad,Pfizer dose 2,14-20,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,CAD_broad,Pfizer dose 2,14-20,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,CAD_broad,Pfizer dose 2,21-27,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,CAD_broad,Pfizer dose 2,21-27,<60,Female,0,25,0,0,5389452.88,25,25,25,0,0,0,0,0,5389452.88,0,0,5389452.88,0,0,5389452.88
+TEST,CAD_broad,Pfizer dose 2,21-27,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,CAD_broad,Pfizer dose 2,21-27,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,GENCONV_narrow,AstraZeneca dose 1,0-6,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,GENCONV_narrow,AstraZeneca dose 1,0-6,<60,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,GENCONV_narrow,AstraZeneca dose 1,0-6,60+,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,GENCONV_narrow,AstraZeneca dose 1,0-6,<60,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,GENCONV_narrow,AstraZeneca dose 1,7-13,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,GENCONV_narrow,AstraZeneca dose 1,7-13,<60,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+>>>>>>> development
 TEST,GENCONV_narrow,AstraZeneca dose 1,7-13,60+,Male,0,8,0,0,16842040.26,8,8,8,0,0,0,0,0,16842040.26,0,0,16842040.26,0,0,16842040.26
 TEST,GENCONV_narrow,AstraZeneca dose 1,7-13,<60,Male,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
 TEST,GENCONV_narrow,Pfizer dose 1,0-6,60+,Female,0,11,0,0,12248756.55,11,7,11,0,0,0,0,0,12248756.55,0,0,19248046.01,0,0,12248756.55
@@ -543,6 +702,7 @@ TEST,GENCONV_narrow,Pfizer dose 1,91-97,60+,Female,0,37,0,0,3641522.22,37,33,37,
 TEST,GENCONV_narrow,Pfizer dose 1,91-97,<60,Female,0,239,0,0,563750.3,239,204,239,0,0,0,0,0,563750.3,0,0,660472.17,0,0,563750.3
 TEST,GENCONV_narrow,Pfizer dose 1,91-97,60+,Male,0,15,0,0,8982421.47,15,3,15,0,0,0,0,0,8982421.47,0,0,44912107.35,0,0,8982421.47
 TEST,GENCONV_narrow,Pfizer dose 1,91-97,<60,Male,0,71,0,0,1897694.68,71,64,71,0,0,0,0,0,1897694.68,0,0,2105255.03,0,0,1897694.68
+<<<<<<< HEAD
 TEST,GENCONV_narrow,Pfizer dose 2,0-6,60+,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 TEST,GENCONV_narrow,Pfizer dose 2,0-6,<60,Female,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
 TEST,GENCONV_narrow,Pfizer dose 2,0-6,60+,Male,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
@@ -565,6 +725,30 @@ TEST,GENCONV_broad,AstraZeneca dose 1,0-6,60+,Male,0,7,0,0,19248046.01,7,7,7,0,0
 TEST,GENCONV_broad,AstraZeneca dose 1,0-6,<60,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
 TEST,GENCONV_broad,AstraZeneca dose 1,7-13,60+,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 TEST,GENCONV_broad,AstraZeneca dose 1,7-13,<60,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+=======
+TEST,GENCONV_narrow,Pfizer dose 2,0-6,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,GENCONV_narrow,Pfizer dose 2,0-6,<60,Female,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,GENCONV_narrow,Pfizer dose 2,0-6,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,GENCONV_narrow,Pfizer dose 2,0-6,<60,Male,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
+TEST,GENCONV_narrow,Pfizer dose 2,7-13,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,GENCONV_narrow,Pfizer dose 2,7-13,<60,Female,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
+TEST,GENCONV_narrow,Pfizer dose 2,7-13,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,GENCONV_narrow,Pfizer dose 2,7-13,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,GENCONV_narrow,Pfizer dose 2,14-20,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,GENCONV_narrow,Pfizer dose 2,14-20,<60,Female,0,21,0,0,6416015.34,21,21,21,0,0,0,0,0,6416015.34,0,0,6416015.34,0,0,6416015.34
+TEST,GENCONV_narrow,Pfizer dose 2,14-20,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,GENCONV_narrow,Pfizer dose 2,14-20,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,GENCONV_narrow,Pfizer dose 2,21-27,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,GENCONV_narrow,Pfizer dose 2,21-27,<60,Female,0,25,0,0,5389452.88,25,25,25,0,0,0,0,0,5389452.88,0,0,5389452.88,0,0,5389452.88
+TEST,GENCONV_narrow,Pfizer dose 2,21-27,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,GENCONV_narrow,Pfizer dose 2,21-27,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,GENCONV_broad,AstraZeneca dose 1,0-6,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,GENCONV_broad,AstraZeneca dose 1,0-6,<60,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,GENCONV_broad,AstraZeneca dose 1,0-6,60+,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,GENCONV_broad,AstraZeneca dose 1,0-6,<60,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,GENCONV_broad,AstraZeneca dose 1,7-13,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,GENCONV_broad,AstraZeneca dose 1,7-13,<60,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+>>>>>>> development
 TEST,GENCONV_broad,AstraZeneca dose 1,7-13,60+,Male,0,8,0,0,16842040.26,8,8,8,0,0,0,0,0,16842040.26,0,0,16842040.26,0,0,16842040.26
 TEST,GENCONV_broad,AstraZeneca dose 1,7-13,<60,Male,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
 TEST,GENCONV_broad,Pfizer dose 1,0-6,60+,Female,0,11,0,0,12248756.55,11,7,11,0,0,0,0,0,12248756.55,0,0,19248046.01,0,0,12248756.55
@@ -623,6 +807,7 @@ TEST,GENCONV_broad,Pfizer dose 1,91-97,60+,Female,0,37,0,0,3641522.22,37,33,37,0
 TEST,GENCONV_broad,Pfizer dose 1,91-97,<60,Female,0,239,0,0,563750.3,239,204,239,0,0,0,0,0,563750.3,0,0,660472.17,0,0,563750.3
 TEST,GENCONV_broad,Pfizer dose 1,91-97,60+,Male,0,15,0,0,8982421.47,15,3,15,0,0,0,0,0,8982421.47,0,0,44912107.35,0,0,8982421.47
 TEST,GENCONV_broad,Pfizer dose 1,91-97,<60,Male,0,71,0,0,1897694.68,71,64,71,0,0,0,0,0,1897694.68,0,0,2105255.03,0,0,1897694.68
+<<<<<<< HEAD
 TEST,GENCONV_broad,Pfizer dose 2,0-6,60+,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 TEST,GENCONV_broad,Pfizer dose 2,0-6,<60,Female,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
 TEST,GENCONV_broad,Pfizer dose 2,0-6,60+,Male,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
@@ -645,6 +830,30 @@ TEST,ANAPHYL_broad,AstraZeneca dose 1,0-6,60+,Male,0,7,0,0,19248046.01,7,7,7,0,0
 TEST,ANAPHYL_broad,AstraZeneca dose 1,0-6,<60,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
 TEST,ANAPHYL_broad,AstraZeneca dose 1,7-13,60+,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 TEST,ANAPHYL_broad,AstraZeneca dose 1,7-13,<60,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+=======
+TEST,GENCONV_broad,Pfizer dose 2,0-6,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,GENCONV_broad,Pfizer dose 2,0-6,<60,Female,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,GENCONV_broad,Pfizer dose 2,0-6,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,GENCONV_broad,Pfizer dose 2,0-6,<60,Male,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
+TEST,GENCONV_broad,Pfizer dose 2,7-13,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,GENCONV_broad,Pfizer dose 2,7-13,<60,Female,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
+TEST,GENCONV_broad,Pfizer dose 2,7-13,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,GENCONV_broad,Pfizer dose 2,7-13,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,GENCONV_broad,Pfizer dose 2,14-20,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,GENCONV_broad,Pfizer dose 2,14-20,<60,Female,0,21,0,0,6416015.34,21,21,21,0,0,0,0,0,6416015.34,0,0,6416015.34,0,0,6416015.34
+TEST,GENCONV_broad,Pfizer dose 2,14-20,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,GENCONV_broad,Pfizer dose 2,14-20,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,GENCONV_broad,Pfizer dose 2,21-27,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,GENCONV_broad,Pfizer dose 2,21-27,<60,Female,0,25,0,0,5389452.88,25,25,25,0,0,0,0,0,5389452.88,0,0,5389452.88,0,0,5389452.88
+TEST,GENCONV_broad,Pfizer dose 2,21-27,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,GENCONV_broad,Pfizer dose 2,21-27,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,ANAPHYL_broad,AstraZeneca dose 1,0-6,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,ANAPHYL_broad,AstraZeneca dose 1,0-6,<60,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,ANAPHYL_broad,AstraZeneca dose 1,0-6,60+,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,ANAPHYL_broad,AstraZeneca dose 1,0-6,<60,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,ANAPHYL_broad,AstraZeneca dose 1,7-13,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,ANAPHYL_broad,AstraZeneca dose 1,7-13,<60,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+>>>>>>> development
 TEST,ANAPHYL_broad,AstraZeneca dose 1,7-13,60+,Male,0,8,0,0,16842040.26,8,8,8,0,0,0,0,0,16842040.26,0,0,16842040.26,0,0,16842040.26
 TEST,ANAPHYL_broad,AstraZeneca dose 1,7-13,<60,Male,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
 TEST,ANAPHYL_broad,Pfizer dose 1,0-6,60+,Female,0,11,0,0,12248756.55,11,7,11,0,0,0,0,0,12248756.55,0,0,19248046.01,0,0,12248756.55
@@ -703,6 +912,7 @@ TEST,ANAPHYL_broad,Pfizer dose 1,91-97,60+,Female,0,37,0,0,3641522.22,37,33,37,0
 TEST,ANAPHYL_broad,Pfizer dose 1,91-97,<60,Female,0,239,0,0,563750.3,239,204,239,0,0,0,0,0,563750.3,0,0,660472.17,0,0,563750.3
 TEST,ANAPHYL_broad,Pfizer dose 1,91-97,60+,Male,0,15,0,0,8982421.47,15,3,15,0,0,0,0,0,8982421.47,0,0,44912107.35,0,0,8982421.47
 TEST,ANAPHYL_broad,Pfizer dose 1,91-97,<60,Male,0,71,0,0,1897694.68,71,64,71,0,0,0,0,0,1897694.68,0,0,2105255.03,0,0,1897694.68
+<<<<<<< HEAD
 TEST,ANAPHYL_broad,Pfizer dose 2,0-6,60+,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 TEST,ANAPHYL_broad,Pfizer dose 2,0-6,<60,Female,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
 TEST,ANAPHYL_broad,Pfizer dose 2,0-6,60+,Male,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
@@ -1045,6 +1255,30 @@ TEST,Ischstroke_narrow,AstraZeneca dose 1,0-6,60+,Male,0,7,0,0,19248046.01,7,7,7
 TEST,Ischstroke_narrow,AstraZeneca dose 1,0-6,<60,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
 TEST,Ischstroke_narrow,AstraZeneca dose 1,7-13,60+,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 TEST,Ischstroke_narrow,AstraZeneca dose 1,7-13,<60,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+=======
+TEST,ANAPHYL_broad,Pfizer dose 2,0-6,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,ANAPHYL_broad,Pfizer dose 2,0-6,<60,Female,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,ANAPHYL_broad,Pfizer dose 2,0-6,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,ANAPHYL_broad,Pfizer dose 2,0-6,<60,Male,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
+TEST,ANAPHYL_broad,Pfizer dose 2,7-13,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,ANAPHYL_broad,Pfizer dose 2,7-13,<60,Female,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
+TEST,ANAPHYL_broad,Pfizer dose 2,7-13,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,ANAPHYL_broad,Pfizer dose 2,7-13,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,ANAPHYL_broad,Pfizer dose 2,14-20,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,ANAPHYL_broad,Pfizer dose 2,14-20,<60,Female,0,21,0,0,6416015.34,21,21,21,0,0,0,0,0,6416015.34,0,0,6416015.34,0,0,6416015.34
+TEST,ANAPHYL_broad,Pfizer dose 2,14-20,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,ANAPHYL_broad,Pfizer dose 2,14-20,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,ANAPHYL_broad,Pfizer dose 2,21-27,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,ANAPHYL_broad,Pfizer dose 2,21-27,<60,Female,0,25,0,0,5389452.88,25,25,25,0,0,0,0,0,5389452.88,0,0,5389452.88,0,0,5389452.88
+TEST,ANAPHYL_broad,Pfizer dose 2,21-27,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,ANAPHYL_broad,Pfizer dose 2,21-27,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,Ischstroke_narrow,AstraZeneca dose 1,0-6,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,Ischstroke_narrow,AstraZeneca dose 1,0-6,<60,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,Ischstroke_narrow,AstraZeneca dose 1,0-6,60+,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,Ischstroke_narrow,AstraZeneca dose 1,0-6,<60,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,Ischstroke_narrow,AstraZeneca dose 1,7-13,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,Ischstroke_narrow,AstraZeneca dose 1,7-13,<60,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+>>>>>>> development
 TEST,Ischstroke_narrow,AstraZeneca dose 1,7-13,60+,Male,0,8,0,0,16842040.26,8,8,8,0,0,0,0,0,16842040.26,0,0,16842040.26,0,0,16842040.26
 TEST,Ischstroke_narrow,AstraZeneca dose 1,7-13,<60,Male,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
 TEST,Ischstroke_narrow,Pfizer dose 1,0-6,60+,Female,0,11,0,0,12248756.55,11,7,11,0,0,0,0,0,12248756.55,0,0,19248046.01,0,0,12248756.55
@@ -1103,6 +1337,7 @@ TEST,Ischstroke_narrow,Pfizer dose 1,91-97,60+,Female,0,37,0,0,3641522.22,37,33,
 TEST,Ischstroke_narrow,Pfizer dose 1,91-97,<60,Female,0,239,0,0,563750.3,239,204,239,0,0,0,0,0,563750.3,0,0,660472.17,0,0,563750.3
 TEST,Ischstroke_narrow,Pfizer dose 1,91-97,60+,Male,0,15,0,0,8982421.47,15,3,15,0,0,0,0,0,8982421.47,0,0,44912107.35,0,0,8982421.47
 TEST,Ischstroke_narrow,Pfizer dose 1,91-97,<60,Male,0,71,0,0,1897694.68,71,64,71,0,0,0,0,0,1897694.68,0,0,2105255.03,0,0,1897694.68
+<<<<<<< HEAD
 TEST,Ischstroke_narrow,Pfizer dose 2,0-6,60+,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 TEST,Ischstroke_narrow,Pfizer dose 2,0-6,<60,Female,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
 TEST,Ischstroke_narrow,Pfizer dose 2,0-6,60+,Male,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
@@ -1125,6 +1360,30 @@ TEST,Ischstroke_broad,AstraZeneca dose 1,0-6,60+,Male,0,7,0,0,19248046.01,7,7,7,
 TEST,Ischstroke_broad,AstraZeneca dose 1,0-6,<60,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
 TEST,Ischstroke_broad,AstraZeneca dose 1,7-13,60+,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 TEST,Ischstroke_broad,AstraZeneca dose 1,7-13,<60,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+=======
+TEST,Ischstroke_narrow,Pfizer dose 2,0-6,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,Ischstroke_narrow,Pfizer dose 2,0-6,<60,Female,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,Ischstroke_narrow,Pfizer dose 2,0-6,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,Ischstroke_narrow,Pfizer dose 2,0-6,<60,Male,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
+TEST,Ischstroke_narrow,Pfizer dose 2,7-13,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,Ischstroke_narrow,Pfizer dose 2,7-13,<60,Female,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
+TEST,Ischstroke_narrow,Pfizer dose 2,7-13,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,Ischstroke_narrow,Pfizer dose 2,7-13,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,Ischstroke_narrow,Pfizer dose 2,14-20,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,Ischstroke_narrow,Pfizer dose 2,14-20,<60,Female,0,21,0,0,6416015.34,21,21,21,0,0,0,0,0,6416015.34,0,0,6416015.34,0,0,6416015.34
+TEST,Ischstroke_narrow,Pfizer dose 2,14-20,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,Ischstroke_narrow,Pfizer dose 2,14-20,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,Ischstroke_narrow,Pfizer dose 2,21-27,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,Ischstroke_narrow,Pfizer dose 2,21-27,<60,Female,0,25,0,0,5389452.88,25,25,25,0,0,0,0,0,5389452.88,0,0,5389452.88,0,0,5389452.88
+TEST,Ischstroke_narrow,Pfizer dose 2,21-27,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,Ischstroke_narrow,Pfizer dose 2,21-27,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,Ischstroke_broad,AstraZeneca dose 1,0-6,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,Ischstroke_broad,AstraZeneca dose 1,0-6,<60,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,Ischstroke_broad,AstraZeneca dose 1,0-6,60+,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,Ischstroke_broad,AstraZeneca dose 1,0-6,<60,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,Ischstroke_broad,AstraZeneca dose 1,7-13,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,Ischstroke_broad,AstraZeneca dose 1,7-13,<60,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+>>>>>>> development
 TEST,Ischstroke_broad,AstraZeneca dose 1,7-13,60+,Male,0,8,0,0,16842040.26,8,8,8,0,0,0,0,0,16842040.26,0,0,16842040.26,0,0,16842040.26
 TEST,Ischstroke_broad,AstraZeneca dose 1,7-13,<60,Male,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
 TEST,Ischstroke_broad,Pfizer dose 1,0-6,60+,Female,0,11,0,0,12248756.55,11,7,11,0,0,0,0,0,12248756.55,0,0,19248046.01,0,0,12248756.55
@@ -1183,6 +1442,7 @@ TEST,Ischstroke_broad,Pfizer dose 1,91-97,60+,Female,0,37,0,0,3641522.22,37,33,3
 TEST,Ischstroke_broad,Pfizer dose 1,91-97,<60,Female,0,239,0,0,563750.3,239,204,239,0,0,0,0,0,563750.3,0,0,660472.17,0,0,563750.3
 TEST,Ischstroke_broad,Pfizer dose 1,91-97,60+,Male,0,15,0,0,8982421.47,15,3,15,0,0,0,0,0,8982421.47,0,0,44912107.35,0,0,8982421.47
 TEST,Ischstroke_broad,Pfizer dose 1,91-97,<60,Male,0,71,0,0,1897694.68,71,64,71,0,0,0,0,0,1897694.68,0,0,2105255.03,0,0,1897694.68
+<<<<<<< HEAD
 TEST,Ischstroke_broad,Pfizer dose 2,0-6,60+,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 TEST,Ischstroke_broad,Pfizer dose 2,0-6,<60,Female,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
 TEST,Ischstroke_broad,Pfizer dose 2,0-6,60+,Male,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
@@ -1205,6 +1465,30 @@ TEST,VTE_narrow,AstraZeneca dose 1,0-6,60+,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,
 TEST,VTE_narrow,AstraZeneca dose 1,0-6,<60,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
 TEST,VTE_narrow,AstraZeneca dose 1,7-13,60+,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 TEST,VTE_narrow,AstraZeneca dose 1,7-13,<60,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+=======
+TEST,Ischstroke_broad,Pfizer dose 2,0-6,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,Ischstroke_broad,Pfizer dose 2,0-6,<60,Female,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,Ischstroke_broad,Pfizer dose 2,0-6,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,Ischstroke_broad,Pfizer dose 2,0-6,<60,Male,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
+TEST,Ischstroke_broad,Pfizer dose 2,7-13,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,Ischstroke_broad,Pfizer dose 2,7-13,<60,Female,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
+TEST,Ischstroke_broad,Pfizer dose 2,7-13,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,Ischstroke_broad,Pfizer dose 2,7-13,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,Ischstroke_broad,Pfizer dose 2,14-20,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,Ischstroke_broad,Pfizer dose 2,14-20,<60,Female,0,21,0,0,6416015.34,21,21,21,0,0,0,0,0,6416015.34,0,0,6416015.34,0,0,6416015.34
+TEST,Ischstroke_broad,Pfizer dose 2,14-20,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,Ischstroke_broad,Pfizer dose 2,14-20,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,Ischstroke_broad,Pfizer dose 2,21-27,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,Ischstroke_broad,Pfizer dose 2,21-27,<60,Female,0,25,0,0,5389452.88,25,25,25,0,0,0,0,0,5389452.88,0,0,5389452.88,0,0,5389452.88
+TEST,Ischstroke_broad,Pfizer dose 2,21-27,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,Ischstroke_broad,Pfizer dose 2,21-27,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,VTE_narrow,AstraZeneca dose 1,0-6,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,VTE_narrow,AstraZeneca dose 1,0-6,<60,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,VTE_narrow,AstraZeneca dose 1,0-6,60+,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,VTE_narrow,AstraZeneca dose 1,0-6,<60,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,VTE_narrow,AstraZeneca dose 1,7-13,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,VTE_narrow,AstraZeneca dose 1,7-13,<60,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+>>>>>>> development
 TEST,VTE_narrow,AstraZeneca dose 1,7-13,60+,Male,0,8,0,0,16842040.26,8,8,8,0,0,0,0,0,16842040.26,0,0,16842040.26,0,0,16842040.26
 TEST,VTE_narrow,AstraZeneca dose 1,7-13,<60,Male,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
 TEST,VTE_narrow,Pfizer dose 1,0-6,60+,Female,0,11,0,0,12248756.55,11,7,11,0,0,0,0,0,12248756.55,0,0,19248046.01,0,0,12248756.55
@@ -1263,6 +1547,7 @@ TEST,VTE_narrow,Pfizer dose 1,91-97,60+,Female,0,37,0,0,3641522.22,37,33,37,0,0,
 TEST,VTE_narrow,Pfizer dose 1,91-97,<60,Female,0,239,0,0,563750.3,239,204,239,0,0,0,0,0,563750.3,0,0,660472.17,0,0,563750.3
 TEST,VTE_narrow,Pfizer dose 1,91-97,60+,Male,0,15,0,0,8982421.47,15,3,15,0,0,0,0,0,8982421.47,0,0,44912107.35,0,0,8982421.47
 TEST,VTE_narrow,Pfizer dose 1,91-97,<60,Male,0,71,0,0,1897694.68,71,64,71,0,0,0,0,0,1897694.68,0,0,2105255.03,0,0,1897694.68
+<<<<<<< HEAD
 TEST,VTE_narrow,Pfizer dose 2,0-6,60+,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 TEST,VTE_narrow,Pfizer dose 2,0-6,<60,Female,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
 TEST,VTE_narrow,Pfizer dose 2,0-6,60+,Male,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
@@ -1285,6 +1570,30 @@ TEST,VTE_broad,AstraZeneca dose 1,0-6,60+,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0
 TEST,VTE_broad,AstraZeneca dose 1,0-6,<60,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
 TEST,VTE_broad,AstraZeneca dose 1,7-13,60+,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 TEST,VTE_broad,AstraZeneca dose 1,7-13,<60,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+=======
+TEST,VTE_narrow,Pfizer dose 2,0-6,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,VTE_narrow,Pfizer dose 2,0-6,<60,Female,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,VTE_narrow,Pfizer dose 2,0-6,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,VTE_narrow,Pfizer dose 2,0-6,<60,Male,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
+TEST,VTE_narrow,Pfizer dose 2,7-13,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,VTE_narrow,Pfizer dose 2,7-13,<60,Female,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
+TEST,VTE_narrow,Pfizer dose 2,7-13,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,VTE_narrow,Pfizer dose 2,7-13,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,VTE_narrow,Pfizer dose 2,14-20,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,VTE_narrow,Pfizer dose 2,14-20,<60,Female,0,21,0,0,6416015.34,21,21,21,0,0,0,0,0,6416015.34,0,0,6416015.34,0,0,6416015.34
+TEST,VTE_narrow,Pfizer dose 2,14-20,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,VTE_narrow,Pfizer dose 2,14-20,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,VTE_narrow,Pfizer dose 2,21-27,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,VTE_narrow,Pfizer dose 2,21-27,<60,Female,0,25,0,0,5389452.88,25,25,25,0,0,0,0,0,5389452.88,0,0,5389452.88,0,0,5389452.88
+TEST,VTE_narrow,Pfizer dose 2,21-27,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,VTE_narrow,Pfizer dose 2,21-27,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,VTE_broad,AstraZeneca dose 1,0-6,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,VTE_broad,AstraZeneca dose 1,0-6,<60,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,VTE_broad,AstraZeneca dose 1,0-6,60+,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,VTE_broad,AstraZeneca dose 1,0-6,<60,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,VTE_broad,AstraZeneca dose 1,7-13,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,VTE_broad,AstraZeneca dose 1,7-13,<60,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+>>>>>>> development
 TEST,VTE_broad,AstraZeneca dose 1,7-13,60+,Male,0,8,0,0,16842040.26,8,8,8,0,0,0,0,0,16842040.26,0,0,16842040.26,0,0,16842040.26
 TEST,VTE_broad,AstraZeneca dose 1,7-13,<60,Male,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
 TEST,VTE_broad,Pfizer dose 1,0-6,60+,Female,0,11,0,0,12248756.55,11,7,11,0,0,0,0,0,12248756.55,0,0,19248046.01,0,0,12248756.55
@@ -1343,6 +1652,7 @@ TEST,VTE_broad,Pfizer dose 1,91-97,60+,Female,0,37,0,0,3641522.22,37,33,37,0,0,0
 TEST,VTE_broad,Pfizer dose 1,91-97,<60,Female,0,239,0,0,563750.3,239,204,239,0,0,0,0,0,563750.3,0,0,660472.17,0,0,563750.3
 TEST,VTE_broad,Pfizer dose 1,91-97,60+,Male,0,15,0,0,8982421.47,15,3,15,0,0,0,0,0,8982421.47,0,0,44912107.35,0,0,8982421.47
 TEST,VTE_broad,Pfizer dose 1,91-97,<60,Male,0,71,0,0,1897694.68,71,64,71,0,0,0,0,0,1897694.68,0,0,2105255.03,0,0,1897694.68
+<<<<<<< HEAD
 TEST,VTE_broad,Pfizer dose 2,0-6,60+,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 TEST,VTE_broad,Pfizer dose 2,0-6,<60,Female,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
 TEST,VTE_broad,Pfizer dose 2,0-6,60+,Male,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
@@ -1525,6 +1835,30 @@ TEST,ArterialNoTP,AstraZeneca dose 1,0-6,60+,Male,0,7,0,0,19248046.01,7,7,7,0,0,
 TEST,ArterialNoTP,AstraZeneca dose 1,0-6,<60,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
 TEST,ArterialNoTP,AstraZeneca dose 1,7-13,60+,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 TEST,ArterialNoTP,AstraZeneca dose 1,7-13,<60,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+=======
+TEST,VTE_broad,Pfizer dose 2,0-6,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,VTE_broad,Pfizer dose 2,0-6,<60,Female,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,VTE_broad,Pfizer dose 2,0-6,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,VTE_broad,Pfizer dose 2,0-6,<60,Male,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
+TEST,VTE_broad,Pfizer dose 2,7-13,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,VTE_broad,Pfizer dose 2,7-13,<60,Female,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
+TEST,VTE_broad,Pfizer dose 2,7-13,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,VTE_broad,Pfizer dose 2,7-13,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,VTE_broad,Pfizer dose 2,14-20,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,VTE_broad,Pfizer dose 2,14-20,<60,Female,0,21,0,0,6416015.34,21,21,21,0,0,0,0,0,6416015.34,0,0,6416015.34,0,0,6416015.34
+TEST,VTE_broad,Pfizer dose 2,14-20,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,VTE_broad,Pfizer dose 2,14-20,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,VTE_broad,Pfizer dose 2,21-27,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,VTE_broad,Pfizer dose 2,21-27,<60,Female,0,25,0,0,5389452.88,25,25,25,0,0,0,0,0,5389452.88,0,0,5389452.88,0,0,5389452.88
+TEST,VTE_broad,Pfizer dose 2,21-27,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,VTE_broad,Pfizer dose 2,21-27,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,ArterialNoTP,AstraZeneca dose 1,0-6,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,ArterialNoTP,AstraZeneca dose 1,0-6,<60,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,ArterialNoTP,AstraZeneca dose 1,0-6,60+,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,ArterialNoTP,AstraZeneca dose 1,0-6,<60,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,ArterialNoTP,AstraZeneca dose 1,7-13,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,ArterialNoTP,AstraZeneca dose 1,7-13,<60,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+>>>>>>> development
 TEST,ArterialNoTP,AstraZeneca dose 1,7-13,60+,Male,0,8,0,0,16842040.26,8,8,8,0,0,0,0,0,16842040.26,0,0,16842040.26,0,0,16842040.26
 TEST,ArterialNoTP,AstraZeneca dose 1,7-13,<60,Male,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
 TEST,ArterialNoTP,Pfizer dose 1,0-6,60+,Female,0,11,0,0,12248756.55,11,7,11,0,0,0,0,0,12248756.55,0,0,19248046.01,0,0,12248756.55
@@ -1583,6 +1917,7 @@ TEST,ArterialNoTP,Pfizer dose 1,91-97,60+,Female,0,37,0,0,3641522.22,37,33,37,0,
 TEST,ArterialNoTP,Pfizer dose 1,91-97,<60,Female,0,239,0,0,563750.3,239,204,239,0,0,0,0,0,563750.3,0,0,660472.17,0,0,563750.3
 TEST,ArterialNoTP,Pfizer dose 1,91-97,60+,Male,0,15,0,0,8982421.47,15,3,15,0,0,0,0,0,8982421.47,0,0,44912107.35,0,0,8982421.47
 TEST,ArterialNoTP,Pfizer dose 1,91-97,<60,Male,0,71,0,0,1897694.68,71,64,71,0,0,0,0,0,1897694.68,0,0,2105255.03,0,0,1897694.68
+<<<<<<< HEAD
 TEST,ArterialNoTP,Pfizer dose 2,0-6,60+,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 TEST,ArterialNoTP,Pfizer dose 2,0-6,<60,Female,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
 TEST,ArterialNoTP,Pfizer dose 2,0-6,60+,Male,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
@@ -1605,6 +1940,30 @@ TEST,VTENoTP,AstraZeneca dose 1,0-6,60+,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0
 TEST,VTENoTP,AstraZeneca dose 1,0-6,<60,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
 TEST,VTENoTP,AstraZeneca dose 1,7-13,60+,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 TEST,VTENoTP,AstraZeneca dose 1,7-13,<60,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+=======
+TEST,ArterialNoTP,Pfizer dose 2,0-6,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,ArterialNoTP,Pfizer dose 2,0-6,<60,Female,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,ArterialNoTP,Pfizer dose 2,0-6,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,ArterialNoTP,Pfizer dose 2,0-6,<60,Male,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
+TEST,ArterialNoTP,Pfizer dose 2,7-13,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,ArterialNoTP,Pfizer dose 2,7-13,<60,Female,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
+TEST,ArterialNoTP,Pfizer dose 2,7-13,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,ArterialNoTP,Pfizer dose 2,7-13,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,ArterialNoTP,Pfizer dose 2,14-20,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,ArterialNoTP,Pfizer dose 2,14-20,<60,Female,0,21,0,0,6416015.34,21,21,21,0,0,0,0,0,6416015.34,0,0,6416015.34,0,0,6416015.34
+TEST,ArterialNoTP,Pfizer dose 2,14-20,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,ArterialNoTP,Pfizer dose 2,14-20,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,ArterialNoTP,Pfizer dose 2,21-27,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,ArterialNoTP,Pfizer dose 2,21-27,<60,Female,0,25,0,0,5389452.88,25,25,25,0,0,0,0,0,5389452.88,0,0,5389452.88,0,0,5389452.88
+TEST,ArterialNoTP,Pfizer dose 2,21-27,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,ArterialNoTP,Pfizer dose 2,21-27,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,VTENoTP,AstraZeneca dose 1,0-6,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,VTENoTP,AstraZeneca dose 1,0-6,<60,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,VTENoTP,AstraZeneca dose 1,0-6,60+,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,VTENoTP,AstraZeneca dose 1,0-6,<60,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,VTENoTP,AstraZeneca dose 1,7-13,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,VTENoTP,AstraZeneca dose 1,7-13,<60,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+>>>>>>> development
 TEST,VTENoTP,AstraZeneca dose 1,7-13,60+,Male,0,8,0,0,16842040.26,8,8,8,0,0,0,0,0,16842040.26,0,0,16842040.26,0,0,16842040.26
 TEST,VTENoTP,AstraZeneca dose 1,7-13,<60,Male,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
 TEST,VTENoTP,Pfizer dose 1,0-6,60+,Female,0,11,0,0,12248756.55,11,7,11,0,0,0,0,0,12248756.55,0,0,19248046.01,0,0,12248756.55
@@ -1663,6 +2022,7 @@ TEST,VTENoTP,Pfizer dose 1,91-97,60+,Female,0,37,0,0,3641522.22,37,33,37,0,0,0,0
 TEST,VTENoTP,Pfizer dose 1,91-97,<60,Female,0,239,0,0,563750.3,239,204,239,0,0,0,0,0,563750.3,0,0,660472.17,0,0,563750.3
 TEST,VTENoTP,Pfizer dose 1,91-97,60+,Male,0,15,0,0,8982421.47,15,3,15,0,0,0,0,0,8982421.47,0,0,44912107.35,0,0,8982421.47
 TEST,VTENoTP,Pfizer dose 1,91-97,<60,Male,0,71,0,0,1897694.68,71,64,71,0,0,0,0,0,1897694.68,0,0,2105255.03,0,0,1897694.68
+<<<<<<< HEAD
 TEST,VTENoTP,Pfizer dose 2,0-6,60+,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 TEST,VTENoTP,Pfizer dose 2,0-6,<60,Female,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
 TEST,VTENoTP,Pfizer dose 2,0-6,60+,Male,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
@@ -1685,6 +2045,30 @@ TEST,ArterialVTENoTP,AstraZeneca dose 1,0-6,60+,Male,0,7,0,0,19248046.01,7,7,7,0
 TEST,ArterialVTENoTP,AstraZeneca dose 1,0-6,<60,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
 TEST,ArterialVTENoTP,AstraZeneca dose 1,7-13,60+,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 TEST,ArterialVTENoTP,AstraZeneca dose 1,7-13,<60,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+=======
+TEST,VTENoTP,Pfizer dose 2,0-6,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,VTENoTP,Pfizer dose 2,0-6,<60,Female,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,VTENoTP,Pfizer dose 2,0-6,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,VTENoTP,Pfizer dose 2,0-6,<60,Male,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
+TEST,VTENoTP,Pfizer dose 2,7-13,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,VTENoTP,Pfizer dose 2,7-13,<60,Female,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
+TEST,VTENoTP,Pfizer dose 2,7-13,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,VTENoTP,Pfizer dose 2,7-13,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,VTENoTP,Pfizer dose 2,14-20,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,VTENoTP,Pfizer dose 2,14-20,<60,Female,0,21,0,0,6416015.34,21,21,21,0,0,0,0,0,6416015.34,0,0,6416015.34,0,0,6416015.34
+TEST,VTENoTP,Pfizer dose 2,14-20,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,VTENoTP,Pfizer dose 2,14-20,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,VTENoTP,Pfizer dose 2,21-27,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,VTENoTP,Pfizer dose 2,21-27,<60,Female,0,25,0,0,5389452.88,25,25,25,0,0,0,0,0,5389452.88,0,0,5389452.88,0,0,5389452.88
+TEST,VTENoTP,Pfizer dose 2,21-27,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,VTENoTP,Pfizer dose 2,21-27,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,ArterialVTENoTP,AstraZeneca dose 1,0-6,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,ArterialVTENoTP,AstraZeneca dose 1,0-6,<60,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,ArterialVTENoTP,AstraZeneca dose 1,0-6,60+,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,ArterialVTENoTP,AstraZeneca dose 1,0-6,<60,Male,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,ArterialVTENoTP,AstraZeneca dose 1,7-13,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,ArterialVTENoTP,AstraZeneca dose 1,7-13,<60,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+>>>>>>> development
 TEST,ArterialVTENoTP,AstraZeneca dose 1,7-13,60+,Male,0,8,0,0,16842040.26,8,8,8,0,0,0,0,0,16842040.26,0,0,16842040.26,0,0,16842040.26
 TEST,ArterialVTENoTP,AstraZeneca dose 1,7-13,<60,Male,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
 TEST,ArterialVTENoTP,Pfizer dose 1,0-6,60+,Female,0,11,0,0,12248756.55,11,7,11,0,0,0,0,0,12248756.55,0,0,19248046.01,0,0,12248756.55
@@ -1743,6 +2127,7 @@ TEST,ArterialVTENoTP,Pfizer dose 1,91-97,60+,Female,0,37,0,0,3641522.22,37,33,37
 TEST,ArterialVTENoTP,Pfizer dose 1,91-97,<60,Female,0,239,0,0,563750.3,239,204,239,0,0,0,0,0,563750.3,0,0,660472.17,0,0,563750.3
 TEST,ArterialVTENoTP,Pfizer dose 1,91-97,60+,Male,0,15,0,0,8982421.47,15,3,15,0,0,0,0,0,8982421.47,0,0,44912107.35,0,0,8982421.47
 TEST,ArterialVTENoTP,Pfizer dose 1,91-97,<60,Male,0,71,0,0,1897694.68,71,64,71,0,0,0,0,0,1897694.68,0,0,2105255.03,0,0,1897694.68
+<<<<<<< HEAD
 TEST,ArterialVTENoTP,Pfizer dose 2,0-6,60+,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 TEST,ArterialVTENoTP,Pfizer dose 2,0-6,<60,Female,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
 TEST,ArterialVTENoTP,Pfizer dose 2,0-6,60+,Male,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
@@ -1758,4 +2143,21 @@ TEST,ArterialVTENoTP,Pfizer dose 2,14-20,<60,Male,0,20,0,0,6736816.1,20,20,20,0,
 TEST,ArterialVTENoTP,Pfizer dose 2,21-27,60+,Female,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 TEST,ArterialVTENoTP,Pfizer dose 2,21-27,<60,Female,0,25,0,0,5389452.88,25,25,25,0,0,0,0,0,5389452.88,0,0,5389452.88,0,0,5389452.88
 TEST,ArterialVTENoTP,Pfizer dose 2,21-27,60+,Male,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+=======
+TEST,ArterialVTENoTP,Pfizer dose 2,0-6,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,ArterialVTENoTP,Pfizer dose 2,0-6,<60,Female,0,7,0,0,19248046.01,7,7,7,0,0,0,0,0,19248046.01,0,0,19248046.01,0,0,19248046.01
+TEST,ArterialVTENoTP,Pfizer dose 2,0-6,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,ArterialVTENoTP,Pfizer dose 2,0-6,<60,Male,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
+TEST,ArterialVTENoTP,Pfizer dose 2,7-13,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,ArterialVTENoTP,Pfizer dose 2,7-13,<60,Female,0,14,0,0,9624023,14,14,14,0,0,0,0,0,9624023,0,0,9624023,0,0,9624023
+TEST,ArterialVTENoTP,Pfizer dose 2,7-13,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,ArterialVTENoTP,Pfizer dose 2,7-13,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,ArterialVTENoTP,Pfizer dose 2,14-20,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,ArterialVTENoTP,Pfizer dose 2,14-20,<60,Female,0,21,0,0,6416015.34,21,21,21,0,0,0,0,0,6416015.34,0,0,6416015.34,0,0,6416015.34
+TEST,ArterialVTENoTP,Pfizer dose 2,14-20,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,ArterialVTENoTP,Pfizer dose 2,14-20,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
+TEST,ArterialVTENoTP,Pfizer dose 2,21-27,60+,Female,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+TEST,ArterialVTENoTP,Pfizer dose 2,21-27,<60,Female,0,25,0,0,5389452.88,25,25,25,0,0,0,0,0,5389452.88,0,0,5389452.88,0,0,5389452.88
+TEST,ArterialVTENoTP,Pfizer dose 2,21-27,60+,Male,0,0,0,0,Inf,0,0,0,0,0,0,0,0,Inf,0,0,Inf,0,0,Inf
+>>>>>>> development
 TEST,ArterialVTENoTP,Pfizer dose 2,21-27,<60,Male,0,20,0,0,6736816.1,20,20,20,0,0,0,0,0,6736816.1,0,0,6736816.1,0,0,6736816.1
