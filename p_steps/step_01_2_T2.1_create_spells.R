@@ -145,7 +145,7 @@ if (this_datasource_has_subpopulations == TRUE){
 }else{
   
   OBSERVATION_PERIODS <- OBSERVATION_PERIODS[,op_meaning:="all"]
-  assign("output_spells_category_ALL" ,CreateSpells(
+  assign("output_spells_category" ,CreateSpells(
     dataset=OBSERVATION_PERIODS,
     id="person_id" ,
     start_date = "op_start_date",
@@ -157,13 +157,13 @@ if (this_datasource_has_subpopulations == TRUE){
   )
   
   
-  output_spells_category_ALL<-as.data.table(output_spells_category_ALL)
+  output_spells_category<-as.data.table(output_spells_category)
   setkeyv(
-    output_spells_category_ALL,
+    output_spells_category,
     c("person_id", "entry_spell_category", "exit_spell_category", "num_spell", "op_meaning")
   )
   
-  save(output_spells_category_ALL,file=paste0(dirtemp,"output_spells_category_ALL.RData"))
+  save(output_spells_category,file=paste0(dirtemp,"output_spells_category.RData"))
   
   rm(OBSERVATION_PERIODS,output_spells_category_ALL)
 }
