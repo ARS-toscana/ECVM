@@ -581,7 +581,7 @@ for (outcome in list_outcomes_observed) {
       temp_df <- data.table::fread(paste0(direxp, "QC_code_counts_in_study_population", outcome, "_", year, ".csv"))
       event <- strsplit(outcome, "_")[[1]][1]
       temp_df <- temp_df[, Event := event]
-      table_9 <- data.table::rbindlist(list(table_9, temp_df))
+      table_7 <- data.table::rbindlist(list(table_7, temp_df))
     }
   }
 }

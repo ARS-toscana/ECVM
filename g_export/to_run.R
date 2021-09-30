@@ -1,11 +1,14 @@
 #-------------------------------
 # ECVM script
 
-# v4.3.2 - 22 July 2021
+# v6.0 - 29 September 2021
 
 # authors: Rosa Gini, Olga Paoletti, Davide Messina, Giorgio Limoncella
 
 <<<<<<< HEAD
+# changelog V5.3_MIS:
+# adjutment for subpopulations
+
 # changelog V5.3_MIS:
 # addition of final tables 1-7
 
