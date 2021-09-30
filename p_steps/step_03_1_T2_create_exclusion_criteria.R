@@ -50,8 +50,9 @@ D3_inclusion_from_PERSONS <- D3_PERSONS[,.(person_id,sex,date_of_birth,date_of_d
 
 # OBSERVATION PERIODS -----------------------------------------------------
 
-# for (subpop in subpopulations[[thisdatasource]]){
+for (subpop in subpopulations_non_empty){
 #   print(subpop)
+  load(paste0("input_1",suffix[[subpop]]))
   load(paste0(dirtemp,"output_spells_category.RData"))
   
   # if (this_datasource_has_subpopulations == TRUE)output_spells_category <- as.data.table(output_spells_category[[subpop]])
@@ -90,7 +91,7 @@ D3_selection_criteria <- D3_selection_criteria[!is.na(study_entry_date), ]
 # }else{
 #   D3_selection_criteria[[subpop]] <- D3_selection_criteriatemp
 # }
-#}
+}
 
 save(D3_selection_criteria,file=paste0(dirtemp,"D3_selection_criteria.RData"))
 

@@ -1,0 +1,9 @@
+person_id;so_date;so_source_table;so_source_column;so_unit;so_source_value;survey_id;so_origin
+ECVM210501000;20200525;Covid19_Hospitalizacion;Ingreso_hospital;;1;covid_registry_BIFAP_2;
+ECVM210501000;20200525;Covid19_Hospitalizacion;Fecha_ingreso_hosp;;20200529;covid_registry_BIFAP_2;
+ECVM210501000;20200925;Covid19_Hospitalizacion;Ingreso_hospital;;1;covid_registry_BIFAP_3;
+ECVM210501000;20200925;Covid19_Hospitalizacion;Fecha_ingreso_hosp;;20200927;covid_registry_BIFAP_3;
+ECVM210501000;20210228;Covid19_Hospitalizacion;Ingreso_hospital;;1;covid_registry_BIFAP_4;
+ECVM210501000;20210228;Covid19_Hospitalizacion;Fecha_ingreso_hosp;;20210301;covid_registry_BIFAP_4;
+ECVM210501000;20210228;Covid19_UCI;Ingreso_uci;;1;covid_registry_BIFAP_4;
+ECVM210501000;20210228;Covid19_UCI;Fecha_ingreso_uci;;20210301;covid_registry_BIFAP_4;

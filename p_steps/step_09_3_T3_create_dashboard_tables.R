@@ -2,18 +2,7 @@ load(paste0(dirtemp, "D3_vaxweeks.RData"))
 load(paste0(dirtemp, "D3_Vaccin_cohort.RData"))
 load(paste0(dirtemp, "D3_study_population.RData"))
 load(paste0(dirtemp,"list_outcomes_observed.RData"))
-
-correct_col_type <- function(df) {
-  for (i in names(df)){
-    df[is.na(get(i)), (i) := 0]
-    if (!inherits(df[, get(i)], "IDate")) {
-      df[is.integer(get(i)), (i) := as.numeric(get(i))]
-    }
-    df[is.logical(get(i)), (i) := as.numeric(get(i))]
-  }
-  return(df)
-}
-
+load(paste0(diroutput, "D4_doses_weeks.RData"))
 
 # Birth Cohort ----------------------------------------------------------------------------------------------------
 
@@ -28,6 +17,83 @@ all_days_df <- data.table(all_days = seq.Date(from = find_last_monday(study_star
 all_days_df <- merge(all_days_df, double_weeks, by.x = "all_days", by.y = "weeks_to_join", all.x = T)
 all_days_df <- all_days_df[, monday_week := nafill(monday_week, type="locf")]
 all_days_df <- all_days_df[all_days >= study_start,]
+
+
+all_tuesdays <- seq.Date(as.Date("19000102","%Y%m%d"), study_end, by = "week")
+
+tuesday_week <- seq.Date(from = find_last_monday(study_start, all_tuesdays), to = find_last_monday(study_end, all_tuesdays),
+                        by = "week")
+double_weeks <- data.table(weeks_to_join = tuesday_week, tuesday_week = tuesday_week)
+all_tuesdays_df <- data.table(all_days = seq.Date(from = find_last_monday(study_start, all_tuesdays), to = study_end, by = "days"))
+all_tuesdays_df <- merge(all_tuesdays_df, double_weeks, by.x = "all_days", by.y = "weeks_to_join", all.x = T)
+all_tuesdays_df <- all_tuesdays_df[, tuesday_week := nafill(tuesday_week, type="locf")]
+all_tuesdays_df <- all_tuesdays_df[all_days >= study_start,]
+
+
+
+
+exited_pop <- copy(D3_vaxweeks)[, .(person_id, end_date_of_period, Dose, week)]
+exited_pop <- exited_pop[exited_pop[, .I[Dose == max(Dose)], by = "person_id"]$V1]
+exited_pop <- exited_pop[exited_pop[, .I[week == max(week)], by = "person_id"]$V1][, week := NULL]
+
+exited_pop_1 <- copy(exited_pop)[Dose == 2, ][, Dose := 1]
+exited_pop <- rbind(exited_pop, exited_pop_1)
+
+exited_pop <- merge(exited_pop, all_tuesdays_df, by.x = "end_date_of_period",
+                    by.y = "all_days", all.x = T)[, end_date_of_period := NULL]
+setnames(exited_pop,  "tuesday_week", "week")
+exited_pop <- exited_pop[, week := week + 6]
+
+pop_traits <- copy(D3_study_population)[, .(person_id, date_of_birth, CV_at_study_entry, COVCANCER_at_study_entry,
+                                            COVCOPD_at_study_entry, COVHIV_at_study_entry, COVCKD_at_study_entry,
+                                            COVDIAB_at_study_entry, COVOBES_at_study_entry, COVSICKLE_at_study_entry,
+                                            immunosuppressants_at_study_entry, at_risk_at_study_entry, type_vax_1,
+                                            type_vax_2)]
+pop_traits <- pop_traits[!(is.na(type_vax_1) & is.na(type_vax_2)), ]
+pop_traits <- pop_traits[, birth_cohort := findInterval(year(date_of_birth), c(1940, 1950, 1960, 1970, 1980, 1990))]
+pop_traits$birth_cohort <- as.character(pop_traits$birth_cohort)
+pop_traits <- pop_traits[.(birth_cohort = c("0", "1", "2", "3", "4", "5", "6"),
+                                     to = c("<1940", "1940-1949", "1950-1959", "1960-1969", "1970-1979",
+                                            "1980-1989", "1990+")),
+                                   on = "birth_cohort", birth_cohort := i.to]
+pop_traits <- pop_traits[, date_of_birth := NULL]
+pop_traits <- melt(pop_traits, id.vars = c("person_id", "birth_cohort", "type_vax_1", "type_vax_2"),
+                   measure.vars = c("CV_at_study_entry", "COVCANCER_at_study_entry",
+                                    "COVCOPD_at_study_entry", "COVHIV_at_study_entry", "COVCKD_at_study_entry",
+                                    "COVDIAB_at_study_entry", "COVOBES_at_study_entry", "COVSICKLE_at_study_entry",
+                                    "immunosuppressants_at_study_entry", "at_risk_at_study_entry"),
+                   variable.name = "riskfactor")
+pop_traits <- melt(pop_traits, id.vars = c("person_id", "birth_cohort", "riskfactor", "value"),
+                   measure.vars = c("type_vax_1", "type_vax_2"),
+                   variable.name = "Dose", value.name = "vx_manufacturer")
+pop_traits <- pop_traits[, Dose := fifelse(Dose == "type_vax_1", "1", "2")]
+
+exited_pop <- merge(exited_pop, pop_traits, by = c("person_id", "Dose"), all.x = T)
+setnames(exited_pop, "Dose", "dose")
+
+exited_pop_birth_cohorts <- unique(copy(exited_pop)[, c("riskfactor", "value") := NULL])
+exited_pop_birth_cohorts <- exited_pop_birth_cohorts[, .N, by = c("dose", "week", "birth_cohort", "vx_manufacturer")]
+
+all_pop <- copy(exited_pop_birth_cohorts)[birth_cohort %in% c("<1940", "1940-1949", "1950-1959", "1960-1969",
+                                                              "1970-1979", "1980-1989", "1990+"),
+                                 .(N = sum(N)), by = c("dose", "week",
+                                                       "vx_manufacturer")][, birth_cohort := "all_birth_cohorts"]
+exited_pop_birth_cohorts <- rbind(exited_pop_birth_cohorts, all_pop)
+
+older60 <- copy(exited_pop_birth_cohorts)[birth_cohort %in% c("<1940", "1940-1949", "1950-1959"),
+                                          lapply(.SD, sum, na.rm=TRUE),
+                                          by = c("week", "vx_manufacturer", "dose"),
+                                          .SDcols = "N"]
+older60 <- unique(older60[, birth_cohort := "<1960"])
+exited_pop_birth_cohorts <- rbind(exited_pop_birth_cohorts, older60)
+
+setorder(exited_pop_birth_cohorts, week)
+exited_pop_birth_cohorts <- exited_pop_birth_cohorts[, exited := cumsum(N),
+                                                     by = c("dose", "birth_cohort", "vx_manufacturer")][, N := NULL]
+exited_pop_birth_cohorts <- exited_pop_birth_cohorts[, week := format(week, "%Y%m%d")]
+
+
+
 
 D3_vaxweeks <- D3_vaxweeks[week == 0]
 D3_vaxweeks <- merge(D3_vaxweeks, all_days_df, by.x = "start_date_of_period", by.y = "all_days", all.x = T)
@@ -69,38 +135,55 @@ complete_df <- expand.grid(datasource = thisdatasource, week = monday_week, vx_m
 
 vaxweeks_to_dos_bir_cor <- merge(vaxweeks_to_dos_bir_cor, complete_df, all.y = T, by = c("datasource", "week", "vx_manufacturer", "dose", "birth_cohort"))
 DOSES_BIRTHCOHORTS <- vaxweeks_to_dos_bir_cor[is.na(N), N := 0][, week := format(week, "%Y%m%d")]
-
+  
 vect_recode_birthcohort <- c("<1940" = "80+", "1940-1949" = "70-79", "1950-1959" = "60-69", "1960-1969" = "50-59",
                              "1970-1979" = "40-49", "1980-1989" = "30-39", "1990+" = "<30",
                              "all_birth_cohorts" = "all_birth_cohorts", "<1960" = "60+")
 DOSES_BIRTHCOHORTS <- DOSES_BIRTHCOHORTS[, ageband := vect_recode_birthcohort[birth_cohort]]
 
 fwrite(DOSES_BIRTHCOHORTS, file = paste0(dirdashboard, "DOSES_BIRTHCOHORTS.csv"))
+# 
+# tot_pop_cohorts <- D3_study_population[, birth_cohort := findInterval(year(date_of_birth), c(1940, 1950, 1960, 1970, 1980, 1990))]
+# tot_pop_cohorts$birth_cohort <- as.character(tot_pop_cohorts$birth_cohort)
+# tot_pop_cohorts <- tot_pop_cohorts[.(birth_cohort = c("0", "1", "2", "3", "4", "5", "6"),
+#                                      to = c("<1940", "1940-1949", "1950-1959", "1960-1969", "1970-1979",
+#                                             "1980-1989", "1990+")),
+#                                    on = "birth_cohort", birth_cohort := i.to]
+# tot_pop_cohorts <- tot_pop_cohorts[, .(pop_cohorts = .N), by = c("birth_cohort")]
+# all_pop <- unique(copy(tot_pop_cohorts)[, pop_cohorts := sum(pop_cohorts)][, birth_cohort := "all_birth_cohorts"])
+# tot_pop_cohorts <- rbind(tot_pop_cohorts, all_pop)
+# older60 <- copy(tot_pop_cohorts)[birth_cohort %in% c("<1940", "1940-1949", "1950-1959"), sum(pop_cohorts)]
+# older60 <- data.table::data.table(birth_cohort = "<1960", pop_cohorts = older60)
+# tot_pop_cohorts <- rbind(tot_pop_cohorts, older60)
 
-tot_pop_cohorts <- D3_study_population[, birth_cohort := findInterval(year(date_of_birth), c(1940, 1950, 1960, 1970, 1980, 1990))]
-tot_pop_cohorts$birth_cohort <- as.character(tot_pop_cohorts$birth_cohort)
-tot_pop_cohorts <- tot_pop_cohorts[.(birth_cohort = c("0", "1", "2", "3", "4", "5", "6"),
-                                     to = c("<1940", "1940-1949", "1950-1959", "1960-1969", "1970-1979",
-                                            "1980-1989", "1990+")),
-                                   on = "birth_cohort", birth_cohort := i.to]
-tot_pop_cohorts <- tot_pop_cohorts[, .(pop_cohorts = .N), by = c("birth_cohort")]
-all_pop <- unique(copy(tot_pop_cohorts)[, pop_cohorts := sum(pop_cohorts)][, birth_cohort := "all_birth_cohorts"])
+
+tot_pop_cohorts <- unique(D4_doses_weeks[, .(week = format(Week_number, "%Y%m%d"), birth_cohort = Birthcohort_persons,
+                                             Persons_in_week)])
+all_pop <- copy(tot_pop_cohorts)[birth_cohort %in% c("<1940", "1940-1949", "1950-1959", "1960-1969",
+                                                     "1970-1979", "1980-1989", "1990+"),
+                                 .(Persons_in_week = sum(Persons_in_week)), by = "week"][, birth_cohort := "all_birth_cohorts"]
 tot_pop_cohorts <- rbind(tot_pop_cohorts, all_pop)
-older60 <- copy(tot_pop_cohorts)[birth_cohort %in% c("<1940", "1940-1949", "1950-1959"), sum(pop_cohorts)]
-older60 <- data.table::data.table(birth_cohort = "<1960", pop_cohorts = older60)
-tot_pop_cohorts <- rbind(tot_pop_cohorts, older60)
 
-COVERAGE_BIRTHCOHORTS <- merge(DOSES_BIRTHCOHORTS, tot_pop_cohorts, by = "birth_cohort", all.x = T)
+
+COVERAGE_BIRTHCOHORTS <- merge(DOSES_BIRTHCOHORTS, tot_pop_cohorts, by = c("week", "birth_cohort"), all.x = T)
 setorder(COVERAGE_BIRTHCOHORTS, week)
 
 COVERAGE_BIRTHCOHORTS <- COVERAGE_BIRTHCOHORTS[, cum_N := cumsum(N), by = c("datasource", "vx_manufacturer", "dose", "birth_cohort")]
-COVERAGE_BIRTHCOHORTS <- COVERAGE_BIRTHCOHORTS[, percentage := round(cum_N / pop_cohorts * 100, 3)]
+
+COVERAGE_BIRTHCOHORTS <- merge(COVERAGE_BIRTHCOHORTS, exited_pop_birth_cohorts,
+                               by = c("week", "vx_manufacturer", "dose", "birth_cohort"), all.x = T)
+COVERAGE_BIRTHCOHORTS <- COVERAGE_BIRTHCOHORTS[is.na(exited), exited := 0][, cum_N := cum_N - exited][, exited := NULL]
+
+COVERAGE_BIRTHCOHORTS <- COVERAGE_BIRTHCOHORTS[, percentage := round(cum_N / Persons_in_week  * 100, 3)]
 COVERAGE_BIRTHCOHORTS <- COVERAGE_BIRTHCOHORTS[, .(datasource, week, vx_manufacturer, dose, birth_cohort, percentage)]
 
 COVERAGE_BIRTHCOHORTS <- COVERAGE_BIRTHCOHORTS[, ageband := vect_recode_birthcohort[birth_cohort]]
 
 fwrite(COVERAGE_BIRTHCOHORTS, file = paste0(dirdashboard, "COVERAGE_BIRTHCOHORTS.csv"))
 
+if (any(COVERAGE_BIRTHCOHORTS[, percentage] > 100)) {
+  stop("Percentage in COVERAGE_BIRTHCOHORTS > 100")
+}
 
 
 # Risk Factors ----------------------------------------------------------------------------------------------------
@@ -144,22 +227,24 @@ DOSES_RISKFACTORS <- vaxweeks_to_dos_risk[is.na(N), N := 0][, week := format(wee
 
 fwrite(DOSES_RISKFACTORS, file = paste0(dirdashboard, "DOSES_RISKFACTORS.csv"))
 
-tot_pop_cohorts <- D3_study_population_cov_ALL[, .(pop_cohorts = .N), by = c("riskfactor")]
-COVERAGE_RISKFACTORS <- merge(DOSES_RISKFACTORS, tot_pop_cohorts, by = "riskfactor", all.x = T)
-setorder(COVERAGE_RISKFACTORS, week)
-
-COVERAGE_RISKFACTORS <- COVERAGE_RISKFACTORS[, cum_N := cumsum(N), by = c("datasource", "vx_manufacturer", "dose", "riskfactor")]
-COVERAGE_RISKFACTORS <- COVERAGE_RISKFACTORS[, percentage := round(cum_N / pop_cohorts * 100, 3)]
-COVERAGE_RISKFACTORS <- COVERAGE_RISKFACTORS[, .(datasource, week, vx_manufacturer, dose, riskfactor, percentage)]
-
-fwrite(COVERAGE_RISKFACTORS, file = paste0(dirdashboard, "COVERAGE_RISKFACTORS.csv"))
+# tot_pop_cohorts <- D3_study_population_cov_ALL[, .(pop_cohorts = .N), by = c("riskfactor")]
+# COVERAGE_RISKFACTORS <- merge(DOSES_RISKFACTORS, tot_pop_cohorts, by = "riskfactor", all.x = T)
+# setorder(COVERAGE_RISKFACTORS, week)
+# 
+# COVERAGE_RISKFACTORS <- COVERAGE_RISKFACTORS[, cum_N := cumsum(N), by = c("datasource", "vx_manufacturer", "dose", "riskfactor")]
+# COVERAGE_RISKFACTORS <- COVERAGE_RISKFACTORS[, percentage := round(cum_N / pop_cohorts * 100, 3)]
+# COVERAGE_RISKFACTORS <- COVERAGE_RISKFACTORS[, .(datasource, week, vx_manufacturer, dose, riskfactor, percentage)]
+# 
+# fwrite(COVERAGE_RISKFACTORS, file = paste0(dirdashboard, "COVERAGE_RISKFACTORS.csv"))
+# 
+# rm(D3_vaxweeks, cohort_to_doses_weeks, all_mondays, monday_week, double_weeks, all_days_df, vaxweeks_to_dos_bir_cor,
+#    all_ages, complete_df, DOSES_BIRTHCOHORTS, D3_study_population, tot_pop_cohorts, all_pop, COVERAGE_BIRTHCOHORTS,
+#    D3_Vaccin_cohort, D3_study_population_cov_ALL, vaxweeks_to_dos_bir_cor_base, vaxweeks_to_dos_risk, DOSES_RISKFACTORS,
+#    COVERAGE_RISKFACTORS)
 
 rm(D3_vaxweeks, cohort_to_doses_weeks, all_mondays, monday_week, double_weeks, all_days_df, vaxweeks_to_dos_bir_cor,
    all_ages, complete_df, DOSES_BIRTHCOHORTS, D3_study_population, tot_pop_cohorts, all_pop, COVERAGE_BIRTHCOHORTS,
-   D3_Vaccin_cohort, D3_study_population_cov_ALL, vaxweeks_to_dos_bir_cor_base, vaxweeks_to_dos_risk, DOSES_RISKFACTORS,
-   COVERAGE_RISKFACTORS)
-
-
+   D3_Vaccin_cohort, D3_study_population_cov_ALL, vaxweeks_to_dos_bir_cor_base, vaxweeks_to_dos_risk, DOSES_RISKFACTORS)
 
 # Benefit ------------------------------------------------------------------------------------------------------------
 

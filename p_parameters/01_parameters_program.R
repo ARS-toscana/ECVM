@@ -3,18 +3,19 @@
 # setwd("..")
 # setwd("..")
 # dirbase<-getwd()
-# dirinput <- paste0(dirbase,"/CDMInstances/ECVM2104/")
+# dirinput <- paste0(dirbase,"/CDMInstances/ECVM2108/")
 
-dirinput <- paste0(thisdir,"/i_input/")
+#dirinput <- paste0(thisdir,"/i_input/")
+dirinput <- paste0(thisdir,"/i_input_subpop/")
 
 # set other directories
 diroutput <- paste0(thisdir,"/g_output/")
-dirinput <- paste0(thisdir,"/i_input/")
 dirtemp <- paste0(thisdir,"/g_intermediate/")
 direxp <- paste0(thisdir,"/g_export/")
 dirdashboard <- paste0(direxp,"dashboard tables/")
 dirD4tables <- paste0(direxp,"D4 tables/")
 dummytables <- paste0(direxp,"Dummy tables for report/")
+dummytables_MIS <- paste0(direxp,"Dummy tables for report MIS-KD/")
 dirmacro <- paste0(thisdir,"/p_macro/")
 dirfigure <- paste0(thisdir,"/g_figure/")
 extension <- c(".csv")
@@ -52,7 +53,8 @@ library(ggplot2)
 # load macros
 
 source(paste0(dirmacro,"CreateConceptSetDatasets_v18.R"))
-source(paste0(dirmacro,"RetrieveRecordsFromEAVDatasets.R"))
+#source(paste0(dirmacro,"RetrieveRecordsFromEAVDatasets.R"))
+# source(paste0(dirmacro,"CreateItemsetDatasets.R"))
 source(paste0(dirmacro,"CreateItemsetDatasets_v02.R"))
 source(paste0(dirmacro,"MergeFilterAndCollapse_v5.R"))
 source(paste0(dirmacro,"CreateSpells_v14.R"))
@@ -70,7 +72,7 @@ date_format <- "%Y%m%d"
 # understand which datasource the script is querying
 
 CDM_SOURCE<- fread(paste0(dirinput,"CDM_SOURCE.csv"))
-thisdatasource <- as.character(CDM_SOURCE[1,2])
+thisdatasource <- as.character(CDM_SOURCE[1,3])
 
 study_start <- as.Date(as.character(20200101), date_format)
 
@@ -88,6 +90,7 @@ suppressWarnings(if (!file.exists(direxp)) dir.create(file.path( direxp)))
 suppressWarnings(if (!file.exists(dirdashboard)) dir.create(file.path(dirdashboard)))
 suppressWarnings(if (!file.exists(dirD4tables)) dir.create(file.path(dirD4tables)))
 suppressWarnings(if (!file.exists(dummytables)) dir.create(file.path(dummytables)))
+suppressWarnings(if (!file.exists(dummytables_MIS)) dir.create(file.path(dummytables_MIS)))
 suppressWarnings(if (!file.exists(dirfigure)) dir.create(file.path( dirfigure)))
 suppressWarnings(if (!file.exists(dirpargen)) dir.create(file.path( dirpargen)))
 suppressWarnings(if (!file.exists(dirsmallcountsremoved)) dir.create(file.path(dirsmallcountsremoved)))
@@ -146,10 +149,15 @@ days<-ifelse(thisdatasource %in% c("ARS","TEST"),21,1)
 Birthcohorts =c("<1940", "1940-1949", "1950-1959", "1960-1969",
                 "1970-1979", "1980-1989", "1990+")
 
+
+
 #############################################
 #FUNCTION TO COMPUTE AGE
 #############################################
 Agebands =c(-1, 19, 29, 39, 49, 59, 69, 80, Inf)
+Agebands_MIS =c(-1, 11, 17, 19,29, 39, 49, 59, 69, 80, Inf)
+
+Agebands_lables_MIS =c("0-11","12-17","18-19","20-29", "30-39", "40-49","50-59","60-69", "70-79","80+")
 
 age_fast = function(from, to) {
   from_lt = as.POSIXlt(from)
@@ -174,8 +182,8 @@ find_last_monday <- function(tmp_date, monday_week) {
   return(tmp_date)
 }
 
-correct_difftime <- function(t1, t2, t_period = "years") {
-  return(difftime(t1, t2, units = "days") + 1)
+correct_difftime <- function(t1, t2, t_period = "days") {
+  return(difftime(t1, t2, units = t_period) + 1)
 }
 
 calc_precise_week <- function(time_diff) {
@@ -188,7 +196,6 @@ join_and_replace <- function(df1, df2, join_cond, old_name) {
   temp[, join_cond[1] := NULL]
   setnames(temp, old_name, join_cond[1])
 }
-
 
 import_concepts <- function(dirtemp, concept_set) {
   concepts<-data.table()
@@ -203,7 +210,6 @@ import_concepts <- function(dirtemp, concept_set) {
   return(concepts)
 }
 
-
 exactPoiCI <- function (df, X, PT, conf.level = 0.95) {
   alpha <- 1 - conf.level
   IR <- df[, get(X)]
@@ -211,5 +217,17 @@ exactPoiCI <- function (df, X, PT, conf.level = 0.95) {
   lower <- df[, 0.5 * qchisq(alpha/2, 2*get(X))]
   temp_list <- lapply(list(IR, lower, upper), `/`, df[, get(PT)/365.25])
   temp_list <- lapply(temp_list, `*`, 100000)
+  temp_list <- lapply(temp_list, function(x) {fifelse(x == Inf, 0, x)})
   return(lapply(temp_list, round, 2))
+}
+
+correct_col_type <- function(df) {
+  for (i in names(df)){
+    df[is.na(get(i)), (i) := 0]
+    if (!inherits(df[, get(i)], "IDate")) {
+      df[is.integer(get(i)), (i) := as.numeric(get(i))]
+    }
+    df[is.logical(get(i)), (i) := as.numeric(get(i))]
+  }
+  return(df)
 }

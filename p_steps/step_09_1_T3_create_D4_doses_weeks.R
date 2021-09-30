@@ -82,14 +82,34 @@ for (name_temp_df in c("pop_age_1940", "pop_age_1940_1949", "pop_age_1950_1959",
 
 cohort_to_vaxweeks <- rbindlist(vect_to_rbind)
 
-cols_to_sums <- c("Doses_in_week", "Persons_in_week")
 older60 <- copy(cohort_to_vaxweeks)[Birthcohort_persons %in% c("<1940", "1940-1949", "1950-1959"),
                                     lapply(.SD, sum, na.rm=TRUE),
                                     by = c("start_date_of_period", "sex", "type_vax", "at_risk_at_study_entry", "Dose"),
-                                    .SDcols = cols_to_sums]
+                                    .SDcols = "Doses_in_week"]
 older60 <- unique(older60[, Birthcohort_persons := "<1960"])
+persons_older60 <- unique(copy(cohort_to_vaxweeks)[, .(start_date_of_period, Birthcohort_persons, Persons_in_week)])
+persons_older60 <- persons_older60[Birthcohort_persons %in% c("<1940", "1940-1949", "1950-1959"),
+                                   lapply(.SD, sum, na.rm=TRUE),
+                                   by = "start_date_of_period",
+                                   .SDcols = "Persons_in_week"]
+persons_older60 <- unique(persons_older60[, Birthcohort_persons := "<1960"])
+older60 <- merge(older60, persons_older60, by = c("start_date_of_period", "Birthcohort_persons"))
+
+younger60 <- copy(cohort_to_vaxweeks)[Birthcohort_persons %in% c("1960-1969", "1970-1979", "1980-1989", "1990+"),
+                                      lapply(.SD, sum, na.rm=TRUE),
+                                      by = c("start_date_of_period", "sex", "type_vax", "at_risk_at_study_entry", "Dose"),
+                                      .SDcols = "Doses_in_week"]
+younger60 <- unique(younger60[, Birthcohort_persons := ">1960"])
+persons_younger60 <- unique(copy(cohort_to_vaxweeks)[, .(start_date_of_period, Birthcohort_persons, Persons_in_week)])
+persons_younger60 <- persons_younger60[Birthcohort_persons %in% c("1960-1969", "1970-1979", "1980-1989", "1990+"),
+                                   lapply(.SD, sum, na.rm=TRUE),
+                                   by = "start_date_of_period",
+                                   .SDcols = "Persons_in_week"]
+persons_younger60 <- unique(persons_younger60[, Birthcohort_persons := ">1960"])
+younger60 <- merge(younger60, persons_younger60, by = c("start_date_of_period", "Birthcohort_persons"))
 
 cohort_to_vaxweeks <- rbind(cohort_to_vaxweeks, older60)
+cohort_to_vaxweeks <- rbind(cohort_to_vaxweeks, younger60)
 
 setorder(cohort_to_vaxweeks, sex, Birthcohort_persons, Dose,
          type_vax, start_date_of_period, at_risk_at_study_entry)

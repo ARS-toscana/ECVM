@@ -28,10 +28,11 @@ for (subpop in subpopulations_non_empty) {
    # date: covid registry
   algorithm_covid <- algorithm_covid[!is.na(first_date_covid_registry), date_covid := first_date_covid_registry]
   algorithm_covid <- algorithm_covid[!is.na(date_covid), origin_date_covid:= "covid_registry"]
-  # date: covid narrow
-  algorithm_covid <- algorithm_covid[is.na(date_covid) & !is.na(first_date_covid_narrow),date_covid := first_date_covid_narrow]
-  algorithm_covid <- algorithm_covid[!is.na(date_covid) & is.na(origin_date_covid),origin_date_covid:="covid_narrow"]
-  
+  # date: covid narrow (except for BIFAP)
+  if (thisdatasource != 'BIFAP'){
+    algorithm_covid <- algorithm_covid[is.na(date_covid) & !is.na(first_date_covid_narrow),date_covid := first_date_covid_narrow]
+    algorithm_covid <- algorithm_covid[!is.na(date_covid) & is.na(origin_date_covid),origin_date_covid:="covid_narrow"]
+  }
   # SEVERITY LEVEL
   
   # level 5: level from covid registry
@@ -40,8 +41,10 @@ for (subpop in subpopulations_non_empty) {
   algorithm_covid <- algorithm_covid[!is.na(date_covid) & is.na(severity_level_covid) & covid_death_discharge != 0,severity_level_covid := 5][!is.na(date_covid) & !is.na(severity_level_covid) & is.na(origin_severity_level_covid), origin_severity_level_covid :='5-death_at_discharge']
   # level 5: death after covid registry
   algorithm_covid <- algorithm_covid[!is.na(date_covid) & is.na(severity_level_covid) & death_after_covid_registry != 0,severity_level_covid :=5][!is.na(date_covid) & !is.na(severity_level_covid) & is.na(origin_severity_level_covid), origin_severity_level_covid :='5-after_covid_registry']
-  # level 5: death within days from covid narrow 
-  algorithm_covid <- algorithm_covid[!is.na(date_covid) & is.na(severity_level_covid) & death_after_covid_narrow_date != 0, severity_level_covid := 5][!is.na(date_covid) & !is.na(severity_level_covid) & is.na(origin_severity_level_covid), origin_severity_level_covid :='5-death_after_covid_narrow_date']
+  # level 5: death within days from covid narrow (except for BIFAP)
+  if (thisdatasource != 'BIFAP'){
+    algorithm_covid <- algorithm_covid[!is.na(date_covid) & is.na(severity_level_covid) & death_after_covid_narrow_date != 0, severity_level_covid := 5][!is.na(date_covid) & !is.na(severity_level_covid) & is.na(origin_severity_level_covid), origin_severity_level_covid :='5-death_after_covid_narrow_date']
+  }
   
   # level 4: level from covid registry
   algorithm_covid <- algorithm_covid[!is.na(date_covid) & is.na(severity_level_covid) & covid_registry_symptoms == 4,severity_level_covid :=4][!is.na(date_covid) & !is.na(severity_level_covid) & is.na(origin_severity_level_covid), origin_severity_level_covid :='4-covid_registry']
@@ -49,21 +52,27 @@ for (subpop in subpopulations_non_empty) {
   algorithm_covid <- algorithm_covid[!is.na(date_covid) & 
 is.na(severity_level_covid) & MechanicalVentilation_within_registry_date != 0, severity_level_covid := 4][!is.na(date_covid) & !is.na(severity_level_covid) & is.na(origin_severity_level_covid), origin_severity_level_covid :='4-after_covid_registry']
   # level 4: conceptset from covid narrow date
-  algorithm_covid <- algorithm_covid[!is.na(date_covid) & is.na(severity_level_covid) & MechanicalVentilation_within_covid_narrow_date != 0,severity_level_covid := 4][!is.na(date_covid) & !is.na(severity_level_covid) & is.na(origin_severity_level_covid), origin_severity_level_covid :='4-after_covid_narrow']
+  if (thisdatasource != 'BIFAP'){ 
+    algorithm_covid <- algorithm_covid[!is.na(date_covid) & is.na(severity_level_covid) & MechanicalVentilation_within_covid_narrow_date != 0,severity_level_covid := 4][!is.na(date_covid) & !is.na(severity_level_covid) & is.na(origin_severity_level_covid), origin_severity_level_covid :='4-after_covid_narrow']
+  }
   
   # level 3: level from covid registry
   algorithm_covid <- algorithm_covid[!is.na(date_covid) & is.na(severity_level_covid) & covid_registry_symptoms == 3,severity_level_covid :=3][!is.na(date_covid) & !is.na(severity_level_covid) & is.na(origin_severity_level_covid), origin_severity_level_covid :='3-covid_registry']
   # level 3: conceptset from covid registry 
   algorithm_covid <- algorithm_covid[!is.na(date_covid) & is.na(severity_level_covid) & Respiratory_within_registry_date != 0,severity_level_covid := 3][!is.na(date_covid) & !is.na(severity_level_covid) & is.na(origin_severity_level_covid), origin_severity_level_covid :='3-after_covid_registry']
   # level 3: conceptset from covid narrow  
-  algorithm_covid <- algorithm_covid[!is.na(date_covid) & is.na(severity_level_covid) & Respiratory_within_covid_narrow_date != 0,severity_level_covid := 3][!is.na(date_covid) & !is.na(severity_level_covid) & is.na(origin_severity_level_covid), origin_severity_level_covid :='3-after_covid_narrow']
+  if (thisdatasource != 'BIFAP'){ 
+    algorithm_covid <- algorithm_covid[!is.na(date_covid) & is.na(severity_level_covid) & Respiratory_within_covid_narrow_date != 0,severity_level_covid := 3][!is.na(date_covid) & !is.na(severity_level_covid) & is.na(origin_severity_level_covid), origin_severity_level_covid :='3-after_covid_narrow']
+  }
   
   # level 2: level from covid registry
   algorithm_covid <- algorithm_covid[!is.na(date_covid) & is.na(severity_level_covid) & covid_registry_symptoms == 2,severity_level_covid :=2][!is.na(date_covid) & !is.na(severity_level_covid) & is.na(origin_severity_level_covid), origin_severity_level_covid :='2-covid_registry']
   # level 2: conceptset from covid registry 
   algorithm_covid <- algorithm_covid[!is.na(date_covid) & is.na(severity_level_covid) & Infection_within_registry_date != 0,severity_level_covid := 2][!is.na(date_covid) & !is.na(severity_level_covid) & is.na(origin_severity_level_covid), origin_severity_level_covid :='2-after_covid_registry']
   # level 2: conceptset from covid narrow  
-  algorithm_covid <- algorithm_covid[!is.na(date_covid) & is.na(severity_level_covid) & Infection_within_covid_narrow_date != 0,severity_level_covid := 2][!is.na(date_covid) & !is.na(severity_level_covid) & is.na(origin_severity_level_covid), origin_severity_level_covid :='2-after_covid_narrow']
+  if (thisdatasource != 'BIFAP'){  
+    algorithm_covid <- algorithm_covid[!is.na(date_covid) & is.na(severity_level_covid) & Infection_within_covid_narrow_date != 0,severity_level_covid := 2][!is.na(date_covid) & !is.na(severity_level_covid) & is.na(origin_severity_level_covid), origin_severity_level_covid :='2-after_covid_narrow']
+  }
   
   # level 1: level by exclusion
   algorithm_covid <- algorithm_covid[!is.na(date_covid) & is.na(severity_level_covid) ,severity_level_covid :=1][!is.na(date_covid) & !is.na(severity_level_covid) & is.na(origin_severity_level_covid), origin_severity_level_covid :='1-by_exclusion']

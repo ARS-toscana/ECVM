@@ -98,6 +98,12 @@ if (thisdatasource %in% datasources_with_specific_algorithms){
   }
 }
 
+# concept sets specific for datasources
+
+if (thisdatasource == 'ARS'){
+  concept_set_codes_our_study_pre[["COVID_narrow"]][["ICD9"]] <- c(concept_set_codes_our_study_pre[["COVID_narrow"]][["ICD9"]],'043','48041','51891','51971')
+  concept_set_codes_our_study_pre[["ARD_narrow"]][["ICD9"]] <- c(concept_set_codes_our_study_pre[["ARD_narrow"]][["ICD9"]],'5189')
+}
 
 #-------------------------------------
 # set concept sets

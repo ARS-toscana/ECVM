@@ -1,7 +1,3 @@
-correct_difftime <- function(t1, t2, t_period = "years") {
-  return(difftime(t1, t2, units = "days") + 1)
-}
-
 na_to_0 = function(DT) {
   for (i in names(DT))
     DT[is.na(get(i)), (i):=0]

@@ -1,8 +1,43 @@
 #-------------------------------
 # ECVM script
-# v4.0 - 28 June 2021
+
+# v6.0 - 29 September 2021
+
 # authors: Rosa Gini, Olga Paoletti, Davide Messina, Giorgio Limoncella
 
+<<<<<<< HEAD
+# changelog V5.3_MIS:
+# adjutment for subpopulations
+
+# changelog V5.3_MIS:
+# addition of final tables 1-7
+
+# changelog V5.2_MIS:
+# correction: start of countpersontime at cohort entry and not at study entry
+
+
+# changelog V5.1_MIS:
+# changed codes for MIS and added a specifi to_run for BIFAP (to correct for subpopulations)
+
+# changelog V5_MIS:
+# added MIS section
+
+# changelog V4.3.2:
+# changed severity level algorithm for BIFAP
+
+# changelog V4.3.1:
+# fixed numerator for coverage. Now with vaccinated excluded when exit study
+# bugfix for table 3_4_5_6
+
+# changelog V4.3:
+# fixed denominator for coverage. Now with dynamic population
+
+# changelog V4.2:
+# new codes ICPC and italian ICD9 codes
+# improved BIFAP covid registry
+
+=======
+>>>>>>> development
 # changelog V4.0.2:
 # bugfix
 
@@ -100,6 +135,20 @@ system.time(source(paste0(thisdir,"/p_steps/step_05_11_T2.3_algorithms_COVID_sev
 #06 create D3 for doses and coverage
 system.time(source(paste0(thisdir,"/p_steps/step_06_T2_create_D3_datasets.R")))
 
+#-----------------
+#MIS section
+# create D3 MIS population
+system.time(source(paste0(thisdir,"/p_steps/step_06_2_MIS_population.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_07_9_T3_create_person_time_MIS_year.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_07_10_T3_aggregate_monthly_MIS.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_08_T4_IR_MIS.R")))
+
+#descriptive
+system.time(source(paste0(thisdir,"/p_steps/step_09_2_T3_create_D4_descriptive_tables.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_09_4_T3_create_D4_descriptive_tables_MIS.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_11_2_T4_create_dummy_tables_MIS_KD.R")))
+
+
 #07 create persontime
 system.time(source(paste0(thisdir,"/p_steps/step_07_1_T3_create_person_time_risks.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_07_2_T3_create_person_time_risks_year.R")))
@@ -110,13 +159,15 @@ system.time(source(paste0(thisdir,"/p_steps/step_07_6_T3_aggregate_sex_risk_fact
 system.time(source(paste0(thisdir,"/p_steps/step_07_7_T3_create_person_time_vax_cohort.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_07_8_T3_aggregate_monthly.R")))
 
+
+
 #08 Calculate Incidence Rates
 system.time(source(paste0(thisdir,"/p_steps/step_08_T4_IR.R")))
+
 
 #09 create D4 for doses and coverage
 system.time(source(paste0(thisdir,"/p_steps/step_09_1_T3_create_D4_doses_weeks.R")))
 
-system.time(source(paste0(thisdir,"/p_steps/step_09_2_T3_create_D4_descriptive_tables.R")))
 
 system.time(source(paste0(thisdir,"/p_steps/step_09_3_T3_create_dashboard_tables.R")))
 
