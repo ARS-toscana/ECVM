@@ -551,7 +551,7 @@ table_7 <- rbindlist(list(empty_df, table_7))
 
 setnames(table_7, c("a", "N", "Perc"), c("", correct_datasource, correct_datasource))
 
-fwrite(table_7, file = paste0(dummytables, "Doses of COVID-19 vaccines and distance betweenfirst and second dose.csv"))
+fwrite(table_7, file = paste0(dummytables, "Doses of COVID-19 vaccines and distance between first and second dose.csv"))
 
 
 
@@ -739,7 +739,7 @@ setorder(table_13, DAP, AESI, Ageband, sex)
 setnames(table_13, c("Ageband", "sex", "PT", "IR", "lb", "ub"),
          c("Age in 2020", "Sex", "Person years", "IR narrow", "LL narrow", "UL narrow"))
 
-fwrite(table_13, file = paste0(dummytables, "Incidence of AESI (narrow) per 100,000 PY by age & sex in 2020.csv"))
+fwrite(table_13, file = paste0(dummytables, "Incidence of AESI (narrow) per 100,000 PY by age & sex in 2020 in at risk population.csv"))
 
 
 

@@ -5,6 +5,7 @@
 
 # authors: Rosa Gini, Olga Paoletti, Davide Messina, Giorgio Limoncella
 
+<<<<<<< HEAD
 # changelog V5.3_MIS:
 # addition of final tables 1-7
 
@@ -32,6 +33,8 @@
 # new codes ICPC and italian ICD9 codes
 # improved BIFAP covid registry
 
+=======
+>>>>>>> development
 # changelog V4.0.2:
 # bugfix
 

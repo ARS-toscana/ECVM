@@ -1,14 +1,24 @@
 datasource,week_since_vaccination,vx_manufacturer,dose,birth_cohort,AESI,Numerator,IR,lb,ub,ageband
 TEST,0,none,no_dose,1940-1949,ACUASEARTHRITIS_broad,1,2362.85,59.82,13164.98,70-79
+<<<<<<< HEAD
 TEST,0,none,no_dose,1950-1959,ACUASEARTHRITIS_broad,1,2029.17,51.37,11305.79,60-69
+=======
+TEST,0,none,no_dose,1950-1959,ACUASEARTHRITIS_broad,2,4141.63,501.57,14960.98,60-69
+>>>>>>> development
 TEST,0,none,no_dose,1960-1969,ACUASEARTHRITIS_broad,0,0,0,5398.09,50-59
 TEST,0,none,no_dose,1970-1979,ACUASEARTHRITIS_broad,0,0,0,6506.8,40-49
 TEST,0,none,no_dose,1980-1989,ACUASEARTHRITIS_broad,0,0,0,8979.43,30-39
 TEST,0,none,no_dose,1990+,ACUASEARTHRITIS_broad,0,0,0,4729.08,<30
 TEST,0,none,no_dose,<1940,ACUASEARTHRITIS_broad,0,0,0,10599.14,80+
+<<<<<<< HEAD
 TEST,0,none,no_dose,<1960,ACUASEARTHRITIS_broad,2,1582.2,191.61,5715.44,60+
 TEST,0,none,no_dose,>1960,ACUASEARTHRITIS_broad,0,0,0,1511.12,
 TEST,0,none,no_dose,all_birth_cohorts,ACUASEARTHRITIS_broad,2,539.78,65.37,1949.87,all_birth_cohorts
+=======
+TEST,0,none,no_dose,<1960,ACUASEARTHRITIS_broad,3,2392.05,493.3,6990.58,60+
+TEST,0,none,no_dose,>1960,ACUASEARTHRITIS_broad,0,0,0,1511.12,
+TEST,0,none,no_dose,all_birth_cohorts,ACUASEARTHRITIS_broad,3,811.84,167.42,2372.54,all_birth_cohorts
+>>>>>>> development
 TEST,1,AstraZeneca,1,1940-1949,ACUASEARTHRITIS_broad,0,0,0,19248046.01,70-79
 TEST,1,AstraZeneca,1,1950-1959,ACUASEARTHRITIS_broad,0,0,0,0,60-69
 TEST,1,AstraZeneca,1,1960-1969,ACUASEARTHRITIS_broad,0,0,0,0,50-59
@@ -1680,15 +1690,25 @@ TEST,4,Pfizer,2,<1960,GENCONV_broad,0,0,0,0,60+
 TEST,4,Pfizer,2,>1960,GENCONV_broad,0,0,0,2994140.49,
 TEST,4,Pfizer,2,all_birth_cohorts,GENCONV_broad,0,0,0,2994140.49,all_birth_cohorts
 TEST,0,none,no_dose,1940-1949,ANAPHYL_broad,0,0,0,8562.84,70-79
+<<<<<<< HEAD
 TEST,0,none,no_dose,1950-1959,ANAPHYL_broad,1,1999.62,50.63,11141.15,60-69
+=======
+TEST,0,none,no_dose,1950-1959,ANAPHYL_broad,0,0,0,7364.25,60-69
+>>>>>>> development
 TEST,0,none,no_dose,1960-1969,ANAPHYL_broad,0,0,0,5398.09,50-59
 TEST,0,none,no_dose,1970-1979,ANAPHYL_broad,0,0,0,6506.8,40-49
 TEST,0,none,no_dose,1980-1989,ANAPHYL_broad,1,2439.07,61.75,13589.6,30-39
 TEST,0,none,no_dose,1990+,ANAPHYL_broad,0,0,0,4729.08,<30
 TEST,0,none,no_dose,<1940,ANAPHYL_broad,0,0,0,10599.14,80+
+<<<<<<< HEAD
 TEST,0,none,no_dose,<1960,ANAPHYL_broad,1,781.9,19.8,4356.48,60+
 TEST,0,none,no_dose,>1960,ANAPHYL_broad,1,409.78,10.37,2283.15,
 TEST,0,none,no_dose,all_birth_cohorts,ANAPHYL_broad,2,537.74,65.12,1942.51,all_birth_cohorts
+=======
+TEST,0,none,no_dose,<1960,ANAPHYL_broad,0,0,0,2882.49,60+
+TEST,0,none,no_dose,>1960,ANAPHYL_broad,1,409.78,10.37,2283.15,
+TEST,0,none,no_dose,all_birth_cohorts,ANAPHYL_broad,1,268.81,6.81,1497.72,all_birth_cohorts
+>>>>>>> development
 TEST,1,AstraZeneca,1,1940-1949,ANAPHYL_broad,0,0,0,19248046.01,70-79
 TEST,1,AstraZeneca,1,1950-1959,ANAPHYL_broad,0,0,0,0,60-69
 TEST,1,AstraZeneca,1,1960-1969,ANAPHYL_broad,0,0,0,0,50-59
@@ -1889,6 +1909,7 @@ TEST,4,Pfizer,2,<1940,ANAPHYL_broad,0,0,0,0,80+
 TEST,4,Pfizer,2,<1960,ANAPHYL_broad,0,0,0,0,60+
 TEST,4,Pfizer,2,>1960,ANAPHYL_broad,0,0,0,2994140.49,
 TEST,4,Pfizer,2,all_birth_cohorts,ANAPHYL_broad,0,0,0,2994140.49,all_birth_cohorts
+<<<<<<< HEAD
 TEST,0,none,no_dose,1940-1949,KD_narrow,0,0,0,8562.84,70-79
 TEST,0,none,no_dose,1950-1959,KD_narrow,0,0,0,7514.57,60-69
 TEST,0,none,no_dose,1960-1969,KD_narrow,0,0,0,5398.09,50-59
@@ -2729,6 +2750,8 @@ TEST,4,Pfizer,2,<1940,MIS_broad,0,0,0,0,80+
 TEST,4,Pfizer,2,<1960,MIS_broad,0,0,0,0,60+
 TEST,4,Pfizer,2,>1960,MIS_broad,0,0,0,2994140.49,
 TEST,4,Pfizer,2,all_birth_cohorts,MIS_broad,0,0,0,2994140.49,all_birth_cohorts
+=======
+>>>>>>> development
 TEST,0,none,no_dose,1940-1949,Ischstroke_narrow,0,0,0,8562.84,70-79
 TEST,0,none,no_dose,1950-1959,Ischstroke_narrow,0,0,0,7364.25,60-69
 TEST,0,none,no_dose,1960-1969,Ischstroke_narrow,0,0,0,5398.09,50-59
@@ -3989,6 +4012,7 @@ TEST,4,Pfizer,2,<1940,CONTRHYPERT,0,0,0,0,80+
 TEST,4,Pfizer,2,<1960,CONTRHYPERT,0,0,0,0,60+
 TEST,4,Pfizer,2,>1960,CONTRHYPERT,0,0,0,2994140.49,
 TEST,4,Pfizer,2,all_birth_cohorts,CONTRHYPERT,0,0,0,2994140.49,all_birth_cohorts
+<<<<<<< HEAD
 TEST,0,none,no_dose,1940-1949,MIS_KD_narrow,0,0,0,8562.84,70-79
 TEST,0,none,no_dose,1950-1959,MIS_KD_narrow,0,0,0,7514.57,60-69
 TEST,0,none,no_dose,1960-1969,MIS_KD_narrow,0,0,0,5398.09,50-59
@@ -4409,6 +4433,8 @@ TEST,4,Pfizer,2,<1940,MIS_KD_broad,0,0,0,0,80+
 TEST,4,Pfizer,2,<1960,MIS_KD_broad,0,0,0,0,60+
 TEST,4,Pfizer,2,>1960,MIS_KD_broad,0,0,0,2994140.49,
 TEST,4,Pfizer,2,all_birth_cohorts,MIS_KD_broad,0,0,0,2994140.49,all_birth_cohorts
+=======
+>>>>>>> development
 TEST,0,none,no_dose,1940-1949,DEATH,0,0,0,8562.84,70-79
 TEST,0,none,no_dose,1950-1959,DEATH,0,0,0,7364.25,60-69
 TEST,0,none,no_dose,1960-1969,DEATH,1,1463.34,37.05,8153.22,50-59
