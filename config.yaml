@@ -1,4 +1,4 @@
-baseURL: https://davidemessinaars.github.io/test_website/
+baseURL: https://ars-toscana.github.io/ECVM/
 relativeurls: yes
 canonifyURLs: false
 languageCode: en-US
@@ -34,7 +34,7 @@ Languages:
     menu:
       shortcuts:
         - name: <i class="fas fa-project-diagram"></i> Diagram
-          url: https://davidemessinaars.github.io/test_website/data/ECVM.html
+          url: https://ars-toscana.github.io/ECVM/data/ECVM.html
           weight: 10
         - identifier: github
           name: <i class='fab fa-fw fa-github'></i> GitHub repo
