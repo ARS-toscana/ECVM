@@ -2,9 +2,9 @@
 # for all covariates create binary variable drug proxy OR diagnosis; also create binary 'overall'
 
 # input: D3_Vaccin_cohort, D4_Vaccin_cohort_cov , D3_Vaccin_cohort_DP.RData
-# output: D3_study_population_cov_ALL.RData
+# output: D3_Vaccin_cohort_cov_ALL.RData
 
-print('create RISK FACTORS at baseline as either diagnosis or drugs')
+print('create RISK FACTORS at vaccination as either diagnosis or drugs')
 
 COVnames<-c("CV","COVCANCER","COVCOPD","COVHIV","COVCKD","COVDIAB","COVOBES","COVSICKLE")
 
@@ -15,19 +15,19 @@ load(paste0(dirtemp,"D3_Vaccin_cohort_DP.RData"))
 load(paste0(dirpargen,"subpopulations_non_empty.RData"))
 
 
-D3_study_population_cov_ALL <- vector(mode = 'list')
+D3_Vaccin_cohort_cov_ALL <- vector(mode = 'list')
 for (subpop in subpopulations_non_empty) {
   print(subpop)
   load(paste0(dirtemp,"D3_Vaccin_cohort.RData")) 
   
   if (this_datasource_has_subpopulations == TRUE){  
-    study_population <- D4_study_population[[subpop]]
-    study_population_cov <- D4_study_population_cov[[subpop]]
-    study_population_DP <- D3_study_population_DP[[subpop]]
+    study_population <- D3_Vaccin_cohort[[subpop]]
+    study_population_cov <- D4_Vaccin_cohort_cov[[subpop]]
+    study_population_DP <- D3_Vaccin_cohort_DP[[subpop]]
   }else{
-    study_population <- as.data.table(D4_study_population)
-    study_population_cov <- D4_study_population_cov
-    study_population_DP <- D3_study_population_DP
+    study_population <- as.data.table(D3_Vaccin_cohort)
+    study_population_cov <- D4_Vaccin_cohort_cov
+    study_population_DP <- D3_Vaccin_cohort_DP
   }
   study_population_cov_ALL <- merge(study_population[,-c("study_entry_date","sex")], study_population_cov, by=c("person_id", "date_of_death", "start_follow_up"), all.x = T)
   
@@ -37,12 +37,12 @@ for (subpop in subpopulations_non_empty) {
   
   for (cov in COVnames ){
     if ( cov!="CV" ){
-      nameDP =  paste0("DP_",cov,"_at_study_entry")
+      nameDP =  paste0("DP_",cov,"_at_vaccination")
     }
     else{
-      nameDP = "DP_CVD_at_study_entry"
+      nameDP = "DP_CVD_at_vaccination"
     }
-    study_population_cov_ALL <- study_population_cov_ALL[get(paste0(cov,"_at_study_entry")) == 1 | get(nameDP) == 1, namevar := 1]
+    study_population_cov_ALL <- study_population_cov_ALL[get(paste0(cov,"_at_vaccination")) == 1 | get(nameDP) == 1, namevar := 1]
     # print(nameDP)
     study_population_cov_ALL <- study_population_cov_ALL[namevar == 1 ,all_covariates_non_CONTR :=1]
     
@@ -54,16 +54,16 @@ for (subpop in subpopulations_non_empty) {
     }
   }
   
-  study_population_cov_ALL <- study_population_cov_ALL[IMMUNOSUPPR_at_study_entry == 1, all_covariates_non_CONTR :=1]
+  study_population_cov_ALL <- study_population_cov_ALL[IMMUNOSUPPR_at_vaccination == 1, all_covariates_non_CONTR :=1]
   
   if (this_datasource_has_subpopulations == TRUE){ 
-    D3_study_population_cov_ALL[[subpop]] <- study_population_cov_ALL
+    D3_Vaccin_cohort_cov_ALL[[subpop]] <- study_population_cov_ALL
   }else{
-    D3_study_population_cov_ALL <- study_population_cov_ALL
+    D3_Vaccin_cohort_cov_ALL <- study_population_cov_ALL
   }
 }
 
 
-save(D3_study_population_cov_ALL,file=paste0(diroutput,"D3_study_population_cov_ALL.RData"))
-rm(D4_study_population_cov, D3_study_population_DP, D4_study_population, D3_study_population_cov_ALL, study_population_DP, study_population,study_population_cov, study_population_cov_ALL)
+save(D3_Vaccin_cohort_cov_ALL,file=paste0(diroutput,"D3_Vaccin_cohort_cov_ALL.RData"))
+rm(D4_Vaccin_cohort_cov, D3_Vaccin_cohort_DP, D3_Vaccin_cohort, D3_Vaccin_cohort_cov_ALL, study_population_DP, study_population,study_population_cov, study_population_cov_ALL)
 
