@@ -1,7 +1,7 @@
 # ----------------------------------
 # for all covariates create binary variable drug proxy OR diagnosis; also create binary 'overall'
 
-# input: D3_study_population_covariates , D3_study_population_DP.RData
+# input: D3_Vaccin_cohort, D4_Vaccin_cohort_cov , D3_Vaccin_cohort_DP.RData
 # output: D3_study_population_cov_ALL.RData
 
 print('create RISK FACTORS at baseline as either diagnosis or drugs')
@@ -10,8 +10,8 @@ COVnames<-c("CV","COVCANCER","COVCOPD","COVHIV","COVCKD","COVDIAB","COVOBES","CO
 
 # create variable added to study population
 
-load(paste0(diroutput,"D4_study_population_cov.RData"))
-load(paste0(dirtemp,"D3_study_population_DP.RData"))
+load(paste0(diroutput,"D4_Vaccin_cohort_cov.RData"))
+load(paste0(dirtemp,"D3_Vaccin_cohort_DP.RData"))
 
 load(paste0(dirpargen,"subpopulations_non_empty.RData"))
 
@@ -19,7 +19,7 @@ load(paste0(dirpargen,"subpopulations_non_empty.RData"))
 D3_study_population_cov_ALL <- vector(mode = 'list')
 for (subpop in subpopulations_non_empty) {
   print(subpop)
-  load(paste0(diroutput,"D4_study_population.RData")) 
+  load(paste0(dirtemp,"D3_Vaccin_cohort.RData")) 
   
   if (this_datasource_has_subpopulations == TRUE){  
     study_population <- D4_study_population[[subpop]]
@@ -46,9 +46,9 @@ for (subpop in subpopulations_non_empty) {
     study_population_cov_ALL <- study_population_cov_ALL[get(paste0(cov,"_at_study_entry")) == 1 | get(nameDP) == 1, namevar := 1]
     # print(nameDP)
     study_population_cov_ALL <- study_population_cov_ALL[namevar == 1 ,all_covariates_non_CONTR :=1]
-   
+    
     setnames(study_population_cov_ALL,"namevar",paste0(cov,"_either_DX_or_DP"))
-
+    
     is.data.table(study_population_cov_ALL)
     for (i in names(study_population_cov_ALL)){
       study_population_cov_ALL[is.na(get(i)), (i):=0]
