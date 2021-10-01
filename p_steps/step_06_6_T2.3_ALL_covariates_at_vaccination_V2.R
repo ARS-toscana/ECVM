@@ -12,7 +12,6 @@ COVnames<-c("CV","COVCANCER","COVCOPD","COVHIV","COVCKD","COVDIAB","COVOBES","CO
 
 load(paste0(diroutput,"D4_Vaccin_cohort_cov.RData"))
 load(paste0(dirtemp,"D3_Vaccin_cohort_DP.RData"))
-
 load(paste0(dirpargen,"subpopulations_non_empty.RData"))
 
 
