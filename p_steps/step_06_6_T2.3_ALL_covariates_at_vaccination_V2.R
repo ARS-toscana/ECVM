@@ -10,6 +10,7 @@ COVnames<-c("CV","COVCANCER","COVCOPD","COVHIV","COVCKD","COVDIAB","COVOBES","CO
 
 # create variable added to study population
 
+load(paste0(diroutput,"D4_study_population.RData"))
 load(paste0(diroutput,"D4_study_population_cov.RData"))
 load(paste0(dirtemp,"D3_study_population_DP.RData"))
 
@@ -46,9 +47,9 @@ for (subpop in subpopulations_non_empty) {
     study_population_cov_ALL <- study_population_cov_ALL[get(paste0(cov,"_at_study_entry")) == 1 | get(nameDP) == 1, namevar := 1]
     # print(nameDP)
     study_population_cov_ALL <- study_population_cov_ALL[namevar == 1 ,all_covariates_non_CONTR :=1]
-   
+    
     setnames(study_population_cov_ALL,"namevar",paste0(cov,"_either_DX_or_DP"))
-
+    
     is.data.table(study_population_cov_ALL)
     for (i in names(study_population_cov_ALL)){
       study_population_cov_ALL[is.na(get(i)), (i):=0]
