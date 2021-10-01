@@ -30,7 +30,7 @@ for (subpop in subpopulations_non_empty) {
     study_population <- as.data.table(D3_Vaccin_cohort)  
   }
   
-  study_population_covariates <- study_population[,.(person_id, date_vax1)]
+  study_population_covariates <- study_population[, .(person_id, date_vax1)]
   
   
   

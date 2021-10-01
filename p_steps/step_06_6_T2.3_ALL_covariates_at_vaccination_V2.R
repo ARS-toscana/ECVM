@@ -29,13 +29,15 @@ for (subpop in subpopulations_non_empty) {
     study_population_cov <- D4_Vaccin_cohort_cov
     study_population_DP <- D3_Vaccin_cohort_DP
   }
-  study_population_cov_ALL <- merge(study_population[,-c("study_entry_date","sex")], study_population_cov, by=c("person_id", "date_of_death", "start_follow_up"), all.x = T)
   
-  study_population_cov_ALL <- merge(study_population_cov_ALL, study_population_DP, by="person_id", all.x = T)
+  keep_col <- c("person_id", paste0(COVnames, "_at_vaccination"))
+  study_population_cov_ALL <- merge(study_population, study_population_cov[, ..keep_col], by=c("person_id"), all.x = T)
+  
+  study_population_cov_ALL <- merge(study_population_cov_ALL, study_population_DP[, date_vax1 := NULL], by="person_id", all.x = T)
   
   study_population_cov_ALL <- study_population_cov_ALL[, all_covariates_non_CONTR := 0 ]
   
-  for (cov in COVnames ){
+  for (cov in COVnames){
     if ( cov!="CV" ){
       nameDP =  paste0("DP_",cov,"_at_vaccination")
     }
@@ -48,7 +50,6 @@ for (subpop in subpopulations_non_empty) {
     
     setnames(study_population_cov_ALL,"namevar",paste0(cov,"_either_DX_or_DP"))
     
-    is.data.table(study_population_cov_ALL)
     for (i in names(study_population_cov_ALL)){
       study_population_cov_ALL[is.na(get(i)), (i):=0]
     }
