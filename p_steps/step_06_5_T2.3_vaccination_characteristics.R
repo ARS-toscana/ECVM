@@ -4,14 +4,14 @@
 # input: D3_Vaccin_cohort, D3_Vaccin_cohort_covariates
 # output: D4_Vaccin_cohort_cov.RData
 
-print('create age and other simple covariates at vaccination')
+print('create age and other simple covariates at date_vax_1')
 
 load(paste0(dirpargen,"subpopulations_non_empty.RData"))
 
 D4_Vaccin_cohort_cov <- vector(mode = 'list')
 for (subpop in subpopulations_non_empty) {
   print(subpop)
-  load(paste0(dirtemp,"D3_Vaccin_cohort.RData"))
+  load(paste0(dirtemp,"D3_Vaccin_cohort_no_risk.RData"))
   load(paste0(dirtemp,"D3_Vaccin_cohort_covariates.RData"))
   
   if (this_datasource_has_subpopulations == TRUE){  

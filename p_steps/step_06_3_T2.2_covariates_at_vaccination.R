@@ -1,7 +1,7 @@
 #------------------------------------------------------------------
 # CREATE RISK FACTORS
 
-print('CREATE RISK FACTORS (diagnosis only) at vaccination')
+print('CREATE RISK FACTORS (diagnosis only) at date_vax_1')
 
 # input: D3_Vaccin_cohort, concept set datasets of covariates (plus the six concept sets of the three outcomes CAD, MYOCARD and HF which form the covariate CV): "CV","COVCANCER","COVCOPD","COVHIV","COVCKD","COVDIAB","COVOBES","COVSICKLE"
 # output: D3_Vaccin_cohort_covariates.RData
@@ -22,7 +22,7 @@ load(paste0(dirpargen,"subpopulations_non_empty.RData"))
 D3_study_population_covariates <- vector(mode = 'list')
 for (subpop in subpopulations_non_empty) {
   print(subpop)
-  load(paste0(dirtemp,"D3_Vaccin_cohort.RData")) 
+  load(paste0(dirtemp,"D3_Vaccin_cohort_no_risk.RData")) 
   
   if (this_datasource_has_subpopulations == TRUE){  
     study_population <- D3_Vaccin_cohort[[subpop]]
@@ -50,7 +50,7 @@ for (subpop in subpopulations_non_empty) {
       temp<-merge(study_population,filecovariate, all.x = T, by="person_id")[,.(person_id,date_vax1,date)]
       temp<-temp[date>=date_vax1-365 & date<date_vax1,file:=1][is.na(file),file:=0]
       suppressWarnings(temp<-unique(temp[,file1:=max(file),by="person_id"][,.(person_id,file1)]))
-      setnames(temp,"file1",paste0(file,"_at_vaccination"))
+      setnames(temp,"file1",paste0(file,"_at_date_vax_1"))
       study_population_covariates<-merge(study_population_covariates,temp,all.x = T, by="person_id")
       
     } else {
@@ -58,7 +58,7 @@ for (subpop in subpopulations_non_empty) {
       temp<-merge(study_population,get(file), all.x = T, by="person_id")[,.(person_id,date_vax1,date)]
       temp<-temp[date>=date_vax1-365 & date<date_vax1,file:=1][is.na(file),file:=0]
       suppressWarnings(temp<-unique(temp[,file1:=max(file),by="person_id"][,.(person_id,file1)]))
-      setnames(temp,"file1",paste0(file,"_at_vaccination"))
+      setnames(temp,"file1",paste0(file,"_at_date_vax_1"))
       study_population_covariates<-merge(study_population_covariates,temp,all.x = T, by="person_id")
     }
   }
