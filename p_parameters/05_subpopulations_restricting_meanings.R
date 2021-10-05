@@ -4,7 +4,7 @@
 
 # datasources_with_subpopulations lists the datasources where some meanings of events should be excluded during some observation periods, associated with some op_meanings
 # datasources_with_subpopulations <- c("TEST","BIFAP","SIDIAP","PHARMO")
-datasources_with_subpopulations <- c()
+datasources_with_subpopulations <- c("TEST")
 
 this_datasource_has_subpopulations <- ifelse(thisdatasource %in% datasources_with_subpopulations,TRUE,FALSE) 
 

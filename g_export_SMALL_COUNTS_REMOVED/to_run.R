@@ -5,7 +5,6 @@
 
 # authors: Rosa Gini, Olga Paoletti, Davide Messina, Giorgio Limoncella
 
-<<<<<<< HEAD
 # changelog V5.3_MIS:
 # adjutment for subpopulations
 
@@ -36,8 +35,6 @@
 # new codes ICPC and italian ICD9 codes
 # improved BIFAP covid registry
 
-=======
->>>>>>> development
 # changelog V4.0.2:
 # bugfix
 

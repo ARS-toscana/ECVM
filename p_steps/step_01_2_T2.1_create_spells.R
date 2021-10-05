@@ -91,7 +91,7 @@ if (this_datasource_has_subpopulations == TRUE){
           inputsecond <- get(paste0("output_spells_category_",op_meaning_set_second))
           # check whether one of the two composing input files is empty (if so, the overlap is also empty), otherwise use CreateSpells again
           if(nrow(inputfirst)==0 | nrow(inputsecond)==0){
-            output_spells_category[[overlap_op_meaning_sets]] <- empty_spells
+            assign(paste0("output_spells_category_",overlap_op_meaning_sets), empty_spells)
           }else{
             input_observation_periods_overlap <- as.data.table(rbind(inputfirst,inputsecond,fill = T))
             temp <- CreateSpells(
@@ -107,16 +107,19 @@ if (this_datasource_has_subpopulations == TRUE){
               gap_allowed = 21
             )
             assign(paste0("output_spells_category_",overlap_op_meaning_sets), get("overlap"))
+            save(list=paste0("output_spells_category_",overlap_op_meaning_sets),file=paste0(dirtemp,paste0("output_spells_category_",overlap_op_meaning_sets,".RData")))
+            rm(inputfirst,inputsecond, temp)
             #output_spells_category[[overlap_op_meaning_sets]]  
           }
-          rm(inputfirst,inputsecond, temp)
+          save(list=paste0("output_spells_category_",overlap_op_meaning_sets),file=paste0(dirtemp,paste0("output_spells_category_",overlap_op_meaning_sets,".RData")))
+          rm(inputfirst,inputsecond)
         }
         runninglen = runninglen + 1
       }
       
     }
   }
-  save(list=paste0("output_spells_category_",overlap_op_meaning_sets),file=paste0(dirtemp,paste0("output_spells_category_",overlap_op_meaning_sets,".RData")))
+  
   #rm(output_spells_category)
   
   # if the datasource has subpopulations, assign to each subpopulation its spells
