@@ -6,7 +6,7 @@
 
 print('create secondary components SECCOMPONENTS.')
 
-load(paste0(dirpargen,"subpopulations_non_empty.RData"))
+# load(paste0(dirpargen,"subpopulations_non_empty.RData"))
 
 ##for each SECCOMP create components
 
@@ -21,14 +21,11 @@ for (SECCOMP in SECCOMPONENTS) {
   print(SECCOMP)
   for (subpop in subpopulations_non_empty) {
     print(subpop)
-    load(paste0(diroutput,"D4_study_population.RData")) 
-    
-    if (this_datasource_has_subpopulations == TRUE){  
-      COHORT_TMP <- D4_study_population[[subpop]]
-    }else{
-      COHORT_TMP <- as.data.table(D4_study_population)  
-    }
-    
+    load(paste0(diroutput,"D4_study_population",suffix[[subpop]],".RData")) 
+    D4_study_population<-get(paste0("D4_study_population", suffix[[subpop]]))
+
+    COHORT_TMP <- as.data.table(D4_study_population)  
+
     COHORT_TMP <- COHORT_TMP[,.(person_id,study_entry_date)]
     #create datasets A and B to be merged for the secondary component
     datasets_to_be_merged <- vector(mode="list")
@@ -122,16 +119,14 @@ for (SECCOMP in SECCOMPONENTS) {
       
     load(paste0(dirtemp,'tempfile.RData') )
       
-    if (this_datasource_has_subpopulations == TRUE){  
-        componentsSECCOMP[[subpop]]<- tempfile 
-      }else{
-        componentsSECCOMP<- tempfile 
-      }
-    }
-  nameobjectSECCOMP <- paste0('D3_eventsSecondary_',SECCOMP)
+    componentsSECCOMP<- tempfile 
+
+  nameobjectSECCOMP <- paste0('D3_eventsSecondary',suffix[[subpop]],"_",SECCOMP)
   assign(nameobjectSECCOMP,componentsSECCOMP)
   save(nameobjectSECCOMP,file=paste0(dirtemp,paste0(nameobjectSECCOMP,".RData")),list = nameobjectSECCOMP)
   rm(nameobjectSECCOMP,list = nameobjectSECCOMP)
   rm(datasets_to_be_merged,componentsSECCOMP,tempfile,COHORT_TMP,components,listevents,all_A_AND_B_timeframe,unique_A_AND_B_timeframe,D4_study_population)
   }
+}
+  
 

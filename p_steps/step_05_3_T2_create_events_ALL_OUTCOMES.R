@@ -6,12 +6,7 @@
 
 print("CREATE EVENTS PER ALL OUTCOMES")
 
-
-
 OUTCOMEnoCOVID <- OUTCOME_events[OUTCOME_events!="COVID"]
-
-load(paste0(dirpargen,"subpopulations_non_empty.RData"))
-load(paste0(diroutput,"D4_study_population.RData")) 
 
 list_outcomes_observed <- vector(mode="list")
 list_outcomes_observed_only_diagnosis <- vector(mode="list")
@@ -20,13 +15,15 @@ D3_events_ALL_OUTCOMES <- vector(mode="list")
 
 for (subpop in subpopulations_non_empty) {
   print(subpop)
+  
+  load(paste0(diroutput,"D4_study_population",suffix[[subpop]],".RData")) 
+  D4_study_population<-get(paste0("D4_study_population", suffix[[subpop]]))
+  
   running_list_outcomes_observed <- c()
   running_list_outcomes_observed_only_diagnosis <- c()
-  if (this_datasource_has_subpopulations == TRUE){ 
-    study_population <- D4_study_population[[subpop]]
-  }else{
+
     study_population <- as.data.table(D4_study_population)
-  }
+  
   empty_events_ALL_OUTCOMES <- study_population[1,.(person_id)]
   empty_events_ALL_OUTCOMES <- empty_events_ALL_OUTCOMES[,name_event := "test"] 
   empty_events_ALL_OUTCOMES <- empty_events_ALL_OUTCOMES[,date_event := as.Date('20010101',date_format)] 
@@ -34,23 +31,15 @@ for (subpop in subpopulations_non_empty) {
   events_ALL_OUTCOMES <- empty_events_ALL_OUTCOMES
   for (OUTCOME in OUTCOMEnoCOVID) {
     print(OUTCOME)
-    namedatasetnarrow <- paste0('D3_events_',OUTCOME,"_narrow")
-    namedatasetpossible <- paste0('D3_events_',OUTCOME,"_possible")
+    namedatasetnarrow <- paste0('D3_events',suffix[[subpop]],"_",OUTCOME,"_narrow")
+    namedatasetpossible <- paste0('D3_events',suffix[[subpop]],"_",OUTCOME,"_possible")
     load(paste0(dirtemp,namedatasetnarrow,'.RData'))
     load(paste0(dirtemp,namedatasetpossible,'.RData'))
     
     dataset <- vector(mode="list")
-    if (this_datasource_has_subpopulations == TRUE){ 
-      temp <- get(namedatasetnarrow)
-      dataset[['narrow']] <- temp[[subpop]]
-      temp <- get(namedatasetpossible)
-      dataset[['possible']] <- temp[[subpop]]
-      rm(temp)
-    }else{
-      dataset[['narrow']] <- as.data.table(get(namedatasetnarrow))
-      dataset[['possible']] <- as.data.table(get(namedatasetpossible))
-    }
-    
+    dataset[['narrow']] <- as.data.table(get(namedatasetnarrow))
+    dataset[['possible']] <- as.data.table(get(namedatasetpossible))
+
     dataset[['narrow']] <- dataset[['narrow']][,.(person_id, date, codvar, meaning_of_event, event_record_vocabulary)]
     dataset[['possible']] <- dataset[['possible']][,.(person_id, date, codvar, meaning_of_event, event_record_vocabulary)]
 
@@ -164,13 +153,9 @@ for (subpop in subpopulations_non_empty) {
   
   for (SECCOMP in SECCOMPONENTS) { 
     print(SECCOMP)
-    nameobjectSECCOMP <- paste0('D3_eventsSecondary_',SECCOMP)
+    nameobjectSECCOMP <- paste0('D3_eventsSecondary',suffix[[subpop]],"_",SECCOMP)
     load(paste0(dirtemp,paste0(nameobjectSECCOMP,".RData")))
-    if (this_datasource_has_subpopulations == TRUE){ 
-     temp <- get(nameobjectSECCOMP)[[subpop]]
-    }else{
-      temp <- get(nameobjectSECCOMP)
-    }
+    temp <- get(nameobjectSECCOMP)
     temp <- temp[,name_event:= SECCOMP]
     if ( nrow(temp) > 0 ){
       setkey(temp,person_id, date)
@@ -185,24 +170,23 @@ for (subpop in subpopulations_non_empty) {
     rm(nameobjectSECCOMP, list = nameobjectSECCOMP)
     }
     
-  
-  if (this_datasource_has_subpopulations == TRUE){ 
-    running_list_outcomes_observed
-    list_outcomes_observed[[subpop]] <- running_list_outcomes_observed
-    list_outcomes_observed_only_diagnosis[[subpop]] <-  running_list_outcomes_observed_only_diagnosis
-    list_outcomes_observed_for_QC[[subpop]] <- running_list_outcomes_for_QC
-    D3_events_ALL_OUTCOMES[[subpop]] <- events_ALL_OUTCOMES
-  }else{
     list_outcomes_observed <- running_list_outcomes_observed
     list_outcomes_observed_only_diagnosis <- running_list_outcomes_observed_only_diagnosis
     list_outcomes_observed_for_QC <- running_list_outcomes_for_QC
     D3_events_ALL_OUTCOMES <- events_ALL_OUTCOMES
-  }
+    
+    assign(paste0("list_outcomes_observed",suffix[[subpop]]),list_outcomes_observed)
+    save(list_outcomes_observed,file=paste0(dirtemp,"list_outcomes_observed",suffix[[subpop]],".RData"))
+    
+    assign(paste0("list_outcomes_observed_only_diagnosis",suffix[[subpop]]),list_outcomes_observed_only_diagnosis)
+    save(list_outcomes_observed_only_diagnosis,file=paste0(dirtemp,"list_outcomes_observed_only_diagnosis",suffix[[subpop]],".RData"))
+    
+    assign(paste0("list_outcomes_observed_for_QC",suffix[[subpop]]),list_outcomes_observed_for_QC)
+    save(list_outcomes_observed_for_QC,file=paste0(dirtemp,"list_outcomes_observed_for_QC",suffix[[subpop]],".RData"))
+    
+    assign(paste0("D3_events_ALL_OUTCOMES",suffix[[subpop]]),D3_events_ALL_OUTCOMES)
+    save(D3_events_ALL_OUTCOMES,file=paste0(dirtemp,"D3_events_ALL_OUTCOMES",suffix[[subpop]],".RData"))
 }
 
-save(list_outcomes_observed,file=paste0(dirtemp,"list_outcomes_observed.RData"))
-save(list_outcomes_observed_only_diagnosis,file=paste0(dirtemp,"list_outcomes_observed_only_diagnosis.RData"))
-save(list_outcomes_observed_for_QC,file=paste0(dirtemp,"list_outcomes_observed_for_QC.RData"))
-save(D3_events_ALL_OUTCOMES,file=paste0(dirtemp,"D3_events_ALL_OUTCOMES.RData"))
 
 rm(D3_events_ALL_OUTCOMES, D4_study_population,study_population, list_outcomes_observed, dataset,D3_events_DEATH, events_ALL_OUTCOMES, empty_events_ALL_OUTCOMES)

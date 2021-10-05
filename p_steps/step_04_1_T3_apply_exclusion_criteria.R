@@ -46,14 +46,16 @@ D4_study_population <- unique(selected_population_all_filter)[, .(person_id, sex
 
 fwrite(get(paste0("Flowchart_exclusion_criteria",suffix[[subpop]])), paste0(direxp,"Flowchart_exclusion_criteria",suffix[[subpop]],".csv"))
 
-assign(paste0(D4_study_population,suffix[[subpop]]),D4_study_population)
-save(list=paste0(D4_study_population,suffix[[subpop]]),file = paste0(diroutput, "D4_study_population",suffix[[subpop]],".RData"))
+assign(paste0("D4_study_population",suffix[[subpop]]),D4_study_population)
+save(list=paste0("D4_study_population",suffix[[subpop]]),file = paste0(diroutput, "D4_study_population",suffix[[subpop]],".RData"))
 
-save(list=paste0(D4_study_source_population,suffix[[subpop]]),file = paste0(diroutput, "D4_study_source_population",suffix[[subpop]],".RData"))
+assign(paste0("D4_study_source_population",suffix[[subpop]]),D4_study_source_population)
+save(list=paste0("D4_study_source_population",suffix[[subpop]]),file = paste0(diroutput, "D4_study_source_population",suffix[[subpop]],".RData"))
 
+rm(list=paste0("Flowchart_basic_exclusion_criteria",suffix[[subpop]]))
+rm(list=paste0("Flowchart_exclusion_criteria",suffix[[subpop]] ))
 }
-rm(D4_study_source_population, D4_study_population, D3_selection_criteria, Flowchart_basic_exclusion_criteria,
-   Flowchart_exclusion_criteria, selected_population, to_study_pop, selected_population_all_filter)
+rm(D4_study_source_population, D4_study_population, D3_selection_criteria,selected_population, to_study_pop, selected_population_all_filter)
 
 
 
