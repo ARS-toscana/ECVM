@@ -74,6 +74,9 @@ setnames(exited_pop, "Dose", "dose")
 exited_pop_birth_cohorts <- unique(copy(exited_pop)[, c("riskfactor", "value") := NULL])
 exited_pop_birth_cohorts <- exited_pop_birth_cohorts[, .N, by = c("dose", "week", "birth_cohort", "vx_manufacturer")]
 
+exited_pop_risk_factors <- unique(copy(exited_pop)[value == 1, ][, c("birth_cohort", "value") := NULL])
+exited_pop_risk_factors <- exited_pop_risk_factors[, .N, by = c("dose", "week", "riskfactor", "vx_manufacturer")]
+
 all_pop <- copy(exited_pop_birth_cohorts)[birth_cohort %in% c("<1940", "1940-1949", "1950-1959", "1960-1969",
                                                               "1970-1979", "1980-1989", "1990+"),
                                  .(N = sum(N)), by = c("dose", "week",
@@ -92,6 +95,10 @@ exited_pop_birth_cohorts <- exited_pop_birth_cohorts[, exited := cumsum(N),
                                                      by = c("dose", "birth_cohort", "vx_manufacturer")][, N := NULL]
 exited_pop_birth_cohorts <- exited_pop_birth_cohorts[, week := format(week, "%Y%m%d")]
 
+setorder(exited_pop_risk_factors, week)
+exited_pop_risk_factors <- exited_pop_risk_factors[, exited := cumsum(N),
+                                                   by = c("dose", "riskfactor", "vx_manufacturer")][, N := NULL]
+exited_pop_risk_factors <- exited_pop_risk_factors[, week := format(week, "%Y%m%d")]
 
 
 
