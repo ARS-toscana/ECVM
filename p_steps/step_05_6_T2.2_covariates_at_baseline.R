@@ -17,27 +17,20 @@ rm(HF_narrow,MYOCARD_narrow,HF_possible,MYOCARD_possible, CAD_narrow, CAD_possib
 
 COVnames<-c("CV","COVCANCER","COVCOPD","COVHIV","COVCKD","COVDIAB","COVOBES","COVSICKLE")
 
-load(paste0(dirpargen,"subpopulations_non_empty.RData"))
 
 
 D3_study_population_covariates <- vector(mode = 'list')
 for (subpop in subpopulations_non_empty) {
   print(subpop)
-  load(paste0(diroutput,"D4_study_population.RData")) 
+  load(paste0(diroutput,"D4_study_population",suffix[[subpop]],".RData")) 
+  study_population<-get(paste0("D4_study_population", suffix[[subpop]]))
   
-  if (this_datasource_has_subpopulations == TRUE){  
-    study_population <- D4_study_population[[subpop]]
-  }else{
-    study_population <- as.data.table(D4_study_population)  
-  }
-
   study_population_covariates <- study_population[,.(person_id, study_entry_date)]
   
   
-  
-  
-  #file<-"COVCANCER_narrow"
+    #file<-"COVCANCER_narrow"
   for (file in COVnames) {
+    print(file)
     if ( file!="CV" ){
       
       load(paste0(dirtemp,file,".RData"))
@@ -64,16 +57,17 @@ for (subpop in subpopulations_non_empty) {
     }
   }
   
-  if (this_datasource_has_subpopulations == TRUE){ 
-    D3_study_population_covariates[[subpop]] <- study_population_covariates
-  }else{
-    D3_study_population_covariates <- study_population_covariates
-    }
-}    
 
-save(D3_study_population_covariates,file=paste0(dirtemp,"D3_study_population_covariates.RData"))
+
+
+ tempname<-paste0("D3_study_population_covariates",suffix[[subpop]])
+ assign(tempname,study_population_covariates)
+ save(list=tempname,file=paste0(dirtemp,tempname,".RData"))
+ 
+ rm(list=paste0("D4_study_population", suffix[[subpop]]))
+}
 
 rm(CV,COVCANCER,COVCOPD,COVHIV,COVCKD,COVDIAB,COVOBES,COVSICKLE) 
-rm(temp,D3_study_population_covariates,D4_study_population, study_population, study_population_covariates,filecovariate)
+rm(temp,D3_study_population_covariates,study_population, study_population_covariates,filecovariate)
 
 
