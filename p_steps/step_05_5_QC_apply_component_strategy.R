@@ -109,7 +109,8 @@ for (OUTCOME in OUTCOME_events) {
 
     OUTCOME_components <- OUTCOME_aggregated
     assign(nameobject, OUTCOME_aggregated)
-    fwrite(get(nameobject),file=paste0(direxpsubpop[[subpop]],paste0(nameobject,".csv")))
+    thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
+    fwrite(get(nameobject),file=paste0(thisdirexp,paste0(nameobject,".csv")))
     rm(list=paste0("D4_study_population", suffix[[subpop]]))
 
   nameobject <- paste0("QC_all_components_", suffix[[subpop]],"_",OUTCOME)

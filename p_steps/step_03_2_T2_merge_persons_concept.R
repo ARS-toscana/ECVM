@@ -3,8 +3,13 @@
 #merge vaccine information to persons
  for (subpop in subpopulations_non_empty){
    print(subpop)
-  load(paste0(dirtemp,"output_spells_category.RData"))
-  output_spells_category<-output_spells_category[[subpop]]
+   
+   if (this_datasource_has_subpopulations == T){
+     load(paste0(dirtemp,"output_spells_category.RData"))
+     output_spells_category<-output_spells_category[[subpop]]
+   }else{
+     load(paste0(dirtemp,"output_spells_category.RData"))
+   }
   
   load(paste0(dirtemp,"D3_selection_criteria", suffix[[subpop]] ,".RData"))
   D3_selection_criteria<-get(paste0("D3_selection_criteria", suffix[[subpop]]))

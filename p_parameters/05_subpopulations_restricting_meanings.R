@@ -4,7 +4,7 @@
 
 # datasources_with_subpopulations lists the datasources where some meanings of events should be excluded during some observation periods, associated with some op_meanings
 # datasources_with_subpopulations <- c("TEST","BIFAP","SIDIAP","PHARMO")
-datasources_with_subpopulations <- c("TEST")
+datasources_with_subpopulations <- c()
 
 this_datasource_has_subpopulations <- ifelse(thisdatasource %in% datasources_with_subpopulations,TRUE,FALSE) 
 
@@ -135,7 +135,7 @@ suffix<-vector(mode="list")
 
 if (this_datasource_has_subpopulations == FALSE) {
   subpopulations_non_empty <- c('ALL')
-  subpopulations[[thisdatasource]] <- c('ALL')
+  #subpopulations[[thisdatasource]] <- c('ALL')
   suffix[['ALL']] <- ''
   save(subpopulations_non_empty,file=paste0(dirpargen,"subpopulations_non_empty.RData"))
 }else{

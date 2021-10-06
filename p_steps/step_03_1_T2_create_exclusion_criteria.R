@@ -50,10 +50,14 @@ D3_inclusion_from_PERSONS <- D3_PERSONS[,.(person_id,sex,date_of_birth,date_of_d
 
 # OBSERVATION PERIODS -----------------------------------------------------
 #new
- for (subpop in subpopulations[[thisdatasource]]){
+ for (subpop in subpopulations_non_empty){
   print(subpop)
+   if (this_datasource_has_subpopulations == T){
 load(paste0(dirtemp,"output_spells_category.RData"))
 output_spells_category<-output_spells_category[[subpop]]
+   }else{
+     load(paste0(dirtemp,"output_spells_category.RData"))
+}
 
   start_follow_up = study_start - 365
   na_date = lubridate::ymd(99991231)
