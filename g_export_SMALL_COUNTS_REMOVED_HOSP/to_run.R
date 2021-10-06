@@ -108,25 +108,15 @@ system.time(source(paste0(thisdir,"/p_steps/step_04_2_T3_apply_quality_check_exc
 
 #05 create D3 for doses and coverage
 system.time(source(paste0(thisdir,"/p_steps/step_05_1_T2.2_components.R")))
-
 system.time(source(paste0(thisdir,"/p_steps/step_05_2_T2.2_secondary_components.R")))
-
 system.time(source(paste0(thisdir,"/p_steps/step_05_3_T2_create_events_ALL_OUTCOMES.R")))
-
 system.time(source(paste0(thisdir,"/p_steps/step_05_4_QC_count_codes_ALL_OUTCOMES.R")))
-
 system.time(source(paste0(thisdir,"/p_steps/step_05_5_QC_apply_component_strategy.R")))
-
 system.time(source(paste0(thisdir,"/p_steps/step_05_6_T2.2_covariates_at_baseline.R")))
-
 system.time(source(paste0(thisdir,"/p_steps/step_05_7_T2.2_DP_at_baseline.R")))
-
 system.time(source(paste0(thisdir,"/p_steps/step_05_8_T2.3_baseline_characteristics.R")))
-
 system.time(source(paste0(thisdir,"/p_steps/step_05_9_T2.3_ALL_covariates_at_baseline_V2.R")))
-
 system.time(source(paste0(thisdir,"/p_steps/step_05_10_T2.2_components_COVID_severity.R")))
-
 system.time(source(paste0(thisdir,"/p_steps/step_05_11_T2.3_algorithms_COVID_severity.R")))
 
 #06 create D3 for doses and coverage
