@@ -21,11 +21,11 @@ for (subpop in subpopulations_non_empty) {
   load(paste0(dirtemp,"D3_Vaccin_cohort_no_risk.RData")) 
   
   if (this_datasource_has_subpopulations == TRUE){  
-    study_population <- D3_Vaccin_cohort[[subpop]]
+    study_population <- D3_Vaccin_cohort_no_risk[[subpop]]
     study_population_cov <- D4_Vaccin_cohort_cov[[subpop]]
     study_population_DP <- D3_Vaccin_cohort_DP[[subpop]]
   }else{
-    study_population <- as.data.table(D3_Vaccin_cohort)
+    study_population <- as.data.table(D3_Vaccin_cohort_no_risk)
     study_population_cov <- D4_Vaccin_cohort_cov
     study_population_DP <- D3_Vaccin_cohort_DP
   }
@@ -66,5 +66,5 @@ for (subpop in subpopulations_non_empty) {
 
 
 save(D3_Vaccin_cohort_cov_ALL,file=paste0(diroutput,"D3_Vaccin_cohort_cov_ALL.RData"))
-rm(D4_Vaccin_cohort_cov, D3_Vaccin_cohort_DP, D3_Vaccin_cohort, D3_Vaccin_cohort_cov_ALL, study_population_DP, study_population,study_population_cov, study_population_cov_ALL)
+rm(D4_Vaccin_cohort_cov, D3_Vaccin_cohort_DP, D3_Vaccin_cohort_no_risk, D3_Vaccin_cohort_cov_ALL, study_population_DP, study_population,study_population_cov, study_population_cov_ALL)
 

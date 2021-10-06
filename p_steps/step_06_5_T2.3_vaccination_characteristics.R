@@ -15,10 +15,10 @@ for (subpop in subpopulations_non_empty) {
   load(paste0(dirtemp,"D3_Vaccin_cohort_covariates.RData"))
   
   if (this_datasource_has_subpopulations == TRUE){  
-    study_population <- D3_Vaccin_cohort[[subpop]]
+    study_population <- D3_Vaccin_cohort_no_risk[[subpop]]
     study_population_covariates <- D3_Vaccin_cohort_covariates[[subpop]]
   }else{
-    study_population <- as.data.table(D3_Vaccin_cohort)  
+    study_population <- as.data.table(D3_Vaccin_cohort_no_risk)  
     study_population_covariates <- D3_Vaccin_cohort_covariates
   }
   
@@ -39,5 +39,5 @@ for (subpop in subpopulations_non_empty) {
 } 
 
 save(D4_Vaccin_cohort_cov,file=paste0(diroutput,"D4_Vaccin_cohort_cov.RData"))
-rm(population_var, D3_Vaccin_cohort,study_population_cov,study_population,study_population_covariates)
+rm(population_var, D3_Vaccin_cohort_no_risk, study_population_cov,study_population,study_population_covariates)
 rm(D3_Vaccin_cohort_covariates,D4_Vaccin_cohort_cov)

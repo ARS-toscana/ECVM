@@ -21,9 +21,9 @@ for (subpop in subpopulations_non_empty) {
   load(paste0(dirtemp,"D3_Vaccin_cohort_no_risk.RData")) 
   
   if (this_datasource_has_subpopulations == TRUE){  
-    study_population <- D3_Vaccin_cohort[[subpop]]
+    study_population <- D3_Vaccin_cohort_no_risk[[subpop]]
   }else{
-    study_population <- as.data.table(D3_Vaccin_cohort)  
+    study_population <- as.data.table(D3_Vaccin_cohort_no_risk)  
   }
   COHORT_TMP <- study_population[,.(person_id, date_vax1)]
   study_population_DP <- COHORT_TMP
@@ -59,7 +59,7 @@ for (subpop in subpopulations_non_empty) {
 
 save(D3_Vaccin_cohort_DP,file=paste0(dirtemp,"D3_Vaccin_cohort_DP.RData"))
 
-rm(COHORT_TMP, D3_study_population_DP, D3_Vaccin_cohort, study_population_DP, study_population)
+rm(COHORT_TMP, D3_study_population_DP, D3_Vaccin_cohort_no_risk, study_population_DP, study_population)
 
 
 
