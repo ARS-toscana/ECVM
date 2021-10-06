@@ -130,8 +130,11 @@ system.time(source(paste0(thisdir,"/p_steps/step_05_10_T2.2_components_COVID_sev
 system.time(source(paste0(thisdir,"/p_steps/step_05_11_T2.3_algorithms_COVID_severity.R")))
 
 #06 create D3 for doses and coverage
-system.time(source(paste0(thisdir,"/p_steps/step_06_T2_create_D3_datasets.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_06_1_T2_create_D3_datasets.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_06_3_T2.2_covariates_at_vaccination.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_06_4_T2.2_DP_at_vaccination.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_06_5_T2.3_vaccination_characteristics.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_06_6_T2.3_ALL_covariates_at_vaccination_V2.R")))
 
 #-----------------
 #MIS section
