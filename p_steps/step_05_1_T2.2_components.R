@@ -83,7 +83,7 @@ for (OUTCOME in OUTCOME_events) {
     }
     
   for (type in c("narrow","possible")) {
-    nameobjectOUTCOMEtype <- paste0('D3_events',suffix[[subpop]],"_",OUTCOME,"_",type)
+    nameobjectOUTCOMEtype <- paste0('D3_events',"_",OUTCOME,"_",type,suffix[[subpop]])
     foroutput <- tempOUTCOME[[type]]
     assign(nameobjectOUTCOMEtype,foroutput)
     save(nameobjectOUTCOMEtype,file=paste0(dirtemp,paste0(nameobjectOUTCOMEtype,".RData")),list = nameobjectOUTCOMEtype)
@@ -93,7 +93,7 @@ for (OUTCOME in OUTCOME_events) {
 }
      
  
-  nameobjectOUTCOME <- paste0("D3_components",suffix[[subpop]],"_",OUTCOME)
+  nameobjectOUTCOME <- paste0("D3_components","_",OUTCOME,suffix[[subpop]])
   componentsOUTCOMEfinal <- vector(mode = 'list')
     OUTCOME_narrow <- componentsOUTCOME[['narrow']]
     OUTCOME_possible <- componentsOUTCOME[['possible']]

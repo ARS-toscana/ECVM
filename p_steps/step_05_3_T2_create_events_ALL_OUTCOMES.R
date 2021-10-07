@@ -31,8 +31,8 @@ for (subpop in subpopulations_non_empty) {
   events_ALL_OUTCOMES <- empty_events_ALL_OUTCOMES
   for (OUTCOME in OUTCOMEnoCOVID) {
     print(OUTCOME)
-    namedatasetnarrow <- paste0('D3_events',suffix[[subpop]],"_",OUTCOME,"_narrow")
-    namedatasetpossible <- paste0('D3_events',suffix[[subpop]],"_",OUTCOME,"_possible")
+    namedatasetnarrow <- paste0('D3_events',"_",OUTCOME,"_narrow",suffix[[subpop]])
+    namedatasetpossible <- paste0('D3_events',"_",OUTCOME,"_possible",suffix[[subpop]])
     load(paste0(dirtemp,namedatasetnarrow,'.RData'))
     load(paste0(dirtemp,namedatasetpossible,'.RData'))
     
@@ -153,7 +153,7 @@ for (subpop in subpopulations_non_empty) {
   
   for (SECCOMP in SECCOMPONENTS) { 
     print(SECCOMP)
-    nameobjectSECCOMP <- paste0('D3_eventsSecondary',suffix[[subpop]],"_",SECCOMP)
+    nameobjectSECCOMP <- paste0('D3_eventsSecondary',"_",SECCOMP,suffix[[subpop]])
     load(paste0(dirtemp,paste0(nameobjectSECCOMP,".RData")))
     temp <- get(nameobjectSECCOMP)
     temp <- temp[,name_event:= SECCOMP]
