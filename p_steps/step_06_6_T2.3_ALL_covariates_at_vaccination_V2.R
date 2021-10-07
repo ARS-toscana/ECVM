@@ -10,25 +10,16 @@ COVnames<-c("CV","COVCANCER","COVCOPD","COVHIV","COVCKD","COVDIAB","COVOBES","CO
 
 # create variable added to study population
 
-load(paste0(diroutput,"D4_Vaccin_cohort_cov.RData"))
-load(paste0(dirtemp,"D3_Vaccin_cohort_DP.RData"))
-load(paste0(dirpargen,"subpopulations_non_empty.RData"))
-
-
 D3_Vaccin_cohort_cov_ALL <- vector(mode = 'list')
 for (subpop in subpopulations_non_empty) {
   print(subpop)
-  load(paste0(dirtemp,"D3_Vaccin_cohort_no_risk.RData")) 
+  load(paste0(dirtemp,"D3_Vaccin_cohort_no_risk",suffix[[subpop]],".RData"))
+  load(paste0(diroutput,"D4_Vaccin_cohort_cov",suffix[[subpop]],".RData"))
+  load(paste0(dirtemp,"D3_Vaccin_cohort_DP",suffix[[subpop]],".RData"))
   
-  if (this_datasource_has_subpopulations == TRUE){  
-    study_population <- D3_Vaccin_cohort_no_risk[[subpop]]
-    study_population_cov <- D4_Vaccin_cohort_cov[[subpop]]
-    study_population_DP <- D3_Vaccin_cohort_DP[[subpop]]
-  }else{
-    study_population <- as.data.table(D3_Vaccin_cohort_no_risk)
-    study_population_cov <- D4_Vaccin_cohort_cov
-    study_population_DP <- D3_Vaccin_cohort_DP
-  }
+  study_population<-get(paste0("D3_Vaccin_cohort_no_risk", suffix[[subpop]]))
+  study_population_cov<-get(paste0("D4_Vaccin_cohort_cov", suffix[[subpop]]))
+  study_population_DP<-get(paste0("D3_Vaccin_cohort_DP", suffix[[subpop]]))
   
   keep_col <- c("person_id", paste0(COVnames, "_at_date_vax_1"))
   study_population_cov_ALL <- merge(study_population, study_population_cov[, ..keep_col], by=c("person_id"), all.x = T)
@@ -57,14 +48,13 @@ for (subpop in subpopulations_non_empty) {
   
   study_population_cov_ALL <- study_population_cov_ALL[IMMUNOSUPPR_at_date_vax_1 == 1, all_covariates_non_CONTR :=1]
   
-  if (this_datasource_has_subpopulations == TRUE){ 
-    D3_Vaccin_cohort_cov_ALL[[subpop]] <- study_population_cov_ALL
-  }else{
-    D3_Vaccin_cohort_cov_ALL <- study_population_cov_ALL
-  }
+  tempname<-paste0("D3_Vaccin_cohort_cov_ALL",suffix[[subpop]])
+  assign(tempname,study_population_cov_ALL)
+  save(list=tempname,file=paste0(diroutput,tempname,".RData"))
+  
+  rm(list=paste0("D3_Vaccin_cohort_cov_ALL", suffix[[subpop]]))
 }
 
 
-save(D3_Vaccin_cohort_cov_ALL,file=paste0(diroutput,"D3_Vaccin_cohort_cov_ALL.RData"))
-rm(D4_Vaccin_cohort_cov, D3_Vaccin_cohort_DP, D3_Vaccin_cohort_no_risk, D3_Vaccin_cohort_cov_ALL, study_population_DP, study_population,study_population_cov, study_population_cov_ALL)
+rm(D4_Vaccin_cohort_cov, D3_Vaccin_cohort_DP, D3_Vaccin_cohort_no_risk, study_population_DP, study_population,study_population_cov, study_population_cov_ALL)
 

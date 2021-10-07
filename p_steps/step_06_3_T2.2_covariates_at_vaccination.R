@@ -58,7 +58,7 @@ for (subpop in subpopulations_non_empty) {
   
   tempname<-paste0("D3_Vaccin_cohort_covariates",suffix[[subpop]])
   assign(tempname,study_population_covariates)
-  save(list=tempname,file=paste0(diroutput,tempname,".RData"))
+  save(list=tempname,file=paste0(dirtemp,tempname,".RData"))
   
   rm(list=paste0("D3_Vaccin_cohort_no_risk", suffix[[subpop]]))
 }    
