@@ -4,7 +4,7 @@ na_to_0 = function(DT) {
   return(DT)
 }
 
-list_outcomes_MIS <- c("MIS_narrow","KD_narrow","MIS_KD_narrow","MISCC_narrow", "MIS_broad","KD_broad","MIS_KD_broad","MISCC_broad")
+list_outcomes_MIS <- c("MIS_narrow","KD_narrow","MIS_KD_narrow","MISCC_narrow", "MIS_broad","KD_broad","MIS_KD_broad","MISCC_broad","MYOCARD_narrow","MYOCARD_possible","Myocardalone_narrow","Myocardalone_possible")
 
 load(file = paste0(dirtemp, "D3_study_population.RData"))
 load(file = paste0(dirtemp, "D3_Vaccin_cohort.RData"))
@@ -13,7 +13,6 @@ load(paste0(diroutput, "D4_population_b.RData"))
 load(paste0(diroutput, "D4_population_c.RData"))
 load(paste0(diroutput, "D4_population_d.RData"))
 
-list_outcomes_MIS <- c("MIS_narrow","KD_narrow","MIS_KD_narrow","MISCC_narrow", "MIS_broad","KD_broad","MIS_KD_broad","MISCC_broad")
 
 D4_population_c <- D4_population_c[, .(person_id, agebands_at_1_jan_2021, fup_days)]
 D4_population_d <- D4_population_d[, .(person_id, agebands_at_1_jan_2021, fup_days, type_vax_1)]

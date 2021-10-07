@@ -3,7 +3,7 @@ load(paste0(diroutput, "D4_population_b.RData"))
 load(paste0(dirtemp,"D3_events_ALL_OUTCOMES.RData"))
 #load(paste0(dirtemp,"list_outcomes_observed.RData"))
 
-list_outcomes_MIS <- c("MIS_narrow","KD_narrow","MIS_KD_narrow","MISCC_narrow", "MIS_broad","KD_broad","MIS_KD_broad","MISCC_broad")
+list_outcomes_MIS <- c("MIS_narrow","KD_narrow","MIS_KD_narrow","MISCC_narrow", "MIS_broad","KD_broad","MIS_KD_broad","MISCC_broad","MYOCARD_narrow","MYOCARD_possible","Myocardalone_narrow","Myocardalone_possible")
 
 for (subpop in subpopulations_non_empty) {  
   print(subpop)
