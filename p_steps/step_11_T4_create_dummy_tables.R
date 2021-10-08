@@ -245,6 +245,8 @@ col_order <- c(rbind(vax_man, vax_man_perc))
 cols_to_keep = c("a", "Parameters", col_order)
 
 N_pop <- N_fup_pop[, .N, by = "type_vax"]
+N_pop_by_vax <- setNames(copy(N_pop)$N, as.character(copy(N_pop)$type_vax))
+N_pop_by_vax <- N_pop_by_vax[names(N_pop_by_vax) %in% vax_man]
 total_pop <- N_pop[, sum(N)]
 N_pop <- dcast(N_pop, . ~ type_vax, value.var = "N")[, . := NULL]
 N_pop <- N_pop[, Parameters := "N"][, a := "Study population"]
@@ -342,7 +344,23 @@ sex_pop <- sex_pop[, (vax_man_perc) := lapply(.SD, round_sum), .SDcols = vax_man
 sex_pop <- sex_pop[, (vax_man_perc) := lapply(.SD, paste0, "%"), .SDcols = vax_man_perc]
 sex_pop <- sex_pop[, ..cols_to_keep]
 
-table3_4_5_6 <- rbind(N_pop, fup_pop, min_month, year_month_pop, age_pop, N_age_cat, fup_age_cat, sex_pop)
+risk_factors <- copy(N_fup_pop)[, c("person_id", "type_vax", "CV", "Cancer", "CLD", "HIV", "CKD", "Diabetes",
+                                    "Obesity", "Sicklecell", "immunosuppressants")]
+cols_chosen <- c("CV", "Cancer", "CLD", "HIV", "CKD", "Diabetes", "Obesity", "Sicklecell", "immunosuppressants")
+risk_factors <- risk_factors[, lapply(.SD, sum, na.rm = T), by = "type_vax", .SDcols = cols_chosen]
+risk_factors <- melt(risk_factors, id.vars = "type_vax",
+                measure.vars = cols_chosen,
+                variable.name = "Parameters", value.name = "dob")
+risk_factors <- dcast(risk_factors, Parameters ~ type_vax, value.var = "dob")
+risk_factors <- risk_factors[, a := "At risk population at date of vaccination"]
+round_coverage <- function(x){
+  round(x / as.numeric(N_pop_by_vax[names(x)]) * 100, 3)
+}
+risk_factors[, (vax_man_perc) := round(.SD / as.numeric(N_pop_by_vax[names(.SD)]) * 100, 3), .SDcols = vax_man]
+risk_factors <- risk_factors[, (vax_man_perc) := lapply(.SD, paste0, "%"), .SDcols = vax_man_perc]
+risk_factors <- risk_factors[, ..cols_to_keep]
+
+table3_4_5_6 <- rbind(N_pop, fup_pop, min_month, year_month_pop, age_pop, N_age_cat, fup_age_cat, sex_pop, risk_factors)
 setnames(table3_4_5_6, "a", " ")
 
 final_name_table3_4_5_6 <- c(TEST = "table 3", ARS = "table 3", PHARMO = "table 4",
