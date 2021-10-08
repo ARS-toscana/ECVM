@@ -40,7 +40,7 @@ table_QC_dose_derived <- data.table(a = c("", "Number of doses", "Missing first 
                                           round(nrow_wrong_4/nrow(QC_dose_derived)*100, 2),
                                           round(nrow_wrong_5/nrow(QC_dose_derived)*100, 2)))
 setnames(table_QC_dose_derived, c("a", "b", "c"), c("", thisdatasource, thisdatasource))
-fwrite(table_QC_dose_derived, file = paste0(direxp, "table_QC_dose_derived.csv"))
+fwrite(table_QC_dose_derived, file = paste0(direxp, "table_QC_dose_derived_",thisdatasource,"_",currentdate,"_",scriptversion,".csv"))
 
 concepts <- concepts[, qc_1_dose := as.numeric(is.na(derived_dose))]
 concepts$derived_dose <- as.numeric(concepts$derived_dose)

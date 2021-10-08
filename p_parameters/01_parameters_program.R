@@ -79,7 +79,9 @@ study_start <- as.Date(as.character(20200101), date_format)
 study_end <- as.Date(as.character(CDM_SOURCE[1,"recommended_end_date"]), date_format)
 
 start_COVID_vaccination_date <- fifelse(thisdatasource == 'CPRD',as.Date(as.character(20201206), date_format),as.Date(as.character(20201227), date_format))
- 
+
+currentdate<-Sys.Date()
+scriptversion<-"scriptv6.0"
 ###################################################################
 # CREATE FOLDERS
 ###################################################################

@@ -133,19 +133,12 @@ if (this_datasource_has_subpopulations == TRUE){
   }
 }
 
-# if (this_datasource_has_subpopulations == FALSE) { 
-#   subpopulations_non_empty <- c('ALL')
-#   subpopulations[[thisdatasource]] <- c('ALL')
-#   save(subpopulations_non_empty,file=paste0(dirpargen,"subpopulations_non_empty.RData"))
-# }
-
 suffix<-vector(mode="list")
 
 if (this_datasource_has_subpopulations == FALSE) {
   subpopulations_non_empty <- c('ALL')
   #subpopulations[[thisdatasource]] <- c('ALL')
   suffix[['ALL']] <- ''
-  save(subpopulations_non_empty,file=paste0(dirpargen,"subpopulations_non_empty.RData"))
 }else{
   subpopulations_non_empty<-subpopulations[[thisdatasource]]
   for (subpop in subpopulations_non_empty) {
