@@ -90,7 +90,7 @@ is.na(severity_level_covid) & MechanicalVentilation_within_registry_date != 0, s
   # save the COVID outcomes as a dataset and their list as a parameter
   tempname<-paste0("list_outcomes_observed_COVID",suffix[[subpop]])
   assign(tempname,list_outcomes_observed)
-  save(list=tempname,file=paste0(dirtemp,tempname,".RData"))
+  save(list=tempname,file=paste0(dirpargen,tempname,".RData"))
   rm(list=paste0("list_outcomes_observed_COVID",suffix[[subpop]]))
   
   tempname<-paste0("D3_algorithm_covid",suffix[[subpop]])
