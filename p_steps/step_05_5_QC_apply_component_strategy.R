@@ -29,6 +29,7 @@ for (subpop in subpopulations_non_empty) {
 
   COHORT_dates <- COHORT_TMP
   COHORT_to_be_used <- COHORT_TMP[,.(person_id)]
+  rm(list=paste0("D4_study_population", suffix[[subpop]]))
 }
 
  
@@ -111,7 +112,6 @@ for (OUTCOME in OUTCOME_events) {
     assign(nameobject, OUTCOME_aggregated)
     thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
     fwrite(get(nameobject),file=paste0(thisdirexp,paste0(nameobject,".csv")))
-    rm(list=paste0("D4_study_population", suffix[[subpop]]))
 
   nameobject <- paste0("QC_all_components_", suffix[[subpop]],"_",OUTCOME)
   assign(nameobject, OUTCOME_components)
