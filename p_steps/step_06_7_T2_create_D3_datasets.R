@@ -74,7 +74,7 @@ save(D3_vaxweeks_vaccin_cohort, file = paste0(dirtemp, "D3_vaxweeks_vaccin_cohor
 cohort_to_vaxweeks <- D3_study_population[, .(person_id, date_of_birth, sex, study_entry_date, study_exit_date,
                                               study_entry_date_vax1, study_exit_date_vax1, study_entry_date_vax2,
                                               study_exit_date_vax2, type_vax_1, type_vax_2, fup_no_vax, fup_vax1,
-                                              fup_vax2, at_risk_at_date_vax_1)]
+                                              fup_vax2, at_risk_at_study_entry)]
 
 cohort_to_vaxweeks <- cohort_to_vaxweeks[, Birthcohort_persons := findInterval(year(date_of_birth), c(1940, 1950, 1960, 1970, 1980, 1990))]
 cohort_to_vaxweeks$Birthcohort_persons <- as.character(cohort_to_vaxweeks$Birthcohort_persons)
@@ -120,17 +120,14 @@ setnames(D3_studyweeks_not_vaccinated, c("study_entry_date", "study_exit_date", 
 D3_vaxweeks_including_not_vaccinated <- rbind(D3_vaxweeks_including_not_vaccinated, D3_studyweeks_not_vaccinated)
 setnames(D3_vaxweeks_including_not_vaccinated, "week", "week_fup")
 
-setnames(D3_Vaccin_cohort_cov_ALL,
-         c("immunosuppressants_at_date_vax_1", "at_risk_at_date_vax_1"),
-         c("IMMUNOSUPPR_at_date_vax_1", "any_risk_factors_at_date_vax_1"))
-
 setnames(D3_study_population_cov_ALL,
-         c("immunosuppressants_at_study_entry", "at_risk_at_study_entry"),
-         c("IMMUNOSUPPR_at_study_entry", "any_risk_factors_at_study_entry"))
+         c("CV_at_study_entry", "COVCANCER_at_study_entry", "COVCOPD_at_study_entry", "COVHIV_at_study_entry",
+           "COVCKD_at_study_entry", "COVDIAB_at_study_entry", "COVOBES_at_study_entry", "COVSICKLE_at_study_entry",
+           "immunosuppressants_at_study_entry", "at_risk_at_study_entry"),
+         c("CV", "COVCANCER", "COVCOPD", "COVHIV", "COVCKD", "COVDIAB", "COVOBES", "COVSICKLE",
+           "IMMUNOSUPPR", "any_risk_factors"))
 
 D3_vaxweeks_including_not_vaccinated <- merge(D3_vaxweeks_including_not_vaccinated, D3_study_population_cov_ALL,
-                                              all.x = T, by = "person_id", allow.cartesian = T)
-D3_vaxweeks_including_not_vaccinated <- merge(D3_vaxweeks_including_not_vaccinated, D3_Vaccin_cohort_cov_ALL,
                                               all.x = T, by = "person_id", allow.cartesian = T)
 
 D3_vaxweeks <- D3_vaxweeks[, c("sex", "type_vax", "Birthcohort_persons") := NULL]

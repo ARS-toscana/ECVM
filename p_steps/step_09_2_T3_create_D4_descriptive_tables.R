@@ -62,11 +62,11 @@ fwrite(D4_descriptive_dataset_covariate_studystart, file = paste0(dirD4tables, "
 setnames(D3_Vaccin_cohort_cov_ALL,
          c("CV_either_DX_or_DP", "COVCANCER_either_DX_or_DP", "COVCOPD_either_DX_or_DP", "COVHIV_either_DX_or_DP",
            "COVCKD_either_DX_or_DP", "COVDIAB_either_DX_or_DP", "COVOBES_either_DX_or_DP", "COVSICKLE_either_DX_or_DP",
-           "IMMUNOSUPPR_at_vaccination"),
+           "IMMUNOSUPPR_at_date_vax_1"),
          c("CV", "Cancer", "CLD", "HIV", "CKD", "Diabetes", "Obesity", "Sicklecell", "immunosuppressants"))
 
 cols_chosen <- c("CV", "Cancer", "CLD", "HIV", "CKD", "Diabetes", "Obesity", "Sicklecell", "immunosuppressants")
-D4_descriptive_dataset_covariate_vax <- D3_study_population_cov_ALL[, lapply(.SD, sum, na.rm=TRUE), .SDcols = cols_chosen]
+D4_descriptive_dataset_covariate_vax <- D3_Vaccin_cohort_cov_ALL[, lapply(.SD, sum, na.rm=TRUE), .SDcols = cols_chosen]
 D4_descriptive_dataset_covariate_vax <- D4_descriptive_dataset_covariate_vax[, Datasource := thisdatasource]
 D4_descriptive_dataset_covariate_vax <- D4_descriptive_dataset_covariate_vax[, .(Datasource, CV, Cancer, CLD, HIV, CKD, Diabetes, Obesity, Sicklecell, immunosuppressants)]
 
