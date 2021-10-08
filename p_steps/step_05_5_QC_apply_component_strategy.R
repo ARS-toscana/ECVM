@@ -105,7 +105,7 @@ for (OUTCOME in OUTCOME_events) {
     OUTCOME_merged[is.na(OUTCOME_merged)] <- 0
     OUTCOME_merged <- OUTCOME_merged[, person_id := NULL]
     OUTCOME_aggregated <- OUTCOME_merged[, .(.N), by = c(colnames(OUTCOME_merged))]
-    nameobject <- paste0("QC_all_components_",suffix[[subpop]],"_",OUTCOME)
+    nameobject <- paste0("QC_all_components_",OUTCOME,suffix[[subpop]])
 
     OUTCOME_components <- OUTCOME_aggregated
     assign(nameobject, OUTCOME_aggregated)

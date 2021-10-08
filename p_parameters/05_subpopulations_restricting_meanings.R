@@ -3,7 +3,7 @@
 ###################################################################
 
 # datasources_with_subpopulations lists the datasources where some meanings of events should be excluded during some observation periods, associated with some op_meanings
-# datasources_with_subpopulations <- c("TEST","BIFAP","SIDIAP","PHARMO")
+# datasources_with_subpopulations <- c("TEST","BIFAP")
 datasources_with_subpopulations <- c()
 
 this_datasource_has_subpopulations <- ifelse(thisdatasource %in% datasources_with_subpopulations,TRUE,FALSE) 
@@ -44,35 +44,43 @@ exclude_meaning_of_event[["TEST"]][["HOSP"]] <- c("emergency_room_diagnosis")
 
 
 # # BIFAP
-# subpopulations[["BIFAP"]] = c("PC","PC_HOSP","PC_COVID")
+subpopulations[["BIFAP"]] = c("PC","PC_HOSP","PC_COVID")
 # 
 # op_meaning_sets[["BIFAP"]] <- c("meaningsPC","meaningsHOSP","meaningsCOVID")
 # op_meanings_list_per_set[["BIFAP"]][["meaningsPC"]] <- c("region2_PC","region3_PC","region6_PC","region7_PC","region8_PC","region13_PC","region14_PC","region15_PC") 
 # op_meanings_list_per_set[["BIFAP"]][["meaningsHOSP"]] <- c("region2_HOSP","region6_HOSP","region7_HOSP","region13_HOSP","region15_HOSP") 
 # op_meanings_list_per_set[["BIFAP"]][["meaningsCOVID"]] <- c("region2_COVID","region2_PC","region3_COVID","region3_PC","region7_COVID","region7_PC","region14_COVID","region14_PC")
 # 
-# op_meaning_sets_in_subpopulations[["BIFAP"]][["PC"]] <- c("meaningsPC")
-# op_meaning_sets_in_subpopulations[["BIFAP"]][["PC_HOSP"]] <- c("meaningsPC","meaningsHOSP")
-# op_meaning_sets_in_subpopulations[["BIFAP"]][["PC_COVID"]] <- c("meaningsPC","meaningsCOVID")
+
+# # BIFAP new
 # 
-# exclude_meaning_of_event[["BIFAP"]][["PC"]]<-c("hopitalisation_diagnosis_unspecified","hospitalisation_primary","
-# hospitalisation_secondary")
-# exclude_meaning_of_event[["BIFAP"]][["PC_COVID"]]<-c("hopitalisation_diagnosis_unspecified","hospitalisation_primary","
-# hospitalisation_secondary")
-# exclude_meaning_of_event[["BIFAP"]][["PC_HOSP"]]<-c()
+op_meaning_sets[["BIFAP"]] <- c("meaningsPC","meaningsHOSP","meaningsCOVID")
+op_meanings_list_per_set[["BIFAP"]][["meaningsPC"]] <- c("region2_PC","region3_PC","region7_PC","region14_PC")
+op_meanings_list_per_set[["BIFAP"]][["meaningsHOSP"]] <- c("region3_HOSP","region7_HOSP")
+op_meanings_list_per_set[["BIFAP"]][["meaningsCOVID"]] <- c("region2_COVID","region3_COVID","region7_COVID","region14_COVID")
 
-# SIDIAP
-subpopulations[["SIDIAP"]] = c("PC","PC_HOSP")
-op_meaning_sets[["SIDIAP"]] <- c("meaningsPC","meaningsHOSP")
+op_meaning_sets_in_subpopulations[["BIFAP"]][["PC"]] <- c("meaningsPC")
+op_meaning_sets_in_subpopulations[["BIFAP"]][["PC_HOSP"]] <- c("meaningsPC","meaningsHOSP")
+op_meaning_sets_in_subpopulations[["BIFAP"]][["PC_COVID"]] <- c("meaningsPC","meaningsCOVID")
 
-op_meanings_list_per_set[["SIDIAP"]][["meaningsPC"]] <- c("enlisted_with_GP") 
-op_meanings_list_per_set[["SIDIAP"]][["meaningsHOSP"]] <- c("observed_in_hospital") 
+exclude_meaning_of_event[["BIFAP"]][["PC"]]<-c("hopitalisation_diagnosis_unspecified","hospitalisation_primary","
+hospitalisation_secondary")
+exclude_meaning_of_event[["BIFAP"]][["PC_COVID"]]<-c("hopitalisation_diagnosis_unspecified","hospitalisation_primary","
+hospitalisation_secondary")
+exclude_meaning_of_event[["BIFAP"]][["PC_HOSP"]]<-c()
 
-op_meaning_sets_in_subpopulations[["SIDIAP"]][["PC"]] <- c("meaningsPC")
-op_meaning_sets_in_subpopulations[["SIDIAP"]][["PC_HOSP"]] <- c("meaningsPC","meaningsHOSP")
-
-exclude_meaning_of_event[["SIDIAP"]][["PC"]]<-c("hospitalisation_primary", "hospitalisation_secondary","hospitalisation_secondar")
-exclude_meaning_of_event[["SIDIAP"]][["PC_HOSP"]]<-c()
+# # SIDIAP
+# subpopulations[["SIDIAP"]] = c("PC","PC_HOSP")
+# op_meaning_sets[["SIDIAP"]] <- c("meaningsPC","meaningsHOSP")
+# 
+# op_meanings_list_per_set[["SIDIAP"]][["meaningsPC"]] <- c("enlisted_with_GP") 
+# op_meanings_list_per_set[["SIDIAP"]][["meaningsHOSP"]] <- c("observed_in_hospital") 
+# 
+# op_meaning_sets_in_subpopulations[["SIDIAP"]][["PC"]] <- c("meaningsPC")
+# op_meaning_sets_in_subpopulations[["SIDIAP"]][["PC_HOSP"]] <- c("meaningsPC","meaningsHOSP")
+# 
+# exclude_meaning_of_event[["SIDIAP"]][["PC"]]<-c("hospitalisation_primary", "hospitalisation_secondary","hospitalisation_secondar")
+# exclude_meaning_of_event[["SIDIAP"]][["PC_HOSP"]]<-c()
 
 # # PHARMO
 # subpopulations[["PHARMO"]] = c("PC","HOSP","PC_HOSP")

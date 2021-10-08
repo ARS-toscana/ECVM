@@ -5,13 +5,12 @@
 
 print("CREATE ALGORITHMS FOR COVID SEVERITY")
 
-load(paste0(diroutput,"D4_study_population.RData")) 
-load(paste0(dirtemp,"covid_registry.RData")) 
-load(paste0(dirtemp,"D3_events_COVID_narrow.RData")) 
-load(paste0(dirtemp,"D3_events_DEATH.RData")) 
+load(paste0(dirtemp,"covid_registry.RData")) #unique
+#load(paste0(dirtemp,"D3_events_COVID_narrow.RData"))  
+load(paste0(dirtemp,"D3_events_DEATH.RData")) #unique
 load(paste0(dirtemp,"emptydataset"))
 
-load(paste0(dirpargen,"subpopulations_non_empty.RData"))
+
 
 #-------------------------------------
 # symptoms from covid registry
@@ -62,14 +61,11 @@ D3_components_covid_severity <- vector(mode = 'list')
 list_outcomes_observed_COVID <- c()
 for (subpop in subpopulations_non_empty) {
   print(subpop)
-  
-  if (this_datasource_has_subpopulations == TRUE){  
-    study_population <- D4_study_population[[subpop]]
-    events_COVID_narrow <- D3_events_COVID_narrow[[subpop]]
-  }else{
-    study_population <- D4_study_population
-    events_COVID_narrow <- D3_events_COVID_narrow
-  }
+  load(paste0(dirtemp,"D3_events_COVID_narrow",suffix[[subpop]],".RData"))
+  load(paste0(diroutput,"D4_study_population",suffix[[subpop]],".RData"))
+
+  events_COVID_narrow<-get(paste0("D3_events_COVID_narrow", suffix[[subpop]])) 
+  study_population<-get(paste0("D4_study_population", suffix[[subpop]]))
   
   components_covid_severity <- study_population
   
@@ -273,14 +269,13 @@ for (subpop in subpopulations_non_empty) {
   }
   
   # assign components_covid_severity to the output
-  if (this_datasource_has_subpopulations == TRUE){ 
-    D3_components_covid_severity[[subpop]] <- components_covid_severity
-  }else{
-    D3_components_covid_severity <- components_covid_severity
-  }
+  tempname<-paste0("D3_components_covid_severity",suffix[[subpop]])
+  assign(tempname,components_covid_severity)
+  save(list=tempname,file=paste0(dirtemp,tempname,".RData"))
   
+  #rm(list=paste0("D3_components_covid_severity",suffix[[subpop]]))
 } 
 
-save(D3_components_covid_severity,file=paste0(dirtemp,"D3_components_covid_severity.RData"))
-rm(D3_components_covid_severity,events_COVID_narrow,     study_population,D4_study_population,D3_events_COVID_narrow,D3_events_DEATH, components_covid_severity)
-# D3_components_covid_severity
+
+rm(events_COVID_narrow,     study_population,D4_study_population,D3_events_COVID_narrow,D3_events_DEATH, components_covid_severity)
+

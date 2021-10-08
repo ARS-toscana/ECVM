@@ -41,7 +41,7 @@ for (outcome in list_outcomes) {
     if (outcome %in% admissible_outcomes){
       for (year in study_years) {
         print(paste(outcome,year,subpop))
-        nameobject <- paste0("QC_code_counts_in_study_population",suffix[[subpop]],"_",outcome,"_",year)
+        nameobject <- paste0("QC_code_counts_in_study_population","_",outcome,"_",year,suffix[[subpop]])
     temp <- MergeFilterAndCollapse(list(events_ALL_OUTCOMES[name_event == outcome,]),
                                           key = 'person_id',
                                           condition = conditionYear[[year]],

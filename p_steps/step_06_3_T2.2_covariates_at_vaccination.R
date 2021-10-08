@@ -22,17 +22,10 @@ load(paste0(dirpargen,"subpopulations_non_empty.RData"))
 D3_study_population_covariates <- vector(mode = 'list')
 for (subpop in subpopulations_non_empty) {
   print(subpop)
-  load(paste0(dirtemp,"D3_Vaccin_cohort_no_risk.RData")) 
+  load(paste0(dirtemp,"D3_Vaccin_cohort_no_risk", suffix[[subpop]],".RData")) 
   
-  if (this_datasource_has_subpopulations == TRUE){  
-    study_population <- D3_Vaccin_cohort_no_risk[[subpop]]
-  }else{
-    study_population <- as.data.table(D3_Vaccin_cohort_no_risk)  
-  }
-  
+  study_population<-get(paste0("D3_Vaccin_cohort_no_risk", suffix[[subpop]]))
   study_population_covariates <- study_population[, .(person_id, date_vax1)]
-  
-  
   
   
   #file<-"COVCANCER_narrow"
@@ -63,16 +56,15 @@ for (subpop in subpopulations_non_empty) {
     }
   }
   
-  if (this_datasource_has_subpopulations == TRUE){ 
-    D3_Vaccin_cohort_covariates[[subpop]] <- study_population_covariates
-  }else{
-    D3_Vaccin_cohort_covariates <- study_population_covariates
-  }
+  tempname<-paste0("D3_Vaccin_cohort_covariates",suffix[[subpop]])
+  assign(tempname,study_population_covariates)
+  save(list=tempname,file=paste0(dirtemp,tempname,".RData"))
+  
+  rm(list=paste0("D3_Vaccin_cohort_no_risk", suffix[[subpop]]))
 }    
 
-save(D3_Vaccin_cohort_covariates,file=paste0(dirtemp,"D3_Vaccin_cohort_covariates.RData"))
 
 rm(CV,COVCANCER,COVCOPD,COVHIV,COVCKD,COVDIAB,COVOBES,COVSICKLE) 
-rm(temp,D3_study_population_covariates,D3_Vaccin_cohort_no_risk, study_population, study_population_covariates,filecovariate)
+rm(temp,D3_study_population_covariates, study_population, study_population_covariates,filecovariate)
 
 

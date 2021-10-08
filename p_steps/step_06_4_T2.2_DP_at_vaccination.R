@@ -11,20 +11,13 @@ print('CREATE RISK FACTORS (drugs only) at date_vax_1')
 # covariate : =1 if there are at least 2 records during 365 days of lookback
 # 
 
-
-load(paste0(dirpargen,"subpopulations_non_empty.RData"))
-
-
 D3_study_population_DP <- vector(mode = 'list')
 for (subpop in subpopulations_non_empty) {
   print(subpop)
-  load(paste0(dirtemp,"D3_Vaccin_cohort_no_risk.RData")) 
   
-  if (this_datasource_has_subpopulations == TRUE){  
-    study_population <- D3_Vaccin_cohort_no_risk[[subpop]]
-  }else{
-    study_population <- as.data.table(D3_Vaccin_cohort_no_risk)  
-  }
+  load(paste0(dirtemp,"D3_Vaccin_cohort_no_risk",suffix[[subpop]],".RData"))
+  study_population <- as.data.table(get(paste0("D3_Vaccin_cohort_no_risk",suffix[[subpop]])))
+  
   COHORT_TMP <- study_population[,.(person_id, date_vax1)]
   study_population_DP <- COHORT_TMP
   for (conceptset in DRUGS_conceptssets) {
@@ -50,14 +43,14 @@ for (subpop in subpopulations_non_empty) {
     rm(list = conceptset)
     rm(output)
   }
-  if (this_datasource_has_subpopulations == TRUE){ 
-    D3_Vaccin_cohort_DP[[subpop]] <- study_population_DP
-  }else{
-    D3_Vaccin_cohort_DP <- study_population_DP
-  }
+
+  tempname<-paste0("D3_Vaccin_cohort_DP",suffix[[subpop]])
+  assign(tempname,study_population_DP)
+  save(list=tempname,file=paste0(dirtemp,tempname,".RData"))
+  rm(list=paste0("D3_Vaccin_cohort_DP",suffix[[subpop]]))
+  
 }
 
-save(D3_Vaccin_cohort_DP,file=paste0(dirtemp,"D3_Vaccin_cohort_DP.RData"))
 
 rm(COHORT_TMP, D3_study_population_DP, D3_Vaccin_cohort_no_risk, study_population_DP, study_population)
 
