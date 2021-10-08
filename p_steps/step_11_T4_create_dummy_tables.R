@@ -217,10 +217,16 @@ fwrite(table2, file = paste0(dummytables, "Cohort characteristics at start of st
 
 load(file = paste0(dirtemp, "D3_Vaccin_cohort.RData"))
 
-N_fup_pop <- D3_Vaccin_cohort[, .(person_id, date_vax1, type_vax_1, fup_vax1, 
-                                  age_at_date_vax_1)]
-setnames(N_fup_pop, c("date_vax1", "type_vax_1", "fup_vax1","age_at_date_vax_1"),
-         c("date_vax", "type_vax", "fup_vax","age_at_date_vax"))
+N_fup_pop <- D3_Vaccin_cohort[, .(person_id, date_vax1, type_vax_1, fup_vax1, age_at_date_vax_1, CV_at_date_vax_1,
+                                  COVCANCER_at_date_vax_1, COVCOPD_at_date_vax_1, COVHIV_at_date_vax_1,
+                                  COVCKD_at_date_vax_1, COVDIAB_at_date_vax_1, COVOBES_at_date_vax_1,
+                                  COVSICKLE_at_date_vax_1, immunosuppressants_at_date_vax_1)]
+setnames(N_fup_pop, c("date_vax1", "type_vax_1", "fup_vax1","age_at_date_vax_1", "CV_at_date_vax_1",
+                      "COVCANCER_at_date_vax_1", "COVCOPD_at_date_vax_1", "COVHIV_at_date_vax_1",
+                      "COVCKD_at_date_vax_1", "COVDIAB_at_date_vax_1", "COVOBES_at_date_vax_1",
+                      "COVSICKLE_at_date_vax_1", "immunosuppressants_at_date_vax_1"),
+         c("date_vax", "type_vax", "fup_vax","age_at_date_vax", "CV", "Cancer", "CLD", "HIV", "CKD", "Diabetes",
+           "Obesity", "Sicklecell", "immunosuppressants"))
 # N_fup_pop <- melt(N_fup_pop, measure = list(c("date_vax1", "date_vax2"),
 #                                             c("type_vax_1", "type_vax_2"),
 #                                             c("fup_vax1", "fup_vax2"),
