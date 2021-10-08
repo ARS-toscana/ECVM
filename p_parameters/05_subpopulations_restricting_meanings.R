@@ -146,6 +146,7 @@ if (this_datasource_has_subpopulations == FALSE) {
   }
 }
 
+save(subpopulations_non_empty, file = paste0(dirpargen, "subpopulations_non_empty.RData"))
 
 
 
