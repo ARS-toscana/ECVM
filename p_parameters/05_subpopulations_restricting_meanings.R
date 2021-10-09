@@ -146,8 +146,11 @@ if (this_datasource_has_subpopulations == FALSE) {
   }
 }
 
+<<<<<<< HEAD
 save(subpopulations_non_empty, file = paste0(dirpargen, "subpopulations_non_empty.RData"))
 #save(subpopulations_non_empty, file = paste0(dirpargen, "subpopulations_non_empty.RData"))
 
+=======
+>>>>>>> 5d7ff12eced982314914ec0829839138856b5e34
 
 

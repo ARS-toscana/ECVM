@@ -17,8 +17,6 @@ rm(HF_narrow,MYOCARD_narrow,HF_possible,MYOCARD_possible, CAD_narrow, CAD_possib
 
 COVnames<-c("CV","COVCANCER","COVCOPD","COVHIV","COVCKD","COVDIAB","COVOBES","COVSICKLE")
 
-load(paste0(dirpargen,"subpopulations_non_empty.RData"))
-
 D3_study_population_covariates <- vector(mode = 'list')
 for (subpop in subpopulations_non_empty) {
   print(subpop)
