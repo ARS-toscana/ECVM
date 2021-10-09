@@ -88,10 +88,11 @@ output_spells_category<-output_spells_category[[subpop]]
 
   assign(paste0("D3_selection_criteria",suffix[[subpop]]), D3_selection_criteria)
   save(list=paste0("D3_selection_criteria",suffix[[subpop]]),file=paste0(dirtemp,"D3_selection_criteria",suffix[[subpop]],".RData"))
+  rm(list=paste0("D3_selection_criteria",suffix[[subpop]]))
   
 }
   
-# rm(output_spells_category_enriched,D3_inclusion_from_PERSONS,D3_exclusion_observation_periods_not_overlapping)
-# rm(PERSONS_OP, PERSONS_OP2, start_follow_up, na_date, coords)
-# rm(D3_PERSONS, PERSONS_in_OP, output_spells_category,OBSERVATION_PERIODS, D3_selection_criteria, D3_exclusion_no_observation_period)
+ rm(output_spells_category_enriched,D3_inclusion_from_PERSONS,D3_exclusion_observation_periods_not_overlapping)
+rm(PERSONS_OP, PERSONS_OP2, start_follow_up, na_date, coords)
+ rm(D3_PERSONS, PERSONS_in_OP, output_spells_category,OBSERVATION_PERIODS, D3_exclusion_no_observation_period)
 

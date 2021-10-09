@@ -68,6 +68,7 @@ source(paste0(dirmacro,"DRECountThresholdV3.R"))
 
 date_format <- "%Y%m%d"
 
+firstjan2021 <- ymd(20210101)
 #---------------------------------------
 # understand which datasource the script is querying
 

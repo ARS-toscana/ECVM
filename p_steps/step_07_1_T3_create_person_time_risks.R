@@ -7,28 +7,25 @@
 
 print("COUNT PERSON TIME by week for risks")
 
-load(paste0(dirtemp,"list_outcomes_observed.RData"))
-load(paste0(dirtemp,"D3_events_ALL_OUTCOMES.RData"))
-load(paste0(dirtemp,"D3_vaxweeks_including_not_vaccinated.RData"))
+start_week=seq.Date(as.Date("20200106","%Y%m%d"),Sys.Date(),by = "week")
+
 
 D4_persontime_risk_week <- vector(mode = 'list')
 for (subpop in subpopulations_non_empty) {
   print(subpop)
-  start_week=seq.Date(as.Date("20200106","%Y%m%d"),Sys.Date(),by = "week")
-  
-  if (this_datasource_has_subpopulations == TRUE){ 
-    study_population <- D3_vaxweeks_including_not_vaccinated[[subpop]]
-    events_ALL_OUTCOMES <- D3_events_ALL_OUTCOMES[[subpop]]
-    list_outcomes <- list_outcomes_observed[[subpop]]
-  }else{
-    study_population <- D3_vaxweeks_including_not_vaccinated
-    events_ALL_OUTCOMES <- D3_events_ALL_OUTCOMES
-    list_outcomes <- list_outcomes_observed
-  }
-
+    
+    
+    load(paste0(dirtemp,"list_outcomes_observed",suffix[[subpop]],".RData"))
+    load(paste0(dirtemp,"D3_events_ALL_OUTCOMES",suffix[[subpop]],".RData"))
+    load(paste0(dirtemp,"D3_vaxweeks_including_not_vaccinated",suffix[[subpop]],".RData"))
+    
+    list_outcomes<-get(paste0("list_outcomes_observed", suffix[[subpop]]))
+    events_ALL_OUTCOMES<-get(paste0("D3_events_ALL_OUTCOMES", suffix[[subpop]]))
+    study_population<-get(paste0("D3_vaxweeks_including_not_vaccinated", suffix[[subpop]]))
   
   max_exit<-study_population[,max(end_date_of_period)]
   last_event<-events_ALL_OUTCOMES[,max(date_event)]
+  
   if (last_event<ymd("20200101")) {
     next
   }
@@ -124,15 +121,13 @@ for (subpop in subpopulations_non_empty) {
   }
   
   thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
-  fwrite(persontime_risk_week,file=paste0(thisdirexp,"D4_persontime_risk_week.csv"))
-  if (this_datasource_has_subpopulations == TRUE){ 
-    D4_persontime_risk_week[[subpop]] <- persontime_risk_week
-  }else{
-    D4_persontime_risk_week <- persontime_risk_week
-  }
+  fwrite(persontime_risk_week,file=paste0(thisdirexp,"D4_persontime_risk_week",suffix[[subpop]],"_",thisdatasource,"_",currentdate,"_",scriptversion,".csv"))
+  
+  assign(paste0("D4_persontime_risk_week",suffix[[subpop]]),persontime_risk_week)
+  save(D4_persontime_risk_week,file=paste0(dirtemp,"D4_persontime_risk_week",suffix[[subpop]],".RData"))
+  
+  rm(list=paste0("D4_persontime_risk_week",suffix[[subpop]]))
 }
-
-save(D4_persontime_risk_week,file=paste0(diroutput,"D4_persontime_risk_week.RData"))
 
 
 for (subpop in subpopulations_non_empty){

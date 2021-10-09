@@ -91,26 +91,31 @@ is.na(severity_level_covid) & MechanicalVentilation_within_registry_date != 0, s
   tempname<-paste0("list_outcomes_observed_COVID",suffix[[subpop]])
   assign(tempname,list_outcomes_observed)
   save(list=tempname,file=paste0(dirpargen,tempname,".RData"))
-  rm(list=paste0("list_outcomes_observed_COVID",suffix[[subpop]]))
+  rm(tempname,list=tempname)
   
   tempname<-paste0("D3_algorithm_covid",suffix[[subpop]])
   assign(tempname,algorithm_covid)
   save(list=tempname,file=paste0(dirtemp,tempname,".RData"))
-  rm(list=paste0("D3_algorithm_covid",suffix[[subpop]]))
-  
+  rm(tempname,list=tempname)
+
   outcomes_covid_multiple<-outcomes_covid
   tempname<-paste0("D3_outcomes_covid_multiple",suffix[[subpop]])
   assign(tempname,outcomes_covid_multiple)
   save(list=tempname,file=paste0(dirtemp,tempname,".RData"))
-  rm(list=paste0("D3_outcomes_covid_multiple",suffix[[subpop]]))
+  rm(tempname,list=tempname)
   
   outcomes_covid<-unique(outcomes_covid)
   tempname<-paste0("D3_outcomes_covid",suffix[[subpop]])
   assign(tempname,outcomes_covid)
   save(list=tempname,file=paste0(dirtemp,tempname,".RData"))
-  rm(list=paste0("D3_outcomes_covid",suffix[[subpop]]))
+  rm(tempname,list=tempname)
+  
+  temp2<-paste0("D3_components_covid_severity", suffix[[subpop]])
+  rm(temp2,list=temp2)
+  temp2<-paste0("D4_study_population", suffix[[subpop]])
+  rm(temp2,list=temp2)
   
 }
 
-
+rm(study_population,algorithm_covid,temp,outcomes_covid,outcomes_covid_multiple)
 

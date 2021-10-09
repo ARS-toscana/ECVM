@@ -54,7 +54,7 @@ for (outcome in list_outcomes) {
                                           )
     
     thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
-    fwrite(temp, file = paste0(thisdirexp,nameobject,".csv"))
+    fwrite(temp, file = paste0(thisdirexp,nameobject,"_",thisdatasource,"_",currentdate,"_",scriptversion,".csv"))
 
     outcome_code_counts <-temp
 
@@ -79,4 +79,4 @@ for (subpop in subpopulations_non_empty){
     )
   )
 }
-rm(D3_events_ALL_OUTCOMES,D4_study_population,events_ALL_OUTCOMES)
+rm(D3_events_ALL_OUTCOMES,D4_study_population,events_ALL_OUTCOMES,temp,outcome_code_counts)

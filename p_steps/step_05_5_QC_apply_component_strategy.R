@@ -111,17 +111,17 @@ for (OUTCOME in OUTCOME_events) {
     OUTCOME_components <- OUTCOME_aggregated
     assign(nameobject, OUTCOME_aggregated)
     thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
-    fwrite(get(nameobject),file=paste0(thisdirexp,paste0(nameobject,".csv")))
+    fwrite(get(nameobject),file=paste0(thisdirexp,paste0(nameobject,"_",thisdatasource,"_",currentdate,"_",scriptversion,".csv")))
 
-  nameobject <- paste0("QC_all_components_", suffix[[subpop]],"_",OUTCOME)
+
   assign(nameobject, OUTCOME_components)
   save(nameobject,file=paste0(dirtemp,paste0(nameobject,".RData")),list = nameobject)
+  rm(nameobject,list=nameobject)
   }
   
   
   
   
-  rm(nameobject , list = nameobject)
   rm(namedatasetnarrow , list = namedatasetnarrow)
   rm(namedatasetpossible , list = namedatasetpossible)
   rm(OUTCOME_detailed_components, OUTCOME_todrop, OUTCOME_reshaped, OUTCOME_merged, OUTCOME_aggregated,OUTCOME_components)

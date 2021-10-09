@@ -8,7 +8,6 @@ load(paste0(dirtemp, "selected_doses.RData"))
 load(paste0(diroutput,"D3_study_population_cov_ALL",suffix[[subpop]],".RData"))
 D3_study_population_cov_ALL<-get(paste0("D3_study_population_cov_ALL", suffix[[subpop]]))
 
-firstjan2021 <- ymd(20210101)
 
 selected_doses <- selected_doses[, .(person_id, date, vx_dose, vx_manufacturer)]
 D3_doses <- merge(study_population, selected_doses, all.x = T, by="person_id")
@@ -76,7 +75,9 @@ save(list=tempname,file=paste0(dirtemp,tempname,".RData"))
 
 rm(list=paste0("D3_Vaccin_cohort_no_risk", suffix[[subpop]]))
 rm(list=paste0("D3_study_population_no_risk", suffix[[subpop]]))
+rm(list=paste0("D4_study_population", suffix[[subpop]]))
+rm(list=paste0("D3_study_population_cov_ALL", suffix[[subpop]]))
 }
 
-rm(selected_doses, D3_doses)
+rm(selected_doses, D3_doses,study_population)
 

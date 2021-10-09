@@ -186,4 +186,4 @@ if (this_datasource_has_subpopulations == TRUE){
   rm(output_spells_category_meaning_set,output_spells_category)
 }
 
-
+rm(OBSERVATION_PERIODS)
