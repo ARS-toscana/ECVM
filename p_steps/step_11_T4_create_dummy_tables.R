@@ -786,24 +786,25 @@ fwrite(table_14,file = paste0(dummytables,"Incidence of AESI (narrow) per 100,00
 
 # table_15 ----------------------------------------------------------------------------------------------------------
 
-# load(paste0(diroutput, "D4_doses_weeks.RData"))
-# 
-# setorder(D4_doses_weeks, Week_number)
-# table_15 <- D4_doses_weeks[Year < 2021, index := .GRP, by = "Week_number"]
-# table_15 <- table_15[Year == 2021, index := .GRP, by = "Week_number"][, Week_number := NULL]
-# 
-# 
-# table_15 <- unique(copy(table_15)[, lapply(.SD, sum, na.rm=TRUE),
-#                                   by = c("Datasource", "Year", "index", "Type_vax", "Dose"),
-#                                   .SDcols = c("Persons_in_week", "Doses_in_week")])
-# 
+load(paste0(diroutput, "D4_doses_weeks.RData"))
+
+setorder(D4_doses_weeks, Week_number)
+table_15 <- D4_doses_weeks[Year == 2020, index := .GRP, by = "Week_number"]
+table_15 <- table_15[Year == 2021, index := .GRP, by = "Week_number"][, Week_number := NULL]
+table_15 <- table_15[Year > 2020 | (Year == 2020 & index >= 50), ]
+
+table_15 <- unique(copy(table_15)[, lapply(.SD, sum, na.rm=TRUE),
+                                  by = c("Datasource", "Year", "index", "Type_vax", "Dose"),
+                                  .SDcols = c("Persons_in_week", "Doses_in_week")])
+
 # table_15 <- table_15[, cum_N := cumsum(N), by = c("Datasource", "Type_vax", "Year")]
-# 
+
 # table_15 <- table_15[Dose == 1, ][, c("Dose", "Week_number") := NULL]
-# 
-# setcolorder(table_15, c("Datasource", "Type_vax", "Year", "index", "Doses_in_week", "Persons_in_week"))
-# 
-# D4_persontime_risk_week <- rbind(D4_persontime_risk_week, all_ages)
+
+setnames(table_15, c("Type_vax", "index", "Dose"), c("Vaccine", "Week", "Number of doses"))
+setcolorder(table_15, c("Datasource", "Type_vax", "Year", "Week", "Doses_in_week", "Persons_in_week"))
+
+D4_persontime_risk_week <- rbind(D4_persontime_risk_week, all_ages)
 
 
 # table_16 ----------------------------------------------------------------------------------------------------------
