@@ -8,8 +8,8 @@ print("CREATE EVENTS PER ALL OUTCOMES")
 
 OUTCOMEnoCOVID <- OUTCOME_events[OUTCOME_events!="COVID"]
 
-list_outcomes_observed <- vector(mode="list")
-list_outcomes_observed_only_diagnosis <- vector(mode="list")
+list_outcomes_observed_temp <- vector(mode="list")
+list_outcomes_observed_only_diagnosis_temp <- vector(mode="list")
 list_outcomes_observed_for_QC <- vector(mode="list")
 D3_events_ALL_OUTCOMES <- vector(mode="list")
 
@@ -17,12 +17,12 @@ for (subpop in subpopulations_non_empty) {
   print(subpop)
   
   load(paste0(diroutput,"D4_study_population",suffix[[subpop]],".RData")) 
-  D4_study_population<-get(paste0("D4_study_population", suffix[[subpop]]))
+  study_population<-get(paste0("D4_study_population", suffix[[subpop]]))
   
   running_list_outcomes_observed <- c()
   running_list_outcomes_observed_only_diagnosis <- c()
 
-    study_population <- as.data.table(D4_study_population)
+    study_population <- as.data.table(study_population)
   
   empty_events_ALL_OUTCOMES <- study_population[1,.(person_id)]
   empty_events_ALL_OUTCOMES <- empty_events_ALL_OUTCOMES[,name_event := "test"] 
@@ -71,8 +71,8 @@ for (subpop in subpopulations_non_empty) {
         running_list_outcomes_observed <- c(running_list_outcomes_observed, paste0(OUTCOME,'_',type))
       }
     }
-    rm(list = namedatasetnarrow)
-    rm(list = namedatasetpossible)
+    rm(namedatasetnarrow,list = namedatasetnarrow)
+    rm(namedatasetpossible,list = namedatasetpossible)
   }
   running_list_outcomes_observed_only_diagnosis <- running_list_outcomes_observed
   running_list_outcomes_for_QC <- running_list_outcomes_observed_only_diagnosis
@@ -170,23 +170,30 @@ for (subpop in subpopulations_non_empty) {
     rm(nameobjectSECCOMP, list = nameobjectSECCOMP)
     }
     
-    list_outcomes_observed <- running_list_outcomes_observed
-    list_outcomes_observed_only_diagnosis <- running_list_outcomes_observed_only_diagnosis
+    list_outcomes_observed_temp <- running_list_outcomes_observed
+    list_outcomes_observed_only_diagnosis_temp <- running_list_outcomes_observed_only_diagnosis
     list_outcomes_observed_for_QC <- running_list_outcomes_for_QC
-    D3_events_ALL_OUTCOMES <- events_ALL_OUTCOMES
+    events_ALL_OUTCOMES <- events_ALL_OUTCOMES
     
-    assign(paste0("list_outcomes_observed",suffix[[subpop]]),list_outcomes_observed)
-    save(list_outcomes_observed,file=paste0(dirtemp,"list_outcomes_observed",suffix[[subpop]],".RData"))
+    nametemp<-paste0("list_outcomes_observed",suffix[[subpop]])
+    assign(nametemp,list_outcomes_observed_temp)
+    save(nametemp,file=paste0(dirtemp,"list_outcomes_observed",suffix[[subpop]],".RData"),list=nametemp)
     
-    assign(paste0("list_outcomes_observed_only_diagnosis",suffix[[subpop]]),list_outcomes_observed_only_diagnosis)
-    save(list_outcomes_observed_only_diagnosis,file=paste0(dirtemp,"list_outcomes_observed_only_diagnosis",suffix[[subpop]],".RData"))
+    nametemp<-paste0("list_outcomes_observed_only_diagnosis",suffix[[subpop]])
+    assign(nametemp,list_outcomes_observed_only_diagnosis_temp)
+    save(nametemp,file=paste0(dirtemp,"list_outcomes_observed_only_diagnosis",suffix[[subpop]],".RData"),list=nametemp)
     
-    assign(paste0("list_outcomes_observed_for_QC",suffix[[subpop]]),list_outcomes_observed_for_QC)
-    save(list_outcomes_observed_for_QC,file=paste0(dirtemp,"list_outcomes_observed_for_QC",suffix[[subpop]],".RData"))
+    nametemp<-paste0("list_outcomes_observed_for_QC",suffix[[subpop]])
+    assign(nametemp,list_outcomes_observed_for_QC)
+    save(nametemp,file=paste0(dirtemp,"list_outcomes_observed_for_QC",suffix[[subpop]],".RData"),list=nametemp)
+
+    nametemp<-paste0("D3_events_ALL_OUTCOMES",suffix[[subpop]])
+    assign(nametemp,events_ALL_OUTCOMES)
+    save(nametemp,file=paste0(dirtemp,"D3_events_ALL_OUTCOMES",suffix[[subpop]],".RData"),list=nametemp)
+    rm(list=paste0("D3_events_ALL_OUTCOMES",suffix[[subpop]]))
     
-    assign(paste0("D3_events_ALL_OUTCOMES",suffix[[subpop]]),D3_events_ALL_OUTCOMES)
-    save(D3_events_ALL_OUTCOMES,file=paste0(dirtemp,"D3_events_ALL_OUTCOMES",suffix[[subpop]],".RData"))
+    rm(list=paste0("D4_study_population", suffix[[subpop]]))
 }
 
 
-rm(D3_events_ALL_OUTCOMES, D4_study_population,study_population, list_outcomes_observed, dataset,D3_events_DEATH, events_ALL_OUTCOMES, empty_events_ALL_OUTCOMES)
+rm(events_ALL_OUTCOMES, dataset,D3_events_DEATH, empty_events_ALL_OUTCOMES,study_population,temp,list_outcomes_observed_temp,list_outcomes_observed_only_diagnosis_temp)

@@ -21,9 +21,7 @@ for (year in study_years) {
   for (subpop in subpopulations_non_empty) { 
     
     load(paste0(dirtemp,"list_outcomes_observed_for_QC",suffix[[subpop]],".RData"))
-    load(paste0(dirtemp,"D3_events_ALL_OUTCOMES",suffix[[subpop]],".RData"))
-    load(paste0(diroutput,"D4_study_population",suffix[[subpop]],".RData")) 
-    
+
     list_outcomes <- c(list_outcomes, get(paste0("list_outcomes_observed_for_QC",suffix[[subpop]])))
   }
   list_outcomes <- unique(list_outcomes)
@@ -32,9 +30,12 @@ for (year in study_years) {
 for (outcome in list_outcomes) {
   print(outcome)
   outcome_code_counts <- vector(mode = 'list')
-  for (subpop in subpopulations_non_empty) {  
+  for (subpop in subpopulations_non_empty) { 
+    
+    load(paste0(dirtemp,"D3_events_ALL_OUTCOMES",suffix[[subpop]],".RData"))
+    load(paste0(diroutput,"D4_study_population",suffix[[subpop]],".RData")) 
 
-    D4_study_population<-get(paste0("D4_study_population", suffix[[subpop]]))
+    study_population<-get(paste0("D4_study_population", suffix[[subpop]]))
       events_ALL_OUTCOMES <-get(paste0("D3_events_ALL_OUTCOMES", suffix[[subpop]])) 
       admissible_outcomes <- get(paste0("list_outcomes_observed_for_QC", suffix[[subpop]])) 
 
@@ -45,7 +46,7 @@ for (outcome in list_outcomes) {
     temp <- MergeFilterAndCollapse(list(events_ALL_OUTCOMES[name_event == outcome,]),
                                           key = 'person_id',
                                           condition = conditionYear[[year]],
-                                          datasetS = D4_study_population,
+                                          datasetS = study_population,
                                           additionalvar = list(list(c("n"),1)),
                                           strata=c( "meaning_of_first_event", "coding_system_of_code_first_event", "code_first_event"),
                                           summarystat = list(
@@ -63,6 +64,8 @@ for (outcome in list_outcomes) {
     rm(nameobject, list = nameobject )
       }
     }
+      rm(list=paste0("D3_events_ALL_OUTCOMES", suffix[[subpop]]))
+      rm(list=paste0("D4_study_population", suffix[[subpop]]))
   }
 }
 
@@ -79,4 +82,4 @@ for (subpop in subpopulations_non_empty){
     )
   )
 }
-rm(D3_events_ALL_OUTCOMES,D4_study_population,events_ALL_OUTCOMES,temp,outcome_code_counts)
+rm(study_population,events_ALL_OUTCOMES,temp,outcome_code_counts)

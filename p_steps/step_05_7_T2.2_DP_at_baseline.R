@@ -49,6 +49,7 @@ for (subpop in subpopulations_non_empty) {
     save(list=tempname,file=paste0(dirtemp,tempname,".RData"))
     
     rm(list=paste0("D4_study_population", suffix[[subpop]]))
+    rm(list=paste0("D3_study_population_DP", suffix[[subpop]]))
 }
 
 

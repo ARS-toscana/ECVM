@@ -82,11 +82,11 @@ output_spells_category<-output_spells_category[[subpop]]
                        all.x = T)
   
   coords<-c("sex_or_birth_date_missing", "birth_date_absurd", "no_observation_period", "insufficient_run_in","no_observation_period_including_study_start", "death_before_study_entry")
-  D3_selection_criteria <- PERSONS_OP2[, (coords) := replace(.SD, is.na(.SD), 0), .SDcols = coords]
-  D3_selection_criteria <- D3_selection_criteria[!is.na(study_entry_date), ]
+  selection_criteria <- PERSONS_OP2[, (coords) := replace(.SD, is.na(.SD), 0), .SDcols = coords]
+  selection_criteria <- selection_criteria[!is.na(study_entry_date), ]
   
-
-  assign(paste0("D3_selection_criteria",suffix[[subpop]]), D3_selection_criteria)
+  tempname<-paste0("D3_selection_criteria",suffix[[subpop]])
+  assign(tempname,selection_criteria)
   save(list=paste0("D3_selection_criteria",suffix[[subpop]]),file=paste0(dirtemp,"D3_selection_criteria",suffix[[subpop]],".RData"))
   rm(list=paste0("D3_selection_criteria",suffix[[subpop]]))
   
@@ -94,5 +94,5 @@ output_spells_category<-output_spells_category[[subpop]]
   
  rm(output_spells_category_enriched,D3_inclusion_from_PERSONS,D3_exclusion_observation_periods_not_overlapping)
 rm(PERSONS_OP, PERSONS_OP2, start_follow_up, na_date, coords)
- rm(D3_PERSONS, PERSONS_in_OP, output_spells_category,OBSERVATION_PERIODS, D3_exclusion_no_observation_period)
+ rm(D3_PERSONS, PERSONS_in_OP, output_spells_category,OBSERVATION_PERIODS, D3_exclusion_no_observation_period,selection_criteria)
 

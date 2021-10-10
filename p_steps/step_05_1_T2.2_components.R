@@ -21,9 +21,9 @@ for (OUTCOME in OUTCOME_events) {
   for (subpop in subpopulations_non_empty) {
     print(subpop)
     load(paste0(diroutput,"D4_study_population",suffix[[subpop]],".RData")) 
-    D4_study_population<-get(paste0("D4_study_population", suffix[[subpop]]))
+    study_population<-get(paste0("D4_study_population", suffix[[subpop]]))
     
-    COHORT_TMP <- as.data.table(D4_study_population)  
+    COHORT_TMP <- as.data.table(study_population)  
 
     COHORT_TMP <- COHORT_TMP[,.(person_id,study_entry_date)]
    
@@ -90,6 +90,7 @@ for (OUTCOME in OUTCOME_events) {
     rm(foroutput)
     rm(nameobjectOUTCOMEtype,list = nameobjectOUTCOMEtype)
   }
+    rm(list=paste0("D4_study_population", suffix[[subpop]]))
 }
      
  
@@ -109,7 +110,7 @@ for (OUTCOME in OUTCOME_events) {
   rm(OUTCOME_narrow,OUTCOME_possible,temp2,componentsOUTCOMEfinal,componentsOUTCOME,tempOUTCOME)
   rm(nameobjectOUTCOME, list = nameobjectOUTCOME)
  
-  rm(addvarOUTCOME,D4_study_population,summarystatOUTCOME, COHORT_TMP,tempfile,components)
+  rm(addvarOUTCOME,study_population,summarystatOUTCOME, COHORT_TMP,tempfile,components)
   
 }
 

@@ -101,30 +101,30 @@ cohort_to_vaxweeks <- data.table::melt(cohort_to_vaxweeks, measure = list(colA, 
                                        value.name = c("study_entry_date", "study_exit_date", "fup", "type_vax"), na.rm = F)
 cohort_to_vaxweeks <- cohort_to_vaxweeks[!is.na(study_entry_date) & !is.na(study_exit_date) & !is.na(fup), ]
 cohort_to_vaxweeks <- cohort_to_vaxweeks[, Dose := as.character(Dose)][Dose == "3", Dose := "0"]
-D3_vaxweeks <- copy(cohort_to_vaxweeks)
-D3_studyweeks <- copy(cohort_to_vaxweeks)
-D3_vaxweeks <- D3_vaxweeks[Dose %in% c(1, 2), ]
-setnames(D3_vaxweeks, c("study_entry_date", "study_exit_date", "fup"),
+vaxweeks <- copy(cohort_to_vaxweeks)
+studyweeks <- copy(cohort_to_vaxweeks)
+vaxweeks <- vaxweeks[Dose %in% c(1, 2), ]
+setnames(vaxweeks, c("study_entry_date", "study_exit_date", "fup"),
          c("study_entry_date_vax", "study_exit_date_vax", "fup_vax"))
-D3_vaxweeks <- as.data.table(lapply(D3_vaxweeks, rep, D3_vaxweeks$fup_vax))
-D3_vaxweeks[, week := rowid(person_id, Dose, study_entry_date_vax, study_exit_date_vax)]
-D3_vaxweeks <- D3_vaxweeks[, week := week - 1][, fup_vax := fup_vax - 1]
-D3_vaxweeks <- D3_vaxweeks[, start_date_of_period := study_entry_date_vax + 7 * week]
-D3_vaxweeks <- D3_vaxweeks[, end_date_of_period := fifelse(week == fup_vax, study_exit_date_vax, start_date_of_period + 6)]
-D3_vaxweeks <- D3_vaxweeks[, month := month(start_date_of_period)]
-D3_vaxweeks <- D3_vaxweeks[, .(person_id, start_date_of_period, end_date_of_period, Dose, week, month, sex, type_vax, Birthcohort_persons)]
+vaxweeks <- as.data.table(lapply(vaxweeks, rep, vaxweeks$fup_vax))
+vaxweeks[, week := rowid(person_id, Dose, study_entry_date_vax, study_exit_date_vax)]
+vaxweeks <- vaxweeks[, week := week - 1][, fup_vax := fup_vax - 1]
+vaxweeks <- vaxweeks[, start_date_of_period := study_entry_date_vax + 7 * week]
+vaxweeks <- vaxweeks[, end_date_of_period := fifelse(week == fup_vax, study_exit_date_vax, start_date_of_period + 6)]
+vaxweeks <- vaxweeks[, month := month(start_date_of_period)]
+vaxweeks <- vaxweeks[, .(person_id, start_date_of_period, end_date_of_period, Dose, week, month, sex, type_vax, Birthcohort_persons)]
 
-D3_vaxweeks_including_not_vaccinated <- copy(D3_vaxweeks)[, month := NULL]
-D3_studyweeks_not_vaccinated <- copy(D3_studyweeks)[Dose == 0, ][, fup := 0]
+vaxweeks_including_not_vaccinated <- copy(vaxweeks)[, month := NULL]
+D3_studyweeks_not_vaccinated <- copy(studyweeks)[Dose == 0, ][, fup := 0]
 D3_studyweeks_not_vaccinated <- D3_studyweeks_not_vaccinated[, .(person_id, study_entry_date, study_exit_date, Dose, fup, sex, type_vax, Birthcohort_persons)]
 
-D3_vaxweeks_including_not_vaccinated <- D3_vaxweeks_including_not_vaccinated[, week := week + 1]
+vaxweeks_including_not_vaccinated <- vaxweeks_including_not_vaccinated[, week := week + 1]
 
 setnames(D3_studyweeks_not_vaccinated, c("study_entry_date", "study_exit_date", "fup"),
          c("start_date_of_period", "end_date_of_period", "week"))
 
-D3_vaxweeks_including_not_vaccinated <- rbind(D3_vaxweeks_including_not_vaccinated, D3_studyweeks_not_vaccinated)
-setnames(D3_vaxweeks_including_not_vaccinated, "week", "week_fup")
+vaxweeks_including_not_vaccinated <- rbind(vaxweeks_including_not_vaccinated, D3_studyweeks_not_vaccinated)
+setnames(vaxweeks_including_not_vaccinated, "week", "week_fup")
 
 setnames(study_population_cov_ALL,
          c("CV_at_study_entry", "COVCANCER_at_study_entry", "COVCOPD_at_study_entry", "COVHIV_at_study_entry",
@@ -133,22 +133,32 @@ setnames(study_population_cov_ALL,
          c("CV", "COVCANCER", "COVCOPD", "COVHIV", "COVCKD", "COVDIAB", "COVOBES", "COVSICKLE",
            "IMMUNOSUPPR", "any_risk_factors"))
 
-D3_vaxweeks_including_not_vaccinated <- merge(D3_vaxweeks_including_not_vaccinated, study_population_cov_ALL,
+vaxweeks_including_not_vaccinated <- merge(vaxweeks_including_not_vaccinated, study_population_cov_ALL,
                                               all.x = T, by = "person_id", allow.cartesian = T)
 
-D3_vaxweeks <- D3_vaxweeks[, c("sex", "type_vax", "Birthcohort_persons") := NULL]
-D3_vaxweeks <- D3_vaxweeks[, .(person_id, start_date_of_period, end_date_of_period, Dose, week, month)]
+vaxweeks <- vaxweeks[, c("sex", "type_vax", "Birthcohort_persons") := NULL]
+vaxweeks <- vaxweeks[, .(person_id, start_date_of_period, end_date_of_period, Dose, week, month)]
 
-save(D3_studyweeks, file = paste0(dirtemp, "D3_studyweeks",suffix[[subpop]],".RData"))
-save(D3_vaxweeks, file = paste0(dirtemp, "D3_vaxweeks",suffix[[subpop]],".RData"))
-save(D3_vaxweeks_including_not_vaccinated, file = paste0(dirtemp, "D3_vaxweeks_including_not_vaccinated",suffix[[subpop]],".RData"))
+tempname<-paste0("D3_studyweeks",suffix[[subpop]])
+assign(tempname,studyweeks)
+save(tempname, file = paste0(dirtemp, "D3_studyweeks",suffix[[subpop]],".RData"),list=tempname)
+
+tempname<-paste0("D3_vaxweeks",suffix[[subpop]])
+assign(tempname,vaxweeks)
+save(tempname, file = paste0(dirtemp, "D3_vaxweeks",suffix[[subpop]],".RData"),list=tempname)
+
+tempname<-paste0("D3_vaxweeks_including_not_vaccinated",suffix[[subpop]])
+assign(tempname,vaxweeks_including_not_vaccinated)
+save(tempname, file = paste0(dirtemp, tempname,".RData"),list=tempname)
 
 rm(list=paste0("D3_study_population_no_risk", suffix[[subpop]]))
 rm(list=paste0("D3_study_population_cov_ALL", suffix[[subpop]]))
 rm(list=paste0("D3_Vaccin_cohort_cov_ALL", suffix[[subpop]]))
+rm(list=paste0("D3_vaxweeks_including_not_vaccinated",suffix[[subpop]]))
+rm(list=paste0("D3_vaxweeks",suffix[[subpop]]))
+rm(list=paste0("D3_studyweeks",suffix[[subpop]]))
 
 }
 
 rm(D3_study_population,study_population_no_risk, D3_Vaccin_cohort,Vaccin_cohort_cov_ALL,
-   cohort_to_vaxweeks, colA, colB, colC, colD, D3_vaxweeks, D3_studyweeks, D3_vaxweeks_including_not_vaccinated,
-   D3_studyweeks_not_vaccinated, study_population_cov_ALL, D3_vaxweeks_vaccin_cohort, vect_age_cat, persons_at_risk)
+   cohort_to_vaxweeks, colA, colB, colC, colD, studyweeks,vaxweeks,vaxweeks_including_not_vaccinated,  D3_studyweeks_not_vaccinated, study_population_cov_ALL, D3_vaxweeks_vaccin_cohort, vect_age_cat, persons_at_risk)

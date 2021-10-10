@@ -26,6 +26,7 @@ for (subpop in subpopulations_non_empty) {
   tempname<-paste0("D4_study_population_cov",suffix[[subpop]])
   assign(tempname,study_population_cov)
   save(list=tempname,file=paste0(diroutput,tempname,".RData"))
+  rm(tempname,list=tempname)
   
   rm(list=paste0("D4_study_population", suffix[[subpop]]))
   rm(list=paste0("D3_study_population_covariates",suffix[[subpop]]))

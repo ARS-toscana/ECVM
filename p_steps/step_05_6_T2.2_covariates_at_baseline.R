@@ -64,6 +64,7 @@ for (subpop in subpopulations_non_empty) {
  assign(tempname,study_population_covariates)
  save(list=tempname,file=paste0(dirtemp,tempname,".RData"))
  
+ rm(list=paste0("D3_study_population_covariates", suffix[[subpop]]))
  rm(list=paste0("D4_study_population", suffix[[subpop]]))
 }
 

@@ -186,4 +186,4 @@ if (this_datasource_has_subpopulations == TRUE){
   rm(output_spells_category_meaning_set,output_spells_category)
 }
 
-rm(OBSERVATION_PERIODS)
+rm(OBSERVATION_PERIODS,input_observation_periods_overlap)

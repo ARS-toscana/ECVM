@@ -5,8 +5,8 @@
 # dirbase<-getwd()
 # dirinput <- paste0(dirbase,"/CDMInstances/ECVM2108/")
 
-dirinput <- paste0(thisdir,"/i_input/")
-#dirinput <- paste0(thisdir,"/i_input_subpop/")
+#dirinput <- paste0(thisdir,"/i_input/")
+dirinput <- paste0(thisdir,"/i_input_subpop/")
 
 # set other directories
 diroutput <- paste0(thisdir,"/g_output/")
@@ -59,7 +59,7 @@ source(paste0(dirmacro,"CreateItemsetDatasets_v02.R"))
 source(paste0(dirmacro,"MergeFilterAndCollapse_v5.R"))
 source(paste0(dirmacro,"CreateSpells_v14.R"))
 source(paste0(dirmacro,"CreateFlowChart.R"))
-source(paste0(dirmacro,"CountPersonTimeV12.4.R"))
+source(paste0(dirmacro,"CountPersonTimeV13.6.R"))
 source(paste0(dirmacro,"ApplyComponentStrategy_v13_2.R"))
 source(paste0(dirmacro,"CreateFigureComponentStrategy_v4.R"))
 source(paste0(dirmacro,"DRECountThresholdV3.R"))

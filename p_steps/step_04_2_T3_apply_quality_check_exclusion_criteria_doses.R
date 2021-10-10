@@ -2,7 +2,7 @@
 for (subpop in subpopulations_non_empty){
   print(subpop)
   load(paste0(dirtemp,"persons_doses",suffix[[subpop]],".RData"))
-  persons_doses<-get(paste0("persons_doses", suffix[[subpop]]))
+  persons_doses_temp<-get(paste0("persons_doses", suffix[[subpop]]))
 
 all_mondays <- seq.Date(as.Date("19000101","%Y%m%d"), Sys.Date(), by = "week")
 
@@ -15,7 +15,7 @@ all_days_df <- all_days_df[, monday_week := nafill(monday_week, type="locf")]
 all_days_df <- all_days_df[all_days >= study_start,]
 
 ##add the corresponding moday to each date
-temp<-merge(persons_doses,all_days_df, by.x=c("date"), by.y = "all_days")
+temp<-merge(persons_doses_temp,all_days_df, by.x=c("date"), by.y = "all_days")
 monday_start_covid<-find_last_monday(start_COVID_vaccination_date,monday_week)
 temp<-temp[monday_week>=monday_start_covid,]
 
@@ -35,9 +35,10 @@ selected_population <- CreateFlowChart(
   fwrite(get(paste0("Flowchart_doses",suffix[[subpop]])), paste0(direxp,"Flowchart_doses",suffix[[subpop]],"_",thisdatasource,"_",currentdate,"_",scriptversion,".csv"))
   
   rm(list=paste0("Flowchart_doses",suffix[[subpop]]))
+  rm(list=paste0("persons_doses", suffix[[subpop]]))
 }
 
 
 
 
-rm(persons_doses, all_mondays, monday_week, double_weeks, all_days_df, temp, temp2, selected_population )
+rm(persons_doses_temp, all_mondays, monday_week, double_weeks, all_days_df, temp, temp2, selected_population )

@@ -22,9 +22,9 @@ for (SECCOMP in SECCOMPONENTS) {
   for (subpop in subpopulations_non_empty) {
     print(subpop)
     load(paste0(diroutput,"D4_study_population",suffix[[subpop]],".RData")) 
-    D4_study_population<-get(paste0("D4_study_population", suffix[[subpop]]))
+    study_population<-get(paste0("D4_study_population", suffix[[subpop]]))
 
-    COHORT_TMP <- as.data.table(D4_study_population)  
+    COHORT_TMP <- as.data.table(study_population)  
 
     COHORT_TMP <- COHORT_TMP[,.(person_id,study_entry_date)]
     #create datasets A and B to be merged for the secondary component
@@ -125,7 +125,9 @@ for (SECCOMP in SECCOMPONENTS) {
   assign(nameobjectSECCOMP,componentsSECCOMP)
   save(nameobjectSECCOMP,file=paste0(dirtemp,paste0(nameobjectSECCOMP,".RData")),list = nameobjectSECCOMP)
   rm(nameobjectSECCOMP,list = nameobjectSECCOMP)
-  rm(datasets_to_be_merged,componentsSECCOMP,tempfile,COHORT_TMP,components,listevents,all_A_AND_B_timeframe,unique_A_AND_B_timeframe,D4_study_population)
+  rm(datasets_to_be_merged,componentsSECCOMP,tempfile,COHORT_TMP,components,listevents,all_A_AND_B_timeframe,unique_A_AND_B_timeframe,study_population)
+  
+  rm(list=paste0("D4_study_population", suffix[[subpop]]))
   }
 }
   

@@ -53,8 +53,11 @@ for (subpop in subpopulations_non_empty) {
   save(list=tempname,file=paste0(diroutput,tempname,".RData"))
   
   rm(list=paste0("D3_Vaccin_cohort_cov_ALL", suffix[[subpop]]))
+  rm(list=paste0("D3_Vaccin_cohort_no_risk", suffix[[subpop]]))
+  rm(list=paste0("D3_Vaccin_cohort_DP", suffix[[subpop]]))
+  rm(list=paste0("D4_Vaccin_cohort_cov", suffix[[subpop]]))
 }
 
 
-rm(D4_Vaccin_cohort_cov, D3_Vaccin_cohort_DP, D3_Vaccin_cohort_no_risk, study_population_DP, study_population,study_population_cov, study_population_cov_ALL)
+rm( study_population_DP, study_population,study_population_cov, study_population_cov_ALL)
 

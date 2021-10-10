@@ -127,7 +127,7 @@ system.time(source(paste0(thisdir,"/p_steps/step_06_5_T2.3_vaccination_character
 system.time(source(paste0(thisdir,"/p_steps/step_06_6_T2.3_ALL_covariates_at_vaccination_V2.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_06_7_T2_create_D3_datasets.R")))
 
-#-----------------
+#-----------------da aggiustare subpops
 #MIS section
 # create D3 MIS population
 system.time(source(paste0(thisdir,"/p_steps/step_06_2_MIS_population.R")))
@@ -140,6 +140,7 @@ system.time(source(paste0(thisdir,"/p_steps/step_09_2_T3_create_D4_descriptive_t
 system.time(source(paste0(thisdir,"/p_steps/step_09_4_T3_create_D4_descriptive_tables_MIS.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_11_2_T4_create_dummy_tables_MIS_KD.R")))
 
+##fin qui-----
 
 #07 create persontime
 system.time(source(paste0(thisdir,"/p_steps/step_07_1_T3_create_person_time_risks.R")))
@@ -169,11 +170,7 @@ system.time(source(paste0(thisdir,"/p_steps/step_10_2_Coverage_description.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_10_3_Doses_description.R")))
 
 system.time(source(paste0(thisdir,"/p_steps/step_10_4_benefit_description.R")))
-#system.time(source(paste0(thisdir,"/p_steps/step_10_5_risk_description.R")))
 
-# system.time(source(paste0(thisdir,"/p_steps/step_09_1_FlowChart_description_MD.R")))
-# system.time(source(paste0(thisdir,"/p_steps/step_09_2_Coverage_description_MD.R")))
-# system.time(source(paste0(thisdir,"/p_steps/step_09_3_Doses_description_MD.R")))
 
 #11 Create descriptive tables
 system.time(source(paste0(thisdir,"/p_steps/step_11_T4_create_dummy_tables.R")))

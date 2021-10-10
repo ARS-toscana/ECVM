@@ -48,11 +48,12 @@ for (subpop in subpopulations_non_empty) {
   assign(tempname,study_population_DP)
   save(list=tempname,file=paste0(dirtemp,tempname,".RData"))
   rm(list=paste0("D3_Vaccin_cohort_DP",suffix[[subpop]]))
+  rm(list=paste0("D3_Vaccin_cohort_no_risk",suffix[[subpop]]))
   
 }
 
 
-rm(COHORT_TMP, D3_study_population_DP, D3_Vaccin_cohort_no_risk, study_population_DP, study_population)
+rm(COHORT_TMP, D3_study_population_DP, study_population_DP, study_population)
 
 
 

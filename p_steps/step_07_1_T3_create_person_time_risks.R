@@ -7,13 +7,12 @@
 
 print("COUNT PERSON TIME by week for risks")
 
-start_week=seq.Date(as.Date("20200106","%Y%m%d"),Sys.Date(),by = "week")
-
 
 D4_persontime_risk_week <- vector(mode = 'list')
 for (subpop in subpopulations_non_empty) {
   print(subpop)
     
+  start_week=seq.Date(as.Date("20200106","%Y%m%d"),Sys.Date(),by = "week")
     
     load(paste0(dirtemp,"list_outcomes_observed",suffix[[subpop]],".RData"))
     load(paste0(dirtemp,"D3_events_ALL_OUTCOMES",suffix[[subpop]],".RData"))
