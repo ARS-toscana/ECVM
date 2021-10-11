@@ -68,7 +68,9 @@ D3_selection_criteria_c <- D3_selection_criteria_c[, not_in_cohort_c := replace(
 save(D3_selection_criteria_c, file = paste0(dirtemp, "D3_selection_criteria_c.RData"))
 
 D4_population_c <- CreateFlowChart(
-  dataset = D3_selection_criteria_c[,.(person_id,sex,age_at_1_jan_2021,agebands_at_1_jan_2021,study_entry_date_MIS_c, cohort_entry_date_MIS_c, study_exit_date_MIS_c, MIS_date_narrow,MIS_date_broad,not_in_cohort_c, fup_days)],
+  dataset = D3_selection_criteria_c[,.(person_id,sex,age_at_1_jan_2021,agebands_at_1_jan_2021,study_entry_date_MIS_c, cohort_entry_date_MIS_c, study_exit_date_MIS_c, MIS_date_narrow,MIS_date_broad,not_in_cohort_c, fup_days, CV_at_date_vax_1, COVCANCER_at_date_vax_1, COVCOPD_at_date_vax_1,
+                                       COVHIV_at_date_vax_1, COVCKD_at_date_vax_1, COVDIAB_at_date_vax_1,
+                                       COVOBES_at_date_vax_1, COVSICKLE_at_date_vax_1, immunosuppressants_at_date_vax_1)],
   listcriteria = c("not_in_cohort_c"),
   flowchartname = "Flowchart_cohort_c")
 
@@ -110,7 +112,9 @@ D4_population_d[covid_date<date_vax1 | is.na(covid_date),study_exit_date_MIS_d:=
 # calculate correct fup_days
 D4_population_d[, fup_days := correct_difftime(study_exit_date_MIS_d, cohort_entry_date_MIS_d)]
 
-D4_population_d<-D4_population_d[,.(person_id,sex,age_at_1_jan_2021,agebands_at_1_jan_2021,study_entry_date_MIS_d,cohort_entry_date_MIS_d,study_exit_date_MIS_d,MIS_date_broad,date_vax1,covid_date,history_covid,age_at_date_vax_1,type_vax_1,not_in_cohort_d, fup_days)]
+D4_population_d<-D4_population_d[,.(person_id,sex,age_at_1_jan_2021,agebands_at_1_jan_2021,study_entry_date_MIS_d,cohort_entry_date_MIS_d,study_exit_date_MIS_d,MIS_date_broad,date_vax1,covid_date,history_covid,age_at_date_vax_1,type_vax_1,not_in_cohort_d, fup_days, CV_at_date_vax_1, COVCANCER_at_date_vax_1, COVCOPD_at_date_vax_1,
+                                    COVHIV_at_date_vax_1, COVCKD_at_date_vax_1, COVDIAB_at_date_vax_1,
+                                    COVOBES_at_date_vax_1, COVSICKLE_at_date_vax_1, immunosuppressants_at_date_vax_1)]
 
 D4_population_d<-D4_population_d[study_exit_date_MIS_d>study_entry_date_MIS_d,]
 # D4_population_d[, age_at_1_jan_2021 := as.character(findInterval(age_at_1_jan_2021, c(19, 29, 39, 49, 59, 69, 79)))]
