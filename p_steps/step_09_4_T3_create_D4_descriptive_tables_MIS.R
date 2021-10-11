@@ -69,8 +69,12 @@ D4_descriptive_dataset_covariate_studystart <- D4_descriptive_dataset_covariate_
 
 fwrite(D4_descriptive_dataset_covariate_studystart, file = paste0(dirD4tables, "D4_descriptive_dataset_covariate_studystart_MIS.csv"))
 
-D4_followup_fromstudystart_MIS_c <- D4_population_c[, sum(fup_days)]
-D4_followup_fromstudystart_MIS_c <- data.table(total = D4_followup_fromstudystart_MIS_c)
+D4_followup_fromstudystart_MIS_c <- D4_population_c[, round(as.integer(sum(fup_days)) / 365), by = "agebands_at_1_jan_2021"]
+D4_followup_fromstudystart_MIS_c <- data.table::dcast(D4_followup_fromstudystart_MIS_c, . ~ agebands_at_1_jan_2021, value.var = c("V1"))
+D4_followup_fromstudystart_MIS_c <- D4_followup_fromstudystart_MIS_c[, . := NULL][, Datasource := thisdatasource]
+setnames(D4_followup_fromstudystart_MIS_c, c("01-19", "20-29", "30-39", "40-49", "50-59",
+             "60-69", "70-79", "80+"), c("Followup_0119", "Followup_2029", "Followup_3039", "Followup_4049", "Followup_5059",
+               "Followup_6069", "Followup_7079", "Followup_80"), skip_absent=TRUE)
 fwrite(D4_followup_fromstudystart_MIS_c, file = paste0(dirD4tables, "D4_followup_fromstudystart_MIS_c.csv"))
 
 
