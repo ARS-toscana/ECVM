@@ -6,7 +6,7 @@
 # dirinput <- paste0(dirbase,"/CDMInstances/ECVM2108/")
 
 #dirinput <- paste0(thisdir,"/i_input/")
-dirinput <- paste0(thisdir,"/i_input_subpop/")
+dirinput <- paste0(thisdir,"/i_input/")
 
 # set other directories
 diroutput <- paste0(thisdir,"/g_output/")
@@ -59,7 +59,7 @@ source(paste0(dirmacro,"CreateItemsetDatasets_v02.R"))
 source(paste0(dirmacro,"MergeFilterAndCollapse_v5.R"))
 source(paste0(dirmacro,"CreateSpells_v14.R"))
 source(paste0(dirmacro,"CreateFlowChart.R"))
-source(paste0(dirmacro,"CountPersonTimeV13.6.R"))
+source(paste0(dirmacro,"CountPersonTimeV12.4.R"))
 source(paste0(dirmacro,"ApplyComponentStrategy_v13_2.R"))
 source(paste0(dirmacro,"CreateFigureComponentStrategy_v4.R"))
 source(paste0(dirmacro,"DRECountThresholdV3.R"))
@@ -157,11 +157,15 @@ Birthcohorts =c("<1940", "1940-1949", "1950-1959", "1960-1969",
 #############################################
 #FUNCTION TO COMPUTE AGE
 #############################################
-Agebands =c(-1, 19, 29, 39, 49, 59, 69, 80, Inf)
-Agebands_labels <- c("0-19", "20-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80+")
 
-Agebands_MIS =c(-1, 11, 17, 19,29, 39, 49, 59, 69, 80, Inf)
-Agebands_lables_MIS =c("0-11","12-17","18-19","20-29", "30-39", "40-49","50-59","60-69", "70-79","80+")
+Agebands = c(-1, 4, 11, 17, 19, 29, 39, 49, 59, 69, 79, Inf)
+Agebands_labels = c("0-4","5-11","12-17","18-19","20-29", "30-39", "40-49","50-59","60-69", "70-79","80+")
+
+Birthbands = c(-1 ,1939, 1949, 1959, 1969, 1979, 1989, 1999, 2001, 2007, 2014, Inf)
+Birthbands_labels = c("<1940", "1940-1949", "1950-1959", "1960-1969", "1970-1979",
+                     "1980-1989", "1990-1999", "2000-2001", "2002-2007", "2008-2014", ">2015")
+
+
 
 age_fast = function(from, to) {
   from_lt = as.POSIXlt(from)
@@ -233,5 +237,16 @@ correct_col_type <- function(df) {
     }
     df[is.logical(get(i)), (i) := as.numeric(get(i))]
   }
+  return(df)
+}
+
+bc_divide_60 <- function(df, by_cond, cols_to_sums) {
+  older60 <- copy(df)[Birthcohort_persons %in% c("<1940", "1940-1949", "1950-1959"),
+                      lapply(.SD, sum, na.rm=TRUE), by = by_cond, .SDcols = cols_to_sums]
+  older60 <- unique(older60[, Birthcohort_persons := "<1960"])
+  younger60 <- copy(df)[Birthcohort_persons %in% c("1960-1969", "1970-1979", "1980-1989", "1990+"),
+                        lapply(.SD, sum, na.rm=TRUE), by = cols_to_sums, .SDcols = cols_to_sums]
+  younger60 <- unique(younger60[, Birthcohort_persons := ">1960"])
+  df <- data.table::rbindlist(list(df, older60, younger60))
   return(df)
 }
