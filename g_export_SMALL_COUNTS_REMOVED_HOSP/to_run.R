@@ -139,7 +139,7 @@ system.time(source(paste0(thisdir,"/p_steps/step_09_2_T3_create_D4_descriptive_t
 system.time(source(paste0(thisdir,"/p_steps/step_09_4_T3_create_D4_descriptive_tables_MIS.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_11_2_T4_create_dummy_tables_MIS_KD.R")))
 
-##fin qui-----
+##end MIS section------------
 
 #07 create persontime
 system.time(source(paste0(thisdir,"/p_steps/step_07_1_T3_create_person_time_risks.R")))
