@@ -1,5 +1,6 @@
 
 for (subpop in subpopulations_non_empty) {  
+  print(subpop)
   namedataset1<-paste0("D4_persontime_risk_week",suffix[[subpop]])
   load(paste0(diroutput,"D4_persontime_risk_week",suffix[[subpop]],".RData"))
   
@@ -33,7 +34,7 @@ for (subpop in subpopulations_non_empty) {
   
   
   
-  namedataset2<-paste0("D4_persontime_risk_week",suffix[[subpop]])
+  namedataset2<-paste0("D4_persontime_benefit_week",suffix[[subpop]])
   load(paste0(diroutput,"D4_persontime_benefit_week",suffix[[subpop]],".RData"))
   
  assign(namedataset2,get(namedataset2)[, c("CV", "COVCANCER", "COVCOPD", "COVHIV", "COVCKD",
@@ -114,7 +115,7 @@ for (subpop in subpopulations_non_empty) {
   assign(nameoutput3, merge(empty_risk_year, get(nameoutput3), all.x = T,
                                       by = c("Dose", "type_vax", "week_fup", "sex", "Birthcohort_persons")))
   
-  for (i in names(D4_persontime_risk_year_BC)){
+  for (i in names(get(nameoutput3))){
     get(nameoutput3)[is.na(get(i)), (i) := 0]
   }
   
@@ -154,11 +155,11 @@ for (subpop in subpopulations_non_empty) {
   assign(nameoutput4,bc_divide_60(get(namedataset4), c("sex", "Dose", "type_vax", "week_fup")
                                                 , cols_to_sums))
   
-  save(get(nameoutput4),file=paste0(diroutput,nameoutput4,".RData"))
+  save(nameoutput4,file=paste0(diroutput,nameoutput4,".RData"),list=nameoutput4)
   rm(list=nameoutput4)
   rm(list=namedataset4)
   rm(namedataset4,nameoutput4)
   
-  rm(all_ages, all_sex, cols_to_sums)
+  rm(all_ages, all_sex, cols_to_sums,empty_risk_year,vax_dose,vax_dose_0,week_vax_dose)
   
 }
