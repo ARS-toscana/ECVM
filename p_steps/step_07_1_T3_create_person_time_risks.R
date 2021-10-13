@@ -122,17 +122,23 @@ for (subpop in subpopulations_non_empty) {
   thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
   fwrite(persontime_risk_week,file=paste0(thisdirexp,"D4_persontime_risk_week",suffix[[subpop]],"_",thisdatasource,"_",currentdate,"_",scriptversion,".csv"))
   
-  assign(paste0("D4_persontime_risk_week",suffix[[subpop]]),persontime_risk_week)
-  save(D4_persontime_risk_week,file=paste0(dirtemp,"D4_persontime_risk_week",suffix[[subpop]],".RData"))
+  nameoutput<-paste0("D4_persontime_risk_week",suffix[[subpop]])
+  assign(nameoutput,persontime_risk_week)
+  save(nameoutput,file=paste0(diroutput,nameoutput,".RData"),list=nameoutput)
   
   rm(list=paste0("D4_persontime_risk_week",suffix[[subpop]]))
+  rm(list=paste0("D3_vaxweeks_including_not_vaccinated", suffix[[subpop]]))
+  rm(list=paste0("list_outcomes_observed", suffix[[subpop]]))
+  rm(list=paste0("D3_events_ALL_OUTCOMES", suffix[[subpop]]))
 }
 
 
 for (subpop in subpopulations_non_empty){
+  tempname<-paste0("D4_persontime_risk_week",suffix[[subpop]],"_",thisdatasource,"_",currentdate,"_",scriptversion)
   thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
-  thisdirsmallcountsremoved <- ifelse(this_datasource_has_subpopulations == FALSE,dirsmallcountsremoved,dirsmallcountsremovedsubpop[[subpop]])
-  col<-colnames(persontime_risk_week)[-(1:3)]
+  assign(tempname,fread(paste0(thisdirexp,tempname,".csv")))
+    thisdirsmallcountsremoved <- ifelse(this_datasource_has_subpopulations == FALSE,dirsmallcountsremoved,dirsmallcountsremovedsubpop[[subpop]])
+  col<-colnames(get(tempname))[-(1:3)]
   temp<-paste0(col,"=5")
   temp2<-paste("c(",paste(temp, collapse = ','),")")
   suppressWarnings(
@@ -144,6 +150,7 @@ for (subpop in subpopulations_non_empty){
       FileContains = "D4_persontime_risk_week"
     )
   )
+  rm(list=tempname)
 }
-# rm(list = nameobject)
-rm(D3_vaxweeks_including_not_vaccinated,persontime_risk_week,study_population,events_ALL_OUTCOMES)
+
+rm(persontime_risk_week,events_ALL_OUTCOMES,study_population,list_outcomes,recurrent_persontime_risk_week)
