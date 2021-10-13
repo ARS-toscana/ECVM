@@ -8,65 +8,71 @@
 
 print("COUNT PERSON TIME by year for risks")
 
-load(paste0(dirtemp,"list_outcomes_observed.RData"))
-load(paste0(dirtemp,"D3_events_ALL_OUTCOMES.RData"))
-load(paste0(dirtemp,"D3_vaxweeks_including_not_vaccinated.RData"))
+persontime_risk_year <- vector(mode = 'list')
 
-
-D4_persontime_risk_year <- vector(mode = 'list')
 for (subpop in subpopulations_non_empty) {  
   print(subpop)
   start_persontime_studytime = "20200101"
   
-  if (this_datasource_has_subpopulations == TRUE){ 
-    study_population <- D3_vaxweeks_including_not_vaccinated[[subpop]]
-    events_ALL_OUTCOMES <- D3_events_ALL_OUTCOMES[[subpop]]
-    list_outcomes <- list_outcomes_observed[[subpop]]
-  }else{
-    study_population <- D3_vaxweeks_including_not_vaccinated
-    events_ALL_OUTCOMES <- D3_events_ALL_OUTCOMES
-    list_outcomes <- list_outcomes_observed
-  }
-}
+  load(paste0(dirtemp,"list_outcomes_observed",suffix[[subpop]],".RData"))
+  load(paste0(dirtemp,"D3_events_ALL_OUTCOMES",suffix[[subpop]],".RData"))
+  load(paste0(dirtemp,"D3_vaxweeks_including_not_vaccinated",suffix[[subpop]],".RData"))
   
-  
+  list_outcomes<-get(paste0("list_outcomes_observed", suffix[[subpop]]))
+  events_ALL_OUTCOMES<-get(paste0("D3_events_ALL_OUTCOMES", suffix[[subpop]]))
+  study_population<-get(paste0("D3_vaxweeks_including_not_vaccinated", suffix[[subpop]]))
+
   endyear<- substr(study_population[,max(end_date_of_period)], 1, 4)
   end_persontime_studytime<-as.character(paste0(endyear,"1231"))
   
   list_recurrent_outcomes <- list_outcomes[str_detect(list_outcomes, "^GENCONV_") | str_detect(list_outcomes, "^ANAPHYL_")]
   list_outcomes <- setdiff(list_outcomes, list_recurrent_outcomes)
 
-  pop_age_1940 <- study_population[Birthcohort_persons == "<1940", ]
-  save(pop_age_1940, file = paste0(dirtemp, "pop_age_1940.RData"))
-  rm(pop_age_1940)
-  pop_age_1940_1949 <- study_population[Birthcohort_persons == "1940-1949", ]
-  save(pop_age_1940_1949, file = paste0(dirtemp, "pop_age_1940_1949.RData"))
-  rm(pop_age_1940_1949)
-  pop_age_1950_1959 <- study_population[Birthcohort_persons == "1950-1959", ]
-  save(pop_age_1950_1959, file = paste0(dirtemp, "pop_age_1950_1959.RData"))
-  rm(pop_age_1950_1959)
-  pop_age_1960_1969 <- study_population[Birthcohort_persons == "1960-1969", ]
-  save(pop_age_1960_1969, file = paste0(dirtemp, "pop_age_1960_1969.RData"))
-  rm(pop_age_1960_1969)
-  pop_age_1970_1979 <- study_population[Birthcohort_persons == "1970-1979", ]
-  save(pop_age_1970_1979, file = paste0(dirtemp, "pop_age_1970_1979.RData"))
-  rm(pop_age_1970_1979)
-  pop_age_1980_1989 <- study_population[Birthcohort_persons == "1980-1989", ]
-  save(pop_age_1980_1989, file = paste0(dirtemp, "pop_age_1980_1989.RData"))
-  rm(pop_age_1980_1989)
-  pop_age_1990 <- study_population[Birthcohort_persons == "1990+", ]
-  save(pop_age_1990, file = paste0(dirtemp, "pop_age_1990.RData"))
-  rm(study_population, pop_age_1990)
-
+  nameoutput <- paste0("pop_age_1940",suffix[[subpop]])
+  assign(nameoutput, study_population[Birthcohort_persons == "<1940", ])
+  save(nameoutput, file = paste0(dirtemp, nameoutput,".RData"),list=nameoutput)
+  rm(list=nameoutput)
   
+  nameoutput <- paste0("pop_age_1940_1949",suffix[[subpop]])
+  assign(nameoutput, study_population[Birthcohort_persons == "1940-1949", ])
+  save(nameoutput, file = paste0(dirtemp, nameoutput,".RData"),list=nameoutput)
+  rm(list=nameoutput)
+
+  nameoutput <- paste0("pop_age_1950_1959",suffix[[subpop]])
+  assign(nameoutput, study_population[Birthcohort_persons == "1950-1959", ])
+  save(nameoutput, file = paste0(dirtemp, nameoutput,".RData"),list=nameoutput)
+  rm(list=nameoutput)
+  
+  nameoutput <- paste0("pop_age_1960_1969",suffix[[subpop]])
+  assign(nameoutput, study_population[Birthcohort_persons == "1960-1969", ])
+  save(nameoutput, file = paste0(dirtemp, nameoutput,".RData"),list=nameoutput)
+  rm(list=nameoutput)
+
+  nameoutput <- paste0("pop_age_1970_1979",suffix[[subpop]])
+  assign(nameoutput, study_population[Birthcohort_persons == "1970-1979", ])
+  save(nameoutput, file = paste0(dirtemp, nameoutput,".RData"),list=nameoutput)
+  rm(list=nameoutput)
+  
+  nameoutput <- paste0("pop_age_1980_1989",suffix[[subpop]])
+  assign(nameoutput, study_population[Birthcohort_persons == "1980-1989", ])
+  save(nameoutput, file = paste0(dirtemp, nameoutput,".RData"),list=nameoutput)
+  rm(list=nameoutput)
+
+  nameoutput <- paste0("pop_age_1990",suffix[[subpop]])
+  assign(nameoutput, study_population[Birthcohort_persons == "1990+", ])
+  save(nameoutput, file = paste0(dirtemp, nameoutput,".RData"),list=nameoutput)
+  rm(list=nameoutput)
+
   for (events_df_sex in c("pop_age_1940", "pop_age_1940_1949", "pop_age_1950_1959", "pop_age_1960_1969",
                           "pop_age_1970_1979", "pop_age_1980_1989", "pop_age_1990")) {
     print(paste("Age", substring(events_df_sex, 9)))
-    load(paste0(dirtemp, events_df_sex, ".RData"))
+    load(paste0(dirtemp, events_df_sex,suffix[[subpop]], ".RData"))
     print("recurrent")
-    Recurrent_output_file<-CountPersonTime(
+    
+    nameoutput <- paste0("Recurrent_output_file",suffix[[subpop]])
+    assign(nameoutput,CountPersonTime(
       Dataset_events = events_ALL_OUTCOMES,
-      Dataset = get(events_df_sex),
+      Dataset = get(paste0(events_df_sex,suffix[[subpop]])),
       Person_id = "person_id",
       Start_study_time = start_persontime_studytime,
       End_study_time = end_persontime_studytime,
@@ -85,13 +91,16 @@ for (subpop in subpopulations_non_empty) {
       Aggregate = T,
       Rec_events = T,
       Rec_period = c(rep(30, length(list_recurrent_outcomes)))
-    )
-    save(Recurrent_output_file, file=paste0(dirtemp,"D3_recurrent_year.RData"))
-    rm(Recurrent_output_file)
+    ))
+
+    save(nameoutput, file=paste0(dirtemp,"D3_recurrent_year",suffix[[subpop]],".RData"),list=nameoutput)
+    rm(list=nameoutput)
+    
     print("normal")
-    Output_file<-CountPersonTime(
+    nameoutput <- paste0("Output_file",suffix[[subpop]])
+    assign(nameoutput,CountPersonTime(
       Dataset_events = events_ALL_OUTCOMES,
-      Dataset = get(events_df_sex),
+      Dataset = get(paste0(events_df_sex,suffix[[subpop]])),
       Person_id = "person_id",
       Start_study_time = start_persontime_studytime,
       End_study_time = end_persontime_studytime,
@@ -108,43 +117,60 @@ for (subpop in subpopulations_non_empty) {
       Unit_of_age = "year",
       include_remaning_ages = T,
       Aggregate = T
-    )
-    load(paste0(dirtemp,"D3_recurrent_year.RData"))
+    ))
+
+    load(paste0(dirtemp,"D3_recurrent_year",suffix[[subpop]],".RData"))
     print("Merging")
-    Output_file <- merge(Output_file, Recurrent_output_file,
+    nameoutput<-paste0("Output_file",suffix[[subpop]])
+    assign(nameoutput,merge(get(paste0("Output_file",suffix[[subpop]])), get(paste0("Recurrent_output_file",suffix[[subpop]])) ,
                          by = c("sex","Birthcohort_persons","Dose","type_vax","week_fup", "CV", "COVCANCER", "COVCOPD",
                                 "COVHIV", "COVCKD", "COVDIAB", "COVOBES", "COVSICKLE", "IMMUNOSUPPR", "any_risk_factors",
                                 "year", "Persontime"),
                          all = T)
+    )
     print("Saving")
-    save(Output_file, file = paste0(dirtemp, events_df_sex, ".RData"))
+    save(nameoutput, file = paste0(dirtemp, events_df_sex,suffix[[subpop]], ".RData"),list=nameoutput)
+    rm(list=paste0(events_df_sex,suffix[[subpop]]))
     
-    rm(Recurrent_output_file, Output_file)
   }
   
   vect_df_persontime <- list()
   for (events_df_sex in c("pop_age_1940", "pop_age_1940_1949", "pop_age_1950_1959", "pop_age_1960_1969",
                           "pop_age_1970_1979", "pop_age_1980_1989", "pop_age_1990")) {
-    load(paste0(dirtemp, events_df_sex, ".RData"))
-    vect_df_persontime <- append(vect_df_persontime, list(Output_file))
+    load(paste0(dirtemp, events_df_sex,suffix[[subpop]], ".RData"))
+    vect_df_persontime <- append(vect_df_persontime, list(get(paste0("Output_file",suffix[[subpop]]) )))
   }
   
-  Output_file <- rbindlist(vect_df_persontime)
+  assign(paste0("Output_file",suffix[[subpop]]),rbindlist(vect_df_persontime))
   rm(vect_df_persontime)
   
-  for (i in names(Output_file)){
-    Output_file[is.na(get(i)), (i):=0]
+  for (i in names(get(paste0("Output_file",suffix[[subpop]])))){
+    get(paste0("Output_file",suffix[[subpop]]))[is.na(get(i)), (i):=0]
   }
 
-  D4_persontime_risk_year <- Output_file
-  fwrite(D4_persontime_risk_year,file=paste0(direxp,"D4_persontime_risk_year.csv"))
-save(D4_persontime_risk_year,file=paste0(diroutput,"D4_persontime_risk_year.RData"))
+  persontime_risk_year <- get(paste0("Output_file",suffix[[subpop]]))
 
+thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
+fwrite(persontime_risk_year,file=paste0(thisdirexp,"D4_persontime_risk_year",suffix[[subpop]],"_",thisdatasource,"_",currentdate,"_",scriptversion,".csv"))
+
+nameoutput<-paste0("D4_persontime_risk_year",suffix[[subpop]])
+assign(nameoutput,persontime_risk_year)
+save(nameoutput,file=paste0(diroutput,nameoutput,".RData"),list=nameoutput)
+
+rm(list=paste0("Output_file",suffix[[subpop]]) )
+rm(list=paste0("Recurrent_output_file",suffix[[subpop]]))
+rm(list=nameoutput)
+rm(list=paste0("D3_vaxweeks_including_not_vaccinated", suffix[[subpop]]))
+rm(list=paste0("D3_events_ALL_OUTCOMES", suffix[[subpop]]))
+rm(list=paste0("list_outcomes_observed", suffix[[subpop]]))
+}
 
 for (subpop in subpopulations_non_empty){
+  tempname<-paste0("D4_persontime_risk_year",suffix[[subpop]],"_",thisdatasource,"_",currentdate,"_",scriptversion)
   thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
+  assign(tempname,fread(paste0(thisdirexp,tempname,".csv")))
   thisdirsmallcountsremoved <- ifelse(this_datasource_has_subpopulations == FALSE,dirsmallcountsremoved,dirsmallcountsremovedsubpop[[subpop]])
-  col<-colnames(D4_persontime_risk_year)[-(1:6)]
+  col<-colnames(get(tempname))[-(1:6)]
   temp<-paste0(col,"=5")
   temp2<-paste("c(",paste(temp, collapse = ','),")")
   suppressWarnings(
@@ -156,6 +182,7 @@ for (subpop in subpopulations_non_empty){
       FileContains = "D4_persontime_risk_year"
     )
   )
+  rm(list=tempname)
 }
 # rm(list = nameobject)
-rm(D3_vaxweeks_including_not_vaccinated,D4_persontime_risk_year,events_ALL_OUTCOMES,Output_file)
+rm(persontime_risk_year,events_ALL_OUTCOMES,study_population)

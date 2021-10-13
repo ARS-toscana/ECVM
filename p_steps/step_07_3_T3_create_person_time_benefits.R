@@ -8,28 +8,21 @@
 
 print("COUNT PERSON TIME PER COVID by week benefits")
 
-load(paste0(dirtemp,paste0("D3_outcomes_covid.RData")))
-load(paste0(dirtemp,"D3_vaxweeks_including_not_vaccinated.RData"))
-load(paste0(dirpargen,paste0("list_outcomes_observed_COVID.RData")))
 
-D4_persontime_benefit_week <- vector(mode = 'list')
-for (subpop in subpopulations_non_empty) {  
+persontime_benefit_week <- vector(mode = 'list')
+for (subpop in subpopulations_non_empty) {
   print(subpop)
+  
   start_week=seq.Date(as.Date("20200106","%Y%m%d"),Sys.Date(),by = "week")
   
-  if (this_datasource_has_subpopulations == TRUE){ 
-    study_population <- D3_vaxweeks_including_not_vaccinated[[subpop]]
-    events_ALL_OUTCOMES <- D3_outcomes_covid[[subpop]]
-    list_outcomes <- list_outcomes_observed_COVID[[subpop]]
-  }else{
-    study_population <- D3_vaxweeks_including_not_vaccinated
-    events_ALL_OUTCOMES <- D3_outcomes_covid
-    list_outcomes <- list_outcomes_observed_COVID
-  }
-  # last_event<-events_ALL_OUTCOMES[,max(date_event)]
-  # if (last_event>study_end)  last_event<-study_end
-  # 
-  # start_week=start_week[start_week<last_event-7]
+  load(paste0(dirpargen,"list_outcomes_observed_COVID",suffix[[subpop]],".RData"))
+  load(paste0(dirtemp,"D3_outcomes_covid",suffix[[subpop]],".RData"))
+  load(paste0(dirtemp,"D3_vaxweeks_including_not_vaccinated",suffix[[subpop]],".RData"))
+  
+  list_outcomes<-get(paste0("list_outcomes_observed_COVID", suffix[[subpop]]))
+  events_ALL_OUTCOMES<-get(paste0("D3_outcomes_covid", suffix[[subpop]]))
+  study_population<-get(paste0("D3_vaxweeks_including_not_vaccinated", suffix[[subpop]]))
+  
   max_exit<-study_population[,max(end_date_of_period)]
   if (nrow(events_ALL_OUTCOMES) != 0) {
     last_event<-events_ALL_OUTCOMES[,max(date_event)]
@@ -80,22 +73,33 @@ for (subpop in subpopulations_non_empty) {
     }
   }
   
+  
+  # fwrite(persontime_benefit_week,file=paste0(thisdirexp,"D4_persontime_benefit_week.csv"))
+  # if (this_datasource_has_subpopulations == TRUE){ 
+  #   D4_persontime_benefit_week[[subpop]] <- persontime_benefit_week
+  # }else{
+  #   D4_persontime_benefit_week <- persontime_benefit_week
+  # }
   thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
-  fwrite(persontime_benefit_week,file=paste0(thisdirexp,"D4_persontime_benefit_week.csv"))
-  if (this_datasource_has_subpopulations == TRUE){ 
-    D4_persontime_benefit_week[[subpop]] <- persontime_benefit_week
-  }else{
-    D4_persontime_benefit_week <- persontime_benefit_week
-  }
+  fwrite(persontime_benefit_week,file=paste0(thisdirexp,"D4_persontime_benefit_week",suffix[[subpop]],"_",thisdatasource,"_",currentdate,"_",scriptversion,".csv"))
+  
+  nameoutput<-paste0("D4_persontime_benefit_week",suffix[[subpop]])
+  assign(nameoutput,persontime_benefit_week)
+  save(nameoutput,file=paste0(diroutput,nameoutput,".RData"),list=nameoutput)
+  
+  rm(list=paste0("D4_persontime_benefit_week",suffix[[subpop]]))
+  rm(list=paste0("D3_vaxweeks_including_not_vaccinated", suffix[[subpop]]))
+  rm(list=paste0("list_outcomes_observed_COVID", suffix[[subpop]]))
+  rm(list=paste0("D3_outcomes_covid", suffix[[subpop]]))
 }
-
-save(D4_persontime_benefit_week,file=paste0(diroutput,"D4_persontime_benefit_week.RData"))
 
 
 for (subpop in subpopulations_non_empty){
+  tempname<-paste0("D4_persontime_benefit_week",suffix[[subpop]],"_",thisdatasource,"_",currentdate,"_",scriptversion)
   thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
+  assign(tempname,fread(paste0(thisdirexp,tempname,".csv")))
   thisdirsmallcountsremoved <- ifelse(this_datasource_has_subpopulations == FALSE,dirsmallcountsremoved,dirsmallcountsremovedsubpop[[subpop]])
-  col<-colnames(persontime_benefit_week)[-(1:3)]
+  col<-colnames(get(tempname))[-(1:3)]
   temp<-paste0(col,"=5")
   temp2<-paste("c(",paste(temp, collapse = ','),")")
   suppressWarnings(
@@ -107,6 +111,7 @@ for (subpop in subpopulations_non_empty){
       FileContains = "D4_persontime_benefit_week"
     )
   )
+  rm(list=tempname)
 }
-# rm(list = nameobject)
-rm(D3_vaxweeks_including_not_vaccinated,persontime_benefit_week,study_population,events_ALL_OUTCOMES)
+
+rm(persontime_benefit_week,events_ALL_OUTCOMES,study_population,list_outcomes)

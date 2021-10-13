@@ -127,7 +127,6 @@ system.time(source(paste0(thisdir,"/p_steps/step_06_5_T2.3_vaccination_character
 system.time(source(paste0(thisdir,"/p_steps/step_06_6_T2.3_ALL_covariates_at_vaccination_V2.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_06_7_T2_create_D3_datasets.R")))
 
-#-----------------da aggiustare subpops
 #MIS section
 # create D3 MIS population
 system.time(source(paste0(thisdir,"/p_steps/step_06_2_MIS_population.R")))
