@@ -20,19 +20,7 @@ all_ages <- unique(all_ages[, Birthcohort_persons := "all_birth_cohorts"])
 
 D4_persontime_risk_week <- rbind(D4_persontime_risk_week, all_ages)
 
-older60 <- copy(D4_persontime_risk_week)[Birthcohort_persons %in% c("<1940", "1940-1949", "1950-1959"),
-                                         lapply(.SD, sum, na.rm=TRUE), by = c("sex", "Dose", "type_vax", "week"),
-                                         .SDcols = cols_to_sums]
-older60 <- unique(older60[, Birthcohort_persons := "<1960"])
-
-D4_persontime_risk_week <- rbind(D4_persontime_risk_week, older60)
-
-younger60 <- copy(D4_persontime_risk_week)[Birthcohort_persons %in% c("1960-1969", "1970-1979", "1980-1989", "1990+"),
-                                         lapply(.SD, sum, na.rm=TRUE), by = c("sex", "Dose", "type_vax", "week"),
-                                         .SDcols = cols_to_sums]
-younger60 <- unique(younger60[, Birthcohort_persons := ">1960"])
-
-D4_persontime_risk_week_BC <- rbind(D4_persontime_risk_week, younger60)
+D4_persontime_risk_week_BC <- bc_divide_60(D4_persontime_risk_week, c("sex", "Dose", "type_vax", "week"), cols_to_sums)
 
 save(D4_persontime_risk_week_BC,file=paste0(diroutput,"D4_persontime_risk_week_BC.RData"))
 rm(D4_persontime_risk_week, D4_persontime_risk_week_BC)
@@ -61,19 +49,7 @@ all_ages <- unique(all_ages[, Birthcohort_persons := "all_birth_cohorts"])
 
 D4_persontime_benefit_week <- rbind(D4_persontime_benefit_week, all_ages)
 
-older60 <- copy(D4_persontime_benefit_week)[Birthcohort_persons %in% c("<1940", "1940-1949", "1950-1959"),
-                                            lapply(.SD, sum, na.rm=TRUE), by = c("sex", "Dose", "type_vax", "week"),
-                                            .SDcols = cols_to_sums]
-older60 <- unique(older60[, Birthcohort_persons := "<1960"])
-
-D4_persontime_benefit_week <- rbind(D4_persontime_benefit_week, older60)
-
-younger60 <- copy(D4_persontime_benefit_week)[Birthcohort_persons %in% c("1960-1969", "1970-1979", "1980-1989", "1990+"),
-                                              lapply(.SD, sum, na.rm=TRUE), by = c("sex", "Dose", "type_vax", "week"),
-                                              .SDcols = cols_to_sums]
-younger60 <- unique(younger60[, Birthcohort_persons := ">1960"])
-
-D4_persontime_benefit_week_BC <- rbind(D4_persontime_benefit_week, younger60)
+D4_persontime_benefit_week_BC <- bc_divide_60(D4_persontime_benefit_week, c("sex", "Dose", "type_vax", "week"), cols_to_sums)
 
 save(D4_persontime_benefit_week_BC,file=paste0(diroutput,"D4_persontime_benefit_week_BC.RData"))
 rm(D4_persontime_benefit_week, D4_persontime_benefit_week_BC)
@@ -104,19 +80,7 @@ all_ages <- unique(all_ages[, Birthcohort_persons := "all_birth_cohorts"])
 
 D4_persontime_risk_year <- rbind(D4_persontime_risk_year, all_ages)
 
-older60 <- copy(D4_persontime_risk_year)[Birthcohort_persons %in% c("<1940", "1940-1949", "1950-1959"),
-                                         lapply(.SD, sum, na.rm=TRUE), by = c("sex", "Dose", "type_vax", "week_fup"),
-                                         .SDcols = cols_to_sums]
-older60 <- unique(older60[, Birthcohort_persons := "<1960"])
-
-D4_persontime_risk_year <- rbind(D4_persontime_risk_year, older60)
-
-younger60 <- copy(D4_persontime_risk_year)[Birthcohort_persons %in% c("1960-1969", "1970-1979", "1980-1989", "1990+"),
-                                           lapply(.SD, sum, na.rm=TRUE), by = c("sex", "Dose", "type_vax", "week_fup"),
-                                           .SDcols = cols_to_sums]
-younger60 <- unique(younger60[, Birthcohort_persons := ">1960"])
-
-D4_persontime_risk_year_BC <- rbind(D4_persontime_risk_year, younger60)
+D4_persontime_risk_year_BC <- bc_divide_60(D4_persontime_risk_year, c("sex", "Dose", "type_vax", "week_fup"), cols_to_sums)
 
 setorder(D4_persontime_risk_year_BC, "Birthcohort_persons")
 
@@ -171,21 +135,8 @@ all_ages <- copy(D4_persontime_benefit_year)[, lapply(.SD, sum, na.rm=TRUE),
                                           .SDcols = cols_to_sums]
 all_ages <- unique(all_ages[, Birthcohort_persons := "all_birth_cohorts"])
 
-D4_persontime_benefit_year <- rbind(D4_persontime_benefit_year, all_ages)
-
-older60 <- copy(D4_persontime_benefit_year)[Birthcohort_persons %in% c("<1940", "1940-1949", "1950-1959"),
-                                            lapply(.SD, sum, na.rm=TRUE), by = c("sex", "Dose", "type_vax", "week_fup"),
-                                            .SDcols = cols_to_sums]
-older60 <- unique(older60[, Birthcohort_persons := "<1960"])
-
-D4_persontime_benefit_year <- rbind(D4_persontime_benefit_year, older60)
-
-younger60 <- copy(D4_persontime_benefit_year)[Birthcohort_persons %in% c("1960-1969", "1970-1979", "1980-1989", "1990+"),
-                                              lapply(.SD, sum, na.rm=TRUE), by = c("sex", "Dose", "type_vax", "week_fup"),
-                                              .SDcols = cols_to_sums]
-younger60 <- unique(younger60[, Birthcohort_persons := ">1960"])
-
-D4_persontime_benefit_year_BC <- rbind(D4_persontime_benefit_year, younger60)
+D4_persontime_benefit_year_BC <- bc_divide_60(D4_persontime_benefit_year, c("sex", "Dose", "type_vax", "week_fup")
+                                              , cols_to_sums)
 
 save(D4_persontime_benefit_year_BC,file=paste0(diroutput,"D4_persontime_benefit_year_BC.RData"))
 rm(D4_persontime_benefit_year, D4_persontime_benefit_year_BC, all_ages, all_sex, cols_to_sums)
