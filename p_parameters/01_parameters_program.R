@@ -6,7 +6,7 @@
 # dirinput <- paste0(dirbase,"/CDMInstances/ECVM2108/")
 
 #dirinput <- paste0(thisdir,"/i_input/")
-dirinput <- paste0(thisdir,"/i_input_subpop/")
+dirinput <- paste0(thisdir,"/i_input/")
 
 # set other directories
 diroutput <- paste0(thisdir,"/g_output/")
@@ -245,8 +245,10 @@ bc_divide_60 <- function(df, by_cond, cols_to_sums) {
                       lapply(.SD, sum, na.rm=TRUE), by = by_cond, .SDcols = cols_to_sums]
   older60 <- unique(older60[, Birthcohort_persons := "<1960"])
   younger60 <- copy(df)[Birthcohort_persons %in% c("1960-1969", "1970-1979", "1980-1989", "1990+"),
-                        lapply(.SD, sum, na.rm=TRUE), by = cols_to_sums, .SDcols = cols_to_sums]
+                        lapply(.SD, sum, na.rm=TRUE), by = by_cond, .SDcols = cols_to_sums]
   younger60 <- unique(younger60[, Birthcohort_persons := ">1960"])
-  df <- data.table::rbindlist(list(df, older60, younger60))
+  df <- rbind(df, older60)
+  df <- rbind(df, younger60)
+  # df <- data.table::rbindlist(list(df, older60, younger60))
   return(df)
 }
