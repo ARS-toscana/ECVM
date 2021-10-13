@@ -126,6 +126,7 @@ for (subpop in subpopulations_non_empty) {
   save(D4_persontime_risk_week,file=paste0(dirtemp,"D4_persontime_risk_week",suffix[[subpop]],".RData"))
   
   rm(list=paste0("D4_persontime_risk_week",suffix[[subpop]]))
+  rm(list=paste0("D3_vaxweeks_including_not_vaccinated", suffix[[subpop]]))
 }
 
 
@@ -146,4 +147,4 @@ for (subpop in subpopulations_non_empty){
   )
 }
 # rm(list = nameobject)
-rm(D3_vaxweeks_including_not_vaccinated,persontime_risk_week,study_population,events_ALL_OUTCOMES)
+rm(persontime_risk_week,study_population,events_ALL_OUTCOMES)
