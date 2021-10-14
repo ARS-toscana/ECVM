@@ -13,7 +13,7 @@ suppressWarnings(
   if(!(file.exists(diroutput))) {dir.create(file.path(diroutput))}
 )
 
-fwrite(Flowchart_QC_criteria, paste0(direxp,"Flowchart_QC_criteria_",thisdatasource,"_",currentdate,"_",scriptversion,".csv"))
+fwrite(Flowchart_QC_criteria, paste0(direxp,"Flowchart_QC_criteria.csv"))
 
 save(selected_doses, file = paste0(dirtemp, "selected_doses.RData"))
 

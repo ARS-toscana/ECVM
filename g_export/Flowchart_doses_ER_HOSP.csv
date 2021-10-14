@@ -1,0 +1,12 @@
+monday_week,A_qc_dupl,B_qc_1_date,C_qc_2_date,D_qc_1_dose,E_qc_2_dose,F_qc_manufacturer,G_qc_mult_date_for_dose,H_qc_mult_dose_for_date,I_qc_3_date,J_dose_not_in_persons,K_birth_date_absurd,L_no_observation_period,M_death_before_study_entry,N_no_observation_period_including_study_start,O_insufficient_run_in,P_death_before_vax,Q_exit_spell_before_vax,R_study_end_before_vax,N
+2021-01-04,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,1
+2021-01-25,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,1
+2021-02-01,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,1
+2021-02-08,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,2
+2021-03-01,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,1
+2021-03-08,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,4
+2021-03-15,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,2
+2021-03-22,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,2
+2021-03-29,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,1
+2021-03-29,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,5
+2021-04-05,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,5

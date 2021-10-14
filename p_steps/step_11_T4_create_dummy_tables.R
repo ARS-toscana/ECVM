@@ -24,8 +24,11 @@ create_empty_table_1b <- function() {
   return(data.table(a = row_names_2, Italy_ARS = n4, NL_PHARMO = n4, UK_CPRD = n4, ES_BIFAP = n4))
 }
 
-flow_source <- fread(paste0(direxp, "Flowchart_basic_exclusion_criteria.csv"))
-flow_study <- fread(paste0(direxp, "Flowchart_exclusion_criteria.csv"))
+
+for (subpop in subpopulations_non_empty) {
+  
+flow_source <- fread(paste0(direxp, "Flowchart_basic_exclusion_criteria",suffix[[subpop]],".csv"))
+flow_study <- fread(paste0(direxp, "Flowchart_exclusion_criteria",suffix[[subpop]],".csv"))
 
 vect_recode_manufacturer <- c(TEST = "Italy_ARS", ARS = "Italy_ARS", PHARMO = "NL_PHARMO",
                               CPRD = "UK_CPRD", BIFAP = "ES_BIFAP")
@@ -84,8 +87,17 @@ table_1b <- flow_source_1b[, lapply(.SD, max, na.rm = T), by = a]
 setnames(table_1a, "a", " ")
 setnames(table_1b, "a", " ")
 
-fwrite(table_1a, file = paste0(dummytables, "Attrition diagram 1.csv"))
-fwrite(table_1b, file = paste0(dummytables, "Attrition diagram 2.csv"))
+
+nameoutput <- paste0("Attrition diagram 1",suffix[[subpop]])
+assign(nameoutput, table_1a)
+fwrite(get(nameoutput), file = paste0(dummytables, nameoutput,".csv"))
+rm(list=nameoutput)
+
+
+nameoutput <- paste0("Attrition diagram 2",suffix[[subpop]])
+assign(nameoutput, table_1b)
+fwrite(get(nameoutput), file = paste0(dummytables, nameoutput,".csv"))
+rm(list=nameoutput)
 
 
 
@@ -95,7 +107,7 @@ fwrite(table_1b, file = paste0(dummytables, "Attrition diagram 2.csv"))
 # Table2 ----------------------------------------------------------------------------------------------------------
 
 
-ageband_studystart <- fread(paste0(dirD4tables, "D4_descriptive_dataset_ageband_studystart.csv"))
+ageband_studystart <- fread(paste0(dirD4tables, "D4_descriptive_dataset_ageband_studystart",suffix[[subpop]],".csv"))
 
 ageband_studystart[, Datasource := c(TEST = "Test", ARS = "Italy_ARS", PHARMO = "NL_PHARMO", CPRD = "UK_CPRD",
                                      BIFAP = "ES_BIFAP")[Datasource]]
@@ -209,13 +221,19 @@ setcolorder(table2, c("a", "Parameters", col_order))
 
 setnames(table2, "a", " ")
 
-fwrite(table2, file = paste0(dummytables, "Cohort characteristics at start of study (1-1-2020).csv"))
+nameoutput <- paste0("Cohort characteristics at start of study (1-1-2020)",suffix[[subpop]])
+assign(nameoutput, table2)
+fwrite(get(nameoutput), file = paste0(dummytables, nameoutput,".csv"))
+rm(list=nameoutput)
 
 
 
 
 
-load(file = paste0(dirtemp, "D3_Vaccin_cohort.RData"))
+load(file = paste0(dirtemp, "D3_Vaccin_cohort",suffix[[subpop]],".RData"))
+
+D3_Vaccin_cohort<-get(paste0(dirtemp, "D3_Vaccin_cohort",suffix[[subpop]],".RData"))
+rm(list=paste0(dirtemp, "D3_Vaccin_cohort",suffix[[subpop]],".RData"))
 
 N_fup_pop <- D3_Vaccin_cohort[, .(person_id, date_vax1, type_vax_1, fup_vax1, age_at_date_vax_1, CV_at_date_vax_1,
                                   COVCANCER_at_date_vax_1, COVCOPD_at_date_vax_1, COVHIV_at_date_vax_1,
@@ -374,15 +392,19 @@ empty_df <- rbindlist(list(empty_df, as.list(c("", "", unlist(rep(c("N", "%"), l
 
 table3_4_5_6 <- rbindlist(list(empty_df, table3_4_5_6))
 
-fwrite(table3_4_5_6, file = paste0(dummytables, final_name_table3_4_5_6,
-                                   " Cohort characteristics at first COVID-19 vaccination ", 
-                                   vect_recode_manufacturer[[thisdatasource]], ".csv"))
+nameoutput <- paste0(dummytables, final_name_table3_4_5_6,
+                     " Cohort characteristics at first COVID-19 vaccination ", 
+                     vect_recode_manufacturer[[thisdatasource]],suffix[[subpop]])
+assign(nameoutput, table3_4_5_6)
+fwrite(get(nameoutput), file = paste0(dummytables, nameoutput,".csv"))
+rm(list=nameoutput)
+
 
 
 # table5 ------------------------------------------------------------------
 
 
-ageband_studystart_c <- fread(paste0(dirD4tables, "D4_descriptive_dataset_ageband_studystart_c_MIS.csv"))
+ageband_studystart_c <- fread(paste0(dirD4tables, "D4_descriptive_dataset_ageband_studystart_c_MIS",suffix[[subpop]],".csv"))
 
 ageband_studystart_c[, Datasource := c(TEST = "Test", ARS = "Italy_ARS", PHARMO = "NL_PHARMO", CPRD = "UK_CPRD",
                                        BIFAP = "ES_BIFAP")[Datasource]]
@@ -409,7 +431,7 @@ col_to_keep <- intersect(c("a", "Parameters", "Italy_ARS", "NL_PHARMO",
 total_pop_c <- total_pop_c[, ..col_to_keep]
 
 
-age_studystart_c <- fread(paste0(dirD4tables, "D4_descriptive_dataset_age_studystart_c_MIS.csv"))
+age_studystart_c <- fread(paste0(dirD4tables, "D4_descriptive_dataset_age_studystart_c_MIS",suffix[[subpop]],".csv"))
 
 age_studystart_c[, Datasource := c(TEST = "Test", ARS = "Italy_ARS", PHARMO = "NL_PHARMO", CPRD = "UK_CPRD",
                                    BIFAP = "ES_BIFAP")[Datasource]]
@@ -496,7 +518,11 @@ setcolorder(table5, c("a", "Parameters", col_order))
 
 setnames(table5, "a", " ")
 
-fwrite(table5, file = paste0(dummytables_MIS, "Cohort characteristics at first occurrence of COVID-19 prior to vaccination (cohort c).csv"))
+nameoutput <- paste0("Cohort characteristics at first occurrence of COVID-19 prior to vaccination (cohort c)",suffix[[subpop]])
+assign(nameoutput, table5)
+fwrite(get(nameoutput), file = paste0(dummytables_MIS, nameoutput,".csv"))
+rm(list=nameoutput)
+
 
 
 
@@ -575,13 +601,19 @@ table_7 <- rbindlist(list(empty_df, table_7))
 
 setnames(table_7, c("a", "N", "Perc"), c("", correct_datasource, correct_datasource))
 
-fwrite(table_7, file = paste0(dummytables, "Doses of COVID-19 vaccines and distance between first and second dose.csv"))
+nameoutput <- paste0("Doses of COVID-19 vaccines and distance between first and second dose",suffix[[subpop]])
+assign(nameoutput, table_7)
+fwrite(get(nameoutput), file = paste0(dummytables, nameoutput,".csv"))
+rm(list=nameoutput)
 
 
 
 # Table8 ----------------------------------------------------------------------------------------------------------
 
-load(paste0(dirtemp,"D3_events_ALL_OUTCOMES.RData"))
+load(paste0(dirtemp,"D3_events_ALL_OUTCOMES",suffix[[subpop]],".RData"))
+D3_events_ALL_OUTCOMES<-get(paste0("D3_events_ALL_OUTCOMES",suffix[[subpop]]))
+rm(list=paste0("D3_events_ALL_OUTCOMES",suffix[[subpop]]))
+
 D3_events_ALL_OUTCOMES <- D3_events_ALL_OUTCOMES[, .(name_event, year_event = year(date_event))][year_event > 2019, ]
 
 list_outcomes <- c(OUTCOMES_conceptssets, CONTROL_events, SECCOMPONENTS, "DEATH")
@@ -629,15 +661,19 @@ for (outcome in list_outcomes) {
 table_8 <- data.table::rbindlist(list(table_8, events_table_8), use.names=TRUE)
 setnames(table_8, c("year_event", "Narrow", "Broad"), c("", correct_datasource, correct_datasource))
 
-fwrite(table_8, file = paste0(dummytables, "Number of incident cases entire study period.csv"))
-
+nameoutput <- paste0("Number of incident cases entire study period",suffix[[subpop]])
+assign(nameoutput, table_8)
+fwrite(get(nameoutput), file = paste0(dummytables, nameoutput,".csv"))
+rm(list=nameoutput)
 
 
 
 
 # table_9 ----------------------------------------------------------------------------------------------------------
 
-load(paste0(dirtemp,"list_outcomes_observed.RData"))
+load(paste0(dirtemp,"list_outcomes_observed",suffix[[subpop]],".RData"))
+list_outcomes_observed<-get(paste0("list_outcomes_observed",suffix[[subpop]]))
+rm(list=paste0("list_outcomes_observed",suffix[[subpop]]))
 
 list_outcomes_observed <- list_outcomes_observed[list_outcomes_observed %not in% c(CONTROL_events, "DEATH")]
 
@@ -665,7 +701,11 @@ table_9 <- table_9[, First_4_digits_of_code := stringr::str_extract(code, "^(.*?
 table_9 <- table_9[is.na(First_4_digits_of_code), First_4_digits_of_code := code]
 table_9 <- table_9[, .(DAP = thisdatasource, Event, Coding_system, First_4_digits_of_code, meaning_of_event, sum)]
 
-fwrite(table_9, file = paste0(dummytables, "Code counts for narrow definitions (for each event) separately.csv"))
+nameoutput <- paste0("Code counts for narrow definitions (for each event) separately",suffix[[subpop]])
+assign(nameoutput, table_9)
+fwrite(get(nameoutput), file = paste0(dummytables, nameoutput,".csv"))
+rm(list=nameoutput)
+
 
 
 
@@ -673,7 +713,9 @@ fwrite(table_9, file = paste0(dummytables, "Code counts for narrow definitions (
 
 # table_10 ----------------------------------------------------------------------------------------------------------
 
-load(paste0(direxp,"D4_persontime_ALL_OUTCOMES.RData"))
+load(paste0(dirtemp,"D4_persontime_ALL_OUTCOMES",suffix[[subpop]],".RData"))
+D4_persontime_ALL_OUTCOMES<-get(paste0("D4_persontime_ALL_OUTCOMES",suffix[[subpop]]))
+rm(list=paste0("D4_persontime_ALL_OUTCOMES",suffix[[subpop]]))
 
 list_risk <- list_outcomes_observed
 vect_recode_AESI <- list_outcomes_observed
@@ -701,8 +743,10 @@ setcolorder(table_10, c("DAP", "AESI", "month", "PT", "IR", "lb", "ub"))
 setnames(table_10, c("month", "PT", "IR", "lb", "ub"),
          c("Month in 2020", "Person years", "IR narrow", "LL narrow", "UL narrow"))
 
-fwrite(table_10, file = paste0(dummytables, "Incidence of AESI (narrow) per 100,000 PY by calendar month in 2020.csv"))
-
+nameoutput <- paste0("Incidence of AESI (narrow) per 100,000 PY by calendar month in 2020",suffix[[subpop]])
+assign(nameoutput, table_10)
+fwrite(get(nameoutput), file = paste0(dummytables, nameoutput,".csv"))
+rm(list=nameoutput)
 
 
 
@@ -717,8 +761,10 @@ setcolorder(table_11, c("DAP", "AESI", "Ageband", "PT", "IR", "lb", "ub"))
 setnames(table_11, c("Ageband", "PT", "IR", "lb", "ub"),
          c("Age in 2020", "Person years", "IR narrow", "LL narrow", "UL narrow"))
 
-fwrite(table_11, file = paste0(dummytables, "Incidence of AESI (narrow) per 100,000 PY by age in 2020.csv"))
-
+nameoutput <- paste0("Incidence of AESI (narrow) per 100,000 PY by age in 2020",suffix[[subpop]])
+assign(nameoutput, table_11)
+fwrite(get(nameoutput), file = paste0(dummytables, nameoutput,".csv"))
+rm(list=nameoutput)
 
 
 
@@ -739,11 +785,10 @@ setorder(table_12, DAP, AESI, Ageband, sex)
 setnames(table_12, c("Ageband", "sex", "PT", "IR", "lb", "ub"),
          c("Age in 2020", "Sex", "Person years", "IR narrow", "LL narrow", "UL narrow"))
 
-fwrite(table_12, file = paste0(dummytables, "Incidence of AESI (narrow) per 100,000 PY by age & sex in 2020.csv"))
-
-
-
-
+nameoutput <- paste0("Incidence of AESI (narrow) per 100,000 PY by age & sex in 2020",suffix[[subpop]])
+assign(nameoutput, table_12)
+fwrite(get(nameoutput), file = paste0(dummytables, nameoutput,".csv"))
+rm(list=nameoutput)
 
 
 # table_13 ----------------------------------------------------------------------------------------------------------
@@ -763,9 +808,10 @@ setorder(table_13, DAP, AESI, Ageband, sex)
 setnames(table_13, c("Ageband", "sex", "PT", "IR", "lb", "ub"),
          c("Age in 2020", "Sex", "Person years", "IR narrow", "LL narrow", "UL narrow"))
 
-fwrite(table_13, file = paste0(dummytables, "Incidence of AESI (narrow) per 100,000 PY by age & sex in 2020 in at risk population.csv"))
-
-
+nameoutput <- paste0("Incidence of AESI (narrow) per 100,000 PY by age & sex in 2020 in at risk population",suffix[[subpop]])
+assign(nameoutput, table_13)
+fwrite(get(nameoutput), file = paste0(dummytables, nameoutput,".csv"))
+rm(list=nameoutput)
 
 
 # table_14 ----------------------------------------------------------------------------------------------------------
@@ -779,14 +825,16 @@ setcolorder(table_14, c("DAP", "AESI", "month", "PT", "IR", "lb", "ub"))
 setnames(table_14, c("month", "PT", "IR", "lb", "ub"),
          c("Month in 2021", "Person years", "IR narrow", "LL narrow", "UL narrow"))
 
-fwrite(table_14,file = paste0(dummytables,"Incidence of AESI (narrow) per 100,000 PY by month in 2021 (non-vaccinated).csv"))
-
-
+nameoutput <- paste0("Incidence of AESI (narrow) per 100,000 PY by month in 2021 (non-vaccinated)",suffix[[subpop]])
+assign(nameoutput, table_14)
+fwrite(get(nameoutput), file = paste0(dummytables, nameoutput,".csv"))
+rm(list=nameoutput)
 
 
 # table_15 ----------------------------------------------------------------------------------------------------------
-
-load(paste0(diroutput, "D4_doses_weeks.RData"))
+load(paste0(dirtemp,"D4_doses_weeks",suffix[[subpop]],".RData"))
+D4_doses_weeks<-get(paste0("D4_doses_weeks",suffix[[subpop]]))
+rm(list=paste0("D4_doses_weeks",suffix[[subpop]]))
 
 setorder(D4_doses_weeks, Week_number)
 table_15 <- D4_doses_weeks[Year == 2020, index := .GRP, by = "Week_number"]
@@ -808,8 +856,8 @@ D4_persontime_risk_week <- rbind(D4_persontime_risk_week, all_ages)
 
 
 # table_16 ----------------------------------------------------------------------------------------------------------
+D4_IR_risk_fup <- fread(paste0(direxp, "D4_IR_risk_fup_BC",suffix[[subpop]],".csv"))
 
-D4_IR_risk_fup <- fread(paste0(direxp,"D4_IR_risk_fup_BC.csv"))
 table_16 <- D4_IR_risk_fup[Birthcohort_persons %in% c("<1960", ">1960"), ]
 table_16 <- table_16[Birthcohort_persons %in% c("<1960", ">1960") & Dose > 0 & sex != "both_sexes", ]
 vect_recode_age <- c("<1960" = "60+", ">1960" = "<60")
@@ -839,5 +887,10 @@ setcolorder(table_16, c("DAP", "AESI", "vax_man_dose", "days_since_vax", "Birthc
 setnames(table_16, c("sex", "vax_man_dose", "days_since_vax", "Birthcohort_persons", "PT", "IR", "lb", "ub"),
          c("Sex", "Vaccine & dose", "Days since vaccination", "Age", "Person days", "IR narrow", "LL narrow", "UL narrow"))
 
-fwrite(table_16, file = paste0(dummytables, "Incidence of AESI (narrow) per 100,000 PY by week since vaccination.csv"))
+nameoutput <- paste0("Incidence of AESI (narrow) per 100,000 PY by week since vaccination",suffix[[subpop]])
+assign(nameoutput, table_16)
+fwrite(get(nameoutput), file = paste0(dummytables, nameoutput,".csv"))
+rm(list=nameoutput)
+
 rm(table_16, D4_IR_risk_fup)
+}
