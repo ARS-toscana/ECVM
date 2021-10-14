@@ -54,6 +54,11 @@ fwrite(get(nameoutput), file = paste0(dirD4tables, nameoutput,".csv"))
 rm(list=nameoutput)
 
 
+load(paste0(dirtemp,"D3_study_population",suffix[[subpop]],".RData"))
+
+D3_study_population<-get(paste0("D3_study_population",suffix[[subpop]]))
+rm(list=paste0("D3_study_population",suffix[[subpop]]))
+
 D4_descriptive_dataset_ageband_studystart <- D3_study_population[, .(person_id, ageband_at_study_entry)]
 setnames(D4_descriptive_dataset_ageband_studystart, "ageband_at_study_entry", "age_at_study_entry")
 

@@ -36,7 +36,7 @@ setnames(temp_MIS_narrow,"date_event","MIS_date_narrow")
 D3_study_variables_for_MIS <- merge(D3_study_variables_for_MIS, temp_MIS_narrow, all.x = T, by="person_id")
 rm(temp_MIS_narrow)
 
-D3_study_variables_for_MIS<-D3_study_variables_for_MIS[, agebands_at_1_jan_2021:=cut(age_at_1_jan_2021, breaks = Agebands, labels = Agebands_lables)]
+D3_study_variables_for_MIS<-D3_study_variables_for_MIS[, agebands_at_1_jan_2021:=cut(age_at_1_jan_2021, breaks = Agebands, labels = Agebands_labels)]
 
 tempname<-paste0("D3_study_variables_for_MIS",suffix[[subpop]])
 assign(tempname,D3_study_variables_for_MIS)
