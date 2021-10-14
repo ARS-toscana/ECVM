@@ -161,11 +161,6 @@ Birthcohorts =c("<1940", "1940-1949", "1950-1959", "1960-1969",
 Agebands = c(-1, 4, 11, 17, 19, 29, 39, 49, 59, 69, 79, Inf)
 Agebands_labels = c("0-4","5-11","12-17","18-19","20-29", "30-39", "40-49","50-59","60-69", "70-79","80+")
 
-Birthbands = c(-1 ,1939, 1949, 1959, 1969, 1979, 1989, 1999, 2001, 2007, 2014, Inf)
-Birthbands_labels = c("<1940", "1940-1949", "1950-1959", "1960-1969", "1970-1979",
-                     "1980-1989", "1990-1999", "2000-2001", "2002-2007", "2008-2014", ">2015")
-
-
 
 age_fast = function(from, to) {
   from_lt = as.POSIXlt(from)
@@ -241,12 +236,12 @@ correct_col_type <- function(df) {
 }
 
 bc_divide_60 <- function(df, by_cond, cols_to_sums) {
-  older60 <- copy(df)[Birthcohort_persons %in% c("<1940", "1940-1949", "1950-1959"),
+  older60 <- copy(df)[ageband_at_study_entry %in% c("60-69", "70-79", "80+"),
                       lapply(.SD, sum, na.rm=TRUE), by = by_cond, .SDcols = cols_to_sums]
-  older60 <- unique(older60[, Birthcohort_persons := "<1960"])
-  younger60 <- copy(df)[Birthcohort_persons %in% c("1960-1969", "1970-1979", "1980-1989", "1990+"),
+  older60 <- unique(older60[, ageband_at_study_entry := "60+"])
+  younger60 <- copy(df)[ageband_at_study_entry %in% c("0-4", "5-11", "12-17", "18-19", "20-29", "30-39", "40-49", "50-59"),
                         lapply(.SD, sum, na.rm=TRUE), by = by_cond, .SDcols = cols_to_sums]
-  younger60 <- unique(younger60[, Birthcohort_persons := ">1960"])
+  younger60 <- unique(younger60[, ageband_at_study_entry := "0-59"])
   df <- rbind(df, older60)
   df <- rbind(df, younger60)
   # df <- data.table::rbindlist(list(df, older60, younger60))
