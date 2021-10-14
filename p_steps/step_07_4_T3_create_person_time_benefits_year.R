@@ -49,7 +49,7 @@ for (subpop in subpopulations_non_empty) {
 persontime_benefit_year <- Output_file
 
 thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
-fwrite(persontime_benefit_year,file=paste0(thisdirexp,"D4_persontime_benefit_year",suffix[[subpop]],"_",thisdatasource,"_",currentdate,"_",scriptversion,".csv"))
+fwrite(persontime_benefit_year,file=paste0(thisdirexp,"D4_persontime_benefit_year",suffix[[subpop]],".csv"))
 
 nameoutput<-paste0("D4_persontime_benefit_year",suffix[[subpop]])
 assign(nameoutput,persontime_benefit_year)

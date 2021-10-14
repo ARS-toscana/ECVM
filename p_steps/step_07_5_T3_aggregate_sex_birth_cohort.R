@@ -1,5 +1,6 @@
 
 for (subpop in subpopulations_non_empty) {  
+  print(subpop)
   namedataset1<-paste0("D4_persontime_risk_week",suffix[[subpop]])
   load(paste0(diroutput,"D4_persontime_risk_week",suffix[[subpop]],".RData"))
   
@@ -112,7 +113,7 @@ for (subpop in subpopulations_non_empty) {
   assign(nameoutput3, merge(empty_risk_year, get(nameoutput3), all.x = T,
                                       by = c("Dose", "type_vax", "week_fup", "sex", "ageband_at_study_entry")))
   
-  for (i in names(D4_persontime_risk_year_BC)){
+  for (i in names(get(nameoutput3))){
     get(nameoutput3)[is.na(get(i)), (i) := 0]
   }
   
@@ -158,6 +159,6 @@ for (subpop in subpopulations_non_empty) {
   rm(list=namedataset4)
   rm(namedataset4,nameoutput4)
   
-  rm(all_ages, all_sex, cols_to_sums)
+  rm(all_ages, all_sex, cols_to_sums,empty_risk_year,vax_dose,vax_dose_0,week_vax_dose)
   
 }

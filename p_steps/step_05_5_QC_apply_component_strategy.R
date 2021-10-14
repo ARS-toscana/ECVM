@@ -111,7 +111,7 @@ for (OUTCOME in OUTCOME_events) {
     OUTCOME_components <- OUTCOME_aggregated
     assign(nameobject, OUTCOME_aggregated)
     thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
-    fwrite(get(nameobject),file=paste0(thisdirexp,paste0(nameobject,"_",thisdatasource,"_",currentdate,"_",scriptversion,".csv")))
+    fwrite(get(nameobject),file=paste0(thisdirexp,paste0(nameobject,".csv")))
 
 
   assign(nameobject, OUTCOME_components)

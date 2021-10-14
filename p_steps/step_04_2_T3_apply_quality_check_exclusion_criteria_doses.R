@@ -32,7 +32,7 @@ selected_population <- CreateFlowChart(
   strata = "monday_week",
   flowchartname = paste0("Flowchart_doses",suffix[[subpop]]))
 
-  fwrite(get(paste0("Flowchart_doses",suffix[[subpop]])), paste0(direxp,"Flowchart_doses",suffix[[subpop]],"_",thisdatasource,"_",currentdate,"_",scriptversion,".csv"))
+  fwrite(get(paste0("Flowchart_doses",suffix[[subpop]])), paste0(direxp,"Flowchart_doses",suffix[[subpop]],".csv"))
   
   rm(list=paste0("Flowchart_doses",suffix[[subpop]]))
   rm(list=paste0("persons_doses", suffix[[subpop]]))

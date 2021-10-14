@@ -55,7 +55,7 @@ for (outcome in list_outcomes) {
                                           )
     
     thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
-    fwrite(temp, file = paste0(thisdirexp,nameobject,"_",thisdatasource,"_",currentdate,"_",scriptversion,".csv"))
+    fwrite(temp, file = paste0(thisdirexp,nameobject,".csv"))
 
     outcome_code_counts <-temp
 
