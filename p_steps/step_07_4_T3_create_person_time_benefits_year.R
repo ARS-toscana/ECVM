@@ -64,7 +64,7 @@ rm(list=paste0("D3_outcomes_covid", suffix[[subpop]]))
 
 
 for (subpop in subpopulations_non_empty){
-  tempname<-paste0("D4_persontime_benefit_year",suffix[[subpop]],"_",thisdatasource,"_",currentdate,"_",scriptversion)
+  tempname<-paste0("D4_persontime_benefit_year",suffix[[subpop]])
   thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
   assign(tempname,fread(paste0(thisdirexp,tempname,".csv")))
   thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
