@@ -1,32 +1,24 @@
 #COHORT B
-load(paste0(diroutput, "D4_population_b.RData"))
-load(paste0(dirtemp,"D3_events_ALL_OUTCOMES.RData"))
-#load(paste0(dirtemp,"list_outcomes_observed.RData"))
-
-list_outcomes_MIS <- c("MIS_narrow","KD_narrow","MIS_KD_narrow","MISCC_narrow", "MIS_broad","KD_broad","MIS_KD_broad","MISCC_broad","MYOCARD_narrow","MYOCARD_possible","Myocardalone_narrow","Myocardalone_possible")
 
 for (subpop in subpopulations_non_empty) {  
   print(subpop)
   start_persontime_studytime = "20200101"
   
-  if (this_datasource_has_subpopulations == TRUE){ 
-    D4_population_b <- D4_population_b[[subpop]]
-    events_ALL_OUTCOMES <- D3_events_ALL_OUTCOMES[[subpop]]
-    #intersect(list_outcomes_observed[[subpop]],list_outcomes_MIS)
-    #list_outcomes <- list_outcomes_observed[[subpop]]
-  }else{
-    D4_population_b <- D4_population_b
-    events_ALL_OUTCOMES <- D3_events_ALL_OUTCOMES
-    #list_outcomes <-list_outcomes_observed
-  }
-}
+  load(paste0(dirtemp,"D3_events_ALL_OUTCOMES",suffix[[subpop]],".RData"))
+  load(paste0(diroutput,"D4_population_b",suffix[[subpop]],".RData"))
+  
+  events_ALL_OUTCOMES<-get(paste0("D3_events_ALL_OUTCOMES", suffix[[subpop]]))
+  population_b<-get(paste0("D4_population_b", suffix[[subpop]]))
+  
 
-endyear<- substr(D4_population_b[,max(study_exit_date_MIS_b)], 1, 4)
+list_outcomes_MIS <- c("MIS_narrow","KD_narrow","MIS_KD_narrow","MISCC_narrow", "MIS_broad","KD_broad","MIS_KD_broad","MISCC_broad","MYOCARD_narrow","MYOCARD_possible","Myocardalone_narrow","Myocardalone_possible")
+
+endyear<- substr(population_b[,max(study_exit_date_MIS_b)], 1, 4)
 end_persontime_studytime<-as.character(paste0(endyear,"1231"))
 
 Output_file<-CountPersonTime(
   Dataset_events = events_ALL_OUTCOMES,
-  Dataset = D4_population_b,
+  Dataset = population_b,
   Person_id = "person_id",
   Start_study_time = start_persontime_studytime,
   End_study_time = end_persontime_studytime,
@@ -44,12 +36,20 @@ Output_file<-CountPersonTime(
   Aggregate = T
 )
 
-D4_persontime_b<-Output_file
-save(D4_persontime_b, file = paste0(diroutput, "D4_persontime_b.RData"))
+
+
+nameoutput<-paste0("D4_persontime_b",suffix[[subpop]])
+assign(nameoutput ,Output_file)
+save(nameoutput, file = paste0(diroutput, nameoutput,".RData"),list=nameoutput)
+
+thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
+fwrite(get(nameoutput),file=paste0(thisdirexp,nameoutput,".csv"))
+
+rm(list=nameoutput)
 
 Output_file<-CountPersonTime(
   Dataset_events = events_ALL_OUTCOMES,
-  Dataset = D4_population_b,
+  Dataset = population_b,
   Person_id = "person_id",
   Start_study_time = start_persontime_studytime,
   End_study_time = end_persontime_studytime,
@@ -67,40 +67,68 @@ Output_file<-CountPersonTime(
   Aggregate = T
 )
 
-D4_persontime_monthly_b<-Output_file
-save(D4_persontime_monthly_b, file = paste0(diroutput, "D4_persontime_monthly_b.RData"))
+nameoutput<-paste0("D4_persontime_monthly_b",suffix[[subpop]])
+assign(nameoutput ,Output_file)
+save(nameoutput, file = paste0(diroutput, nameoutput,".RData"),list=nameoutput)
 
-# for (subpop in subpopulations_non_empty){
-#   thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
-#   thisdirsmallcountsremoved <- ifelse(this_datasource_has_subpopulations == FALSE,dirsmallcountsremoved,dirsmallcountsremovedsubpop[[subpop]])
-#   col<-colnames(D4_persontime_b)[-(1:6)]
-#   temp<-paste0(col,"=5")
-#   temp2<-paste("c(",paste(temp, collapse = ','),")")
-#   suppressWarnings(
-#     DRE_Treshold(
-#       Inputfolder = thisdirexp,
-#       Outputfolder = thisdirsmallcountsremoved,
-#       Delimiter = ",",
-#       Varlist = c(eval(parse(text=(temp2)))),
-#       FileContains = "D4_persontime_b"
-#     )
-#   )
-# }
+thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
+fwrite(get(nameoutput),file=paste0(thisdirexp,nameoutput,".csv"))
+
+rm(list=nameoutput)
+
+
+}
+
+rm(population_b)
+
+
+for (subpop in subpopulations_non_empty){
+  tempname<-paste0("D4_persontime_b",suffix[[subpop]])
+  thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
+  assign(tempname,fread(paste0(thisdirexp,tempname,".csv")))
+  thisdirsmallcountsremoved <- ifelse(this_datasource_has_subpopulations == FALSE,dirsmallcountsremoved,dirsmallcountsremovedsubpop[[subpop]])
+  col<-colnames(get(tempname))[-(1:6)]
+  temp<-paste0(col,"=5")
+  temp2<-paste("c(",paste(temp, collapse = ','),")")
+  suppressWarnings(
+    DRE_Treshold(
+      Inputfolder = thisdirexp,
+      Outputfolder = thisdirsmallcountsremoved,
+      Delimiter = ",",
+      Varlist = c(eval(parse(text=(temp2)))),
+      FileContains = "D4_persontime_b"
+    )
+  )
+}
+
+for (subpop in subpopulations_non_empty){
+  tempname<-paste0("D4_persontime_monthly_b",suffix[[subpop]])
+  thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
+  assign(tempname,fread(paste0(thisdirexp,tempname,".csv")))
+  thisdirsmallcountsremoved <- ifelse(this_datasource_has_subpopulations == FALSE,dirsmallcountsremoved,dirsmallcountsremovedsubpop[[subpop]])
+  col<-colnames(get(tempname))[-(1:6)]
+  temp<-paste0(col,"=5")
+  temp2<-paste("c(",paste(temp, collapse = ','),")")
+  suppressWarnings(
+    DRE_Treshold(
+      Inputfolder = thisdirexp,
+      Outputfolder = thisdirsmallcountsremoved,
+      Delimiter = ",",
+      Varlist = c(eval(parse(text=(temp2)))),
+      FileContains = "D4_persontime_monthly_b"
+    )
+  )
+}
 
 #COHORT C
-load(paste0(diroutput, "D4_population_c.RData"))
-
 for (subpop in subpopulations_non_empty) {  
   print(subpop)
   start_persontime_studytime = "20200101"
   
-  if (this_datasource_has_subpopulations == TRUE){ 
-    D4_population_c <- D4_population_c[[subpop]]
-  }else{
-    D4_population_c <- D4_population_c
-  }
-}
-
+  load(paste0(diroutput,"D4_population_c",suffix[[subpop]],".RData"))
+  
+  population_c<-get(paste0("D4_population_c", suffix[[subpop]]))
+  
 endyear<- substr(D4_population_c[,max(study_exit_date_MIS_c)], 1, 4)
 end_persontime_studytime<-as.character(paste0(endyear,"1231"))
 
@@ -125,8 +153,13 @@ Output_file<-CountPersonTime(
   Aggregate = T
 )
 
-D4_persontime_c<-Output_file
-save(D4_persontime_c, file = paste0(diroutput, "D4_persontime_c.RData"))
+nameoutput<-paste0("D4_persontime_c",suffix[[subpop]])
+assign(nameoutput ,Output_file)
+save(nameoutput, file = paste0(diroutput, nameoutput,".RData"),list=nameoutput)
+
+thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
+fwrite(get(nameoutput),file=paste0(thisdirexp,nameoutput,".csv"))
+rm(list=nameoutput)
 
 Output_file<-CountPersonTime(
   Dataset_events = events_ALL_OUTCOMES,
@@ -148,31 +181,65 @@ Output_file<-CountPersonTime(
   Aggregate = T
 )
 
-D4_persontime_monthly_c<-Output_file
-save(D4_persontime_monthly_c, file = paste0(diroutput, "D4_persontime_monthly_c.RData"))
+nameoutput<-paste0("D4_persontime_monthly_c",suffix[[subpop]])
+assign(nameoutput ,Output_file)
+save(nameoutput, file = paste0(diroutput, nameoutput,".RData"),list=nameoutput)
+
+thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
+fwrite(get(nameoutput),file=paste0(thisdirexp,nameoutput,".csv"))
+
+rm(list=nameoutput)
+rm(nameoutput)
+}
 
 
-# for (subpop in subpopulations_non_empty){
-#   thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
-#   thisdirsmallcountsremoved <- ifelse(this_datasource_has_subpopulations == FALSE,dirsmallcountsremoved,dirsmallcountsremovedsubpop[[subpop]])
-#   col<-colnames(D4_persontime_c)[-(1:6)]
-#   temp<-paste0(col,"=5")
-#   temp2<-paste("c(",paste(temp, collapse = ','),")")
-#   suppressWarnings(
-#     DRE_Treshold(
-#       Inputfolder = thisdirexp,
-#       Outputfolder = thisdirsmallcountsremoved,
-#       Delimiter = ",",
-#       Varlist = c(eval(parse(text=(temp2)))),
-#       FileContains = "D4_persontime_c"
-#     )
-#   )
-# }
+for (subpop in subpopulations_non_empty){
+  tempname<-paste0("D4_persontime_c",suffix[[subpop]])
+  thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
+  assign(tempname,fread(paste0(thisdirexp,tempname,".csv")))
+  thisdirsmallcountsremoved <- ifelse(this_datasource_has_subpopulations == FALSE,dirsmallcountsremoved,dirsmallcountsremovedsubpop[[subpop]])
+  col<-colnames(get(tempname))[-(1:6)]
+  temp<-paste0(col,"=5")
+  temp2<-paste("c(",paste(temp, collapse = ','),")")
+  suppressWarnings(
+    DRE_Treshold(
+      Inputfolder = thisdirexp,
+      Outputfolder = thisdirsmallcountsremoved,
+      Delimiter = ",",
+      Varlist = c(eval(parse(text=(temp2)))),
+      FileContains = "D4_persontime_c"
+    )
+  )
+}
+
+for (subpop in subpopulations_non_empty){
+  tempname<-paste0("D4_persontime_monthly_c",suffix[[subpop]])
+  thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
+  assign(tempname,fread(paste0(thisdirexp,tempname,".csv")))
+  thisdirsmallcountsremoved <- ifelse(this_datasource_has_subpopulations == FALSE,dirsmallcountsremoved,dirsmallcountsremovedsubpop[[subpop]])
+  col<-colnames(get(tempname))[-(1:6)]
+  temp<-paste0(col,"=5")
+  temp2<-paste("c(",paste(temp, collapse = ','),")")
+  suppressWarnings(
+    DRE_Treshold(
+      Inputfolder = thisdirexp,
+      Outputfolder = thisdirsmallcountsremoved,
+      Delimiter = ",",
+      Varlist = c(eval(parse(text=(temp2)))),
+      FileContains = "D4_persontime_monthly_c"
+    )
+  )
+}
 
 #COHORT D
-load(paste0(diroutput, "D4_population_d.RData"))
-
-start_persontime_studytime = "20210101"
+for (subpop in subpopulations_non_empty) {  
+  print(subpop)
+  start_persontime_studytime = "20200101"
+  
+  load(paste0(diroutput,"D4_population_d",suffix[[subpop]],".RData"))
+  
+  population_c<-get(paste0("D4_population_d", suffix[[subpop]]))
+  
 endyear<- substr(D4_population_d[,max(study_exit_date_MIS_d)], 1, 4)
 end_persontime_studytime<-as.character(paste0(endyear,"1231"))
 
@@ -197,8 +264,13 @@ Output_file<-CountPersonTime(
   Aggregate = T
 )
 
-D4_persontime_d<-Output_file
-save(D4_persontime_d, file = paste0(diroutput, "D4_persontime_d.RData"))
+nameoutput<-paste0("D4_persontime_d",suffix[[subpop]])
+assign(nameoutput ,Output_file)
+save(nameoutput, file = paste0(diroutput, nameoutput,".RData"),list=nameoutput)
+
+thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
+fwrite(get(nameoutput),file=paste0(thisdirexp,nameoutput,".csv"))
+rm(list=nameoutput)
 
 Output_file<-CountPersonTime(
   Dataset_events = events_ALL_OUTCOMES,
@@ -220,22 +292,51 @@ Output_file<-CountPersonTime(
   Aggregate = T
 )
 
-D4_persontime_monthly_d<-Output_file
-save(D4_persontime_monthly_d, file = paste0(diroutput, "D4_persontime_monthly_d.RData"))
+nameoutput<-paste0("D4_persontime_monthly_d",suffix[[subpop]])
+assign(nameoutput ,Output_file)
+save(nameoutput, file = paste0(diroutput, nameoutput,".RData"),list=nameoutput)
 
-# for (subpop in subpopulations_non_empty){
-#   thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
-#   thisdirsmallcountsremoved <- ifelse(this_datasource_has_subpopulations == FALSE,dirsmallcountsremoved,dirsmallcountsremovedsubpop[[subpop]])
-#   col<-colnames(D4_persontime_d)[-(1:6)]
-#   temp<-paste0(col,"=5")
-#   temp2<-paste("c(",paste(temp, collapse = ','),")")
-#   suppressWarnings(
-#     DRE_Treshold(
-#       Inputfolder = thisdirexp,
-#       Outputfolder = thisdirsmallcountsremoved,
-#       Delimiter = ",",
-#       Varlist = c(eval(parse(text=(temp2)))),
-#       FileContains = "D4_persontime_d"
-#     )
-#   )
-# }
+thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
+fwrite(get(nameoutput),file=paste0(thisdirexp,nameoutput,".csv"))
+rm(list=nameoutput)
+
+}
+
+
+for (subpop in subpopulations_non_empty){
+  tempname<-paste0("D4_persontime_d",suffix[[subpop]])
+  thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
+  assign(tempname,fread(paste0(thisdirexp,tempname,".csv")))
+  thisdirsmallcountsremoved <- ifelse(this_datasource_has_subpopulations == FALSE,dirsmallcountsremoved,dirsmallcountsremovedsubpop[[subpop]])
+  col<-colnames(get(tempname))[-(1:6)]
+  temp<-paste0(col,"=5")
+  temp2<-paste("c(",paste(temp, collapse = ','),")")
+  suppressWarnings(
+    DRE_Treshold(
+      Inputfolder = thisdirexp,
+      Outputfolder = thisdirsmallcountsremoved,
+      Delimiter = ",",
+      Varlist = c(eval(parse(text=(temp2)))),
+      FileContains = "D4_persontime_d"
+    )
+  )
+}
+
+for (subpop in subpopulations_non_empty){
+  tempname<-paste0("D4_persontime_monthly_d",suffix[[subpop]])
+  thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
+  assign(tempname,fread(paste0(thisdirexp,tempname,".csv")))
+  thisdirsmallcountsremoved <- ifelse(this_datasource_has_subpopulations == FALSE,dirsmallcountsremoved,dirsmallcountsremovedsubpop[[subpop]])
+  col<-colnames(get(tempname))[-(1:6)]
+  temp<-paste0(col,"=5")
+  temp2<-paste("c(",paste(temp, collapse = ','),")")
+  suppressWarnings(
+    DRE_Treshold(
+      Inputfolder = thisdirexp,
+      Outputfolder = thisdirsmallcountsremoved,
+      Delimiter = ",",
+      Varlist = c(eval(parse(text=(temp2)))),
+      FileContains = "D4_persontime_monthly_d"
+    )
+  )
+}
