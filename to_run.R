@@ -1,12 +1,10 @@
 #-------------------------------
 # ECVM script
 
-# v6.0 - 29 September 2021
-
 # authors: Rosa Gini, Olga Paoletti, Davide Messina, Giorgio Limoncella
 
-# changelog V5.3_MIS:
-# adjutment for subpopulations
+# v6.0 - 29 September 2021
+# adjustment for subpopulations and change of agebands
 
 # changelog V5.3_MIS:
 # addition of final tables 1-7

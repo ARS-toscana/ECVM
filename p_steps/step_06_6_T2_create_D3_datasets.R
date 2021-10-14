@@ -65,7 +65,7 @@ D3_Vaccin_cohort <- D3_Vaccin_cohort[, .(person_id, sex, date_of_birth, study_en
 
 nameoutput<-paste0("D3_Vaccin_cohort",suffix[[subpop]])
 assign(nameoutput,D3_Vaccin_cohort)
-save(D3_Vaccin_cohort, file = paste0(dirtemp, "D3_Vaccin_cohort",suffix[[subpop]],".RData"))
+save(nameoutput, file = paste0(dirtemp, "D3_Vaccin_cohort",suffix[[subpop]],".RData"),list=nameoutput)
 
 persons_at_risk <- copy(study_population_cov_ALL)[, .(person_id, at_risk_at_study_entry)]
 D3_vaxweeks_vaccin_cohort <- D3_Vaccin_cohort[, .(person_id, sex, date_of_birth, study_entry_date,

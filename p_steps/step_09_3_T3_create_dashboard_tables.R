@@ -1,12 +1,27 @@
-load(paste0(dirtemp, "D3_vaxweeks.RData"))
-load(paste0(dirtemp, "D3_Vaccin_cohort.RData"))
-load(paste0(dirtemp, "D3_study_population.RData"))
-load(paste0(dirtemp,"list_outcomes_observed.RData"))
-load(paste0(diroutput, "D4_doses_weeks.RData"))
 
+for (subpop in subpopulations_non_empty) {  
+   print(subpop)
+   
+   load(paste0(dirtemp,"D3_vaxweeks",suffix[[subpop]],".RData"))
+   load(paste0(dirtemp,"D3_Vaccin_cohort",suffix[[subpop]],".RData"))
+   load(paste0(dirtemp,"D3_study_population",suffix[[subpop]],".RData"))
+   load(paste0(dirtemp,"list_outcomes_observed",suffix[[subpop]],".RData"))
+   load(paste0(diroutput,"D4_doses_weeks",suffix[[subpop]],".RData"))
+   
+   vaxweeks<-get(paste0("D3_vaxweeks",suffix[[subpop]]))
+   rm(list=paste0("D3_vaxweeks",suffix[[subpop]]))
+   Vaccin_cohort<-get(paste0("D3_Vaccin_cohort",suffix[[subpop]]))
+   rm(list=paste0("D3_Vaccin_cohort",suffix[[subpop]]))
+   study_population<-get(paste0("D3_study_population",suffix[[subpop]]))
+   rm(list=paste0("D3_study_population",suffix[[subpop]]))
+   list_outcomes_observed<-get(paste0("list_outcomes_observed",suffix[[subpop]]))
+   rm(list=paste0("list_outcomes_observed",suffix[[subpop]]))
+   doses_weeks<-get(paste0("D4_doses_weeks",suffix[[subpop]]))
+   rm(list=paste0("D4_doses_weeks",suffix[[subpop]]))
+   
 # Birth Cohort ----------------------------------------------------------------------------------------------------
 
-cohort_to_doses_weeks <- D3_Vaccin_cohort[, .(person_id, sex, type_vax_1, type_vax_2, date_of_birth)]
+cohort_to_doses_weeks <- Vaccin_cohort[, .(person_id, sex, type_vax_1, type_vax_2, date_of_birth)]
 
 all_mondays <- seq.Date(as.Date("19000101","%Y%m%d"), study_end, by = "week")
 
@@ -32,7 +47,7 @@ all_tuesdays_df <- all_tuesdays_df[all_days >= study_start,]
 
 
 
-exited_pop <- copy(D3_vaxweeks)[, .(person_id, end_date_of_period, Dose, week)]
+exited_pop <- copy(vaxweeks)[, .(person_id, end_date_of_period, Dose, week)]
 exited_pop <- exited_pop[exited_pop[, .I[Dose == max(Dose)], by = "person_id"]$V1]
 exited_pop <- exited_pop[exited_pop[, .I[week == max(week)], by = "person_id"]$V1][, week := NULL]
 
@@ -44,7 +59,7 @@ exited_pop <- merge(exited_pop, all_tuesdays_df, by.x = "end_date_of_period",
 setnames(exited_pop,  "tuesday_week", "week")
 exited_pop <- exited_pop[, week := week + 6]
 
-pop_traits <- copy(D3_study_population)[, .(person_id, date_of_birth, CV_at_study_entry, COVCANCER_at_study_entry,
+pop_traits <- copy(study_population)[, .(person_id, date_of_birth, CV_at_study_entry, COVCANCER_at_study_entry,
                                             COVCOPD_at_study_entry, COVHIV_at_study_entry, COVCKD_at_study_entry,
                                             COVDIAB_at_study_entry, COVOBES_at_study_entry, COVSICKLE_at_study_entry,
                                             immunosuppressants_at_study_entry, at_risk_at_study_entry, type_vax_1,
@@ -102,10 +117,10 @@ exited_pop_risk_factors <- exited_pop_risk_factors[, week := format(week, "%Y%m%
 
 
 
-D3_vaxweeks <- D3_vaxweeks[week == 0]
-D3_vaxweeks <- merge(D3_vaxweeks, all_days_df, by.x = "start_date_of_period", by.y = "all_days", all.x = T)
+vaxweeks <- vaxweeks[week == 0]
+vaxweeks <- merge(vaxweeks, all_days_df, by.x = "start_date_of_period", by.y = "all_days", all.x = T)
 
-vaxweeks_to_dos_bir_cor_base <- merge(D3_vaxweeks, cohort_to_doses_weeks, by = "person_id")
+vaxweeks_to_dos_bir_cor_base <- merge(vaxweeks, cohort_to_doses_weeks, by = "person_id")
 vaxweeks_to_dos_bir_cor <- vaxweeks_to_dos_bir_cor_base[, Birthcohort_persons := findInterval(year(date_of_birth),
                                                                                               c(1940, 1950, 1960, 1970, 1980, 1990))]
 vaxweeks_to_dos_bir_cor$Birthcohort_persons <- as.character(vaxweeks_to_dos_bir_cor$Birthcohort_persons)
@@ -148,9 +163,15 @@ vect_recode_birthcohort <- c("<1940" = "80+", "1940-1949" = "70-79", "1950-1959"
                              "all_birth_cohorts" = "all_birth_cohorts", "<1960" = "60+")
 DOSES_BIRTHCOHORTS <- DOSES_BIRTHCOHORTS[, ageband := vect_recode_birthcohort[birth_cohort]]
 
-fwrite(DOSES_BIRTHCOHORTS, file = paste0(dirdashboard, "DOSES_BIRTHCOHORTS.csv"))
+nameoutput <- paste0("DOSES_BIRTHCOHORTS",suffix[[subpop]])
+assign(nameoutput, DOSES_BIRTHCOHORTS)
+fwrite(get(nameoutput), file = paste0(dirdashboard, nameoutput,".csv"))
+rm(list=nameoutput)
+
+
+# fwrite(DOSES_BIRTHCOHORTS, file = paste0(dirdashboard, "DOSES_BIRTHCOHORTS.csv"))
 # 
-# tot_pop_cohorts <- D3_study_population[, birth_cohort := findInterval(year(date_of_birth), c(1940, 1950, 1960, 1970, 1980, 1990))]
+# tot_pop_cohorts <- study_population[, birth_cohort := findInterval(year(date_of_birth), c(1940, 1950, 1960, 1970, 1980, 1990))]
 # tot_pop_cohorts$birth_cohort <- as.character(tot_pop_cohorts$birth_cohort)
 # tot_pop_cohorts <- tot_pop_cohorts[.(birth_cohort = c("0", "1", "2", "3", "4", "5", "6"),
 #                                      to = c("<1940", "1940-1949", "1950-1959", "1960-1969", "1970-1979",
@@ -164,7 +185,7 @@ fwrite(DOSES_BIRTHCOHORTS, file = paste0(dirdashboard, "DOSES_BIRTHCOHORTS.csv")
 # tot_pop_cohorts <- rbind(tot_pop_cohorts, older60)
 
 
-tot_pop_cohorts <- unique(D4_doses_weeks[, .(week = format(Week_number, "%Y%m%d"), birth_cohort = Birthcohort_persons,
+tot_pop_cohorts <- unique(doses_weeks[, .(week = format(Week_number, "%Y%m%d"), birth_cohort = Birthcohort_persons,
                                              Persons_in_week)])
 all_pop <- copy(tot_pop_cohorts)[birth_cohort %in% c("<1940", "1940-1949", "1950-1959", "1960-1969",
                                                      "1970-1979", "1980-1989", "1990+"),
@@ -186,7 +207,11 @@ COVERAGE_BIRTHCOHORTS <- COVERAGE_BIRTHCOHORTS[, .(datasource, week, vx_manufact
 
 COVERAGE_BIRTHCOHORTS <- COVERAGE_BIRTHCOHORTS[, ageband := vect_recode_birthcohort[birth_cohort]]
 
-fwrite(COVERAGE_BIRTHCOHORTS, file = paste0(dirdashboard, "COVERAGE_BIRTHCOHORTS.csv"))
+nameoutput <- paste0("COVERAGE_BIRTHCOHORTS",suffix[[subpop]])
+assign(nameoutput, COVERAGE_BIRTHCOHORTS)
+fwrite(get(nameoutput), file = paste0(dirdashboard, nameoutput,".csv"))
+rm(list=nameoutput)
+
 
 if (any(COVERAGE_BIRTHCOHORTS[, percentage] > 100)) {
   stop("Percentage in COVERAGE_BIRTHCOHORTS > 100")
@@ -195,25 +220,29 @@ if (any(COVERAGE_BIRTHCOHORTS[, percentage] > 100)) {
 
 # Risk Factors ----------------------------------------------------------------------------------------------------
 
-load(paste0(diroutput, "D3_study_population_cov_ALL.RData"))
+load(paste0(diroutput,"D3_study_population_cov_ALL",suffix[[subpop]],".RData"))
 
-setnames(D3_study_population_cov_ALL,
+study_population_cov_ALL<-get(paste0("D3_study_population_cov_ALL",suffix[[subpop]]))
+rm(list=paste0("D3_study_population_cov_ALL",suffix[[subpop]]))
+
+
+setnames(study_population_cov_ALL,
          c("CV_either_DX_or_DP", "COVCANCER_either_DX_or_DP", "COVCOPD_either_DX_or_DP", "COVHIV_either_DX_or_DP",
            "COVCKD_either_DX_or_DP", "COVDIAB_either_DX_or_DP", "COVOBES_either_DX_or_DP", "COVSICKLE_either_DX_or_DP",
            "IMMUNOSUPPR_at_study_entry", "all_covariates_non_CONTR"),
          c("CV", "COVCANCER", "COVCOPD", "COVHIV", "COVCKD", "COVDIAB", "COVOBES", "COVSICKLE", "IMMUNOSUPPR",
            "any_risk_factors"))
 
-D3_study_population_cov_ALL <- D3_study_population_cov_ALL[, .(person_id, CV, COVCANCER, COVCOPD, COVHIV, COVCKD,
+study_population_cov_ALL <- study_population_cov_ALL[, .(person_id, CV, COVCANCER, COVCOPD, COVHIV, COVCKD,
                                                                COVDIAB, COVOBES, COVSICKLE, IMMUNOSUPPR, any_risk_factors)]
 
-D3_study_population_cov_ALL <- melt(D3_study_population_cov_ALL,
+study_population_cov_ALL <- melt(study_population_cov_ALL,
                                     measure.vars = c("CV", "COVCANCER", "COVCOPD", "COVHIV", "COVCKD", "COVDIAB",
                                                      "COVOBES", "COVSICKLE", "IMMUNOSUPPR", "any_risk_factors"),
                                     variable.name = "riskfactor", value.name = "to_drop")
 
-D3_study_population_cov_ALL <- D3_study_population_cov_ALL[to_drop == 1, ]
-vaxweeks_to_dos_risk <- merge(vaxweeks_to_dos_bir_cor_base, D3_study_population_cov_ALL, by = "person_id")
+study_population_cov_ALL <- study_population_cov_ALL[to_drop == 1, ]
+vaxweeks_to_dos_risk <- merge(vaxweeks_to_dos_bir_cor_base, study_population_cov_ALL, by = "person_id")
 
 vaxweeks_to_dos_risk <- vaxweeks_to_dos_risk[, vx_manufacturer := fifelse(Dose == 1, type_vax_1, type_vax_2)]
 vaxweeks_to_dos_risk <- vaxweeks_to_dos_risk[, Datasource := thisdatasource]
@@ -232,10 +261,12 @@ complete_df <- expand.grid(datasource = thisdatasource, week = monday_week, vx_m
 vaxweeks_to_dos_risk <- merge(vaxweeks_to_dos_risk, complete_df, all.y = T, by = c("datasource", "week", "vx_manufacturer", "dose", "riskfactor"))
 DOSES_RISKFACTORS <- vaxweeks_to_dos_risk[is.na(N), N := 0][, week := format(week, "%Y%m%d")]
 
-fwrite(DOSES_RISKFACTORS, file = paste0(dirdashboard, "DOSES_RISKFACTORS.csv"))
+nameoutput <- paste0("DOSES_RISKFACTORS",suffix[[subpop]])
+assign(nameoutput, DOSES_RISKFACTORS)
+fwrite(get(nameoutput), file = paste0(dirdashboard, nameoutput,".csv"))
+rm(list=nameoutput)
 
-
-tot_pop_cohorts <- D3_study_population_cov_ALL[, .(pop_cohorts = .N), by = c("riskfactor")]
+tot_pop_cohorts <- study_population_cov_ALL[, .(pop_cohorts = .N), by = c("riskfactor")]
 COVERAGE_RISKFACTORS <- merge(DOSES_RISKFACTORS, tot_pop_cohorts, by = "riskfactor", all.x = T)
 COVERAGE_RISKFACTORS <- COVERAGE_RISKFACTORS[is.na(pop_cohorts), pop_cohorts := 0]
 setorder(COVERAGE_RISKFACTORS, week)
@@ -248,17 +279,20 @@ COVERAGE_RISKFACTORS <- COVERAGE_RISKFACTORS[is.na(exited), exited := 0][, cum_N
 COVERAGE_RISKFACTORS <- COVERAGE_RISKFACTORS[, percentage := round(cum_N / pop_cohorts * 100, 3)]
 COVERAGE_RISKFACTORS <- COVERAGE_RISKFACTORS[, .(datasource, week, vx_manufacturer, dose, riskfactor, percentage)]
 
-fwrite(COVERAGE_RISKFACTORS, file = paste0(dirdashboard, "COVERAGE_RISKFACTORS.csv"))
+nameoutput <- paste0("COVERAGE_RISKFACTORS",suffix[[subpop]])
+assign(nameoutput, COVERAGE_RISKFACTORS)
+fwrite(get(nameoutput), file = paste0(dirdashboard, nameoutput,".csv"))
+rm(list=nameoutput)
 
-rm(D3_vaxweeks, cohort_to_doses_weeks, all_mondays, monday_week, double_weeks, all_days_df, vaxweeks_to_dos_bir_cor,
-   all_ages, complete_df, DOSES_BIRTHCOHORTS, D3_study_population, tot_pop_cohorts, all_pop, COVERAGE_BIRTHCOHORTS,
-   D3_Vaccin_cohort, D3_study_population_cov_ALL, vaxweeks_to_dos_bir_cor_base, vaxweeks_to_dos_risk, DOSES_RISKFACTORS,
-   COVERAGE_RISKFACTORS)
+rm(vaxweeks, cohort_to_doses_weeks, all_mondays, monday_week, double_weeks, all_days_df, vaxweeks_to_dos_bir_cor,
+   all_ages, complete_df, study_population, tot_pop_cohorts, all_pop, Vaccin_cohort, study_population_cov_ALL, vaxweeks_to_dos_bir_cor_base, vaxweeks_to_dos_risk)
+if(this_datasource_has_subpopulations==T) rm(DOSES_BIRTHCOHORTS,DOSES_RISKFACTORS,COVERAGE_RISKFACTORS,COVERAGE_BIRTHCOHORTS)
 
 # Benefit ------------------------------------------------------------------------------------------------------------
 
-D4_IR_benefit_week <- fread(paste0(direxp,"D4_IR_benefit_week_BC.csv"))
-BBC <- D4_IR_benefit_week[, Dose := as.character(Dose)][Birthcohort_persons != ">1960", ]
+IR_benefit_week<-fread(paste0(direxp,"D4_IR_benefit_week_BC",suffix[[subpop]],".csv")) 
+
+BBC <- IR_benefit_week[, Dose := as.character(Dose)][Birthcohort_persons != ">1960", ]
 BBC <- BBC[Dose == 0, c("Dose", "type_vax") := list("no_dose", "none")]
 colA = paste("COVID_L", 1:5, "plus_b", sep = "")
 colB = paste("IR_COVID_L", 1:5, "plus", sep = "")
@@ -278,12 +312,18 @@ vect_recode_COVID <- c("1" = "L1", "2" = "L2", "3" = "L3", "4" = "L4", "5" = "L5
 BBC <- BBC[ , COVID := vect_recode_COVID[COVID]]
 BBC <- BBC[, ageband := vect_recode_birthcohort[birth_cohort]]
 
-fwrite(BBC, file = paste0(dirdashboard, "BENEFIT_BIRTHCOHORTS_CALENDARTIME.csv"))
-rm(BBC, D4_IR_benefit_week)
+nameoutput <- paste0("BENEFIT_BIRTHCOHORTS_CALENDARTIME",suffix[[subpop]])
+assign(nameoutput, BBC)
+fwrite(get(nameoutput), file = paste0(dirdashboard, nameoutput,".csv"))
+rm(list=nameoutput)
+
+rm(BBC, IR_benefit_week)
 
 
-D4_IR_benefit_fup <- fread(paste0(direxp,"D4_IR_benefit_fup_BC.csv"))
-BBT <- D4_IR_benefit_fup[, Dose := as.character(Dose)][Birthcohort_persons != ">1960", ]
+IR_benefit_fup<- fread(paste0(direxp,"D4_IR_benefit_fup_BC",suffix[[subpop]],".csv")) 
+rm(list=paste0("D4_IR_benefit_fup_BC",suffix[[subpop]]))
+
+BBT <- IR_benefit_fup[, Dose := as.character(Dose)][Birthcohort_persons != ">1960", ]
 BBT <- BBT[Dose == 0, c("Dose", "type_vax") := list("no_dose", "none")]
 colA = paste("COVID_L", 1:5, "plus_b", sep = "")
 colB = paste("IR_COVID_L", 1:5, "plus", sep = "")
@@ -304,12 +344,18 @@ vect_recode_COVID <- c("1" = "L1", "2" = "L2", "3" = "L3", "4" = "L4", "5" = "L5
 BBT <- BBT[ , COVID := vect_recode_COVID[COVID]]
 BBT <- BBT[, ageband := vect_recode_birthcohort[birth_cohort]]
 
-fwrite(BBT, file = paste0(dirdashboard, "BENEFIT_BIRTHCOHORTS_TIMESINCEVACCINATION.csv"))
-rm(BBT, D4_IR_benefit_fup)
+nameoutput <- paste0("BENEFIT_BIRTHCOHORTS_TIMESINCEVACCINATION",suffix[[subpop]])
+assign(nameoutput, BBT)
+fwrite(get(nameoutput), file = paste0(dirdashboard, nameoutput,".csv"))
+rm(list=nameoutput)
+
+rm(BBT, IR_benefit_fup)
 
 
-D4_IR_benefit_week <- fread(paste0(direxp,"D4_IR_benefit_week_RF.csv"))
-BRC <- D4_IR_benefit_week[, Dose := as.character(Dose)]
+IR_benefit_week<-fread(paste0(direxp,"D4_IR_benefit_week_RF",suffix[[subpop]],".csv")) 
+rm(list=paste0("D4_IR_benefit_week_RF",suffix[[subpop]]))
+
+BRC <- IR_benefit_week[, Dose := as.character(Dose)]
 BRC <- BRC[Dose == 0, c("Dose", "type_vax") := list("no_dose", "none")]
 colA = paste("COVID_L", 1:5, "plus_b", sep = "")
 colB = paste("IR_COVID_L", 1:5, "plus", sep = "")
@@ -328,12 +374,17 @@ BRC <- BRC[, .(datasource, week, vx_manufacturer, dose, riskfactor, COVID, Numer
 vect_recode_COVID <- c("1" = "L1", "2" = "L2", "3" = "L3", "4" = "L4", "5" = "L5")
 BRC <- BRC[ , COVID := vect_recode_COVID[COVID]]
 
-fwrite(BRC, file = paste0(dirdashboard, "BENEFIT_RISKFACTORS_CALENDARTIME.csv"))
-rm(BRC, D4_IR_benefit_week)
+nameoutput <- paste0("BENEFIT_RISKFACTORS_CALENDARTIME",suffix[[subpop]])
+assign(nameoutput, BRC)
+fwrite(get(nameoutput), file = paste0(dirdashboard, nameoutput,".csv"))
+rm(list=nameoutput)
 
+rm(BRC, IR_benefit_week)
 
-D4_IR_benefit_fup <- fread(paste0(direxp,"D4_IR_benefit_fup_RF.csv"))
-BRT <- D4_IR_benefit_fup[, Dose := as.character(Dose)]
+IR_benefit_fup<-fread(paste0(direxp,"D4_IR_benefit_fup_RF",suffix[[subpop]],".csv"))
+rm(list=paste0("D4_IR_benefit_fup_RF",suffix[[subpop]]))
+
+BRT <- IR_benefit_fup[, Dose := as.character(Dose)]
 BRT <- BRT[Dose == 0, c("Dose", "type_vax") := list("no_dose", "none")]
 colA = paste("COVID_L", 1:5, "plus_b", sep = "")
 colB = paste("IR_COVID_L", 1:5, "plus", sep = "")
@@ -353,16 +404,22 @@ setnames(BRT, c("week_fup"), c("week_since_vaccination"))
 vect_recode_COVID <- c("1" = "L1", "2" = "L2", "3" = "L3", "4" = "L4", "5" = "L5")
 BRT <- BRT[ , COVID := vect_recode_COVID[COVID]]
 
-fwrite(BRT, file = paste0(dirdashboard, "BENEFIT_RISKFACTORS_TIMESINCEVACCINATION.csv"))
-rm(BRT, vect_recode_COVID, D4_IR_benefit_fup)
+nameoutput <- paste0("BENEFIT_RISKFACTORS_TIMESINCEVACCINATION",suffix[[subpop]])
+assign(nameoutput, BRT)
+fwrite(get(nameoutput), file = paste0(dirdashboard, nameoutput,".csv"))
+rm(list=nameoutput)
+
+rm(BRT, vect_recode_COVID, IR_benefit_fup)
 
 
 
 
 # Risk ------------------------------------------------------------------------------------------------------------
 
-D4_IR_risk_week <- fread(paste0(direxp,"D4_IR_risk_week_BC.csv"))
-RBC <- D4_IR_risk_week[, Dose := as.character(Dose)]
+IR_risk_week<-fread(paste0(direxp,"D4_IR_risk_week_BC",suffix[[subpop]],".csv")) 
+rm(list=paste0("D4_IR_risk_week_BC",suffix[[subpop]]))
+
+RBC <- IR_risk_week[, Dose := as.character(Dose)]
 RBC <- RBC[Dose == 0, c("Dose", "type_vax") := list("no_dose", "none")]
 list_risk <- list_outcomes_observed
 colA = paste0(list_risk, "_b")
@@ -383,12 +440,18 @@ names(vect_recode_AESI) <- c(as.character(seq_len(length(list_risk))))
 RBC <- RBC[ , AESI := vect_recode_AESI[AESI]]
 RBC <- RBC[, ageband := vect_recode_birthcohort[birth_cohort]]
 
-fwrite(RBC, file = paste0(dirdashboard, "RISK_BIRTHCOHORTS_CALENDARTIME.csv"))
-rm(RBC, D4_IR_risk_week)
+nameoutput <- paste0("RISK_BIRTHCOHORTS_CALENDARTIME",suffix[[subpop]])
+assign(nameoutput, RBC)
+fwrite(get(nameoutput), file = paste0(dirdashboard, nameoutput,".csv"))
+rm(list=nameoutput)
+
+rm(RBC, IR_risk_week)
 
 
-D4_IR_risk_fup <- fread(paste0(direxp,"D4_IR_risk_fup_BC.csv"))
-RBT <- D4_IR_risk_fup[, Dose := as.character(Dose)]
+IR_risk_fup<-fread(paste0(direxp,"D4_IR_risk_fup_BC",suffix[[subpop]],".csv")) 
+
+
+RBT <- IR_risk_fup[, Dose := as.character(Dose)]
 RBT <- RBT[Dose == 0, c("Dose", "type_vax") := list("no_dose", "none")]
 list_risk <- list_outcomes_observed
 
@@ -412,12 +475,16 @@ names(vect_recode_AESI) <- c(as.character(seq_len(length(list_risk))))
 RBT <- RBT[ , AESI := vect_recode_AESI[AESI]]
 RBT <- RBT[, ageband := vect_recode_birthcohort[birth_cohort]]
 
-fwrite(RBT, file = paste0(dirdashboard, "RISK_BIRTHCOHORTS_TIMESINCEVACCINATION.csv"))
-rm(RBT, D4_IR_risk_fup)
+nameoutput <- paste0("RISK_BIRTHCOHORTS_TIMESINCEVACCINATION",suffix[[subpop]])
+assign(nameoutput, RBT)
+fwrite(get(nameoutput), file = paste0(dirdashboard, nameoutput,".csv"))
+rm(list=nameoutput)
+
+rm(RBT, IR_risk_fup)
 
 
-D4_IR_risk_week <- fread(paste0(direxp,"D4_IR_risk_week_RF.csv"))
-RRC <- D4_IR_risk_week[, Dose := as.character(Dose)]
+IR_risk_week <- fread(paste0(direxp,"D4_IR_risk_week_RF",suffix[[subpop]],".csv"))
+RRC <- IR_risk_week[, Dose := as.character(Dose)]
 RRC <- RRC[Dose == 0, c("Dose", "type_vax") := list("no_dose", "none")]
 list_risk <- list_outcomes_observed
 
@@ -438,12 +505,15 @@ vect_recode_AESI <- list_risk
 names(vect_recode_AESI) <- c(as.character(seq_len(length(list_risk))))
 RRC <- RRC[ , AESI := vect_recode_AESI[AESI]]
 
-fwrite(RRC, file = paste0(dirdashboard, "RISK_RISKFACTORS_CALENDARTIME.csv"))
-rm(RRC, D4_IR_risk_week)
+nameoutput <- paste0("RISK_RISKFACTORS_CALENDARTIME",suffix[[subpop]])
+assign(nameoutput, RRC)
+fwrite(get(nameoutput), file = paste0(dirdashboard, nameoutput,".csv"))
+rm(list=nameoutput)
+rm(RRC, IR_risk_week)
 
 
-D4_IR_risk_fup <- fread(paste0(direxp,"D4_IR_risk_fup_RF.csv"))
-RRT <- D4_IR_risk_fup[, Dose := as.character(Dose)]
+IR_risk_fup <- fread(paste0(direxp,"D4_IR_risk_fup_RF",suffix[[subpop]],".csv"))
+RRT <- IR_risk_fup[, Dose := as.character(Dose)]
 RRT <- RRT[Dose == 0, c("Dose", "type_vax") := list("no_dose", "none")]
 list_risk <- list_outcomes_observed
 
@@ -466,5 +536,11 @@ vect_recode_AESI <- list_risk
 names(vect_recode_AESI) <- c(as.character(seq_len(length(list_risk))))
 RRT <- RRT[ , AESI := vect_recode_AESI[AESI]]
 
-fwrite(RRT, file = paste0(dirdashboard, "RISK_RISKFACTORS_TIMESINCEVACCINATION.csv"))
-rm(RRT, vect_recode_AESI, D4_IR_risk_fup)
+nameoutput <- paste0("RISK_RISKFACTORS_TIMESINCEVACCINATION",suffix[[subpop]])
+assign(nameoutput, RRT)
+fwrite(get(nameoutput), file = paste0(dirdashboard, nameoutput,".csv"))
+rm(list=nameoutput)
+
+rm(RRT, vect_recode_AESI, IR_risk_fup)
+rm(DOSES_BIRTHCOHORTS)
+}
