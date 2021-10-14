@@ -38,7 +38,7 @@ nameoutput1<-paste0("D4_persontime_risk_month_RFBC",suffix[[subpop]])
 assign(nameoutput1,rbind(get(namedataset1), older60))
 
 
-save(nameoutput1,file=paste0(diroutput,"D4_persontime_risk_month_RFBC.RData"),list=nameoutput1)
+save(nameoutput1,file=paste0(diroutput,nameoutput1,".RData"),list=nameoutput1)
 rm(list=nameoutput1)
 rm(list=namedataset1)
 rm(namedataset1,nameoutput1)

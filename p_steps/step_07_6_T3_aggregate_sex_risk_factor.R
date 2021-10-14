@@ -34,7 +34,7 @@ all_sex <- all_sex[, sex := "both_sexes"]
 nameoutput1<-paste0("D4_persontime_risk_week_RF",suffix[[subpop]])
 assign(nameoutput1, rbind(get(namedataset1), all_sex))
 
-save(nameoutput1,file=paste0(diroutput,"D4_persontime_risk_week_RF.RData"),list=nameoutput1)
+save(nameoutput1,file=paste0(diroutput,nameoutput1,".RData"),list=nameoutput1)
 rm(list=nameoutput1)
 rm(list=namedataset1)
 rm(namedataset1,nameoutput1)
@@ -72,7 +72,7 @@ all_sex <- all_sex[, sex := "both_sexes"]
 nameoutput2<-paste0("D4_persontime_benefit_week_RF",suffix[[subpop]])
 assign(nameoutput2, rbind(get(namedataset2), all_sex))
 
-save(nameoutput2,file=paste0(diroutput,"D4_persontime_benefit_week_RF.RData"),list=nameoutput2)
+save(nameoutput2,file=paste0(diroutput,nameoutput2,".RData"),list=nameoutput2)
 rm(list=nameoutput2)
 rm(list=namedataset2)
 rm(namedataset2,nameoutput2)
@@ -137,7 +137,7 @@ assign(nameoutput3, get(nameoutput3)[, (cols_to_sums) := lapply(.SD, cumsum),
                                                          by = c("Dose", "type_vax", "riskfactor", "sex"),
                                                          .SDcols = cols_to_sums])
 
-save(nameoutput3,file=paste0(diroutput,"D4_persontime_risk_year_RF.RData"),list=nameoutput3)
+save(nameoutput3,file=paste0(diroutput,nameoutput3,".RData"),list=nameoutput3)
 rm(list=nameoutput3)
 rm(list=namedataset3)
 rm(namedataset3,nameoutput3)
@@ -174,7 +174,7 @@ all_sex <- all_sex[, sex := "both_sexes"]
 nameoutput4<-paste0("D4_persontime_benefit_year_RF",suffix[[subpop]])
 assign(nameoutput4,rbind(get(namedataset4), all_sex))
 
-save(nameoutput4,file=paste0(diroutput,"D4_persontime_benefit_year_RF.RData"),list=nameoutput4)
+save(nameoutput4,file=paste0(diroutput,nameoutput4,".RData"),list=nameoutput4)
 rm(list=nameoutput4)
 rm(list=namedataset4)
 rm(namedataset4,nameoutput4)
