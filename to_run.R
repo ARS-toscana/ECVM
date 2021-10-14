@@ -121,15 +121,15 @@ system.time(source(paste0(thisdir,"/p_steps/step_05_11_T2.3_algorithms_COVID_sev
 
 #06 create D3 for doses and coverage
 system.time(source(paste0(thisdir,"/p_steps/step_06_1_T2_create_D3_datasets.R")))
-system.time(source(paste0(thisdir,"/p_steps/step_06_3_T2.2_covariates_at_vaccination.R")))
-system.time(source(paste0(thisdir,"/p_steps/step_06_4_T2.2_DP_at_vaccination.R")))
-system.time(source(paste0(thisdir,"/p_steps/step_06_5_T2.3_vaccination_characteristics.R")))
-system.time(source(paste0(thisdir,"/p_steps/step_06_6_T2.3_ALL_covariates_at_vaccination_V2.R")))
-system.time(source(paste0(thisdir,"/p_steps/step_06_7_T2_create_D3_datasets.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_06_2_T2.2_covariates_at_vaccination.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_06_3_T2.2_DP_at_vaccination.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_06_4_T2.3_vaccination_characteristics.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_06_5_T2.3_ALL_covariates_at_vaccination_V2.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_06_6_T2_create_D3_datasets.R")))
 
-#MIS section
+#MIS and Myocarditis section
 # create D3 MIS population
-system.time(source(paste0(thisdir,"/p_steps/step_06_2_MIS_population.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_06_7_MIS_population.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_07_9_T3_create_person_time_MIS_year.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_07_10_T3_aggregate_monthly_MIS.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_08_T4_IR_MIS.R")))
@@ -139,7 +139,7 @@ system.time(source(paste0(thisdir,"/p_steps/step_09_2_T3_create_D4_descriptive_t
 system.time(source(paste0(thisdir,"/p_steps/step_09_4_T3_create_D4_descriptive_tables_MIS.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_11_2_T4_create_dummy_tables_MIS_KD.R")))
 
-##end MIS section------------
+##end MIS and Myocarditis section------------
 
 #07 create persontime
 system.time(source(paste0(thisdir,"/p_steps/step_07_1_T3_create_person_time_risks.R")))

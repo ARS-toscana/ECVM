@@ -1,24 +1,22 @@
 print("COUNT PERSON TIME by month for risks")
 
-load(paste0(dirtemp,"list_outcomes_observed.RData"))
-load(paste0(dirtemp,"D3_events_ALL_OUTCOMES.RData"))
-load(paste0(dirtemp,"D3_vaxweeks_vaccin_cohort.RData"))
 
 D4_persontime_risk_month <- vector(mode = 'list')
-for (subpop in subpopulations_non_empty) {
+
+for (subpop in subpopulations_non_empty) {  
   print(subpop)
+  
   start_month=seq.Date(as.Date("20200101","%Y%m%d"),Sys.Date(),by = "month")
+
+  load(paste0(dirtemp,"list_outcomes_observed",suffix[[subpop]],".RData"))
+  load(paste0(dirtemp,"D3_events_ALL_OUTCOMES",suffix[[subpop]],".RData"))
+  load(paste0(dirtemp,"D3_vaxweeks_vaccin_cohort",suffix[[subpop]],".RData"))
   
-  if (this_datasource_has_subpopulations == TRUE){ 
-    study_population <- D3_vaxweeks_vaccin_cohort[[subpop]]
-    events_ALL_OUTCOMES <- D3_events_ALL_OUTCOMES[[subpop]]
-    list_outcomes <- list_outcomes_observed[[subpop]]
-  }else{
-    study_population <- D3_vaxweeks_vaccin_cohort
-    events_ALL_OUTCOMES <- D3_events_ALL_OUTCOMES
-    list_outcomes <- list_outcomes_observed
-  }
-  
+  list_outcomes<-get(paste0("list_outcomes_observed", suffix[[subpop]]))
+  events_ALL_OUTCOMES<-get(paste0("D3_events_ALL_OUTCOMES", suffix[[subpop]]))
+  study_population<-get(paste0("D3_vaxweeks_vaccin_cohort", suffix[[subpop]]))
+
+
   max_exit<-study_population[,max(study_exit_date)]
   last_event<-events_ALL_OUTCOMES[,max(date_event)]
   if (last_event<ymd("20200101")) {
@@ -112,19 +110,33 @@ for (subpop in subpopulations_non_empty) {
   }
   
   thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
-  fwrite(persontime_risk_month,file=paste0(thisdirexp,"D4_persontime_risk_month.csv"))
-  if (this_datasource_has_subpopulations == TRUE){ 
-    D4_persontime_risk_month[[subpop]] <- persontime_risk_month
-  }else{
-    D4_persontime_risk_month <- persontime_risk_month
-  }
+  fwrite(persontime_risk_month,file=paste0(thisdirexp,"D4_persontime_risk_month",suffix[[subpop]],".csv"))
+  
+  nameoutput<-paste0("D4_persontime_risk_month",suffix[[subpop]])
+  assign(nameoutput,persontime_risk_month)
+  save(nameoutput,file=paste0(diroutput,nameoutput,".RData"),list=nameoutput)
+  
+
+  rm(list=nameoutput)
+  rm(list=paste0("D3_vaxweeks_vaccin_cohort", suffix[[subpop]]))
+  rm(list=paste0("D3_events_ALL_OUTCOMES", suffix[[subpop]]))
+  rm(list=paste0("list_outcomes_observed", suffix[[subpop]]))
+  
+  # thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
+  # fwrite(persontime_risk_month,file=paste0(thisdirexp,"D4_persontime_risk_month.csv"))
+  # if (this_datasource_has_subpopulations == TRUE){ 
+  #   D4_persontime_risk_month[[subpop]] <- persontime_risk_month
+  # }else{
+  #   D4_persontime_risk_month <- persontime_risk_month
+  # }
 }
 
-save(D4_persontime_risk_month,file=paste0(diroutput,"D4_persontime_risk_month.RData"))
 
 
 for (subpop in subpopulations_non_empty){
+  tempname<-paste0("D4_persontime_risk_month",suffix[[subpop]])
   thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
+  assign(tempname,fread(paste0(thisdirexp,tempname,".csv")))
   thisdirsmallcountsremoved <- ifelse(this_datasource_has_subpopulations == FALSE,dirsmallcountsremoved,dirsmallcountsremovedsubpop[[subpop]])
   col<-colnames(persontime_risk_month)[-(1:3)]
   temp<-paste0(col,"=5")
@@ -138,6 +150,8 @@ for (subpop in subpopulations_non_empty){
       FileContains = "D4_persontime_risk_month"
     )
   )
+  rm(list=tempname)
 }
-# rm(list = nameobject)
-rm(D3_vaxweeks_vaccin_cohort,D4_persontime_risk_month,persontime_risk_month,study_population,events_ALL_OUTCOMES)
+
+rm(persontime_risk_month,recurrent_persontime_risk_month,events_ALL_OUTCOMES,study_population)
+#rm(D3_vaxweeks_vaccin_cohort,D4_persontime_risk_month,persontime_risk_month,study_population,events_ALL_OUTCOMES)
