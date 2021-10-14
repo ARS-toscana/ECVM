@@ -35,7 +35,7 @@ for (subpop in subpopulations_non_empty) {
     rm(list=nameoutput)
   }
   
-  df_events_ages <- paste0("pop_age_", gsub("-", "_", Agebands_labels), suffix[[subpop]])
+  df_events_ages <- paste0("pop_age_", gsub("-", "_", Agebands_labels))
 
   for (events_df_sex in df_events_ages) {
     print(paste("Age", substring(events_df_sex, 9)))
@@ -138,7 +138,7 @@ rm(list=paste0("list_outcomes_observed", suffix[[subpop]]))
 }
 
 for (subpop in subpopulations_non_empty){
-  tempname<-paste0("D4_persontime_risk_year",suffix[[subpop]],"_",thisdatasource,"_",currentdate,"_",scriptversion)
+  tempname<-paste0("D4_persontime_risk_year",suffix[[subpop]])
   thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
   assign(tempname,fread(paste0(thisdirexp,tempname,".csv")))
   thisdirsmallcountsremoved <- ifelse(this_datasource_has_subpopulations == FALSE,dirsmallcountsremoved,dirsmallcountsremovedsubpop[[subpop]])
