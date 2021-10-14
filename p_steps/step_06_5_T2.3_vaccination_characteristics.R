@@ -16,7 +16,7 @@ for (subpop in subpopulations_non_empty) {
   study_population_covariates<-get(paste0("D3_Vaccin_cohort_covariates", suffix[[subpop]]))
   
   population_var<- study_population[, year_at_date_vax_1:=year(date_vax1)] 
-  population_var<-population_var [, age_strata_at_date_vax_1 := cut(age_at_date_vax_1, breaks = Agebands, 
+  population_var<-population_var[, age_strata_at_date_vax_1 := cut(age_at_date_vax_1, breaks = Agebands, 
                                                                     labels = Agebands_labels)]
   
   study_population_cov<-merge(population_var, study_population_covariates[,-"date_vax1"],

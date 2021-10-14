@@ -51,7 +51,7 @@ for (subpop in subpopulations_non_empty) {
       Start_date = "start_date_of_period",
       End_date = "end_date_of_period",
       #Birth_date = "date_of_birth",
-      Strata = c("sex","Birthcohort_persons","Dose","type_vax", "CV", "COVCANCER", "COVCOPD", "COVHIV", "COVCKD",
+      Strata = c("sex","ageband_at_study_entry","Dose","type_vax", "CV", "COVCANCER", "COVCOPD", "COVHIV", "COVCKD",
                  "COVDIAB", "COVOBES", "COVSICKLE", "IMMUNOSUPPR", "any_risk_factors"),
       Name_event = "name_event",
       Date_event = "date_event",
@@ -89,7 +89,7 @@ for (subpop in subpopulations_non_empty) {
       Start_date = "start_date_of_period",
       End_date = "end_date_of_period",
       #Birth_date = "date_of_birth",
-      Strata = c("sex","Birthcohort_persons","Dose","type_vax", "CV", "COVCANCER", "COVCOPD", "COVHIV", "COVCKD",
+      Strata = c("sex","ageband_at_study_entry","Dose","type_vax", "CV", "COVCANCER", "COVCOPD", "COVHIV", "COVCKD",
                  "COVDIAB", "COVOBES", "COVSICKLE", "IMMUNOSUPPR", "any_risk_factors"),
       Name_event = "name_event",
       Date_event = "date_event",
@@ -111,7 +111,7 @@ for (subpop in subpopulations_non_empty) {
   }
   
   persontime_risk_week <- merge(persontime_risk_week, recurrent_persontime_risk_week,
-                                by = c("sex","Birthcohort_persons","Dose","type_vax", "CV", "COVCANCER", "COVCOPD",
+                                by = c("sex","ageband_at_study_entry","Dose","type_vax", "CV", "COVCANCER", "COVCOPD",
                                        "COVHIV", "COVCKD", "COVDIAB", "COVOBES", "COVSICKLE", "IMMUNOSUPPR",
                                        "any_risk_factors", "week", "Persontime"), all = T)
   

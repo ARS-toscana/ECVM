@@ -28,43 +28,16 @@ for (subpop in subpopulations_non_empty) {
   list_recurrent_outcomes <- list_outcomes[str_detect(list_outcomes, "^GENCONV_") | str_detect(list_outcomes, "^ANAPHYL_")]
   list_outcomes <- setdiff(list_outcomes, list_recurrent_outcomes)
 
-  nameoutput <- paste0("pop_age_1940",suffix[[subpop]])
-  assign(nameoutput, study_population[Birthcohort_persons == "<1940", ])
-  save(nameoutput, file = paste0(dirtemp, nameoutput,".RData"),list=nameoutput)
-  rm(list=nameoutput)
+  for (ageband in Agebands_labels) {
+    nameoutput <- paste0("pop_age_", gsub("-", "_", ageband), suffix[[subpop]])
+    assign(nameoutput, study_population[ageband_at_study_entry == ageband, ])
+    save(nameoutput, file = paste0(dirtemp, nameoutput,".RData"),list=nameoutput)
+    rm(list=nameoutput)
+  }
   
-  nameoutput <- paste0("pop_age_1940_1949",suffix[[subpop]])
-  assign(nameoutput, study_population[Birthcohort_persons == "1940-1949", ])
-  save(nameoutput, file = paste0(dirtemp, nameoutput,".RData"),list=nameoutput)
-  rm(list=nameoutput)
+  df_events_ages <- paste0("pop_age_", gsub("-", "_", Agebands_labels), suffix[[subpop]])
 
-  nameoutput <- paste0("pop_age_1950_1959",suffix[[subpop]])
-  assign(nameoutput, study_population[Birthcohort_persons == "1950-1959", ])
-  save(nameoutput, file = paste0(dirtemp, nameoutput,".RData"),list=nameoutput)
-  rm(list=nameoutput)
-  
-  nameoutput <- paste0("pop_age_1960_1969",suffix[[subpop]])
-  assign(nameoutput, study_population[Birthcohort_persons == "1960-1969", ])
-  save(nameoutput, file = paste0(dirtemp, nameoutput,".RData"),list=nameoutput)
-  rm(list=nameoutput)
-
-  nameoutput <- paste0("pop_age_1970_1979",suffix[[subpop]])
-  assign(nameoutput, study_population[Birthcohort_persons == "1970-1979", ])
-  save(nameoutput, file = paste0(dirtemp, nameoutput,".RData"),list=nameoutput)
-  rm(list=nameoutput)
-  
-  nameoutput <- paste0("pop_age_1980_1989",suffix[[subpop]])
-  assign(nameoutput, study_population[Birthcohort_persons == "1980-1989", ])
-  save(nameoutput, file = paste0(dirtemp, nameoutput,".RData"),list=nameoutput)
-  rm(list=nameoutput)
-
-  nameoutput <- paste0("pop_age_1990",suffix[[subpop]])
-  assign(nameoutput, study_population[Birthcohort_persons == "1990+", ])
-  save(nameoutput, file = paste0(dirtemp, nameoutput,".RData"),list=nameoutput)
-  rm(list=nameoutput)
-
-  for (events_df_sex in c("pop_age_1940", "pop_age_1940_1949", "pop_age_1950_1959", "pop_age_1960_1969",
-                          "pop_age_1970_1979", "pop_age_1980_1989", "pop_age_1990")) {
+  for (events_df_sex in df_events_ages) {
     print(paste("Age", substring(events_df_sex, 9)))
     load(paste0(dirtemp, events_df_sex,suffix[[subpop]], ".RData"))
     print("recurrent")
@@ -79,7 +52,7 @@ for (subpop in subpopulations_non_empty) {
       Start_date = "start_date_of_period",
       End_date = "end_date_of_period",
       #Birth_date = "date_of_birth",
-      Strata = c("sex","Birthcohort_persons","Dose","type_vax","week_fup", "CV", "COVCANCER", "COVCOPD", "COVHIV", "COVCKD",
+      Strata = c("sex","ageband_at_study_entry","Dose","type_vax","week_fup", "CV", "COVCANCER", "COVCOPD", "COVHIV", "COVCKD",
                  "COVDIAB", "COVOBES", "COVSICKLE", "IMMUNOSUPPR", "any_risk_factors"),
       Name_event = "name_event",
       Date_event = "date_event",
@@ -107,7 +80,7 @@ for (subpop in subpopulations_non_empty) {
       Start_date = "start_date_of_period",
       End_date = "end_date_of_period",
       #Birth_date = "date_of_birth",
-      Strata = c("sex","Birthcohort_persons","Dose","type_vax","week_fup", "CV", "COVCANCER", "COVCOPD", "COVHIV", "COVCKD",
+      Strata = c("sex","ageband_at_study_entry","Dose","type_vax","week_fup", "CV", "COVCANCER", "COVCOPD", "COVHIV", "COVCKD",
                  "COVDIAB", "COVOBES", "COVSICKLE", "IMMUNOSUPPR", "any_risk_factors"),
       Name_event = "name_event",
       Date_event = "date_event",
@@ -123,7 +96,7 @@ for (subpop in subpopulations_non_empty) {
     print("Merging")
     nameoutput<-paste0("Output_file",suffix[[subpop]])
     assign(nameoutput,merge(get(paste0("Output_file",suffix[[subpop]])), get(paste0("Recurrent_output_file",suffix[[subpop]])) ,
-                         by = c("sex","Birthcohort_persons","Dose","type_vax","week_fup", "CV", "COVCANCER", "COVCOPD",
+                         by = c("sex","ageband_at_study_entry","Dose","type_vax","week_fup", "CV", "COVCANCER", "COVCOPD",
                                 "COVHIV", "COVCKD", "COVDIAB", "COVOBES", "COVSICKLE", "IMMUNOSUPPR", "any_risk_factors",
                                 "year", "Persontime"),
                          all = T)
@@ -135,8 +108,7 @@ for (subpop in subpopulations_non_empty) {
   }
   
   vect_df_persontime <- list()
-  for (events_df_sex in c("pop_age_1940", "pop_age_1940_1949", "pop_age_1950_1959", "pop_age_1960_1969",
-                          "pop_age_1970_1979", "pop_age_1980_1989", "pop_age_1990")) {
+  for (events_df_sex in df_events_ages) {
     load(paste0(dirtemp, events_df_sex,suffix[[subpop]], ".RData"))
     vect_df_persontime <- append(vect_df_persontime, list(get(paste0("Output_file",suffix[[subpop]]) )))
   }

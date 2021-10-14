@@ -17,7 +17,7 @@ for (subpop in subpopulations_non_empty) {
   
 
   population_var<- study_population[,age_at_study_entry:=age_fast(date_of_birth,study_entry_date)] [, year_at_study_entry:=year(study_entry_date)] 
-  population_var<-population_var [,age_strata_at_study_entry:=cut(age_at_study_entry, breaks = Agebands,  labels = c("0-19","20-29", "30-39", "40-49","50-59","60-69", "70-79","80+"))]
+  population_var<-population_var[,age_strata_at_study_entry:=cut(age_at_study_entry, breaks = Agebands, labels = Agebands_labels)]
   
   study_population_cov<-merge(population_var, study_population_covariates[,-"study_entry_date"], by="person_id", all.x = T)
   

@@ -34,7 +34,7 @@ for (subpop in subpopulations_non_empty) {
     Start_date = "start_date_of_period",
     End_date = "end_date_of_period",
     #Birth_date = "date_of_birth",
-    Strata = c("Dose","sex", "Birthcohort_persons","type_vax","week_fup", "CV", "COVCANCER", "COVCOPD", "COVHIV", "COVCKD",
+    Strata = c("Dose","sex", "ageband_at_study_entry","type_vax","week_fup", "CV", "COVCANCER", "COVCOPD", "COVHIV", "COVCKD",
                "COVDIAB", "COVOBES", "COVSICKLE", "IMMUNOSUPPR", "any_risk_factors"),
     Name_event = "name_event",
     Date_event = "date_event",
