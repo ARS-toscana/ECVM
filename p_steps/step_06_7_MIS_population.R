@@ -12,8 +12,11 @@ for (subpop in subpopulations_non_empty) {
   load(paste0(dirtemp,"D3_study_population",suffix[[subpop]],".RData"))
   
   events_ALL_OUTCOMES<-get(paste0("D3_events_ALL_OUTCOMES", suffix[[subpop]]))
+  rm(list=paste0("D3_events_ALL_OUTCOMES", suffix[[subpop]]))
   outcomes_covid<-get(paste0("D3_outcomes_covid", suffix[[subpop]]))
+  rm(list=paste0("D3_outcomes_covid", suffix[[subpop]]))
   study_population<-get(paste0("D3_study_population", suffix[[subpop]]))
+  rm(list=paste0("D3_study_population", suffix[[subpop]]))
   
   
 #add date of first covid to the population
@@ -59,6 +62,7 @@ tempname<-paste0("D4_population_b",suffix[[subpop]])
 assign(tempname,D4_population_b)
 save(tempname, file = paste0(diroutput, tempname,".RData"),list=tempname)
 rm(list=tempname)
+rm(D4_population_b)
 
 #---------------------------------
 #COHORT C
@@ -91,6 +95,8 @@ tempname<-paste0("D4_population_c",suffix[[subpop]])
 assign(tempname,D4_population_c)
 save(tempname, file = paste0(diroutput, tempname,".RData"),list=tempname)
 rm(list=tempname)
+rm(D3_selection_criteria_c)
+rm(D4_population_c)
 #---------------------------------
 #COHORT D
 
@@ -103,6 +109,7 @@ D3_study_variables_for_MIS[,study_entry_date_MIS_d:=first_jan_2021]
 D3_study_variables_for_MIS[,cohort_entry_date_MIS_d:=max(date_vax1, first_jan_2021), by="person_id"]
 
 D3_selection_criteria_d <- D3_study_variables_for_MIS[is.na(date_vax1) | study_exit_date <= cohort_entry_date_MIS_d, not_in_cohort_d:=1]
+rm(D3_study_variables_for_MIS)
 D3_selection_criteria_d <- D3_selection_criteria_d[, not_in_cohort_d := replace(.SD, is.na(.SD), 0), .SDcols = "not_in_cohort_d"]
 
 tempname<-paste0("D3_selection_criteria_d",suffix[[subpop]])
@@ -136,6 +143,9 @@ save(tempname, file = paste0(diroutput, tempname,".RData"),list=tempname)
 
 rm(list=tempname)
 rm(tempname)
+rm(D3_selection_criteria_d)
+rm(D4_population_d)
+rm(events_ALL_OUTCOMES,study_population,outcomes_covid)
 
 }
                         

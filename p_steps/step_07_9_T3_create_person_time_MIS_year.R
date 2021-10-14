@@ -8,7 +8,9 @@ for (subpop in subpopulations_non_empty) {
   load(paste0(diroutput,"D4_population_b",suffix[[subpop]],".RData"))
   
   events_ALL_OUTCOMES<-get(paste0("D3_events_ALL_OUTCOMES", suffix[[subpop]]))
+  rm(list=paste0("D3_events_ALL_OUTCOMES", suffix[[subpop]]))
   population_b<-get(paste0("D4_population_b", suffix[[subpop]]))
+  rm(list=paste0("D4_population_b", suffix[[subpop]]))
   
 
 list_outcomes_MIS <- c("MIS_narrow","KD_narrow","MIS_KD_narrow","MISCC_narrow", "MIS_broad","KD_broad","MIS_KD_broad","MISCC_broad","MYOCARD_narrow","MYOCARD_possible","Myocardalone_narrow","Myocardalone_possible")
@@ -40,6 +42,7 @@ Output_file<-CountPersonTime(
 
 nameoutput<-paste0("D4_persontime_b",suffix[[subpop]])
 assign(nameoutput ,Output_file)
+rm(Output_file)
 save(nameoutput, file = paste0(diroutput, nameoutput,".RData"),list=nameoutput)
 
 thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
@@ -69,6 +72,7 @@ Output_file<-CountPersonTime(
 
 nameoutput<-paste0("D4_persontime_monthly_b",suffix[[subpop]])
 assign(nameoutput ,Output_file)
+rm(Output_file)
 save(nameoutput, file = paste0(diroutput, nameoutput,".RData"),list=nameoutput)
 
 thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
@@ -99,12 +103,13 @@ for (subpop in subpopulations_non_empty){
       FileContains = "D4_persontime_b"
     )
   )
+  rm(list=tempname)
 }
 
 for (subpop in subpopulations_non_empty){
-  tempname<-paste0("D4_persontime_monthly_b",suffix[[subpop]])
-  thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
-  assign(tempname,fread(paste0(thisdirexp,tempname,".csv")))
+   tempname<-paste0("D4_persontime_monthly_b",suffix[[subpop]])
+   thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
+   assign(tempname,fread(paste0(thisdirexp,tempname,".csv")))
   thisdirsmallcountsremoved <- ifelse(this_datasource_has_subpopulations == FALSE,dirsmallcountsremoved,dirsmallcountsremovedsubpop[[subpop]])
   col<-colnames(get(tempname))[-(1:6)]
   temp<-paste0(col,"=5")
@@ -118,6 +123,7 @@ for (subpop in subpopulations_non_empty){
       FileContains = "D4_persontime_monthly_b"
     )
   )
+  rm(list=tempname)
 }
 
 #COHORT C
@@ -128,14 +134,15 @@ for (subpop in subpopulations_non_empty) {
   load(paste0(diroutput,"D4_population_c",suffix[[subpop]],".RData"))
   
   population_c<-get(paste0("D4_population_c", suffix[[subpop]]))
+  rm(list=paste0("D4_population_c", suffix[[subpop]]))
   
-endyear<- substr(D4_population_c[,max(study_exit_date_MIS_c)], 1, 4)
+endyear<- substr(population_c[,max(study_exit_date_MIS_c)], 1, 4)
 end_persontime_studytime<-as.character(paste0(endyear,"1231"))
 
 
 Output_file<-CountPersonTime(
   Dataset_events = events_ALL_OUTCOMES,
-  Dataset = D4_population_c,
+  Dataset = population_c,
   Person_id = "person_id",
   Start_study_time = start_persontime_studytime,
   End_study_time = end_persontime_studytime,
@@ -155,6 +162,7 @@ Output_file<-CountPersonTime(
 
 nameoutput<-paste0("D4_persontime_c",suffix[[subpop]])
 assign(nameoutput ,Output_file)
+rm(Output_file)
 save(nameoutput, file = paste0(diroutput, nameoutput,".RData"),list=nameoutput)
 
 thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
@@ -163,7 +171,7 @@ rm(list=nameoutput)
 
 Output_file<-CountPersonTime(
   Dataset_events = events_ALL_OUTCOMES,
-  Dataset = D4_population_c,
+  Dataset = population_c,
   Person_id = "person_id",
   Start_study_time = start_persontime_studytime,
   End_study_time = end_persontime_studytime,
@@ -183,6 +191,7 @@ Output_file<-CountPersonTime(
 
 nameoutput<-paste0("D4_persontime_monthly_c",suffix[[subpop]])
 assign(nameoutput ,Output_file)
+rm(Output_file)
 save(nameoutput, file = paste0(diroutput, nameoutput,".RData"),list=nameoutput)
 
 thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
@@ -190,6 +199,7 @@ fwrite(get(nameoutput),file=paste0(thisdirexp,nameoutput,".csv"))
 
 rm(list=nameoutput)
 rm(nameoutput)
+rm(population_c)
 }
 
 
@@ -210,6 +220,7 @@ for (subpop in subpopulations_non_empty){
       FileContains = "D4_persontime_c"
     )
   )
+  rm(list=tempname)
 }
 
 for (subpop in subpopulations_non_empty){
@@ -229,6 +240,7 @@ for (subpop in subpopulations_non_empty){
       FileContains = "D4_persontime_monthly_c"
     )
   )
+  rm(list=tempname)
 }
 
 #COHORT D
@@ -238,15 +250,16 @@ for (subpop in subpopulations_non_empty) {
   
   load(paste0(diroutput,"D4_population_d",suffix[[subpop]],".RData"))
   
-  population_c<-get(paste0("D4_population_d", suffix[[subpop]]))
+  population_d<-get(paste0("D4_population_d", suffix[[subpop]]))
+  rm(list=paste0("D4_population_d", suffix[[subpop]]))
   
-endyear<- substr(D4_population_d[,max(study_exit_date_MIS_d)], 1, 4)
+endyear<- substr(population_d[,max(study_exit_date_MIS_d)], 1, 4)
 end_persontime_studytime<-as.character(paste0(endyear,"1231"))
 
 
 Output_file<-CountPersonTime(
   Dataset_events = events_ALL_OUTCOMES,
-  Dataset = D4_population_d,
+  Dataset = population_d,
   Person_id = "person_id",
   Start_study_time = start_persontime_studytime,
   End_study_time = end_persontime_studytime,
@@ -266,6 +279,7 @@ Output_file<-CountPersonTime(
 
 nameoutput<-paste0("D4_persontime_d",suffix[[subpop]])
 assign(nameoutput ,Output_file)
+rm(Output_file)
 save(nameoutput, file = paste0(diroutput, nameoutput,".RData"),list=nameoutput)
 
 thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
@@ -274,7 +288,7 @@ rm(list=nameoutput)
 
 Output_file<-CountPersonTime(
   Dataset_events = events_ALL_OUTCOMES,
-  Dataset = D4_population_d,
+  Dataset = population_d,
   Person_id = "person_id",
   Start_study_time = start_persontime_studytime,
   End_study_time = end_persontime_studytime,
@@ -294,11 +308,13 @@ Output_file<-CountPersonTime(
 
 nameoutput<-paste0("D4_persontime_monthly_d",suffix[[subpop]])
 assign(nameoutput ,Output_file)
+rm(Output_file)
 save(nameoutput, file = paste0(diroutput, nameoutput,".RData"),list=nameoutput)
 
 thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
 fwrite(get(nameoutput),file=paste0(thisdirexp,nameoutput,".csv"))
 rm(list=nameoutput)
+rm(population_d)
 
 }
 
@@ -320,6 +336,7 @@ for (subpop in subpopulations_non_empty){
       FileContains = "D4_persontime_d"
     )
   )
+  rm(list=tempname)
 }
 
 for (subpop in subpopulations_non_empty){
@@ -339,4 +356,7 @@ for (subpop in subpopulations_non_empty){
       FileContains = "D4_persontime_monthly_d"
     )
   )
+  rm(list=tempname)
 }
+
+rm(events_ALL_OUTCOMES)

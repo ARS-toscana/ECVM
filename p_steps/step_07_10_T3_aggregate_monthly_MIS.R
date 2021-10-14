@@ -113,5 +113,6 @@ save(nameoutput3,file=paste0(diroutput,nameoutput3,".RData"),list=nameoutput3)
 rm(list=nameoutput3)
 rm(list=namedataset3)
 rm(namedataset3,nameoutput3)
+rm(all_sex,all_ages,all_month,all_year)
 
 }

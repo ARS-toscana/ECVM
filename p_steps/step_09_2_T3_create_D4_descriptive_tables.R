@@ -97,6 +97,7 @@ setnames(Vaccin_cohort_cov_ALL,
 
 cols_chosen <- c("CV", "Cancer", "CLD", "HIV", "CKD", "Diabetes", "Obesity", "Sicklecell", "immunosuppressants")
 D4_descriptive_dataset_covariate_vax <- Vaccin_cohort_cov_ALL[, lapply(.SD, sum, na.rm=TRUE), .SDcols = cols_chosen]
+rm(Vaccin_cohort_cov_ALL)
 D4_descriptive_dataset_covariate_vax <- D4_descriptive_dataset_covariate_vax[, Datasource := thisdatasource]
 D4_descriptive_dataset_covariate_vax <- D4_descriptive_dataset_covariate_vax[, .(Datasource, CV, Cancer, CLD, HIV, CKD, Diabetes, Obesity, Sicklecell, immunosuppressants)]
 

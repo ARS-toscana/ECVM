@@ -75,6 +75,7 @@ nameoutput<-paste0("D3_vaxweeks_vaccin_cohort",suffix[[subpop]])
 
 assign(nameoutput,D3_vaxweeks_vaccin_cohort)
 save(nameoutput, file = paste0(dirtemp, "D3_vaxweeks_vaccin_cohort",suffix[[subpop]],".RData"),list=nameoutput)
+rm(list=nameoutput)
 
 cohort_to_vaxweeks <- D3_study_population[, .(person_id, sex, study_entry_date, study_exit_date, ageband_at_study_entry,
                                               study_entry_date_vax1, study_exit_date_vax1, study_entry_date_vax2,
