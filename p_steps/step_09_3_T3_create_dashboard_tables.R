@@ -321,7 +321,7 @@ rm(BBC, IR_benefit_week)
 
 
 IR_benefit_fup<- fread(paste0(direxp,"D4_IR_benefit_fup_BC",suffix[[subpop]],".csv")) 
-rm(list=paste0("D4_IR_benefit_fup_BC",suffix[[subpop]]))
+
 
 BBT <- IR_benefit_fup[, Dose := as.character(Dose)][Birthcohort_persons != ">1960", ]
 BBT <- BBT[Dose == 0, c("Dose", "type_vax") := list("no_dose", "none")]
@@ -353,7 +353,6 @@ rm(BBT, IR_benefit_fup)
 
 
 IR_benefit_week<-fread(paste0(direxp,"D4_IR_benefit_week_RF",suffix[[subpop]],".csv")) 
-rm(list=paste0("D4_IR_benefit_week_RF",suffix[[subpop]]))
 
 BRC <- IR_benefit_week[, Dose := as.character(Dose)]
 BRC <- BRC[Dose == 0, c("Dose", "type_vax") := list("no_dose", "none")]
@@ -382,7 +381,7 @@ rm(list=nameoutput)
 rm(BRC, IR_benefit_week)
 
 IR_benefit_fup<-fread(paste0(direxp,"D4_IR_benefit_fup_RF",suffix[[subpop]],".csv"))
-rm(list=paste0("D4_IR_benefit_fup_RF",suffix[[subpop]]))
+
 
 BRT <- IR_benefit_fup[, Dose := as.character(Dose)]
 BRT <- BRT[Dose == 0, c("Dose", "type_vax") := list("no_dose", "none")]
@@ -417,7 +416,6 @@ rm(BRT, vect_recode_COVID, IR_benefit_fup)
 # Risk ------------------------------------------------------------------------------------------------------------
 
 IR_risk_week<-fread(paste0(direxp,"D4_IR_risk_week_BC",suffix[[subpop]],".csv")) 
-rm(list=paste0("D4_IR_risk_week_BC",suffix[[subpop]]))
 
 RBC <- IR_risk_week[, Dose := as.character(Dose)]
 RBC <- RBC[Dose == 0, c("Dose", "type_vax") := list("no_dose", "none")]
@@ -542,5 +540,5 @@ fwrite(get(nameoutput), file = paste0(dirdashboard, nameoutput,".csv"))
 rm(list=nameoutput)
 
 rm(RRT, vect_recode_AESI, IR_risk_fup)
-rm(DOSES_BIRTHCOHORTS)
+
 }
