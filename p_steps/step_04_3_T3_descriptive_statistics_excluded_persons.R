@@ -43,7 +43,7 @@ pop_excluded <- rbind(population_sex, population_date)
 to_ord <- c(1, 2, 4, 5, 6, 7, 8, 9, 3)
 setorder(pop_excluded[, .r := to_ord], .r)[, .r := NULL]
 
-fwrite(pop_excluded, file = paste0(direxp, "pop_excluded_",thisdatasource,"_",currentdate,"_",scriptversion,".csv"))
+fwrite(pop_excluded, file = paste0(direxp, "pop_excluded.csv"))
 
 rm(D3_selection_criteria, population_ins_run_in, population_no_obs_start, population_sex,
    population_date, pop_excluded, population_all, population_filtered)
@@ -63,7 +63,7 @@ out_spells <- out_spells[, N_spell := .N, by = "person_id"]
 number_criteria_excluded <- number_criteria_excluded[, single_spell := copy(out_spells)[N_spell == 1, .N]]
 number_criteria_excluded <- number_criteria_excluded[, double_spell := copy(out_spells)[N_spell == 2, .N]]
 
-fwrite(number_criteria_excluded, file = paste0(direxp, "number_criteria_excluded_",thisdatasource,"_",currentdate,"_",scriptversion,".csv"))
+fwrite(number_criteria_excluded, file = paste0(direxp, "number_criteria_excluded.csv"))
 
 out_spells_start_2019 <- copy(out_spells)[exit_spell_category < study_start, ]
 out_spells_start_2019 <- out_spells_start_2019[, exit_spell_category := as.Date(exit_spell_category)]
@@ -77,7 +77,7 @@ g <- ggplot(out_spells_start_2019, aes(exit_spell_category)) +
        subtitle = "End date of last spell <2020",
        caption = "Source: out_spells_start_2019",
        x = "Spell end date")
-suppressMessages(ggsave(paste0(direxp, "Last spells end date_",thisdatasource,"_",currentdate,"_",scriptversion,".png"), plot = g,
+suppressMessages(ggsave(paste0(direxp, "Last spells end date.png"), plot = g,
                         units = c("cm"), dpi = 600))
 
 out_spells <- out_spells[N_spell == 2, ][, .(entry_spell_category = max(entry_spell_category),
@@ -94,5 +94,5 @@ g <- ggplot(out_spells, aes(distance)) +
        subtitle = "Distances between last spell <2020 and first spell >=2020",
        caption = "Source: out_spells",
        x = "Distance")
-suppressMessages(ggsave(paste0(direxp, "Density_plot_distance_spells_",thisdatasource,"_",currentdate,"_",scriptversion,".png"), plot = g,
+suppressMessages(ggsave(paste0(direxp, "Density_plot_distance_spells.png"), plot = g,
                         units = c("cm"), dpi = 600))
