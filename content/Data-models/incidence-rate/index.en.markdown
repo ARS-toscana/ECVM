@@ -15,7 +15,7 @@ weight: 5
 <script src="{{< blogdown/postref >}}index.en_files/reactwidget/react-tools.js"></script>
 <script src="{{< blogdown/postref >}}index.en_files/htmlwidgets/htmlwidgets.js"></script>
 <script src="{{< blogdown/postref >}}index.en_files/reactable-binding/reactable.js"></script>
-## D4_IR_benefit_fup_BC
+## RES_IR_benefit_fup_BC
 <div align="center">
 <h2 style="color:#333;background:#FFFFFF;text-align:left;font-family:-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif;font-size:18px;font-style:normal;font-weight:bold;text-decoration:;margin:20px">Stratified table by sex, birth cohort, dose, type vax and week of followup. Contains the count and incidence rate with upper and lower bound for covid severity</h2>
 <div id="htmlwidget-1" class="reactable html-widget" style="width:auto;height:300px;"></div>
@@ -26,7 +26,7 @@ weight: 5
 <br/>
 </div>
 
-## D4_IR_benefit_week_BC
+## RES_IR_benefit_week_BC
 <div align="center">
 <h2 style="color:#333;background:#FFFFFF;text-align:left;font-family:-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif;font-size:18px;font-style:normal;font-weight:bold;text-decoration:;margin:20px">Stratified table by sex, birth cohort, dose, type vax and calendar week. Contains the count and incidence rate with upper and lower bound for covid severity</h2>
 <div id="htmlwidget-2" class="reactable html-widget" style="width:auto;height:300px;"></div>
@@ -37,7 +37,7 @@ weight: 5
 <br/>
 </div>
 
-## D4_IR_risk_fup_BC
+## RES_IR_risk_fup_BC
 <div align="center">
 <h2 style="color:#333;background:#FFFFFF;text-align:left;font-family:-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif;font-size:18px;font-style:normal;font-weight:bold;text-decoration:;margin:20px">Stratified table by sex, birth cohort, dose, type vax and week of followup. Contains the count and incidence rate with upper and lower bound for AESI, narrow and broad</h2>
 <div id="htmlwidget-3" class="reactable html-widget" style="width:auto;height:300px;"></div>
@@ -48,7 +48,7 @@ weight: 5
 <br/>
 </div>
 
-## D4_IR_risk_week_BC
+## RES_IR_risk_week_BC
 <div align="center">
 <h2 style="color:#333;background:#FFFFFF;text-align:left;font-family:-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif;font-size:18px;font-style:normal;font-weight:bold;text-decoration:;margin:20px">Stratified table by sex, birth cohort, dose, type vax and calendar week. Contains the count and incidence rate with upper and lower bound for AESI, narrow and broad</h2>
 <div id="htmlwidget-4" class="reactable html-widget" style="width:auto;height:300px;"></div>
@@ -59,7 +59,7 @@ weight: 5
 <br/>
 </div>
 
-## D4_IR_benefit_fup_RF
+## RES_IR_benefit_fup_RF
 <div align="center">
 <h2 style="color:#333;background:#FFFFFF;text-align:left;font-family:-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif;font-size:18px;font-style:normal;font-weight:bold;text-decoration:;margin:20px">Stratified table by sex, risk factors, dose, type vax and week of followup. Contains the count and incidence rate with upper and lower bound for covid severity</h2>
 <div id="htmlwidget-5" class="reactable html-widget" style="width:auto;height:300px;"></div>
@@ -70,7 +70,7 @@ weight: 5
 <br/>
 </div>
 
-## D4_IR_benefit_week_RF
+## RES_IR_benefit_week_RF
 <div align="center">
 <h2 style="color:#333;background:#FFFFFF;text-align:left;font-family:-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif;font-size:18px;font-style:normal;font-weight:bold;text-decoration:;margin:20px">Stratified table by sex, risk factors, dose, type vax and calendar week. Contains the count and incidence rate with upper and lower bound for covid severity</h2>
 <div id="htmlwidget-6" class="reactable html-widget" style="width:auto;height:300px;"></div>
@@ -81,7 +81,7 @@ weight: 5
 <br/>
 </div>
 
-## D4_IR_risk_fup_RF
+## RES_IR_risk_fup_RF
 <div align="center">
 <h2 style="color:#333;background:#FFFFFF;text-align:left;font-family:-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif;font-size:18px;font-style:normal;font-weight:bold;text-decoration:;margin:20px">Stratified table by sex, risk factors, dose, type vax and week of followup. Contains the count and incidence rate with upper and lower bound for AESI, narrow and broad</h2>
 <div id="htmlwidget-7" class="reactable html-widget" style="width:auto;height:300px;"></div>
@@ -92,7 +92,7 @@ weight: 5
 <br/>
 </div>
 
-## D4_IR_risk_week_RF
+## RES_IR_risk_week_RF
 <div align="center">
 <h2 style="color:#333;background:#FFFFFF;text-align:left;font-family:-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif;font-size:18px;font-style:normal;font-weight:bold;text-decoration:;margin:20px">Stratified table by sex, risk factors, dose, type vax and calendar week. Contains the count and incidence rate with upper and lower bound for AESI, narrow and broad</h2>
 <div id="htmlwidget-8" class="reactable html-widget" style="width:auto;height:300px;"></div>

@@ -37,7 +37,7 @@ weight: 5
 <br/>
 </div>
 
-## D4_persontime_ALL_OUTCOMES
+## RES_IR_month
 <div align="center">
 <h2 style="color:#333;background:#FFFFFF;text-align:left;font-family:-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif;font-size:18px;font-style:normal;font-weight:bold;text-decoration:;margin:20px">Stratified table by sex, ageband, month, year and at_risk_at_study_entry. Contains the persontime, counts and incidence rate with upper and lower bound for each AESI</h2>
 <div id="htmlwidget-3" class="reactable html-widget" style="width:auto;height:300px;"></div>
