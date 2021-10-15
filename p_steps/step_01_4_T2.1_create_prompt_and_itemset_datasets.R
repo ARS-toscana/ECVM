@@ -51,4 +51,4 @@ save(covid_registry,file = paste0(dirtemp,"covid_registry.RData"))
 
 #rm(SURVEY_ID_COVID, covid_registry, SURVEY_OBS_COVIDSYMPT,COVID_symptoms)
 rm(SURVEY_ID_COVID, covid_registry, files)
-rm(list=study_variables_of_our_study)
+rm(list=names(itemset_AVpair_our_study_this_datasource))

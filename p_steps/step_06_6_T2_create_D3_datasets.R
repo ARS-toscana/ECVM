@@ -153,6 +153,8 @@ rm(list=paste0("D3_study_population", suffix[[subpop]]))
 rm(list=paste0("D3_Vaccin_cohort", suffix[[subpop]]))
 }
 
-rm(D3_study_population,study_population_no_risk, D3_Vaccin_cohort,Vaccin_cohort_cov_ALL, cohort_to_vaxweeks,
+rm(study_population_no_risk, Vaccin_cohort_cov_ALL, cohort_to_vaxweeks,
    colA, colB, colC, colD, studyweeks,vaxweeks,vaxweeks_including_not_vaccinated,
-   D3_studyweeks_not_vaccinated, study_population_cov_ALL, D3_vaxweeks_vaccin_cohort, persons_at_risk)
+   D3_studyweeks_not_vaccinated, study_population_cov_ALL, persons_at_risk)
+
+if(this_datasource_has_subpopulations==T) rm(D3_study_population,D3_vaxweeks_vaccin_cohort,D3_Vaccin_cohort)

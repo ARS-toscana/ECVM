@@ -34,4 +34,4 @@ for (subpop in subpopulations_non_empty) {
 
 
 rm(population_var, study_population_cov,study_population,study_population_covariates)
-rm(D4_study_population_cov)
+if(this_datasource_has_subpopulations==T) rm(D4_study_population_cov)

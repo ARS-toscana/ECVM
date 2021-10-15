@@ -54,7 +54,7 @@ for (subpop in subpopulations_non_empty) {
 
 
 
-rm(COHORT_TMP, D3_study_population_DP, study_population_DP, study_population)
-
+rm(COHORT_TMP, study_population_DP, study_population)
+if(this_datasource_has_subpopulations==T) rm(D3_study_population_DP)
 
 
