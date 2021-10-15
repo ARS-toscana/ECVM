@@ -92,7 +92,7 @@ setnames(concepts, "date", "old_date")
 setnames(concepts, "derived_date", "date")
 D3_concepts_QC_criteria <- concepts[, .(person_id, date, vx_dose, vx_manufacturer, qc_1_date, qc_1_dose, qc_dupl,
                                         qc_2_date, qc_2_dose, qc_manufacturer, qc_mult_date_for_dose,
-                                        qc_mult_dose_for_date, qc_3_date)]
+                                        qc_mult_dose_for_date, qc_3_date,qc_4_date)]
 
 for (i in names(D3_concepts_QC_criteria)){
   D3_concepts_QC_criteria[is.na(get(i)), (i):=0]
