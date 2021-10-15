@@ -46,4 +46,5 @@ rm(list=paste0("persons_doses",suffix[[subpop]]))
 rm(list=paste0("D3_selection_criteria", suffix[[subpop]]))
 }
 
-rm(selection_criteria, D3_concepts_QC_criteria, persons_doses, temp, temp1, output_spells_category, temp2, temp_tot)
+if(this_datasource_has_subpopulations==T) rm(persons_doses)
+rm(selection_criteria, D3_concepts_QC_criteria , temp, temp1, output_spells_category, temp2, temp_tot)

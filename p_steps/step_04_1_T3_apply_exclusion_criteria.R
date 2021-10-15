@@ -59,7 +59,8 @@ rm(list=paste0("Flowchart_exclusion_criteria",suffix[[subpop]] ))
 rm(list=paste0("D3_selection_criteria", suffix[[subpop]]))
 }
 
-rm(D4_study_source_population, D4_study_population, selection_criteria,selected_population, to_study_pop, selected_population_all_filter)
+if(this_datasource_has_subpopulations==T) rm(D4_study_population,D4_study_source_population)
+rm( selection_criteria,selected_population, to_study_pop, selected_population_all_filter)
 
 
 

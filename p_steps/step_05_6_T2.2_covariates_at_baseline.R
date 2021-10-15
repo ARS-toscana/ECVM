@@ -69,6 +69,6 @@ for (subpop in subpopulations_non_empty) {
 }
 
 rm(CV,COVCANCER,COVCOPD,COVHIV,COVCKD,COVDIAB,COVOBES,COVSICKLE) 
-rm(temp,D3_study_population_covariates,study_population, study_population_covariates,filecovariate)
+rm(temp,study_population, study_population_covariates,filecovariate)
 
-
+if(this_datasource_has_subpopulations==T) rm(D3_study_population_covariates)
