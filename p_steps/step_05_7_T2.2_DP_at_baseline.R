@@ -12,19 +12,12 @@ print('CREATE RISK FACTORS (drugs only)')
 # 
 
 
-load(paste0(dirpargen,"subpopulations_non_empty.RData"))
-
-
 D3_study_population_DP <- vector(mode = 'list')
 for (subpop in subpopulations_non_empty) {
     print(subpop)
-    load(paste0(diroutput,"D4_study_population.RData")) 
+    load(paste0(diroutput,"D4_study_population",suffix[[subpop]],".RData")) 
+    study_population<-get(paste0("D4_study_population", suffix[[subpop]])) 
     
-    if (this_datasource_has_subpopulations == TRUE){  
-        study_population <- D4_study_population[[subpop]]
-    }else{
-        study_population <- as.data.table(D4_study_population)  
-    }
     COHORT_TMP <- study_population[,.(person_id, study_entry_date)]
     study_population_DP <- COHORT_TMP
     for (conceptset in DRUGS_conceptssets) {
@@ -50,16 +43,18 @@ for (subpop in subpopulations_non_empty) {
         rm(list = conceptset)
         rm(output)
     }
-    if (this_datasource_has_subpopulations == TRUE){ 
-        D3_study_population_DP[[subpop]] <- study_population_DP
-    }else{
-        D3_study_population_DP <- study_population_DP
-    }
+
+    tempname<-paste0("D3_study_population_DP",suffix[[subpop]])
+    assign(tempname,study_population_DP)
+    save(list=tempname,file=paste0(dirtemp,tempname,".RData"))
+    
+    rm(list=paste0("D4_study_population", suffix[[subpop]]))
+    rm(list=paste0("D3_study_population_DP", suffix[[subpop]]))
 }
 
-save(D3_study_population_DP,file=paste0(dirtemp,"D3_study_population_DP.RData"))
 
-rm(COHORT_TMP, D3_study_population_DP, D4_study_population, study_population_DP, study_population)
 
+rm(COHORT_TMP, study_population_DP, study_population)
+if(this_datasource_has_subpopulations==T) rm(D3_study_population_DP)
 
 

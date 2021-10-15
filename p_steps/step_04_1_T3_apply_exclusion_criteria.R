@@ -11,11 +11,11 @@ print('FLOWCHART')
 for (subpop in subpopulations_non_empty){
   print(subpop)
   load(paste0(dirtemp,"D3_selection_criteria",suffix[[subpop]],".RData"))
-  D3_selection_criteria<-get(paste0("D3_selection_criteria", suffix[[subpop]]))
+  selection_criteria<-get(paste0("D3_selection_criteria", suffix[[subpop]]))
 
 
 selected_population <- CreateFlowChart(
-  dataset = D3_selection_criteria,
+  dataset = selection_criteria,
   listcriteria = c("sex_or_birth_date_missing", "birth_date_absurd", "no_observation_period", "death_before_study_entry", "no_observation_period_including_study_start"),
   flowchartname = paste0("Flowchart_basic_exclusion_criteria",suffix[[subpop]]))
 
@@ -46,14 +46,21 @@ D4_study_population <- unique(selected_population_all_filter)[, .(person_id, sex
 
 fwrite(get(paste0("Flowchart_exclusion_criteria",suffix[[subpop]])), paste0(direxp,"Flowchart_exclusion_criteria",suffix[[subpop]],".csv"))
 
-assign(paste0(D4_study_population,suffix[[subpop]]),D4_study_population)
-save(list=paste0(D4_study_population,suffix[[subpop]]),file = paste0(diroutput, "D4_study_population",suffix[[subpop]],".RData"))
+assign(paste0("D4_study_population",suffix[[subpop]]),D4_study_population)
+save(list=paste0("D4_study_population",suffix[[subpop]]),file = paste0(diroutput, "D4_study_population",suffix[[subpop]],".RData"))
+rm(list=(paste0("D4_study_population",suffix[[subpop]])))
 
-save(list=paste0(D4_study_source_population,suffix[[subpop]]),file = paste0(diroutput, "D4_study_source_population",suffix[[subpop]],".RData"))
+assign(paste0("D4_study_source_population",suffix[[subpop]]),D4_study_source_population)
+save(list=paste0("D4_study_source_population",suffix[[subpop]]),file = paste0(diroutput, "D4_study_source_population",suffix[[subpop]],".RData"))
+rm(list=(paste0("D4_study_source_population",suffix[[subpop]])))
 
+rm(list=paste0("Flowchart_basic_exclusion_criteria",suffix[[subpop]]))
+rm(list=paste0("Flowchart_exclusion_criteria",suffix[[subpop]] ))
+rm(list=paste0("D3_selection_criteria", suffix[[subpop]]))
 }
-rm(D4_study_source_population, D4_study_population, D3_selection_criteria, Flowchart_basic_exclusion_criteria,
-   Flowchart_exclusion_criteria, selected_population, to_study_pop, selected_population_all_filter)
+
+if(this_datasource_has_subpopulations==T) rm(D4_study_population,D4_study_source_population)
+rm( selection_criteria,selected_population, to_study_pop, selected_population_all_filter)
 
 
 

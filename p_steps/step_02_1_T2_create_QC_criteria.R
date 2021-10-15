@@ -15,7 +15,7 @@ setorderv(concepts, c("person_id", "derived_date"))
 concepts <- concepts[qc_dupl == 0 & qc_1_date == 0 & qc_2_date == 0, derived_dose := rowid(person_id)]
 concepts <- concepts[qc_dupl == 0 & qc_1_date == 0 & qc_2_date == 0, min_derived_date := derived_date[1], by = person_id]
 concepts <- concepts[qc_dupl == 0 & qc_1_date == 0 & qc_2_date == 0, distance_doses := as.numeric(derived_date - min_derived_date)]
-concepts <- concepts[qc_dupl == 0 & qc_1_date == 0 & qc_2_date == 0, qc_4_date := fifelse(distance_doses > 0 & distance_doses < 21, 1, 0)]
+concepts <- concepts[qc_dupl == 0 & qc_1_date == 0 & qc_2_date == 0, qc_4_date := fifelse(distance_doses > 0 & distance_doses < 14, 1, 0)]
 concepts <- concepts[, c("min_derived_date", "distance_doses") := NULL]
 concepts <- concepts[qc_dupl == 0 & qc_1_date == 0 & qc_2_date == 0 & qc_4_date == 0, imputed_dose := rowid(person_id)]
 

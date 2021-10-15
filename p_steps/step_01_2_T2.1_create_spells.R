@@ -150,6 +150,7 @@ if (this_datasource_has_subpopulations == TRUE){
               only_overlaps = T
             )
             output_spells_category_meaning_set[[overlap_op_meaning_sets]] <- get("overlap")
+            rm(input_observation_periods_overlap)
           }
           rm(inputfirst,inputsecond, temp,overlap)
         }
@@ -186,4 +187,4 @@ if (this_datasource_has_subpopulations == TRUE){
   rm(output_spells_category_meaning_set,output_spells_category)
 }
 
-
+rm(OBSERVATION_PERIODS)

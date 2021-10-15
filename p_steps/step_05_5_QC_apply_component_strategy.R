@@ -7,19 +7,14 @@
 
 print('BREAK DOWN OUTCOMES PER MEANINGS')
 
-load(paste0(dirpargen,"subpopulations_non_empty.RData"))
 
 COHORT_to_be_used <- vector(mode = 'list')
 COHORT_dates <- vector(mode = 'list')
 for (subpop in subpopulations_non_empty) {
   print(subpop)
-  load(paste0(diroutput,"D4_study_population.RData")) 
+  load(paste0(diroutput,"D4_study_population",suffix[[subpop]],".RData")) 
+  study_population<-get(paste0("D4_study_population", suffix[[subpop]]))
   
-  if (this_datasource_has_subpopulations == TRUE){  
-    study_population <- D4_study_population[[subpop]]
-  }else{
-    study_population <- as.data.table(D4_study_population)  
-  }
   COHORT_TMP <- study_population[,.(person_id,study_entry_date,study_exit_date)]
   
   FirstJan<-vector(mode="list")
@@ -31,13 +26,10 @@ for (subpop in subpopulations_non_empty) {
   secondyear = secondYearComponentAnalysis
   
   COHORT_TMP <- COHORT_TMP[study_entry_date<=as.Date(FirstJan[[secondyear]]) + 365 & study_exit_date >= as.Date(FirstJan[[firstyear]]),]
-  if (this_datasource_has_subpopulations == TRUE){ 
-    COHORT_dates[[subpop]] <- COHORT_TMP
-    COHORT_to_be_used[[subpop]] <- COHORT_TMP[,.(person_id)]
-  }else{
-    COHORT_dates <- COHORT_TMP
-    COHORT_to_be_used <- COHORT_TMP[,.(person_id)]
-  }
+
+  COHORT_dates <- COHORT_TMP
+  COHORT_to_be_used <- COHORT_TMP[,.(person_id)]
+  rm(list=paste0("D4_study_population", suffix[[subpop]]))
 }
 
  
@@ -50,13 +42,9 @@ for (OUTCOME in OUTCOME_events) {
     load(paste0(dirtemp,namedatasetnarrow,'.RData'))
     load(paste0(dirtemp,namedatasetpossible,'.RData'))
 
-    if (this_datasource_has_subpopulations == TRUE){ 
-      COHORT_TMP <- COHORT_to_be_used[[subpop]]
-      COHORT_DATES <- COHORT_dates[[subpop]]
-    }else{
-      COHORT_TMP <- COHORT_to_be_used
-      COHORT_DATES <- COHORT_dates
-    }
+    COHORT_TMP <- COHORT_to_be_used
+    COHORT_DATES <- COHORT_dates
+    
     dataset <- vector(mode="list")
     dataset[['narrow']] <- as.data.table(get(namedatasetnarrow))
     dataset[['possible']] <- as.data.table(get(namedatasetpossible))
@@ -118,31 +106,29 @@ for (OUTCOME in OUTCOME_events) {
     OUTCOME_merged[is.na(OUTCOME_merged)] <- 0
     OUTCOME_merged <- OUTCOME_merged[, person_id := NULL]
     OUTCOME_aggregated <- OUTCOME_merged[, .(.N), by = c(colnames(OUTCOME_merged))]
-    nameobject <- paste0("QC_all_components_",OUTCOME)
-    if (this_datasource_has_subpopulations == TRUE){ 
-      OUTCOME_components[[subpop]] <- OUTCOME_aggregated
-      fwrite(OUTCOME_aggregated,file=paste0(direxpsubpop[[subpop]],paste0(nameobject,".csv")))
-    }else{
-      OUTCOME_components <- OUTCOME_aggregated
-      fwrite(OUTCOME_aggregated,file=paste0(direxp,paste0(nameobject,".csv")))
-    }
-  }
-  nameobject <- paste0("QC_all_components_",OUTCOME)
+    nameobject <- paste0("QC_all_components_",OUTCOME,suffix[[subpop]])
+
+    OUTCOME_components <- OUTCOME_aggregated
+    assign(nameobject, OUTCOME_aggregated)
+    thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
+    fwrite(get(nameobject),file=paste0(thisdirexp,paste0(nameobject,".csv")))
+
+
   assign(nameobject, OUTCOME_components)
   save(nameobject,file=paste0(dirtemp,paste0(nameobject,".RData")),list = nameobject)
+  rm(nameobject,list=nameobject)
+  }
   
   
   
   
-  
-  rm(nameobject , list = nameobject)
   rm(namedatasetnarrow , list = namedatasetnarrow)
   rm(namedatasetpossible , list = namedatasetpossible)
   rm(OUTCOME_detailed_components, OUTCOME_todrop, OUTCOME_reshaped, OUTCOME_merged, OUTCOME_aggregated,OUTCOME_components)
   
 }
 
-rm(D4_study_population ,study_population, COHORT_TMP, COHORT_to_be_used,COHORT_DATES, COHORT_dates)
+rm(study_population, COHORT_TMP, COHORT_to_be_used,COHORT_DATES, COHORT_dates)
 
 # mask small counts
 for (subpop in subpopulations_non_empty){

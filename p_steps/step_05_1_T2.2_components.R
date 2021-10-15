@@ -9,8 +9,8 @@ print('create events and create components of OUTCOMES for narrow and broad.')
 firstyear=firstYearComponentAnalysis
 secondyear=secondYearComponentAnalysis
 
-
-load(paste0(dirpargen,"subpopulations_non_empty.RData"))
+# 
+# load(paste0(dirpargen,"subpopulations_non_empty.RData"))
 
 ##for each OUTCOME create components
 
@@ -20,14 +20,11 @@ for (OUTCOME in OUTCOME_events) {
   print(OUTCOME)
   for (subpop in subpopulations_non_empty) {
     print(subpop)
-    load(paste0(diroutput,"D4_study_population.RData")) 
+    load(paste0(diroutput,"D4_study_population",suffix[[subpop]],".RData")) 
+    study_population<-get(paste0("D4_study_population", suffix[[subpop]]))
     
-    if (this_datasource_has_subpopulations == TRUE){  
-      COHORT_TMP <- D4_study_population[[subpop]]
-    }else{
-      COHORT_TMP <- as.data.table(D4_study_population)  
-    }
-    
+    COHORT_TMP <- as.data.table(study_population)  
+
     COHORT_TMP <- COHORT_TMP[,.(person_id,study_entry_date)]
    
     namenewvar<-c()
@@ -78,55 +75,42 @@ for (OUTCOME in OUTCOME_events) {
       
       
       load(paste0(dirtemp,'tempfile.RData') )
-      if (this_datasource_has_subpopulations == TRUE){  
-        tempOUTCOME[[type]][[subpop]] <- tempfile
-        componentsOUTCOME[[type]][[subpop]]<- components 
-      }else{
+
         tempOUTCOME[[type]] <- tempfile
         componentsOUTCOME[[type]]<- components 
-      }
+
       rm(nameconceptsetdatasetOUTCOMEtype,list = paste0(nameconceptsetdatasetOUTCOMEtype) )
     }
     
-  }
-
   for (type in c("narrow","possible")) {
-    nameobjectOUTCOMEtype <- paste0('D3_events_',OUTCOME,"_",type)
+    nameobjectOUTCOMEtype <- paste0('D3_events',"_",OUTCOME,"_",type,suffix[[subpop]])
     foroutput <- tempOUTCOME[[type]]
     assign(nameobjectOUTCOMEtype,foroutput)
     save(nameobjectOUTCOMEtype,file=paste0(dirtemp,paste0(nameobjectOUTCOMEtype,".RData")),list = nameobjectOUTCOMEtype)
     rm(foroutput)
     rm(nameobjectOUTCOMEtype,list = nameobjectOUTCOMEtype)
   }
+    rm(list=paste0("D4_study_population", suffix[[subpop]]))
+}
      
  
-  nameobjectOUTCOME <- paste0("D3_components_",OUTCOME)
+  nameobjectOUTCOME <- paste0("D3_components","_",OUTCOME,suffix[[subpop]])
   componentsOUTCOMEfinal <- vector(mode = 'list')
-  for (subpop in subpopulations_non_empty) {
-    if (this_datasource_has_subpopulations == TRUE){ 
-      OUTCOME_narrow <- componentsOUTCOME[['narrow']][[subpop]]
-      OUTCOME_possible <- componentsOUTCOME[['possible']][[subpop]]
-    }else{
-      OUTCOME_narrow <- componentsOUTCOME[['narrow']]
-      OUTCOME_possible <- componentsOUTCOME[['possible']]
-    }
+    OUTCOME_narrow <- componentsOUTCOME[['narrow']]
+    OUTCOME_possible <- componentsOUTCOME[['possible']]
+
     temp2 <- merge(COHORT_TMP,OUTCOME_narrow, by="person_id",all.x  = T)
     temp2 <- merge(temp2,OUTCOME_possible, by="person_id",all.x = T)
     temp2[is.na(temp2)] <- 0
-    if (this_datasource_has_subpopulations == TRUE){ 
-      componentsOUTCOMEfinal[[subpop]] <- temp2
-    }
-  }  
-  if (this_datasource_has_subpopulations == TRUE){
-    assign(nameobjectOUTCOME, componentsOUTCOMEfinal)
-  }else{
-    assign(nameobjectOUTCOME, temp2)
-  }
+    componentsOUTCOMEfinal <- temp2
+  
+  assign(nameobjectOUTCOME, componentsOUTCOMEfinal)
+
   save(nameobjectOUTCOME,file=paste0(dirtemp,paste0(nameobjectOUTCOME,".RData")),list= nameobjectOUTCOME)
   rm(OUTCOME_narrow,OUTCOME_possible,temp2,componentsOUTCOMEfinal,componentsOUTCOME,tempOUTCOME)
   rm(nameobjectOUTCOME, list = nameobjectOUTCOME)
  
-  rm(addvarOUTCOME,D4_study_population,summarystatOUTCOME, COHORT_TMP,tempfile,components)
+  rm(addvarOUTCOME,study_population,summarystatOUTCOME, COHORT_TMP,tempfile,components)
   
 }
 

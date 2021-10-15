@@ -215,9 +215,17 @@ fwrite(table2, file = paste0(dummytables_MIS, "Cohort characteristics at start o
 
 # table2b ------------------------------------------------------------------
 
-
 load(file = paste0(diroutput, "D4_population_d.RData"))
-N_fup_pop <- D4_population_d[, .(person_id, date_vax1, type_vax_1, fup_days, age_at_1_jan_2021)]
+N_fup_pop <- D3_Vaccin_cohort[, .(person_id, date_vax1, type_vax_1, fup_vax1, age_at_1_jan_2021, CV_at_date_vax_1,
+                                  COVCANCER_at_date_vax_1, COVCOPD_at_date_vax_1, COVHIV_at_date_vax_1,
+                                  COVCKD_at_date_vax_1, COVDIAB_at_date_vax_1, COVOBES_at_date_vax_1,
+                                  COVSICKLE_at_date_vax_1, immunosuppressants_at_date_vax_1)]
+setnames(N_fup_pop, c("date_vax1", "type_vax_1", "fup_vax1","age_at_date_vax_1", "CV_at_date_vax_1",
+                      "COVCANCER_at_date_vax_1", "COVCOPD_at_date_vax_1", "COVHIV_at_date_vax_1",
+                      "COVCKD_at_date_vax_1", "COVDIAB_at_date_vax_1", "COVOBES_at_date_vax_1",
+                      "COVSICKLE_at_date_vax_1", "immunosuppressants_at_date_vax_1"),
+         c("date_vax", "type_vax", "fup_vax","age_at_date_vax", "CV", "Cancer", "CLD", "HIV", "CKD", "Diabetes",
+           "Obesity", "Sicklecell", "immunosuppressants"))
 
 
 setnames(N_fup_pop, c("date_vax1", "type_vax_1", "fup_days","age_at_1_jan_2021"),
@@ -341,7 +349,24 @@ positive_before_vax <- positive_before_vax[history_covid == 1, ]
 positive_before_vax <- positive_before_vax[, history_covid := NULL]
 positive_before_vax <- positive_before_vax[, ..cols_to_keep]
 
-table3_4_5_6 <- rbind(N_pop, fup_pop, min_month, year_month_pop, age_pop, N_age_cat, fup_age_cat, sex_pop, positive_before_vax)
+risk_factors <- copy(N_fup_pop)[, c("person_id", "type_vax", "CV", "Cancer", "CLD", "HIV", "CKD", "Diabetes",
+                                    "Obesity", "Sicklecell", "immunosuppressants")]
+cols_chosen <- c("CV", "Cancer", "CLD", "HIV", "CKD", "Diabetes", "Obesity", "Sicklecell", "immunosuppressants")
+risk_factors <- risk_factors[, lapply(.SD, sum, na.rm = T), by = "type_vax", .SDcols = cols_chosen]
+risk_factors <- melt(risk_factors, id.vars = "type_vax",
+                     measure.vars = cols_chosen,
+                     variable.name = "Parameters", value.name = "dob")
+risk_factors <- dcast(risk_factors, Parameters ~ type_vax, value.var = "dob")
+risk_factors <- risk_factors[, a := "At risk population at date of vaccination"]
+round_coverage <- function(x){
+  round(x / as.numeric(N_pop_by_vax[names(x)]) * 100, 3)
+}
+risk_factors[, (vax_man_perc) := round(.SD / as.numeric(N_pop_by_vax[names(.SD)]) * 100, 3), .SDcols = vax_man]
+risk_factors <- risk_factors[, (vax_man_perc) := lapply(.SD, paste0, "%"), .SDcols = vax_man_perc]
+risk_factors <- risk_factors[, ..cols_to_keep]
+
+table3_4_5_6 <- rbind(N_pop, fup_pop, min_month, year_month_pop, age_pop, N_age_cat, fup_age_cat, sex_pop,
+                      positive_before_vax, risk_factors)
 setnames(table3_4_5_6, "a", " ")
 
 final_name_table3_4_5_6 <- c(TEST = "table 2", ARS = "table 2", PHARMO = "table 3",
@@ -420,7 +445,19 @@ ageband_start_c[, Parameters := c(AgeCat_011 = "0-11", AgeCat_1217 = "12-17", Ag
                                   AgeCat_3039 = "30-39", AgeCat_4049 = "40-49", AgeCat_5059 = "50-59", AgeCat_6069 = "60-69",
                                   AgeCat_7079 = "70-79", "Agecat_80+" = ">=80")[Parameters]]
 
+followup_studystart <- fread(paste0(dirD4tables, "D4_followup_fromstudystart_MIS_c.csv"))
+followup_studystart[, Datasource := c(TEST = "Test", ARS = "Italy_ARS", PHARMO = "NL_PHARMO", CPRD = "UK_CPRD",
+                                      BIFAP = "ES_BIFAP")[Datasource]]
+followup_studystart <- followup_studystart[, a := "Person years across age categories"]
+setcolorder(followup_studystart, c("a", "Datasource"))
 
+followup_start <- melt(followup_studystart, id.vars = c("a", "Datasource"),
+                       measure.vars = colnames(followup_studystart)[colnames(followup_studystart) %not in% c("a", "Datasource")],
+                       variable.name = "Parameters")
+followup_start <- dcast(followup_start, a + Parameters  ~ Datasource, value.var = 'value')
+followup_start[, Parameters := c(Followup_0119 = "0-19", Followup_2029 = "20-29", Followup_3039 = "30-39",
+                                 Followup_4049 = "40-49", Followup_5059 = "50-59", Followup_6069 = "60-69",
+                                 Followup_7079 = "70-79", Followup_80 = ">=80", Followup_60 = ">=60")[as.character(followup_start$Parameters)]]
 
 D4_descriptive_dataset_covid_studystart_c_MIS <- fread(paste0(dirD4tables, "D4_descriptive_dataset_covid_studystart_c_MIS.csv"))
 D4_descriptive_dataset_covid_studystart_c_MIS[, Datasource := c(TEST = "Test", ARS = "Italy_ARS",
@@ -453,7 +490,7 @@ risk_factors_start_c[, Parameters := c(CV = "Cardiovascular disease", Cancer = "
                                        Obesity = "Severe obesity", Sicklecell = "Sickle cell disease",
                                        immunosuppressants = "Use of immunosuppressants")[Parameters]]
 
-table5 <- rbind(total_pop_c, pt_total_c,covid_month, age_start_c, ageband_start_c,  risk_factors_start_c)
+table5 <- rbind(total_pop_c, pt_total_c,covid_month, age_start_c, ageband_start_c, followup_start, risk_factors_start_c)
 daps <- intersect(c("Italy_ARS", "NL_PHARMO", "UK_CPRD", "ES_BIFAP", "Test"), names(table5))
 daps_perc <- paste("perc", daps, sep="_")
 col_order <- c(rbind(daps, daps_perc))
