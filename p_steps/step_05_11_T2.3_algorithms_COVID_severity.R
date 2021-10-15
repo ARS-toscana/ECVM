@@ -74,7 +74,7 @@ is.na(severity_level_covid) & MechanicalVentilation_within_registry_date != 0, s
   
   # cumulative binary variables
   outcomes_covid <- data.table()
-  list_outcomes_observed <- c()
+  list_outcomes_observed_COVID <- c()
   for (j in c(1,2,3,4,5) ){
     temp <- algorithm_covid[severity_level_covid >= j]
     level <- paste0('COVID_L',j,'plus')
@@ -82,14 +82,14 @@ is.na(severity_level_covid) & MechanicalVentilation_within_registry_date != 0, s
     temp <- temp[, date_event := date_covid]
     temp <- temp[,.(person_id,name_event,date_event,origin_severity_level_covid)]
     outcomes_covid <- rbind(outcomes_covid, temp)
-    list_outcomes_observed <- c(list_outcomes_observed, level)
+    list_outcomes_observed_COVID <- c(list_outcomes_observed_COVID, level)
       
   }
 
   
   # save the COVID outcomes as a dataset and their list as a parameter
   tempname<-paste0("list_outcomes_observed_COVID",suffix[[subpop]])
-  assign(tempname,list_outcomes_observed)
+  assign(tempname,list_outcomes_observed_COVID)
   save(list=tempname,file=paste0(dirpargen,tempname,".RData"))
   rm(tempname,list=tempname)
   
