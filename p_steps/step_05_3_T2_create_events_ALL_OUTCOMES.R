@@ -61,10 +61,10 @@ for (subpop in subpopulations_non_empty) {
     
     for (type in c("narrow","broad")) {
       dataset[[type]][,name_event:=paste0(OUTCOME,'_',type)]
-      if ( nrow(dataset[[type]]) > 0 ){
-        setkey(dataset[[type]],person_id, date)
-        dataset[[type]] <- dataset[[type]][,`:=`(date_event = min(date),
-                                                 code_first_event = codvar[1], meaning_of_first_event = meaning_of_event[1], coding_system_of_code_first_event = event_record_vocabulary[1]),by = c("person_id", "name_event")]
+      if (nrow(dataset[[type]]) > 0 ){
+        setnames(dataset[[type]], c("date", "codvar", "meaning_of_event", "event_record_vocabulary"),
+                 c("date_event", "code_first_event", "meaning_of_first_event", "coding_system_of_code_first_event"), 
+                 skip_absent = T)
         dataset[[type]] <- dataset[[type]][,.(person_id, date_event, name_event, code_first_event, meaning_of_first_event, coding_system_of_code_first_event)]
         dataset[[type]] <- unique(dataset[[type]])
         events_ALL_OUTCOMES <- as.data.table(rbind(events_ALL_OUTCOMES, dataset[[type]], fill = T))
