@@ -713,9 +713,9 @@ rm(list=nameoutput)
 
 # table_10 ----------------------------------------------------------------------------------------------------------
 
-load(paste0(dirtemp,"D4_persontime_ALL_OUTCOMES",suffix[[subpop]],".RData"))
-D4_persontime_ALL_OUTCOMES<-get(paste0("D4_persontime_ALL_OUTCOMES",suffix[[subpop]]))
-rm(list=paste0("D4_persontime_ALL_OUTCOMES",suffix[[subpop]]))
+load(paste0(dirtemp,"RES_IR_week",suffix[[subpop]],".RData"))
+RES_IR_week<-get(paste0("RES_IR_week",suffix[[subpop]]))
+rm(list=paste0("RES_IR_week",suffix[[subpop]]))
 
 list_risk <- list_outcomes_observed
 vect_recode_AESI <- list_outcomes_observed
@@ -726,7 +726,7 @@ colB = paste0("IR_", list_risk)
 colC = paste0("lb_", list_risk)
 colD = paste0("ub_", list_risk)
 
-PT_monthly <- data.table::melt(D4_persontime_ALL_OUTCOMES, measure = list(colA, colB, colC, colD),
+PT_monthly <- data.table::melt(RES_IR_week, measure = list(colA, colB, colC, colD),
                                variable.name = "AESI", value.name = c("PT", "IR", "lb", "ub"), na.rm = F)
 
 PT_monthly <- PT_monthly[, DAP := thisdatasource][ , AESI := vect_recode_AESI[AESI]]
