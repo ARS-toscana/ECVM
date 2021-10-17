@@ -5,7 +5,7 @@ for (subpop in subpopulations_non_empty) {
   load(paste0(diroutput,"D4_persontime_risk_month",suffix[[subpop]],".RData"))
   
 cols_to_sums = names(get(namedataset1))[5:length(get(namedataset1))]
-setnames(get(namedataset1), "age_at_1_jan_2021", "Ageband")
+setnames(get(namedataset1), "ageband_at_study_entry", "Ageband")
 
 assign(namedataset1,get(namedataset1)[, c("year", "month") := tstrsplit(month, "-")])
 get(namedataset1)[, month := month.name[as.integer(month)]]
@@ -27,17 +27,14 @@ assign(namedataset1, rbind(get(namedataset1), all_year))
 
 all_ages <- copy(get(namedataset1))[, lapply(.SD, sum), by = c("sex", "month", "year", "at_risk_at_study_entry"),
                                              .SDcols = cols_to_sums]
-all_ages <- unique(all_ages[, Ageband := "all_birth_cohorts"])
+all_ages <- unique(all_ages[, Ageband := "all_agebands"])
 assign(namedataset1, rbind(get(namedataset1), all_ages))
 
-older60 <- copy(get(namedataset1))[Ageband %in% c(">80", "70-79", "60-69"), lapply(.SD, sum),
-                                          by = c("sex", "month", "year", "at_risk_at_study_entry"), .SDcols = cols_to_sums]
-older60 <- unique(older60[, Ageband := ">60"])
+assign(namedataset1, bc_divide_60(get(namedataset1), c("sex", "month", "year", "at_risk_at_study_entry"),
+                                  cols_to_sums, col_used = "Ageband"))
 
 nameoutput1<-paste0("D4_persontime_risk_month_RFBC",suffix[[subpop]])
-assign(nameoutput1,rbind(get(namedataset1), older60))
-
-
+assign(nameoutput1, get(namedataset1))
 save(nameoutput1,file=paste0(diroutput,nameoutput1,".RData"),list=nameoutput1)
 rm(list=nameoutput1)
 rm(list=namedataset1)

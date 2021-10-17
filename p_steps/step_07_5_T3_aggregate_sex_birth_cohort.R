@@ -93,10 +93,9 @@ for (subpop in subpopulations_non_empty) {
   
   assign(namedataset3, rbind(get(namedataset3), all_ages))
   
-  nameoutput3<-paste0("D4_persontime_risk_year_BC",suffix[[subpop]])
-  assign(nameoutput3, bc_divide_60(get(namedataset3), c("sex", "Dose", "type_vax", "week_fup"), cols_to_sums))
+  assign(namedataset3, bc_divide_60(get(namedataset3), c("sex", "Dose", "type_vax", "week_fup"), cols_to_sums))
   
-  setorder(get(nameoutput3), "ageband_at_study_entry")
+  setorder(get(namedataset3), "ageband_at_study_entry")
   
   vax_dose <- unique(copy(get(namedataset3))[, c("Dose", "type_vax", "week_fup")])
   vax_dose <- vax_dose[, .SD[which.max(week_fup)], by = c("Dose", "type_vax")]
@@ -107,10 +106,12 @@ for (subpop in subpopulations_non_empty) {
   
   sex_vect <- rep(c("0", "1", "both_sexes"), each = nrow(week_vax_dose))
   week_vax_dose <- week_vax_dose[, lapply(.SD, rep, 3)][, sex := sex_vect]
-  Agebands_vect <- rep(Agebands_labels, each = nrow(week_vax_dose))
-  empty_risk_year <- week_vax_dose[, lapply(.SD, rep, length(Agebands_labels))][, ageband_at_study_entry := Agebands_vect]
+  observed_agebands <- unique(copy(get(namedataset3))[, ageband_at_study_entry])
+  Agebands_vect <- rep(observed_agebands, each = nrow(week_vax_dose))
+  empty_risk_year <- week_vax_dose[, lapply(.SD, rep, length(observed_agebands))][, ageband_at_study_entry := Agebands_vect]
   
-  assign(nameoutput3, merge(empty_risk_year, get(nameoutput3), all.x = T,
+  nameoutput3<-paste0("D4_persontime_risk_year_BC",suffix[[subpop]])
+  assign(nameoutput3, merge(empty_risk_year, get(namedataset3), all.x = T,
                                       by = c("Dose", "type_vax", "week_fup", "sex", "ageband_at_study_entry")))
   
   for (i in names(get(nameoutput3))){
