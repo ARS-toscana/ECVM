@@ -46,7 +46,7 @@ D4_descriptive_dataset_ageband_studystart[, ageband_at_study_entry := vect_recod
 
 D4_descriptive_dataset_ageband_studystart <- unique(D4_descriptive_dataset_ageband_studystart[, N := .N, by = "ageband_at_study_entry"][, person_id := NULL])
 older60 <- copy(D4_descriptive_dataset_ageband_studystart)[ageband_at_study_entry %in% paste0("AgeCat_", Agebands60), sum(N)]
-older60 <- data.table::data.table(ageband_at_study_entry = "Agecat_60+", N = older60)
+older60 <- data.table::data.table(ageband_at_study_entry = "AgeCat_60+", N = older60)
 D4_descriptive_dataset_ageband_studystart <- rbind(D4_descriptive_dataset_ageband_studystart, older60)
 
 D4_descriptive_dataset_ageband_studystart <- D4_descriptive_dataset_ageband_studystart[, Datasource := thisdatasource]
@@ -177,7 +177,7 @@ D4_descriptive_dataset_ageband_vax <- Vaccin_cohort[, .(person_id, type_vax_1, a
 
 vect_recode <- paste0("Agecat_", Agebands_labels)
 names(vect_recode) <- Agebands_labels
-D4_followup_fromstudystart[, ageband_at_date_vax_1 := vect_recode[ageband_at_date_vax_1]]
+D4_descriptive_dataset_ageband_vax[, ageband_at_date_vax_1 := vect_recode[ageband_at_date_vax_1]]
 
 D4_descriptive_dataset_ageband_vax <- unique(D4_descriptive_dataset_ageband_vax[, N := .N, by = c("ageband_at_date_vax_1",
                                                                                                   "type_vax_1")][, person_id := NULL])
