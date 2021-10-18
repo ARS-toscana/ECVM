@@ -63,7 +63,7 @@ for (subpop in subpopulations_non_empty) {
   print(subpop)
   load(paste0(dirtemp,"D3_events_COVID_narrow",suffix[[subpop]],".RData"))
   load(paste0(diroutput,"D4_study_population",suffix[[subpop]],".RData"))
-
+  
   events_COVID_narrow<-get(paste0("D3_events_COVID_narrow", suffix[[subpop]])) 
   study_population<-get(paste0("D4_study_population", suffix[[subpop]]))
   
@@ -280,5 +280,5 @@ for (subpop in subpopulations_non_empty) {
 } 
 
 
-rm(events_COVID_narrow,study_population,D3_events_DEATH, components_covid_severity,temp,componentconceptsetdatasets_within_registry_date,covid_dates_registry,covid_dates,covid_registry_symptoms,covid_registry,conceptsetdatasets)
+rm(events_COVID_narrow,study_population,D3_events_DEATH, components_covid_severity,temp,covid_dates_registry,covid_dates,covid_registry_symptoms,covid_registry,conceptsetdatasets)
 
