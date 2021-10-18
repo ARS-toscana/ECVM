@@ -76,6 +76,7 @@ for (name_temp_df in df_events_ages) {
 }
 
 cohort_to_vaxweeks <- rbindlist(vect_to_rbind)
+cohort_to_vaxweeks <- cohort_to_vaxweeks[Dose == 0, Doses_in_week := 0]
 
 cohort_to_vaxweeks <- bc_divide_60(cohort_to_vaxweeks,
                                    c("start_date_of_period", "sex", "type_vax", "at_risk_at_study_entry", "Dose"),

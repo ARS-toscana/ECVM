@@ -63,13 +63,12 @@ assign(nameoutput,D3_Vaccin_cohort)
 save(nameoutput, file = paste0(dirtemp, "D3_Vaccin_cohort",suffix[[subpop]],".RData"),list=nameoutput)
 
 persons_at_risk <- copy(study_population_cov_ALL)[, .(person_id, at_risk_at_study_entry)]
-D3_vaxweeks_vaccin_cohort <- D3_Vaccin_cohort[, .(person_id, sex, date_of_birth, study_entry_date,
-                                                  study_entry_date_vax1)]
+D3_vaxweeks_vaccin_cohort <- D3_study_population[!is.na(date_vax1) & (is.na(date_vax2) | date_vax1 < date_vax2), ]
+D3_vaxweeks_vaccin_cohort <- D3_vaxweeks_vaccin_cohort[, .(person_id, sex, ageband_at_study_entry, study_entry_date,
+                                                           study_entry_date_vax1)]
 D3_vaxweeks_vaccin_cohort <- merge(D3_vaxweeks_vaccin_cohort, persons_at_risk, by = "person_id", all.x = T)
 D3_vaxweeks_vaccin_cohort <- D3_vaxweeks_vaccin_cohort[, study_exit_date := study_entry_date_vax1 - 1]
-D3_vaxweeks_vaccin_cohort[, age_at_1_jan_2021 := floor(lubridate::time_length(correct_difftime(firstjan2021, date_of_birth), "years"))]
-D3_vaxweeks_vaccin_cohort[, age_at_1_jan_2021 := cut(age_at_1_jan_2021, breaks = Agebands, labels = Agebands_labels)]
-D3_vaxweeks_vaccin_cohort[, c("date_of_birth", "study_entry_date_vax1") := NULL]
+D3_vaxweeks_vaccin_cohort[, "study_entry_date_vax1" := NULL]
 
 nameoutput<-paste0("D3_vaxweeks_vaccin_cohort",suffix[[subpop]])
 

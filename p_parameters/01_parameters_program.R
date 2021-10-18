@@ -148,18 +148,15 @@ secondYearComponentAnalysis = "2020"
 
 days<-ifelse(thisdatasource %in% c("ARS","TEST"),21,1)
 
-Birthcohorts =c("<1940", "1940-1949", "1950-1959", "1960-1969",
-                "1970-1979", "1980-1989", "1990+")
-
-
-
 #############################################
 #FUNCTION TO COMPUTE AGE
 #############################################
 
-Agebands = c(-1, 4, 11, 17, 19, 29, 39, 49, 59, 69, 79, Inf)
-Agebands_labels = c("0-4","5-11","12-17","18-19","20-29", "30-39", "40-49","50-59","60-69", "70-79","80+")
+Agebands = c(-1, 4, 11, 17, 24, 29, 39, 49, 59, 69, 79, Inf)
+Agebands_labels = c("0-4","5-11","12-17","18-24","20-29", "30-39", "40-49","50-59","60-69", "70-79","80+")
 
+Agebands60 <- c("60-69", "70-79","80+")
+Agebands059 <- c("0-4","5-11","12-17","18-24","20-29", "30-39", "40-49","50-59")
 
 age_fast = function(from, to) {
   from_lt = as.POSIXlt(from)
@@ -189,7 +186,7 @@ correct_difftime <- function(t1, t2, t_period = "days") {
 }
 
 calc_precise_week <- function(time_diff) {
-  weeks_frac <- time_length(time_diff, "week")
+  weeks_frac <- time_length(time_diff - 1, "week")
   fifelse(weeks_frac%%1==0, weeks_frac, floor(weeks_frac) + 1)
 }
 
@@ -234,15 +231,17 @@ correct_col_type <- function(df) {
   return(df)
 }
 
-bc_divide_60 <- function(df, by_cond, cols_to_sums) {
-  older60 <- copy(df)[ageband_at_study_entry %in% c("60-69", "70-79", "80+"),
+bc_divide_60 <- function(df, by_cond, cols_to_sums, only_old = F, col_used = "ageband_at_study_entry") {
+  older60 <- copy(df)[get(col_used) %in% c("60-69", "70-79", "80+"),
                       lapply(.SD, sum, na.rm=TRUE), by = by_cond, .SDcols = cols_to_sums]
-  older60 <- unique(older60[, ageband_at_study_entry := "60+"])
-  younger60 <- copy(df)[ageband_at_study_entry %in% c("0-4", "5-11", "12-17", "18-19", "20-29", "30-39", "40-49", "50-59"),
-                        lapply(.SD, sum, na.rm=TRUE), by = by_cond, .SDcols = cols_to_sums]
-  younger60 <- unique(younger60[, ageband_at_study_entry := "0-59"])
+  older60 <- unique(older60[, c(col_used) := "60+"])
+  if (!only_old) {
+    younger60 <- copy(df)[get(col_used) %in% c("0-4", "5-11", "12-17", "18-19", "20-29", "30-39", "40-49", "50-59"),
+                          lapply(.SD, sum, na.rm=TRUE), by = by_cond, .SDcols = cols_to_sums]
+    younger60 <- unique(younger60[, c(col_used) := "0-59"])
+    
+    df <- rbind(df, younger60)
+  }
   df <- rbind(df, older60)
-  df <- rbind(df, younger60)
-  # df <- data.table::rbindlist(list(df, older60, younger60))
   return(df)
 }

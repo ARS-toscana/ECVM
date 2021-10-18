@@ -103,6 +103,11 @@ for (ev in list_outcomes_observed) {
   persontime_risk_year_BC[, (name_cols) := exactPoiCI(persontime_risk_year_BC, name_count, name_pt)]
 }
 
+nameoutput<-paste0("D4_IR_persontime_risk_fup_BC",suffix[[subpop]])
+assign(nameoutput, persontime_risk_year_BC)
+save(nameoutput,file=paste0(direxp,nameoutput,".RData"),list=nameoutput)
+rm(list=nameoutput)
+
 nameoutput<-paste0("RES_IR_risk_fup_BC",suffix[[subpop]])
 assign(nameoutput,persontime_risk_year_BC[, !grep("^Person", names(persontime_risk_year_BC)) , with = FALSE])
 

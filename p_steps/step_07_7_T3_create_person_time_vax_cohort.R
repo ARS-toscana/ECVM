@@ -45,7 +45,7 @@ for (subpop in subpopulations_non_empty) {
       Start_date = "study_entry_date",
       End_date = "study_exit_date",
       #Birth_date = "date_of_birth",
-      Strata = c("sex", "age_at_1_jan_2021", "at_risk_at_study_entry"),
+      Strata = c("sex", "ageband_at_study_entry", "at_risk_at_study_entry"),
       Name_event = "name_event",
       Date_event = "date_event",
       #Age_bands = c(0,19,29,39,49,59,69,79),F
@@ -82,7 +82,7 @@ for (subpop in subpopulations_non_empty) {
       Start_date = "study_entry_date",
       End_date = "study_exit_date",
       #Birth_date = "date_of_birth",
-      Strata = c("sex", "age_at_1_jan_2021", "at_risk_at_study_entry"),
+      Strata = c("sex", "ageband_at_study_entry", "at_risk_at_study_entry"),
       Name_event = "name_event",
       Date_event = "date_event",
       #Age_bands = c(0,19,29,39,49,59,69,79),F
@@ -103,7 +103,7 @@ for (subpop in subpopulations_non_empty) {
   }
   
   persontime_risk_month <- merge(persontime_risk_month, recurrent_persontime_risk_month,
-                                by = c("sex","age_at_1_jan_2021", "month", "at_risk_at_study_entry", "Persontime"), all = T)
+                                by = c("sex","ageband_at_study_entry", "month", "at_risk_at_study_entry", "Persontime"), all = T)
   
   for (i in names(persontime_risk_month)){
     persontime_risk_month[is.na(get(i)), (i):=0]
