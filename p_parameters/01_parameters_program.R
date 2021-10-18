@@ -153,10 +153,10 @@ days<-ifelse(thisdatasource %in% c("ARS","TEST"),21,1)
 #############################################
 
 Agebands = c(-1, 4, 11, 17, 24, 29, 39, 49, 59, 69, 79, Inf)
-Agebands_labels = c("0-4","5-11","12-17","18-24","20-29", "30-39", "40-49","50-59","60-69", "70-79","80+")
+Agebands_labels = c("0-4","5-11","12-17","18-24","25-29", "30-39", "40-49","50-59","60-69", "70-79","80+")
 
 Agebands60 <- c("60-69", "70-79","80+")
-Agebands059 <- c("0-4","5-11","12-17","18-24","20-29", "30-39", "40-49","50-59")
+Agebands059 <- c("0-4","5-11","12-17","18-24","25-29", "30-39", "40-49","50-59")
 
 age_fast = function(from, to) {
   from_lt = as.POSIXlt(from)
@@ -232,11 +232,11 @@ correct_col_type <- function(df) {
 }
 
 bc_divide_60 <- function(df, by_cond, cols_to_sums, only_old = F, col_used = "ageband_at_study_entry") {
-  older60 <- copy(df)[get(col_used) %in% c("60-69", "70-79", "80+"),
+  older60 <- copy(df)[get(col_used) %in% Agebands60,
                       lapply(.SD, sum, na.rm=TRUE), by = by_cond, .SDcols = cols_to_sums]
   older60 <- unique(older60[, c(col_used) := "60+"])
   if (!only_old) {
-    younger60 <- copy(df)[get(col_used) %in% c("0-4", "5-11", "12-17", "18-19", "20-29", "30-39", "40-49", "50-59"),
+    younger60 <- copy(df)[get(col_used) %in% Agebands059,
                           lapply(.SD, sum, na.rm=TRUE), by = by_cond, .SDcols = cols_to_sums]
     younger60 <- unique(younger60[, c(col_used) := "0-59"])
     
@@ -245,3 +245,5 @@ bc_divide_60 <- function(df, by_cond, cols_to_sums, only_old = F, col_used = "ag
   df <- rbind(df, older60)
   return(df)
 }
+
+prop_to_total <- function(x){paste0(round(x / total_doses * 100, 2), "%")}

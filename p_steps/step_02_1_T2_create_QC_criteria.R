@@ -1,102 +1,85 @@
-#NOTE add cycle trough the concept dfs?
-
 concepts <- import_concepts(dirtemp, vaccine__conceptssets)
-concepts[2, date := ymd(20200412)]
+
+# Recode, create variables and keep only useful ones
+
 concepts <- concepts[, vx_record_date := ymd(vx_record_date)]
-concepts <- concepts[, derived_date := fifelse(!is.na(date), date, vx_record_date)]
-concepts[, temp_id := rowid(person_id, vx_dose, derived_date, vx_manufacturer)]
-concepts <- concepts[, qc_dupl := fifelse(temp_id == 1, 0, 1)]
-concepts <- concepts[, qc_1_date := as.numeric(is.na(derived_date))]
-concepts <- concepts[qc_dupl == 0 & qc_1_date == 0, qc_2_date := fifelse(derived_date >= start_COVID_vaccination_date, 0, 1)]
-
-concepts <- concepts[, .(person_id, date, derived_date, vx_dose, vx_manufacturer, qc_dupl, qc_1_date, qc_2_date)]
-
-setorderv(concepts, c("person_id", "derived_date"))
-concepts <- concepts[qc_dupl == 0 & qc_1_date == 0 & qc_2_date == 0, derived_dose := rowid(person_id)]
-concepts <- concepts[qc_dupl == 0 & qc_1_date == 0 & qc_2_date == 0, min_derived_date := derived_date[1], by = person_id]
-concepts <- concepts[qc_dupl == 0 & qc_1_date == 0 & qc_2_date == 0, distance_doses := as.numeric(derived_date - min_derived_date)]
-concepts <- concepts[qc_dupl == 0 & qc_1_date == 0 & qc_2_date == 0, qc_4_date := fifelse(distance_doses > 0 & distance_doses < 14, 1, 0)]
-concepts <- concepts[, c("min_derived_date", "distance_doses") := NULL]
-concepts <- concepts[qc_dupl == 0 & qc_1_date == 0 & qc_2_date == 0 & qc_4_date == 0, imputed_dose := rowid(person_id)]
-
-QC_dose_derived <- concepts[qc_dupl == 0 & qc_1_date == 0 & qc_2_date == 0, wrong_dose := fifelse(vx_dose != derived_dose, 1, 0)]
-nrow_wrong <- nrow(QC_dose_derived)
-nrow_wrong_0 <- nrow(QC_dose_derived[is.na(vx_dose) & derived_dose == 1, ])
-nrow_wrong_1 <- nrow(QC_dose_derived[is.na(vx_dose) & derived_dose == 2, ])
-nrow_wrong_2 <- nrow(QC_dose_derived[vx_dose == 1 & wrong_dose == 1, ])
-nrow_wrong_3 <- nrow(QC_dose_derived[vx_dose == 2 & wrong_dose == 1, ])
-nrow_wrong_4 <- nrow(QC_dose_derived[vx_dose == 1 & wrong_dose == 0, ])
-nrow_wrong_5 <- nrow(QC_dose_derived[vx_dose == 2 & wrong_dose == 0, ])
-save(QC_dose_derived, file = paste0(dirtemp, "QC_dose_derived.RData"))
-table_QC_dose_derived <- data.table(a = c("", "Number of doses", "Missing first doses", "Missing second doses",
-                                          "Discordant first to second", "Discordant second to first",
-                                          "Concordant first doses", "Concordant second doses"),
-                                    b = c("N", nrow_wrong, nrow_wrong_0, nrow_wrong_1, nrow_wrong_2, nrow_wrong_3,
-                                          nrow_wrong_4, nrow_wrong_5),
-                                    c = c("%", "", round(nrow_wrong_0/nrow(QC_dose_derived)*100, 2),
-                                          round(nrow_wrong_1/nrow(QC_dose_derived)*100, 2),
-                                          round(nrow_wrong_2/nrow(QC_dose_derived)*100, 2),
-                                          round(nrow_wrong_3/nrow(QC_dose_derived)*100, 2),
-                                          round(nrow_wrong_4/nrow(QC_dose_derived)*100, 2),
-                                          round(nrow_wrong_5/nrow(QC_dose_derived)*100, 2)))
-setnames(table_QC_dose_derived, c("a", "b", "c"), c("", thisdatasource, thisdatasource))
-fwrite(table_QC_dose_derived, file = paste0(direxp, "table_QC_dose_derived.csv"))
-
-concepts <- concepts[, qc_1_dose := as.numeric(is.na(derived_dose))]
-concepts$derived_dose <- as.numeric(concepts$derived_dose)
-concepts$vx_manufacturer <- as.character(concepts$vx_manufacturer)
+concepts <- concepts[, vx_manufacturer := as.character(vx_manufacturer)]
 
 if (thisdatasource %in% c("ARS", "TEST")) {
-  concepts <- concepts[.(vx_manufacturer = c("MODERNA BIOTECH SPAIN S.L.",
-                                             "PFIZER Srl", "ASTRAZENECA SpA", "J&J"), to = c("Moderna", "Pfizer", "AstraZeneca", "J&J")),
-                       on = "vx_manufacturer", vx_manufacturer := i.to]
+  concepts <- concepts[.(vx_manufacturer = c("MODERNA BIOTECH SPAIN S.L.", "PFIZER Srl", "ASTRAZENECA SpA", "J&J"),
+                         to = c("Moderna", "Pfizer", "AstraZeneca", "J&J")), on = "vx_manufacturer",
+                       vx_manufacturer := i.to]
 }
 
 concepts <- concepts[vx_manufacturer %not in% c("Moderna", "Pfizer", "AstraZeneca", "J&J"), vx_manufacturer := "UKN"]
+concepts <- concepts[, derived_date := fifelse(!is.na(date), date, vx_record_date)]
 
-# TODO to unknows
-setorder(concepts, person_id, derived_dose, derived_date)
-# concepts[, temp_id := rowid(person_id, derived_dose, derived_date, vx_manufacturer)]
-#NOTE remove the filter for lot_num when it will be necessary (moved above)
+concepts <- concepts[, .(person_id, date, derived_date, vx_dose, vx_manufacturer)]
 
-concepts[qc_dupl == 0, temp_id := rowid(person_id, derived_dose, derived_date, vx_manufacturer)]
-# concepts <- concepts[, qc_dupl := fifelse(temp_id == 1, 0, 1), by = c("person_id", "derived_dose", "derived_date", "vx_manufacturer")]
+### Start with exclusion criteria
 
-concepts <- concepts[qc_dupl == 0, qc_2_dose := fifelse(derived_dose <= 2, 0, 1), by = c("person_id", "derived_date")]
+# Duplicated record
+key_variables <- c("person_id", "vx_dose", "derived_date", "vx_manufacturer")
+setkeyv(concepts, key_variables)
+concepts <- concepts[, duplicated_records := fifelse(rowidv(concepts, key_variables) == 1, 0, 1)]
+concepts <- concepts[, removed_row := duplicated_records]
 
-concepts[qc_dupl == 0, temp_id := rowid(person_id, derived_dose, derived_date)]
-concepts <- concepts[qc_dupl == 0, qc_manufacturer := fifelse(temp_id == 1, 0, 1), by = c("person_id", "derived_dose", "derived_date")]
+# Missing date
+concepts <- concepts[removed_row == 0, missing_date := as.numeric(is.na(derived_date))]
+concepts <- concepts[, removed_row := sum(removed_row, missing_date)]
 
-concepts[qc_dupl == 0 & qc_2_date == 0 & qc_2_dose == 0 & qc_manufacturer == 0, temp_id := rowid(person_id, derived_dose)]
-concepts <- concepts[qc_dupl == 0 & qc_2_date == 0 & qc_2_dose == 0 & qc_manufacturer == 0,
-                     qc_mult_date_for_dose := fifelse(temp_id == 1, 0, 1), by = c("person_id", "derived_dose")]
-concepts[qc_dupl == 0 & qc_2_date == 0 & qc_2_dose == 0 & qc_manufacturer == 0 & qc_mult_date_for_dose == 0, temp_id := rowid(person_id, derived_date)]
-concepts <- concepts[qc_dupl == 0 & qc_2_date == 0 & qc_2_dose == 0 & qc_manufacturer == 0 & qc_mult_date_for_dose == 0,
-                     qc_mult_dose_for_date := fifelse(temp_id == 1, 0, 1), by = c("person_id", "derived_date")]
+# Date before start of vaccination in DAP region
+concepts <- concepts[removed_row == 0, date_before_start_vax := fifelse(derived_date >= start_COVID_vaccination_date, 0, 1)]
+concepts <- concepts[, removed_row := sum(removed_row, date_before_start_vax)]
 
+# Distance between doses and creation of imputed doses
+key_variables <- c("person_id", "derived_date")
+setorderv(concepts, c(key_variables))
+concepts <- concepts[removed_row == 0, min_derived_date := derived_date[1], by = person_id]
+concepts <- concepts[removed_row == 0, distance_doses := as.numeric(derived_date - min_derived_date)]
+concepts <- concepts[removed_row == 0, distance_btw_doses := fifelse(distance_doses >= 0 & distance_doses < 14, 1, 0)]
+concepts <- concepts[, c("min_derived_date", "distance_doses") := NULL]
+concepts <- concepts[removed_row == 0 & rowidv(concepts, key_variables) == 1, distance_btw_doses := 0]
+concepts <- concepts[, removed_row := sum(removed_row, distance_btw_doses)]
 
-concepts_wider <- concepts[qc_dupl == 0 & qc_2_date == 0 & qc_2_dose == 0 & qc_manufacturer == 0 & qc_mult_date_for_dose == 0 & qc_mult_dose_for_date == 0, ]
-concepts_wider <- concepts_wider[, .(person_id, derived_date, derived_dose)]
+concepts <- concepts[removed_row == 0, imputed_dose := rowid(person_id)]
 
-concepts_wider <- data.table::dcast(concepts_wider, person_id ~ derived_dose, value.var = "derived_date")
+# Create quality check table showing concordant dose number between original and imputed number
+QC_dose_derived <- concepts[removed_row == 0,  wrong_dose := fifelse(vx_dose != imputed_dose, 1, 0)]
 
-setnames(concepts_wider, c("1", "2"), c("date_vax1", "date_vax2"))
-concepts_wider <- concepts_wider[, qc_3_date := fifelse(is.na(date_vax2) | date_vax1 < date_vax2, 0, 1)][, .(person_id, qc_3_date)]
-concepts_wider <- unique(concepts_wider)
+total_doses <- nrow(QC_dose_derived)
+missing_dose_1 <- nrow(QC_dose_derived[is.na(vx_dose) & imputed_dose == 1, ])
+missing_dose_2 <- nrow(QC_dose_derived[is.na(vx_dose) & imputed_dose == 2, ])
+dose_1_to_n <- nrow(QC_dose_derived[vx_dose == 1 & wrong_dose == 1, ])
+dose_2_to_n <- nrow(QC_dose_derived[vx_dose == 2 & wrong_dose == 1, ])
+dose_1_to_1 <- nrow(QC_dose_derived[vx_dose == 1 & wrong_dose == 0, ])
+dose_2_to_2 <- nrow(QC_dose_derived[vx_dose == 2 & wrong_dose == 0, ])
+save(QC_dose_derived, file = paste0(dirtemp, "QC_dose_derived.RData"))
 
-concepts <- merge(concepts, concepts_wider, by = "person_id",all.x=T)
+column_names <- c("", "Number of doses", "Missing first doses", "Missing second doses", "Discordant first to second",
+                  "Discordant second to first", "Concordant first doses", "Concordant second doses")
+count_values <- c(total_doses, missing_dose_1, missing_dose_2, dose_1_to_n, dose_2_to_n, dose_1_to_1, dose_2_to_2)
+
+table_QC_dose_derived <- data.table(a = column_names, b = c("N", count_values), c = c("%", sapply(count_values, prop_to_total)))
+setnames(table_QC_dose_derived, c("a", "b", "c"), c("", thisdatasource, thisdatasource))
+fwrite(table_QC_dose_derived, file = paste0(direxp, "table_QC_dose_derived.csv"))
+
+# Dose after second
+key_variables <- c("person_id", "derived_date")
+setorderv(concepts, c(key_variables))
+concepts <- concepts[removed_row == 0, dose_after_2 := fifelse(rowidv(concepts, key_variables) <= 2, 0, 1)]
+
 
 setnames(concepts, "vx_dose", "old_dose")
-setnames(concepts, "derived_dose", "vx_dose")
+setnames(concepts, "imputed_dose", "vx_dose")
 setnames(concepts, "date", "old_date")
 setnames(concepts, "derived_date", "date")
-D3_concepts_QC_criteria <- concepts[, .(person_id, date, vx_dose, vx_manufacturer, qc_1_date, qc_1_dose, qc_dupl,
-                                        qc_2_date, qc_2_dose, qc_manufacturer, qc_mult_date_for_dose,
-                                        qc_mult_dose_for_date, qc_3_date,qc_4_date)]
+D3_concepts_QC_criteria <- concepts[, .(person_id, date, vx_dose, vx_manufacturer, duplicated_records, missing_date,
+                                        date_before_start_vax, distance_btw_doses, dose_after_2)]
 
 for (i in names(D3_concepts_QC_criteria)){
   D3_concepts_QC_criteria[is.na(get(i)), (i):=0]
 }
 
 save(D3_concepts_QC_criteria, file = paste0(dirtemp, "D3_concepts_QC_criteria.RData"))
-rm(concepts, concepts_wider, D3_concepts_QC_criteria, QC_dose_derived, table_QC_dose_derived)
+rm(concepts, D3_concepts_QC_criteria, QC_dose_derived, table_QC_dose_derived)
