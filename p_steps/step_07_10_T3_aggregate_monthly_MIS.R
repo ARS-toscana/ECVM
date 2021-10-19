@@ -5,7 +5,7 @@ for (subpop in subpopulations_non_empty) {
   load(paste0(diroutput,"D4_persontime_monthly_b",suffix[[subpop]],".RData"))
   
 cols_to_sums = names(get(namedataset1))[4:length(get(namedataset1))]
-setnames(get(namedataset1), "agebands_at_1_jan_2021", "Ageband")
+setnames(get(namedataset1), "ageband_at_1_jan_2021", "Ageband")
 
 assign(namedataset1,get(namedataset1)[, c("year", "month") := tstrsplit(month, "-")])
 get(namedataset1)[, month := month.name[as.integer(month)]]
@@ -43,7 +43,7 @@ namedataset2<-paste0("D4_persontime_monthly_c",suffix[[subpop]])
 load(paste0(diroutput,"D4_persontime_monthly_c",suffix[[subpop]],".RData"))
 
 cols_to_sums = names(get(namedataset2))[4:length(get(namedataset2))]
-setnames(get(namedataset2), "agebands_at_1_jan_2021", "Ageband")
+setnames(get(namedataset2), "ageband_at_1_jan_2021", "Ageband")
 
 assign(namedataset2,get(namedataset2)[, c("year", "month") := tstrsplit(month, "-")])
 get(namedataset2)[, month := month.name[as.integer(month)]]
@@ -82,7 +82,7 @@ namedataset3<-paste0("D4_persontime_monthly_d",suffix[[subpop]])
 load(paste0(diroutput,"D4_persontime_monthly_d",suffix[[subpop]],".RData"))
 
 cols_to_sums = names(get(namedataset3))[6:length(get(namedataset3))]
-setnames(get(namedataset3), "agebands_at_1_jan_2021", "Ageband")
+setnames(get(namedataset3), "ageband_at_1_jan_2021", "Ageband")
 
 assign(namedataset3,get(namedataset3)[, c("year", "month") := tstrsplit(month, "-")])
 get(namedataset3)[, month := month.name[as.integer(month)]]

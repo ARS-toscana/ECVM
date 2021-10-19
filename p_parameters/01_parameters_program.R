@@ -6,7 +6,7 @@
 # dirinput <- paste0(dirbase,"/CDMInstances/ECVM2108/")
 
 #dirinput <- paste0(thisdir,"/i_input/")
-dirinput <- paste0(thisdir,"/i_input_subpop/")
+dirinput <- paste0(thisdir,"/i_input/")
 
 # set other directories
 diroutput <- paste0(thisdir,"/g_output/")
@@ -74,7 +74,8 @@ thisdatasource <- as.character(CDM_SOURCE[1,3])
 
 study_start <- as.Date(as.character(20200101), date_format)
 
-study_end <- as.Date(as.character(CDM_SOURCE[1,"recommended_end_date"]), date_format)
+study_end <- min(as.Date(as.character(CDM_SOURCE[1,"date_creation"]), date_format),
+                 as.Date(as.character(CDM_SOURCE[1,"recommended_end_date"]), date_format), na.rm = T)
 
 start_COVID_vaccination_date <- fifelse(thisdatasource == 'CPRD',as.Date(as.character(20201206), date_format),as.Date(as.character(20201227), date_format))
 
