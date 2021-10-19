@@ -31,11 +31,11 @@ concepts <- concepts[, removed_row := duplicated_records]
 
 # Missing date
 concepts <- concepts[removed_row == 0, missing_date := as.numeric(is.na(derived_date))]
-concepts <- concepts[, removed_row := sum(removed_row, missing_date)]
+concepts[, removed_row := raster::rowSums(.SD), .SDcols=c("removed_row", "missing_date")]
 
 # Date before start of vaccination in DAP region
 concepts <- concepts[removed_row == 0, date_before_start_vax := fifelse(derived_date >= start_COVID_vaccination_date, 0, 1)]
-concepts <- concepts[, removed_row := sum(removed_row, date_before_start_vax)]
+concepts[, removed_row := raster::rowSums(.SD), .SDcols=c("removed_row", "date_before_start_vax")]
 
 # Distance between doses and creation of imputed doses
 key_variables <- c("person_id", "derived_date")
@@ -48,10 +48,14 @@ concepts <- concepts[removed_row == 0, distance_btw_1_2_doses := fifelse(distanc
 concepts <- concepts[removed_row == 0, distance_btw_2_3_doses := fifelse(second_distance_doses >= 0 & second_distance_doses < 90, 1, 0)]
 concepts <- concepts[is.na(distance_btw_2_3_doses), distance_btw_2_3_doses := 0]
 concepts <- concepts[, c("min_derived_date", "distance_doses", "second_distance_doses") := NULL]
-concepts <- concepts[removed_row == 0 & rowidv(concepts, key_variables) == 1, distance_btw_1_2_doses := 0]
-concepts <- concepts[, removed_row := sum(removed_row, distance_btw_1_2_doses)]
-concepts <- concepts[removed_row == 0 & rowidv(concepts, key_variables) == 2, distance_btw_2_3_doses := 0]
-concepts <- concepts[, removed_row := sum(removed_row, distance_btw_2_3_doses)]
+key_variables <- "person_id"
+concepts <- concepts[removed_row == 0, flag := rowidv(concepts[removed_row == 0, ], key_variables)]
+concepts <- concepts[removed_row == 0 & flag == 1, distance_btw_1_2_doses := 0]
+concepts[, removed_row := raster::rowSums(.SD), .SDcols=c("removed_row", "distance_btw_1_2_doses")]
+concepts <- concepts[removed_row == 0, flag := rowidv(concepts[removed_row == 0, ], key_variables)]
+concepts <- concepts[removed_row == 0 & flag == 2, distance_btw_2_3_doses := 0]
+concepts[, removed_row := raster::rowSums(.SD), .SDcols=c("removed_row", "distance_btw_2_3_doses")]
+concepts <- concepts[, flag := NULL]
 
 concepts <- concepts[removed_row == 0, imputed_dose := rowid(person_id)]
 
@@ -83,12 +87,13 @@ fwrite(table_QC_dose_derived, file = paste0(direxp, "table_QC_dose_derived.csv")
 # Dose after third
 key_variables <- c("person_id", "derived_date")
 setorderv(concepts, c(key_variables))
-concepts <- concepts[removed_row == 0, dose_after_3 := fifelse(rowidv(concepts, key_variables) <= 3, 0, 1)]
+concepts <- concepts[removed_row == 0, dose_after_3 := fifelse(rowidv(concepts[removed_row == 0, ], "person_id") <= 3, 0, 1)]
+concepts[, removed_row := raster::rowSums(.SD), .SDcols=c("removed_row", "distance_btw_2_3_doses")]
 
 # Dose after second
 key_variables <- c("person_id", "derived_date")
 setorderv(concepts, c(key_variables))
-concepts <- concepts[removed_row == 0, dose_after_2 := fifelse(rowidv(concepts, key_variables) <= 2, 0, 1)]
+concepts <- concepts[removed_row == 0, dose_after_2 := fifelse(rowidv(concepts[removed_row == 0, ], "person_id") <= 2, 0, 1)]
 
 
 setnames(concepts, "vx_dose", "old_dose")
