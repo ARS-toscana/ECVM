@@ -35,6 +35,9 @@ for (subpop in subpopulations_non_empty) {
   if(this_datasource_has_subpopulations == T) dirdashboard <- paste0(thisdirexp,"dashboard tables/")
   suppressWarnings(if (!file.exists(dirdashboard)) dir.create(file.path(dirdashboard)))
   
+  if(this_datasource_has_subpopulations == T)   dummytables <- paste0(thisdirexp,"Dummy tables for report/")
+  suppressWarnings(if (!file.exists(dummytables)) dir.create(file.path(dummytables)))
+  
 flow_source <- fread(paste0(direxp, "Flowchart_basic_exclusion_criteria",suffix[[subpop]],".csv"))
 flow_study <- fread(paste0(thisdirexp, "Flowchart_exclusion_criteria",suffix[[subpop]],".csv"))
 
