@@ -24,10 +24,10 @@ setnames(temp, "sex_or_birth_date_missing", "dose_not_in_persons")
 
 selected_population <- CreateFlowChart(
   dataset = temp,
-  listcriteria = c("duplicated_records", "missing_date", "date_before_start_vax", "distance_btw_doses", "dose_after_2",
-                   "dose_not_in_persons", "birth_date_absurd", "no_observation_period", "death_before_study_entry",
-                   "no_observation_period_including_study_start","insufficient_run_in", "death_before_vax",
-                   "exit_spell_before_vax", "study_end_before_vax"),
+  listcriteria = c("duplicated_records", "missing_date", "date_before_start_vax", "distance_btw_1_2_doses",
+                   "distance_btw_2_3_doses", "dose_after_3", "dose_after_2", "dose_not_in_persons", "birth_date_absurd",
+                   "no_observation_period", "death_before_study_entry", "no_observation_period_including_study_start",
+                   "insufficient_run_in", "death_before_vax", "exit_spell_before_vax", "study_end_before_vax"),
   strata = "monday_week",
   flowchartname = paste0("Flowchart_doses",suffix[[subpop]]))
 
