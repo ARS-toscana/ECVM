@@ -357,7 +357,8 @@ CountPersonTime <- function(Dataset_events = NULL, Dataset, Person_id, Start_stu
       
     }  
       
-    if(nRec_events & nrow(Dataset_events_nrec) > 0){  
+    if(nRec_events & nrow(Dataset_events_nrec) > 0){ 
+      
       if(print) print("If Rec_events = F then selecting only the first event")
       Dataset_events_nrec <- Dataset_events_nrec[Recurrent==1,]
       Dataset_events_nrec<-dcast(Dataset_events_nrec, get(Person_id) + Recurrent ~ get(Name_event), value.var = eval(Date_event))
@@ -401,6 +402,12 @@ CountPersonTime <- function(Dataset_events = NULL, Dataset, Person_id, Start_stu
       
       setkeyv(Dataset_temp, c("Person_id",Start_date, End_date))
       Dataset_events_rec2 <- foverlaps(Dataset_events_rec2, Dataset_temp, by.x = c("Person_id","RecSTDT","RecENDT"), nomatch = 0L, type = "any")
+      
+      ###Bug fix, it can happen that recurrent events are without the study period minus the rec_period. It would also be an option to get rid of them on the event
+      ###File. However, I advise to do that before the function if wanted
+      
+      if(nrow(Dataset_events_rec2) > 0){
+      
       Dataset_events_rec2 <- Dataset_events_rec2[, row2 := row.names(Dataset_events_rec2)]
       Dataset_events_rec2 <- Dataset_events_rec2[,':=' (start_date2 = max(get(Start_date),RecSTDT,na.rm=T), end_date2 = min(get(End_date)+1,RecENDT,na.rm=T)), keyby = row2]     
       Dataset_events_rec2 <- Dataset_events_rec2[,SUBTR := (as.numeric(end_date2)-as.numeric(start_date2)),by = row2]
@@ -411,15 +418,21 @@ CountPersonTime <- function(Dataset_events = NULL, Dataset, Person_id, Start_stu
       setnames(Dataset_events_rec2, "End_date",eval(End_date))
       
       Dataset <- merge(x = Dataset, y = Dataset_events_rec2 , by = c("Person_id", eval(Start_date), eval(End_date)), all.x = T , all.y = F, allow.cartesian = F)
+      }else{
+        
+        print("All recurrent events fall witout the period of interest")
+      }
       
       rm(Dataset_temp)  
       gc()
-    }else{
-      add <- paste0("SUBTRCUM_",Outcomes_rec)                 
-      lapply(add, function(x){Dataset <- Dataset[,eval(x) := 0]})
-      rm(add)
     }
     
+    # else{
+    #   add <- paste0("SUBTRCUM_",Outcomes_rec)                 
+    #   lapply(add, function(x){Dataset <- Dataset[,eval(x) := 0]})
+    #   rm(add)
+    # }
+    # 
     rm(Dataset_events_rec2)
     gc()
     #Check if all outcomes are present. If not add column with value 0
@@ -441,11 +454,14 @@ CountPersonTime <- function(Dataset_events = NULL, Dataset, Person_id, Start_stu
     setkeyv(Dataset_temp, c("Person_id",Start_date, End_date))
     Dataset_temp <- foverlaps(Event_temp,Dataset_temp, by.x=c("Person_id",Date_event, "Dummy"), nomatch = 0L, type = "any")
     
+    
+    if(nrow(Dataset_temp) > 0){
     Dataset_temp <- Dataset_temp[,.("b" = .N),by = c("Person_id",Start_date,End_date, Name_event)][,var := paste0(get(Name_event),"_b")]
     Dataset_temp <- dcast(Dataset_temp, Person_id + get(Start_date) + get(End_date) ~  var, value.var = "b", fill = 0)
     setnames(Dataset_temp, c("Start_date","End_date"), c(eval(Start_date), eval(End_date) ))
     
     Dataset <- merge(x = Dataset, y = Dataset_temp, by = c("Person_id", Start_date, End_date), allow.cartesian = F, all.x = T, all.y = F)
+    }
     
     rm(Event_temp,Dataset_temp)
     gc()
