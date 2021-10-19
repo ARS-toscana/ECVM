@@ -27,7 +27,7 @@ Output_file<-CountPersonTime(
   Start_date = "cohort_entry_date_MIS_b",
   End_date = "study_exit_date_MIS_b",
   #Birth_date = "date_of_birth",
-  Strata = c("sex","agebands_at_1_jan_2021"),
+  Strata = c("sex","ageband_at_1_jan_2021"),
   Name_event = "name_event",
   Date_event = "date_event",
   #Age_bands = c(0,19,29,39,49,59,69,79),
@@ -59,7 +59,7 @@ Output_file<-CountPersonTime(
   Start_date = "cohort_entry_date_MIS_b",
   End_date = "study_exit_date_MIS_b",
   #Birth_date = "date_of_birth",
-  Strata = c("sex","agebands_at_1_jan_2021"),
+  Strata = c("sex","ageband_at_1_jan_2021"),
   Name_event = "name_event",
   Date_event = "date_event",
   #Age_bands = c(0,19,29,39,49,59,69,79),
@@ -149,7 +149,7 @@ Output_file<-CountPersonTime(
   Start_date = "cohort_entry_date_MIS_c",
   End_date = "study_exit_date_MIS_c",
   #Birth_date = "date_of_birth",
-  Strata = c("sex","agebands_at_1_jan_2021"),
+  Strata = c("sex","ageband_at_1_jan_2021"),
   Name_event = "name_event",
   Date_event = "date_event",
   #Age_bands = c(0,19,29,39,49,59,69,79),
@@ -178,7 +178,7 @@ Output_file<-CountPersonTime(
   Start_date = "cohort_entry_date_MIS_c",
   End_date = "study_exit_date_MIS_c",
   #Birth_date = "date_of_birth",
-  Strata = c("sex","agebands_at_1_jan_2021"),
+  Strata = c("sex","ageband_at_1_jan_2021"),
   Name_event = "name_event",
   Date_event = "date_event",
   #Age_bands = c(0,19,29,39,49,59,69,79),
@@ -266,7 +266,7 @@ Output_file<-CountPersonTime(
   Start_date = "cohort_entry_date_MIS_d",
   End_date = "study_exit_date_MIS_d",
   #Birth_date = "date_of_birth",
-  Strata = c("sex","agebands_at_1_jan_2021","type_vax_1","history_covid"), #add covid before vaccine
+  Strata = c("sex","ageband_at_1_jan_2021","type_vax_1","history_covid"), #add covid before vaccine
   Name_event = "name_event",
   Date_event = "date_event",
   #Age_bands = c(0,19,29,39,49,59,69,79),
@@ -295,7 +295,7 @@ Output_file<-CountPersonTime(
   Start_date = "cohort_entry_date_MIS_d",
   End_date = "study_exit_date_MIS_d",
   #Birth_date = "date_of_birth",
-  Strata = c("sex","agebands_at_1_jan_2021","type_vax_1","history_covid"), #add covid before vaccine
+  Strata = c("sex","ageband_at_1_jan_2021","type_vax_1","history_covid"), #add covid before vaccine
   Name_event = "name_event",
   Date_event = "date_event",
   #Age_bands = c(0,19,29,39,49,59,69,79),
