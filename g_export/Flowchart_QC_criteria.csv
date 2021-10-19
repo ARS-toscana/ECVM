@@ -1,5 +1,2 @@
-A_qc_dupl,B_qc_1_date,C_qc_2_date,D_qc_1_dose,E_qc_2_dose,F_qc_manufacturer,G_qc_mult_date_for_dose,H_qc_mult_dose_for_date,I_qc_3_date,J_qc_4_date,N
-1,1,0,0,0,0,0,0,0,0,1
-1,1,1,1,0,0,0,0,0,0,32
-1,1,1,1,1,1,1,1,1,0,12
-1,1,1,1,1,1,1,1,1,1,10238
+A_duplicated_records,B_missing_date,C_date_before_start_vax,D_distance_btw_doses,E_dose_after_2,N
+1,1,1,1,1,10283

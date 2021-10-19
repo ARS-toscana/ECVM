@@ -17,6 +17,10 @@ suppressWarnings(if (!file.exists(PathOutputFolder)) dir.create(file.path( PathO
 
 for (subpop in subpopulations_non_empty ) {
   
+  thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
+  
+  if(this_datasource_has_subpopulations == T) dirdashboard <-paste0(thisdirexp,"dashboard tables/")
+  
   DOSES_BIRTHCOHORTS<- fread(paste0(dirdashboard,"DOSES_BIRTHCOHORTS",suffix[[subpop]],".csv"))
   
   #rendering the file

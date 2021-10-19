@@ -13,7 +13,7 @@ for (subpop in subpopulations_non_empty) {
   rm(list=paste0("D4_population_b", suffix[[subpop]]))
   
 
-list_outcomes_MIS <- c("MIS_narrow","KD_narrow","MIS_KD_narrow","MISCC_narrow", "MIS_broad","KD_broad","MIS_KD_broad","MISCC_broad","MYOCARD_narrow","MYOCARD_possible","Myocardalone_narrow","Myocardalone_possible")
+list_outcomes_MIS <- c("MIS_narrow","KD_narrow","MIS_KD_narrow", "MIS_broad","KD_broad","MIS_KD_broad","MYOCARD_narrow","MYOCARD_possible","Myocardalone_narrow","Myocardalone_possible")
 
 endyear<- substr(population_b[,max(study_exit_date_MIS_b)], 1, 4)
 end_persontime_studytime<-as.character(paste0(endyear,"1231"))

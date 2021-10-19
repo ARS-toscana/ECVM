@@ -1,9 +1,9 @@
 "",TEST,TEST
 "",N,%
-Number of doses,10283,""
-Missing first doses,0,0
-Missing second doses,0,0
-Discordant first to second,36,0.35
-Discordant second to first,269,2.62
-Concordant first doses,5766,56.07
-Concordant second doses,4210,40.94
+Number of doses,10283,100%
+Missing first doses,0,0%
+Missing second doses,0,0%
+Discordant first to second,36,0.35%
+Discordant second to first,268,2.61%
+Concordant first doses,5767,56.08%
+Concordant second doses,4211,40.95%

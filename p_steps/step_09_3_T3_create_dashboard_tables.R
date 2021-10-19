@@ -2,6 +2,14 @@
 for (subpop in subpopulations_non_empty) {  
    print(subpop)
    
+   thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
+   
+
+   if(this_datasource_has_subpopulations == T)  dirdashboard <- paste0(thisdirexp,"dashboard tables/")
+
+   suppressWarnings(if (!file.exists(dirdashboard)) dir.create(file.path(dirdashboard)))
+
+   
    load(paste0(dirtemp,"D3_vaxweeks",suffix[[subpop]],".RData"))
    load(paste0(dirtemp,"D3_Vaccin_cohort",suffix[[subpop]],".RData"))
    load(paste0(dirtemp,"D3_study_population",suffix[[subpop]],".RData"))
@@ -268,8 +276,9 @@ rm(vaxweeks, cohort_to_doses_weeks, all_mondays, monday_week, double_weeks, all_
 if(this_datasource_has_subpopulations==T) rm(DOSES_BIRTHCOHORTS,DOSES_RISKFACTORS,COVERAGE_RISKFACTORS,COVERAGE_BIRTHCOHORTS)
 
 # Benefit ------------------------------------------------------------------------------------------------------------
+thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
 
-IR_benefit_week<-fread(paste0(direxp,"RES_IR_benefit_week_BC",suffix[[subpop]],".csv"))
+IR_benefit_week<-fread(paste0(thisdirexp,"RES_IR_benefit_week_BC",suffix[[subpop]],".csv"))
 
 BBC <- IR_benefit_week[, Dose := as.character(Dose)][ageband_at_study_entry != "0_59", ]
 BBC <- BBC[Dose == 0, c("Dose", "type_vax") := list("no_dose", "none")]
@@ -298,7 +307,7 @@ rm(list=nameoutput)
 rm(BBC, IR_benefit_week)
 
 
-IR_benefit_fup<- fread(paste0(direxp,"RES_IR_benefit_fup_BC",suffix[[subpop]],".csv")) 
+IR_benefit_fup<- fread(paste0(thisdirexp,"RES_IR_benefit_fup_BC",suffix[[subpop]],".csv")) 
 
 
 BBT <- IR_benefit_fup[, Dose := as.character(Dose)][ageband_at_study_entry != "0_59", ]
@@ -329,7 +338,7 @@ rm(list=nameoutput)
 rm(BBT, IR_benefit_fup)
 
 
-IR_benefit_week<-fread(paste0(direxp,"RES_IR_benefit_week_RF",suffix[[subpop]],".csv")) 
+IR_benefit_week<-fread(paste0(thisdirexp,"RES_IR_benefit_week_RF",suffix[[subpop]],".csv")) 
 
 BRC <- IR_benefit_week[, Dose := as.character(Dose)]
 BRC <- BRC[Dose == 0, c("Dose", "type_vax") := list("no_dose", "none")]
@@ -357,7 +366,7 @@ rm(list=nameoutput)
 
 rm(BRC, IR_benefit_week)
 
-IR_benefit_fup<-fread(paste0(direxp,"RES_IR_benefit_fup_RF",suffix[[subpop]],".csv"))
+IR_benefit_fup<-fread(paste0(thisdirexp,"RES_IR_benefit_fup_RF",suffix[[subpop]],".csv"))
 
 
 BRT <- IR_benefit_fup[, Dose := as.character(Dose)]
@@ -392,7 +401,7 @@ rm(BRT, vect_recode_COVID, IR_benefit_fup)
 
 # Risk ------------------------------------------------------------------------------------------------------------
 
-IR_risk_week<-fread(paste0(direxp,"RES_IR_risk_week_BC",suffix[[subpop]],".csv")) 
+IR_risk_week<-fread(paste0(thisdirexp,"RES_IR_risk_week_BC",suffix[[subpop]],".csv")) 
 
 RBC <- IR_risk_week[, Dose := as.character(Dose)][ageband_at_study_entry != "0_59", ]
 RBC <- RBC[Dose == 0, c("Dose", "type_vax") := list("no_dose", "none")]
@@ -422,7 +431,7 @@ rm(list=nameoutput)
 rm(RBC, IR_risk_week)
 
 
-IR_risk_fup<-fread(paste0(direxp,"RES_IR_risk_fup_BC",suffix[[subpop]],".csv")) 
+IR_risk_fup<-fread(paste0(thisdirexp,"RES_IR_risk_fup_BC",suffix[[subpop]],".csv")) 
 
 
 RBT <- IR_risk_fup[, Dose := as.character(Dose)][ageband_at_study_entry != "0_59", ]
@@ -456,7 +465,7 @@ rm(list=nameoutput)
 rm(RBT, IR_risk_fup)
 
 
-IR_risk_week <- fread(paste0(direxp,"RES_IR_risk_week_RF",suffix[[subpop]],".csv"))
+IR_risk_week <- fread(paste0(thisdirexp,"RES_IR_risk_week_RF",suffix[[subpop]],".csv"))
 RRC <- IR_risk_week[, Dose := as.character(Dose)]
 RRC <- RRC[Dose == 0, c("Dose", "type_vax") := list("no_dose", "none")]
 list_risk <- list_outcomes_obs
@@ -485,7 +494,7 @@ rm(list=nameoutput)
 rm(RRC, IR_risk_week)
 
 
-IR_risk_fup <- fread(paste0(direxp,"RES_IR_risk_fup_RF",suffix[[subpop]],".csv"))
+IR_risk_fup <- fread(paste0(thisdirexp,"RES_IR_risk_fup_RF",suffix[[subpop]],".csv"))
 RRT <- IR_risk_fup[, Dose := as.character(Dose)]
 RRT <- RRT[Dose == 0, c("Dose", "type_vax") := list("no_dose", "none")]
 list_risk <- list_outcomes_obs

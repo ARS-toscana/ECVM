@@ -7,6 +7,11 @@ na_to_0 = function(DT) {
 for (subpop in subpopulations_non_empty) {  
    print(subpop)
    
+   thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
+   
+   if(this_datasource_has_subpopulations == T) dirD4tables <-paste0(thisdirexp,"D4 tables/")
+   suppressWarnings(if (!file.exists(dirD4tables)) dir.create(file.path(dirD4tables)))
+   
 
    load(paste0(dirtemp,"D3_Vaccin_cohort",suffix[[subpop]],".RData"))
    load(paste0(dirtemp,"D3_study_population",suffix[[subpop]],".RData"))
@@ -339,6 +344,8 @@ D4_distance_doses <- D4_distance_doses[, c("Datasource", "Distance_P25_Pfizer1_2
 
 nameoutput <- paste0("D4_distance_doses",suffix[[subpop]])
 assign(nameoutput, D4_distance_doses)
+
+
 fwrite(get(nameoutput), file = paste0(dirD4tables, nameoutput,".csv"))
 rm(list=nameoutput)
 

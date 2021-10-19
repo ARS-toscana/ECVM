@@ -3,7 +3,7 @@
 ###################################################################
 
 # datasources_with_subpopulations lists the datasources where some meanings of events should be excluded during some observation periods, associated with some op_meanings
-datasources_with_subpopulations <- c("TEST")
+datasources_with_subpopulations <- c("TEST","BIFAP")
 #datasources_with_subpopulations <- c()
 
 this_datasource_has_subpopulations <- ifelse(thisdatasource %in% datasources_with_subpopulations,TRUE,FALSE) 
@@ -132,6 +132,19 @@ if (this_datasource_has_subpopulations == TRUE){
     file.copy(paste0(thisdir,'/to_run.R'), dirsmallcountsremovedsubpop[[subpop]], overwrite = T)
   }
 }
+
+if (this_datasource_has_subpopulations==F) {
+  dirdashboard <- paste0(direxp,"dashboard tables/")
+  dirD4tables <- paste0(direxp,"D4 tables/")
+  dummytables <- paste0(direxp,"Dummy tables for report/")
+  dummytables_MIS <- paste0(direxp,"Dummy tables for report MIS-KD/")
+  
+  suppressWarnings(if (!file.exists(dirdashboard)) dir.create(file.path(dirdashboard)))
+  suppressWarnings(if (!file.exists(dirD4tables)) dir.create(file.path(dirD4tables)))
+  suppressWarnings(if (!file.exists(dummytables)) dir.create(file.path(dummytables)))
+  suppressWarnings(if (!file.exists(dummytables_MIS)) dir.create(file.path(dummytables_MIS)))
+}
+
 
 suffix<-vector(mode="list")
 
