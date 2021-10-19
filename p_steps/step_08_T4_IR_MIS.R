@@ -19,9 +19,11 @@ for (ev in list_outcomes_MIS) {
   nameoutput<-paste0("D4_IR_MIS_b",suffix[[subpop]])
   assign(nameoutput,get(namedataset)[, !grep("^Person", names(get(namedataset))) , with = FALSE])
   
-  save(nameoutput,file=paste0(direxp,nameoutput,".RData"),list=nameoutput)
+  thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
   
-  fwrite(get(nameoutput),file=paste0(direxp,nameoutput,".csv"))
+  save(nameoutput,file=paste0(thisdirexp,nameoutput,".RData"),list=nameoutput)
+  
+  fwrite(get(nameoutput),file=paste0(thisdirexp,nameoutput,".csv"))
   rm(list=nameoutput)
 
   
@@ -44,9 +46,9 @@ for (ev in list_outcomes_MIS) {
   all_cols <- colnames(get(nameoutput))
   setcolorder(get(nameoutput), c(first_cols, all_cols[all_cols %not in% first_cols]))
   
-  save(nameoutput,file=paste0(direxp,nameoutput,".RData"),list=nameoutput)
+  save(nameoutput,file=paste0(thisdirexp,nameoutput,".RData"),list=nameoutput)
   
-  fwrite(get(nameoutput),file=paste0(direxp,nameoutput,".csv"))
+  fwrite(get(nameoutput),file=paste0(thisdirexp,nameoutput,".csv"))
   rm(list=nameoutput)
   
 
@@ -67,9 +69,9 @@ for (ev in list_outcomes_MIS) {
   nameoutput<-paste0("D4_IR_MIS_c",suffix[[subpop]])
   assign(nameoutput,get(namedataset)[, !grep("^Person", names(get(namedataset))) , with = FALSE])
 
-  save(nameoutput,file=paste0(direxp,nameoutput,".RData"),list=nameoutput)
+  save(nameoutput,file=paste0(thisdirexp,nameoutput,".RData"),list=nameoutput)
   
-  fwrite(get(nameoutput),file=paste0(direxp,nameoutput,".csv"))
+  fwrite(get(nameoutput),file=paste0(thisdirexp,nameoutput,".csv"))
   rm(list=nameoutput)
   
 
@@ -91,9 +93,9 @@ for (ev in list_outcomes_MIS) {
   all_cols <- colnames(get(nameoutput))
   setcolorder(get(nameoutput), c(first_cols, all_cols[all_cols %not in% first_cols]))
   
-  save(nameoutput,file=paste0(direxp,nameoutput,".RData"),list=nameoutput)
+  save(nameoutput,file=paste0(thisdirexp,nameoutput,".RData"),list=nameoutput)
   
-  fwrite(get(nameoutput),file=paste0(direxp,nameoutput,".csv"))
+  fwrite(get(nameoutput),file=paste0(thisdirexp,nameoutput,".csv"))
   rm(list=nameoutput)
 
 
@@ -114,9 +116,9 @@ nameoutput<-paste0("D4_IR_MIS_d",suffix[[subpop]])
 
 assign(nameoutput,get(namedataset)[, !grep("^Person", names(get(namedataset))) , with = FALSE])
 
-save(nameoutput,file=paste0(direxp,nameoutput,".RData"),list=nameoutput)
+save(nameoutput,file=paste0(thisdirexp,nameoutput,".RData"),list=nameoutput)
 
-fwrite(get(nameoutput),file=paste0(direxp,nameoutput,".csv"))
+fwrite(get(nameoutput),file=paste0(thisdirexp,nameoutput,".csv"))
 rm(list=nameoutput)
 
 
@@ -140,9 +142,9 @@ first_cols <- c("sex", "month", "year", "Ageband")
 all_cols <- colnames(get(nameoutput))
 setcolorder(get(nameoutput), c(first_cols, all_cols[all_cols %not in% first_cols]))
 
-save(nameoutput,file=paste0(direxp,nameoutput,".RData"),list=nameoutput)
+save(nameoutput,file=paste0(thisdirexp,nameoutput,".RData"),list=nameoutput)
 
-fwrite(get(nameoutput),file=paste0(direxp,nameoutput,".csv"))
+fwrite(get(nameoutput),file=paste0(thisdirexp,nameoutput,".csv"))
 rm(list=nameoutput)
 rm(namedataset)
 

@@ -9,6 +9,11 @@ list_outcomes_MIS <- c("MIS_narrow","KD_narrow","MIS_KD_narrow","MISCC_narrow", 
 for (subpop in subpopulations_non_empty) {  
   print(subpop)
   
+  thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
+  
+  if(this_datasource_has_subpopulations == T) dirD4tables <-paste0(thisdirexp,"dashboard tables/")
+  suppressWarnings(if (!file.exists(dirD4tables)) dir.create(file.path(dirD4tables)))
+  
   load(paste0(dirtemp,"D3_Vaccin_cohort",suffix[[subpop]],".RData"))
   load(paste0(dirtemp,"D3_study_population",suffix[[subpop]],".RData"))
   load(paste0(diroutput,"D3_study_population_cov_ALL",suffix[[subpop]],".RData"))
