@@ -20,10 +20,10 @@ persons_doses<-merge(selection_criteria,D3_concepts_QC_criteria, by=c("person_id
 
 persons_doses<-persons_doses[is.na(sex_or_birth_date_missing),sex_or_birth_date_missing:=1]
 
-temp <- copy(selection_criteria)[, .(person_id, date_of_death)]
-temp1 <- copy(D3_concepts_QC_criteria)[, .(person_id, date, vx_dose)]
+temp <- selection_criteria[, .(person_id, date_of_death)]
+temp1 <- D3_concepts_QC_criteria[, .(person_id, date, vx_dose)]
 names(output_spells_category)
-temp2 <- copy(output_spells_category)[, .(person_id, entry_spell_category, exit_spell_category)]
+temp2 <- output_spells_category[, .(person_id, entry_spell_category, exit_spell_category)]
 temp2 <- temp2[study_start %between% list(entry_spell_category,exit_spell_category) & entry_spell_category < exit_spell_category, ]
 
 temp_tot <- merge(temp, temp1)
