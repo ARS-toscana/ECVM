@@ -85,7 +85,7 @@ D3_PERSONS <- suppressWarnings(D3_PERSONS[,date_death:=lubridate::ymd(with(D3_PE
 D3_events_DEATH <- D3_PERSONS[!is.na(date_death),.(person_id,date_death)][,date:=date_death][,-"date_death"]
 
 save(D3_events_DEATH,file = paste0(dirtemp,"D3_events_DEATH.RData"))
-rm(D3_events_DEATH)
+rm(D3_events_DEATH, D3_date_death)
 
 save(D3_PERSONS,file = paste0(dirtemp,"D3_PERSONS.RData"))
 
