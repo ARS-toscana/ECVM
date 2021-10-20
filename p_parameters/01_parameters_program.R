@@ -45,7 +45,7 @@ library(rmarkdown)
 if (!require("ggplot2")) install.packages("ggplot2")
 library(ggplot2)
 if (!require("raster")) install.packages("raster")
-library(raster)
+
 
 
 
