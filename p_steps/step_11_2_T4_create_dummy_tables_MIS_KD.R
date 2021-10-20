@@ -32,7 +32,7 @@ for (subpop in subpopulations_non_empty) {
   
   thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
   
-  if(this_datasource_has_subpopulations == T) dirD4tables <-paste0(thisdirexp,"dashboard tables/")
+  if(this_datasource_has_subpopulations == T) dirD4tables <-paste0(thisdirexp,"D4 tables/")
   suppressWarnings(if (!file.exists(dirD4tables)) dir.create(file.path(dirD4tables)))
   
   if(this_datasource_has_subpopulations == T) dirdashboard <- paste0(thisdirexp,"dashboard tables/")
@@ -41,8 +41,8 @@ for (subpop in subpopulations_non_empty) {
   if(this_datasource_has_subpopulations == T)   dummytables_MIS <- paste0(thisdirexp,"Dummy tables for report MIS-KD/")
   suppressWarnings(if (!file.exists(dummytables_MIS)) dir.create(file.path(dummytables_MIS)))
   
-flow_source <- fread(paste0(direxp, "Flowchart_basic_exclusion_criteria",suffix[[subpop]],".csv"))
-flow_study <- fread(paste0(direxp, "Flowchart_exclusion_criteria.csv"))
+flow_source <- fread(paste0(thisdirexp, "Flowchart_basic_exclusion_criteria",suffix[[subpop]],".csv"))
+flow_study <- fread(paste0(thisdirexp, "Flowchart_exclusion_criteria",suffix[[subpop]],".csv"))
 
 vect_recode_manufacturer <- c(TEST = "Italy_ARS", ARS = "Italy_ARS", PHARMO = "NL_PHARMO",
                               CPRD = "UK_CPRD", BIFAP = "ES_BIFAP")
@@ -631,8 +631,8 @@ table_7 <- data.table::data.table(meaning_of_first_event = character(), coding_s
 
 for (outcome in list_outcomes_observed) {
   for (year in c(2020, 2021)) {
-    if (file.exists(paste0(direxp, "QC_code_counts_in_study_population", outcome, "_", year, ".csv"))) {
-      temp_df <- data.table::fread(paste0(direxp, "QC_code_counts_in_study_population", outcome, "_", year, ".csv"))
+    if (file.exists(paste0(thisdirexp, "QC_code_counts_in_study_population", outcome, "_", year, ".csv"))) {
+      temp_df <- data.table::fread(paste0(thisdirexp, "QC_code_counts_in_study_population", outcome, "_", year, ".csv"))
       event <- strsplit(outcome, "_")[[1]][1]
       temp_df <- temp_df[, Event := event]
       table_7 <- data.table::rbindlist(list(table_7, temp_df))
@@ -655,7 +655,7 @@ fwrite(table_7, file = paste0(dummytables_MIS, "Code counts for narrow definitio
 
 # Table8 ----------------------------------------------------------------------------------------------------------
 
-load(paste0(direxp,"D4_IR_monthly_MIS_b",suffix[[subpop]],".RData"))
+load(paste0(thisdirexp,"D4_IR_monthly_MIS_b",suffix[[subpop]],".RData"))
 load(paste0(dirtemp,"list_outcomes_observed",suffix[[subpop]],".RData"))
 
 list_outcomes_observed <-get(paste0("list_outcomes_observed",suffix[[subpop]]))
@@ -719,7 +719,7 @@ fwrite(table_12, file = paste0(dummytables_MIS, "Incidence of each concept (narr
 
 # table_10 ----------------------------------------------------------------------------------------------------------
 
-load(paste0(direxp,"D4_IR_monthly_MIS_c",suffix[[subpop]],".RData"))
+load(paste0(thisdirexp,"D4_IR_monthly_MIS_c",suffix[[subpop]],".RData"))
 load(paste0(dirtemp,"list_outcomes_observed",suffix[[subpop]],".RData"))
 
 D4_IR_monthly_MIS_c<-get(paste0("D4_IR_monthly_MIS_c",suffix[[subpop]]))
@@ -766,7 +766,7 @@ fwrite(table_12, file = paste0(dummytables_MIS, "Incidence of each concept (narr
 
 # table_11 ---------------------------------------------------------------------------
 
-load(paste0(direxp,"D4_IR_monthly_MIS_d",suffix[[subpop]],".RData"))
+load(paste0(thisdirexp,"D4_IR_monthly_MIS_d",suffix[[subpop]],".RData"))
 load(paste0(dirtemp,"list_outcomes_observed",suffix[[subpop]],".RData"))
 
 D4_IR_monthly_MIS_d<-get(paste0("D4_IR_monthly_MIS_d",suffix[[subpop]]))
