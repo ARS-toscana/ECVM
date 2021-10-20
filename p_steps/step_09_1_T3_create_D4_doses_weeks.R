@@ -31,7 +31,7 @@ for (ageband in Agebands_labels) {
   rm(list=nameoutput)
 }
 
-df_events_ages <- paste0("pop_age_", gsub("-", "_", Agebands_labels), suffix[[subpop]])
+df_events_ages <- paste0("pop_age_", gsub("-", "_", Agebands_labels))
 
 rm(cohort_to_vaxweeks)
 
@@ -102,4 +102,4 @@ rm(list=nameoutput)
 
 }
 
-rm( all_mondays, monday_week, double_weeks, all_days_df, cohort_to_vaxweeks, D4_doses_weeks,younger60,temp_df,older60,persons_older60,persons_younger60)
+rm( all_mondays, monday_week, double_weeks, all_days_df, cohort_to_vaxweeks, D4_doses_weeks,temp_df)
