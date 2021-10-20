@@ -102,4 +102,6 @@ rm(list=nameoutput)
 
 }
 
-rm( all_mondays, monday_week, double_weeks, all_days_df, cohort_to_vaxweeks, D4_doses_weeks,temp_df)
+rm( all_mondays, monday_week, double_weeks, all_days_df, cohort_to_vaxweeks,temp_df)
+
+if(this_datasource_has_subpopulations==T) rm(D4_doses_weeks)
