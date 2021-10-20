@@ -95,6 +95,9 @@ system.time(source(paste0(thisdir,"/p_steps/step_01_4_T2.1_create_prompt_and_ite
 system.time(source(paste0(thisdir,"/p_steps/step_02_1_T2_create_QC_criteria.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_02_2_T3_apply_QC_exclusion_criteria.R")))
 
+#10 describing the datasets
+system.time(source(paste0(thisdir,"/p_steps/step_10_1_FlowChart_description.R")))
+
 #03 create exclusion criteria
 system.time(source(paste0(thisdir,"/p_steps/step_03_1_T2_create_exclusion_criteria.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_03_2_T2_merge_persons_concept.R")))
@@ -160,8 +163,7 @@ system.time(source(paste0(thisdir,"/p_steps/step_09_1_T3_create_D4_doses_weeks.R
 system.time(source(paste0(thisdir,"/p_steps/step_09_2_T3_create_D4_descriptive_tables.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_09_3_T3_create_dashboard_tables.R")))
 
-#10 describing the datasets
-# system.time(source(paste0(thisdir,"/p_steps/step_10_1_FlowChart_description.R")))
+
 # system.time(source(paste0(thisdir,"/p_steps/step_10_2_Coverage_description.R")))
 # system.time(source(paste0(thisdir,"/p_steps/step_10_3_Doses_description.R")))
 # system.time(source(paste0(thisdir,"/p_steps/step_10_4_benefit_description.R")))
