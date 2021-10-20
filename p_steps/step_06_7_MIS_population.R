@@ -80,19 +80,19 @@ tempname<-paste0("D3_selection_criteria_c",suffix[[subpop]])
 assign(tempname,D3_selection_criteria_c)
 save(tempname, file = paste0(dirtemp, tempname,".RData"),list=tempname)
 
-D4_population_c <- CreateFlowChart(
+D4_population_c_no_risk <- CreateFlowChart(
   dataset = D3_selection_criteria_c[,.(person_id,sex,age_at_1_jan_2021,ageband_at_1_jan_2021,study_entry_date_MIS_c, cohort_entry_date_MIS_c, study_exit_date_MIS_c, MIS_date_narrow,MIS_date_broad,not_in_cohort_c, fup_days, CV_at_date_vax_1, COVCANCER_at_date_vax_1, COVCOPD_at_date_vax_1,
                                        COVHIV_at_date_vax_1, COVCKD_at_date_vax_1, COVDIAB_at_date_vax_1,
                                        COVOBES_at_date_vax_1, COVSICKLE_at_date_vax_1, immunosuppressants_at_date_vax_1)],
   listcriteria = c("not_in_cohort_c"),
   flowchartname = "Flowchart_cohort_c")
 
-tempname<-paste0("D4_population_c",suffix[[subpop]])
-assign(tempname,D4_population_c)
-save(tempname, file = paste0(diroutput, tempname,".RData"),list=tempname)
+tempname<-paste0("D4_population_c_no_risk",suffix[[subpop]])
+assign(tempname,D4_population_c_no_risk)
+save(tempname, file = paste0(dirtemp, tempname,".RData"),list=tempname)
 rm(list=tempname)
 rm(D3_selection_criteria_c)
-rm(D4_population_c)
+rm(D4_population_c_no_risk)
 #---------------------------------
 #COHORT D
 
