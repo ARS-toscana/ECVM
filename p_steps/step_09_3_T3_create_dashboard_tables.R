@@ -162,9 +162,8 @@ fwrite(get(nameoutput), file = paste0(dirdashboard, nameoutput,".csv"))
 # tot_pop_cohorts <- rbind(tot_pop_cohorts, older60)
 
 
-tot_pop_cohorts <- doses_weeks[, .(week = format(Week_number, "%Y%m%d"), ageband = ageband_at_study_entry,
-                                   Persons_in_week)]
-tot_pop_cohorts <- unique(tot_pop_cohorts[, Persons_in_week := sum(Persons_in_week), by = c("week", "ageband")])
+tot_pop_cohorts <- unique(doses_weeks[, .(week = format(Week_number, "%Y%m%d"), ageband = ageband_at_study_entry,
+                                   Persons_in_week)])
 all_pop <- copy(tot_pop_cohorts)[ageband %in% Agebands_labels, .(Persons_in_week = sum(Persons_in_week)),
                                  by = "week"][, ageband := "all_agebands"]
 tot_pop_cohorts <- rbind(tot_pop_cohorts, all_pop)
