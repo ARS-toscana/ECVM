@@ -826,7 +826,7 @@ rm(list=nameoutput)
 
 # table_15 ----------------------------------------------------------------------------------------------------------
 
-load(paste0(dirtemp, "Intermediate coverage",suffix[[subpop]],".Rdata"))
+load(paste0(dirtemp, "Intermediate coverage",suffix[[subpop]],".RData"))
 coverage <- get(paste0("Intermediate coverage",suffix[[subpop]]))
 rm(list=paste0("Intermediate coverage",suffix[[subpop]]))
 
@@ -854,7 +854,7 @@ rm(table_15, coverage, cumulated_doses)
 
 
 # table_16 ----------------------------------------------------------------------------------------------------------
-load(paste0(thisdirexp, "D4_IR_persontime_risk_fup_BC",suffix[[subpop]],".Rdata"))
+load(paste0(thisdirexp, "D4_IR_persontime_risk_fup_BC",suffix[[subpop]],".RData"))
 D4_IR_risk_fup<-get(paste0("D4_IR_persontime_risk_fup_BC",suffix[[subpop]]))
 rm(list=paste0("D4_IR_persontime_risk_fup_BC",suffix[[subpop]]))
 
