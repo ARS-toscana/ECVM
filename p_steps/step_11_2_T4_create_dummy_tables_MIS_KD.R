@@ -343,6 +343,7 @@ sex_pop <- sex_pop[, (vax_man_perc) := lapply(.SD, paste0, "%"), .SDcols = vax_m
 sex_pop <- sex_pop[, ..cols_to_keep]
 
 load(file = paste0(diroutput, "D4_population_d.RData"))
+D4_population_d<-get(paste0("D4_population_d",suffix[[subpop]]))
 positive_before_vax <- D4_population_d[, .(person_id, history_covid, type_vax_1)]
 positive_before_vax <- positive_before_vax[person_id %in% c("ECVM210500083", "ECVM210500225"), history_covid := 1]
 positive_before_vax <- positive_before_vax[, .N, by = c("type_vax_1", "history_covid")]
