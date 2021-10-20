@@ -83,6 +83,19 @@ cohort_to_vaxweeks <- bc_divide_60(cohort_to_vaxweeks,
                                    c("start_date_of_period", "sex", "type_vax", "at_risk_at_study_entry", "Dose"),
                                    c("Doses_in_week", "Persons_in_week"))
 
+older60 <- unique(cohort_to_vaxweeks[ageband_at_study_entry %in% Agebands60, c("start_date_of_period", "Persons_in_week")])
+older60 <- older60[, temp_var := lapply(.SD, sum, na.rm=TRUE), by = "start_date_of_period", .SDcols = "Persons_in_week"]
+older60 <- unique(older60[, ageband_at_study_entry := "60+"][, Persons_in_week := NULL])
+
+younger60 <- unique(cohort_to_vaxweeks[ageband_at_study_entry %in% Agebands059, c("start_date_of_period", "Persons_in_week")])
+younger60 <- younger60[, temp_var := lapply(.SD, sum, na.rm=TRUE), by = "start_date_of_period", .SDcols = "Persons_in_week"]
+younger60 <- unique(younger60[, ageband_at_study_entry := "0-59"][, Persons_in_week := NULL])
+
+cohort_to_vaxweeks <- merge(cohort_to_vaxweeks, older60, all.x = T, by = c("start_date_of_period", "ageband_at_study_entry"))
+cohort_to_vaxweeks <- cohort_to_vaxweeks[ageband_at_study_entry == "60+", Persons_in_week := temp_var][, temp_var := NULL]
+cohort_to_vaxweeks <- merge(cohort_to_vaxweeks, younger60, all.x = T, by = c("start_date_of_period", "ageband_at_study_entry"))
+cohort_to_vaxweeks <- cohort_to_vaxweeks[ageband_at_study_entry == "0-59", Persons_in_week := temp_var][, temp_var := NULL]
+
 setorder(cohort_to_vaxweeks, sex, ageband_at_study_entry, Dose,
          type_vax, start_date_of_period, at_risk_at_study_entry)
 
