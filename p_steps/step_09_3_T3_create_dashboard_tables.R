@@ -178,7 +178,7 @@ COVERAGE_BIRTHCOHORTS <- merge(COVERAGE_BIRTHCOHORTS, exited_pop_birth_cohorts,
                                by = c("week", "vx_manufacturer", "dose", "ageband"), all.x = T)
 COVERAGE_BIRTHCOHORTS <- COVERAGE_BIRTHCOHORTS[is.na(exited), exited := 0][, cum_N := cum_N - exited][, exited := NULL]
 
-COVERAGE_BIRTHCOHORTS <- COVERAGE_BIRTHCOHORTS[, percentage := round(cum_N / Persons_in_week  * 100, 3)]
+COVERAGE_BIRTHCOHORTS <- COVERAGE_BIRTHCOHORTS[, percentage := round(cum_N / Persons_in_week  * 100, 1)]
 
 rm(list=nameoutput)
 nameoutput <- paste0("Intermediate coverage",suffix[[subpop]])
@@ -255,7 +255,7 @@ COVERAGE_RISKFACTORS <- merge(COVERAGE_RISKFACTORS, exited_pop_risk_factors,
                                by = c("week", "vx_manufacturer", "dose", "riskfactor"), all.x = T)
 COVERAGE_RISKFACTORS <- COVERAGE_RISKFACTORS[is.na(exited), exited := 0][, cum_N := cum_N - exited][, exited := NULL]
 
-COVERAGE_RISKFACTORS <- COVERAGE_RISKFACTORS[, percentage := round(cum_N / pop_cohorts * 100, 3)]
+COVERAGE_RISKFACTORS <- COVERAGE_RISKFACTORS[, percentage := round(cum_N / pop_cohorts * 100, 1)]
 COVERAGE_RISKFACTORS <- COVERAGE_RISKFACTORS[is.nan(percentage), percentage := 0]
 COVERAGE_RISKFACTORS <- COVERAGE_RISKFACTORS[, .(datasource, week, vx_manufacturer, dose, riskfactor, percentage)]
 
