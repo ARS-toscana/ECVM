@@ -210,10 +210,10 @@ table2 <- table2[, (daps_perc) := character(nrow(table2))]
 total_pop <- total_pop[, ..daps]
 pt_total <- pt_total[, ..daps]
 table2 <- table2[a %in% c("Age in categories", "Person years across sex", "At risk population at January 1-2020"),
-                 (daps_perc) := round(.SD / as.numeric(total_pop) * 100, 3), .SDcols = daps]
+                 (daps_perc) := round(.SD / as.numeric(total_pop) * 100, 1), .SDcols = daps]
 
 table2 <- table2[a == "Person years across age categories",
-                 (daps_perc) := round(.SD / as.numeric(pt_total) * 100, 3), .SDcols = daps]
+                 (daps_perc) := round(.SD / as.numeric(pt_total) * 100, 1), .SDcols = daps]
 
 table2 <- table2[a %in% c("Age in categories", "Person years across sex", "At risk population at January 1-2020", 
                           "Person years across age categories"), (daps_perc) := lapply(.SD, paste0, "%"), .SDcols = daps_perc]
@@ -274,7 +274,7 @@ total_pop <- N_pop[, sum(N)]
 N_pop <- dcast(N_pop, . ~ type_vax, value.var = "N")[, . := NULL]
 N_pop <- N_pop[, Parameters := "N"][, a := "Study population"]
 setnafill(N_pop, cols = c(vax_man), fill = 0)
-N_pop <- N_pop[, (vax_man_perc) := round(.SD / as.numeric(total_pop) * 100, 3), .SDcols = vax_man]
+N_pop <- N_pop[, (vax_man_perc) := round(.SD / as.numeric(total_pop) * 100, 1), .SDcols = vax_man]
 N_pop <- N_pop[, (vax_man_perc) := lapply(.SD, paste0, "%"), .SDcols = vax_man_perc]
 N_pop <- N_pop[, ..cols_to_keep]
 
@@ -283,7 +283,7 @@ pt_total <- fup_pop[, sum(V1)]
 fup_pop <- dcast(fup_pop, . ~ type_vax, value.var = "V1")[, . := NULL]
 fup_pop <- fup_pop[, Parameters := "PY"][, a := "Person-years of follow-up"]
 setnafill(fup_pop, cols = c(vax_man), fill = 0)
-fup_pop <- fup_pop[, (vax_man_perc) := round(.SD / as.numeric(pt_total) * 100, 3), .SDcols = vax_man]
+fup_pop <- fup_pop[, (vax_man_perc) := round(.SD / as.numeric(pt_total) * 100, 1), .SDcols = vax_man]
 fup_pop <- fup_pop[, (vax_man_perc) := lapply(.SD, paste0, "%"), .SDcols = vax_man_perc]
 fup_pop <- fup_pop[, ..cols_to_keep]
 
@@ -300,7 +300,7 @@ year_month_pop <- dcast(year_month_pop, year + month ~ type_vax, value.var = "N"
 setorder(year_month_pop, year, month)
 year_month_pop <- year_month_pop[, Parameters := "N"][, a := paste(month.name[month], year)]
 setnafill(year_month_pop, cols = c(vax_man), fill = 0)
-round_sum <- function(x) {round(x / sum(x) * 100, 3)}
+round_sum <- function(x) {round(x / sum(x) * 100, 1)}
 year_month_pop <- year_month_pop[, (vax_man_perc) := lapply(.SD, round_sum), .SDcols = vax_man]
 year_month_pop <- year_month_pop[, (vax_man_perc) := lapply(.SD, paste0, "%"), .SDcols = vax_man_perc]
 year_month_pop <- year_month_pop[, ..cols_to_keep]
@@ -365,9 +365,9 @@ risk_factors <- melt(risk_factors, id.vars = "type_vax",
 risk_factors <- dcast(risk_factors, Parameters ~ type_vax, value.var = "dob")
 risk_factors <- risk_factors[, a := "At risk population at date of vaccination"]
 round_coverage <- function(x){
-  round(x / as.numeric(N_pop_by_vax[names(x)]) * 100, 3)
+  round(x / as.numeric(N_pop_by_vax[names(x)]) * 100, 1)
 }
-risk_factors[, (vax_man_perc) := round(.SD / as.numeric(N_pop_by_vax[names(.SD)]) * 100, 3), .SDcols = vax_man]
+risk_factors[, (vax_man_perc) := round(.SD / as.numeric(N_pop_by_vax[names(.SD)]) * 100, 1), .SDcols = vax_man]
 risk_factors <- risk_factors[, (vax_man_perc) := lapply(.SD, paste0, "%"), .SDcols = vax_man_perc]
 risk_factors <- risk_factors[, ..cols_to_keep]
 
@@ -494,10 +494,10 @@ rm(list=nameoutput)
 # total_pop_c <- total_pop_c[, ..daps]
 # pt_total_c <- pt_total_c[, ..daps]
 # table5 <- table5[a %in% c("Age in categories", "Month of first diagnosis", "At risk population at January 1-2020"),
-#                  (daps_perc) := round(.SD / as.numeric(total_pop_c) * 100, 3), .SDcols = daps]
+#                  (daps_perc) := round(.SD / as.numeric(total_pop_c) * 100, 1), .SDcols = daps]
 # 
 # table5 <- table5[a == "Person years across age categories",
-#                  (daps_perc) := round(.SD / as.numeric(pt_total_c) * 100, 3), .SDcols = daps]
+#                  (daps_perc) := round(.SD / as.numeric(pt_total_c) * 100, 1), .SDcols = daps]
 # 
 # table5 <- table5[a %in% c("Age in categories", "Person years across sex", "At risk population at January 1-2020", 
 #                           "Person years across age categories"), (daps_perc) := lapply(.SD, paste0, "%"), .SDcols = daps_perc]
@@ -523,12 +523,11 @@ rm(list=nameoutput)
 
 # Table7 ----------------------------------------------------------------------------------------------------------
 
-last_useful_date = ymd(20210425)
 empty_table_7 <- data.table(a = character(0), Parameters = character(0), N = numeric(0))
 
 vaccinated_persons <- D3_Vaccin_coh[, .(person_id, date_vax1, date_vax2, type_vax_1, type_vax_2)]
-vaccinated_persons <- vaccinated_persons[date_vax1 <= last_useful_date, ]
-vaccinated_persons <- vaccinated_persons[date_vax2 > last_useful_date, c("date_vax2", "type_vax_2") := NA]
+vaccinated_persons <- vaccinated_persons[date_vax1 <= study_end, ]
+vaccinated_persons <- vaccinated_persons[date_vax2 > study_end, c("date_vax2", "type_vax_2") := NA]
 vaccinated_persons <-vaccinated_persons[type_vax_1 == "J&J", type_vax_1 := "Janssen"]
 
 Totals_dose_1 <- vaccinated_persons[, .N, by = "type_vax_1"]
@@ -579,8 +578,8 @@ dose_1_to_join <- Totals_dose_1[, .(type_vax_1, tot_type_1 = N)]
 table_7 <- rbindlist(list(base_table_7, part2_table_7), fill = TRUE)
 table_7 <- table_7[index == 1, Perc := N / Totals]
 table_7 <- merge(table_7, dose_1_to_join, by = "type_vax_1")
-table_7 <- table_7[data.table::between(index, 2, 3), Perc := N / tot_type_1]
-table_7 <- table_7[, Perc := paste0(round(Perc * 100, 3), "%")]
+table_7 <- table_7[data.table::between(index, 2, 1), Perc := N / tot_type_1]
+table_7 <- table_7[, Perc := paste0(round(Perc * 100, 1), "%")]
 table_7 <- table_7[Perc == "NA%", Perc := ""]
 
 vect_recode_manufacturer <- c(TEST = "IT-ARS", ARS = "IT-ARS", PHARMO = "NL-PHARMO",
@@ -843,7 +842,7 @@ setcolorder(table_15, c("datasource", "vx_manufacturer", "Year", "index", "cumul
 setorder(table_15, Year, index, vx_manufacturer)
 setnames(table_15, c("datasource", "vx_manufacturer", "index", "cumulated_doses", "cum_N", "Persons_in_week", "percentage"),
          c("DAP", "Vaccine brand", "Week", "Number of doses", "Number vaccinate", "Number present", "Coverage"))
-
+table_15 <- table_15[, dose := NULL]
 nameoutput <- paste0("Doses of COVID-19 vaccine over calendar time",suffix[[subpop]])
 assign(nameoutput, table_15)
 fwrite(get(nameoutput), file = paste0(dummytables, nameoutput,".csv"))
