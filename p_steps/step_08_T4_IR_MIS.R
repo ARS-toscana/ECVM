@@ -7,17 +7,17 @@ for (subpop in subpopulations_non_empty) {
   
   namedataset<-paste0("D4_persontime_b",suffix[[subpop]])
   load(paste0(diroutput,"D4_persontime_b",suffix[[subpop]],".RData"))
-
+  D4_persontime_b<-get(namedataset)
 
 for (ev in list_outcomes_MIS) {
   name_cols <- paste0(c("IR_", "lb_", "ub_"), ev)
   name_count <- paste0(ev,"_b")
   name_pt <- paste0("Persontime_",ev)
-  get(namedataset)[, (name_cols) := exactPoiCI(get(namedataset), name_count, name_pt)]
+  D4_persontime_b[, (name_cols) := exactPoiCI(D4_persontime_b, name_count, name_pt)]
 }
 
   nameoutput<-paste0("D4_IR_MIS_b",suffix[[subpop]])
-  assign(nameoutput,get(namedataset)[, !grep("^Person", names(get(namedataset))) , with = FALSE])
+  assign(nameoutput,D4_persontime_b[, !grep("^Person", D4_persontime_b) , with = FALSE])
   
   thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
   
@@ -30,18 +30,18 @@ for (ev in list_outcomes_MIS) {
 
   namedataset<-paste0("D4_persontime_monthly_b_BC",suffix[[subpop]])
   load(paste0(diroutput,"D4_persontime_monthly_b_BC",suffix[[subpop]],".RData"))
-  
+  D4_persontime_monthly_b_BC<-get(namedataset)
 
 for (ev in list_outcomes_MIS) {
   name_cols <- paste0(c("IR_", "lb_", "ub_"), ev)
   name_count <- paste0(ev,"_b")
   name_pt <- paste0("Persontime_",ev)
-  get(namedataset)[, (name_cols) := exactPoiCI(get(namedataset), name_count, name_pt)]
+  D4_persontime_monthly_b_BC[, (name_cols) := exactPoiCI(D4_persontime_monthly_b_BC, name_count, name_pt)]
 }
   nameoutput<-paste0("D4_IR_monthly_MIS_b",suffix[[subpop]])
 
   
-  assign(nameoutput,get(namedataset))
+  assign(nameoutput,D4_persontime_monthly_b_BC)
   first_cols <- c("sex", "month", "year", "Ageband")
   all_cols <- colnames(get(nameoutput))
   setcolorder(get(nameoutput), c(first_cols, all_cols[all_cols %not in% first_cols]))
@@ -57,17 +57,17 @@ for (ev in list_outcomes_MIS) {
 
   namedataset<-paste0("D4_persontime_c",suffix[[subpop]])
   load(paste0(diroutput,"D4_persontime_c",suffix[[subpop]],".RData"))
-  
+  D4_persontime_c<-get(namedataset)
 
 for (ev in list_outcomes_MIS) {
   name_cols <- paste0(c("IR_", "lb_", "ub_"), ev)
   name_count <- paste0(ev,"_b")
   name_pt <- paste0("Persontime_",ev)
-  get(namedataset)[, (name_cols) := exactPoiCI(get(namedataset), name_count, name_pt)]
+  D4_persontime_c[, (name_cols) := exactPoiCI(D4_persontime_c, name_count, name_pt)]
 }
 
   nameoutput<-paste0("D4_IR_MIS_c",suffix[[subpop]])
-  assign(nameoutput,get(namedataset)[, !grep("^Person", names(get(namedataset))) , with = FALSE])
+  assign(nameoutput,D4_persontime_c[, !grep("^Person", names(D4_persontime_c)) , with = FALSE])
 
   save(nameoutput,file=paste0(thisdirexp,nameoutput,".RData"),list=nameoutput)
   
@@ -77,18 +77,19 @@ for (ev in list_outcomes_MIS) {
 
   namedataset<-paste0("D4_persontime_monthly_c_BC",suffix[[subpop]])
   load(paste0(diroutput,"D4_persontime_monthly_c_BC",suffix[[subpop]],".RData"))
+  D4_persontime_monthly_c_BC<-get(namedataset)
 
 for (ev in list_outcomes_MIS) {
   name_cols <- paste0(c("IR_", "lb_", "ub_"), ev)
   name_count <- paste0(ev,"_b")
   name_pt <- paste0("Persontime_",ev)
-  get(namedataset)[, (name_cols) := exactPoiCI(get(namedataset), name_count, name_pt)]
+  D4_persontime_monthly_c_BC[, (name_cols) := exactPoiCI(D4_persontime_monthly_c_BC, name_count, name_pt)]
 }
 
   nameoutput<-paste0("D4_IR_monthly_MIS_c",suffix[[subpop]])
   
   
-  assign(nameoutput,get(namedataset))
+  assign(nameoutput,D4_persontime_monthly_c_BC)
   first_cols <- c("sex", "month", "year", "Ageband")
   all_cols <- colnames(get(nameoutput))
   setcolorder(get(nameoutput), c(first_cols, all_cols[all_cols %not in% first_cols]))
@@ -103,18 +104,19 @@ for (ev in list_outcomes_MIS) {
 #D4_persontime d----------------------------------------------
 namedataset<-paste0("D4_persontime_d",suffix[[subpop]])
 load(paste0(diroutput,"D4_persontime_d",suffix[[subpop]],".RData"))
+D4_persontime_d<-get(namedataset)
   
 for (ev in list_outcomes_MIS) {
   name_cols <- paste0(c("IR_", "lb_", "ub_"), ev)
   name_count <- paste0(ev,"_b")
   name_pt <- paste0("Persontime_",ev)
-  get(namedataset)[, (name_cols) := exactPoiCI(get(namedataset), name_count, name_pt)]
+  D4_persontime_d[, (name_cols) := exactPoiCI(D4_persontime_d, name_count, name_pt)]
 }
 
 nameoutput<-paste0("D4_IR_MIS_d",suffix[[subpop]])
 
 
-assign(nameoutput,get(namedataset)[, !grep("^Person", names(get(namedataset))) , with = FALSE])
+assign(nameoutput,D4_persontime_d[, !grep("^Person", names(D4_persontime_d)) , with = FALSE])
 
 save(nameoutput,file=paste0(thisdirexp,nameoutput,".RData"),list=nameoutput)
 
@@ -125,19 +127,20 @@ rm(list=nameoutput)
 
 namedataset<-paste0("D4_persontime_monthly_d_BC",suffix[[subpop]])
 load(paste0(diroutput,"D4_persontime_monthly_d_BC",suffix[[subpop]],".RData"))
+D4_persontime_monthly_d_BC<-get(namedataset)
 
 
 for (ev in list_outcomes_MIS) {
   name_cols <- paste0(c("IR_", "lb_", "ub_"), ev)
   name_count <- paste0(ev,"_b")
   name_pt <- paste0("Persontime_",ev)
-  get(namedataset)[, (name_cols) := exactPoiCI( get(namedataset), name_count, name_pt)]
+  D4_persontime_monthly_d_BC[, (name_cols) := exactPoiCI(D4_persontime_monthly_d_BC, name_count, name_pt)]
 }
 
 nameoutput<-paste0("D4_IR_monthly_MIS_d",suffix[[subpop]])
 
 
-assign(nameoutput,get(namedataset))
+assign(nameoutput,D4_persontime_monthly_d_BC)
 first_cols <- c("sex", "month", "year", "Ageband")
 all_cols <- colnames(get(nameoutput))
 setcolorder(get(nameoutput), c(first_cols, all_cols[all_cols %not in% first_cols]))
