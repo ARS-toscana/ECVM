@@ -50,7 +50,8 @@ for (name_temp_df in df_events_ages) {
   temp_df <- temp_df[, c("study_entry_date", "week") := NULL]
   
   tot_cohort <- copy(temp_df)
-  tot_cohort <- tot_cohort[, c("sex", "Dose", "type_vax", "ageband_at_study_entry", "at_risk_at_study_entry") := NULL]
+  tot_cohort <- tot_cohort[, c("sex", "ageband_at_study_entry", "Dose",
+                               "type_vax", "at_risk_at_study_entry") := NULL]
   tot_cohort <- unique(tot_cohort)
   tot_cohort <- tot_cohort[, Persons_in_week := .N, by = c("start_date_of_period")]
   tot_cohort <- unique(tot_cohort[, person_id := NULL])
@@ -95,9 +96,10 @@ cohort_to_vaxweeks <- cohort_to_vaxweeks[, sex := fifelse(Sex == 1, "Male", "Fem
 D4_doses_weeks <- cohort_to_vaxweeks[, .(Datasource, Year, Week_number, ageband_at_study_entry, Sex, At_Risk, Dose,
                                          Type_vax, Persons_in_week, Doses_in_week)]
 
+thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
 nameoutput <- paste0("D4_doses_weeks",suffix[[subpop]])
 assign(nameoutput, D4_doses_weeks)
-save(nameoutput, file = paste0(diroutput, nameoutput,".RData"),list=nameoutput)
+save(nameoutput, file = paste0(thisdirexp, nameoutput,".RData"),list=nameoutput)
 rm(list=nameoutput)
 
 }
