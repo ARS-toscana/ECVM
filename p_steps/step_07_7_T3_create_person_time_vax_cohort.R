@@ -50,11 +50,10 @@ for (subpop in subpopulations_non_empty) {
       Date_event = "date_event",
       #Age_bands = c(0,19,29,39,49,59,69,79),F
       Increment="month",
-      Outcomes =  list_recurrent_outcomes, 
+      Outcomes_rec = list_recurrent_outcomes, 
       Unit_of_age = "year",
       include_remaning_ages = T,
       Aggregate = T,
-      Rec_events = T,
       Rec_period = c(rep(30, length(list_recurrent_outcomes)))
     )
     )
@@ -87,7 +86,7 @@ for (subpop in subpopulations_non_empty) {
       Date_event = "date_event",
       #Age_bands = c(0,19,29,39,49,59,69,79),F
       Increment="month",
-      Outcomes =  list_outcomes, 
+      Outcomes_nrec = list_outcomes, 
       Unit_of_age = "year",
       include_remaning_ages = T,
       Aggregate = T
