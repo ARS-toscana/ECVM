@@ -26,10 +26,10 @@ create_empty_table_1b <- function() {
 
 
 for (subpop in subpopulations_non_empty) {
-  
+  print(subpop)
   thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
   
-  if(this_datasource_has_subpopulations == T) dirD4tables <-paste0(thisdirexp,"dashboard tables/")
+  if(this_datasource_has_subpopulations == T) dirD4tables <-paste0(thisdirexp,"D4 tables/")
   suppressWarnings(if (!file.exists(dirD4tables)) dir.create(file.path(dirD4tables)))
   
   if(this_datasource_has_subpopulations == T) dirdashboard <- paste0(thisdirexp,"dashboard tables/")
@@ -38,7 +38,7 @@ for (subpop in subpopulations_non_empty) {
   if(this_datasource_has_subpopulations == T)   dummytables <- paste0(thisdirexp,"Dummy tables for report/")
   suppressWarnings(if (!file.exists(dummytables)) dir.create(file.path(dummytables)))
   
-flow_source <- fread(paste0(direxp, "Flowchart_basic_exclusion_criteria",suffix[[subpop]],".csv"))
+flow_source <- fread(paste0(thisdirexp, "Flowchart_basic_exclusion_criteria",suffix[[subpop]],".csv"))
 flow_study <- fread(paste0(thisdirexp, "Flowchart_exclusion_criteria",suffix[[subpop]],".csv"))
 
 vect_recode_manufacturer <- c(TEST = "Italy_ARS", ARS = "Italy_ARS", PHARMO = "NL_PHARMO",
@@ -131,7 +131,7 @@ col_to_keep <- intersect(c("a", "Parameters", "Italy_ARS", "NL_PHARMO",
 total_pop <- total_pop[, ..col_to_keep]
 
 
-age_studystart <- fread(paste0(dirD4tables, "D4_descriptive_dataset_age_studystart.csv"))
+age_studystart <- fread(paste0(dirD4tables, "D4_descriptive_dataset_age_studystart",suffix[[subpop]],".csv"))
 
 age_studystart[, Datasource := c(TEST = "Test", ARS = "Italy_ARS", PHARMO = "NL_PHARMO", CPRD = "UK_CPRD",
                                  BIFAP = "ES_BIFAP")[Datasource]]
@@ -160,7 +160,7 @@ names(Ageband_complete) = paste0("AgeCat_", Ageband_complete)
 ageband_start[, Parameters := Ageband_complete[Parameters]]
 
 
-followup_studystart <- fread(paste0(dirD4tables, "D4_followup_fromstudystart.csv"))
+followup_studystart <- fread(paste0(dirD4tables, "D4_followup_fromstudystart",suffix[[subpop]],".csv"))
 followup_studystart[, Datasource := c(TEST = "Test", ARS = "Italy_ARS", PHARMO = "NL_PHARMO", CPRD = "UK_CPRD",
                                       BIFAP = "ES_BIFAP")[Datasource]]
 followup_studystart <- followup_studystart[, a := "Person years across age categories"]
@@ -176,7 +176,7 @@ names(Ageband_complete) = paste0("Followup_", Ageband_complete)
 followup_start[, Parameters := Ageband_complete[Parameters]]
 
 
-sex_studystart <- fread(paste0(dirD4tables, "D4_descriptive_dataset_sex_studystart.csv"))
+sex_studystart <- fread(paste0(dirD4tables, "D4_descriptive_dataset_sex_studystart",suffix[[subpop]],".csv"))
 sex_studystart[, Datasource := c(TEST = "Test", ARS = "Italy_ARS",
                                  PHARMO = "NL_PHARMO", CPRD = "UK_CPRD",
                                  BIFAP = "ES_BIFAP")[Datasource]]
@@ -188,7 +188,7 @@ sex_start <- dcast(sex_start, a + Parameters  ~ Datasource, value.var = 'value')
 sex_start[, Parameters := c(Sex_male = "Male", Sex_female = "Female")[Parameters]]
 
 
-risk_factors_studystart <- fread(paste0(dirD4tables, "D4_descriptive_dataset_covariate_studystart.csv"))
+risk_factors_studystart <- fread(paste0(dirD4tables, "D4_descriptive_dataset_covariate_studystart",suffix[[subpop]],".csv"))
 risk_factors_studystart[, Datasource := c(TEST = "Test", ARS = "Italy_ARS", PHARMO = "NL_PHARMO", CPRD = "UK_CPRD",
                                           BIFAP = "ES_BIFAP")[Datasource]]
 risk_factors_start <- risk_factors_studystart[, a := "At risk population at January 1-2020"]
@@ -341,7 +341,7 @@ fup_age_cat <- bc_divide_60(fup_age_cat, "a", c(vax_man, vax_man_perc), only_old
 fup_age_cat <- fup_age_cat[, (vax_man_perc) := lapply(.SD, paste0, "%"), .SDcols = vax_man_perc]
 fup_age_cat <- fup_age_cat[, ..cols_to_keep]
 
-D4_descriptive_dataset_sex_vaccination <- fread(paste0(dirD4tables, "D4_descriptive_dataset_sex_vaccination.csv"))
+D4_descriptive_dataset_sex_vaccination <- fread(paste0(dirD4tables, "D4_descriptive_dataset_sex_vaccination",suffix[[subpop]],".csv"))
 D4_descriptive_dataset_sex_vaccination[type_vax_1 == "J&J", type_vax_1 := "Janssen"]
 setnames(D4_descriptive_dataset_sex_vaccination, c("Sex_female", "Sex_male"), c("Female", "Male"))
 sex_pop <- melt(D4_descriptive_dataset_sex_vaccination, id.vars = "type_vax_1",
@@ -675,7 +675,7 @@ table_9 <- data.table::data.table(meaning_of_first_event = character(), coding_s
 for (outcome in list_outcomes_obs) {
   for (year in c(2020, 2021)) {
     if (file.exists(paste0(direxp, "QC_code_counts_in_study_population_", outcome, "_", year, suffix[[subpop]], ".csv"))) {
-      temp_df <- data.table::fread(paste0(direxp, "QC_code_counts_in_study_population_", outcome, "_", year, suffix[[subpop]], ".csv"))
+      temp_df <- data.table::fread(paste0(thisdirexp, "QC_code_counts_in_study_population_", outcome, "_", year, suffix[[subpop]], ".csv"))
       event <- strsplit(outcome, "_")[[1]][1]
       temp_df <- temp_df[, Event := event]
       table_9 <- data.table::rbindlist(list(table_9, temp_df))
@@ -705,7 +705,7 @@ rm(list=nameoutput)
 
 # table_10 ----------------------------------------------------------------------------------------------------------
 
-load(paste0(direxp,"RES_IR_week",suffix[[subpop]],".RData"))
+load(paste0(thisdirexp,"RES_IR_week",suffix[[subpop]],".RData"))
 IR_week<-get(paste0("RES_IR_week",suffix[[subpop]]))
 rm(list=paste0("RES_IR_week",suffix[[subpop]]))
 
@@ -825,7 +825,7 @@ rm(list=nameoutput)
 
 # table_15 ----------------------------------------------------------------------------------------------------------
 
-load(paste0(dirtemp, "Intermediate coverage",suffix[[subpop]],".Rdata"))
+load(paste0(dirtemp, "Intermediate coverage",suffix[[subpop]],".RData"))
 coverage <- get(paste0("Intermediate coverage",suffix[[subpop]]))
 rm(list=paste0("Intermediate coverage",suffix[[subpop]]))
 
@@ -853,7 +853,7 @@ rm(table_15, coverage, cumulated_doses)
 
 
 # table_16 ----------------------------------------------------------------------------------------------------------
-load(paste0(direxp, "D4_IR_persontime_risk_fup_BC",suffix[[subpop]],".Rdata"))
+load(paste0(thisdirexp, "D4_IR_persontime_risk_fup_BC",suffix[[subpop]],".RData"))
 D4_IR_risk_fup<-get(paste0("D4_IR_persontime_risk_fup_BC",suffix[[subpop]]))
 rm(list=paste0("D4_IR_persontime_risk_fup_BC",suffix[[subpop]]))
 
