@@ -43,6 +43,8 @@ concept_set_codes_our_study_pre_excl <- vector(mode="list")
 
 concept_set_codes_our_study_pre[["Covid_vaccine"]][["ATC"]] <- c("J07BX03")
 
+list_outcomes_MIS <- c("MIS_narrow","KD_narrow","MIS_KD_narrow", "MIS_broad","KD_broad","MIS_KD_broad","MYOCARD_narrow","MYOCARD_possible","Myocardalone_narrow","Myocardalone_possible")
+
 
 #--------------------------
 # "xxx"
