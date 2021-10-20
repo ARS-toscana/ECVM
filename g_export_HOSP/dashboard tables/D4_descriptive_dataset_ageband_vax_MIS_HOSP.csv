@@ -1,5 +1,5 @@
-Datasource,type_vax_1,NA,Followup_1819,Followup_2029,Followup_3039,Followup_4049,Followup_5059,Followup_6069,Followup_7079,Followup_80
-TEST,AstraZeneca,,,4,14,27,74,84,141,320
-TEST,Moderna,5,,25,11,68,61,98,66,54
-TEST,Pfizer,608,30,93,60,168,281,559,430,269
-TEST,UKN,,,,,,,20,63,23
+Datasource,type_vax_1,Agecat_12-17,Agecat_18-24,Agecat_25-29,Agecat_30-39,Agecat_40-49,Agecat_50-59,Agecat_60-69,Agecat_70-79,Agecat_80+
+TEST,AstraZeneca,,4,14,27,74,84,141,320,
+TEST,Moderna,,25,11,68,61,98,66,54,5
+TEST,Pfizer,30,93,60,168,281,559,430,269,608
+TEST,UKN,,,,,,20,63,23,

@@ -64,7 +64,7 @@ Output_file<-CountPersonTime(
   Date_event = "date_event",
   #Age_bands = c(0,19,29,39,49,59,69,79),
   Increment="month",
-  Outcomes =  list_outcomes_MIS, 
+  Outcomes_nrec =  list_outcomes_MIS, 
   #Unit_of_age = "year",
   #include_remaning_ages = T,
   Aggregate = T
@@ -154,7 +154,7 @@ Output_file<-CountPersonTime(
   Date_event = "date_event",
   #Age_bands = c(0,19,29,39,49,59,69,79),
   Increment="year",
-  Outcomes =  list_outcomes_MIS, 
+  Outcomes_nrec =  list_outcomes_MIS, 
   #Unit_of_age = "year",
   #include_remaning_ages = T,
   Aggregate = T
@@ -183,7 +183,7 @@ Output_file<-CountPersonTime(
   Date_event = "date_event",
   #Age_bands = c(0,19,29,39,49,59,69,79),
   Increment="month",
-  Outcomes =  list_outcomes_MIS, 
+  Outcomes_nrec =   list_outcomes_MIS, 
   #Unit_of_age = "year",
   #include_remaning_ages = T,
   Aggregate = T
@@ -271,7 +271,7 @@ Output_file<-CountPersonTime(
   Date_event = "date_event",
   #Age_bands = c(0,19,29,39,49,59,69,79),
   Increment="year",
-  Outcomes =  list_outcomes_MIS, 
+  Outcomes_nrec = list_outcomes_MIS, 
   #Unit_of_age = "year",
   #include_remaning_ages = T,
   Aggregate = T
@@ -300,7 +300,7 @@ Output_file<-CountPersonTime(
   Date_event = "date_event",
   #Age_bands = c(0,19,29,39,49,59,69,79),
   Increment="month",
-  Outcomes =  list_outcomes_MIS, 
+  Outcomes_nrec = list_outcomes_MIS, 
   #Unit_of_age = "year",
   #include_remaning_ages = T,
   Aggregate = T

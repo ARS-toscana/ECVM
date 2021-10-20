@@ -127,13 +127,13 @@ system.time(source(paste0(thisdir,"/p_steps/step_06_6_T2_create_D3_datasets.R"))
 
 #MIS and Myocarditis section
 # create D3 MIS population
+
 system.time(source(paste0(thisdir,"/p_steps/step_06_7_MIS_population.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_07_9_T3_create_person_time_MIS_year.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_07_10_T3_aggregate_monthly_MIS.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_08_T4_IR_MIS.R")))
 
 #descriptive
-system.time(source(paste0(thisdir,"/p_steps/step_09_2_T3_create_D4_descriptive_tables.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_09_4_T3_create_D4_descriptive_tables_MIS.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_11_2_T4_create_dummy_tables_MIS_KD.R")))
 
@@ -157,16 +157,14 @@ system.time(source(paste0(thisdir,"/p_steps/step_08_T4_IR.R")))
 
 #09 create D4 for doses and coverage
 system.time(source(paste0(thisdir,"/p_steps/step_09_1_T3_create_D4_doses_weeks.R")))
-
-
+system.time(source(paste0(thisdir,"/p_steps/step_09_2_T3_create_D4_descriptive_tables.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_09_3_T3_create_dashboard_tables.R")))
 
 #10 describing the datasets
-system.time(source(paste0(thisdir,"/p_steps/step_10_1_FlowChart_description.R")))
-system.time(source(paste0(thisdir,"/p_steps/step_10_2_Coverage_description.R")))
-system.time(source(paste0(thisdir,"/p_steps/step_10_3_Doses_description.R")))
-
-system.time(source(paste0(thisdir,"/p_steps/step_10_4_benefit_description.R")))
+# system.time(source(paste0(thisdir,"/p_steps/step_10_1_FlowChart_description.R")))
+# system.time(source(paste0(thisdir,"/p_steps/step_10_2_Coverage_description.R")))
+# system.time(source(paste0(thisdir,"/p_steps/step_10_3_Doses_description.R")))
+# system.time(source(paste0(thisdir,"/p_steps/step_10_4_benefit_description.R")))
 
 
 #11 Create descriptive tables
