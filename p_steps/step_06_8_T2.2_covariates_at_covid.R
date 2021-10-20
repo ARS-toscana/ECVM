@@ -20,7 +20,7 @@ COVnames<-c("CV","COVCANCER","COVCOPD","COVHIV","COVCKD","COVDIAB","COVOBES","CO
 D3_study_population_covariates <- vector(mode = 'list')
 for (subpop in subpopulations_non_empty) {
   print(subpop)
-  load(paste0(diroutput,"D4_population_c_no_risk", suffix[[subpop]],".RData")) 
+  load(paste0(dirtemp,"D4_population_c_no_risk", suffix[[subpop]],".RData")) 
   
   study_population<-get(paste0("D4_population_c_no_risk", suffix[[subpop]]))
   study_population_covariates <- study_population[, .(person_id, cohort_entry_date_MIS_c)]
