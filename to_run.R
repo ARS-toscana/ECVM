@@ -129,6 +129,11 @@ system.time(source(paste0(thisdir,"/p_steps/step_06_6_T2_create_D3_datasets.R"))
 # create D3 MIS population
 
 system.time(source(paste0(thisdir,"/p_steps/step_06_7_MIS_population.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_06_8_T2.2_covariates_at_covid.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_06_9_T2.2_DP_at_covid.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_06_10_T2.3_covid_characteristics.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_06_11_T2.3_ALL_covariates_at_covid_V2.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_06_12_MIS_population_d.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_07_9_T3_create_person_time_MIS_year.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_07_10_T3_aggregate_monthly_MIS.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_08_T4_IR_MIS.R")))
