@@ -1,0 +1,47 @@
+ ,Parameters,Pfizer,perc_Pfizer,Moderna,perc_Moderna,AstraZeneca,perc_AstraZeneca,Janssen,perc_Janssen
+"","",N,%,N,%,N,%,N,%
+Study population,N,721,68.5%,124,11.8%,178,16.9%,29,2.8%
+Person-years of follow-up,PY,109,64.5%,19,11.2%,38,22.5%,3,1.8%
+Month of first vaccination,"",1,"",1,"",2,"",4,""
+January 2021,N,36,5%,3,2.4%,0,0%,0,0%
+February 2021,N,22,3.1%,3,2.4%,20,11.2%,0,0%
+March 2021,N,76,10.5%,19,15.3%,37,20.8%,0,0%
+April 2021,N,151,20.9%,19,15.3%,55,30.9%,5,17.2%
+May 2021,N,181,25.1%,44,35.5%,60,33.7%,9,31%
+June 2021,N,255,35.4%,36,29%,6,3.4%,15,51.7%
+Age in years,Min,15,"",19,"",27,"",58,""
+Age in years,P25,50,"",40,"",55,"",60,""
+Age in years,P50,64,"",57,"",66,"",63,""
+Age in years,Mean,62,"",53,"",63,"",64,""
+Age in years,P75,80,"",65,"",73,"",65,""
+Age in years,Max,96,"",83,"",79,"",78,""
+Age in categories,12-17,9,1.2%,0,0%,0,0%,0,0%
+Age in categories,18-24,17,2.4%,5,4%,0,0%,0,0%
+Age in categories,25-29,20,2.8%,5,4%,3,1.7%,0,0%
+Age in categories,30-39,42,5.8%,21,16.9%,5,2.8%,0,0%
+Age in categories,40-49,74,10.3%,14,11.3%,21,11.8%,0,0%
+Age in categories,50-59,153,21.2%,34,27.4%,27,15.2%,7,24.1%
+Age in categories,60-69,131,18.2%,26,21%,47,26.4%,17,58.6%
+Age in categories,70-79,88,12.2%,16,12.9%,75,42.1%,5,17.2%
+Age in categories,80+,187,25.9%,3,2.4%,0,0%,0,0%
+Person years across age categories,12-17,0,0%,0,0%,0,0%,0,0%
+Person years across age categories,18-24,1,0.9%,0,0%,0,0%,0,0%
+Person years across age categories,25-29,3,2.8%,1,5.6%,1,2.6%,0,0%
+Person years across age categories,30-39,5,4.6%,1,5.6%,1,2.6%,0,0%
+Person years across age categories,40-49,9,8.3%,2,11.1%,5,13.2%,0,0%
+Person years across age categories,50-59,15,13.8%,5,27.8%,7,18.4%,1,33.3%
+Person years across age categories,60-69,18,16.5%,5,27.8%,7,18.4%,1,33.3%
+Person years across age categories,70-79,12,11%,3,16.7%,17,44.7%,1,33.3%
+Person years across age categories,80+,46,42.2%,1,5.6%,0,0%,0,0%
+Person years across sex,Female,390,54.1%,65,52.4%,94,52.8%,18,62.1%
+Person years across sex,Male,331,45.9%,59,47.6%,84,47.2%,11,37.9%
+COVID-19 diagnosis/test in past year,"N, %",18,2.5%,1,0.8%,4,2.2%,2,6.9%
+At risk population at date of vaccination,CV,221,30.7%,28,22.6%,25,14%,3,10.3%
+At risk population at date of vaccination,Cancer,32,25.8%,12,6.7%,4,13.8%,1,0.1%
+At risk population at date of vaccination,CLD,35,19.7%,10,34.5%,8,1.1%,2,1.6%
+At risk population at date of vaccination,HIV,1,3.4%,1,0.1%,0,0%,0,0%
+At risk population at date of vaccination,CKD,1,0.1%,2,1.6%,0,0%,0,0%
+At risk population at date of vaccination,Diabetes,79,63.7%,13,7.3%,6,20.7%,1,0.1%
+At risk population at date of vaccination,Obesity,2,1.1%,0,0%,0,0%,0,0%
+At risk population at date of vaccination,Sicklecell,1,3.4%,0,0%,0,0%,0,0%
+At risk population at date of vaccination,immunosuppressants,50,6.9%,8,6.5%,8,4.5%,0,0%
