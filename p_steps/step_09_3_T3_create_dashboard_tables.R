@@ -14,7 +14,7 @@ for (subpop in subpopulations_non_empty) {
    load(paste0(dirtemp,"D3_Vaccin_cohort",suffix[[subpop]],".RData"))
    load(paste0(dirtemp,"D3_study_population",suffix[[subpop]],".RData"))
    load(paste0(dirtemp,"list_outcomes_observed",suffix[[subpop]],".RData"))
-   load(paste0(diroutput,"D4_doses_weeks",suffix[[subpop]],".RData"))
+   load(paste0(thisdirexp,"D4_doses_weeks",suffix[[subpop]],".RData"))
    
    vaxweeks<-get(paste0("D3_vaxweeks",suffix[[subpop]]))
    rm(list=paste0("D3_vaxweeks",suffix[[subpop]]))
