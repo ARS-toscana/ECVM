@@ -20,6 +20,13 @@ for (i in 1:length(files)) {
 covid_registry <- SURVEY_ID_COVID[,date:=ymd(survey_date)]
 covid_registry <- covid_registry[,-"survey_date"]
 
+covid_registry_wrong <- covid_registry[date < start_COVID_diagnosis_date, ][, covid_year := year(date)][, covid_month := month(date)]
+covid_registry_wrong <- covid_registry_wrong[, .N, by = c("covid_year", "covid_month")]
+setorder(covid_registry_wrong, covid_year, covid_month)
+fwrite(covid_registry_wrong, file = paste0(direxp, "table_QC_covid_diagnosis.csv"))
+
+covid_registry <- covid_registry[date >= start_COVID_diagnosis_date, ]
+
 
 # RETRIEVE FROM SURVEY_OBSERVATIONS ALL itemset datasets corresponding to "COVID_symptoms" 
 #-----------------------------------------------------
