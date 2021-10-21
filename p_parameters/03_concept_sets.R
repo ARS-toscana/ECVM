@@ -43,7 +43,7 @@ concept_set_codes_our_study_pre_excl <- vector(mode="list")
 
 concept_set_codes_our_study_pre[["Covid_vaccine"]][["ATC"]] <- c("J07BX03")
 
-list_outcomes_MIS <- c("MIS_narrow","KD_narrow","MIS_KD_narrow", "MIS_broad","KD_broad","MIS_KD_broad","MYOCARD_narrow","MYOCARD_possible","Myocardalone_narrow","Myocardalone_possible")
+list_outcomes_MIS <- c("MIS_narrow","KD_narrow","MIS_KD_narrow", "MIS_broad","KD_broad","MIS_KD_broad","MYOCARD_narrow","MYOCARD_possible","Myocardalone_narrow","Myocardalone_possible","PERICARD_narrow","PERICARD_possible")
 
 
 #--------------------------
@@ -715,25 +715,25 @@ concept_set_codes_our_study_pre[["COVCANCER"]][["READ"]] <- c("5953.00","596..00
                                                                                                                               
                                                                                                                               
                                                                                                                               #--------------------------
-                                                                                                                              # Kawasaki_narrow
-                                                                                                                              concept_set_domains[["Kawasaki_narrow"]] = "Diagnosis"
-                                                                                                                              concept_set_codes_our_study_pre[["Kawasaki_narrow"]][["ICD9"]] <- c("446.1","446.1")
-                                                                                                                              concept_set_codes_our_study_pre[["Kawasaki_narrow"]][["ICD10"]] <- c("M30.3","M30.3")
-                                                                                                                              concept_set_codes_our_study_pre[["Kawasaki_narrow"]][["READ"]] <- c("G7510","G751z")
-                                                                                                                              concept_set_codes_our_study_pre[["Kawasaki_narrow"]][["ICPC"]] <- c()
-                                                                                                                              concept_set_codes_our_study_pre[["Kawasaki_narrow"]][["ICPC2P"]] <- c("B99022")
-                                                                                                                              concept_set_codes_our_study_pre[["Kawasaki_narrow"]][["SNOMED"]] <- c("155444003","195348009","195349001","75053002","195349001","75053002")
+                                                                                                                              # KD_narrow
+                                                                                                                              concept_set_domains[["KD_narrow"]] = "Diagnosis"
+                                                                                                                              concept_set_codes_our_study_pre[["KD_narrow"]][["ICD9"]] <- c("446.1","446.1")
+                                                                                                                              concept_set_codes_our_study_pre[["KD_narrow"]][["ICD10"]] <- c("M30.3","M30.3")
+                                                                                                                              concept_set_codes_our_study_pre[["KD_narrow"]][["READ"]] <- c("G7510","G751z")
+                                                                                                                              concept_set_codes_our_study_pre[["KD_narrow"]][["ICPC"]] <- c()
+                                                                                                                              concept_set_codes_our_study_pre[["KD_narrow"]][["ICPC2P"]] <- c("B99022")
+                                                                                                                              concept_set_codes_our_study_pre[["KD_narrow"]][["SNOMED"]] <- c("155444003","195348009","195349001","75053002","195349001","75053002")
                                                                                                                               
                                                                                                                               
                                                                                                                               #--------------------------
-                                                                                                                              # Kawasaki_possible
-                                                                                                                              concept_set_domains[["Kawasaki_possible"]] = "Diagnosis"
-                                                                                                                              concept_set_codes_our_study_pre[["Kawasaki_possible"]][["ICD9"]] <- c()
-                                                                                                                              concept_set_codes_our_study_pre[["Kawasaki_possible"]][["ICD10"]] <- c()
-                                                                                                                              concept_set_codes_our_study_pre[["Kawasaki_possible"]][["READ"]] <- c()
-                                                                                                                              concept_set_codes_our_study_pre[["Kawasaki_possible"]][["ICPC"]] <- c()
-                                                                                                                              concept_set_codes_our_study_pre[["Kawasaki_possible"]][["ICPC2P"]] <- c()
-                                                                                                                              concept_set_codes_our_study_pre[["Kawasaki_possible"]][["SNOMED"]] <- c()
+                                                                                                                              # KD_possible
+                                                                                                                              concept_set_domains[["KD_possible"]] = "Diagnosis"
+                                                                                                                              concept_set_codes_our_study_pre[["KD_possible"]][["ICD9"]] <- c()
+                                                                                                                              concept_set_codes_our_study_pre[["KD_possible"]][["ICD10"]] <- c()
+                                                                                                                              concept_set_codes_our_study_pre[["KD_possible"]][["READ"]] <- c()
+                                                                                                                              concept_set_codes_our_study_pre[["KD_possible"]][["ICPC"]] <- c()
+                                                                                                                              concept_set_codes_our_study_pre[["KD_possible"]][["ICPC2P"]] <- c()
+                                                                                                                              concept_set_codes_our_study_pre[["KD_possible"]][["SNOMED"]] <- c()
                                                                                                                               
                                                                                                                               
                                                                                                                               #--------------------------

@@ -1,0 +1,27 @@
+"",Parameters,IT-ARS,IT-ARS
+"","",N,%
+AstraZeneca dose 1,Persons,664,18.2%
+AstraZeneca dose 2,Persons,299,""
+Other vaccine dose 2,Persons,11,""
+Amongst persons with AstraZeneca dose 2 distance,Min,64,""
+Amongst persons with AstraZeneca dose 2 distance,P25,82,""
+Amongst persons with AstraZeneca dose 2 distance,P50,84,""
+Amongst persons with AstraZeneca dose 2 distance,P75,85,""
+Amongst persons with AstraZeneca dose 2 distance,Max,89,""
+Janssen dose 1,Persons,106,2.9%
+Other vaccine dose 2,Persons,1,""
+Moderna dose 1,Persons,388,10.6%
+Moderna dose 2,Persons,182,""
+Amongst persons with Moderna dose 2 distance,Min,23,""
+Amongst persons with Moderna dose 2 distance,P25,27,""
+Amongst persons with Moderna dose 2 distance,P50,28,""
+Amongst persons with Moderna dose 2 distance,P75,31,""
+Amongst persons with Moderna dose 2 distance,Max,46,""
+Pfizer dose 1,Persons,2498,68.3%
+Pfizer dose 2,Persons,1077,""
+Other vaccine dose 2,Persons,2,""
+Amongst persons with Pfizer dose 2 distance,Min,16,""
+Amongst persons with Pfizer dose 2 distance,P25,20,""
+Amongst persons with Pfizer dose 2 distance,P50,21,""
+Amongst persons with Pfizer dose 2 distance,P75,23,""
+Amongst persons with Pfizer dose 2 distance,Max,110,""

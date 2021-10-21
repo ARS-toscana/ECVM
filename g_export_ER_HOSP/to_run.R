@@ -3,6 +3,9 @@
 
 # authors: Rosa Gini, Olga Paoletti, Davide Messina, Giorgio Limoncella
 
+#v.6.1
+##small changes on final tables
+
 # v6.0 - 29 September 2021
 # adjustment for subpopulations and change of agebands
 

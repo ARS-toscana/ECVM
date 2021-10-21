@@ -1,0 +1,5 @@
+Datasource,type_vax_1,Agecat_12-17,Agecat_18-24,Agecat_25-29,Agecat_30-39,Agecat_40-49,Agecat_50-59,Agecat_60+,Agecat_60-69,Agecat_70-79,Agecat_80+
+TEST,AstraZeneca,0,0,3,4,21,27,123,46,77,0
+TEST,J&J,0,0,0,0,0,7,22,17,5,0
+TEST,Moderna,0,5,5,21,14,34,45,26,16,3
+TEST,Pfizer,7,19,18,42,71,159,410,133,86,191
