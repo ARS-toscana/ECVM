@@ -580,7 +580,7 @@ dose_1_to_join <- Totals_dose_1[, .(type_vax_1, tot_type_1 = N)]
 table_7 <- rbindlist(list(base_table_7, part2_table_7), fill = TRUE)
 table_7 <- table_7[index == 1, Perc := N / Totals]
 table_7 <- merge(table_7, dose_1_to_join, by = "type_vax_1")
-table_7 <- table_7[data.table::between(index, 2, 1), Perc := N / tot_type_1]
+table_7 <- table_7[data.table::between(index, 2, 3), Perc := N / tot_type_1]
 table_7 <- table_7[, Perc := paste0(round(Perc * 100, 1), "%")]
 table_7 <- table_7[Perc == "NA%", Perc := ""]
 
