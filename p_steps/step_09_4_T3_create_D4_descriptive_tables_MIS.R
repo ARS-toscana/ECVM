@@ -9,7 +9,7 @@ for (subpop in subpopulations_non_empty) {
   
   thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
   
-  if(this_datasource_has_subpopulations == T) dirD4tables <-paste0(thisdirexp,"dashboard tables/")
+  if(this_datasource_has_subpopulations == T) dirD4tables <-paste0(thisdirexp,"D4 tables/")
   suppressWarnings(if (!file.exists(dirD4tables)) dir.create(file.path(dirD4tables)))
   
   load(paste0(dirtemp,"D3_Vaccin_cohort",suffix[[subpop]],".RData"))

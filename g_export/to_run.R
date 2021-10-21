@@ -95,8 +95,6 @@ system.time(source(paste0(thisdir,"/p_steps/step_01_4_T2.1_create_prompt_and_ite
 system.time(source(paste0(thisdir,"/p_steps/step_02_1_T2_create_QC_criteria.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_02_2_T3_apply_QC_exclusion_criteria.R")))
 
-#10 describing the datasets
-system.time(source(paste0(thisdir,"/p_steps/step_10_1_FlowChart_description.R")))
 
 #03 create exclusion criteria
 system.time(source(paste0(thisdir,"/p_steps/step_03_1_T2_create_exclusion_criteria.R")))
@@ -106,6 +104,9 @@ system.time(source(paste0(thisdir,"/p_steps/step_03_2_T2_merge_persons_concept.R
 system.time(source(paste0(thisdir,"/p_steps/step_04_1_T3_apply_exclusion_criteria.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_04_2_T3_apply_quality_check_exclusion_criteria_doses.R")))
 ##use flowchart (apply also quality checks)
+
+#10 describing the datasets
+system.time(source(paste0(thisdir,"/p_steps/step_10_1_FlowChart_description.R")))
 
 #05 create D3 for doses and coverage
 system.time(source(paste0(thisdir,"/p_steps/step_05_1_T2.2_components.R")))
@@ -132,6 +133,11 @@ system.time(source(paste0(thisdir,"/p_steps/step_06_6_T2_create_D3_datasets.R"))
 # create D3 MIS population
 
 system.time(source(paste0(thisdir,"/p_steps/step_06_7_MIS_population.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_06_8_T2.2_covariates_at_covid.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_06_9_T2.2_DP_at_covid.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_06_10_T2.3_covid_characteristics.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_06_11_T2.3_ALL_covariates_at_covid_V2.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_06_12_MIS_population_d.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_07_9_T3_create_person_time_MIS_year.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_07_10_T3_aggregate_monthly_MIS.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_08_T4_IR_MIS.R")))
