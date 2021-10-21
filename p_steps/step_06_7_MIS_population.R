@@ -59,7 +59,7 @@ tempname<-paste0("D4_population_b",suffix[[subpop]])
 assign(tempname,D4_population_b)
 save(tempname, file = paste0(diroutput, tempname,".RData"),list=tempname)
 rm(list=tempname)
-rm(D4_population_b)
+if (this_datasource_has_subpopulations==T) rm(D4_population_b)
 
 #---------------------------------
 #COHORT C
@@ -92,7 +92,7 @@ assign(tempname,D4_population_c_no_risk)
 save(tempname, file = paste0(dirtemp, tempname,".RData"),list=tempname)
 rm(list=tempname)
 rm(D3_selection_criteria_c)
-rm(D4_population_c_no_risk)
+if (this_datasource_has_subpopulations==T) rm(D4_population_c_no_risk)
 #---------------------------------
 #COHORT D
 
@@ -139,7 +139,7 @@ save(tempname, file = paste0(diroutput, tempname,".RData"),list=tempname)
 rm(list=tempname)
 rm(tempname)
 rm(D3_selection_criteria_d)
-rm(D4_population_d)
+if (this_datasource_has_subpopulations==T) rm(D4_population_d)
 rm(events_ALL_OUTCOMES,study_population,outcomes_covid)
 
 }
