@@ -24,6 +24,7 @@ covid_registry_wrong <- covid_registry[date < start_COVID_diagnosis_date, ][, co
 covid_registry_wrong <- covid_registry_wrong[, .N, by = c("covid_year", "covid_month")]
 setorder(covid_registry_wrong, covid_year, covid_month)
 fwrite(covid_registry_wrong, file = paste0(direxp, "table_QC_covid_diagnosis.csv"))
+rm(covid_registry_wrong)
 
 covid_registry <- covid_registry[date >= start_COVID_diagnosis_date, ]
 
