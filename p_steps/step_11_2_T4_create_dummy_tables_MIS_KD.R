@@ -774,7 +774,7 @@ PT_monthly <- data.table::melt(D4_IR_monthly_MIS_d, measure = list(colA, colB, c
 PT_monthly <- PT_monthly[, DAP := thisdatasource][ , AESI := vect_recode_AESI[AESI]]
 PT_monthly <- PT_monthly[, .(DAP, sex, month, year, Ageband, type_vax_1, history_covid, AESI, PT, IR, lb, ub)]
 
-for (vax_m in vax_man) {
+for (vax_m in recode(vax_man, Janssen = "J&J")) {
   table_12 <- PT_monthly[year == "all_years" & sex != "both_sexes" & Ageband != "all_birth_cohorts" & month == "all_months"
                          & !stringr::str_detect(AESI, "broad") & type_vax_1 == vax_m, ]
   table_12 <- table_12[, c("year", "month", "type_vax_1") := NULL]
