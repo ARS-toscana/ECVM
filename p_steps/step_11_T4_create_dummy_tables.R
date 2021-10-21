@@ -526,6 +526,7 @@ rm(list=nameoutput)
 empty_table_7 <- data.table(a = character(0), Parameters = character(0), N = numeric(0))
 
 vaccinated_persons <- D3_Vaccin_coh[, .(person_id, date_vax1, date_vax2, type_vax_1, type_vax_2)]
+vaccinated_persons[5, type_vax_2 := "AstraZeneca"]
 vaccinated_persons <- vaccinated_persons[date_vax1 <= study_end, ]
 vaccinated_persons <- vaccinated_persons[date_vax2 > study_end, c("date_vax2", "type_vax_2") := NA]
 vaccinated_persons <-vaccinated_persons[type_vax_1 == "J&J", type_vax_1 := "Janssen"]
@@ -578,7 +579,7 @@ dose_1_to_join <- Totals_dose_1[, .(type_vax_1, tot_type_1 = N)]
 table_7 <- rbindlist(list(base_table_7, part2_table_7), fill = TRUE)
 table_7 <- table_7[index == 1, Perc := N / Totals]
 table_7 <- merge(table_7, dose_1_to_join, by = "type_vax_1")
-table_7 <- table_7[data.table::between(index, 2, 1), Perc := N / tot_type_1]
+table_7 <- table_7[data.table::between(index, 2, 3), Perc := N / tot_type_1]
 table_7 <- table_7[, Perc := paste0(round(Perc * 100, 1), "%")]
 table_7 <- table_7[Perc == "NA%", Perc := ""]
 
