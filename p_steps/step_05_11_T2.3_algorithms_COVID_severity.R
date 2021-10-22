@@ -85,6 +85,13 @@ is.na(severity_level_covid) & MechanicalVentilation_within_registry_date != 0, s
     list_outcomes_observed_COVID <- c(list_outcomes_observed_COVID, level)
       
   }
+  
+  outcomes_covid_wrong <- outcomes_covid[date_event < start_COVID_diagnosis_date, ][, covid_year := year(date_event)][, covid_month := month(date_event)]
+  outcomes_covid_wrong <- outcomes_covid_wrong[, .N, by = c("covid_year", "covid_month")]
+  setorder(outcomes_covid_wrong, covid_year, covid_month)
+  fwrite(outcomes_covid_wrong, file = paste0(direxp, "table_QC_covid_diagnosis.csv"))
+  rm(outcomes_covid_wrong)
+  outcomes_covid <- outcomes_covid[date_event >= start_COVID_diagnosis_date, ]
 
   
   # save the COVID outcomes as a dataset and their list as a parameter
