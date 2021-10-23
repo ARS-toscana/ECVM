@@ -1,0 +1,3 @@
+A_duplicated_records,B_missing_date,C_date_before_start_vax,D_distance_btw_1_2_doses,E_distance_btw_2_3_doses,F_dose_after_3,G_dose_after_2,N
+1,1,1,0,0,0,0,7
+1,1,1,1,1,1,1,125

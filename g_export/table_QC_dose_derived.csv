@@ -1,0 +1,12 @@
+"",TEST,TEST
+"",N,%
+Number of doses,132,100%
+Missing first doses,0,0%
+Missing second doses,0,0%
+Missing third doses,0,0%
+Discordant first to n,6,4.55%
+Discordant second to n,11,8.33%
+Discordant third to n,0,0%
+Concordant first doses,90,68.18%
+Concordant second doses,18,13.64%
+Concordant third doses,0,0%

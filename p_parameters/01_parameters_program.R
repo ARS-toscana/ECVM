@@ -6,7 +6,7 @@
 # dirinput <- paste0(dirbase,"/CDMInstances/ECVM2108/")
 
 #dirinput <- paste0(thisdir,"/i_input/")
-dirinput <- paste0(thisdir,"/i_input/")
+dirinput <- paste0(thisdir,"/i_input_subpop/")
 
 # set other directories
 diroutput <- paste0(thisdir,"/g_output/")

@@ -1,0 +1,11 @@
+sex,ageband_at_1_jan_2021,type_vax_1,history_covid,year,Persontime,Persontime_MIS_narrow,Persontime_KD_narrow,Persontime_MIS_KD_narrow,Persontime_MIS_broad,Persontime_KD_broad,Persontime_MIS_KD_broad,Persontime_MYOCARD_narrow,Persontime_MYOCARD_possible,Persontime_Myocardalone_narrow,Persontime_Myocardalone_possible,MIS_narrow_b,KD_narrow_b,MIS_KD_narrow_b,MIS_broad_b,KD_broad_b,MIS_KD_broad_b,MYOCARD_narrow_b,MYOCARD_possible_b,Myocardalone_narrow_b,Myocardalone_possible_b
+1,40-49,Pfizer,0,2021,19,19,19,19,19,19,19,19,19,19,19,0,0,0,0,0,0,0,0,0,0
+1,60-69,Pfizer,0,2021,7,7,7,7,7,7,7,7,7,7,7,0,0,0,0,0,0,0,0,0,0
+1,80+,Pfizer,0,2021,15,15,15,15,15,15,15,15,15,15,15,0,0,0,0,0,0,0,0,0,0
+1,50-59,Pfizer,0,2021,65,65,65,65,65,65,65,65,65,65,65,0,0,0,0,0,0,0,0,0,0
+0,50-59,Pfizer,0,2021,65,65,65,65,65,65,65,65,65,65,65,0,0,0,0,0,0,0,0,0,0
+0,30-39,Pfizer,0,2021,93,93,93,93,93,93,93,93,93,93,93,0,0,0,0,0,0,0,0,0,0
+1,40-49,AstraZeneca,0,2021,14,14,14,14,14,14,14,14,14,14,14,0,0,0,0,0,0,0,0,0,0
+0,80+,Pfizer,0,2021,37,37,37,37,37,37,37,37,37,37,37,0,0,0,0,0,0,0,0,0,0
+1,70-79,AstraZeneca,0,2021,8,8,8,8,8,8,8,8,8,8,8,0,0,0,0,0,0,0,0,0,0
+0,40-49,Pfizer,0,2021,106,106,106,106,106,106,106,106,106,106,106,0,0,0,0,0,0,0,0,0,0

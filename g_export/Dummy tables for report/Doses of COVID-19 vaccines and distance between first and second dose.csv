@@ -1,0 +1,11 @@
+"",Parameters,IT-ARS,IT-ARS
+"","",N,%
+AstraZeneca dose 1,Persons,2,11.8%
+Pfizer dose 1,Persons,15,88.2%
+Pfizer dose 2,Persons,1,6.7%
+Other vaccine dose 2,Persons,1,6.7%
+Amongst persons with Pfizer dose 2 distance,Min,39,""
+Amongst persons with Pfizer dose 2 distance,P25,39,""
+Amongst persons with Pfizer dose 2 distance,P50,39,""
+Amongst persons with Pfizer dose 2 distance,P75,39,""
+Amongst persons with Pfizer dose 2 distance,Max,39,""
