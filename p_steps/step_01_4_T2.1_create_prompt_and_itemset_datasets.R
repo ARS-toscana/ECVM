@@ -23,8 +23,7 @@ covid_registry <- covid_registry[,-"survey_date"]
 
 # RETRIEVE FROM SURVEY_OBSERVATIONS ALL itemset datasets corresponding to "COVID_symptoms" 
 #-----------------------------------------------------
-# @olga: PLEASE REPLACE WITH CreateItemsetDatasets
-#
+
 
 CreateItemsetDatasets(EAVtables = ECVM_CDM_EAV_tables_retrieve,
                       datevar= ECVM_CDM_datevar_retrieve,

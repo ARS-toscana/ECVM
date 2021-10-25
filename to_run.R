@@ -2,6 +2,11 @@
 # ECVM script
 
 # authors: Rosa Gini, Olga Paoletti, Davide Messina, Giorgio Limoncella
+#v.6.2.1
+##small fix on final table 7, fix on filter for covid dates 
+
+#v.6.2
+##small changes on final tables,addition of KD as a conceptset and PERICARD in CVM report
 
 #v.6.1
 #small changes on final tables

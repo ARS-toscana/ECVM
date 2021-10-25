@@ -1,0 +1,43 @@
+ ,Parameters,Test,perc_Test
+"","",N,%
+Study population,N,2428,""
+Person years of follow-up,PY,3293,""
+Age in years,Min,1,""
+Age in years,P25,36,""
+Age in years,P50,53,""
+Age in years,Mean,51,""
+Age in years,P75,68,""
+Age in years,Max,98,""
+Age in categories,0-4,45,1.9%
+Age in categories,5-11,100,4.1%
+Age in categories,12-17,110,4.5%
+Age in categories,18-24,103,4.2%
+Age in categories,25-29,114,4.7%
+Age in categories,30-39,256,10.5%
+Age in categories,40-49,385,15.9%
+Age in categories,50-59,419,17.3%
+Age in categories,60-69,371,15.3%
+Age in categories,70-79,271,11.2%
+Age in categories,80+,254,10.5%
+Person years across age categories,0-4,40,1.2%
+Person years across age categories,5-11,127,3.9%
+Person years across age categories,12-17,150,4.6%
+Person years across age categories,18-24,131,4%
+Person years across age categories,25-29,154,4.7%
+Person years across age categories,30-39,309,9.4%
+Person years across age categories,40-49,482,14.6%
+Person years across age categories,50-59,550,16.7%
+Person years across age categories,60-69,466,14.2%
+Person years across age categories,70-79,351,10.7%
+Person years across age categories,80+,319,9.7%
+Person years across sex,Male,1266,52.1%
+Person years across sex,Female,1162,47.9%
+At risk population at January 1-2020,Cardiovascular disease,385,15.9%
+At risk population at January 1-2020,Cancer,63,2.6%
+At risk population at January 1-2020,Chronic lung disease,128,5.3%
+At risk population at January 1-2020,HIV,3,0.1%
+At risk population at January 1-2020,Chronic kidney disease,14,0.6%
+At risk population at January 1-2020,Diabetes,154,6.3%
+At risk population at January 1-2020,Severe obesity,3,0.1%
+At risk population at January 1-2020,Sickle cell disease,1,0%
+At risk population at January 1-2020,Use of immunosuppressants,121,5%
