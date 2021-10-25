@@ -178,6 +178,25 @@ fwrite(get(nameoutput), file = paste0(dirD4tables, nameoutput,".csv"))
 rm(list=nameoutput)
 
 
+D4_descriptive_dataset_age_vax2 <- Vaccin_cohort[, .(person_id, type_vax_2, date_vax2, fup_vax2, age_at_date_vax_2)]
+D4_descriptive_dataset_age_vax2 <- D4_descriptive_dataset_age_vax2[!is.na(type_vax_2)]
+D4_descriptive_dataset_age_vax2 <- D4_descriptive_dataset_age_vax2[, Month_vax2 := month(date_vax2)]
+setnames(D4_descriptive_dataset_age_vax2, "type_vax_2", "Vax_dose2")
+D4_descriptive_dataset_age_vax2 <- D4_descriptive_dataset_age_vax2[,c("Age_P25", "Age_P50", "Age_p75") :=
+                                                                      as.list(round(quantile(age_at_date_vax_2, probs = c(0.25, 0.50, 0.75)), 0)), by = c("Vax_dose2", "Month_vax2")]
+D4_descriptive_dataset_age_vax2 <- D4_descriptive_dataset_age_vax2[, c("Age_mean", "Age_min", "Age_max") :=
+                                                                      list(round(mean(age_at_date_vax_2), 0), min(age_at_date_vax_2), max(age_at_date_vax_2)), by = c("Vax_dose2", "Month_vax2")]
+
+D4_descriptive_dataset_age_vax2 <- D4_descriptive_dataset_age_vax2[, Followup_vax2 := sum(fup_vax2), by = c("Vax_dose2", "Month_vax2")][, Datasource := thisdatasource]
+D4_descriptive_dataset_age_vax2 <- unique(D4_descriptive_dataset_age_vax2[, .(Datasource, Vax_dose2, Month_vax2, Followup_vax2,
+                                                                              Age_P25, Age_P50, Age_p75, Age_mean, Age_min, Age_max)])
+
+nameoutput <- paste0("D4_descriptive_dataset_age_vax2",suffix[[subpop]])
+assign(nameoutput, D4_descriptive_dataset_age_vax2)
+fwrite(get(nameoutput), file = paste0(dirD4tables, nameoutput,".csv"))
+rm(list=nameoutput)
+
+
 D4_descriptive_dataset_ageband_vax <- Vaccin_cohort[, .(person_id, type_vax_1, ageband_at_date_vax_1)]
 
 vect_recode <- paste0("Agecat_", Agebands_labels)

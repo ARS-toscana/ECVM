@@ -101,7 +101,8 @@ table_1b <- flow_source_1b[, lapply(.SD, max, na.rm = T), by = a]
 setnames(table_1a, "a", " ")
 setnames(table_1b, "a", " ")
 
-fwrite(table_1b, file = paste0(dummytables_MIS, "Attrition diagram",suffix[[subpop]],".csv"))
+fwrite(table_1a, file = paste0(dummytables_MIS, "Attrition diagram 1",suffix[[subpop]],".csv"))
+fwrite(table_1b, file = paste0(dummytables_MIS, "Attrition diagram 2",suffix[[subpop]],".csv"))
 
 
 
@@ -164,18 +165,17 @@ followup_start <- dcast(followup_start, a + Parameters  ~ Datasource, value.var 
 names(Agebands_labels) = paste0("Followup_", Agebands_labels)
 followup_start[, Parameters := Agebands_labels[Parameters]]
 
-
-sex_studystart <- fread(paste0(dirD4tables, "D4_descriptive_dataset_sex_studystart_MIS",suffix[[subpop]],".csv"))
+sex_studystart <- fread(paste0(dirD4tables, "D4_followup_fromstudystart_MIS",suffix[[subpop]],".csv"))
+sex_studystart <- sex_studystart[, .(Datasource, Followup_males, Followup_females)]
 sex_studystart[, Datasource := c(TEST = "Test", ARS = "Italy_ARS",
                                  PHARMO = "NL_PHARMO", CPRD = "UK_CPRD",
                                  BIFAP = "ES_BIFAP")[Datasource]]
 sex_start <- sex_studystart[, a := "Person years across sex"]
 sex_start <- melt(sex_start, id.vars = c("a", "Datasource"),
-                  measure.vars = c("Sex_female", "Sex_male"),
+                  measure.vars = c("Followup_females", "Followup_males"),
                   variable.name = "Parameters")
 sex_start <- dcast(sex_start, a + Parameters  ~ Datasource, value.var = 'value')
-sex_start[, Parameters := c(Sex_male = "Male", Sex_female = "Female")[Parameters]]
-
+sex_start[, Parameters := c(Followup_males = "Male", Followup_males = "Female")[Parameters]]
 
 risk_factors_studystart <- fread(paste0(dirD4tables, "D4_descriptive_dataset_covariate_studystart_MIS",suffix[[subpop]], ".csv"))
 risk_factors_studystart[, Datasource := c(TEST = "Test", ARS = "Italy_ARS", PHARMO = "NL_PHARMO", CPRD = "UK_CPRD",
@@ -225,7 +225,7 @@ fwrite(table2, file = paste0(dummytables_MIS, "Cohort characteristics at start o
 
 load(file = paste0(diroutput, "D4_population_d",suffix[[subpop]],".RData"))
 D4_population_d<-get(paste0("D4_population_d",suffix[[subpop]]))
-N_fup_pop <- D4_population_d[, .(person_id, date_vax1, type_vax_1, fup_days, age_at_1_jan_2021, CV_at_date_vax_1,
+N_fup_pop <- D4_population_d[, .(person_id, sex, date_vax1, type_vax_1, fup_days, age_at_1_jan_2021, CV_at_date_vax_1,
                                   COVCANCER_at_date_vax_1, COVCOPD_at_date_vax_1, COVHIV_at_date_vax_1,
                                   COVCKD_at_date_vax_1, COVDIAB_at_date_vax_1, COVOBES_at_date_vax_1,
                                   COVSICKLE_at_date_vax_1, immunosuppressants_at_date_vax_1)]
@@ -284,8 +284,8 @@ min_month <- min_month[, ..cols_to_keep]
 year_month_pop <- N_fup_pop[, c("year", "month") := list(lubridate::year(date_vax), lubridate::month(date_vax))]
 year_month_pop <- year_month_pop[, .N, by = c("type_vax", "year", "month")]
 year_month_pop <- dcast(year_month_pop, year + month ~ type_vax, value.var = "N")
-setorder(year_month_pop, year, month)
-year_month_pop <- year_month_pop[, Parameters := "N"][, a := paste(month.name[month], year)]
+setorder(year_month_pop, month, year)
+year_month_pop <- year_month_pop[, Parameters := "N"][, a := paste(year, month.name[month])]
 setnafill(year_month_pop, cols = c(vax_man), fill = 0)
 round_sum <- function(x) {round(x / sum(x) * 100, 1)}
 year_month_pop <- year_month_pop[, (vax_man_perc) := lapply(.SD, round_sum), .SDcols = vax_man]
@@ -328,14 +328,11 @@ fup_age_cat <- fup_age_cat[, (vax_man_perc) := lapply(.SD, round_sum), .SDcols =
 fup_age_cat <- fup_age_cat[, (vax_man_perc) := lapply(.SD, paste0, "%"), .SDcols = vax_man_perc]
 fup_age_cat <- fup_age_cat[, ..cols_to_keep]
 
-D4_descriptive_dataset_sex_vaccination_MIS <- fread(paste0(dirD4tables, "D4_descriptive_dataset_sex_vaccination_MIS",suffix[[subpop]],".csv"))
-D4_descriptive_dataset_sex_vaccination_MIS[type_vax_1 == "J&J", type_vax_1 := "Janssen"]
-setnames(D4_descriptive_dataset_sex_vaccination_MIS, c("Sex_female", "Sex_male"), c("Female", "Male"))
-sex_pop <- melt(D4_descriptive_dataset_sex_vaccination_MIS, id.vars = "type_vax_1",
-                measure.vars = c("Female", "Male"),
-                variable.name = "child", value.name = "dob")
-sex_pop <- dcast(sex_pop, child ~ type_vax_1, value.var = "dob")
-setnames(sex_pop, "child", "Parameters")
+sex_pop <- copy(N_fup_pop)[, sum(fup_vax), by = c("type_vax", "sex")][, V1 := round(V1, 0)]
+sex_pop[type_vax == "J&J", type_vax := "Janssen"]
+sex_pop[, sex := as.character(sex)][, sex := c("0" = "Female", "1" = "Male")[sex]]
+sex_pop <- dcast(sex_pop, sex ~ type_vax, value.var = "V1")
+setnames(sex_pop, "sex", "Parameters")
 sex_pop <- sex_pop[, a := "Person years across sex"]
 setnafill(sex_pop, cols = c(vax_man), fill = 0)
 sex_pop <- sex_pop[, (vax_man_perc) := lapply(.SD, round_sum), .SDcols = vax_man]
@@ -547,12 +544,18 @@ df_with_second_doses  <- vaccinated_persons[!is.na(date_vax2), ]
 
 dissimilar_doses <- df_with_second_doses[type_vax_1 != type_vax_2, ]
 dissimilar_doses <- dissimilar_doses[, .N, by = "type_vax_1"]
+if ("Janssen" %not in% dissimilar_doses$type_vax_1) {
+  dissimilar_doses <- rbind(dissimilar_doses, list("Janssen", 0))
+}
 dissimilar_doses <- dissimilar_doses[, a := "Other vaccine dose 2"][, Parameters := "Persons"][, index := 3]
 
 distance_doses <- df_with_second_doses[type_vax_1 == type_vax_2, ]
 Totals_dose_2 <- distance_doses[, .N, by = "type_vax_1"]
 recode_rows <- paste(names_vect, "dose 2")
 names(recode_rows) <- names_vect
+if ("Janssen" %not in% Totals_dose_2$type_vax_1) {
+  Totals_dose_2 <- rbind(Totals_dose_2, list("Janssen", 0))
+}
 Totals_dose_2 <- Totals_dose_2[, a := recode_rows[type_vax_1]][, Parameters := "Persons"][, index := 2]
 
 distance_doses <- distance_doses[, distance := correct_difftime(date_vax2 - 1, date_vax1)]
