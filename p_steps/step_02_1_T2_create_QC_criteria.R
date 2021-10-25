@@ -14,7 +14,7 @@ if (thisdatasource %in% c("ARS", "TEST")) {
 concepts <- concepts[tolower(vx_manufacturer) == "moderna", vx_manufacturer := "Moderna"]
 concepts <- concepts[tolower(vx_manufacturer) == "pfizer", vx_manufacturer := "Pfizer"]
 concepts <- concepts[tolower(vx_manufacturer) == "astrazeneca", vx_manufacturer := "AstraZeneca"]
-concepts <- concepts[tolower(vx_manufacturer) == "j&j", vx_manufacturer := "J&J"]
+concepts <- concepts[tolower(vx_manufacturer) == "j&j" | tolower(vx_manufacturer) == "janssen", vx_manufacturer := "J&J"]
 
 concepts <- concepts[vx_manufacturer %not in% c("Moderna", "Pfizer", "AstraZeneca", "J&J"), vx_manufacturer := "UKN"]
 concepts <- concepts[, derived_date := fifelse(!is.na(date), date, vx_record_date)]
