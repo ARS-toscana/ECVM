@@ -98,7 +98,7 @@ for (subpop in subpopulations_non_empty) {
   setorder(get(namedataset3), "ageband_at_study_entry")
   
   vax_dose <- unique(copy(get(namedataset3))[, c("Dose", "type_vax", "week_fup")])
-  vax_dose <- vax_dose[, .SD[which.max(week_fup)], by = c("Dose", "type_vax")]
+  vax_dose <- vax_dose[, .SD[which.max(as.integer(week_fup))], by = c("Dose", "type_vax")]
   vax_dose_0 <- vax_dose[week_fup == 0,]
   week_vax_dose <- vax_dose[, lapply(.SD, rep, vax_dose[, week_fup])][, week_fup := unlist(
     lapply(vax_dose[, week_fup], seq_len))]
@@ -113,6 +113,27 @@ for (subpop in subpopulations_non_empty) {
   nameoutput3<-paste0("D4_persontime_risk_year_BC",suffix[[subpop]])
   assign(nameoutput3, merge(empty_risk_year, get(namedataset3), all.x = T,
                                       by = c("Dose", "type_vax", "week_fup", "sex", "ageband_at_study_entry")))
+  
+  all_dose <- copy(get(nameoutput3))[Dose %in% c(1, 2), lapply(.SD, sum, na.rm=TRUE),
+                                      by = c("ageband_at_study_entry", "sex", "type_vax", "week_fup"),
+                                      .SDcols = cols_to_sums]
+  all_dose <- all_dose[, Dose := "both_doses"]
+  
+  assign(nameoutput3,rbind(get(nameoutput3), all_dose))
+  
+  all_fup <- copy(get(nameoutput3))[week_fup %in% c(1, 2, 3, 4), lapply(.SD, sum, na.rm=TRUE),
+                                     by = c("ageband_at_study_entry", "sex", "type_vax", "Dose"),
+                                     .SDcols = cols_to_sums]
+  all_fup <- all_fup[, week_fup := "fup_until_4"]
+  
+  assign(nameoutput3,rbind(get(nameoutput3), all_fup))
+  
+  all_man <- copy(get(nameoutput3))[, lapply(.SD, sum, na.rm=TRUE),
+                                     by = c("ageband_at_study_entry", "sex", "week_fup", "Dose"),
+                                     .SDcols = cols_to_sums]
+  all_man <- all_man[, type_vax := "all_manufacturer"]
+  
+  assign(nameoutput3,rbind(get(nameoutput3), all_man))
   
   for (i in names(get(nameoutput3))){
     get(nameoutput3)[is.na(get(i)), (i) := 0]
