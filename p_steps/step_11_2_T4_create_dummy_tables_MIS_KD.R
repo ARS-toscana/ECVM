@@ -618,8 +618,8 @@ table_7 <- data.table::data.table(meaning_of_first_event = character(), coding_s
 
 for (outcome in list_outcomes_observed) {
   for (year in c(2020, 2021)) {
-    if (file.exists(paste0(thisdirexp, "QC_code_counts_in_study_population", outcome, "_", year, ".csv"))) {
-      temp_df <- data.table::fread(paste0(thisdirexp, "QC_code_counts_in_study_population", outcome, "_", year,suffix[[subpop]], ".csv"))
+    if (file.exists(paste0(thisdirexp, "QC_code_counts_in_study_population_", outcome, "_", year, ".csv"))) {
+      temp_df <- data.table::fread(paste0(thisdirexp, "QC_code_counts_in_study_population_", outcome, "_", year,suffix[[subpop]], ".csv"))
       event <- strsplit(outcome, "_")[[1]][1]
       temp_df <- temp_df[, Event := event]
       table_7 <- data.table::rbindlist(list(table_7, temp_df))

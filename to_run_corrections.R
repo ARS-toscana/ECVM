@@ -4,11 +4,7 @@
 # authors: Rosa Gini, Olga Paoletti, Davide Messina, Giorgio Limoncella
 
 #v.6.1
-<<<<<<< HEAD
 ##small changes on final tables
-=======
-#small changes on final tables
->>>>>>> 776043770bc30e2f337873ae688622ba159fc387
 
 # v6.0 - 29 September 2021
 # adjustment for subpopulations and change of agebands
@@ -91,8 +87,8 @@ source(paste0(thisdir,"/p_parameters/06_algorithms.R"))
 #run scripts
 
 # 01 RETRIEVE RECORDS FRM CDM
-system.time(source(paste0(thisdir,"/p_steps/step_01_1_T2.1_create_conceptset_datasets.R")))
-system.time(source(paste0(thisdir,"/p_steps/step_01_2_T2.1_create_spells.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_01_1_T2.1_create_conceptset_datasets_KD.R")))
+#system.time(source(paste0(thisdir,"/p_steps/step_01_2_T2.1_create_spells.R")))
 
 system.time(source(paste0(thisdir,"/p_steps/step_01_3_T2.1_create_dates_in_PERSONS.R")))
 
