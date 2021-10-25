@@ -128,7 +128,9 @@ age_studystart <- fread(paste0(dirD4tables, "D4_descriptive_dataset_age_studysta
 age_studystart[, Datasource := c(TEST = "Test", ARS = "Italy_ARS", PHARMO = "NL_PHARMO", CPRD = "UK_CPRD",
                                  BIFAP = "ES_BIFAP")[Datasource]]
 
-pt_total <- age_studystart[, a := "Person years of follow-up"][, Parameters := "PY"][, .(a, Parameters, Datasource, Followup)]
+followup_ss <- fread(paste0(dirD4tables, "D4_followup_fromstudystart_MIS",suffix[[subpop]],".csv"))
+pt_total <- followup_ss[, a := "Person years of follow-up"][, Parameters := "PY"][, .(a, Parameters, Datasource,
+                                                                                      Followup = Followup_males + Followup_females)]
 pt_total <- dcast(pt_total, a + Parameters ~ Datasource, value.var = 'Followup')
 pt_total <- pt_total[, ..col_to_keep]
 
