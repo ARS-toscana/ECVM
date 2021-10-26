@@ -543,7 +543,7 @@ df_with_second_doses  <- vaccinated_persons[!is.na(date_vax2), ]
 
 dissimilar_doses <- df_with_second_doses[type_vax_1 != type_vax_2, ]
 dissimilar_doses <- dissimilar_doses[, .N, by = "type_vax_1"]
-if ("Janssen" %not in% Totals_dose_2$type_vax_1) {
+if ("Janssen" %not in% dissimilar_doses$type_vax_1) {
   dissimilar_doses <- rbind(dissimilar_doses, list("Janssen", 0))
 }
 dissimilar_doses <- dissimilar_doses[, a := "Other vaccine dose 2"][, Parameters := "Persons"][, index := 3]
@@ -758,7 +758,7 @@ table_9 <- data.table::data.table(meaning_of_first_event = character(), coding_s
 
 for (outcome in list_outcomes_obs) {
   for (year in c(2020, 2021)) {
-    if (file.exists(paste0(direxp, "QC_code_counts_in_study_population_", outcome, "_", year, suffix[[subpop]], ".csv"))) {
+    if (file.exists(paste0(thisdirexp, "QC_code_counts_in_study_population_", outcome, "_", year, suffix[[subpop]], ".csv"))) {
       temp_df <- data.table::fread(paste0(thisdirexp, "QC_code_counts_in_study_population_", outcome, "_", year, suffix[[subpop]], ".csv"))
       event <- strsplit(outcome, "_")[[1]][1]
       temp_df <- temp_df[, Event := event]
@@ -942,6 +942,8 @@ D4_IR_risk_fup<-get(paste0("D4_IR_persontime_risk_fup_BC",suffix[[subpop]]))
 rm(list=paste0("D4_IR_persontime_risk_fup_BC",suffix[[subpop]]))
 
 table_16 <- D4_IR_risk_fup[ageband_at_study_entry %in% c("0-59", "60+") & Dose > 0 & sex != "both_sexes", ]
+table_16 <- table_16[Dose != "both_doses" & week_fup != "fup_until_4" & type_vax != "all_manufacturer", ]
+table_16 <- table_16[, week_fup := as.numeric(week_fup)]
 table_16 <- table_16[, vax_man_dose := paste(type_vax, "dose", Dose)][, c("type_vax", "Dose", "Persontime") := NULL]
 
 list_risk <- list_outcomes_obs

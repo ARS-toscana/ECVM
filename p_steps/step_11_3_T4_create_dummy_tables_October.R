@@ -110,7 +110,7 @@ for (subpop in subpopulations_non_empty) {
   setnames(table_1b, "a", " ")
   
   
-  fwrite(table_1b, file = paste0(dummytables_MIS, "Attrition diagram",suffix[[subpop]],".csv"))
+  fwrite(table_1b, file = paste0(dummytables_october, "Table 5, Attrition diagram 1", suffix[[subpop]],".csv"))
   
   
 
@@ -226,7 +226,7 @@ setcolorder(table2, c("a", "Parameters", col_order))
 
 setnames(table2, "a", " ")
 
-nameoutput <- paste0("Cohort characteristics at start of study (1-1-2020)",suffix[[subpop]])
+nameoutput <- paste0("Table 6, Cohort characteristics at start of study (1-1-2020)",suffix[[subpop]])
 assign(nameoutput, table2)
 fwrite(get(nameoutput), file = paste0(dummytables_october, nameoutput,".csv"))
 rm(list=nameoutput)
@@ -282,7 +282,7 @@ N_pop <- N_pop[, ..cols_to_keep]
 fup_pop <- N_fup_pop[, sum(fup_vax), by = "type_vax"][, V1 := round(V1, 0)]
 pt_total <- fup_pop[, sum(V1)]
 fup_pop <- dcast(fup_pop, . ~ type_vax, value.var = "V1")[, . := NULL]
-fup_pop <- fup_pop[, Parameters := "PY"][, a := "Person-years of follow-up"]
+fup_pop <- fup_pop[, Parameters := "PY"][, a := "Person-years of follow-up between first and second dose"]
 setnafill(fup_pop, cols = c(vax_man), fill = 0)
 fup_pop <- fup_pop[, (vax_man_perc) := round(.SD / as.numeric(pt_total) * 100, 1), .SDcols = vax_man]
 fup_pop <- fup_pop[, (vax_man_perc) := lapply(.SD, paste0, "%"), .SDcols = vax_man_perc]
@@ -372,8 +372,8 @@ risk_factors <- risk_factors[, ..cols_to_keep]
 table3_4_5_6 <- rbind(N_pop, fup_pop, min_month, year_month_pop, age_pop, N_age_cat, fup_age_cat, sex_pop, risk_factors)
 setnames(table3_4_5_6, "a", " ")
 
-final_name_table3_4_5_6 <- c(TEST = "table 3", ARS = "table 3", PHARMO = "table 4",
-                             CPRD = "table 5", BIFAP = "table 6")[[thisdatasource]]
+final_name_table3_4_5_6 <- c(TEST = "Table 7", ARS = "Table 7", PHARMO = "Table 8",
+                             CPRD = "Table 9", BIFAP = "Table 10")[[thisdatasource]]
 
 vect_recode_manufacturer <- c(TEST = "Italy_ARS", ARS = "Italy_ARS", PHARMO = "Netherlands-PHARMO",
                               CPRD = "UK_CPRD", BIFAP = "ES_BIFAP")
@@ -384,7 +384,7 @@ empty_df <- rbindlist(list(empty_df, as.list(c("", "", unlist(rep(c("N", "%"), l
 table3_4_5_6 <- rbindlist(list(empty_df, table3_4_5_6))
 
 nameoutput <- paste0(dummytables_october, final_name_table3_4_5_6,
-                     " Cohort characteristics at first COVID-19 vaccination ", 
+                     ", Cohort characteristics at first dose of COVID-19 vaccine ", 
                      vect_recode_manufacturer[[thisdatasource]],suffix[[subpop]])
 assign(nameoutput, table3_4_5_6)
 fwrite(get(nameoutput), file = paste0(nameoutput,".csv"))
@@ -433,7 +433,7 @@ N_pop <- N_pop[, ..cols_to_keep]
 fup_pop <- N_fup_pop[, sum(fup_vax), by = "type_vax"][, V1 := round(V1, 0)]
 pt_total <- fup_pop[, sum(V1)]
 fup_pop <- dcast(fup_pop, . ~ type_vax, value.var = "V1")[, . := NULL]
-fup_pop <- fup_pop[, Parameters := "PY"][, a := "Person-years of follow-up"]
+fup_pop <- fup_pop[, Parameters := "PY"][, a := "Person-years of follow-up after second dose"]
 setnafill(fup_pop, cols = c(vax_man), fill = 0)
 fup_pop <- fup_pop[, (vax_man_perc) := round(.SD / as.numeric(pt_total) * 100, 1), .SDcols = vax_man]
 fup_pop <- fup_pop[, (vax_man_perc) := lapply(.SD, paste0, "%"), .SDcols = vax_man_perc]
@@ -442,7 +442,7 @@ fup_pop <- fup_pop[, ..cols_to_keep]
 
 min_month <- N_fup_pop[, min(date_vax), by = "type_vax"][, V1 := month(V1)]
 min_month <- dcast(min_month, . ~ type_vax, value.var = "V1")[, . := NULL]
-min_month <- min_month[, Parameters := ""][, a := "Month of first vaccination"]
+min_month <- min_month[, Parameters := ""][, a := "Month of second vaccination"]
 min_month <- min_month[, (vax_man_perc) := character(nrow(min_month))]
 min_month <- min_month[, ..cols_to_keep]
 
@@ -486,8 +486,8 @@ sex_pop <- sex_pop[, ..cols_to_keep]
 table3_4_5_6 <- rbind(N_pop, fup_pop, min_month, year_month_pop, age_pop, sex_pop)
 setnames(table3_4_5_6, "a", " ")
 
-final_name_table3_4_5_6 <- c(TEST = "table 3", ARS = "table 3", PHARMO = "table 4",
-                             CPRD = "table 5", BIFAP = "table 6")[[thisdatasource]]
+final_name_table3_4_5_6 <- c(TEST = "table 7", ARS = "table 7", PHARMO = "table 8",
+                             CPRD = "table 9", BIFAP = "table 10")[[thisdatasource]]
 
 vect_recode_manufacturer <- c(TEST = "Italy_ARS", ARS = "Italy_ARS", PHARMO = "Netherlands-PHARMO",
                               CPRD = "UK_CPRD", BIFAP = "ES_BIFAP")
@@ -498,7 +498,7 @@ empty_df <- rbindlist(list(empty_df, as.list(c("", "", unlist(rep(c("N", "%"), l
 table3_4_5_6 <- rbindlist(list(empty_df, table3_4_5_6))
 
 nameoutput <- paste0(dummytables_october, final_name_table3_4_5_6,
-                     " Cohort characteristics at second COVID-19 vaccination ", 
+                     ", Cohort characteristics at second dose of COVID-19 vaccine ", 
                      vect_recode_manufacturer[[thisdatasource]],suffix[[subpop]])
 assign(nameoutput, table3_4_5_6)
 fwrite(get(nameoutput), file = paste0(nameoutput,".csv"))
@@ -585,7 +585,7 @@ table_7 <- rbindlist(list(empty_df, table_7))
 
 setnames(table_7, c("a", "N", "Perc"), c("", correct_datasource, correct_datasource))
 
-nameoutput <- paste0("Doses of COVID-19 vaccines and distance between first and second dose",suffix[[subpop]])
+nameoutput <- paste0("Table 11, COVID-19 vaccination by dose and time period between first and second dose (days)",suffix[[subpop]])
 assign(nameoutput, table_7)
 fwrite(get(nameoutput), file = paste0(dummytables_october, nameoutput,".csv"))
 rm(list=nameoutput)
@@ -729,7 +729,7 @@ table_8 <- data.table::rbindlist(list(table_8, events_table_8), use.names=TRUE)
 table_8 <- table_8[, Broad := NULL]
 setnames(table_8, c("year_event", "Narrow"), c("", correct_datasource))
 
-nameoutput <- paste0("Number of incident cases entire study period",suffix[[subpop]])
+nameoutput <- paste0("Table 12, Number of incident cases entire study period",suffix[[subpop]])
 assign(nameoutput, table_8)
 fwrite(get(nameoutput), file = paste0(dummytables_october, nameoutput,".csv"))
 rm(list=nameoutput)
@@ -775,7 +775,7 @@ IR_risk_fup <- IR_risk_fup[Dose == "both_doses", Vaccination := "Post-vaccinatio
 col_list <- c("Event", "Vaccination", col_list)
 IR_risk_fup <- IR_risk_fup[, ..col_list]
 
-nameoutput <- paste0("Incidence rates following vaccination table",suffix[[subpop]])
+nameoutput <- paste0("Table XX, Incidence rates of AESI by vaccine and datasource",suffix[[subpop]])
 assign(nameoutput, IR_risk_fup)
 fwrite(get(nameoutput), file = paste0(dummytables_october, nameoutput,".csv"))
 rm(list=nameoutput)
