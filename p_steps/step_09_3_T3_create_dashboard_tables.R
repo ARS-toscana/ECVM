@@ -434,7 +434,7 @@ IR_risk_fup<-fread(paste0(thisdirexp,"RES_IR_risk_fup_BC",suffix[[subpop]],".csv
 
 
 RBT <- IR_risk_fup[, Dose := as.character(Dose)][ageband_at_study_entry != "0_59", ]
-RBT <- RBT[Dose != "both_doses" | week_fup != "fup_until_4" | type_vax != "all_manufacturer", ]
+RBT <- RBT[Dose != "both_doses" & week_fup != "fup_until_4" & type_vax != "all_manufacturer", ]
 RBT <- RBT[Dose == 0, c("Dose", "type_vax") := list("no_dose", "none")]
 list_risk <- list_outcomes_obs
 
