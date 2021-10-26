@@ -226,11 +226,10 @@ D4_descriptive_dataset_age_studystart_c <- D4_population_c[, .(person_id, age_at
 setnames(D4_descriptive_dataset_age_studystart_c, c("ageband_at_1_jan_2021", "age_at_1_jan_2021"), c("ageband_at_study_entry", "age_at_study_entry"))
 
 D4_descriptive_dataset_covid_studystart_c <- D4_descriptive_dataset_age_studystart_c[, .(person_id, cohort_entry_date_MIS_c)]
-D4_descriptive_dataset_covid_studystart_c[,covid_month:=(as.character(substr(cohort_entry_date_MIS_c, 1, 7)))][,cohort_entry_date_MIS_c:=NULL]
+setorder(D4_descriptive_dataset_covid_studystart_c, cohort_entry_date_MIS_c)
+D4_descriptive_dataset_covid_studystart_c[, covid_month:= as.character(substr(cohort_entry_date_MIS_c, 1, 7))][,cohort_entry_date_MIS_c:=NULL]
 D4_descriptive_dataset_covid_studystart_c <- unique(D4_descriptive_dataset_covid_studystart_c[, N := .N, by = "covid_month"][, person_id := NULL])
 D4_descriptive_dataset_covid_studystart_c <- D4_descriptive_dataset_covid_studystart_c[, Datasource := thisdatasource]
-recode_age_vect_c <- c("2020-01" = "01-2020", "2020-02" = "02-2020", "2020-03" = "03-2020", "2020-04" = "04-2020","2020-05" = "05-2020","2020-06" = "06-2020","2020-07" = "07-2020","2020-08" = "08-2020","2020-09" = "09-2020","2020-10" = "10-2020","2020-11" = "11-2020","2020-12" = "12-2020","2021-01" = "01-2021", "2021-02" = "02-2021", "2021-03" = "03-2021", "2021-04" = "04-2021","2021-05" = "05-2021","2021-06" = "06-2021","2021-07" = "07-2021","2021-08" = "08-2021","2021-09" = "09-2021")
-D4_descriptive_dataset_covid_studystart_c[, covid_month := recode_age_vect_c[covid_month]]
 D4_descriptive_dataset_covid_studystart_c <- data.table::dcast(D4_descriptive_dataset_covid_studystart_c, Datasource ~ covid_month, value.var = "N")
  
 
