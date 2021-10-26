@@ -10,6 +10,10 @@ for (subpop in subpopulations_non_empty) {
   
   cols_to_sums <- names(get(namedataset1))[6:length(get(namedataset1))]
   
+  assign(namedataset1, get(namedataset1)[, lapply(.SD, sum, na.rm=TRUE),
+                                         by = c("sex", "ageband_at_study_entry", "Dose", "type_vax", "week"),
+                                         .SDcols = cols_to_sums])
+  
   all_sex <- copy(get(namedataset1))[, lapply(.SD, sum, na.rm=TRUE),
                                      by = c("ageband_at_study_entry", "Dose", "type_vax", "week"),
                                      .SDcols = cols_to_sums]
@@ -44,6 +48,10 @@ for (subpop in subpopulations_non_empty) {
   
   cols_to_sums <- names(get(namedataset2))[6:length(get(namedataset2))]
   
+  assign(namedataset2, get(namedataset2)[, lapply(.SD, sum, na.rm=TRUE),
+                                         by = c("sex", "ageband_at_study_entry", "Dose", "type_vax", "week"),
+                                         .SDcols = cols_to_sums])
+  
   all_sex <- copy(get(namedataset2))[, lapply(.SD, sum, na.rm=TRUE),
                                               by = c("ageband_at_study_entry", "Dose", "type_vax", "week"),
                                               .SDcols = cols_to_sums]
@@ -72,12 +80,14 @@ for (subpop in subpopulations_non_empty) {
   
   assign(namedataset3,get(namedataset3)[, c("CV", "COVCANCER", "COVCOPD", "COVHIV", "COVCKD",
                                                          "COVDIAB", "COVOBES", "COVSICKLE", "IMMUNOSUPPR",
-                                                         "any_risk_factors") := NULL]
-  )
-  
+                                                         "any_risk_factors") := NULL])
   
   assign(namedataset3, get(namedataset3)[Dose != 0 | year == 2020,][, year := NULL])
   cols_to_sums <- names(get(namedataset3))[6:length(get(namedataset3))]
+  
+  assign(namedataset3, get(namedataset3)[, lapply(.SD, sum, na.rm=TRUE),
+                                         by = c("sex", "ageband_at_study_entry", "Dose", "type_vax", "week_fup"),
+                                         .SDcols = cols_to_sums])
   
   all_sex <- copy(get(namedataset3))[, lapply(.SD, sum, na.rm=TRUE),
                                            by = c("ageband_at_study_entry", "Dose", "type_vax", "week_fup"),
@@ -154,6 +164,10 @@ for (subpop in subpopulations_non_empty) {
   
   assign(namedataset4,get(namedataset4)[Dose != 0 | year == 2020,][, year := NULL])
   cols_to_sums <- names(get(namedataset4))[6:length(get(namedataset4))]
+  
+  assign(namedataset4, get(namedataset4)[, lapply(.SD, sum, na.rm=TRUE),
+                                         by = c("sex", "ageband_at_study_entry", "Dose", "type_vax", "week_fup"),
+                                         .SDcols = cols_to_sums])
   
   all_sex <- copy(get(namedataset4))[, lapply(.SD, sum, na.rm=TRUE),
                                               by = c("ageband_at_study_entry", "Dose", "type_vax", "week_fup"),
