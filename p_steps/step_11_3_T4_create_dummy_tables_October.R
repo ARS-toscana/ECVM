@@ -766,7 +766,7 @@ names(vect_recode_AESI) <- c(as.character(seq_len(length(list_risk))))
 IR_risk_fup <- IR_risk_fup[ , Event := vect_recode_AESI[Event]]
 
 IR_risk_fup <- IR_risk_fup[c("0", "both_doses", "1", "2"), on = "Dose"]
-IR_risk_fup <- IR_risk_fup[c("0", "all_manufacturer", "Pfizer", "Moderna", "AstraZeneca", "	J&J"), on = "type_vax"]
+IR_risk_fup <- IR_risk_fup[c("0", "all_manufacturer", "Pfizer", "Moderna", "AstraZeneca", "J&J"), on = "type_vax"]
 setorder(IR_risk_fup, Event)
 IR_risk_fup <- IR_risk_fup[, Vaccination := paste(type_vax, "dose", Dose)]
 IR_risk_fup <- IR_risk_fup[Dose == 0, Vaccination := "Pre-vaccination"]
