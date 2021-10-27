@@ -717,7 +717,9 @@ setnames(events_ALL_OUTCOMES, "person_id", "unique_id")
 
 for (outcome in c("COVID_L1plus", "COVID_L2plus", "COVID_L3plus", "COVID_L4plus", "COVID_L5plus")) {
   
-  empty_concept <- data.table::data.table(year_event = event, Broad = character(1), Narrow = character(1))
+  event <- strsplit(outcome, "plus")[[1]][1]
+  
+  empty_concept <- data.table::data.table(year_event = outcome, Broad = character(1), Narrow = character(1))
   df_event <- data.table::data.table(year_event = character(), N = character(), Type = character())
   
   df_temp <- copy(events_ALL_OUTCOMES)[name_event == outcome, ]
