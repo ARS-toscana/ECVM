@@ -45,7 +45,7 @@ exclude_meaning_of_event[["TEST"]][["HOSP"]] <- c("emergency_room_diagnosis")
 
 
 # # BIFAP
-subpopulations[["BIFAP"]] = c("PC","PC_HOSP","PC_COVID")
+subpopulations[["BIFAP"]] = c("PC","PC_HOSP")
 # 
 # op_meaning_sets[["BIFAP"]] <- c("meaningsPC","meaningsHOSP","meaningsCOVID")
 # op_meanings_list_per_set[["BIFAP"]][["meaningsPC"]] <- c("region2_PC","region3_PC","region6_PC","region7_PC","region8_PC","region13_PC","region14_PC","region15_PC") 
@@ -53,9 +53,9 @@ subpopulations[["BIFAP"]] = c("PC","PC_HOSP","PC_COVID")
 # op_meanings_list_per_set[["BIFAP"]][["meaningsCOVID"]] <- c("region2_COVID","region2_PC","region3_COVID","region3_PC","region7_COVID","region7_PC","region14_COVID","region14_PC")
 # 
 
-# # BIFAP new
+# # BIFAP
 # 
-op_meaning_sets[["BIFAP"]] <- c("meaningsPC","meaningsHOSP","meaningsCOVID")
+op_meaning_sets[["BIFAP"]] <- c("meaningsPC","meaningsHOSP")
 op_meanings_list_per_set[["BIFAP"]][["meaningsPC"]] <- c("region2_PC","region3_PC","region7_PC","region14_PC")
 op_meanings_list_per_set[["BIFAP"]][["meaningsHOSP"]] <- c("region3_HOSP","region7_HOSP")
 op_meanings_list_per_set[["BIFAP"]][["meaningsCOVID"]] <- c("region2_COVID","region3_COVID","region7_COVID","region14_COVID")

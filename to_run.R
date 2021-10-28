@@ -3,6 +3,12 @@
 
 # authors: Rosa Gini, Olga Paoletti, Davide Messina, Giorgio Limoncella
 
+#v 6.3.1
+#DO NOT include use of hypertensive drugs in cardiovascular risk,k small bug fix in final tables
+
+#v 6.3
+#changes in final tables for October report
+
 #v 6.2.2
 #changes in the vaccines lables and small fix for the MIS final tables
 
