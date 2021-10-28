@@ -40,7 +40,7 @@ for (name_temp_df in df_events_ages) {
   
   print(paste("computing for", name_temp_df))
   
-  temp_df <- get(load(paste0(dirtemp, name_temp_df,suffix[[subpop]], ".RData")))
+  temp_df <- get(load(paste0(dirtemp, name_temp_df,suffix[[subpop]], ".RData"))[1])
   
   temp_df <- as.data.table(lapply(temp_df, rep, temp_df$fup))
   
