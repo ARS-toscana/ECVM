@@ -43,6 +43,9 @@ D3_study_population <- D3_study_population[, .(person_id, sex, date_of_birth, st
                                                study_exit_date_vax1, study_entry_date_vax2, study_exit_date_vax2,
                                                fup_days, fup_no_vax, fup_vax1, fup_vax2)]
 
+changeCols <- names(Filter(is.factor, D3_study_population))
+D3_study_population <- D3_study_population[, (changeCols) := lapply(.SD, as.character), .SDcols = changeCols]
+
 nameoutput<-paste0("D3_study_population",suffix[[subpop]])
 assign(nameoutput,D3_study_population)
 save(nameoutput, file = paste0(dirtemp, "D3_study_population",suffix[[subpop]],".RData"),list=nameoutput)
