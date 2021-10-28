@@ -3,6 +3,9 @@
 
 # authors: Rosa Gini, Olga Paoletti, Davide Messina, Giorgio Limoncella
 
+#v 6.3
+#changes in final tables for October report
+
 #v 6.2.2
 #changes in the vaccines lables and small fix for the MIS final tables
 
@@ -96,11 +99,10 @@ source(paste0(thisdir,"/p_parameters/06_algorithms.R"))
 #run scripts
 
 # 01 RETRIEVE RECORDS FRM CDM
-if (thisdatasource=="TEST"){
-system.time(source(paste0(thisdir,"/p_steps/step_01_1_T2.1_create_conceptset_datasets_VACCINES.R")))
-}
-#system.time(source(paste0(thisdir,"/p_steps/step_01_1_T2.1_create_conceptset_datasets.R")))
-system.time(source(paste0(thisdir,"/p_steps/step_01_2_T2.1_create_spells.R")))
+
+system.time(source(paste0(thisdir,"/p_steps/step_01_1_T2.1_create_conceptset_datasets_CPRD.R")))
+
+#system.time(source(paste0(thisdir,"/p_steps/step_01_2_T2.1_create_spells.R")))
 
 system.time(source(paste0(thisdir,"/p_steps/step_01_3_T2.1_create_dates_in_PERSONS.R")))
 
@@ -163,7 +165,7 @@ system.time(source(paste0(thisdir,"/p_steps/step_11_2_T4_create_dummy_tables_MIS
 
 ##end MIS and Myocarditis section------------
 
-#07 create persontime
+# #07 create persontime
 system.time(source(paste0(thisdir,"/p_steps/step_07_1_T3_create_person_time_risks.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_07_2_T3_create_person_time_risks_year.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_07_3_T3_create_person_time_benefits.R")))
