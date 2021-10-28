@@ -99,12 +99,13 @@ source(paste0(thisdir,"/p_parameters/05_subpopulations_restricting_meanings.R"))
 source(paste0(thisdir,"/p_parameters/06_algorithms.R"))
 
 
+Agebands = c( 11, 17, 24, 29, 39, 49, 59, 69, 79, Inf)
+Agebands_labels = c("12-17","18-24","25-29", "30-39", "40-49","50-59","60-69", "70-79","80+")
+Agebands059 <- c("12-17","18-24","25-29", "30-39", "40-49","50-59")
+
 #run scripts
 
 # 01 RETRIEVE RECORDS FRM CDM
-if (thisdatasource=="TEST"){
-system.time(source(paste0(thisdir,"/p_steps/step_01_1_T2.1_create_conceptset_datasets_VACCINES.R")))
-}
 #system.time(source(paste0(thisdir,"/p_steps/step_01_1_T2.1_create_conceptset_datasets.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_01_2_T2.1_create_spells.R")))
 

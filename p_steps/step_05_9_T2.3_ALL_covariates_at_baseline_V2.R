@@ -40,7 +40,7 @@ for (subpop in subpopulations_non_empty) {
     }
     study_population_cov_ALL <- study_population_cov_ALL[get(paste0(cov,"_at_study_entry")) == 1 | get(nameDP) == 1, namevar := 1]
     study_population_cov_ALL <- study_population_cov_ALL[namevar == 1 ,all_covariates_non_CONTR :=1]
-   
+
     setnames(study_population_cov_ALL,"namevar",paste0(cov,"_either_DX_or_DP"))
 
     is.data.table(study_population_cov_ALL)
@@ -49,6 +49,26 @@ for (subpop in subpopulations_non_empty) {
     }
   }
   
+  
+  # for (cov in COVnames ){
+  #   if ( cov!="CV" ){
+  #     nameDP =  paste0("DP_",cov,"_at_study_entry")
+  #     study_population_cov_ALL <- study_population_cov_ALL[get(paste0(cov,"_at_study_entry")) == 1 | get(nameDP) == 1, namevar := 1]
+  #   }
+  #   else{
+  #       nameDP1 =  paste0("DP_CVD_at_study_entry")
+  #       nameDP2 =  paste0("DP_CONTRHYPERT_at_study_entry")
+  #     study_population_cov_ALL <- study_population_cov_ALL[get(paste0(cov,"_at_study_entry")) == 1 | get(nameDP1) == 1  | get(nameDP2) == 1, namevar := 1]
+  #   }
+  # 
+  #   study_population_cov_ALL <- study_population_cov_ALL[namevar == 1 ,all_covariates_non_CONTR :=1]
+  #   setnames(study_population_cov_ALL,"namevar",paste0(cov,"_either_DX_or_DP"))
+  # 
+  #   is.data.table(study_population_cov_ALL)
+  #   for (i in names(study_population_cov_ALL)){
+  #     study_population_cov_ALL[is.na(get(i)), (i):=0]
+  #   }
+  # }
   study_population_cov_ALL <- study_population_cov_ALL[IMMUNOSUPPR_at_study_entry == 1, all_covariates_non_CONTR :=1]
   
   tempname<-paste0("D3_study_population_cov_ALL",suffix[[subpop]])
