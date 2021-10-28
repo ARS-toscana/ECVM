@@ -373,10 +373,10 @@ risk_factors <- melt(risk_factors, id.vars = "type_vax",
                      variable.name = "Parameters", value.name = "dob")
 risk_factors <- dcast(risk_factors, Parameters ~ type_vax, value.var = "dob")
 risk_factors <- risk_factors[, a := "At risk population at date of vaccination"]
-round_coverage <- function(x){
-  round(x / as.numeric(N_pop_by_vax[names(x)]) * 100, 1)
+round_coverage <- function(x, y){
+  round(x / as.numeric(y) * 100, 1)
 }
-risk_factors[, (vax_man_perc) := round(.SD / as.numeric(N_pop_by_vax[names(.SD)]) * 100, 1), .SDcols = vax_man]
+risk_factors[, (vax_man_perc) := Map(round_coverage, .SD, N_pop_by_vax), .SDcols = vax_man]
 risk_factors <- risk_factors[, (vax_man_perc) := lapply(.SD, paste0, "%"), .SDcols = vax_man_perc]
 risk_factors <- risk_factors[, ..cols_to_keep]
 
