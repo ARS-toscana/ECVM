@@ -23,7 +23,7 @@ for (subpop in subpopulations_non_empty) {
   for (conceptset in DRUGS_conceptssets) {
     load(paste0(dirtemp,conceptset,".RData"))
     output <- MergeFilterAndCollapse(list(get(conceptset)),
-                                     condition= "date >= cohort_entry_date_MIS_c - 365 & date<=cohort_entry_date_MIS_c",
+                                     condition= "date >= start_lookback & date<=cohort_entry_date_MIS_c",
                                      key = c("person_id"),
                                      datasetS = COHORT_TMP,
                                      additionalvar = list(

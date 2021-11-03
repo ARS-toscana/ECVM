@@ -39,7 +39,7 @@ for (subpop in subpopulations_non_empty) {
       }
       
       temp<-merge(study_population,filecovariate, all.x = T, by="person_id")[,.(person_id,date_vax1,date)]
-      temp<-temp[date>=date_vax1-365 & date<date_vax1,file:=1][is.na(file),file:=0]
+      temp<-temp[date>=start_lookback & date<date_vax1,file:=1][is.na(file),file:=0]
       suppressWarnings(temp<-unique(temp[,file1:=max(file),by="person_id"][,.(person_id,file1)]))
       setnames(temp,"file1",paste0(file,"_at_date_vax_1"))
       study_population_covariates<-merge(study_population_covariates,temp,all.x = T, by="person_id")
@@ -47,7 +47,7 @@ for (subpop in subpopulations_non_empty) {
     } else {
       
       temp<-merge(study_population,get(file), all.x = T, by="person_id")[,.(person_id,date_vax1,date)]
-      temp<-temp[date>=date_vax1-365 & date<date_vax1,file:=1][is.na(file),file:=0]
+      temp<-temp[date>=start_lookback & date<date_vax1,file:=1][is.na(file),file:=0]
       suppressWarnings(temp<-unique(temp[,file1:=max(file),by="person_id"][,.(person_id,file1)]))
       setnames(temp,"file1",paste0(file,"_at_date_vax_1"))
       study_population_covariates<-merge(study_population_covariates,temp,all.x = T, by="person_id")
