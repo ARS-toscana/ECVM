@@ -59,7 +59,6 @@ output_spells_category<-output_spells_category[[subpop]]
      load(paste0(dirtemp,"output_spells_category.RData"))
 }
 
-  start_follow_up = study_start - 365
   na_date = lubridate::ymd(99991231)
   
   output_spells_category_enriched <- merge(D3_inclusion_from_PERSONS, output_spells_category, all.x = T, by="person_id")
@@ -67,9 +66,9 @@ output_spells_category<-output_spells_category[[subpop]]
   output_spells_category_enriched <- output_spells_category_enriched[, death_before_study_entry := fifelse(!is.na(date_of_death) & date_of_death < study_start, 1, 0)]
   output_spells_category_enriched <- output_spells_category_enriched[!is.na(entry_spell_category) & !is.na(exit_spell_category), no_observation_period_including_study_start := fifelse(study_start %between% list(entry_spell_category,exit_spell_category) & entry_spell_category < exit_spell_category, 0, 1)]
   output_spells_category_enriched <- output_spells_category_enriched[is.na(entry_spell_category) | is.na(exit_spell_category), no_observation_period_including_study_start := 1]
-  output_spells_category_enriched <- output_spells_category_enriched[, insufficient_run_in := fifelse(entry_spell_category > date_of_birth & entry_spell_category <= study_start - 365, 0, 1)]
+  output_spells_category_enriched <- output_spells_category_enriched[, insufficient_run_in := fifelse(entry_spell_category >= date_of_birth & entry_spell_category <= study_start - 365, 0, 1)]
   output_spells_category_enriched <- output_spells_category_enriched[, insufficient_run_in := min(fifelse(entry_spell_category == date_of_birth & year(date_of_birth) == 2019, 0 , insufficient_run_in)), by="person_id"]
-  output_spells_category_enriched <- output_spells_category_enriched[, study_entry_date := study_start][, start_follow_up := start_follow_up][, study_exit_date:= fifelse(no_observation_period_including_study_start == 0, pmin(date_of_death, exit_spell_category, study_end, na.rm = T), na_date)]
+  output_spells_category_enriched <- output_spells_category_enriched[, study_entry_date := study_start][, start_follow_up := start_lookback][, study_exit_date:= fifelse(no_observation_period_including_study_start == 0, pmin(date_of_death, exit_spell_category, study_end, na.rm = T), na_date)]
   output_spells_category_enriched <- output_spells_category_enriched[, no_observation_period_including_study_start := min(no_observation_period_including_study_start, na.rm = T), by="person_id"][, study_exit_date := min(study_exit_date, na.rm = T), by="person_id"]
   D3_exclusion_observation_periods_not_overlapping <- unique(output_spells_category_enriched[,.(person_id, study_entry_date, start_follow_up, study_exit_date, death_before_study_entry, insufficient_run_in, no_observation_period_including_study_start)])
   
@@ -94,6 +93,6 @@ output_spells_category<-output_spells_category[[subpop]]
 }
   
  rm(output_spells_category_enriched,D3_inclusion_from_PERSONS,D3_exclusion_observation_periods_not_overlapping)
-rm(PERSONS_OP, PERSONS_OP2, start_follow_up, na_date, coords)
+rm(PERSONS_OP, PERSONS_OP2, na_date, coords)
  rm(D3_PERSONS, PERSONS_in_OP, output_spells_category,OBSERVATION_PERIODS, D3_exclusion_no_observation_period,selection_criteria)
 
