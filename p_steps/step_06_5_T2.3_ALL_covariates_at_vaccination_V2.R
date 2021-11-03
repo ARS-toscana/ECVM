@@ -35,7 +35,7 @@ for (subpop in subpopulations_non_empty) {
     }
     else{
       nameDP1 = "DP_CVD_at_date_vax_1"
-      nameDP2 = "DP_CONTRHYPERT_vax_1"
+      nameDP2 = "DP_CONTRHYPERT_at_date_vax_1"
       study_population_cov_ALL <- study_population_cov_ALL[get(paste0(cov,"_at_date_vax_1")) == 1 | get(nameDP1) == 1| get(nameDP2) == 1, namevar := 1]
     }
 
