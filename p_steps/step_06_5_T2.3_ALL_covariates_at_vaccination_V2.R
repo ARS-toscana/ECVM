@@ -31,11 +31,14 @@ for (subpop in subpopulations_non_empty) {
   for (cov in COVnames){
     if ( cov!="CV" ){
       nameDP =  paste0("DP_",cov,"_at_date_vax_1")
+      study_population_cov_ALL <- study_population_cov_ALL[get(paste0(cov,"_at_date_vax_1")) == 1 | get(nameDP) == 1, namevar := 1]
     }
     else{
-      nameDP = "DP_CVD_at_date_vax_1"
+      nameDP1 = "DP_CVD_at_date_vax_1"
+      nameDP2 = "DP_CONTRHYPERT_vax_1"
+      study_population_cov_ALL <- study_population_cov_ALL[get(paste0(cov,"_at_date_vax_1")) == 1 | get(nameDP1) == 1| get(nameDP2) == 1, namevar := 1]
     }
-    study_population_cov_ALL <- study_population_cov_ALL[get(paste0(cov,"_at_date_vax_1")) == 1 | get(nameDP) == 1, namevar := 1]
+
     # print(nameDP)
     study_population_cov_ALL <- study_population_cov_ALL[namevar == 1 ,all_covariates_non_CONTR :=1]
     
