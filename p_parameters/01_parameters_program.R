@@ -74,6 +74,7 @@ CDM_SOURCE<- fread(paste0(dirinput,"CDM_SOURCE.csv"))
 thisdatasource <- as.character(CDM_SOURCE[1,3])
 
 study_start <- as.Date(as.character(20200101), date_format)
+start_lookback <- as.Date(as.character(20190101), date_format)
 
 study_end <- min(as.Date(as.character(CDM_SOURCE[1,"date_creation"]), date_format),
                  as.Date(as.character(CDM_SOURCE[1,"recommended_end_date"]), date_format), na.rm = T)
