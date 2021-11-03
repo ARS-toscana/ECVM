@@ -3,6 +3,13 @@
 
 # authors: Rosa Gini, Olga Paoletti, Davide Messina, Giorgio Limoncella
 
+# v 6.4
+# Inclusion of use of hypertensive drugs in cardiovascular risk
+# bug fix in final tables and insufficient run_in
+# PT -> Counts in final tables
+# Risk factors calculated from 1/1/2019
+# Added any_risk_factors in final tables
+
 #v 6.3.1
 #DO NOT include use of hypertensive drugs in cardiovascular risk,k small bug fix in final tables
 
@@ -102,10 +109,10 @@ source(paste0(thisdir,"/p_parameters/06_algorithms.R"))
 #run scripts
 
 # 01 RETRIEVE RECORDS FRM CDM
-if (thisdatasource=="TEST"){
-system.time(source(paste0(thisdir,"/p_steps/step_01_1_T2.1_create_conceptset_datasets_VACCINES.R")))
-}
-#system.time(source(paste0(thisdir,"/p_steps/step_01_1_T2.1_create_conceptset_datasets.R")))
+# if (thisdatasource=="TEST"){
+# system.time(source(paste0(thisdir,"/p_steps/step_01_1_T2.1_create_conceptset_datasets_VACCINES.R")))
+# }
+system.time(source(paste0(thisdir,"/p_steps/step_01_1_T2.1_create_conceptset_datasets.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_01_2_T2.1_create_spells.R")))
 
 system.time(source(paste0(thisdir,"/p_steps/step_01_3_T2.1_create_dates_in_PERSONS.R")))
