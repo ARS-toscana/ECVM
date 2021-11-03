@@ -49,7 +49,7 @@ for (subpop in subpopulations_non_empty) {
 persontime_benefit_year <- Output_file
 
 thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
-fwrite(persontime_benefit_year,file=paste0(thisdirexp,"D4_persontime_benefit_year",suffix[[subpop]],".csv"))
+fwrite(persontime_benefit_year,file=paste0(thisdirexp,"D4_persontime_benefit_year.csv"))
 
 nameoutput<-paste0("D4_persontime_benefit_year",suffix[[subpop]])
 assign(nameoutput,persontime_benefit_year)
@@ -64,7 +64,7 @@ rm(list=paste0("D3_outcomes_covid", suffix[[subpop]]))
 
 
 for (subpop in subpopulations_non_empty){
-  tempname<-paste0("D4_persontime_benefit_year",suffix[[subpop]])
+  tempname<-paste0("D4_persontime_benefit_year")
   thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
   assign(tempname,fread(paste0(thisdirexp,tempname,".csv")))
   thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])

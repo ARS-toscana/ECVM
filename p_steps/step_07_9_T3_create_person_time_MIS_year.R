@@ -43,8 +43,10 @@ assign(nameoutput ,Output_file)
 rm(Output_file)
 save(nameoutput, file = paste0(diroutput, nameoutput,".RData"),list=nameoutput)
 
+nameoutput2<-paste0("D4_persontime_b")
+assign(nameoutput2 ,get(nameoutput))
 thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
-fwrite(get(nameoutput),file=paste0(thisdirexp,nameoutput,".csv"))
+fwrite(get(nameoutput2),file=paste0(thisdirexp,nameoutput2,".csv"))
 
 rm(list=nameoutput)
 
@@ -73,8 +75,10 @@ assign(nameoutput ,Output_file)
 rm(Output_file)
 save(nameoutput, file = paste0(diroutput, nameoutput,".RData"),list=nameoutput)
 
+nameoutput2<-paste0("D4_persontime_b")
+assign(nameoutput2 ,get(nameoutput))
 thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
-fwrite(get(nameoutput),file=paste0(thisdirexp,nameoutput,".csv"))
+fwrite(get(nameoutput2),file=paste0(thisdirexp,nameoutput2,".csv"))
 
 rm(list=nameoutput)
 
@@ -85,7 +89,7 @@ rm(population_b)
 
 
 for (subpop in subpopulations_non_empty){
-  tempname<-paste0("D4_persontime_b",suffix[[subpop]])
+  tempname<-paste0("D4_persontime_b")
   thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
   assign(tempname,fread(paste0(thisdirexp,tempname,".csv")))
   thisdirsmallcountsremoved <- ifelse(this_datasource_has_subpopulations == FALSE,dirsmallcountsremoved,dirsmallcountsremovedsubpop[[subpop]])
@@ -105,7 +109,7 @@ for (subpop in subpopulations_non_empty){
 }
 
 for (subpop in subpopulations_non_empty){
-   tempname<-paste0("D4_persontime_monthly_b",suffix[[subpop]])
+   tempname<-paste0("D4_persontime_monthly_b")
    thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
    assign(tempname,fread(paste0(thisdirexp,tempname,".csv")))
   thisdirsmallcountsremoved <- ifelse(this_datasource_has_subpopulations == FALSE,dirsmallcountsremoved,dirsmallcountsremovedsubpop[[subpop]])
@@ -163,8 +167,10 @@ assign(nameoutput ,Output_file)
 rm(Output_file)
 save(nameoutput, file = paste0(diroutput, nameoutput,".RData"),list=nameoutput)
 
+nameoutput2<-paste0("D4_persontime_c")
+assign(nameoutput2 ,get(nameoutput))
 thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
-fwrite(get(nameoutput),file=paste0(thisdirexp,nameoutput,".csv"))
+fwrite(get(nameoutput2),file=paste0(thisdirexp,nameoutput2,".csv"))
 rm(list=nameoutput)
 
 Output_file<-CountPersonTime(
@@ -192,8 +198,10 @@ assign(nameoutput ,Output_file)
 rm(Output_file)
 save(nameoutput, file = paste0(diroutput, nameoutput,".RData"),list=nameoutput)
 
+nameoutput2<-paste0("D4_persontime_monthly_c")
+assign(nameoutput2 ,get(nameoutput))
 thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
-fwrite(get(nameoutput),file=paste0(thisdirexp,nameoutput,".csv"))
+fwrite(get(nameoutput2),file=paste0(thisdirexp,nameoutput2,".csv"))
 
 rm(list=nameoutput)
 rm(nameoutput)
@@ -202,7 +210,7 @@ rm(population_c)
 
 
 for (subpop in subpopulations_non_empty){
-  tempname<-paste0("D4_persontime_c",suffix[[subpop]])
+  tempname<-paste0("D4_persontime_c")
   thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
   assign(tempname,fread(paste0(thisdirexp,tempname,".csv")))
   thisdirsmallcountsremoved <- ifelse(this_datasource_has_subpopulations == FALSE,dirsmallcountsremoved,dirsmallcountsremovedsubpop[[subpop]])
@@ -222,7 +230,7 @@ for (subpop in subpopulations_non_empty){
 }
 
 for (subpop in subpopulations_non_empty){
-  tempname<-paste0("D4_persontime_monthly_c",suffix[[subpop]])
+  tempname<-paste0("D4_persontime_monthly_c")
   thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
   assign(tempname,fread(paste0(thisdirexp,tempname,".csv")))
   thisdirsmallcountsremoved <- ifelse(this_datasource_has_subpopulations == FALSE,dirsmallcountsremoved,dirsmallcountsremovedsubpop[[subpop]])
@@ -280,8 +288,10 @@ assign(nameoutput ,Output_file)
 rm(Output_file)
 save(nameoutput, file = paste0(diroutput, nameoutput,".RData"),list=nameoutput)
 
+nameoutput2<-paste0("D4_persontime_d")
+assign(nameoutput2 ,get(nameoutput))
 thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
-fwrite(get(nameoutput),file=paste0(thisdirexp,nameoutput,".csv"))
+fwrite(get(nameoutput2),file=paste0(thisdirexp,nameoutput2,".csv"))
 rm(list=nameoutput)
 
 Output_file<-CountPersonTime(
@@ -309,8 +319,10 @@ assign(nameoutput ,Output_file)
 rm(Output_file)
 save(nameoutput, file = paste0(diroutput, nameoutput,".RData"),list=nameoutput)
 
+nameoutput2<-paste0("D4_persontime_monthly_d")
+assign(nameoutput2 ,get(nameoutput))
 thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
-fwrite(get(nameoutput),file=paste0(thisdirexp,nameoutput,".csv"))
+fwrite(get(nameoutput2),file=paste0(thisdirexp,nameoutput2,".csv"))
 rm(list=nameoutput)
 rm(population_d)
 
@@ -318,7 +330,7 @@ rm(population_d)
 
 
 for (subpop in subpopulations_non_empty){
-  tempname<-paste0("D4_persontime_d",suffix[[subpop]])
+  tempname<-paste0("D4_persontime_d")
   thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
   assign(tempname,fread(paste0(thisdirexp,tempname,".csv")))
   thisdirsmallcountsremoved <- ifelse(this_datasource_has_subpopulations == FALSE,dirsmallcountsremoved,dirsmallcountsremovedsubpop[[subpop]])
@@ -338,7 +350,7 @@ for (subpop in subpopulations_non_empty){
 }
 
 for (subpop in subpopulations_non_empty){
-  tempname<-paste0("D4_persontime_monthly_d",suffix[[subpop]])
+  tempname<-paste0("D4_persontime_monthly_d")
   thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
   assign(tempname,fread(paste0(thisdirexp,tempname,".csv")))
   thisdirsmallcountsremoved <- ifelse(this_datasource_has_subpopulations == FALSE,dirsmallcountsremoved,dirsmallcountsremovedsubpop[[subpop]])

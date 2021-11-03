@@ -36,17 +36,11 @@ for (subpop in subpopulations_non_empty) {
   if(this_datasource_has_subpopulations == T) dirD4tables <-paste0(thisdirexp,"D4 tables/")
   suppressWarnings(if (!file.exists(dirD4tables)) dir.create(file.path(dirD4tables)))
   
-  if(this_datasource_has_subpopulations == T) dirdashboard <- paste0(thisdirexp,"dashboard tables/")
-  suppressWarnings(if (!file.exists(dirdashboard)) dir.create(file.path(dirdashboard)))
-  
-  if(this_datasource_has_subpopulations == T)   dummytables_MIS <- paste0(thisdirexp,"Dummy tables for report MIS-KD/")
-  suppressWarnings(if (!file.exists(dummytables_MIS)) dir.create(file.path(dummytables_MIS)))
-  
   if(this_datasource_has_subpopulations == T)   dummytables_october <- paste0(thisdirexp,"Dummy tables October/")
   suppressWarnings(if (!file.exists(dummytables_october)) dir.create(file.path(dummytables_october)))
   
-  flow_source <- fread(paste0(thisdirexp, "Flowchart_basic_exclusion_criteria",suffix[[subpop]],".csv"))
-  flow_study <- fread(paste0(thisdirexp, "Flowchart_exclusion_criteria",suffix[[subpop]],".csv"))
+  flow_source <- fread(paste0(thisdirexp, "Flowchart_basic_exclusion_criteria.csv"))
+  flow_study <- fread(paste0(thisdirexp, "Flowchart_exclusion_criteria.csv"))
   
   vect_recode_manufacturer <- c(TEST = "Italy_ARS", ARS = "Italy_ARS", PHARMO = "NL_PHARMO",
                                 CPRD = "UK_CPRD", BIFAP = "ES_BIFAP")
@@ -110,12 +104,12 @@ for (subpop in subpopulations_non_empty) {
   setnames(table_1b, "a", " ")
   
   
-  fwrite(table_1b, file = paste0(dummytables_october, "Table 5, Attrition diagram 1", suffix[[subpop]],".csv"))
+  fwrite(table_1b, file = paste0(dummytables_october, "Table 5, Attrition diagram 1.csv"))
   
   
 
 
-ageband_studystart <- fread(paste0(dirD4tables, "D4_descriptive_dataset_ageband_studystart",suffix[[subpop]],".csv"))
+ageband_studystart <- fread(paste0(dirD4tables, "D4_descriptive_dataset_ageband_studystart.csv"))
 
 ageband_studystart[, Datasource := c(TEST = "Test", ARS = "Italy_ARS", PHARMO = "NL_PHARMO", CPRD = "UK_CPRD",
                                      BIFAP = "ES_BIFAP")[Datasource]]
@@ -129,7 +123,7 @@ col_to_keep <- intersect(c("a", "Parameters", "Italy_ARS", "NL_PHARMO",
 total_pop <- total_pop[, ..col_to_keep]
 
 
-age_studystart <- fread(paste0(dirD4tables, "D4_descriptive_dataset_age_studystart",suffix[[subpop]],".csv"))
+age_studystart <- fread(paste0(dirD4tables, "D4_descriptive_dataset_age_studystart.csv"))
 
 age_studystart[, Datasource := c(TEST = "Test", ARS = "Italy_ARS", PHARMO = "NL_PHARMO", CPRD = "UK_CPRD",
                                  BIFAP = "ES_BIFAP")[Datasource]]
@@ -158,7 +152,7 @@ names(Ageband_complete) = paste0("AgeCat_", Ageband_complete)
 ageband_start[, Parameters := Ageband_complete[Parameters]]
 
 
-followup_studystart <- fread(paste0(dirD4tables, "D4_followup_fromstudystart",suffix[[subpop]],".csv"))
+followup_studystart <- fread(paste0(dirD4tables, "D4_followup_fromstudystart.csv"))
 followup_studystart[, Datasource := c(TEST = "Test", ARS = "Italy_ARS", PHARMO = "NL_PHARMO", CPRD = "UK_CPRD",
                                       BIFAP = "ES_BIFAP")[Datasource]]
 followup_studystart <- followup_studystart[, a := "Person years across age categories"]
@@ -174,7 +168,7 @@ names(Ageband_complete) = paste0("Followup_", Ageband_complete)
 followup_start[, Parameters := Ageband_complete[Parameters]]
 
 
-sex_studystart <- fread(paste0(dirD4tables, "D4_followup_fromstudystart",suffix[[subpop]],".csv"))
+sex_studystart <- fread(paste0(dirD4tables, "D4_followup_fromstudystart.csv"))
 sex_studystart <- sex_studystart[, .(Datasource, Followup_males, Followup_females)]
 sex_studystart[, Datasource := c(TEST = "Test", ARS = "Italy_ARS",
                                  PHARMO = "NL_PHARMO", CPRD = "UK_CPRD",
@@ -187,19 +181,20 @@ sex_start <- dcast(sex_start, a + Parameters  ~ Datasource, value.var = 'value')
 sex_start[, Parameters := c(Followup_males = "Male", Followup_males = "Female")[Parameters]]
 
 
-risk_factors_studystart <- fread(paste0(dirD4tables, "D4_descriptive_dataset_covariate_studystart",suffix[[subpop]],".csv"))
+risk_factors_studystart <- fread(paste0(dirD4tables, "D4_descriptive_dataset_covariate_studystart.csv"))
 risk_factors_studystart[, Datasource := c(TEST = "Test", ARS = "Italy_ARS", PHARMO = "NL_PHARMO", CPRD = "UK_CPRD",
                                           BIFAP = "ES_BIFAP")[Datasource]]
 risk_factors_start <- risk_factors_studystart[, a := "At risk population at January 1-2020"]
 risk_factors_start <- melt(risk_factors_start, id.vars = c("a", "Datasource"),
                            measure.vars = c("CV", "Cancer", "CLD", "HIV", "CKD", "Diabetes",
-                                            "Obesity", "Sicklecell", "immunosuppressants"),
+                                            "Obesity", "Sicklecell", "immunosuppressants", "any_risk_factors"),
                            variable.name = "Parameters")
 risk_factors_start <- dcast(risk_factors_start, a + Parameters  ~ Datasource, value.var = 'value')
 risk_factors_start[, Parameters := c(CV = "Cardiovascular disease", Cancer = "Cancer", CLD = "Chronic lung disease",
                                      HIV = "HIV", CKD = "Chronic kidney disease", Diabetes = "Diabetes",
                                      Obesity = "Severe obesity", Sicklecell = "Sickle cell disease",
-                                     immunosuppressants = "Use of immunosuppressants")[Parameters]]
+                                     immunosuppressants = "Use of immunosuppressants",
+                                     any_risk_factors = "Any risk factors")[Parameters]]
 
 table2 <- rbind(total_pop, pt_total, age_start, ageband_start, followup_start, sex_start, risk_factors_start)
 daps <- intersect(c("Italy_ARS", "NL_PHARMO", "UK_CPRD", "ES_BIFAP", "Test"), names(table2))
@@ -226,7 +221,7 @@ setcolorder(table2, c("a", "Parameters", col_order))
 
 setnames(table2, "a", " ")
 
-nameoutput <- paste0("Table 6, Cohort characteristics at start of study (1-1-2020)",suffix[[subpop]])
+nameoutput <- paste0("Table 6, Cohort characteristics at start of study (1-1-2020)")
 assign(nameoutput, table2)
 fwrite(get(nameoutput), file = paste0(dummytables_october, nameoutput,".csv"))
 rm(list=nameoutput)
@@ -244,13 +239,13 @@ rm(list=paste0("D3_Vaccin_cohort",suffix[[subpop]]))
 N_fup_pop <- D3_Vaccin_coh[, .(person_id, sex, date_vax1, type_vax_1, fup_vax1, age_at_date_vax_1, ageband_at_date_vax_1,
                                CV_at_date_vax_1, COVCANCER_at_date_vax_1, COVCOPD_at_date_vax_1, COVHIV_at_date_vax_1,
                                COVCKD_at_date_vax_1, COVDIAB_at_date_vax_1, COVOBES_at_date_vax_1,
-                               COVSICKLE_at_date_vax_1, immunosuppressants_at_date_vax_1)]
+                               COVSICKLE_at_date_vax_1, immunosuppressants_at_date_vax_1, at_risk_at_date_vax_1)]
 setnames(N_fup_pop, c("date_vax1", "type_vax_1", "fup_vax1","age_at_date_vax_1", "ageband_at_date_vax_1",
                       "CV_at_date_vax_1", "COVCANCER_at_date_vax_1", "COVCOPD_at_date_vax_1", "COVHIV_at_date_vax_1",
                       "COVCKD_at_date_vax_1", "COVDIAB_at_date_vax_1", "COVOBES_at_date_vax_1",
-                      "COVSICKLE_at_date_vax_1", "immunosuppressants_at_date_vax_1"),
+                      "COVSICKLE_at_date_vax_1", "immunosuppressants_at_date_vax_1", "at_risk_at_date_vax_1"),
          c("date_vax", "type_vax", "fup_vax","age_at_date_vax", "ageband_at_date_vax", "CV", "Cancer", "CLD", "HIV",
-           "CKD", "Diabetes", "Obesity", "Sicklecell", "immunosuppressants"))
+           "CKD", "Diabetes", "Obesity", "Sicklecell", "immunosuppressants", "any_risk_factors"))
 # N_fup_pop <- melt(N_fup_pop, measure = list(c("date_vax1", "date_vax2"),
 #                                             c("type_vax_1", "type_vax_2"),
 #                                             c("fup_vax1", "fup_vax2"),
@@ -354,8 +349,8 @@ sex_pop <- sex_pop[, (vax_man_perc) := lapply(.SD, paste0, "%"), .SDcols = vax_m
 sex_pop <- sex_pop[, ..cols_to_keep]
 
 risk_factors <- copy(N_fup_pop)[, c("person_id", "type_vax", "CV", "Cancer", "CLD", "HIV", "CKD", "Diabetes",
-                                    "Obesity", "Sicklecell", "immunosuppressants")]
-cols_chosen <- c("CV", "Cancer", "CLD", "HIV", "CKD", "Diabetes", "Obesity", "Sicklecell", "immunosuppressants")
+                                    "Obesity", "Sicklecell", "immunosuppressants", "any_risk_factors")]
+cols_chosen <- c("CV", "Cancer", "CLD", "HIV", "CKD", "Diabetes", "Obesity", "Sicklecell", "immunosuppressants", "any_risk_factors")
 risk_factors <- risk_factors[, lapply(.SD, sum, na.rm = T), by = "type_vax", .SDcols = cols_chosen]
 risk_factors <- melt(risk_factors, id.vars = "type_vax",
                      measure.vars = cols_chosen,
@@ -368,6 +363,11 @@ round_coverage <- function(x, y){
 risk_factors[, (vax_man_perc) := Map(round_coverage, .SD, N_pop_by_vax), .SDcols = vax_man]
 risk_factors <- risk_factors[, (vax_man_perc) := lapply(.SD, paste0, "%"), .SDcols = vax_man_perc]
 risk_factors <- risk_factors[, ..cols_to_keep]
+risk_factors[, Parameters := c(CV = "Cardiovascular disease", Cancer = "Cancer", CLD = "Chronic lung disease",
+                               HIV = "HIV", CKD = "Chronic kidney disease", Diabetes = "Diabetes",
+                               Obesity = "Severe obesity", Sicklecell = "Sickle cell disease",
+                               immunosuppressants = "Use of immunosuppressants",
+                               any_risk_factors = "Any risk factors")[Parameters]]
 
 table3_4_5_6 <- rbind(N_pop, fup_pop, min_month, year_month_pop, age_pop, N_age_cat, fup_age_cat, sex_pop, risk_factors)
 setnames(table3_4_5_6, "a", " ")
@@ -385,7 +385,7 @@ table3_4_5_6 <- rbindlist(list(empty_df, table3_4_5_6))
 
 nameoutput <- paste0(dummytables_october, final_name_table3_4_5_6,
                      ", Cohort characteristics at first dose of COVID-19 vaccine ", 
-                     vect_recode_manufacturer[[thisdatasource]],suffix[[subpop]])
+                     vect_recode_manufacturer[[thisdatasource]])
 assign(nameoutput, table3_4_5_6)
 fwrite(get(nameoutput), file = paste0(nameoutput,".csv"))
 rm(list=nameoutput)
@@ -499,7 +499,7 @@ table3_4_5_6 <- rbindlist(list(empty_df, table3_4_5_6))
 
 nameoutput <- paste0(dummytables_october, final_name_table3_4_5_6,
                      ", Cohort characteristics at second dose of COVID-19 vaccine ", 
-                     vect_recode_manufacturer[[thisdatasource]],suffix[[subpop]])
+                     vect_recode_manufacturer[[thisdatasource]])
 assign(nameoutput, table3_4_5_6)
 fwrite(get(nameoutput), file = paste0(nameoutput,".csv"))
 rm(list=nameoutput)
@@ -585,7 +585,7 @@ table_7 <- rbindlist(list(empty_df, table_7))
 
 setnames(table_7, c("a", "N", "Perc"), c("", correct_datasource, correct_datasource))
 
-nameoutput <- paste0("Table 11, COVID-19 vaccination by dose and time period between first and second dose (days)",suffix[[subpop]])
+nameoutput <- paste0("Table 11, COVID-19 vaccination by dose and time period between first and second dose (days)")
 assign(nameoutput, table_7)
 fwrite(get(nameoutput), file = paste0(dummytables_october, nameoutput,".csv"))
 rm(list=nameoutput)
@@ -729,7 +729,7 @@ table_8 <- data.table::rbindlist(list(table_8, events_table_8), use.names=TRUE)
 table_8 <- table_8[, Broad := NULL]
 setnames(table_8, c("year_event", "Narrow"), c("", correct_datasource))
 
-nameoutput <- paste0("Table 12, Number of incident cases entire study period",suffix[[subpop]])
+nameoutput <- paste0("Table 12, Number of incident cases entire study period")
 assign(nameoutput, table_8)
 fwrite(get(nameoutput), file = paste0(dummytables_october, nameoutput,".csv"))
 rm(list=nameoutput)
@@ -737,9 +737,9 @@ rm(list=nameoutput)
 
 
 
-IR_risk_fup <- fread(paste0(thisdirexp,"RES_IR_risk_fup_BC",suffix[[subpop]],".csv"))
+IR_risk_fup <- fread(paste0(thisdirexp,"RES_IR_risk_fup_BC.csv"))
 IR_col <- colnames(IR_risk_fup)
-IR_risk_fup <- IR_risk_fup[, IR_col[str_detect(IR_col, "_b")] := NULL]
+IR_risk_fup <- IR_risk_fup[, IR_col[str_detect(IR_col, "_broad")] := NULL]
 IR_risk_fup <- IR_risk_fup[ageband_at_study_entry == "all_birth_cohorts"][, ageband_at_study_entry := NULL]
 IR_risk_fup <- IR_risk_fup[sex == "both_sexes"][, sex := NULL]
 IR_risk_fup <- IR_risk_fup[week_fup == "fup_until_4" | week_fup == 0, ]
@@ -752,14 +752,15 @@ rm(list=paste0("list_outcomes_observed",suffix[[subpop]]))
 
 list_risk <- list_outcomes[!str_detect(list_outcomes, "_b")]
 
+colA = paste0(list_risk, "_b")
 colB = paste0("IR_", list_risk)
 colC = paste0("lb_", list_risk)
 colD = paste0("ub_", list_risk)
 
 IR_risk_fup <- correct_col_type(IR_risk_fup)
-col_list <- paste0(c("IR", "lb", "ub"), "-", vect_recode_manufacturer[thisdatasource])
+col_list <- paste0(c("Cases", "IR", "lb", "ub"), "-", vect_recode_manufacturer[thisdatasource])
 
-IR_risk_fup <- data.table::melt(IR_risk_fup, measure = list(colB, colC, colD), variable.name = "Event",
+IR_risk_fup <- data.table::melt(IR_risk_fup, measure = list(colA, colB, colC, colD), variable.name = "Event",
                                 value.name = col_list, na.rm = F)
 vect_recode_AESI <- unlist(lapply(list_risk, function(x) strsplit(x, "_")[[1]][[1]]))
 names(vect_recode_AESI) <- c(as.character(seq_len(length(list_risk))))
@@ -775,7 +776,7 @@ IR_risk_fup <- IR_risk_fup[Dose == "both_doses", Vaccination := "Post-vaccinatio
 col_list <- c("Event", "Vaccination", col_list)
 IR_risk_fup <- IR_risk_fup[, ..col_list]
 
-nameoutput <- paste0("Table XX, Incidence rates of AESI by vaccine and datasource",suffix[[subpop]])
+nameoutput <- paste0("Table XX, Incidence rates of AESI by vaccine and datasource")
 assign(nameoutput, IR_risk_fup)
 fwrite(get(nameoutput), file = paste0(dummytables_october, nameoutput,".csv"))
 rm(list=nameoutput)

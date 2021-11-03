@@ -19,8 +19,8 @@ for (subpop in subpopulations_non_empty ) {
   if(this_datasource_has_subpopulations == T) dirdashboard <-paste0(thisdirexp,"dashboard tables/")
   
 #loading the datasets
-RISK_BIRTHCOHORTS_CALENDARTIME <- fread(paste0(dirdashboard, "RISK_BIRTHCOHORTS_CALENDARTIME",suffix[[subpop]],".csv"))
-RISK_BIRTHCOHORTS_TIMESINCEVACCINATION <- fread( paste0(dirdashboard, "RISK_BIRTHCOHORTS_TIMESINCEVACCINATION",suffix[[subpop]],".csv"))
+RISK_BIRTHCOHORTS_CALENDARTIME <- fread(paste0(dirdashboard, "RISK_BIRTHCOHORTS_CALENDARTIME.csv"))
+RISK_BIRTHCOHORTS_TIMESINCEVACCINATION <- fread( paste0(dirdashboard, "RISK_BIRTHCOHORTS_TIMESINCEVACCINATION.csv"))
 
 #rendering the file
 render(paste0(dirmacro,"risk_Description.Rmd"),           

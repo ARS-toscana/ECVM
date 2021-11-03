@@ -19,7 +19,7 @@ for (subpop in subpopulations_non_empty ) {
   
   thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
   
-  Flowchart_doses<- fread(paste0(thisdirexp,"Flowchart_doses",suffix[[subpop]],".csv"))
+  Flowchart_doses<- fread(paste0(thisdirexp,"Flowchart_doses.csv"))
   
   #rendering the file
   render(paste0(dirmacro,"FlowChart_Description.Rmd"),           

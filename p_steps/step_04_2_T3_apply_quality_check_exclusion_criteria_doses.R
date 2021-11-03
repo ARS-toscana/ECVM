@@ -33,7 +33,7 @@ selected_population <- CreateFlowChart(
 
 thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
 
-  fwrite(get(paste0("Flowchart_doses",suffix[[subpop]])), paste0(thisdirexp,"Flowchart_doses",suffix[[subpop]],".csv"))
+  fwrite(get(paste0("Flowchart_doses",suffix[[subpop]])), paste0(thisdirexp,"Flowchart_doses.csv"))
   
   rm(list=paste0("Flowchart_doses",suffix[[subpop]]))
   rm(list=paste0("persons_doses", suffix[[subpop]]))

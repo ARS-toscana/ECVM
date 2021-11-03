@@ -33,7 +33,7 @@ D4_study_source_population <- to_study_pop[, .(person_id, sex, date_of_birth, da
 
 thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
 
-fwrite(get(paste0("Flowchart_basic_exclusion_criteria",suffix[[subpop]])), paste0(thisdirexp,"Flowchart_basic_exclusion_criteria",suffix[[subpop]],".csv"))
+fwrite(get(paste0("Flowchart_basic_exclusion_criteria",suffix[[subpop]])), paste0(thisdirexp,"Flowchart_basic_exclusion_criteria.csv"))
 
 
 selected_population_all_filter <- CreateFlowChart(
@@ -45,7 +45,7 @@ D4_study_population <- unique(selected_population_all_filter)[, .(person_id, sex
                                                                   start_follow_up, study_exit_date)]
 
 
-fwrite(get(paste0("Flowchart_exclusion_criteria",suffix[[subpop]])), paste0(thisdirexp,"Flowchart_exclusion_criteria",suffix[[subpop]],".csv"))
+fwrite(get(paste0("Flowchart_exclusion_criteria",suffix[[subpop]])), paste0(thisdirexp,"Flowchart_exclusion_criteria.csv"))
 
 assign(paste0("D4_study_population",suffix[[subpop]]),D4_study_population)
 save(list=paste0("D4_study_population",suffix[[subpop]]),file = paste0(diroutput, "D4_study_population",suffix[[subpop]],".RData"))

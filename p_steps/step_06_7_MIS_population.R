@@ -83,7 +83,8 @@ save(tempname, file = paste0(dirtemp, tempname,".RData"),list=tempname)
 D4_population_c_no_risk <- CreateFlowChart(
   dataset = D3_selection_criteria_c[,.(person_id,sex,age_at_1_jan_2021,ageband_at_1_jan_2021,study_entry_date_MIS_c, cohort_entry_date_MIS_c, study_exit_date_MIS_c,not_in_cohort_c, fup_days, CV_at_date_vax_1, COVCANCER_at_date_vax_1, COVCOPD_at_date_vax_1,
                                        COVHIV_at_date_vax_1, COVCKD_at_date_vax_1, COVDIAB_at_date_vax_1,
-                                       COVOBES_at_date_vax_1, COVSICKLE_at_date_vax_1, immunosuppressants_at_date_vax_1)],
+                                       COVOBES_at_date_vax_1, COVSICKLE_at_date_vax_1, immunosuppressants_at_date_vax_1,
+                                       at_risk_at_date_vax_1)],
   listcriteria = c("not_in_cohort_c"),
   flowchartname = "Flowchart_cohort_c")
 
@@ -128,7 +129,8 @@ D4_population_d[, fup_days := correct_difftime(study_exit_date_MIS_d, cohort_ent
 
 D4_population_d<-D4_population_d[,.(person_id,sex,age_at_1_jan_2021,ageband_at_1_jan_2021,study_entry_date_MIS_d,cohort_entry_date_MIS_d,study_exit_date_MIS_d,date_vax1,covid_date,history_covid,age_at_date_vax_1,type_vax_1,not_in_cohort_d, fup_days, CV_at_date_vax_1, COVCANCER_at_date_vax_1, COVCOPD_at_date_vax_1,
                                     COVHIV_at_date_vax_1, COVCKD_at_date_vax_1, COVDIAB_at_date_vax_1,
-                                    COVOBES_at_date_vax_1, COVSICKLE_at_date_vax_1, immunosuppressants_at_date_vax_1)]
+                                    COVOBES_at_date_vax_1, COVSICKLE_at_date_vax_1, immunosuppressants_at_date_vax_1,
+                                    at_risk_at_date_vax_1)]
 
 D4_population_d<-D4_population_d[study_exit_date_MIS_d>study_entry_date_MIS_d,]
 

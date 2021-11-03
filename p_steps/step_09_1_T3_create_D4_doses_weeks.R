@@ -110,7 +110,7 @@ D4_doses_weeks <- cohort_to_vaxweeks[, .(Datasource, Year, Week_number, ageband_
                                          Type_vax, Persons_in_week, Doses_in_week)]
 
 thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
-nameoutput <- paste0("D4_doses_weeks",suffix[[subpop]])
+nameoutput <- paste0("D4_doses_weeks")
 assign(nameoutput, D4_doses_weeks)
 save(nameoutput, file = paste0(thisdirexp, nameoutput,".RData"),list=nameoutput)
 rm(list=nameoutput)
@@ -118,5 +118,3 @@ rm(list=nameoutput)
 }
 
 rm( all_mondays, monday_week, double_weeks, all_days_df, cohort_to_vaxweeks,temp_df)
-
-if(this_datasource_has_subpopulations==T) rm(D4_doses_weeks)

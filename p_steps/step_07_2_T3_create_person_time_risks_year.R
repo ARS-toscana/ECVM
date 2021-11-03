@@ -122,7 +122,7 @@ for (subpop in subpopulations_non_empty) {
   persontime_risk_year <- get(paste0("Output_file",suffix[[subpop]]))
 
 thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
-fwrite(persontime_risk_year,file=paste0(thisdirexp,"D4_persontime_risk_year",suffix[[subpop]],".csv"))
+fwrite(persontime_risk_year,file=paste0(thisdirexp,"D4_persontime_risk_year.csv"))
 
 nameoutput<-paste0("D4_persontime_risk_year",suffix[[subpop]])
 assign(nameoutput,persontime_risk_year)
@@ -137,7 +137,7 @@ rm(list=paste0("list_outcomes_observed", suffix[[subpop]]))
 }
 
 for (subpop in subpopulations_non_empty){
-  tempname<-paste0("D4_persontime_risk_year",suffix[[subpop]])
+  tempname<-paste0("D4_persontime_risk_year")
   thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
   assign(tempname,fread(paste0(thisdirexp,tempname,".csv")))
   thisdirsmallcountsremoved <- ifelse(this_datasource_has_subpopulations == FALSE,dirsmallcountsremoved,dirsmallcountsremovedsubpop[[subpop]])

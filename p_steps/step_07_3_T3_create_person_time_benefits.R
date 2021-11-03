@@ -81,7 +81,7 @@ for (subpop in subpopulations_non_empty) {
   #   D4_persontime_benefit_week <- persontime_benefit_week
   # }
   thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
-  fwrite(persontime_benefit_week,file=paste0(thisdirexp,"D4_persontime_benefit_week",suffix[[subpop]],".csv"))
+  fwrite(persontime_benefit_week,file=paste0(thisdirexp,"D4_persontime_benefit_week.csv"))
   
   nameoutput<-paste0("D4_persontime_benefit_week",suffix[[subpop]])
   assign(nameoutput,persontime_benefit_week)
@@ -95,7 +95,7 @@ for (subpop in subpopulations_non_empty) {
 
 
 for (subpop in subpopulations_non_empty){
-  tempname<-paste0("D4_persontime_benefit_week",suffix[[subpop]])
+  tempname<-paste0("D4_persontime_benefit_week")
   thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
   assign(tempname,fread(paste0(thisdirexp,tempname,".csv")))
   thisdirsmallcountsremoved <- ifelse(this_datasource_has_subpopulations == FALSE,dirsmallcountsremoved,dirsmallcountsremovedsubpop[[subpop]])

@@ -29,7 +29,7 @@ temp <- copy(persontime_benefit_week_BC)
 all.equal(temp, persontime_benefit_week_BC)
 #RES_IR_benefit_week_BC<-persontime_benefit_week_BC[,-c(6:14)]
 
-nameoutput<-paste0("RES_IR_benefit_week_BC",suffix[[subpop]])
+nameoutput<-paste0("RES_IR_benefit_week_BC")
 assign(nameoutput,persontime_benefit_week_BC[, !grep("^Person", names(persontime_benefit_week_BC)) , with = FALSE])
 
 thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
@@ -56,7 +56,7 @@ for (ev in events) {
 }
 
 #RES_IR_benefit_fup_BC<-persontime_benefit_year_BC[,-c(6:14)]
-nameoutput<-paste0("RES_IR_benefit_fup_BC",suffix[[subpop]])
+nameoutput<-paste0("RES_IR_benefit_fup_BC")
 assign(nameoutput,persontime_benefit_year_BC[, !grep("^Person", names(persontime_benefit_year_BC)) , with = FALSE])
 
 thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
@@ -84,7 +84,7 @@ for (ev in list_outcomes_observed) {
   persontime_risk_week_BC[, (name_cols) := exactPoiCI(persontime_risk_week_BC, name_count, name_pt)]
 }
 
-nameoutput<-paste0("RES_IR_risk_week_BC",suffix[[subpop]])
+nameoutput<-paste0("RES_IR_risk_week_BC")
 assign(nameoutput,persontime_risk_week_BC[, !grep("^Person", names(persontime_risk_week_BC)) , with = FALSE])
 
 save(nameoutput,file=paste0(thisdirexp,nameoutput,".RData"),list=nameoutput)
@@ -107,12 +107,12 @@ for (ev in list_outcomes_observed) {
   persontime_risk_year_BC[, (name_cols) := exactPoiCI(persontime_risk_year_BC, name_count, name_pt)]
 }
 
-nameoutput<-paste0("D4_IR_persontime_risk_fup_BC",suffix[[subpop]])
+nameoutput<-paste0("RES_IR_persontime_risk_fup_BC")
 assign(nameoutput, persontime_risk_year_BC)
 save(nameoutput,file=paste0(thisdirexp,nameoutput,".RData"),list=nameoutput)
 rm(list=nameoutput)
 
-nameoutput<-paste0("RES_IR_risk_fup_BC",suffix[[subpop]])
+nameoutput<-paste0("RES_IR_risk_fup_BC")
 assign(nameoutput,persontime_risk_year_BC[, !grep("^Person", names(persontime_risk_year_BC)) , with = FALSE])
 
 save(nameoutput,file=paste0(thisdirexp,nameoutput,".RData"),list=nameoutput)
@@ -137,7 +137,7 @@ for (ev in events) {
   persontime_benefit_week_RF[, (name_cols) := exactPoiCI(persontime_benefit_week_RF, name_count, name_pt)]
 }
 
-nameoutput<-paste0("RES_IR_benefit_week_RF",suffix[[subpop]])
+nameoutput<-paste0("RES_IR_benefit_week_RF")
 assign(nameoutput,persontime_benefit_week_RF[, !grep("^Person", names(persontime_benefit_week_RF)) , with = FALSE])
 
 save(nameoutput,file=paste0(thisdirexp,nameoutput,".RData"),list=nameoutput)
@@ -159,7 +159,7 @@ for (ev in events) {
   persontime_benefit_year_RF[, (name_cols) := exactPoiCI(persontime_benefit_year_RF, name_count, name_pt)]
 }
 
-nameoutput<-paste0("RES_IR_benefit_fup_RF",suffix[[subpop]])
+nameoutput<-paste0("RES_IR_benefit_fup_RF")
 assign(nameoutput,persontime_benefit_year_RF[, !grep("^Person", names(persontime_benefit_year_RF)) , with = FALSE])
 
 save(nameoutput,file=paste0(thisdirexp,nameoutput,".RData"),list=nameoutput)
@@ -185,7 +185,7 @@ for (ev in list_outcomes_observed) {
   persontime_risk_week_RF[, (name_cols) := exactPoiCI(persontime_risk_week_RF, name_count, name_pt)]
 }
 
-nameoutput<-paste0("RES_IR_risk_week_RF",suffix[[subpop]])
+nameoutput<-paste0("RES_IR_risk_week_RF")
 assign(nameoutput,persontime_risk_week_RF[, !grep("^Person", names(persontime_risk_week_RF)) , with = FALSE])
 
 save(nameoutput,file=paste0(thisdirexp,nameoutput,".RData"),list=nameoutput)
@@ -208,7 +208,7 @@ for (ev in list_outcomes_observed) {
   persontime_risk_year_RF[, (name_cols) := exactPoiCI(persontime_risk_year_RF, name_count, name_pt)]
 }
 
-nameoutput<-paste0("RES_IR_risk_fup_RF",suffix[[subpop]])
+nameoutput<-paste0("RES_IR_risk_fup_RF")
 assign(nameoutput,persontime_risk_year_RF[, !grep("^Person", names(persontime_risk_year_RF)) , with = FALSE])
 
 save(nameoutput,file=paste0(thisdirexp,nameoutput,".RData"),list=nameoutput)
@@ -232,7 +232,7 @@ for (ev in list_outcomes_observed) {
 
 
 
-nameoutput<-paste0("RES_IR_week",suffix[[subpop]])
+nameoutput<-paste0("RES_IR_week")
 assign(nameoutput,persontime_risk_month_RFBC)
 
 first_cols <- c("sex", "month", "year", "Ageband")

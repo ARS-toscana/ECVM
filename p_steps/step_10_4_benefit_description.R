@@ -20,8 +20,8 @@ for (subpop in subpopulations_non_empty ) {
   
   if(this_datasource_has_subpopulations == T) dirdashboard <-paste0(thisdirexp,"dashboard tables/")
   
-BENEFIT_BIRTHCOHORTS_CALENDARTIME <- fread(paste0(dirdashboard, "BENEFIT_BIRTHCOHORTS_CALENDARTIME",suffix[[subpop]],".csv"))
-BENEFIT_BIRTHCOHORTS_TIMESINCEVACCINATION <- fread(paste0(dirdashboard, "BENEFIT_BIRTHCOHORTS_TIMESINCEVACCINATION",suffix[[subpop]],".csv"))
+BENEFIT_BIRTHCOHORTS_CALENDARTIME <- fread(paste0(dirdashboard, "BENEFIT_BIRTHCOHORTS_CALENDARTIME.csv"))
+BENEFIT_BIRTHCOHORTS_TIMESINCEVACCINATION <- fread(paste0(dirdashboard, "BENEFIT_BIRTHCOHORTS_TIMESINCEVACCINATION.csv"))
 BENEFIT_BIRTHCOHORTS_CALENDARTIME[birth_cohort == "all_birth_cohorts" & vx_manufacturer == "Pfizer"  & COVID == "COVID"]
 
 #rendering the file

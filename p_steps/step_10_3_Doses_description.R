@@ -21,7 +21,7 @@ for (subpop in subpopulations_non_empty ) {
   
   if(this_datasource_has_subpopulations == T) dirdashboard <-paste0(thisdirexp,"dashboard tables/")
   
-  DOSES_BIRTHCOHORTS<- fread(paste0(dirdashboard,"DOSES_BIRTHCOHORTS",suffix[[subpop]],".csv"))
+  DOSES_BIRTHCOHORTS<- fread(paste0(dirdashboard,"DOSES_BIRTHCOHORTS.csv"))
   
   #rendering the file
   render(paste0(dirmacro,"DOSES_BIRTHCOHORTS_description.Rmd"),           

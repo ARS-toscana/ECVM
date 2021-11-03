@@ -16,7 +16,7 @@ for (ev in list_outcomes_MIS) {
   D4_persontime_b[, (name_cols) := exactPoiCI(D4_persontime_b, name_count, name_pt)]
 }
 
-  nameoutput<-paste0("D4_IR_MIS_b",suffix[[subpop]])
+  nameoutput<-paste0("RES_IR_MIS_b")
   assign(nameoutput,D4_persontime_b[, !grep("^Person", D4_persontime_b) , with = FALSE])
   
   thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
@@ -38,7 +38,7 @@ for (ev in list_outcomes_MIS) {
   name_pt <- paste0("Persontime_",ev)
   D4_persontime_monthly_b_BC[, (name_cols) := exactPoiCI(D4_persontime_monthly_b_BC, name_count, name_pt)]
 }
-  nameoutput<-paste0("D4_IR_monthly_MIS_b",suffix[[subpop]])
+  nameoutput<-paste0("RES_IR_monthly_MIS_b")
 
   
   assign(nameoutput,D4_persontime_monthly_b_BC)
@@ -66,7 +66,7 @@ for (ev in list_outcomes_MIS) {
   D4_persontime_c[, (name_cols) := exactPoiCI(D4_persontime_c, name_count, name_pt)]
 }
 
-  nameoutput<-paste0("D4_IR_MIS_c",suffix[[subpop]])
+  nameoutput<-paste0("RES_IR_MIS_c")
   assign(nameoutput,D4_persontime_c[, !grep("^Person", names(D4_persontime_c)) , with = FALSE])
 
   save(nameoutput,file=paste0(thisdirexp,nameoutput,".RData"),list=nameoutput)
@@ -86,7 +86,7 @@ for (ev in list_outcomes_MIS) {
   D4_persontime_monthly_c_BC[, (name_cols) := exactPoiCI(D4_persontime_monthly_c_BC, name_count, name_pt)]
 }
 
-  nameoutput<-paste0("D4_IR_monthly_MIS_c",suffix[[subpop]])
+  nameoutput<-paste0("RES_IR_monthly_MIS_c")
   
   
   assign(nameoutput,D4_persontime_monthly_c_BC)
@@ -113,7 +113,7 @@ for (ev in list_outcomes_MIS) {
   D4_persontime_d[, (name_cols) := exactPoiCI(D4_persontime_d, name_count, name_pt)]
 }
 
-nameoutput<-paste0("D4_IR_MIS_d",suffix[[subpop]])
+nameoutput<-paste0("RES_IR_MIS_d")
 
 
 assign(nameoutput,D4_persontime_d[, !grep("^Person", names(D4_persontime_d)) , with = FALSE])
@@ -137,7 +137,7 @@ for (ev in list_outcomes_MIS) {
   D4_persontime_monthly_d_BC[, (name_cols) := exactPoiCI(D4_persontime_monthly_d_BC, name_count, name_pt)]
 }
 
-nameoutput<-paste0("D4_IR_monthly_MIS_d",suffix[[subpop]])
+nameoutput<-paste0("RES_IR_monthly_MIS_d")
 
 
 assign(nameoutput,D4_persontime_monthly_d_BC)
