@@ -609,6 +609,10 @@ rm(list=nameoutput)
 
 # Table8 ----------------------------------------------------------------------------------------------------------
 
+load(paste0(diroutput,"D4_study_population",suffix[[subpop]],".RData"))
+study_population<-get(paste0("D4_study_population", suffix[[subpop]]))
+rm(list=paste0("D4_study_population",suffix[[subpop]]))
+
 load(paste0(dirtemp,"D3_events_ALL_OUTCOMES",suffix[[subpop]],".RData"))
 D3_events_ALL_OUT<-get(paste0("D3_events_ALL_OUTCOMES",suffix[[subpop]]))
 rm(list=paste0("D3_events_ALL_OUTCOMES",suffix[[subpop]]))
@@ -618,6 +622,11 @@ list_outcomes<-get(paste0("list_outcomes_observed", suffix[[subpop]]))
 rm(list=paste0("list_outcomes_observed",suffix[[subpop]]))
 
 D3_events_ALL_OUT <- D3_events_ALL_OUT[, .(person_id, name_event, date_event, year_event = year(date_event))][year_event > 2019, ]
+study_population <- study_population[, .(person_id, study_exit_date, start_follow_up)]
+D3_events_ALL_OUT <- merge(D3_events_ALL_OUT, study_population, all.x = T, by = "person_id")
+D3_events_ALL_OUT <- D3_events_ALL_OUT[date_event <= study_exit_date & start_follow_up <= date_event,]
+D3_events_ALL_OUT <- D3_events_ALL_OUT[, c("study_exit_date", "start_follow_up") := NULL]
+
 setnames(D3_events_ALL_OUT, "person_id", "unique_id")
 
 list_outcomes <- c(OUTCOMES_conceptssets, CONTROL_events, SECCOMPONENTS, "DEATH")
@@ -716,6 +725,10 @@ load(paste0(dirtemp,"D3_outcomes_covid",suffix[[subpop]],".RData"))
 events_ALL_OUTCOMES<-get(paste0("D3_outcomes_covid", suffix[[subpop]]))
 
 events_ALL_OUTCOMES <- events_ALL_OUTCOMES[, .(person_id, name_event, date_event, year_event = year(date_event))][year_event > 2019, ]
+events_ALL_OUTCOMES <- merge(events_ALL_OUTCOMES, study_population, all.x = T, by = "person_id")
+events_ALL_OUTCOMES <- events_ALL_OUTCOMES[date_event <= study_exit_date & start_follow_up <= date_event,]
+events_ALL_OUTCOMES <- events_ALL_OUTCOMES[, c("study_exit_date", "start_follow_up") := NULL]
+
 setnames(events_ALL_OUTCOMES, "person_id", "unique_id")
 
 for (outcome in c("COVID_L1plus", "COVID_L2plus", "COVID_L3plus", "COVID_L4plus", "COVID_L5plus")) {
