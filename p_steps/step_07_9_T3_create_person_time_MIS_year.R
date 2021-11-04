@@ -75,7 +75,7 @@ assign(nameoutput ,Output_file)
 rm(Output_file)
 save(nameoutput, file = paste0(diroutput, nameoutput,".RData"),list=nameoutput)
 
-nameoutput2<-paste0("D4_persontime_b")
+nameoutput2<-paste0("D4_persontime_monthly_b")
 assign(nameoutput2 ,get(nameoutput))
 thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
 fwrite(get(nameoutput2),file=paste0(thisdirexp,nameoutput2,".csv"))
