@@ -3,6 +3,9 @@
 
 # authors: Rosa Gini, Olga Paoletti, Davide Messina, Giorgio Limoncella
 
+# v 6.4.1
+# bugfix and incident cases in 11/11_3 now counted only if person in study
+
 # v 6.4
 # Inclusion of use of hypertensive drugs in cardiovascular risk
 # bug fix in final tables and insufficient run_in
