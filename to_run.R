@@ -115,9 +115,6 @@ source(paste0(thisdir,"/p_parameters/06_algorithms.R"))
 #run scripts
 
 # 01 RETRIEVE RECORDS FRM CDM
-# if (thisdatasource=="TEST"){
-# system.time(source(paste0(thisdir,"/p_steps/step_01_1_T2.1_create_conceptset_datasets_VACCINES.R")))
-# }
 system.time(source(paste0(thisdir,"/p_steps/step_01_1_T2.1_create_conceptset_datasets.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_01_2_T2.1_create_spells.R")))
 

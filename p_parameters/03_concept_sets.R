@@ -45,4 +45,4 @@ concept_set_codes_our_study_pre[["Covid_vaccine"]][["ATC"]] <- c("J07BX03")
 
 list_outcomes_MIS <- c("MIS_narrow","KD_narrow","MIS_KD_narrow", "MIS_broad","KD_broad","MIS_KD_broad","MYOCARD_narrow","MYOCARD_possible","Myocardalone_narrow","Myocardalone_possible","PERICARD_narrow","PERICARD_possible")
 
-source(paste0(thisdir,"/p_steps/archive_parameters/parameters_raw.R"))
+source(paste0(thisdir,"/p_parameters/archive_parameters/parameters_raw.R"))
