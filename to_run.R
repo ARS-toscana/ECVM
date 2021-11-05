@@ -3,6 +3,9 @@
 
 # authors: Rosa Gini, Olga Paoletti, Davide Messina, Giorgio Limoncella
 
+# v 6.4.2
+# list of codes for concepts moved to p_steps/archive_parameters
+
 # v 6.4.1
 # bugfix and incident cases in 11/11_3 now counted only if person in study
 
