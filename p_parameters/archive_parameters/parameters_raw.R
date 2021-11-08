@@ -787,7 +787,7 @@ concept_set_codes_our_study_pre[["MIS_narrow"]][["SNOMED"]] <- c("1119306006","8
 #--------------------------
 # MIS_possible
 concept_set_domains[["MIS_possible"]] = "Diagnosis"
-concept_set_codes_our_study_pre[["MIS_possible"]][["ICD9"]] <- c("785.5","785.5900000000000318")
+concept_set_codes_our_study_pre[["MIS_possible"]][["ICD9"]] <- c("785.5","785.59")
 concept_set_codes_our_study_pre[["MIS_possible"]][["ICD10"]] <- c("R57.1","R57.9")
 concept_set_codes_our_study_pre_excl[["MIS_possible"]][["ICD10"]] <- c("M35.81","R65.1","R65.10","R65.11","U10.9")
 concept_set_codes_our_study_pre[["MIS_possible"]][["READ"]] <- c("R0550","XM00r","XM1C7","R0550")
