@@ -3,7 +3,7 @@
 # setwd("..")
 # setwd("..")
 # dirbase<-getwd()
-# dirinput <- paste0(dirbase,"/CDMInstances/ECVM2108/")
+# dirinput <- paste0(dirbase,"/CDMInstances/ECVM2109/")
 
 #dirinput <- paste0(thisdir,"/i_input/")
 dirinput <- paste0(thisdir,"/i_input_subpop/")
@@ -147,7 +147,7 @@ study_years <- c("2020","2021")
 firstYearComponentAnalysis = "2019"
 secondYearComponentAnalysis = "2020"
 
-days<-ifelse(thisdatasource %in% c("ARS","TEST"),21,1)
+days<-ifelse(thisdatasource %in% c("ARS","TEST"),180,1)
 
 #############################################
 #FUNCTION TO COMPUTE AGE
