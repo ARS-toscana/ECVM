@@ -3,19 +3,15 @@
 # setwd("..")
 # setwd("..")
 # dirbase<-getwd()
-# dirinput <- paste0(dirbase,"/CDMInstances/ECVM2108/")
+# dirinput <- paste0(dirbase,"/CDMInstances/ECVM2109/")
 
-dirinput <- paste0(thisdir,"/i_input/")
-#dirinput <- paste0(thisdir,"/i_input_subpop/")
+#dirinput <- paste0(thisdir,"/i_input/")
+dirinput <- paste0(thisdir,"/i_input_subpop/")
 
 # set other directories
 diroutput <- paste0(thisdir,"/g_output/")
 dirtemp <- paste0(thisdir,"/g_intermediate/")
 direxp <- paste0(thisdir,"/g_export/")
-dirdashboard <- paste0(direxp,"dashboard tables/")
-dirD4tables <- paste0(direxp,"D4 tables/")
-dummytables <- paste0(direxp,"Dummy tables for report/")
-dummytables_MIS <- paste0(direxp,"Dummy tables for report MIS-KD/")
 dirmacro <- paste0(thisdir,"/p_macro/")
 dirfigure <- paste0(thisdir,"/g_figure/")
 extension <- c(".csv")
@@ -30,8 +26,6 @@ if (!require("tidyverse")) install.packages("tidyverse")
 library(dplyr)
 if (!require("lubridate")) install.packages("lubridate")
 library(lubridate)
-if (!require("data.table")) install.packages("data.table")
-library(data.table)
 if (!require("AdhereR")) install.packages("AdhereR")
 library(AdhereR)
 if (!require("stringr")) install.packages("stringr")
@@ -48,18 +42,22 @@ if (!require("rmarkdown")) install.packages("rmarkdown")
 library(rmarkdown)
 if (!require("ggplot2")) install.packages("ggplot2")
 library(ggplot2)
+if (!require("data.table")) install.packages("data.table")
+library(data.table)
+
 
 
 # load macros
 
-source(paste0(dirmacro,"CreateConceptSetDatasets_v18.R"))
+source(paste0(dirmacro,"CreateConceptSetDatasets_v19.R"))
 #source(paste0(dirmacro,"RetrieveRecordsFromEAVDatasets.R"))
 # source(paste0(dirmacro,"CreateItemsetDatasets.R"))
 source(paste0(dirmacro,"CreateItemsetDatasets_v02.R"))
 source(paste0(dirmacro,"MergeFilterAndCollapse_v5.R"))
-source(paste0(dirmacro,"CreateSpells_v14.R"))
+source(paste0(dirmacro,"CreateSpells_v15.R"))
 source(paste0(dirmacro,"CreateFlowChart.R"))
-source(paste0(dirmacro,"CountPersonTimeV12.4.R"))
+#source(paste0(dirmacro,"CountPersonTimeV12.4.R"))
+source(paste0(dirmacro,"CountPersonTimeV13.6.R"))
 source(paste0(dirmacro,"ApplyComponentStrategy_v13_2.R"))
 source(paste0(dirmacro,"CreateFigureComponentStrategy_v4.R"))
 source(paste0(dirmacro,"DRECountThresholdV3.R"))
@@ -68,6 +66,7 @@ source(paste0(dirmacro,"DRECountThresholdV3.R"))
 
 date_format <- "%Y%m%d"
 
+firstjan2021 <- ymd(20210101)
 #---------------------------------------
 # understand which datasource the script is querying
 
@@ -75,11 +74,20 @@ CDM_SOURCE<- fread(paste0(dirinput,"CDM_SOURCE.csv"))
 thisdatasource <- as.character(CDM_SOURCE[1,3])
 
 study_start <- as.Date(as.character(20200101), date_format)
+start_lookback <- as.Date(as.character(20190101), date_format)
 
-study_end <- as.Date(as.character(CDM_SOURCE[1,"recommended_end_date"]), date_format)
+study_end <- min(as.Date(as.character(CDM_SOURCE[1,"date_creation"]), date_format),
+                 as.Date(as.character(CDM_SOURCE[1,"recommended_end_date"]), date_format), na.rm = T)
 
-start_COVID_vaccination_date <- fifelse(thisdatasource == 'CPRD',as.Date(as.character(20201206), date_format),as.Date(as.character(20201227), date_format))
- 
+start_COVID_vaccination_date <- fifelse(thisdatasource == 'CPRD',
+                                        as.Date(as.character(20201206), date_format),
+                                        as.Date(as.character(20201227), date_format))
+
+start_COVID_diagnosis_date <- case_when((thisdatasource == 'TEST') ~ ymd(20200131),
+                                        (thisdatasource == 'ARS') ~ ymd(20200131),
+                                        (thisdatasource == 'PHARMO') ~ ymd(20200227),
+                                        (thisdatasource == 'CPRD') ~ ymd(20200123),
+                                        (thisdatasource == 'BIFAP') ~ ymd(20200131))
 ###################################################################
 # CREATE FOLDERS
 ###################################################################
@@ -87,13 +95,8 @@ start_COVID_vaccination_date <- fifelse(thisdatasource == 'CPRD',as.Date(as.char
 suppressWarnings(if (!file.exists(diroutput)) dir.create(file.path( diroutput)))
 suppressWarnings(if (!file.exists(dirtemp)) dir.create(file.path( dirtemp)))
 suppressWarnings(if (!file.exists(direxp)) dir.create(file.path( direxp)))
-suppressWarnings(if (!file.exists(dirdashboard)) dir.create(file.path(dirdashboard)))
-suppressWarnings(if (!file.exists(dirD4tables)) dir.create(file.path(dirD4tables)))
-suppressWarnings(if (!file.exists(dummytables)) dir.create(file.path(dummytables)))
-suppressWarnings(if (!file.exists(dummytables_MIS)) dir.create(file.path(dummytables_MIS)))
 suppressWarnings(if (!file.exists(dirfigure)) dir.create(file.path( dirfigure)))
 suppressWarnings(if (!file.exists(dirpargen)) dir.create(file.path( dirpargen)))
-suppressWarnings(if (!file.exists(dirsmallcountsremoved)) dir.create(file.path(dirsmallcountsremoved)))
 suppressWarnings(if (!file.exists(dirsmallcountsremoved)) dir.create(file.path(dirsmallcountsremoved)))
 
 ###################################################################
@@ -144,20 +147,17 @@ study_years <- c("2020","2021")
 firstYearComponentAnalysis = "2019"
 secondYearComponentAnalysis = "2020"
 
-days<-ifelse(thisdatasource %in% c("ARS","TEST"),21,1)
-
-Birthcohorts =c("<1940", "1940-1949", "1950-1959", "1960-1969",
-                "1970-1979", "1980-1989", "1990+")
-
-
+days<-ifelse(thisdatasource %in% c("ARS","TEST"),180,1)
 
 #############################################
 #FUNCTION TO COMPUTE AGE
 #############################################
-Agebands =c(-1, 19, 29, 39, 49, 59, 69, 80, Inf)
-Agebands_MIS =c(-1, 11, 17, 19,29, 39, 49, 59, 69, 80, Inf)
 
-Agebands_lables_MIS =c("0-11","12-17","18-19","20-29", "30-39", "40-49","50-59","60-69", "70-79","80+")
+Agebands = c(-1, 4, 11, 17, 24, 29, 39, 49, 59, 69, 79, Inf)
+Agebands_labels = c("0-4","5-11","12-17","18-24","25-29", "30-39", "40-49","50-59","60-69", "70-79","80+")
+
+Agebands60 <- c("60-69", "70-79","80+")
+Agebands059 <- c("0-4","5-11","12-17","18-24","25-29", "30-39", "40-49","50-59")
 
 age_fast = function(from, to) {
   from_lt = as.POSIXlt(from)
@@ -187,7 +187,7 @@ correct_difftime <- function(t1, t2, t_period = "days") {
 }
 
 calc_precise_week <- function(time_diff) {
-  weeks_frac <- time_length(time_diff, "week")
+  weeks_frac <- time_length(time_diff - 1, "week")
   fifelse(weeks_frac%%1==0, weeks_frac, floor(weeks_frac) + 1)
 }
 
@@ -231,3 +231,20 @@ correct_col_type <- function(df) {
   }
   return(df)
 }
+
+bc_divide_60 <- function(df, by_cond, cols_to_sums, only_old = F, col_used = "ageband_at_study_entry") {
+  older60 <- copy(df)[get(col_used) %in% Agebands60,
+                      lapply(.SD, sum, na.rm=TRUE), by = by_cond, .SDcols = cols_to_sums]
+  older60 <- unique(older60[, c(col_used) := "60+"])
+  if (!only_old) {
+    younger60 <- copy(df)[get(col_used) %in% Agebands059,
+                          lapply(.SD, sum, na.rm=TRUE), by = by_cond, .SDcols = cols_to_sums]
+    younger60 <- unique(younger60[, c(col_used) := "0-59"])
+    
+    df <- rbind(df, younger60)
+  }
+  df <- rbind(df, older60)
+  return(df)
+}
+
+prop_to_total <- function(x){paste0(round(x / total_doses * 100, 2), "%")}

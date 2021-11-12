@@ -14,10 +14,17 @@ suppressWarnings(if (!file.exists(PathOutputFolder)) dir.create(file.path( PathO
 
 #loading the flowchart
 
-Flowchart_doses<- fread(paste0(direxp,"Flowchart_doses.csv"))
+for (subpop in subpopulations_non_empty ) {
+  
+  
+  thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
+  
+  Flowchart_doses<- fread(paste0(thisdirexp,"Flowchart_doses.csv"))
+  
+  #rendering the file
+  render(paste0(dirmacro,"FlowChart_Description.Rmd"),           
+         output_dir=PathOutputFolder,
+         output_file="HTML_Flowchart_doses_description", 
+         params=list(FlowChart = Flowchart_doses))  
+}
 
-#rendering the file
-render(paste0(dirmacro,"FlowChart_Description.Rmd"),           
-       output_dir=PathOutputFolder,
-       output_file="HTML_Flowchart_doses_description", 
-       params=list(FlowChart = Flowchart_doses)) 

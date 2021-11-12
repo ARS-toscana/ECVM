@@ -7,16 +7,8 @@
 
 print("CREATE CODE COUNT FOR ALL OUTCOMES PER YEAR IN THE STUDY POPULATION")
 
-
-load(paste0(dirtemp,"list_outcomes_observed_for_QC.RData")) 
-load(paste0(dirtemp,"D3_events_ALL_OUTCOMES.RData")) 
-load(paste0(diroutput,"D4_study_population.RData")) 
-
 start_persontime_studytime = as.character(paste0(study_years[1],"0101"))
 end_persontime_studytime = as.character(paste0(study_years[length(study_years)],"1231"))
-
-load(paste0(dirpargen,"subpopulations_non_empty.RData"))
-
 
 FirstJan <- list()
 conditionYear <- list()
@@ -24,33 +16,33 @@ for (year in study_years) {
   FirstJan[[year]] <- as.Date(as.character(paste0(year,"0101")), date_format)
   conditionYear[[year]] <- paste0("date_event >= study_entry_date & date_event <= as.Date('",FirstJan[[year]],"')+365 & date_event >= as.Date('",FirstJan[[year]],"')")
 }
-if (this_datasource_has_subpopulations == TRUE){ 
+
   list_outcomes <- c()
-  for (subpop in subpopulations_non_empty) {  
-    list_outcomes <- c(list_outcomes, list_outcomes_observed_for_QC[[subpop]])
+  for (subpop in subpopulations_non_empty) { 
+    
+    load(paste0(dirtemp,"list_outcomes_observed_for_QC",suffix[[subpop]],".RData"))
+
+    list_outcomes <- c(list_outcomes, get(paste0("list_outcomes_observed_for_QC",suffix[[subpop]])))
   }
   list_outcomes <- unique(list_outcomes)
-}else{
-  list_outcomes <- list_outcomes_observed_for_QC
-}
+
 
 for (outcome in list_outcomes) {
   print(outcome)
   outcome_code_counts <- vector(mode = 'list')
-  for (subpop in subpopulations_non_empty) {  
-    if (this_datasource_has_subpopulations == TRUE){ 
-      study_population <- D4_study_population[[subpop]]
-      events_ALL_OUTCOMES <- D3_events_ALL_OUTCOMES[[subpop]] 
-      admissible_outcomes <- list_outcomes_observed_for_QC[[subpop]]
-    }else{
-      study_population <- as.data.table(D4_study_population)
-      events_ALL_OUTCOMES <- D3_events_ALL_OUTCOMES
-      admissible_outcomes <- list_outcomes_observed_for_QC
-    }
+  for (subpop in subpopulations_non_empty) { 
+    
+    load(paste0(dirtemp,"D3_events_ALL_OUTCOMES",suffix[[subpop]],".RData"))
+    load(paste0(diroutput,"D4_study_population",suffix[[subpop]],".RData")) 
+
+    study_population<-get(paste0("D4_study_population", suffix[[subpop]]))
+      events_ALL_OUTCOMES <-get(paste0("D3_events_ALL_OUTCOMES", suffix[[subpop]])) 
+      admissible_outcomes <- get(paste0("list_outcomes_observed_for_QC", suffix[[subpop]])) 
+
     if (outcome %in% admissible_outcomes){
       for (year in study_years) {
         print(paste(outcome,year,subpop))
-        nameobject <- paste0("QC_code_counts_in_study_population",outcome,"_",year)
+        nameobject <- paste0("QC_code_counts_in_study_population","_",outcome,"_",year)
     temp <- MergeFilterAndCollapse(list(events_ALL_OUTCOMES[name_event == outcome,]),
                                           key = 'person_id',
                                           condition = conditionYear[[year]],
@@ -62,18 +54,16 @@ for (outcome in list_outcomes) {
                                             )
                                           )
     
+    assign(nameobject, temp)
     thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
     fwrite(temp, file = paste0(thisdirexp,nameobject,".csv"))
-    if (this_datasource_has_subpopulations == TRUE){ 
-      outcome_code_counts[[subpop]] <- temp
-    }else{
-      outcome_code_counts <-temp
-    }
-    assign(nameobject, outcome_code_counts)
+
     save(nameobject, file = paste0(diroutput,nameobject,".RData"),list = nameobject )
     rm(nameobject, list = nameobject )
       }
     }
+      rm(list=paste0("D3_events_ALL_OUTCOMES", suffix[[subpop]]))
+      rm(list=paste0("D4_study_population", suffix[[subpop]]))
   }
 }
 
@@ -90,4 +80,4 @@ for (subpop in subpopulations_non_empty){
     )
   )
 }
-rm(D3_events_ALL_OUTCOMES,D4_study_population,study_population,events_ALL_OUTCOMES)
+rm(study_population,events_ALL_OUTCOMES,temp,outcome_code_counts)

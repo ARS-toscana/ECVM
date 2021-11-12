@@ -26,6 +26,7 @@ for (i in 1:length(files)) {
   }
 }
 
+OBSERVATION_PERIODS <- OBSERVATION_PERIODS[,`:=`(op_start_date=lubridate::ymd(op_start_date),op_end_date=lubridate::ymd(op_end_date))]
 D3_PERSONS <- PERSONS
 rm(PERSONS)
 
@@ -41,7 +42,6 @@ if( dim(D3_PERSONS[is.na(day_of_birth) | is.na(month_of_birth),])[1]!=0 ){
   PERSONS_date_missing_iduni <- PERSONS_date_missing[,person_id]
   
   #look for them on OP
-  OBSERVATION_PERIODS <- OBSERVATION_PERIODS[,`:=`(op_start_date=lubridate::ymd(op_start_date),op_end_date=lubridate::ymd(op_end_date))]
   OBSERVATION_PERIODS_date_missing <- OBSERVATION_PERIODS[person_id%in%PERSONS_date_missing_iduni,]
   
   #merge them to obtain the date
@@ -66,13 +66,26 @@ if( dim(D3_PERSONS[is.na(day_of_birth) | is.na(month_of_birth),])[1]!=0 ){
 print('TRANSFORM in COMPLETED DATE FOR BIRTH and DEATH')
 
 D3_PERSONS <- suppressWarnings(D3_PERSONS[,date_birth:=lubridate::ymd(with(D3_PERSONS, paste(year_of_birth, month_of_birth, day_of_birth,sep="-")))])
+
+OBSERVATION_PERIODS <- OBSERVATION_PERIODS[, .(op_end_date = max(op_end_date)), by = person_id]
+
+D3_date_death <- merge(D3_PERSONS[!is.na(year_of_death) & (is.na(day_of_death) | is.na(month_of_death)),], OBSERVATION_PERIODS, by = "person_id")
+D3_date_death <- D3_date_death[, assumed_year_death := year(op_end_date)][, assumed_month_death := month(op_end_date)][, assumed_day_death := day(op_end_date)]
+D3_date_death <- D3_date_death[year_of_death == assumed_year_death & is.na(month_of_death),
+                               c("month_of_death", "day_of_death") := list(assumed_month_death, assumed_day_death)]
+D3_date_death <- D3_date_death[year_of_death == assumed_year_death & month_of_death == assumed_month_death & is.na(day_of_death),
+                               day_of_death := assumed_day_death]
+D3_date_death <- D3_date_death[, c("op_end_date", "assumed_year_death", "assumed_month_death", "assumed_day_death") := NULL]
+D3_PERSONS <- rbind(D3_PERSONS[is.na(year_of_death) | (!is.na(day_of_death) & !is.na(month_of_death)),], D3_date_death)
+
 D3_PERSONS <- suppressWarnings(D3_PERSONS[,date_death:=lubridate::ymd(with(D3_PERSONS, paste(year_of_death, month_of_death, day_of_death,sep="-")))])
-#D3_PERSONS<-D3_PERSONS[!is.na(date_death),.(person_id,date_death)][,date:=date_death][,-"date_death"]
+
+
 
 D3_events_DEATH <- D3_PERSONS[!is.na(date_death),.(person_id,date_death)][,date:=date_death][,-"date_death"]
 
 save(D3_events_DEATH,file = paste0(dirtemp,"D3_events_DEATH.RData"))
-rm(D3_events_DEATH)
+rm(D3_events_DEATH, D3_date_death)
 
 save(D3_PERSONS,file = paste0(dirtemp,"D3_PERSONS.RData"))
 

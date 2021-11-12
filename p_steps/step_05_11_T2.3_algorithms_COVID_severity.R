@@ -5,11 +5,7 @@
 
 print("SUMMARIZE ALGORITHMS FOR COVID SEVERITY")
 
-load(paste0(diroutput,"D4_study_population.RData")) 
 
-load(paste0(dirpargen,"subpopulations_non_empty.RData"))
-
-load(paste0(dirtemp,"D3_components_covid_severity.RData"))
 
 
 D3_algorithm_covid <- vector(mode = 'list')
@@ -17,13 +13,11 @@ D3_outcomes_covid <- vector(mode = 'list')
 list_outcomes_observed_COVID <- c()
 for (subpop in subpopulations_non_empty) {
   print(subpop)
-
-  if (this_datasource_has_subpopulations == TRUE){  
-    algorithm_covid  <- D3_components_covid_severity[[subpop]]
-  }else{
-    algorithm_covid  <- D3_components_covid_severity  
-  }
+  load(paste0(dirtemp,"D3_components_covid_severity",suffix[[subpop]],".RData"))
+  load(paste0(diroutput,"D4_study_population",suffix[[subpop]],".RData"))
   
+  algorithm_covid<-get(paste0("D3_components_covid_severity", suffix[[subpop]])) 
+  study_population<-get(paste0("D4_study_population", suffix[[subpop]]))
   
    # date: covid registry
   algorithm_covid <- algorithm_covid[!is.na(first_date_covid_registry), date_covid := first_date_covid_registry]
@@ -80,7 +74,7 @@ is.na(severity_level_covid) & MechanicalVentilation_within_registry_date != 0, s
   
   # cumulative binary variables
   outcomes_covid <- data.table()
-  list_outcomes_observed <- c()
+  list_outcomes_observed_COVID <- c()
   for (j in c(1,2,3,4,5) ){
     temp <- algorithm_covid[severity_level_covid >= j]
     level <- paste0('COVID_L',j,'plus')
@@ -88,32 +82,47 @@ is.na(severity_level_covid) & MechanicalVentilation_within_registry_date != 0, s
     temp <- temp[, date_event := date_covid]
     temp <- temp[,.(person_id,name_event,date_event,origin_severity_level_covid)]
     outcomes_covid <- rbind(outcomes_covid, temp)
-    list_outcomes_observed <- c(list_outcomes_observed, level)
+    list_outcomes_observed_COVID <- c(list_outcomes_observed_COVID, level)
       
   }
+  
+  outcomes_covid_wrong <- outcomes_covid[date_event < start_COVID_diagnosis_date, ][, covid_year := year(date_event)][, covid_month := month(date_event)]
+  outcomes_covid_wrong <- outcomes_covid_wrong[, .N, by = c("covid_year", "covid_month")]
+  setorder(outcomes_covid_wrong, covid_year, covid_month)
+  fwrite(outcomes_covid_wrong, file = paste0(direxp, "table_QC_covid_diagnosis.csv"))
+  rm(outcomes_covid_wrong)
+  outcomes_covid <- outcomes_covid[date_event >= start_COVID_diagnosis_date, ]
 
   
+  # save the COVID outcomes as a dataset and their list as a parameter
+  tempname<-paste0("list_outcomes_observed_COVID",suffix[[subpop]])
+  assign(tempname,list_outcomes_observed_COVID)
+  save(list=tempname,file=paste0(dirpargen,tempname,".RData"))
+  rm(tempname,list=tempname)
+  
+  tempname<-paste0("D3_algorithm_covid",suffix[[subpop]])
+  assign(tempname,algorithm_covid)
+  save(list=tempname,file=paste0(dirtemp,tempname,".RData"))
+  rm(tempname,list=tempname)
 
-  if (this_datasource_has_subpopulations == TRUE){
-    list_outcomes_observed_COVID[[subpop]] <- list_outcomes_observed
-    D3_algorithm_covid[[subpop]]  <- algorithm_covid
-    D3_outcomes_covid[[subpop]]  <- outcomes_covid
-  }else{
-    list_outcomes_observed_COVID <- list_outcomes_observed
-    D3_algorithm_covid  <- algorithm_covid
-    D3_outcomes_covid  <- outcomes_covid
-  }
+  outcomes_covid_multiple<-outcomes_covid
+  tempname<-paste0("D3_outcomes_covid_multiple",suffix[[subpop]])
+  assign(tempname,outcomes_covid_multiple)
+  save(list=tempname,file=paste0(dirtemp,tempname,".RData"))
+  rm(tempname,list=tempname)
+  
+  outcomes_covid<-unique(outcomes_covid)
+  tempname<-paste0("D3_outcomes_covid",suffix[[subpop]])
+  assign(tempname,outcomes_covid)
+  save(list=tempname,file=paste0(dirtemp,tempname,".RData"))
+  rm(tempname,list=tempname)
+  
+  temp2<-paste0("D3_components_covid_severity", suffix[[subpop]])
+  rm(temp2,list=temp2)
+  temp2<-paste0("D4_study_population", suffix[[subpop]])
+  rm(temp2,list=temp2)
+  
 }
 
-D3_outcomes_covid_multiple<-D3_outcomes_covid
-D3_outcomes_covid<-unique(D3_outcomes_covid)
+rm(study_population,algorithm_covid,temp,outcomes_covid,outcomes_covid_multiple)
 
-save(D3_outcomes_covid_multiple,file=paste0(dirtemp,paste0("D3_outcomes_covid_multiple.RData")))
-save(D3_outcomes_covid,file=paste0(dirtemp,paste0("D3_outcomes_covid.RData")))
-
-# save the COVID outcomes as a dataset and their list as a parameter
-save(D3_algorithm_covid,file=paste0(dirtemp,paste0("D3_algorithm_covid.RData")))
-save(list_outcomes_observed_COVID,file=paste0(dirpargen,paste0("list_outcomes_observed_COVID.RData")))
-
-
-rm(algorithm_covid)

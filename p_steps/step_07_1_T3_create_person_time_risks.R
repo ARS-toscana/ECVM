@@ -7,28 +7,24 @@
 
 print("COUNT PERSON TIME by week for risks")
 
-load(paste0(dirtemp,"list_outcomes_observed.RData"))
-load(paste0(dirtemp,"D3_events_ALL_OUTCOMES.RData"))
-load(paste0(dirtemp,"D3_vaxweeks_including_not_vaccinated.RData"))
 
 D4_persontime_risk_week <- vector(mode = 'list')
 for (subpop in subpopulations_non_empty) {
   print(subpop)
+    
   start_week=seq.Date(as.Date("20200106","%Y%m%d"),Sys.Date(),by = "week")
-  
-  if (this_datasource_has_subpopulations == TRUE){ 
-    study_population <- D3_vaxweeks_including_not_vaccinated[[subpop]]
-    events_ALL_OUTCOMES <- D3_events_ALL_OUTCOMES[[subpop]]
-    list_outcomes <- list_outcomes_observed[[subpop]]
-  }else{
-    study_population <- D3_vaxweeks_including_not_vaccinated
-    events_ALL_OUTCOMES <- D3_events_ALL_OUTCOMES
-    list_outcomes <- list_outcomes_observed
-  }
-
+    
+    load(paste0(dirtemp,"list_outcomes_observed",suffix[[subpop]],".RData"))
+    load(paste0(dirtemp,"D3_events_ALL_OUTCOMES",suffix[[subpop]],".RData"))
+    load(paste0(dirtemp,"D3_vaxweeks_including_not_vaccinated",suffix[[subpop]],".RData"))
+    
+    list_outcomes<-get(paste0("list_outcomes_observed", suffix[[subpop]]))
+    events_ALL_OUTCOMES<-get(paste0("D3_events_ALL_OUTCOMES", suffix[[subpop]]))
+    study_population<-get(paste0("D3_vaxweeks_including_not_vaccinated", suffix[[subpop]]))
   
   max_exit<-study_population[,max(end_date_of_period)]
   last_event<-events_ALL_OUTCOMES[,max(date_event)]
+  
   if (last_event<ymd("20200101")) {
     next
   }
@@ -55,17 +51,16 @@ for (subpop in subpopulations_non_empty) {
       Start_date = "start_date_of_period",
       End_date = "end_date_of_period",
       #Birth_date = "date_of_birth",
-      Strata = c("sex","Birthcohort_persons","Dose","type_vax", "CV", "COVCANCER","COVCOPD", "COVHIV",
-                 "COVCKD", "COVDIAB", "COVOBES", "COVSICKLE", "IMMUNOSUPPR", "any_risk_factors"),
+      Strata = c("sex","ageband_at_study_entry","Dose","type_vax", "CV", "COVCANCER", "COVCOPD", "COVHIV", "COVCKD",
+                 "COVDIAB", "COVOBES", "COVSICKLE", "IMMUNOSUPPR", "any_risk_factors"),
       Name_event = "name_event",
       Date_event = "date_event",
       #Age_bands = c(0,19,29,39,49,59,69,79),F
       Increment="week",
-      Outcomes =  list_recurrent_outcomes, 
+      Outcomes_rec = list_recurrent_outcomes, 
       Unit_of_age = "year",
       include_remaning_ages = T,
       Aggregate = T,
-      Rec_events = T,
       Rec_period = c(rep(30, length(list_recurrent_outcomes)))
     )
     )
@@ -93,13 +88,13 @@ for (subpop in subpopulations_non_empty) {
       Start_date = "start_date_of_period",
       End_date = "end_date_of_period",
       #Birth_date = "date_of_birth",
-      Strata = c("sex","Birthcohort_persons","Dose","type_vax", "CV", "COVCANCER","COVCOPD", "COVHIV",
-                 "COVCKD", "COVDIAB", "COVOBES", "COVSICKLE", "IMMUNOSUPPR", "any_risk_factors"),
+      Strata = c("sex","ageband_at_study_entry","Dose","type_vax", "CV", "COVCANCER", "COVCOPD", "COVHIV", "COVCKD",
+                 "COVDIAB", "COVOBES", "COVSICKLE", "IMMUNOSUPPR", "any_risk_factors"),
       Name_event = "name_event",
       Date_event = "date_event",
       #Age_bands = c(0,19,29,39,49,59,69,79),F
       Increment="week",
-      Outcomes =  list_outcomes, 
+      Outcomes_nrec = list_outcomes, 
       Unit_of_age = "year",
       include_remaning_ages = T,
       Aggregate = T
@@ -115,7 +110,7 @@ for (subpop in subpopulations_non_empty) {
   }
   
   persontime_risk_week <- merge(persontime_risk_week, recurrent_persontime_risk_week,
-                                by = c("sex","Birthcohort_persons","Dose","type_vax", "CV", "COVCANCER","COVCOPD",
+                                by = c("sex","ageband_at_study_entry","Dose","type_vax", "CV", "COVCANCER", "COVCOPD",
                                        "COVHIV", "COVCKD", "COVDIAB", "COVOBES", "COVSICKLE", "IMMUNOSUPPR",
                                        "any_risk_factors", "week", "Persontime"), all = T)
   
@@ -125,20 +120,24 @@ for (subpop in subpopulations_non_empty) {
   
   thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
   fwrite(persontime_risk_week,file=paste0(thisdirexp,"D4_persontime_risk_week.csv"))
-  if (this_datasource_has_subpopulations == TRUE){ 
-    D4_persontime_risk_week[[subpop]] <- persontime_risk_week
-  }else{
-    D4_persontime_risk_week <- persontime_risk_week
-  }
+  
+  nameoutput<-paste0("D4_persontime_risk_week",suffix[[subpop]])
+  assign(nameoutput,persontime_risk_week)
+  save(nameoutput,file=paste0(diroutput,nameoutput,".RData"),list=nameoutput)
+  
+  rm(list=paste0("D4_persontime_risk_week",suffix[[subpop]]))
+  rm(list=paste0("D3_vaxweeks_including_not_vaccinated", suffix[[subpop]]))
+  rm(list=paste0("list_outcomes_observed", suffix[[subpop]]))
+  rm(list=paste0("D3_events_ALL_OUTCOMES", suffix[[subpop]]))
 }
-
-save(D4_persontime_risk_week,file=paste0(diroutput,"D4_persontime_risk_week.RData"))
 
 
 for (subpop in subpopulations_non_empty){
+  tempname<-paste0("D4_persontime_risk_week")
   thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
-  thisdirsmallcountsremoved <- ifelse(this_datasource_has_subpopulations == FALSE,dirsmallcountsremoved,dirsmallcountsremovedsubpop[[subpop]])
-  col<-colnames(persontime_risk_week)[-(1:3)]
+  assign(tempname,fread(paste0(thisdirexp,tempname,".csv")))
+    thisdirsmallcountsremoved <- ifelse(this_datasource_has_subpopulations == FALSE,dirsmallcountsremoved,dirsmallcountsremovedsubpop[[subpop]])
+  col<-colnames(get(tempname))[-(1:3)]
   temp<-paste0(col,"=5")
   temp2<-paste("c(",paste(temp, collapse = ','),")")
   suppressWarnings(
@@ -150,6 +149,7 @@ for (subpop in subpopulations_non_empty){
       FileContains = "D4_persontime_risk_week"
     )
   )
+  rm(list=tempname)
 }
-# rm(list = nameobject)
-rm(D3_vaxweeks_including_not_vaccinated,persontime_risk_week,study_population,events_ALL_OUTCOMES)
+
+rm(persontime_risk_week,events_ALL_OUTCOMES,study_population,list_outcomes,recurrent_persontime_risk_week)

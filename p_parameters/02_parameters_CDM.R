@@ -367,3 +367,5 @@ if (length(ECVM_CDM_EAV_tables)!=0 ){
     }
   }
 }
+
+rm(temp,temp1)

@@ -49,63 +49,50 @@ D3_inclusion_from_PERSONS <- D3_PERSONS[,.(person_id,sex,date_of_birth,date_of_d
 # if (this_datasource_has_subpopulations == TRUE)D3_selection_criteria <- vector(mode="list")
 
 # OBSERVATION PERIODS -----------------------------------------------------
-# nes
-# for (subpop in subpopulations_non_empty){
-# #   print(subpop)
-#   #load(paste0("input_1",suffix[[subpop]]))
-#   load(paste0(dirtemp,paste0("output_spells_category",suffix[[subpop]],".RData")))
-
-# OBSERVATION PERIODS -----------------------------------------------------
-#old
-for (subpop in subpopulations[[thisdatasource]]){
-#   print(subpop)
-#load(paste0(dirtemp,"output_spells_category.RData"))
-
-load(paste0("output_spells_category",suffix[[subpop]],".RData"))
+#new
+ for (subpop in subpopulations_non_empty){
+  print(subpop)
+   if (this_datasource_has_subpopulations == T){
+load(paste0(dirtemp,"output_spells_category.RData"))
+output_spells_category<-output_spells_category[[subpop]]
+   }else{
+     load(paste0(dirtemp,"output_spells_category.RData"))
 }
-  # if (this_datasource_has_subpopulations == TRUE)output_spells_category <- as.data.table(output_spells_category[[subpop]])
 
-start_follow_up = study_start - 365
-na_date = lubridate::ymd(99991231)
-
-output_spells_category_enriched <- merge(D3_inclusion_from_PERSONS, output_spells_category, all.x = T, by="person_id")
-output_spells_category_enriched <- output_spells_category_enriched[, death_before_study_entry := fifelse(!is.na(date_of_death) & date_of_death < study_start, 1, 0)]
-output_spells_category_enriched <- output_spells_category_enriched[!is.na(entry_spell_category) & !is.na(exit_spell_category), no_observation_period_including_study_start := fifelse(study_start %between% list(entry_spell_category,exit_spell_category) & entry_spell_category < exit_spell_category, 0, 1)]
-output_spells_category_enriched <- output_spells_category_enriched[is.na(entry_spell_category) | is.na(exit_spell_category), no_observation_period_including_study_start := 1]
-output_spells_category_enriched <- output_spells_category_enriched[, insufficient_run_in := fifelse(entry_spell_category > date_of_birth & entry_spell_category <= study_start - 365, 0, 1)]
-output_spells_category_enriched <- output_spells_category_enriched[, insufficient_run_in := min(fifelse(entry_spell_category == date_of_birth & year(date_of_birth) == 2019, 0 , insufficient_run_in)), by="person_id"]
-output_spells_category_enriched <- output_spells_category_enriched[, study_entry_date := study_start][, start_follow_up := start_follow_up][, study_exit_date:= fifelse(no_observation_period_including_study_start == 0, pmin(date_of_death, exit_spell_category, study_end, na.rm = T), na_date)]
-output_spells_category_enriched <- output_spells_category_enriched[, no_observation_period_including_study_start := min(no_observation_period_including_study_start, na.rm = T), by="person_id"][, study_exit_date := min(study_exit_date, na.rm = T), by="person_id"]
-D3_exclusion_observation_periods_not_overlapping <- unique(output_spells_category_enriched[,.(person_id, study_entry_date, start_follow_up, study_exit_date, death_before_study_entry, insufficient_run_in, no_observation_period_including_study_start)])
-
-PERSONS_OP <- merge(D3_inclusion_from_PERSONS,
-                    D3_exclusion_no_observation_period,
-                    by="person_id",
-                    all.x = T)
-PERSONS_OP2 <- merge(PERSONS_OP,
-                     D3_exclusion_observation_periods_not_overlapping,
-                     by="person_id",
-                     all.x = T)
+  na_date = lubridate::ymd(99991231)
   
-coords<-c("sex_or_birth_date_missing", "birth_date_absurd", "no_observation_period", "insufficient_run_in","no_observation_period_including_study_start", "death_before_study_entry")
-D3_selection_criteria <- PERSONS_OP2[, (coords) := replace(.SD, is.na(.SD), 0), .SDcols = coords]
-D3_selection_criteria <- D3_selection_criteria[!is.na(study_entry_date), ]
-
-#if (this_datasource_has_subpopulations == FALSE){ 
-  #D3_selection_criteria <- D3_selection_criteriatemp
-# }else{
-#   D3_selection_criteria[[subpop]] <- D3_selection_criteriatemp
-# }
-#}
-
-save(D3_selection_criteria,file=paste0(dirtemp,"D3_selection_criteria.RData"))
-
-rm(output_spells_category_enriched,D3_inclusion_from_PERSONS,D3_exclusion_observation_periods_not_overlapping)
-rm(PERSONS_OP, PERSONS_OP2, start_follow_up, na_date, coords)
-rm(D3_PERSONS, PERSONS_in_OP, output_spells_category,OBSERVATION_PERIODS, D3_selection_criteria, D3_exclusion_no_observation_period)
-
-
-
-
-
+  output_spells_category_enriched <- merge(D3_inclusion_from_PERSONS, output_spells_category, all.x = T, by="person_id")
+  output_spells_category_enriched <- output_spells_category_enriched[entry_spell_category < date_of_birth + 60, entry_spell_category := date_of_birth]
+  output_spells_category_enriched <- output_spells_category_enriched[, death_before_study_entry := fifelse(!is.na(date_of_death) & date_of_death < study_start, 1, 0)]
+  output_spells_category_enriched <- output_spells_category_enriched[!is.na(entry_spell_category) & !is.na(exit_spell_category), no_observation_period_including_study_start := fifelse(study_start %between% list(entry_spell_category,exit_spell_category) & entry_spell_category < exit_spell_category, 0, 1)]
+  output_spells_category_enriched <- output_spells_category_enriched[is.na(entry_spell_category) | is.na(exit_spell_category), no_observation_period_including_study_start := 1]
+  output_spells_category_enriched <- output_spells_category_enriched[, insufficient_run_in := fifelse(entry_spell_category >= date_of_birth & entry_spell_category <= study_start - 365, 0, 1)]
+  output_spells_category_enriched <- output_spells_category_enriched[, insufficient_run_in := min(fifelse(entry_spell_category == date_of_birth & year(date_of_birth) == 2019, 0 , insufficient_run_in)), by="person_id"]
+  output_spells_category_enriched <- output_spells_category_enriched[, study_entry_date := study_start][, start_follow_up := start_lookback][, study_exit_date:= fifelse(no_observation_period_including_study_start == 0, pmin(date_of_death, exit_spell_category, study_end, na.rm = T), na_date)]
+  output_spells_category_enriched <- output_spells_category_enriched[, no_observation_period_including_study_start := min(no_observation_period_including_study_start, na.rm = T), by="person_id"][, study_exit_date := min(study_exit_date, na.rm = T), by="person_id"]
+  D3_exclusion_observation_periods_not_overlapping <- unique(output_spells_category_enriched[,.(person_id, study_entry_date, start_follow_up, study_exit_date, death_before_study_entry, insufficient_run_in, no_observation_period_including_study_start)])
+  
+  PERSONS_OP <- merge(D3_inclusion_from_PERSONS,
+                      D3_exclusion_no_observation_period,
+                      by="person_id",
+                      all.x = T)
+  PERSONS_OP2 <- merge(PERSONS_OP,
+                       D3_exclusion_observation_periods_not_overlapping,
+                       by="person_id",
+                       all.x = T)
+  
+  coords<-c("sex_or_birth_date_missing", "birth_date_absurd", "no_observation_period", "insufficient_run_in","no_observation_period_including_study_start", "death_before_study_entry")
+  selection_criteria <- PERSONS_OP2[, (coords) := replace(.SD, is.na(.SD), 0), .SDcols = coords]
+  selection_criteria <- selection_criteria[!is.na(study_entry_date), ]
+  
+  tempname<-paste0("D3_selection_criteria",suffix[[subpop]])
+  assign(tempname,selection_criteria)
+  save(list=paste0("D3_selection_criteria",suffix[[subpop]]),file=paste0(dirtemp,"D3_selection_criteria",suffix[[subpop]],".RData"))
+  rm(list=paste0("D3_selection_criteria",suffix[[subpop]]))
+  
+}
+  
+ rm(output_spells_category_enriched,D3_inclusion_from_PERSONS,D3_exclusion_observation_periods_not_overlapping)
+rm(PERSONS_OP, PERSONS_OP2, na_date, coords)
+ rm(D3_PERSONS, PERSONS_in_OP, output_spells_category,OBSERVATION_PERIODS, D3_exclusion_no_observation_period,selection_criteria)
 

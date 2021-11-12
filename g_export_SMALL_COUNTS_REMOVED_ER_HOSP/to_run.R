@@ -1,12 +1,46 @@
 #-------------------------------
 # ECVM script
 
-# v6.0 - 29 September 2021
-
 # authors: Rosa Gini, Olga Paoletti, Davide Messina, Giorgio Limoncella
 
-# changelog V5.3_MIS:
-# adjutment for subpopulations
+# v 6.4.3
+# updated code list for ALI
+# added modification for step 07_9 to decrease RAM utilization
+
+# v 6.4.2
+# list of codes for concepts moved to p_steps/archive_parameters
+# gap between OBS PERIODS to 180dd for ARS
+
+# v 6.4.1
+# bugfix and incident cases in 11/11_3 now counted only if person in study
+
+# v 6.4
+# Inclusion of use of hypertensive drugs in cardiovascular risk
+# bug fix in final tables and insufficient run_in
+# PT -> Counts in final tables
+# Risk factors calculated from 1/1/2019
+# Added any_risk_factors in final tables
+
+#v 6.3.1
+#DO NOT include use of hypertensive drugs in cardiovascular risk,k small bug fix in final tables
+
+#v 6.3
+#changes in final tables for October report
+
+#v 6.2.2
+#changes in the vaccines lables and small fix for the MIS final tables
+
+#v.6.2.1
+##small fix on final table 7, fix on filter for covid dates 
+
+#v.6.2
+##small changes on final tables,addition of KD as a conceptset and PERICARD in CVM report
+
+#v.6.1
+#small changes on final tables
+
+# v6.0 - 29 September 2021
+# adjustment for subpopulations and change of agebands
 
 # changelog V5.3_MIS:
 # addition of final tables 1-7
@@ -97,6 +131,7 @@ system.time(source(paste0(thisdir,"/p_steps/step_01_4_T2.1_create_prompt_and_ite
 system.time(source(paste0(thisdir,"/p_steps/step_02_1_T2_create_QC_criteria.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_02_2_T3_apply_QC_exclusion_criteria.R")))
 
+
 #03 create exclusion criteria
 system.time(source(paste0(thisdir,"/p_steps/step_03_1_T2_create_exclusion_criteria.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_03_2_T2_merge_persons_concept.R")))
@@ -106,45 +141,48 @@ system.time(source(paste0(thisdir,"/p_steps/step_04_1_T3_apply_exclusion_criteri
 system.time(source(paste0(thisdir,"/p_steps/step_04_2_T3_apply_quality_check_exclusion_criteria_doses.R")))
 ##use flowchart (apply also quality checks)
 
+#10 describing the datasets
+system.time(source(paste0(thisdir,"/p_steps/step_10_1_FlowChart_description.R")))
+
 #05 create D3 for doses and coverage
 system.time(source(paste0(thisdir,"/p_steps/step_05_1_T2.2_components.R")))
-
 system.time(source(paste0(thisdir,"/p_steps/step_05_2_T2.2_secondary_components.R")))
-
 system.time(source(paste0(thisdir,"/p_steps/step_05_3_T2_create_events_ALL_OUTCOMES.R")))
-
 system.time(source(paste0(thisdir,"/p_steps/step_05_4_QC_count_codes_ALL_OUTCOMES.R")))
-
 system.time(source(paste0(thisdir,"/p_steps/step_05_5_QC_apply_component_strategy.R")))
-
 system.time(source(paste0(thisdir,"/p_steps/step_05_6_T2.2_covariates_at_baseline.R")))
-
 system.time(source(paste0(thisdir,"/p_steps/step_05_7_T2.2_DP_at_baseline.R")))
-
 system.time(source(paste0(thisdir,"/p_steps/step_05_8_T2.3_baseline_characteristics.R")))
-
 system.time(source(paste0(thisdir,"/p_steps/step_05_9_T2.3_ALL_covariates_at_baseline_V2.R")))
-
 system.time(source(paste0(thisdir,"/p_steps/step_05_10_T2.2_components_COVID_severity.R")))
-
 system.time(source(paste0(thisdir,"/p_steps/step_05_11_T2.3_algorithms_COVID_severity.R")))
 
 #06 create D3 for doses and coverage
-system.time(source(paste0(thisdir,"/p_steps/step_06_T2_create_D3_datasets.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_06_1_T2_create_D3_datasets.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_06_2_T2.2_covariates_at_vaccination.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_06_3_T2.2_DP_at_vaccination.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_06_4_T2.3_vaccination_characteristics.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_06_5_T2.3_ALL_covariates_at_vaccination_V2.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_06_6_T2_create_D3_datasets.R")))
 
-#-----------------
-#MIS section
+#MIS and Myocarditis section
 # create D3 MIS population
-system.time(source(paste0(thisdir,"/p_steps/step_06_2_MIS_population.R")))
+
+system.time(source(paste0(thisdir,"/p_steps/step_06_7_MIS_population.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_06_8_T2.2_covariates_at_covid.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_06_9_T2.2_DP_at_covid.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_06_10_T2.3_covid_characteristics.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_06_11_T2.3_ALL_covariates_at_covid_V2.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_06_12_MIS_population_d.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_07_9_T3_create_person_time_MIS_year.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_07_10_T3_aggregate_monthly_MIS.R")))
-system.time(source(paste0(thisdir,"/p_steps/step_08_T4_IR_MIS.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_08_2_T4_IR_MIS.R")))
 
 #descriptive
-system.time(source(paste0(thisdir,"/p_steps/step_09_2_T3_create_D4_descriptive_tables.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_09_4_T3_create_D4_descriptive_tables_MIS.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_11_2_T4_create_dummy_tables_MIS_KD.R")))
 
+##end MIS and Myocarditis section------------
 
 #07 create persontime
 system.time(source(paste0(thisdir,"/p_steps/step_07_1_T3_create_person_time_risks.R")))
@@ -159,26 +197,21 @@ system.time(source(paste0(thisdir,"/p_steps/step_07_8_T3_aggregate_monthly.R")))
 
 
 #08 Calculate Incidence Rates
-system.time(source(paste0(thisdir,"/p_steps/step_08_T4_IR.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_08_1_T4_IR.R")))
 
 
 #09 create D4 for doses and coverage
 system.time(source(paste0(thisdir,"/p_steps/step_09_1_T3_create_D4_doses_weeks.R")))
-
-
+system.time(source(paste0(thisdir,"/p_steps/step_09_2_T3_create_D4_descriptive_tables.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_09_3_T3_create_dashboard_tables.R")))
 
-#10 describing the datasets
-system.time(source(paste0(thisdir,"/p_steps/step_10_1_FlowChart_description.R")))
-system.time(source(paste0(thisdir,"/p_steps/step_10_2_Coverage_description.R")))
-system.time(source(paste0(thisdir,"/p_steps/step_10_3_Doses_description.R")))
 
-system.time(source(paste0(thisdir,"/p_steps/step_10_4_benefit_description.R")))
-#system.time(source(paste0(thisdir,"/p_steps/step_10_5_risk_description.R")))
+# system.time(source(paste0(thisdir,"/p_steps/step_10_2_Coverage_description.R")))
+# system.time(source(paste0(thisdir,"/p_steps/step_10_3_Doses_description.R")))
+# system.time(source(paste0(thisdir,"/p_steps/step_10_4_benefit_description.R")))
 
-# system.time(source(paste0(thisdir,"/p_steps/step_09_1_FlowChart_description_MD.R")))
-# system.time(source(paste0(thisdir,"/p_steps/step_09_2_Coverage_description_MD.R")))
-# system.time(source(paste0(thisdir,"/p_steps/step_09_3_Doses_description_MD.R")))
 
 #11 Create descriptive tables
-system.time(source(paste0(thisdir,"/p_steps/step_11_T4_create_dummy_tables.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_11_1_T4_create_dummy_tables.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_11_3_T4_create_dummy_tables_October.R")))
+

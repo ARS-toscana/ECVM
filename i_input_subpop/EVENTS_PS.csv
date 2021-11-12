@@ -1,11 +1,11 @@
 person_id,start_date_record,end_date_record,event_code,event_record_vocabulary,text_linked_to_event_code,event_free_text,present_on_admission,laterality_of_event,meaning_of_event,origin_of_event,visit_occurrence_id
-ECVM210900001,20190607,20190607,V658,ICD9,"","","","",emergency_room_diagnosis,PS,PS_1
+ECVM210900001,20190607,20190607,G5200,READ,"","","","",emergency_room_diagnosis,PS,PS_1
 ECVM210900001,20190607,20190607,"","","","xxxx x x, x",yes,"",emergency_room_presentation,PS,PS_2
-ECVM210900001,20190627,20190627,84500,ICD9,"","","","",emergency_room_diagnosis,PS,PS_3
+ECVM210900001,20190627,20190627,G52.0,READ,"","","","",emergency_room_diagnosis,PS,PS_3
 ECVM210900001,20190627,20190627,"","","","xxxx x x, x",yes,"",emergency_room_presentation,PS,PS_4
-ECVM210900002,20191008,20191008,7806,ICD9,"","","","",emergency_room_diagnosis,PS,PS_5
+ECVM210900002,20191008,20191008,G52..,READ,"","","","",emergency_room_diagnosis,PS,PS_5
 ECVM210900002,20191008,20191008,"","","","xxxx x x, x",yes,"",emergency_room_presentation,PS,PS_6
-ECVM210900005,20190725,20190725,605,ICD9,"","","","",emergency_room_diagnosis,PS,PS_7
+ECVM210900005,20190725,20190725,G52.,READ,"","","","",emergency_room_diagnosis,PS,PS_7
 ECVM210900005,20190725,20190725,"","","","xxxx x x, x",yes,"",emergency_room_presentation,PS,PS_8
 ECVM210900008,20190816,20190816,9953,ICD9,"","","","",emergency_room_diagnosis,PS,PS_9
 ECVM210900008,20190816,20190816,"","","","xxxx x x, x",yes,"",emergency_room_presentation,PS,PS_10

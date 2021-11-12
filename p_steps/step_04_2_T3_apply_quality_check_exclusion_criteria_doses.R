@@ -1,10 +1,8 @@
 #merge vaccine information to persons
-# for (subpop in subpopulations[[thisdatasource]]){
-#   print(subpop)
-  load(paste0(dirtemp,"persons_doses.RData"))
-  
-  # if (this_datasource_has_subpopulations == TRUE) persons_doses <- as.data.table(persons_doses[[subpop]])
-
+for (subpop in subpopulations_non_empty){
+  print(subpop)
+  load(paste0(dirtemp,"persons_doses",suffix[[subpop]],".RData"))
+  persons_doses_temp<-get(paste0("persons_doses", suffix[[subpop]]))
 
 all_mondays <- seq.Date(as.Date("19000101","%Y%m%d"), Sys.Date(), by = "week")
 
@@ -17,7 +15,7 @@ all_days_df <- all_days_df[, monday_week := nafill(monday_week, type="locf")]
 all_days_df <- all_days_df[all_days >= study_start,]
 
 ##add the corresponding moday to each date
-temp<-merge(persons_doses,all_days_df, by.x=c("date"), by.y = "all_days")
+temp<-merge(persons_doses_temp,all_days_df, by.x=c("date"), by.y = "all_days")
 monday_start_covid<-find_last_monday(start_COVID_vaccination_date,monday_week)
 temp<-temp[monday_week>=monday_start_covid,]
 
@@ -26,24 +24,22 @@ setnames(temp, "sex_or_birth_date_missing", "dose_not_in_persons")
 
 selected_population <- CreateFlowChart(
   dataset = temp,
-  listcriteria = c("qc_dupl", "qc_1_date", "qc_2_date", "qc_1_dose", "qc_2_dose", "qc_manufacturer",
-                  "qc_mult_date_for_dose", "qc_mult_dose_for_date", "qc_3_date","dose_not_in_persons",
-                  "birth_date_absurd", "no_observation_period", "death_before_study_entry",
-                  "no_observation_period_including_study_start","insufficient_run_in", "death_before_vax",
-                  "exit_spell_before_vax", "study_end_before_vax"),
+  listcriteria = c("duplicated_records", "missing_date", "date_before_start_vax", "distance_btw_1_2_doses",
+                   "distance_btw_2_3_doses", "dose_after_3", "dose_after_2", "dose_not_in_persons", "birth_date_absurd",
+                   "no_observation_period", "death_before_study_entry", "no_observation_period_including_study_start",
+                   "insufficient_run_in", "death_before_vax", "exit_spell_before_vax", "study_end_before_vax"),
   strata = "monday_week",
-  flowchartname = "Flowchart_doses")
+  flowchartname = paste0("Flowchart_doses",suffix[[subpop]]))
 
-# if (this_datasource_has_subpopulations == TRUE & nrow(selected_population)>0){
+thisdirexp <- ifelse(this_datasource_has_subpopulations == FALSE,direxp,direxpsubpop[[subpop]])
+
+  fwrite(get(paste0("Flowchart_doses",suffix[[subpop]])), paste0(thisdirexp,"Flowchart_doses.csv"))
   
-  # D4_study_source_population[[subpop]] <- selected_population
-  # fwrite(Flowchart_doses,file=paste0(direxpsubpop[[subpop]],"Flowchart_doses.csv"))}  
-
-# if (this_datasource_has_subpopulations == FALSE & nrow(selected_population)>0){ 
-  fwrite(Flowchart_doses,file=paste0(direxp,"Flowchart_doses.csv"))
-# }
-# }
+  rm(list=paste0("Flowchart_doses",suffix[[subpop]]))
+  rm(list=paste0("persons_doses", suffix[[subpop]]))
+}
 
 
 
-rm(persons_doses, all_mondays, monday_week, double_weeks, all_days_df, temp, temp2, selected_population, Flowchart_doses)
+
+rm(persons_doses_temp, all_mondays, monday_week, double_weeks, all_days_df, temp, temp2, selected_population )
