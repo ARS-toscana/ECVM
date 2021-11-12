@@ -3,6 +3,39 @@
 
 # authors: Rosa Gini, Olga Paoletti, Davide Messina, Giorgio Limoncella
 
+# v 6.4.3
+# updated code list for ALI
+# added modification for step 07_9 to decrease RAM utilization
+
+# v 6.4.2
+# list of codes for concepts moved to p_steps/archive_parameters
+# gap between OBS PERIODS to 180dd for ARS
+
+# v 6.4.1
+# bugfix and incident cases in 11/11_3 now counted only if person in study
+
+# v 6.4
+# Inclusion of use of hypertensive drugs in cardiovascular risk
+# bug fix in final tables and insufficient run_in
+# PT -> Counts in final tables
+# Risk factors calculated from 1/1/2019
+# Added any_risk_factors in final tables
+
+#v 6.3.1
+#DO NOT include use of hypertensive drugs in cardiovascular risk,k small bug fix in final tables
+
+#v 6.3
+#changes in final tables for October report
+
+#v 6.2.2
+#changes in the vaccines lables and small fix for the MIS final tables
+
+#v.6.2.1
+##small fix on final table 7, fix on filter for covid dates 
+
+#v.6.2
+##small changes on final tables,addition of KD as a conceptset and PERICARD in CVM report
+
 #v.6.1
 #small changes on final tables
 
@@ -180,4 +213,5 @@ system.time(source(paste0(thisdir,"/p_steps/step_09_3_T3_create_dashboard_tables
 
 #11 Create descriptive tables
 system.time(source(paste0(thisdir,"/p_steps/step_11_T4_create_dummy_tables.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_11_3_T4_create_dummy_tables_October.R")))
 
