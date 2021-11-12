@@ -31,7 +31,9 @@ for (ageband in Agebands_labels) {
   rm(list=nameoutput)
 }
 
+
 df_events_ages <- paste0("pop_age_", gsub("-", "_", Agebands_labels))
+
 
 rm(cohort_to_vaxweeks)
 

@@ -133,6 +133,7 @@ for (i in names(get(nameoutput3))){
   get(nameoutput3)[is.na(get(i)), (i) := 0]
 }
 
+
 save(nameoutput3,file=paste0(diroutput,nameoutput3,".RData"),list=nameoutput3)
 rm(list=nameoutput3)
 rm(list=namedataset3)
@@ -141,6 +142,7 @@ rm(namedataset3,nameoutput3)
 
 namedataset4<-paste0("D4_persontime_benefit_year",suffix[[subpop]])
 load(paste0(diroutput,"D4_persontime_benefit_year",suffix[[subpop]],".RData"))
+
 
 assign(namedataset4,get(namedataset4)[any_risk_factors != 0][Dose != 0 | year == 2020, ][, year := NULL])
 cols_to_sums = names(get(namedataset4))[16:length(get(namedataset4))]

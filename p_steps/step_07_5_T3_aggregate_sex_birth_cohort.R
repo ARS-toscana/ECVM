@@ -51,7 +51,7 @@ for (subpop in subpopulations_non_empty) {
   assign(namedataset2, get(namedataset2)[, lapply(.SD, sum, na.rm=TRUE),
                                          by = c("sex", "ageband_at_study_entry", "Dose", "type_vax", "week"),
                                          .SDcols = cols_to_sums])
-  
+
   all_sex <- copy(get(namedataset2))[, lapply(.SD, sum, na.rm=TRUE),
                                               by = c("ageband_at_study_entry", "Dose", "type_vax", "week"),
                                               .SDcols = cols_to_sums]
@@ -102,7 +102,7 @@ for (subpop in subpopulations_non_empty) {
   all_ages <- unique(all_ages[, ageband_at_study_entry := "all_birth_cohorts"])
   
   assign(namedataset3, rbind(get(namedataset3), all_ages))
-  
+
   assign(namedataset3, bc_divide_60(get(namedataset3), c("sex", "Dose", "type_vax", "week_fup"), cols_to_sums))
   
   setorder(get(namedataset3), "ageband_at_study_entry")
@@ -168,7 +168,6 @@ for (subpop in subpopulations_non_empty) {
   assign(namedataset4, get(namedataset4)[, lapply(.SD, sum, na.rm=TRUE),
                                          by = c("sex", "ageband_at_study_entry", "Dose", "type_vax", "week_fup"),
                                          .SDcols = cols_to_sums])
-  
   all_sex <- copy(get(namedataset4))[, lapply(.SD, sum, na.rm=TRUE),
                                               by = c("ageband_at_study_entry", "Dose", "type_vax", "week_fup"),
                                               .SDcols = cols_to_sums]

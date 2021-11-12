@@ -53,7 +53,7 @@ for (subpop in subpopulations_non_empty) {
     rm(list=paste0(events_df_sex,suffix[[subpop]]))
     
   }
-   
+  
   vect_df_persontime <- list()
   for (events_df_sex in df_events_sex) {
     load(paste0(dirtemp, events_df_sex,suffix[[subpop]], ".RData"))
@@ -62,7 +62,7 @@ for (subpop in subpopulations_non_empty) {
   
   assign("Output_file", rbindlist(vect_df_persontime))
   rm(vect_df_persontime)
-
+  
   nameoutput<-paste0("D4_persontime_b",suffix[[subpop]])
   assign(nameoutput ,Output_file)
   rm(Output_file)
@@ -209,24 +209,24 @@ for (subpop in subpopulations_non_empty) {
     
     nameoutput <- paste0("Output_file",suffix[[subpop]])
     assign(nameoutput, CountPersonTime(
-    Dataset_events = events_ALL_OUTCOMES,
-    Dataset = get(paste0(events_df_sex,suffix[[subpop]])),
-    Person_id = "person_id",
-    Start_study_time = start_persontime_studytime,
-    End_study_time = end_persontime_studytime,
-    Start_date = "cohort_entry_date_MIS_c",
-    End_date = "study_exit_date_MIS_c",
-    #Birth_date = "date_of_birth",
-    Strata = c("sex","ageband_at_1_jan_2021"),
-    Name_event = "name_event",
-    Date_event = "date_event",
-    #Age_bands = c(0,19,29,39,49,59,69,79),
-    Increment="year",
-    Outcomes_nrec =  list_outcomes_MIS, 
-    #Unit_of_age = "year",
-    #include_remaning_ages = T,
-    Aggregate = T
-  ))
+      Dataset_events = events_ALL_OUTCOMES,
+      Dataset = get(paste0(events_df_sex,suffix[[subpop]])),
+      Person_id = "person_id",
+      Start_study_time = start_persontime_studytime,
+      End_study_time = end_persontime_studytime,
+      Start_date = "cohort_entry_date_MIS_c",
+      End_date = "study_exit_date_MIS_c",
+      #Birth_date = "date_of_birth",
+      Strata = c("sex","ageband_at_1_jan_2021"),
+      Name_event = "name_event",
+      Date_event = "date_event",
+      #Age_bands = c(0,19,29,39,49,59,69,79),
+      Increment="year",
+      Outcomes_nrec =  list_outcomes_MIS, 
+      #Unit_of_age = "year",
+      #include_remaning_ages = T,
+      Aggregate = T
+    ))
     
     save(nameoutput, file = paste0(dirtemp, events_df_sex,suffix[[subpop]], ".RData"),list=nameoutput)
     rm(list=paste0(events_df_sex,suffix[[subpop]]))
@@ -268,24 +268,24 @@ for (subpop in subpopulations_non_empty) {
     
     nameoutput <- paste0("Output_file",suffix[[subpop]])
     assign(nameoutput, CountPersonTime(
-    Dataset_events = events_ALL_OUTCOMES,
-    Dataset = get(paste0(events_df_sex,suffix[[subpop]])),
-    Person_id = "person_id",
-    Start_study_time = start_persontime_studytime,
-    End_study_time = end_persontime_studytime,
-    Start_date = "cohort_entry_date_MIS_c",
-    End_date = "study_exit_date_MIS_c",
-    #Birth_date = "date_of_birth",
-    Strata = c("sex","ageband_at_1_jan_2021"),
-    Name_event = "name_event",
-    Date_event = "date_event",
-    #Age_bands = c(0,19,29,39,49,59,69,79),
-    Increment="month",
-    Outcomes_nrec =   list_outcomes_MIS, 
-    #Unit_of_age = "year",
-    #include_remaning_ages = T,
-    Aggregate = T
-  ))
+      Dataset_events = events_ALL_OUTCOMES,
+      Dataset = get(paste0(events_df_sex,suffix[[subpop]])),
+      Person_id = "person_id",
+      Start_study_time = start_persontime_studytime,
+      End_study_time = end_persontime_studytime,
+      Start_date = "cohort_entry_date_MIS_c",
+      End_date = "study_exit_date_MIS_c",
+      #Birth_date = "date_of_birth",
+      Strata = c("sex","ageband_at_1_jan_2021"),
+      Name_event = "name_event",
+      Date_event = "date_event",
+      #Age_bands = c(0,19,29,39,49,59,69,79),
+      Increment="month",
+      Outcomes_nrec =   list_outcomes_MIS, 
+      #Unit_of_age = "year",
+      #include_remaning_ages = T,
+      Aggregate = T
+    ))
     
     save(nameoutput, file = paste0(dirtemp, events_df_sex,suffix[[subpop]], ".RData"),list=nameoutput)
     rm(list=paste0(events_df_sex,suffix[[subpop]]))
@@ -386,24 +386,24 @@ for (subpop in subpopulations_non_empty) {
     
     nameoutput <- paste0("Output_file",suffix[[subpop]])
     assign(nameoutput, CountPersonTime(
-    Dataset_events = events_ALL_OUTCOMES,
-    Dataset = get(paste0(events_df_sex,suffix[[subpop]])),
-    Person_id = "person_id",
-    Start_study_time = start_persontime_studytime,
-    End_study_time = end_persontime_studytime,
-    Start_date = "cohort_entry_date_MIS_d",
-    End_date = "study_exit_date_MIS_d",
-    #Birth_date = "date_of_birth",
-    Strata = c("sex","ageband_at_1_jan_2021","type_vax_1","history_covid"), #add covid before vaccine
-    Name_event = "name_event",
-    Date_event = "date_event",
-    #Age_bands = c(0,19,29,39,49,59,69,79),
-    Increment="year",
-    Outcomes_nrec = list_outcomes_MIS, 
-    #Unit_of_age = "year",
-    #include_remaning_ages = T,
-    Aggregate = T
-  ))
+      Dataset_events = events_ALL_OUTCOMES,
+      Dataset = get(paste0(events_df_sex,suffix[[subpop]])),
+      Person_id = "person_id",
+      Start_study_time = start_persontime_studytime,
+      End_study_time = end_persontime_studytime,
+      Start_date = "cohort_entry_date_MIS_d",
+      End_date = "study_exit_date_MIS_d",
+      #Birth_date = "date_of_birth",
+      Strata = c("sex","ageband_at_1_jan_2021","type_vax_1","history_covid"), #add covid before vaccine
+      Name_event = "name_event",
+      Date_event = "date_event",
+      #Age_bands = c(0,19,29,39,49,59,69,79),
+      Increment="year",
+      Outcomes_nrec = list_outcomes_MIS, 
+      #Unit_of_age = "year",
+      #include_remaning_ages = T,
+      Aggregate = T
+    ))
     
     save(nameoutput, file = paste0(dirtemp, events_df_sex,suffix[[subpop]], ".RData"),list=nameoutput)
     rm(list=paste0(events_df_sex,suffix[[subpop]]))
@@ -445,24 +445,24 @@ for (subpop in subpopulations_non_empty) {
     
     nameoutput <- paste0("Output_file",suffix[[subpop]])
     assign(nameoutput, CountPersonTime(
-    Dataset_events = events_ALL_OUTCOMES,
-    Dataset = get(paste0(events_df_sex,suffix[[subpop]])),
-    Person_id = "person_id",
-    Start_study_time = start_persontime_studytime,
-    End_study_time = end_persontime_studytime,
-    Start_date = "cohort_entry_date_MIS_d",
-    End_date = "study_exit_date_MIS_d",
-    #Birth_date = "date_of_birth",
-    Strata = c("sex","ageband_at_1_jan_2021","type_vax_1","history_covid"), #add covid before vaccine
-    Name_event = "name_event",
-    Date_event = "date_event",
-    #Age_bands = c(0,19,29,39,49,59,69,79),
-    Increment="month",
-    Outcomes_nrec = list_outcomes_MIS, 
-    #Unit_of_age = "year",
-    #include_remaning_ages = T,
-    Aggregate = T
-  ))
+      Dataset_events = events_ALL_OUTCOMES,
+      Dataset = get(paste0(events_df_sex,suffix[[subpop]])),
+      Person_id = "person_id",
+      Start_study_time = start_persontime_studytime,
+      End_study_time = end_persontime_studytime,
+      Start_date = "cohort_entry_date_MIS_d",
+      End_date = "study_exit_date_MIS_d",
+      #Birth_date = "date_of_birth",
+      Strata = c("sex","ageband_at_1_jan_2021","type_vax_1","history_covid"), #add covid before vaccine
+      Name_event = "name_event",
+      Date_event = "date_event",
+      #Age_bands = c(0,19,29,39,49,59,69,79),
+      Increment="month",
+      Outcomes_nrec = list_outcomes_MIS, 
+      #Unit_of_age = "year",
+      #include_remaning_ages = T,
+      Aggregate = T
+    ))
     
     save(nameoutput, file = paste0(dirtemp, events_df_sex,suffix[[subpop]], ".RData"),list=nameoutput)
     rm(list=paste0(events_df_sex,suffix[[subpop]]))

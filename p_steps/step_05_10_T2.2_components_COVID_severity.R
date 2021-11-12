@@ -279,6 +279,4 @@ for (subpop in subpopulations_non_empty) {
   rm(list=paste0("D3_events_COVID_narrow", suffix[[subpop]]))
 } 
 
-
 rm(events_COVID_narrow,study_population,D3_events_DEATH, components_covid_severity,temp,covid_dates_registry,covid_dates,covid_registry_symptoms,covid_registry,conceptsetdatasets)
-

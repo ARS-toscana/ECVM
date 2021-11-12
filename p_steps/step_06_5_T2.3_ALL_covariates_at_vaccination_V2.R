@@ -39,6 +39,7 @@ for (subpop in subpopulations_non_empty) {
       study_population_cov_ALL <- study_population_cov_ALL[get(paste0(cov,"_at_date_vax_1")) == 1 | get(nameDP1) == 1| get(nameDP2) == 1, namevar := 1]
     }
 
+
     # print(nameDP)
     study_population_cov_ALL <- study_population_cov_ALL[namevar == 1 ,all_covariates_non_CONTR :=1]
     

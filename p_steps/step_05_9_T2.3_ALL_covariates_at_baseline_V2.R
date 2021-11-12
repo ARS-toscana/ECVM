@@ -60,7 +60,7 @@ for (subpop in subpopulations_non_empty) {
         nameDP2 = "DP_CONTRHYPERT_at_study_entry"
       study_population_cov_ALL <- study_population_cov_ALL[get(paste0(cov,"_at_study_entry")) == 1 | get(nameDP1) == 1  | get(nameDP2) == 1, namevar := 1]
     }
-
+    
     study_population_cov_ALL <- study_population_cov_ALL[namevar == 1 ,all_covariates_non_CONTR :=1]
     setnames(study_population_cov_ALL,"namevar",paste0(cov,"_either_DX_or_DP"))
 
