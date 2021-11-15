@@ -18,9 +18,13 @@ for (subpop in subpopulations_non_empty) {
   rm(study_population)
   
   events_card <- events_ALL_OUTCOMES[name_event %in% c("Myocardalone_narrow", "PERICARD_narrow"), ]
-  events_card <- events_card[4, name_event := "Myocardalone_narrow"][, c("person_id", "name_event", "date_event")]
+  events_card <- events_card[, c("person_id", "name_event", "date_event")]
+  events_card <- events_card[events_card[,.I[which.min(date_event)], by = c("person_id", "name_event")][['V1']]]
   events_card <- dcast(events_card, person_id ~ name_event, value.var = "date_event")
-  setnames(events_card, c("Myocardalone_narrow", "PERICARD_narrow"), c("myocarditis_date", "pericarditis_date"))
+  events_card <- rbind(events_card, data.table(person_id = character(), Myocardalone_narrow = Date(),
+                                               PERICARD_narrow = Date()), fill = TRUE)
+  setnames(events_card, c("Myocardalone_narrow", "PERICARD_narrow"), c("myocarditis_date", "pericarditis_date"), 
+           skip_absent = TRUE)
   SCRI <- merge(SCRI, events_card, all.x = T, by = "person_id")
   rm(events_card, events_ALL_OUTCOMES)
   
