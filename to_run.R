@@ -195,7 +195,6 @@ system.time(source(paste0(thisdir,"/p_steps/step_07_7_T3_create_person_time_vax_
 system.time(source(paste0(thisdir,"/p_steps/step_07_8_T3_aggregate_monthly.R")))
 
 
-
 #08 Calculate Incidence Rates
 system.time(source(paste0(thisdir,"/p_steps/step_08_1_T4_IR.R")))
 
@@ -215,3 +214,7 @@ system.time(source(paste0(thisdir,"/p_steps/step_09_3_T3_create_dashboard_tables
 system.time(source(paste0(thisdir,"/p_steps/step_11_1_T4_create_dummy_tables.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_11_3_T4_create_dummy_tables_October.R")))
 
+
+#SCRI section
+# create D3 MIS population
+system.time(source(paste0(thisdir,"/p_steps/step_06_13_SCRI_population.R")))
