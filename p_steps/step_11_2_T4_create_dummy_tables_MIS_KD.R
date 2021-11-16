@@ -527,7 +527,7 @@ fwrite(table5, file = paste0(dummytables_MIS, "Cohort characteristics at first o
 # Table6 ----------------------------------------------------------------------------------------------------------
 
 load(file = paste0(dirtemp, "D3_Vaccin_cohort",suffix[[subpop]],".RData"))
-
+D3_Vaccin_coh<-get(paste0("D3_Vaccin_cohort",suffix[[subpop]]))
 empty_table_7 <- data.table(a = character(0), Parameters = character(0), N = numeric(0))
 
 names_vect <- c("Pfizer", "Moderna", "AstraZeneca", "Janssen", "UKN")
