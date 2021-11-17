@@ -66,4 +66,5 @@ for (subpop in subpopulations_non_empty) {
   
   rm(list=paste0("D3_vaxweeks_poisson", suffix[[subpop]]))
   rm(D3_vaxweeks)
+  rm(D3_Vaccin_cohort)
 }
