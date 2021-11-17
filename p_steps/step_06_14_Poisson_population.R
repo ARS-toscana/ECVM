@@ -50,7 +50,7 @@ for (subpop in subpopulations_non_empty) {
   rm(divided_rows0, divided_rows1)
   
   D3_vaxweeks <- D3_vaxweeks[is.na(date_event) | !between(date_event, start_date_of_period, end_date_of_period), ]
-  D3_vaxweeks <- D3_vaxweeks[, COVID19 := fifelse(date_event <= start_date_of_period, 1, 0)]
+  D3_vaxweeks <- D3_vaxweeks[, COVID19 := fifelse(is.na(date_event) | date_event > end_date_of_period, 1, 0)]
   D3_vaxweeks <- rbind(D3_vaxweeks, divided_rows)
   rm(divided_rows)
   
