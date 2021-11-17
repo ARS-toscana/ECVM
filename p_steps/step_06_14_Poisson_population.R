@@ -42,14 +42,14 @@ for (subpop in subpopulations_non_empty) {
   D3_vaxweeks <- merge(D3_vaxweeks, outcomes_covid, all.x = T, by = "person_id")
   rm(outcomes_covid)
   
-  divided_rows <- D3_vaxweeks[between(date_event, start_date_of_period, end_date_of_period), ]
+  divided_rows <- D3_vaxweeks[data.table::between(date_event, start_date_of_period, end_date_of_period), ]
   divided_rows0 <- copy(divided_rows)[, COVID19 := 0][, end_date_of_period := date_event - 1]
   divided_rows0 <- divided_rows0[end_date_of_period >= start_date_of_period, ]
   divided_rows1 <- copy(divided_rows)[, COVID19 := 1][, start_date_of_period := date_event]
   divided_rows <- rbind(divided_rows0, divided_rows1)
   rm(divided_rows0, divided_rows1)
   
-  D3_vaxweeks <- D3_vaxweeks[is.na(date_event) | !between(date_event, start_date_of_period, end_date_of_period), ]
+  D3_vaxweeks <- D3_vaxweeks[is.na(date_event) | !data.table::between(date_event, start_date_of_period, end_date_of_period), ]
   D3_vaxweeks <- D3_vaxweeks[, COVID19 := fifelse(is.na(date_event) | date_event > end_date_of_period, 1, 0)]
   D3_vaxweeks <- rbind(D3_vaxweeks, divided_rows)
   rm(divided_rows)
