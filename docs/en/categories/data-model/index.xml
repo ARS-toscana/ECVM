@@ -52,7 +52,7 @@
     </item>
     
     <item>
-      <title>final tables</title>
+      <title>Final tables</title>
       <link>/en/data-models/final-tables/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -75,7 +75,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/en/data-models/incidence-rate/</guid>
-      <description>D4_IR_benefit_fup_BC Stratified table by sex, birth cohort, dose, type vax and week of followup. Contains the count and incidence rate with upper and lower bound for covid severity{&#34;x&#34;:{&#34;tag&#34;:{&#34;name&#34;:&#34;Reactable&#34;,&#34;attribs&#34;:{&#34;data&#34;:{&#34;Name&#34;:[&#34;Dose&#34;,&#34;sex&#34;,&#34;Birthcohort_persons&#34;,&#34;type_vax&#34;,&#34;week_fup&#34;,&#34;COVID_L1plus_b&#34;,&#34;COVID_L2plus_b&#34;,&#34;COVID_L3plus_b&#34;,&#34;COVID_L4plus_b&#34;,&#34;COVID_L5plus_b&#34;,&#34;IR_COVID_L1plus&#34;,&#34;lb_COVID_L1plus&#34;,&#34;ub_COVID_L1plus&#34;,&#34;IR_COVID_L2plus&#34;,&#34;lb_COVID_L2plus&#34;,&#34;ub_COVID_L2plus&#34;,&#34;IR_COVID_L3plus&#34;,&#34;lb_COVID_L3plus&#34;,&#34;ub_COVID_L3plus&#34;,&#34;IR_COVID_L4plus&#34;,&#34;lb_COVID_L4plus&#34;,&#34;ub_COVID_L4plus&#34;,&#34;IR_COVID_L5plus&#34;,&#34;lb_COVID_L5plus&#34;,&#34;ub_COVID_L5plus&#34;],&#34;Description&#34;:[null,null,null,&#34;type of vaccine&#34;,&#34;weeks of follow up&#34;,null,null,null,null,null,&#34;incidence rate&#34;,&#34;lower 95% confidence interval bound for the IR&#34;,&#34;upper 95% confidence interval bound for the IR&#34;,&#34;incidence rate&#34;,&#34;lower 95% confidence interval bound for the IR&#34;,&#34;upper 95% confidence interval bound for the IR&#34;</description>
+      <description>RES_IR_benefit_fup_BC Stratified table by sex, birth cohort, dose, type vax and week of followup. Contains the count and incidence rate with upper and lower bound for covid severity{&#34;x&#34;:{&#34;tag&#34;:{&#34;name&#34;:&#34;Reactable&#34;,&#34;attribs&#34;:{&#34;data&#34;:{&#34;Name&#34;:[&#34;Dose&#34;,&#34;sex&#34;,&#34;Birthcohort_persons&#34;,&#34;type_vax&#34;,&#34;week_fup&#34;,&#34;COVID_L1plus_b&#34;,&#34;COVID_L2plus_b&#34;,&#34;COVID_L3plus_b&#34;,&#34;COVID_L4plus_b&#34;,&#34;COVID_L5plus_b&#34;,&#34;IR_COVID_L1plus&#34;,&#34;lb_COVID_L1plus&#34;,&#34;ub_COVID_L1plus&#34;,&#34;IR_COVID_L2plus&#34;,&#34;lb_COVID_L2plus&#34;,&#34;ub_COVID_L2plus&#34;,&#34;IR_COVID_L3plus&#34;,&#34;lb_COVID_L3plus&#34;,&#34;ub_COVID_L3plus&#34;,&#34;IR_COVID_L4plus&#34;,&#34;lb_COVID_L4plus&#34;,&#34;ub_COVID_L4plus&#34;,&#34;IR_COVID_L5plus&#34;,&#34;lb_COVID_L5plus&#34;,&#34;ub_COVID_L5plus&#34;],&#34;Description&#34;:[null,null,null,&#34;type of vaccine&#34;,&#34;weeks of follow up&#34;,null,null,null,null,null,&#34;incidence rate&#34;,&#34;lower 95% confidence interval bound for the IR&#34;,&#34;upper 95% confidence interval bound for the IR&#34;,&#34;incidence rate&#34;,&#34;lower 95% confidence interval bound for the IR&#34;,&#34;upper 95% confidence interval bound for the IR&#34;</description>
     </item>
     
     <item>

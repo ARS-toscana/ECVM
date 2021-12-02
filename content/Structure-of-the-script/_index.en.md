@@ -17,4 +17,4 @@ A ConcePTION script is composed by
 
 Each step is a short R program, that has some input datasets and parameters, and some output datasets. The input datasets of a step are either tables of the CDM, or output datasets from previous steps.
 
-[Diagram of the structure](/data/ECVM.html))
+[Diagram of the structure](/data/ECVM.html)
