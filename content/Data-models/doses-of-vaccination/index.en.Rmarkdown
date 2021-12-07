@@ -11,11 +11,7 @@ weight: 5
 ---
 
 ```{r, echo = FALSE, warning = FALSE}
-library(magrittr)
-
-tbl_names <- c("table_QC_dose_derived", "D4_doses_weeks", "D4_distance_doses")
-
 htmltools::tagList(
-  print_mult_tbl(tbl_names, data)
+  print_mult_tbl("doses of vaccination", data)
 )
 ```

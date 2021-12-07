@@ -5,8 +5,7 @@ library(magrittr)
 tbl_to_html <- function(ind, tbl){
   
   single_row <- data[data$df_name == ind, ]
-  single_sheet <- suppressMessages(readxl::read_excel(
-    here::here("static", "data", "flowchart.xlsm"),
+  single_sheet <- suppressMessages(readxl::read_excel(path_back_end_db,
     sheet = as.character(single_row$INDEX), .name_repair = "minimal"))
   single_sheet <- single_sheet[colnames(single_sheet) %!in%c("", "Back to Index", "page_name_in documentation")]
   
@@ -35,11 +34,16 @@ title_create <- function(inp) {
   htmltools::HTML(paste("##", inp))
 }
 
-print_mult_tbl <- function(ind, tbl) {
+print_mult_tbl <- function(category, tbl) {
+  
+  ind <- data[data$page_name_in_documentation == category, ]$df_name
+  
   title_html <- lapply(ind, title_create)
   body_html <- lapply(ind, tbl_to_html, data)
   empty_line <- rep("", length(ind))
   return(c(rbind(title_html, body_html, empty_line)))
 }
 
-data <- readxl::read_excel(here::here("R", "flowchart.xlsm"))
+path_back_end_db <- here::here("R", "flowchart.xlsm")
+
+data <- readxl::read_excel(path_back_end_db)

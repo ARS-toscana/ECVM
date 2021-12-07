@@ -10,13 +10,7 @@ weight: 5
 ---
 
 ```{r, echo = FALSE, warning = FALSE}
-library(magrittr)
-
-tbl_names <- c("D4_study_source_population", "D4_study_population", "D3_study_population",
-               "D4_study_population_cov", "D3_vaccin_cohort", "D3_studyweeks", "D3_vaxweeks",
-               "D3_vaxweeks_including_not_vaccinated")
-
 htmltools::tagList(
-  print_mult_tbl(tbl_names, data)
+  print_mult_tbl("main datasets", data)
 )
 ```
