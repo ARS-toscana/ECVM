@@ -133,6 +133,9 @@ for (i in names(get(nameoutput3))){
   get(nameoutput3)[is.na(get(i)), (i) := 0]
 }
 
+assign(nameoutput3, get(nameoutput3)[, (cols_to_sums) := lapply(.SD, cumsum),
+                                     by = c("Dose", "type_vax", "riskfactor", "sex"),
+                                     .SDcols = cols_to_sums])
 
 save(nameoutput3,file=paste0(diroutput,nameoutput3,".RData"),list=nameoutput3)
 rm(list=nameoutput3)

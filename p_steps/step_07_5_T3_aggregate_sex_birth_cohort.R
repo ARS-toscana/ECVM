@@ -149,6 +149,10 @@ for (subpop in subpopulations_non_empty) {
     get(nameoutput3)[is.na(get(i)), (i) := 0]
   }
   
+  assign(nameoutput3, get(nameoutput3)[, (cols_to_sums) := lapply(.SD, cumsum),
+                                       by = c("Dose", "type_vax", "ageband_at_study_entry", "sex"),
+                                       .SDcols = cols_to_sums])
+  
   save(nameoutput3,file=paste0(diroutput,nameoutput3,".RData"),list=nameoutput3)
   rm(list=nameoutput3)
   rm(list=namedataset3)

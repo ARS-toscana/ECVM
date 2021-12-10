@@ -41,7 +41,7 @@ for (subpop in subpopulations_non_empty) {
   study_population<-get(paste0("D4_study_population", suffix[[subpop]]))
   rm(list=paste0("D4_study_population", suffix[[subpop]]))
   study_population <- study_population[, c("person_id", "date_of_death")]
-  setnames(study_population, "date_of_death", "date_death")
+  setnames(study_population, "date_of_death", "death_date")
   SCRI <- merge(SCRI, study_population, all.x = T, by = "person_id")
   rm(study_population)
   
@@ -50,7 +50,7 @@ for (subpop in subpopulations_non_empty) {
   SCRI <- merge(SCRI, any_covid, all.x = T, by = "person_id")
   rm(any_covid, outcomes_covid)
   
-  for (col_date in c("myocarditis_date", "pericarditis_date", "date_death", "covid_19_date")) {
+  for (col_date in c("myocarditis_date", "pericarditis_date", "death_date", "covid_19_date")) {
     SCRI <- SCRI[get(col_date) > study_exit_date, (col_date) := NA]
   }
   
