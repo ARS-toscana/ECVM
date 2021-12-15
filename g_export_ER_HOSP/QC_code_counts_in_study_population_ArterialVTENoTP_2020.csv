@@ -7,6 +7,7 @@ hospitalisation_secondary,ICD9,41090,1
 emergency_room_diagnosis,ICD9,45183,1
 hospitalisation_primary,ICD9,41041,1
 hospitalisation_primary,ICD9,41071,1
+emergency_room_diagnosis,ICD9,4510,1
 emergency_room_diagnosis,ICD9,43491,2
 hospitalisation_secondary,ICD9,412,1
 hospitalisation_primary,ICD9,41021,1
