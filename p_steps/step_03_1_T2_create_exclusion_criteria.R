@@ -18,8 +18,6 @@ for (i in 1:length(files)) {
   }
 }
 
-setnames(D3_PERSONS, c("date_birth", "date_death"), c("date_of_birth", "date_of_death"))
-
 #CHANGE COLUMN NAMES
 setnames(D3_PERSONS, c("date_birth", "date_death"), c("date_of_birth", "date_of_death"))
 
