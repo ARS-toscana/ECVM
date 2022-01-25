@@ -1,5 +1,5 @@
 A_sex_or_birth_date_missing,B_birth_date_absurd,C_no_observation_period,D_death_before_study_entry,E_no_observation_period_including_study_start,N
 0,0,0,0,0,30
 1,1,1,0,0,104
-1,1,1,1,0,823
-1,1,1,1,1,7900
+1,1,1,1,0,774
+1,1,1,1,1,7950

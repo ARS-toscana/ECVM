@@ -3,6 +3,18 @@
 
 # authors: Rosa Gini, Olga Paoletti, Davide Messina, Giorgio Limoncella
 
+# v 6.5.1
+# removed aggregations and filters for poisson dataset
+# added step 06_13 and 12_1, initial part for SCRI
+
+# v 6.5
+# added calculation of dataset for poisson analysis
+# bugfix for date_death
+
+# v 6.4.4
+# added steps which create input table for poisson
+# bugfixes regarding conflicts arisen after merging
+
 # v 6.4.3
 # updated code list for ALI
 # added modification for step 07_9 to decrease RAM utilization
@@ -116,7 +128,6 @@ source(paste0(thisdir,"/p_parameters/04_itemsets.R"))
 source(paste0(thisdir,"/p_parameters/05_subpopulations_restricting_meanings.R"))
 source(paste0(thisdir,"/p_parameters/06_algorithms.R"))
 
-
 #run scripts
 
 # 01 RETRIEVE RECORDS FRM CDM
@@ -195,7 +206,6 @@ system.time(source(paste0(thisdir,"/p_steps/step_07_7_T3_create_person_time_vax_
 system.time(source(paste0(thisdir,"/p_steps/step_07_8_T3_aggregate_monthly.R")))
 
 
-
 #08 Calculate Incidence Rates
 system.time(source(paste0(thisdir,"/p_steps/step_08_1_T4_IR.R")))
 
@@ -214,4 +224,13 @@ system.time(source(paste0(thisdir,"/p_steps/step_09_3_T3_create_dashboard_tables
 #11 Create descriptive tables
 system.time(source(paste0(thisdir,"/p_steps/step_11_1_T4_create_dummy_tables.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_11_3_T4_create_dummy_tables_October.R")))
+
+#ECVM poisson section
+system.time(source(paste0(thisdir,"/p_steps/step_06_14_Poisson_population.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_07_11_T3_create_person_time_poisson.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_07_12_T3_aggregate_monthly_Poisson.R")))
+
+#SCRI section
+#create D3 MIS population
+system.time(source(paste0(thisdir,"/p_steps/step_06_13_SCRI_population.R")))
 
