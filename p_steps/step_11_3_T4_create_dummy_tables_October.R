@@ -511,16 +511,20 @@ rm(list=nameoutput)
 
 empty_table_7 <- data.table(a = character(0), Parameters = character(0), N = numeric(0))
 
+names_vect <- c("Pfizer", "Moderna", "AstraZeneca", "Janssen", "UKN")
+recode_rows <- paste(names_vect, "dose 1")
+names(recode_rows) <- names_vect
+
 vaccinated_persons <- D3_Vaccin_coh[, .(person_id, date_vax1, date_vax2, type_vax_1, type_vax_2)]
 vaccinated_persons <- vaccinated_persons[date_vax1 <= study_end, ]
 vaccinated_persons <- vaccinated_persons[date_vax2 > study_end, c("date_vax2", "type_vax_2") := NA]
 vaccinated_persons <-vaccinated_persons[type_vax_1 == "J&J", type_vax_1 := "Janssen"]
 
+names_vect_used <- names_vect[names_vect %in% vaccinated_persons[, type_vax_1] |
+                                names_vect %in% vaccinated_persons[, type_vax_2]]
+
 Totals_dose_1 <- vaccinated_persons[, .N, by = "type_vax_1"]
 Totals_dose_1 <- Totals_dose_1[, index := 1]
-names_vect <- c("Pfizer", "Moderna", "AstraZeneca", "Janssen", "UKN")
-recode_rows <- paste(names_vect, "dose 1")
-names(recode_rows) <- names_vect
 Totals_dose_1 <- Totals_dose_1[, a := recode_rows[type_vax_1]][, Parameters := "Persons"]
 
 Totals <- Totals_dose_1[, sum(N)]
@@ -531,9 +535,8 @@ df_with_second_doses  <- vaccinated_persons[!is.na(date_vax2), ]
 
 dissimilar_doses <- df_with_second_doses[type_vax_1 != type_vax_2, ]
 dissimilar_doses <- dissimilar_doses[, .N, by = "type_vax_1"]
-if ("Janssen" %not in% dissimilar_doses$type_vax_1) {
-  dissimilar_doses <- rbind(dissimilar_doses, list("Janssen", 0))
-}
+dissimilar_doses <- merge(data.table(type_vax_1 = names_vect_used), dissimilar_doses, all.x = T, by = "type_vax_1")
+dissimilar_doses <- dissimilar_doses[is.na(N), N := 0]
 dissimilar_doses <- dissimilar_doses[, a := "Other vaccine dose 2"][, Parameters := "Persons"][, index := 3]
 
 distance_doses <- df_with_second_doses[type_vax_1 == type_vax_2, ]

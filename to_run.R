@@ -177,7 +177,7 @@ system.time(source(paste0(thisdir,"/p_steps/step_06_11_T2.3_ALL_covariates_at_co
 system.time(source(paste0(thisdir,"/p_steps/step_06_12_MIS_population_d.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_07_9_T3_create_person_time_MIS_year.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_07_10_T3_aggregate_monthly_MIS.R")))
-system.time(source(paste0(thisdir,"/p_steps/step_08_T4_IR_MIS.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_08_2_T4_IR_MIS.R")))
 
 #descriptive
 system.time(source(paste0(thisdir,"/p_steps/step_09_4_T3_create_D4_descriptive_tables_MIS.R")))
@@ -198,7 +198,7 @@ system.time(source(paste0(thisdir,"/p_steps/step_07_8_T3_aggregate_monthly.R")))
 
 
 #08 Calculate Incidence Rates
-system.time(source(paste0(thisdir,"/p_steps/step_08_T4_IR.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_08_1_T4_IR.R")))
 
 
 #09 create D4 for doses and coverage
@@ -213,6 +213,6 @@ system.time(source(paste0(thisdir,"/p_steps/step_09_3_T3_create_dashboard_tables
 
 
 #11 Create descriptive tables
-system.time(source(paste0(thisdir,"/p_steps/step_11_T4_create_dummy_tables.R")))
+system.time(source(paste0(thisdir,"/p_steps/step_11_1_T4_create_dummy_tables.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_11_3_T4_create_dummy_tables_October.R")))
 
