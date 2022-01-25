@@ -6,6 +6,7 @@
 # v 6.4.3
 # updated code list for ALI
 # added modification for step 07_9 to decrease RAM utilization
+#semplification of the CreateItemsetsDatasets EAVtables parameter
 
 # v 6.4.2
 # list of codes for concepts moved to p_steps/archive_parameters

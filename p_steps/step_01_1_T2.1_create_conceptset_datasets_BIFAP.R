@@ -7,9 +7,9 @@
 
 print('RETRIEVE FROM CDM RECORDS CORRESPONDING TO CONCEPT SETS')
 # CreateConceptSetDatasets(concept_set_names = c(vaccine__conceptssets),
-#                          dataset = ECVM_CDM_tables,
-#                          codvar = ECVM_CDM_codvar,
-#                          datevar= ECVM_CDM_datevar,
+#                          dataset = ConcePTION_CDM_tables,
+#                          codvar = ConcePTION_CDM_codvar,
+#                          datevar= ConcePTION_CDM_datevar,
 #                          dateformat= "YYYYmmdd",
 #                          rename_col = list(person_id=person_id,date=date),
 #                          concept_set_domains = concept_set_domains,
@@ -22,13 +22,13 @@ print('RETRIEVE FROM CDM RECORDS CORRESPONDING TO CONCEPT SETS')
 
 OUTCOMES_conceptssets<-c("MYOCARD_narrow", "MYOCARD_possible","Myocardalone_narrow","Myocardalone_possible","PERICARD_narrow", "PERICARD_possible" )
 CreateConceptSetDatasets(concept_set_names = c(OUTCOMES_conceptssets),
-                         dataset = ECVM_CDM_tables,
-                         codvar = ECVM_CDM_codvar,
-                         datevar = ECVM_CDM_datevar,
-                         EAVtables = ECVM_CDM_EAV_tables,
-                         EAVattributes = ECVM_CDM_EAV_attributes_this_datasource,
+                         dataset = ConcePTION_CDM_tables,
+                         codvar = ConcePTION_CDM_codvar,
+                         datevar = ConcePTION_CDM_datevar,
+                         EAVtables = ConcePTION_CDM_EAV_tables,
+                         EAVattributes = ConcePTION_CDM_EAV_attributes_this_datasource,
                          dateformat= "YYYYmmdd",
-                         vocabulary = ECVM_CDM_coding_system_cols,
+                         vocabulary = ConcePTION_CDM_coding_system_cols,
                          rename_col = list(person_id=person_id,date=date),
                          concept_set_domains = concept_set_domains,
                          concept_set_codes =	concept_set_codes_our_study,
