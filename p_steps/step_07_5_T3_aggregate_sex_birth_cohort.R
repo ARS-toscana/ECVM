@@ -1,3 +1,8 @@
+#-----------------------------------------------
+# Aggregate persontime datasets by birth cohorts
+
+# input: D4_persontime_risk_week, D4_persontime_benefit_week, D4_persontime_risk_year, D4_persontime_benefit_year
+# output: D4_persontime_risk_week_BC, D4_persontime_benefit_week_BC, D4_persontime_risk_year_BC, D4_persontime_benefit_year_BC
 
 for (subpop in subpopulations_non_empty) {  
   print(subpop)

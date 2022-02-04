@@ -1,3 +1,9 @@
+#-----------------------------------------------
+# Aggregate persontime datasets by risk factors
+
+# input: D4_persontime_risk_week, D4_persontime_benefit_week, D4_persontime_risk_year, D4_persontime_benefit_year
+# output: D4_persontime_risk_week_RF, D4_persontime_benefit_week_RF, D4_persontime_risk_year_RF, D4_persontime_benefit_year_RF
+
 
 for (subpop in subpopulations_non_empty) {  
   print(subpop)

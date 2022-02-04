@@ -1,3 +1,9 @@
+#-----------------------------------------------
+# Aggregate persontime datasets for poisson
+
+# input: D4_persontime_risk_month_poisson
+# output: D4_persontime_monthly_poisson_RF
+
 for (subpop in subpopulations_non_empty) {
   print(subpop)
   

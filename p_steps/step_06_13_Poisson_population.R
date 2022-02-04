@@ -1,3 +1,9 @@
+# ----------------------------------
+# Create the cohort c for the MIS/myocard part
+
+# input: D3_vaxweeks_including_not_vaccinated, D3_Vaccin_cohort_cov_ALL, D3_outcomes_covid
+# output: D3_vaxweeks_poisson
+
 for (subpop in subpopulations_non_empty) {
   print(subpop)
   

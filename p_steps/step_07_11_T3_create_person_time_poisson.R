@@ -1,3 +1,10 @@
+# COUNT PERSON TIME PER COVID PER POISSON
+#-----------------------------------------------
+# To estimate the weekly incidence rates of risks in 2020 by data source for poisson
+
+# input: D3_events_ALL_OUTCOMES, D3_vaxweeks_poisson
+# output: D4_persontime_risk_month_poisson
+
 print("COUNT PERSON TIME by month for risks (Poisson)")
 
 persontime_risk_year <- vector(mode = 'list')
