@@ -14,10 +14,13 @@
 # v 6.4.4
 # added steps which create input table for poisson
 # bugfixes regarding conflicts arisen after merging
+# semplification of the CreateItemsetsDatasets EAVtables parameter
+
 
 # v 6.4.3
 # updated code list for ALI
 # added modification for step 07_9 to decrease RAM utilization
+
 
 # v 6.4.2
 # list of codes for concepts moved to p_steps/archive_parameters
@@ -128,6 +131,7 @@ source(paste0(thisdir,"/p_parameters/04_itemsets.R"))
 source(paste0(thisdir,"/p_parameters/05_subpopulations_restricting_meanings.R"))
 source(paste0(thisdir,"/p_parameters/06_algorithms.R"))
 
+
 #run scripts
 
 # 01 RETRIEVE RECORDS FRM CDM
@@ -206,6 +210,7 @@ system.time(source(paste0(thisdir,"/p_steps/step_07_7_T3_create_person_time_vax_
 system.time(source(paste0(thisdir,"/p_steps/step_07_8_T3_aggregate_monthly.R")))
 
 
+
 #08 Calculate Incidence Rates
 system.time(source(paste0(thisdir,"/p_steps/step_08_1_T4_IR.R")))
 
@@ -225,6 +230,7 @@ system.time(source(paste0(thisdir,"/p_steps/step_09_3_T3_create_dashboard_tables
 system.time(source(paste0(thisdir,"/p_steps/step_11_1_T4_create_dummy_tables.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_11_3_T4_create_dummy_tables_October.R")))
 
+<<<<<<< HEAD
 #ECVM poisson section
 system.time(source(paste0(thisdir,"/p_steps/step_06_13_Poisson_population.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_07_11_T3_create_person_time_poisson.R")))
@@ -234,3 +240,5 @@ system.time(source(paste0(thisdir,"/p_steps/step_07_12_T3_aggregate_monthly_Pois
 #create D3 MIS population
 system.time(source(paste0(thisdir,"/p_steps/step_06_14_SCRI_population.R")))
 
+=======
+>>>>>>> a2bd58d4164d12b33695c48ea45fe56349d60f07
