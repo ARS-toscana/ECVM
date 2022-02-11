@@ -2,7 +2,7 @@
 # Apply exclusion criteria to create study population 
 
 # input: D3_selection_criteria
-# output: flowchart (export to csv),  D4_study_population, D4_study_source_population
+# output: Flowchart_basic_exclusion_criteria, Flowchart_exclusion_criteria, D4_study_population, D4_study_source_population
 
 print('FLOWCHART')
 

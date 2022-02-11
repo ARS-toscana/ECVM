@@ -1,5 +1,5 @@
 # ----------------------------------
-# Create the cohort c for the MIS/myocard part
+# Create population for poisson
 
 # input: D3_vaxweeks_including_not_vaccinated, D3_Vaccin_cohort_cov_ALL, D3_outcomes_covid
 # output: D3_vaxweeks_poisson

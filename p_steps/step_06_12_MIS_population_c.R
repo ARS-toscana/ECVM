@@ -1,3 +1,8 @@
+# ----------------------------------
+# Calculate the population for cohort c
+
+# input: D4_population_c_no_risk, D3_population_c_cov_ALL
+# output: D4_population_c
 
 for (subpop in subpopulations_non_empty) {
   

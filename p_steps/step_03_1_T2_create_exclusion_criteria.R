@@ -1,7 +1,7 @@
 # -----------------------------------------------------
 # CREATE EXCLUSION CRITERIA for persons/spells
 
-# input: D3_PERSONS, OBSERVATION_PERIODS, D3_output_spells_category, D3_output_spells_overlap
+# input: D3_PERSONS, OBSERVATION_PERIODS, output_spells_category
 # output: D3_selection_criteria
 
 print('CREATE EXCLUSION CRITERIA')
