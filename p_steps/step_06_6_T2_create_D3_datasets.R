@@ -1,3 +1,9 @@
+# ----------------------------------
+# Create basic D3 datasets based on the population
+
+# input: D3_study_population_no_risk, D3_study_population_cov_ALL , D3_Vaccin_cohort_cov_ALL
+# output: D3_study_population, D3_Vaccin_cohort, D3_vaxweeks_vaccin_cohort, D3_studyweeks, D3_vaxweeks, D3_vaxweeks_including_not_vaccinated
+
 for (subpop in subpopulations_non_empty) {
   print(subpop)
   load(paste0(dirtemp,"D3_study_population_no_risk",suffix[[subpop]],".RData"))

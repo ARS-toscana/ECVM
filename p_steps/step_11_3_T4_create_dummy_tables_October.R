@@ -1,3 +1,9 @@
+#-----------------------------------------------
+# Create D4 descriptive tables for MIS/Myocard
+
+# input: Flowchart_basic_exclusion_criteria, Flowchart_exclusion_criteria, D4_descriptive_dataset_ageband_studystart, D4_descriptive_dataset_age_studystart, D4_followup_fromstudystart, D4_descriptive_dataset_covariate_studystart, D3_Vaccin_cohort, D4_study_population, D3_events_ALL_OUTCOMES, D3_outcomes_covid, RES_IR_risk_fup_BC
+# output: Attrition diagram 1, Cohort characteristics at start of study (1-1-2020), Cohort characteristics at first dose of COVID-19 vaccine, Cohort characteristics at second dose of COVID-19 vaccine, COVID-19 vaccination by dose and time period between first and second dose (days), Number of incident cases entire study period, Incidence rates of AESI by vaccine and datasource
+
 ##FUNCTIONS---------------------------------
 `%not in%` <- negate(`%in%`)
 

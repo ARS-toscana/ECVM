@@ -3,6 +3,17 @@
 
 # authors: Rosa Gini, Olga Paoletti, Davide Messina, Giorgio Limoncella
 
+<<<<<<< HEAD
+# v 6.5.1
+# removed aggregations and filters for poisson dataset
+# added step 06_13 and 12_1, initial part for SCRI
+
+# v 6.5
+# added calculation of dataset for poisson analysis
+# bugfix for date_death
+
+=======
+>>>>>>> a2bd58d4164d12b33695c48ea45fe56349d60f07
 # v 6.4.4
 # added steps which create input table for poisson
 # bugfixes regarding conflicts arisen after merging
@@ -217,13 +228,20 @@ system.time(source(paste0(thisdir,"/p_steps/step_09_3_T3_create_dashboard_tables
 system.time(source(paste0(thisdir,"/p_steps/step_11_1_T4_create_dummy_tables.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_11_3_T4_create_dummy_tables_October.R")))
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> a2bd58d4164d12b33695c48ea45fe56349d60f07
 #ECVM poisson section
 system.time(source(paste0(thisdir,"/p_steps/step_06_14_Poisson_population.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_07_11_T3_create_person_time_poisson.R")))
 system.time(source(paste0(thisdir,"/p_steps/step_07_12_T3_aggregate_monthly_Poisson.R")))
 
 #SCRI section
+<<<<<<< HEAD
+#create D3 MIS population
+=======
 # create D3 MIS population
+>>>>>>> a2bd58d4164d12b33695c48ea45fe56349d60f07
 system.time(source(paste0(thisdir,"/p_steps/step_06_13_SCRI_population.R")))
 

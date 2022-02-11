@@ -1,11 +1,4 @@
 DAP,AESI,Sex,Age in 2020,history_covid,Person years,IR narrow,LL narrow,UL narrow
-TEST,KD_narrow,Female,50-59,0,0,0,0,370154.73
-TEST,KD_narrow,Male,50-59,0,0,0,0,351791.96
-TEST,KD_narrow,Female,60-69,1,0,0,0,1981416.5
-TEST,KD_narrow,Female,60-69,0,0,0,0,141233.04
-TEST,KD_narrow,Male,60-69,0,0,0,0,175209.78
-TEST,KD_narrow,Female,70-79,0,0,0,0,331862.86
-TEST,KD_narrow,Male,70-79,0,0,0,0,198433.46
 TEST,MIS_KD_narrow,Female,50-59,0,0,0,0,370154.73
 TEST,MIS_KD_narrow,Male,50-59,0,0,0,0,351791.96
 TEST,MIS_KD_narrow,Female,60-69,1,0,0,0,1981416.5

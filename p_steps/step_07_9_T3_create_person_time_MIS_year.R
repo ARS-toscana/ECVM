@@ -1,3 +1,10 @@
+# COUNT PERSON TIME PER COVID PER MIS/MYOCARD
+#-----------------------------------------------
+# To estimate the weekly incidence rates of risks in 2020 by data source for MIS/Myocard
+
+# input: D3_events_ALL_OUTCOMES, D4_population_b, D4_population_c, D4_population_d
+# output: D4_persontime_b, D4_persontime_monthly_b, D4_persontime_c, D4_persontime_monthly_c, D4_persontime_d, D4_persontime_monthly_d
+
 #COHORT B
 
 for (subpop in subpopulations_non_empty) {  

@@ -1,3 +1,9 @@
+#-----------------------------------------------
+# Create D4 descriptive tables for MIS/Myocard
+
+# input: Flowchart_basic_exclusion_criteria, Flowchart_exclusion_criteria, D4_descriptive_dataset_ageband_studystart, D4_descriptive_dataset_age_studystart, D4_followup_fromstudystart, D4_descriptive_dataset_covariate_studystart, D3_Vaccin_cohort, D4_study_population, D3_events_ALL_OUTCOMES, D3_outcomes_covid, QC_code_counts_in_study_population_OUTCOME_YEAR, RES_IR_week, Intermediate coverage, RES_IR_persontime_risk_fup_BC
+# output: Attrition diagram 1, Attrition diagram 2, Cohort characteristics at start of study (1-1-2020), Cohort characteristics at first COVID-19 vaccination, Doses of COVID-19 vaccines and distance between first and second dose, Number of incident cases entire study period, Code counts for narrow definitions (for each event) separately, Incidence of AESI (narrow) per 100,000 PY by calendar month in 2020, Incidence of AESI (narrow) per 100,000 PY by age in 2020, Incidence of AESI (narrow) per 100,000 PY by age & sex in 2020, Incidence of AESI (narrow) per 100,000 PY by age & sex in 2020 in at risk population, Incidence of AESI (narrow) per 100,000 PY by month in 2021 (non-vaccinated), Doses of COVID-19 vaccine over calendar time, Incidence of AESI (narrow) per 100,000 PY by week since vaccination
+
 `%not in%` <- negate(`%in%`)
 
 # Table1 ----------------------------------------------------------------------------------------------------------

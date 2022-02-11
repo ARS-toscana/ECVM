@@ -1,3 +1,8 @@
+#-----------------------------------------------
+# Aggregate persontime datasets by birth cohorts
+
+# input: D4_persontime_risk_week, D4_persontime_benefit_week, D4_persontime_risk_year, D4_persontime_benefit_year
+# output: D4_persontime_risk_week_BC, D4_persontime_benefit_week_BC, D4_persontime_risk_year_BC, D4_persontime_benefit_year_BC
 
 for (subpop in subpopulations_non_empty) {  
   print(subpop)
@@ -148,6 +153,10 @@ for (subpop in subpopulations_non_empty) {
   for (i in names(get(nameoutput3))){
     get(nameoutput3)[is.na(get(i)), (i) := 0]
   }
+  
+  assign(nameoutput3, get(nameoutput3)[, (cols_to_sums) := lapply(.SD, cumsum),
+                                       by = c("Dose", "type_vax", "ageband_at_study_entry", "sex"),
+                                       .SDcols = cols_to_sums])
   
   save(nameoutput3,file=paste0(diroutput,nameoutput3,".RData"),list=nameoutput3)
   rm(list=nameoutput3)
