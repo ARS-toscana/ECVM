@@ -1,0 +1,17 @@
+---
+title: PersonTime MIS
+author: ''
+date: []
+slug: []
+categories:
+  - Data Model
+tags:
+  - D4
+weight: 5
+---
+
+```{r, echo = FALSE, warning = FALSE}
+htmltools::tagList(
+  print_mult_tbl("persontime MIS", data)
+)
+```

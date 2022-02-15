@@ -48,3 +48,14 @@ weight: 5
 <br/>
 <br/>
 </div>
+
+## QC_dose_derived
+<div align="center">
+<h2 style="color:#333;background:#FFFFFF;text-align:left;font-family:-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif;font-size:18px;font-style:normal;font-weight:bold;text-decoration:;margin:20px">Dataset with QC criteria flags as columns</h2>
+<div id="htmlwidget-4" class="reactable html-widget" style="width:auto;height:300px;"></div>
+<script type="application/json" data-for="htmlwidget-4">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Name":["person_id","date","derived_date","vx_dose","vx_manufacturer","duplicated_records","removed_row","missing_date","date_before_start_vax","second_min_derived_date","distance_btw_1_2_doses","distance_btw_2_3_doses","imputed_dose","wrong_dose"],"Description":["unique person identifier",null,null,null,null,null,null,null,null,null,null,null,null,null],"format":["character",null,null,null,null,null,null,null,null,null,null,null,null,null],"vocabulary":["from cdm persons",null,null,null,null,null,null,null,null,null,null,null,null,null],"comments":[null,null,null,null,null,null,null,null,null,null,null,null,null,null]},"columns":[{"accessor":"Name","name":"Name","type":"character"},{"accessor":"Description","name":"Description","type":"character"},{"accessor":"format","name":"format","type":"character"},{"accessor":"vocabulary","name":"vocabulary","type":"character"},{"accessor":"comments","name":"comments","type":"logical"}],"sortable":false,"searchable":true,"defaultPageSize":14,"paginationType":"numbers","showPageInfo":true,"minRows":1,"highlight":true,"bordered":true,"striped":true,"style":{"maxWidth":650},"height":"300px","dataKey":"f72a0729368f58e348a0d8faf7dd4c41","key":"f72a0729368f58e348a0d8faf7dd4c41"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<br/>
+<br/>
+<br/>
+<br/>
+</div>
