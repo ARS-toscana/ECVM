@@ -2,6 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>/en/data-models/important-datasets/</loc>
+  </url><url>
+    <loc>/en/data-models/main-datasets/</loc>
+  </url><url>
     <loc>/en/introduction/</loc>
     <xhtml:link
                 rel="alternate"
@@ -40,6 +44,10 @@
                 href="/en/data-models/"
                 />
   </url><url>
+    <loc>/en/data-models/descriptives-study-population-mis/</loc>
+  </url><url>
+    <loc>/en/data-models/descriptives-study-population-at-vaccination-mis/</loc>
+  </url><url>
     <loc>/en/data-models/descriptives-study-population/</loc>
   </url><url>
     <loc>/en/data-models/descriptives-study-population-at-vaccination/</loc>
@@ -48,15 +56,21 @@
   </url><url>
     <loc>/en/data-models/final-tables/</loc>
   </url><url>
+    <loc>/en/data-models/final-tables-mis/</loc>
+  </url><url>
+    <loc>/en/data-models/final-tables-report/</loc>
+  </url><url>
     <loc>/en/data-models/flowcharts/</loc>
   </url><url>
     <loc>/en/data-models/incidence-rate/</loc>
   </url><url>
+    <loc>/en/data-models/incidence-rate-mis/</loc>
+  </url><url>
     <loc>/en/data-models/initial-datasets/</loc>
   </url><url>
-    <loc>/en/data-models/main-datasets/</loc>
-  </url><url>
     <loc>/en/data-models/persontime-benefits/</loc>
+  </url><url>
+    <loc>/en/data-models/persontime-mis/</loc>
   </url><url>
     <loc>/en/data-models/persontime-monthly/</loc>
   </url><url>

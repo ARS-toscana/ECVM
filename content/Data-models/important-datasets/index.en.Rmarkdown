@@ -1,0 +1,16 @@
+---
+title: Important datasets
+author: ''
+date: []
+slug: []
+categories:
+  - Data Model
+tags: []
+weight: 1
+---
+
+```{r, echo = FALSE, warning = FALSE}
+htmltools::tagList(
+  print_mult_tbl("important dataset", data)
+)
+```
