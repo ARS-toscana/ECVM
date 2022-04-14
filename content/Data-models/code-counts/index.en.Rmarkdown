@@ -2,7 +2,7 @@
 title: Code counts
 author: ''
 date: []
-slug: []
+slug: code_count_slug
 categories:
   - Data Model
 tags: []
