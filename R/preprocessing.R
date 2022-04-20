@@ -14,7 +14,7 @@ tbl_to_html <- function(ind, tbl, category){
   
   if (!is.na(single_row$description)){
     example <- example %>%
-      reactablefmtr::add_subtitle(single_row$description, font_size = 18, margin = 20)}
+      reactablefmtr::add_subtitle(single_row$description, font_size = 18, margin = reactablefmtr::margin(20))}
   
   if (!is.na(single_row$note)){
     example <- example %>%
@@ -42,6 +42,6 @@ print_mult_tbl <- function(category, tbl) {
   return(c(rbind(title_html, body_html, empty_line)))
 }
 
-path_back_end_db <- here::here("R", "flowchart.xlsm")
+path_back_end_db <- here::here("R", "datamodels.xlsm")
 
 data <- readxl::read_excel(path_back_end_db)
