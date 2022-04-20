@@ -1,5 +1,6 @@
 ---
 title: Data Models
+slug: Data_Models
 date: []
 chapter: true
 pre: <b>2. </b>

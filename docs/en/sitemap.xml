@@ -2,9 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/en/data-models/important-datasets/</loc>
+    <loc>/en/data-models/important_datasets/</loc>
   </url><url>
-    <loc>/en/data-models/main-datasets/</loc>
+    <loc>/en/data-models/main_datasets/</loc>
   </url><url>
     <loc>/en/introduction/</loc>
     <xhtml:link
@@ -23,7 +23,7 @@
                 href="/en/introduction/"
                 />
   </url><url>
-    <loc>/en/data-models/code-counts/</loc>
+    <loc>/en/data-models/code_counts/</loc>
   </url><url>
     <loc>/en/data-models/dashboard/</loc>
   </url><url>
@@ -44,37 +44,37 @@
                 href="/en/data-models/"
                 />
   </url><url>
-    <loc>/en/data-models/descriptives-study-population-mis/</loc>
+    <loc>/en/data-models/descriptives_mis/</loc>
   </url><url>
-    <loc>/en/data-models/descriptives-study-population-at-vaccination-mis/</loc>
+    <loc>/en/data-models/descriptives_vax_mis/</loc>
   </url><url>
-    <loc>/en/data-models/descriptives-study-population/</loc>
+    <loc>/en/data-models/descriptives_start/</loc>
   </url><url>
-    <loc>/en/data-models/descriptives-study-population-at-vaccination/</loc>
+    <loc>/en/data-models/descriptives_vax/</loc>
   </url><url>
-    <loc>/en/data-models/doses-of-vaccination/</loc>
+    <loc>/en/data-models/vax_doses/</loc>
   </url><url>
-    <loc>/en/data-models/final-tables/</loc>
+    <loc>/en/data-models/final_tables/</loc>
   </url><url>
-    <loc>/en/data-models/final-tables-mis/</loc>
+    <loc>/en/data-models/final_tables_mis/</loc>
   </url><url>
-    <loc>/en/data-models/final-tables-report/</loc>
+    <loc>/en/data-models/final_tables_report/</loc>
   </url><url>
     <loc>/en/data-models/flowcharts/</loc>
   </url><url>
-    <loc>/en/data-models/incidence-rate/</loc>
+    <loc>/en/data-models/ir/</loc>
   </url><url>
-    <loc>/en/data-models/incidence-rate-mis/</loc>
+    <loc>/en/data-models/ir_mis/</loc>
   </url><url>
-    <loc>/en/data-models/initial-datasets/</loc>
+    <loc>/en/data-models/initial_datasets/</loc>
   </url><url>
-    <loc>/en/data-models/persontime-benefits/</loc>
+    <loc>/en/data-models/pt_benefits/</loc>
   </url><url>
-    <loc>/en/data-models/persontime-mis/</loc>
+    <loc>/en/data-models/pt_mis/</loc>
   </url><url>
-    <loc>/en/data-models/persontime-monthly/</loc>
+    <loc>/en/data-models/pt_monthly/</loc>
   </url><url>
-    <loc>/en/data-models/persontime-risk/</loc>
+    <loc>/en/data-models/pt_risk/</loc>
   </url><url>
     <loc>/en/structure-of-the-script/</loc>
     <xhtml:link

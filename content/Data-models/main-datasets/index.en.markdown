@@ -1,8 +1,8 @@
 ---
 title: Main datasets
+slug: Main_datasets
 author: ''
 date: []
-slug: []
 categories:
   - Data Model
 tags: []

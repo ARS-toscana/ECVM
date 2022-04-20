@@ -1,8 +1,8 @@
 ---
 title: Descriptives MIS study population at vaccination
+slug: Descriptives_vax_MIS
 author: ''
 date: []
-slug: []
 categories:
   - Data Model
 tags:

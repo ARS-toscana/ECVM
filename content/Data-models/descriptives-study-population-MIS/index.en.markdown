@@ -1,8 +1,8 @@
 ---
 title: Descriptives MIS study population
+slug: Descriptives_MIS
 author: ''
 date: []
-slug: []
 categories:
   - Data Model
 tags:
@@ -19,7 +19,7 @@ weight: 5
 ## D4_descriptive_dataset_sex_studystart_MIS
 <div align="center">
 <div id="htmlwidget-1" class="reactable html-widget" style="width:auto;height:300px;"></div>
-<script type="application/json" data-for="htmlwidget-1">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Name":["Datasource",null,null,null,"Sex_male","Sex_female"],"Description":[null,null,null,null,"Number of subjects","Number of subjects"],"format":["character","character","character","character","integer","integer"],"vocabulary":["ARS","BIFAP","CPRD","PHARMO",null,null],"comments":[null,null,null,null,null,null]},"columns":[{"accessor":"Name","name":"Name","type":"character"},{"accessor":"Description","name":"Description","type":"character"},{"accessor":"format","name":"format","type":"character"},{"accessor":"vocabulary","name":"vocabulary","type":"character"},{"accessor":"comments","name":"comments","type":"logical"}],"sortable":false,"searchable":true,"defaultPageSize":6,"paginationType":"numbers","showPageInfo":true,"minRows":1,"highlight":true,"bordered":true,"striped":true,"style":{"maxWidth":650},"height":"300px","dataKey":"469ff163c8fd49a9255a55a3cd4b6049","key":"469ff163c8fd49a9255a55a3cd4b6049"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Name":["Datasource","Sex_male","Sex_female"],"Description":[null,"Number of subjects","Number of subjects"],"format":["character","integer","integer"],"vocabulary":["ARS BIFAP CPRD PHARMO",null,null],"comments":[null,null,null]},"columns":[{"accessor":"Name","name":"Name","type":"character"},{"accessor":"Description","name":"Description","type":"character"},{"accessor":"format","name":"format","type":"character"},{"accessor":"vocabulary","name":"vocabulary","type":"character"},{"accessor":"comments","name":"comments","type":"logical"}],"sortable":false,"searchable":true,"defaultPageSize":3,"paginationType":"numbers","showPageInfo":true,"minRows":1,"highlight":true,"bordered":true,"striped":true,"style":{"maxWidth":650},"height":"300px","dataKey":"a7f88a8df276cb194c5f8c5bfc0d3e8f","key":"a7f88a8df276cb194c5f8c5bfc0d3e8f"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 <br/>
 <br/>
 <br/>

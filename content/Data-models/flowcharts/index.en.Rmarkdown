@@ -1,5 +1,6 @@
 ---
 title: Flowcharts
+slug: Flowcharts
 author: ''
 date: []
 categories:
