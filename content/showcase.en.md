@@ -1,6 +1,7 @@
 ---
 disableToc: true
 title: Showcase
+slug: Showcase
 ---
 
 #### [TAT](https://ovh.github.io/tat/overview/) by OVH

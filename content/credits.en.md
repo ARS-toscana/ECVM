@@ -1,6 +1,7 @@
 ---
 disableToc: true
 title: Credits
+slug: Credits
 ---
 
 ## Contributors

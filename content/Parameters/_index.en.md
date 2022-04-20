@@ -1,5 +1,6 @@
 ---
 title: Parameters
+slug: Parameters
 date: []
 chapter: true
 pre: <b>5. </b>

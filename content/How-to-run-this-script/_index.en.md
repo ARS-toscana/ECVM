@@ -1,6 +1,6 @@
 ---
 title: How to run this script
-date: []
+slug: How_to_run
 chapter: true
 pre: <b>6. </b>
 weight: 9

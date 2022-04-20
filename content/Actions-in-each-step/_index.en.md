@@ -1,5 +1,6 @@
 ---
 title: Actions in each step
+slug: Actions_in_each_step
 date: []
 chapter: true
 pre: <b>4. </b>

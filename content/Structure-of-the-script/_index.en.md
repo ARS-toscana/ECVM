@@ -1,5 +1,6 @@
 ---
 title: "Structure of the script"
+slug: structure_of_the_script
 date: "[]"
 chapter: yes
 pre: <b>3. </b>
