@@ -31,11 +31,12 @@ outputs:
 Languages:
   en:
     landingPageName: <i class='fas fa-home'></i> Home
+    landingPageURL: /en
     languageName: English
     menu:
       shortcuts:
         - name: <i class="fas fa-project-diagram"></i> Diagram
-          url: /data/ECVM.html
+          url: https://ars-toscana.github.io/ECVM/data/ECVM.html
           weight: 10
         - identifier: github
           name: <i class='fab fa-fw fa-github'></i> GitHub repo
