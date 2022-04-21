@@ -107,15 +107,23 @@ Merge vaccine doses information with persons. (with exclusion criteria variables
 
 In this step the function CreateFlowchart is used: the selection criteria are applied and the study population is selected. A flowchart is created as a byproduct.
 
-## [step 04_2]: apply quality checks exclusion criteria (T3)
+## [step 04_2]: apply quality check exclusion criteria doses (T3)
 
   **input**: persons_doses
 
-  **parameters** : this_datasource_has_subpopulations, subpopulations,
+  **parameters** : this_datasource_has_subpopulations, subpopulations
 
   **output**: Flowchart_doses, HTML_flowchart_doses
 
 In this step the function CreateFlowchart is used: the selection criteria are applied and the study population is selected. A flowchart is created as a byproduct.
+
+## [step 04_3]: descriptive statistics excluded_persons (T3)
+
+  **input**: output_spells_category, D3_selection_criteria
+
+  **output**: number_criteria_excluded, Plots: Last spells end date, Density_plot_distance_spells, pop_excluded
+
+In this step some plots and count about the exclusion criteria are created. They are used to set some parameter in the next run of the script or to check if everything work correctly.
 
 # 05 CREATE STUDY VARIABLES
 
@@ -225,14 +233,98 @@ In this step, the components created in the previous step are combined to obtain
 
 # 06 CREATE D3 FOR DOSES AND COVERAGE
 
-## [step 06]: create D3 datasets(T2)
+## [step 06_1]: create D3 datasets(T2)
   **input**: D4_study_population, selected_doses, D3_outcomes_covid
 
-  **parameters**: thisdatasource
+  **output**: D3_study_population_no_risk, D3_Vaccin_cohort_no_risk
 
-  **output**: D3_study_population, D3_Vaccin_cohort, D3_studyweeks, D3_vaxweeks, D3_vaxweeks_including_not_vaccinated
+Creation of D3 datasets present in the SAP document but without risks.
+
+## [step 06_2]: covariates at vaccination (T2.2)
+  **input**: D3_Vaccin_cohort_no_risk, concept set datasets of covariates 
+
+  **output**: D3_Vaccin_cohort_covariates
+
+In this step the diagnostic components of the risk factors are created as presence of a diagnostic code during lookback, and added to the study population
+
+## [step 06_3]: DP at vaccination (T2.2)
+  **input**: D3_Vaccin_cohort_no_risk, concept set datasets in DRUGS_conceptssets 
+
+  **output**: D3_Vaccin_cohort_DP
+
+In this step for each subject in the study population a the drug proxy component of each risk factor is created: there must be at least 2 records during 365 days of lookback.
+
+## [step 06_4]: vaccination_characteristics.R(T2.3)
+  **input**: D3_Vaccin_cohort_no_risk, D3_Vaccin_cohort_covariates
+  
+  **output**: D4_Vaccin_cohort_cov
+
+In this step few simple covariates (age etc) are added to the study population.
+
+## [step 06_5]: ALL covariates at vaccination V2 (T2.3)
+  **input**: D3_Vaccin_cohort_no_risk, D4_Vaccin_cohort_cov , D3_Vaccin_cohort_DP
+
+  **output**: D3_Vaccin_cohort_cov_ALL
+
+In this step the diagnostic and the drug proxy component of each risk factor are merged into a composite OR, and added to the study population.
+
+## [step 06_6]: create D3 datasets(T2)
+  **input**: D3_study_population_no_risk, D3_study_population_cov_ALL , D3_Vaccin_cohort_cov_ALL
+
+  **output**: D3_study_population, D3_Vaccin_cohort, D3_vaxweeks_vaccin_cohort, D3_studyweeks, D3_vaxweeks, D3_vaxweeks_including_not_vaccinated
 
 Creation of all D3 datasets present in the SAP document.
+
+## [step 06_7]: MIS population (T2)
+  **input**: D3_events_ALL_OUTCOMES, D3_outcomes_covid , D3_study_population
+
+  **output**: D3_study_variables_for_MIS, D4_population_b, D3_selection_criteria_c, D4_population_c_no_risk, D3_selection_criteria_d, D4_population_d
+
+Creation of D3 datasets for MIS/myocard present in the SAP document but without risks.
+
+## [step 06_8]: covariates at covid (T2.2)
+  **input**: D4_population_c_no_risk, concept set datasets of covariates 
+
+  **output**: D3_population_c_covariates
+
+In this step the diagnostic components of the risk factors are created as presence of a diagnostic code during lookback, and added to the study population
+
+## [step 06_9]: DP at covid (T2.2)
+  **input**: D4_population_c_no_risk, concept set datasets in DRUGS_conceptssets 
+
+  **output**: D3_population_c_DP
+
+In this step for each subject in the study population a the drug proxy component of each risk factor is created: there must be at least 2 records during 365 days of lookback.
+
+## [step 06_10]: covid characteristics (T2.3)
+  **input**: D4_population_c_no_risk, D3_population_c_covariates 
+
+  **output**: D4_population_c_cov
+
+In this step few simple covariates (age etc) are added to the study population.
+
+## [step 06_11]: ALL covariates at covid_V2 (T2.3)
+  **input**: D4_population_c_no_risk, D4_population_c_cov, D3_population_c_DP 
+
+  **output**: D3_population_c_cov_ALL
+
+In this step the diagnostic and the drug proxy component of each risk factor are merged into a composite OR, and added to the study population.
+
+## [step 06_12]: MIS population c (T2)
+  **input**: D4_population_c_no_risk, D3_population_c_cov_ALL 
+
+  **output**: D4_population_c
+
+In this step risks are added to the population of cohort c.
+
+## [step 06_13]: Poisson population (T2)
+  **input**: D3_vaxweeks_including_not_vaccinated, D3_Vaccin_cohort_cov_ALL, D3_outcomes_covid 
+
+  **output**: D3_vaxweeks_poisson
+
+In this step the dataset containing the subjects and time varying covariate (COVID) for poisson analysis
+
+
 
 # 07 CREATE D4 RISK AND BENEFIT
 
@@ -309,6 +401,38 @@ In this step the function [CountPersonTime](https://github.com/IMI-ConcePTION/Co
 
 Aggregating the monthly data for risk_factors and birth cohort.
 
+## [step 07_9]: create person time MIS year (T3)
+
+  **input**: D3_events_ALL_OUTCOMES, D4_population_b, D4_population_c, D4_population_d
+
+ **output**: D4_persontime_b, D4_persontime_monthly_b, D4_persontime_c, D4_persontime_monthly_c, D4_persontime_d, D4_persontime_monthly_d
+
+In this step the function [CountPersonTime](https://github.com/IMI-ConcePTION/CountPersonTime/wiki) is used. The output contains persontime and counts for MIS/myocard cohorts.
+
+## [step 07_10]: aggregate monthly MIS (T3)
+
+  **input**: D4_persontime_monthly_b, D4_persontime_monthly_c, D4_persontime_monthly_d
+
+ **output**: D4_persontime_monthly_b_BC, D4_persontime_monthly_c_BC, D4_persontime_monthly_d_BC
+
+Aggregating the monthly data for MIS/myocard cohorts.
+
+## [step 07_11]: create person time poisson (T3)
+
+  **input**: D3_events_ALL_OUTCOMES, D3_vaxweeks_poisson
+
+ **output**: D4_persontime_risk_month_poisson
+ 
+In this step the function [CountPersonTime](https://github.com/IMI-ConcePTION/CountPersonTime/wiki) is used. The output contains persontime and counts for poisson.
+
+## [step 07_12]: aggregate monthly Poisson (T3)
+
+  **input**: D4_persontime_risk_month_poisson
+
+ **output**: D4_persontime_monthly_poisson_RF
+
+Aggregating the monthly data for the poisson.
+
 
 # 08 CALCULATE THE INCIDENCE RATES
 
@@ -321,6 +445,16 @@ Aggregating the monthly data for risk_factors and birth cohort.
   **output**: D4_IR_benefit_week_BC, D4_IR_benefit_fup_BC, D4_IR_risk_week_BC, D4_IR_risk_fup_BC, D4_IR_benefit_week_RF, D4_IR_benefit_fup_RF, D4_IR_risk_week_RF, D4_IR_risk_fup_RF, D4_persontime_ALL_OUTCOMES
 
 Calculate the incidence rates for birth cohorts and risk factors datasets for both risk and benefit
+
+## [step 08_2]: IR MIS (T4)
+
+  **input**: D4_persontime_b, D4_persontime_monthly_b_BC, D4_persontime_c, D4_persontime_monthly_c_BC, D4_persontime_d, D4_persontime_monthly_d_BC
+
+  **parameters** : list_outcomes_observed
+
+  **output**: RES_IR_MIS_b, RES_IR_monthly_MIS_b, RES_IR_MIS_c, RES_IR_monthly_MIS_c, RES_IR_MIS_d, RES_IR_monthly_MIS_d
+
+Calculate the incidence rates for birth cohorts and risk factors datasets for MIS/myocard cohorts
 
 
 # 09 ANALYSIS: DESCRIPTIVE TABLES AND DASHBOARD TABLES FOR DOSES, COVERAGE, RISK AND BENEFIT
@@ -351,6 +485,14 @@ Create the remaining D4 datasets and tables described in the SAP.
 
 Creation of all dashboard tables (excluding dummy tables)
 
+## [step 09_4]: create descriptive tables MIS (T4)
+  **input**: D3_Vaccin_cohort, D3_study_population, D3_study_population_cov_ALL, D4_population_b, D4_population_c, D4_population_d, D3_Vaccin_cohort_cov_ALL
+
+  **output**: escriptive_dataset_age_studystart_MIS, D4_descriptive_dataset_ageband_studystart_MIS, D4_descriptive_dataset_sex_studystart_MIS, D4_descriptive_dataset_covariate_studystart_MIS, D4_followup_fromstudystart_MIS_c, D4_followup_fromstudystart_MIS, D4_descriptive_dataset_age_vax1_MIS, D4_descriptive_dataset_ageband_vax_MIS, D4_followup_from_vax_MIS_d, D4_descriptive_dataset_covid_studystart_c_MIS, D4_descriptive_dataset_age_studystart_c_MIS, D4_descriptive_dataset_ageband_studystart_c_MIS, D4_descriptive_dataset_covariate_covid_c_MIS, D4_followup_fromstudystart_MIS_c_total, D4_descriptive_dataset_sex_vaccination_MIS
+
+Create the remaining D4 datasets and tables described in the SAP for MIS/myocard cohorts.
+
+
 # 10 CREATE HTML FILES THAT DESCRIBE DATASETS
 
 ## [step 10_1]: FlowChart description (T4)
@@ -377,11 +519,32 @@ Creation of all dashboard tables (excluding dummy tables)
 
   **output**: HTML_benefit_description
 
+## [step 10_5]: risk description (T4)
+
+  **input**: RISK_BIRTHCOHORTS_CALENDARTIME, RISK_BIRTHCOHORTS_TIMESINCEVACCINATION
+
+  **output**: HTML_risk_description
+
 # 11 ANALYSIS: DESCRIPTIVE TABLES AND DASHBOARD TABLES FOR DOSES, COVERAGE, RISK AND BENEFIT
 
-## [step 11]: create_dummy_tables (T4)
+## [step 11_1]: create dummy tables (T4)
   **input**: Flowchart_basic_exclusion_criteria, Flowchart_exclusion_criteria, D4_descriptive_dataset_ageband_studystart, D4_descriptive_dataset_age_studystart, D4_followup_fromstudystart, D4_descriptive_dataset_sex_studystart, D4_descriptive_dataset_covariate_studystart
 
   **output**: Attrition diagram 1, Attrition diagram 2, Cohort characteristics at start of study (1-1-2020), Cohort characteristics at first COVID-19 vaccination, Doses of COVID-19 vaccines and distance between first and second dose, Number of incident cases entire study period, Code counts for narrow definitions (for each event) separately, Incidence of AESI (narrow) per 100,000 PY by calendar month in 2020, Incidence of AESI (narrow) per 100,000 PY by age in 2020, Incidence of AESI (narrow) per 100,000 PY by age & sex in 2020, Incidence of AESI (narrow) per 100,000 PY by age & sex in 2020, Incidence of AESI (narrow) per 100,000 PY by month in 2021 (non-vaccinated), Incidence of AESI (narrow) per 100,000 PY by week since vaccination
 
+Creation of dummy tables present in SAP.
+
+## [step 11_2]: create dummy tables MIS KD (T4)
+  **input**: Flowchart_basic_exclusion_criteria, Flowchart_exclusion_criteria, D4_descriptive_dataset_ageband_studystart_MIS, D4_descriptive_dataset_age_studystart_MIS, D4_followup_fromstudystart_MIS, D4_descriptive_dataset_covariate_studystart_MIS, D4_population_d, D4_descriptive_dataset_ageband_studystart_c_MIS, D4_descriptive_dataset_age_studystart_c_MIS, D4_followup_fromstudystart_MIS_c, D4_descriptive_dataset_covid_studystart_c_MIS, D4_descriptive_dataset_covariate_covid_c_MIS, D3_Vaccin_cohort, QC_code_counts_in_study_population_OUTCOME_YEAR, RES_IR_monthly_MIS_b, RES_IR_monthly_MIS_c, RES_IR_monthly_MIS_d
+
+  **output**: Attrition diagram 1, Attrition diagram 2, Cohort characteristics at start of study (1-1-2020), Cohort characteristics at first COVID-19 vaccination, Cohort characteristics at first occurrence of COVID-19 prior to vaccination (cohort c), COVID-19 vaccination by dose and time period between first and second dose (days), Code counts for narrow definitions (for each event) separately, Incidence of AESI (narrow) per 100,000 PY by calendar month in 2020, Incidence of each concept (narrow) per 100,000 PY prior to vaccination and COVID-19, Incidence of each concept (narrow) per 100,000 PY after COVID-19 and prior to vaccination, Incidence of each concept (narrow) per 100,000 PY after vaccination (BRAND)
+
+
+Creation of dummy tables present in SAP.
+
+## [step 11_3]: create dummy tables October (T4)
+  **input**: Flowchart_basic_exclusion_criteria, Flowchart_exclusion_criteria, D4_descriptive_dataset_ageband_studystart, D4_descriptive_dataset_age_studystart, D4_followup_fromstudystart, D4_descriptive_dataset_covariate_studystart, D3_Vaccin_cohort, D4_study_population, D3_events_ALL_OUTCOMES, D3_outcomes_covid, RES_IR_risk_fup_BC
+
+  **output**: # output: Attrition diagram 1, Cohort characteristics at start of study (1-1-2020), Cohort characteristics at first dose of COVID-19 vaccine, Cohort characteristics at second dose of COVID-19 vaccine, COVID-19 vaccination by dose and time period between first and second dose (days), Number of incident cases entire study period, Incidence rates of AESI by vaccine and datasource
+  
 Creation of dummy tables present in SAP.

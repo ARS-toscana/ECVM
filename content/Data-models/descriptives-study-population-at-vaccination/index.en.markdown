@@ -70,3 +70,13 @@ weight: 5
 <br/>
 <br/>
 </div>
+
+## D4_descriptive_dataset_age_vax2
+<div align="center">
+<div id="htmlwidget-6" class="reactable html-widget" style="width:auto;height:300px;"></div>
+<script type="application/json" data-for="htmlwidget-6">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Name":["Datasource","Vax_dose2","Month_vax2","Followup_vax2","Age_P25","Age_P50","Age_p75","Age_mean","Age_min","Age_max"],"Description":[null,"Type vaccine dose 1","Month of date_vax1","Person days of follow-up summed across all subjects in the study population from date_vax1 UNTIL VAX2","Age at date_vax1 25th percentile of distribution","Age at date_vax1, 50th percentile of distribution","Age at date_vax175th percentile of distribution","Age at date_vax1, mean of distribution","Age at date_vax1, minimum of distribution","Age at date_vax1, maximum of distribution"],"format":["ARS BIFAP CPRD PHARMO","Pfizer Moderna AstraZeneca Janssen UNK","12=dec 2020, 1=jan 2021, 2=Feb 2021, 3=March 2021, 4=APRIL 2021, 5=MAY 2021, 6=JUNE 2021, 7=JULY 2021, 8=AUGUST 2021, 9=SEPT 2021, 10=OKT 2021","Integer","Integer","Integer","Integer","Integer","Integer","Integer"],"vocabulary":[null,null,null,null,null,null,null,null,null,null],"comments":[null,null,null,null,null,null,null,null,null,null]},"columns":[{"accessor":"Name","name":"Name","type":"character"},{"accessor":"Description","name":"Description","type":"character"},{"accessor":"format","name":"format","type":"character"},{"accessor":"vocabulary","name":"vocabulary","type":"logical"},{"accessor":"comments","name":"comments","type":"logical"}],"sortable":false,"searchable":true,"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"highlight":true,"bordered":true,"striped":true,"style":{"maxWidth":650},"height":"300px","dataKey":"2e904540fcaa78b2cafbf60fd2bbf9f7","key":"2e904540fcaa78b2cafbf60fd2bbf9f7"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<br/>
+<br/>
+<br/>
+<br/>
+</div>

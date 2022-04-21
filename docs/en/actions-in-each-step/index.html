@@ -12,22 +12,22 @@
     <title>Actions in each step :: ECVM documentation</title>
 
     
-    <link href="../../css/nucleus.css?1650445708" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1650445708" rel="stylesheet">
-    <link href="../../css/hybrid.css?1650445708" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1650445708" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1650445708" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1650445708" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1650445708" rel="stylesheet">
-    <link href="../../css/theme.css?1650445708" rel="stylesheet">
-    <link href="../../css/tabs.css?1650445708" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1650445708" rel="stylesheet">
+    <link href="../../css/nucleus.css?1650568437" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1650568437" rel="stylesheet">
+    <link href="../../css/hybrid.css?1650568437" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1650568437" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1650568437" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1650568437" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1650568437" rel="stylesheet">
+    <link href="../../css/theme.css?1650568437" rel="stylesheet">
+    <link href="../../css/tabs.css?1650568437" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1650568437" rel="stylesheet">
     
-    <link href="../../css/theme-green.css?1650445708" rel="stylesheet">
+    <link href="../../css/theme-green.css?1650568437" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1650445708"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1650568437"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -44,7 +44,7 @@
 
   <div id="header-wrapper">
     <div id="header">
-      <a id="logo" href="https://davidemessinaars.github.io/test_website/">
+      <a id="logo" href="../../">
   <img src="../../data/ECVM logo.png">
 </a>
     </div>
@@ -55,14 +55,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1650445708"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1650445708"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1650568437"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1650568437"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/en";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1650445708"></script>
+<script type="text/javascript" src="../../js/search.js?1650568437"></script>
 
     
   </div>
@@ -70,7 +70,7 @@
     <section id="homelinks">
       <ul>
         <li>
-            <a class="padding" href='../../en'><i class='fas fa-home'></i> Home</a>
+            <a class="padding" href='../../'><i class='fas fa-home'></i> Home</a>
         </li>
       </ul>
     </section>
@@ -539,6 +539,27 @@
  
   
     
+      <li data-nav-id="/en/data-models/pt_poisson/" title="PersonTime poisson" class="dd-item ">
+        <a href="../../en/data-models/pt_poisson/">
+        PersonTime poisson
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
       <li data-nav-id="/en/data-models/pt_risk/" title="PersonTime risk" class="dd-item ">
         <a href="../../en/data-models/pt_risk/">
         PersonTime risk
@@ -665,7 +686,7 @@
         <ul>
           
               <li>
-                  <a class="padding" href="https://ars-toscana.github.io/ECVM/data/ECVM.html"><i class="fas fa-project-diagram"></i> Diagram</a>
+                  <a class="padding" href="en/data/ecvm.html"><i class="fas fa-project-diagram"></i> Diagram</a>
               </li>
           
               <li>
@@ -810,11 +831,15 @@ Each dataset contains the records of the input tables that match the correspondi
 <p><strong>output</strong>: Flowchart_exclusion_criteria, Flowchart_basic_exclusion_criteria, D4_study_population (data model), D4_study_source_population</p>
 <p><strong>output parameters</strong>: subpopulations_non_empty</p>
 <p>In this step the function CreateFlowchart is used: the selection criteria are applied and the study population is selected. A flowchart is created as a byproduct.</p>
-<h2 id="step-04_2-apply-quality-checks-exclusion-criteria-t3">[step 04_2]: apply quality checks exclusion criteria (T3)</h2>
+<h2 id="step-04_2-apply-quality-check-exclusion-criteria-doses-t3">[step 04_2]: apply quality check exclusion criteria doses (T3)</h2>
 <p><strong>input</strong>: persons_doses</p>
-<p><strong>parameters</strong> : this_datasource_has_subpopulations, subpopulations,</p>
+<p><strong>parameters</strong> : this_datasource_has_subpopulations, subpopulations</p>
 <p><strong>output</strong>: Flowchart_doses, HTML_flowchart_doses</p>
 <p>In this step the function CreateFlowchart is used: the selection criteria are applied and the study population is selected. A flowchart is created as a byproduct.</p>
+<h2 id="step-04_3-descriptive-statistics-excluded_persons-t3">[step 04_3]: descriptive statistics excluded_persons (T3)</h2>
+<p><strong>input</strong>: output_spells_category, D3_selection_criteria</p>
+<p><strong>output</strong>: number_criteria_excluded, Plots: Last spells end date, Density_plot_distance_spells, pop_excluded</p>
+<p>In this step some plots and count about the exclusion criteria are created. They are used to set some parameter in the next run of the script or to check if everything work correctly.</p>
 <h1 id="05-create-study-variables">05 CREATE STUDY VARIABLES</h1>
 <h2 id="step-05_1-components-t22">[step 05_1]: components (T2.2)</h2>
 <p><strong>input</strong>: concept set datasets of outcomes (narrow and possible), D4_study_population, subpopulations_non_empty</p>
@@ -871,11 +896,58 @@ Each dataset contains the records of the input tables that match the correspondi
 <p><strong>output</strong>:  D3_algorithm_covid, D3_outcomes_covid</p>
 <p>In this step, the components created in the previous step are combined to obtain levels of covid severity</p>
 <h1 id="06-create-d3-for-doses-and-coverage">06 CREATE D3 FOR DOSES AND COVERAGE</h1>
-<h2 id="step-06-create-d3-datasetst2">[step 06]: create D3 datasets(T2)</h2>
+<h2 id="step-06_1-create-d3-datasetst2">[step 06_1]: create D3 datasets(T2)</h2>
 <p><strong>input</strong>: D4_study_population, selected_doses, D3_outcomes_covid</p>
-<p><strong>parameters</strong>: thisdatasource</p>
-<p><strong>output</strong>: D3_study_population, D3_Vaccin_cohort, D3_studyweeks, D3_vaxweeks, D3_vaxweeks_including_not_vaccinated</p>
+<p><strong>output</strong>: D3_study_population_no_risk, D3_Vaccin_cohort_no_risk</p>
+<p>Creation of D3 datasets present in the SAP document but without risks.</p>
+<h2 id="step-06_2-covariates-at-vaccination-t22">[step 06_2]: covariates at vaccination (T2.2)</h2>
+<p><strong>input</strong>: D3_Vaccin_cohort_no_risk, concept set datasets of covariates</p>
+<p><strong>output</strong>: D3_Vaccin_cohort_covariates</p>
+<p>In this step the diagnostic components of the risk factors are created as presence of a diagnostic code during lookback, and added to the study population</p>
+<h2 id="step-06_3-dp-at-vaccination-t22">[step 06_3]: DP at vaccination (T2.2)</h2>
+<p><strong>input</strong>: D3_Vaccin_cohort_no_risk, concept set datasets in DRUGS_conceptssets</p>
+<p><strong>output</strong>: D3_Vaccin_cohort_DP</p>
+<p>In this step for each subject in the study population a the drug proxy component of each risk factor is created: there must be at least 2 records during 365 days of lookback.</p>
+<h2 id="step-06_4-vaccination_characteristicsrt23">[step 06_4]: vaccination_characteristics.R(T2.3)</h2>
+<p><strong>input</strong>: D3_Vaccin_cohort_no_risk, D3_Vaccin_cohort_covariates</p>
+<p><strong>output</strong>: D4_Vaccin_cohort_cov</p>
+<p>In this step few simple covariates (age etc) are added to the study population.</p>
+<h2 id="step-06_5-all-covariates-at-vaccination-v2-t23">[step 06_5]: ALL covariates at vaccination V2 (T2.3)</h2>
+<p><strong>input</strong>: D3_Vaccin_cohort_no_risk, D4_Vaccin_cohort_cov , D3_Vaccin_cohort_DP</p>
+<p><strong>output</strong>: D3_Vaccin_cohort_cov_ALL</p>
+<p>In this step the diagnostic and the drug proxy component of each risk factor are merged into a composite OR, and added to the study population.</p>
+<h2 id="step-06_6-create-d3-datasetst2">[step 06_6]: create D3 datasets(T2)</h2>
+<p><strong>input</strong>: D3_study_population_no_risk, D3_study_population_cov_ALL , D3_Vaccin_cohort_cov_ALL</p>
+<p><strong>output</strong>: D3_study_population, D3_Vaccin_cohort, D3_vaxweeks_vaccin_cohort, D3_studyweeks, D3_vaxweeks, D3_vaxweeks_including_not_vaccinated</p>
 <p>Creation of all D3 datasets present in the SAP document.</p>
+<h2 id="step-06_7-mis-population-t2">[step 06_7]: MIS population (T2)</h2>
+<p><strong>input</strong>: D3_events_ALL_OUTCOMES, D3_outcomes_covid , D3_study_population</p>
+<p><strong>output</strong>: D3_study_variables_for_MIS, D4_population_b, D3_selection_criteria_c, D4_population_c_no_risk, D3_selection_criteria_d, D4_population_d</p>
+<p>Creation of D3 datasets for MIS/myocard present in the SAP document but without risks.</p>
+<h2 id="step-06_8-covariates-at-covid-t22">[step 06_8]: covariates at covid (T2.2)</h2>
+<p><strong>input</strong>: D4_population_c_no_risk, concept set datasets of covariates</p>
+<p><strong>output</strong>: D3_population_c_covariates</p>
+<p>In this step the diagnostic components of the risk factors are created as presence of a diagnostic code during lookback, and added to the study population</p>
+<h2 id="step-06_9-dp-at-covid-t22">[step 06_9]: DP at covid (T2.2)</h2>
+<p><strong>input</strong>: D4_population_c_no_risk, concept set datasets in DRUGS_conceptssets</p>
+<p><strong>output</strong>: D3_population_c_DP</p>
+<p>In this step for each subject in the study population a the drug proxy component of each risk factor is created: there must be at least 2 records during 365 days of lookback.</p>
+<h2 id="step-06_10-covid-characteristics-t23">[step 06_10]: covid characteristics (T2.3)</h2>
+<p><strong>input</strong>: D4_population_c_no_risk, D3_population_c_covariates</p>
+<p><strong>output</strong>: D4_population_c_cov</p>
+<p>In this step few simple covariates (age etc) are added to the study population.</p>
+<h2 id="step-06_11-all-covariates-at-covid_v2-t23">[step 06_11]: ALL covariates at covid_V2 (T2.3)</h2>
+<p><strong>input</strong>: D4_population_c_no_risk, D4_population_c_cov, D3_population_c_DP</p>
+<p><strong>output</strong>: D3_population_c_cov_ALL</p>
+<p>In this step the diagnostic and the drug proxy component of each risk factor are merged into a composite OR, and added to the study population.</p>
+<h2 id="step-06_12-mis-population-c-t2">[step 06_12]: MIS population c (T2)</h2>
+<p><strong>input</strong>: D4_population_c_no_risk, D3_population_c_cov_ALL</p>
+<p><strong>output</strong>: D4_population_c</p>
+<p>In this step risks are added to the population of cohort c.</p>
+<h2 id="step-06_13-poisson-population-t2">[step 06_13]: Poisson population (T2)</h2>
+<p><strong>input</strong>: D3_vaxweeks_including_not_vaccinated, D3_Vaccin_cohort_cov_ALL, D3_outcomes_covid</p>
+<p><strong>output</strong>: D3_vaxweeks_poisson</p>
+<p>In this step the dataset containing the subjects and time varying covariate (COVID) for poisson analysis</p>
 <h1 id="07-create-d4-risk-and-benefit">07 CREATE D4 RISK AND BENEFIT</h1>
 <h2 id="step-07_1-create-person-time-for-risks-t3">[step 07_1]: create person time for risks (T3)</h2>
 <p><strong>input</strong>: D3_vaxweeks_including_not_vaccinated, D3_events_ALL_OUTCOMES</p>
@@ -914,12 +986,33 @@ Each dataset contains the records of the input tables that match the correspondi
 <p><strong>input</strong>: D4_persontime_risk_month</p>
 <p><strong>output</strong>: D4_persontime_risk_month_RFBC</p>
 <p>Aggregating the monthly data for risk_factors and birth cohort.</p>
+<h2 id="step-07_9-create-person-time-mis-year-t3">[step 07_9]: create person time MIS year (T3)</h2>
+<p><strong>input</strong>: D3_events_ALL_OUTCOMES, D4_population_b, D4_population_c, D4_population_d</p>
+<p><strong>output</strong>: D4_persontime_b, D4_persontime_monthly_b, D4_persontime_c, D4_persontime_monthly_c, D4_persontime_d, D4_persontime_monthly_d</p>
+<p>In this step the function <a href="https://github.com/IMI-ConcePTION/CountPersonTime/wiki">CountPersonTime</a> is used. The output contains persontime and counts for MIS/myocard cohorts.</p>
+<h2 id="step-07_10-aggregate-monthly-mis-t3">[step 07_10]: aggregate monthly MIS (T3)</h2>
+<p><strong>input</strong>: D4_persontime_monthly_b, D4_persontime_monthly_c, D4_persontime_monthly_d</p>
+<p><strong>output</strong>: D4_persontime_monthly_b_BC, D4_persontime_monthly_c_BC, D4_persontime_monthly_d_BC</p>
+<p>Aggregating the monthly data for MIS/myocard cohorts.</p>
+<h2 id="step-07_11-create-person-time-poisson-t3">[step 07_11]: create person time poisson (T3)</h2>
+<p><strong>input</strong>: D3_events_ALL_OUTCOMES, D3_vaxweeks_poisson</p>
+<p><strong>output</strong>: D4_persontime_risk_month_poisson</p>
+<p>In this step the function <a href="https://github.com/IMI-ConcePTION/CountPersonTime/wiki">CountPersonTime</a> is used. The output contains persontime and counts for poisson.</p>
+<h2 id="step-07_12-aggregate-monthly-poisson-t3">[step 07_12]: aggregate monthly Poisson (T3)</h2>
+<p><strong>input</strong>: D4_persontime_risk_month_poisson</p>
+<p><strong>output</strong>: D4_persontime_monthly_poisson_RF</p>
+<p>Aggregating the monthly data for the poisson.</p>
 <h1 id="08-calculate-the-incidence-rates">08 CALCULATE THE INCIDENCE RATES</h1>
 <h2 id="step-08_1-ir-t4">[step 08_1]: IR (T4)</h2>
 <p><strong>input</strong>: D4_persontime_risk_week_BC, D4_persontime_benefit_week_BC, D4_persontime_risk_year_BC, D4_persontime_benefit_year_BC, D4_persontime_risk_week_RF, D4_persontime_benefit_week_RF, D4_persontime_risk_year_RF, D4_persontime_benefit_year_RF, D4_persontime_risk_month_RFBC</p>
 <p><strong>parameters</strong> : list_outcomes_observed</p>
 <p><strong>output</strong>: D4_IR_benefit_week_BC, D4_IR_benefit_fup_BC, D4_IR_risk_week_BC, D4_IR_risk_fup_BC, D4_IR_benefit_week_RF, D4_IR_benefit_fup_RF, D4_IR_risk_week_RF, D4_IR_risk_fup_RF, D4_persontime_ALL_OUTCOMES</p>
 <p>Calculate the incidence rates for birth cohorts and risk factors datasets for both risk and benefit</p>
+<h2 id="step-08_2-ir-mis-t4">[step 08_2]: IR MIS (T4)</h2>
+<p><strong>input</strong>: D4_persontime_b, D4_persontime_monthly_b_BC, D4_persontime_c, D4_persontime_monthly_c_BC, D4_persontime_d, D4_persontime_monthly_d_BC</p>
+<p><strong>parameters</strong> : list_outcomes_observed</p>
+<p><strong>output</strong>: RES_IR_MIS_b, RES_IR_monthly_MIS_b, RES_IR_MIS_c, RES_IR_monthly_MIS_c, RES_IR_MIS_d, RES_IR_monthly_MIS_d</p>
+<p>Calculate the incidence rates for birth cohorts and risk factors datasets for MIS/myocard cohorts</p>
 <h1 id="09-analysis-descriptive-tables-and-dashboard-tables-for-doses-coverage-risk-and-benefit">09 ANALYSIS: DESCRIPTIVE TABLES AND DASHBOARD TABLES FOR DOSES, COVERAGE, RISK AND BENEFIT</h1>
 <h2 id="step-09_1-create-d4_doses_weeks-t3">[step 09_1]: create D4_doses_weeks (T3)</h2>
 <p><strong>input</strong>: D3_studyweeks</p>
@@ -935,6 +1028,10 @@ Each dataset contains the records of the input tables that match the correspondi
 <p><strong>parameters</strong> : list_outcomes_observed</p>
 <p><strong>output</strong>: DOSES_BIRTHCOHORTS, COVERAGE_BIRTHCOHORTS, DOSES_RISKFACTORS, COVERAGE_RISKFACTORS, BENEFIT_BIRTHCOHORTS_CALENDARTIME, BENEFIT_BIRTHCOHORTS_TIMESINCEVACCINATION, BENEFIT_RISKFACTORS_CALENDARTIME, BENEFIT_RISKFACTORS_TIMESINCEVACCINATION, RISK_BIRTHCOHORTS_CALENDARTIME, RISK_BIRTHCOHORTS_TIMESINCEVACCINATION, RISK_RISKFACTORS_CALENDARTIME, RISK_RISKFACTORS_TIMESINCEVACCINATION</p>
 <p>Creation of all dashboard tables (excluding dummy tables)</p>
+<h2 id="step-09_4-create-descriptive-tables-mis-t4">[step 09_4]: create descriptive tables MIS (T4)</h2>
+<p><strong>input</strong>: D3_Vaccin_cohort, D3_study_population, D3_study_population_cov_ALL, D4_population_b, D4_population_c, D4_population_d, D3_Vaccin_cohort_cov_ALL</p>
+<p><strong>output</strong>: escriptive_dataset_age_studystart_MIS, D4_descriptive_dataset_ageband_studystart_MIS, D4_descriptive_dataset_sex_studystart_MIS, D4_descriptive_dataset_covariate_studystart_MIS, D4_followup_fromstudystart_MIS_c, D4_followup_fromstudystart_MIS, D4_descriptive_dataset_age_vax1_MIS, D4_descriptive_dataset_ageband_vax_MIS, D4_followup_from_vax_MIS_d, D4_descriptive_dataset_covid_studystart_c_MIS, D4_descriptive_dataset_age_studystart_c_MIS, D4_descriptive_dataset_ageband_studystart_c_MIS, D4_descriptive_dataset_covariate_covid_c_MIS, D4_followup_fromstudystart_MIS_c_total, D4_descriptive_dataset_sex_vaccination_MIS</p>
+<p>Create the remaining D4 datasets and tables described in the SAP for MIS/myocard cohorts.</p>
 <h1 id="10-create-html-files-that-describe-datasets">10 CREATE HTML FILES THAT DESCRIBE DATASETS</h1>
 <h2 id="step-10_1-flowchart-description-t4">[step 10_1]: FlowChart description (T4)</h2>
 <p><strong>input</strong>: Flowchart_doses</p>
@@ -948,10 +1045,21 @@ Each dataset contains the records of the input tables that match the correspondi
 <h2 id="step-10_4-benefit-description-t4">[step 10_4]: benefit description (T4)</h2>
 <p><strong>input</strong>: BENEFIT_BIRTHCOHORTS_CALENDARTIME, BENEFIT_BIRTHCOHORTS_TIMESINCEVACCINATION</p>
 <p><strong>output</strong>: HTML_benefit_description</p>
+<h2 id="step-10_5-risk-description-t4">[step 10_5]: risk description (T4)</h2>
+<p><strong>input</strong>: RISK_BIRTHCOHORTS_CALENDARTIME, RISK_BIRTHCOHORTS_TIMESINCEVACCINATION</p>
+<p><strong>output</strong>: HTML_risk_description</p>
 <h1 id="11-analysis-descriptive-tables-and-dashboard-tables-for-doses-coverage-risk-and-benefit">11 ANALYSIS: DESCRIPTIVE TABLES AND DASHBOARD TABLES FOR DOSES, COVERAGE, RISK AND BENEFIT</h1>
-<h2 id="step-11-create_dummy_tables-t4">[step 11]: create_dummy_tables (T4)</h2>
+<h2 id="step-11_1-create-dummy-tables-t4">[step 11_1]: create dummy tables (T4)</h2>
 <p><strong>input</strong>: Flowchart_basic_exclusion_criteria, Flowchart_exclusion_criteria, D4_descriptive_dataset_ageband_studystart, D4_descriptive_dataset_age_studystart, D4_followup_fromstudystart, D4_descriptive_dataset_sex_studystart, D4_descriptive_dataset_covariate_studystart</p>
 <p><strong>output</strong>: Attrition diagram 1, Attrition diagram 2, Cohort characteristics at start of study (1-1-2020), Cohort characteristics at first COVID-19 vaccination, Doses of COVID-19 vaccines and distance between first and second dose, Number of incident cases entire study period, Code counts for narrow definitions (for each event) separately, Incidence of AESI (narrow) per 100,000 PY by calendar month in 2020, Incidence of AESI (narrow) per 100,000 PY by age in 2020, Incidence of AESI (narrow) per 100,000 PY by age &amp; sex in 2020, Incidence of AESI (narrow) per 100,000 PY by age &amp; sex in 2020, Incidence of AESI (narrow) per 100,000 PY by month in 2021 (non-vaccinated), Incidence of AESI (narrow) per 100,000 PY by week since vaccination</p>
+<p>Creation of dummy tables present in SAP.</p>
+<h2 id="step-11_2-create-dummy-tables-mis-kd-t4">[step 11_2]: create dummy tables MIS KD (T4)</h2>
+<p><strong>input</strong>: Flowchart_basic_exclusion_criteria, Flowchart_exclusion_criteria, D4_descriptive_dataset_ageband_studystart_MIS, D4_descriptive_dataset_age_studystart_MIS, D4_followup_fromstudystart_MIS, D4_descriptive_dataset_covariate_studystart_MIS, D4_population_d, D4_descriptive_dataset_ageband_studystart_c_MIS, D4_descriptive_dataset_age_studystart_c_MIS, D4_followup_fromstudystart_MIS_c, D4_descriptive_dataset_covid_studystart_c_MIS, D4_descriptive_dataset_covariate_covid_c_MIS, D3_Vaccin_cohort, QC_code_counts_in_study_population_OUTCOME_YEAR, RES_IR_monthly_MIS_b, RES_IR_monthly_MIS_c, RES_IR_monthly_MIS_d</p>
+<p><strong>output</strong>: Attrition diagram 1, Attrition diagram 2, Cohort characteristics at start of study (1-1-2020), Cohort characteristics at first COVID-19 vaccination, Cohort characteristics at first occurrence of COVID-19 prior to vaccination (cohort c), COVID-19 vaccination by dose and time period between first and second dose (days), Code counts for narrow definitions (for each event) separately, Incidence of AESI (narrow) per 100,000 PY by calendar month in 2020, Incidence of each concept (narrow) per 100,000 PY prior to vaccination and COVID-19, Incidence of each concept (narrow) per 100,000 PY after COVID-19 and prior to vaccination, Incidence of each concept (narrow) per 100,000 PY after vaccination (BRAND)</p>
+<p>Creation of dummy tables present in SAP.</p>
+<h2 id="step-11_3-create-dummy-tables-october-t4">[step 11_3]: create dummy tables October (T4)</h2>
+<p><strong>input</strong>: Flowchart_basic_exclusion_criteria, Flowchart_exclusion_criteria, D4_descriptive_dataset_ageband_studystart, D4_descriptive_dataset_age_studystart, D4_followup_fromstudystart, D4_descriptive_dataset_covariate_studystart, D3_Vaccin_cohort, D4_study_population, D3_events_ALL_OUTCOMES, D3_outcomes_covid, RES_IR_risk_fup_BC</p>
+<p><strong>output</strong>: # output: Attrition diagram 1, Cohort characteristics at start of study (1-1-2020), Cohort characteristics at first dose of COVID-19 vaccine, Cohort characteristics at second dose of COVID-19 vaccine, COVID-19 vaccination by dose and time period between first and second dose (days), Number of incident cases entire study period, Incidence rates of AESI by vaccine and datasource</p>
 <p>Creation of dummy tables present in SAP.</p>
 
 
@@ -1021,6 +1129,22 @@ Each dataset contains the records of the input tables that match the correspondi
                     
                     
 
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
                     
                         
             
@@ -1435,16 +1559,16 @@ Each dataset contains the records of the input tables that match the correspondi
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1650445708"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1650445708"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1650445708"></script>
-    <script src="../../js/jquery.sticky.js?1650445708"></script>
-    <script src="../../js/featherlight.min.js?1650445708"></script>
-    <script src="../../js/highlight.pack.js?1650445708"></script>
+    <script src="../../js/clipboard.min.js?1650568437"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1650568437"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1650568437"></script>
+    <script src="../../js/jquery.sticky.js?1650568437"></script>
+    <script src="../../js/featherlight.min.js?1650568437"></script>
+    <script src="../../js/highlight.pack.js?1650568437"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1650445708"></script>
-    <script src="../../js/learn.js?1650445708"></script>
-    <script src="../../js/hugo-learn.js?1650445708"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1650568437"></script>
+    <script src="../../js/learn.js?1650568437"></script>
+    <script src="../../js/hugo-learn.js?1650568437"></script>
     
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

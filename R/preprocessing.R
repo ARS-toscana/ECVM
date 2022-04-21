@@ -1,5 +1,3 @@
-library(magrittr)
-
 `%!in%` = Negate(`%in%`)
 
 tbl_to_html <- function(ind, tbl, category){

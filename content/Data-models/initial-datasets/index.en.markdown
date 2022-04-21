@@ -354,3 +354,13 @@ weight: 5
 <br/>
 <br/>
 </div>
+
+## D3_outcomes_covid_multiple
+<div align="center">
+<div id="htmlwidget-35" class="reactable html-widget" style="width:auto;height:300px;"></div>
+<script type="application/json" data-for="htmlwidget-35">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Name":["person_id","name_event","date_event","origin_severity_level_covid"],"Description":["unique person identifier",null,null,null],"format":["character",null,null,null],"vocabulary":["from cdm persons",null,null,null],"comments":[null,null,null,null]},"columns":[{"accessor":"Name","name":"Name","type":"character"},{"accessor":"Description","name":"Description","type":"character"},{"accessor":"format","name":"format","type":"character"},{"accessor":"vocabulary","name":"vocabulary","type":"character"},{"accessor":"comments","name":"comments","type":"logical"}],"sortable":false,"searchable":true,"defaultPageSize":4,"paginationType":"numbers","showPageInfo":true,"minRows":1,"highlight":true,"bordered":true,"striped":true,"style":{"maxWidth":650},"height":"300px","dataKey":"f0912473707c9fab1ab8822e5b195720","key":"f0912473707c9fab1ab8822e5b195720"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<br/>
+<br/>
+<br/>
+<br/>
+</div>

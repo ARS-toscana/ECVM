@@ -1,15 +1,16 @@
 ---
-title: Flowcharts
-slug: Flowcharts
+title: PersonTime poisson
+slug: PT_poisson
 author: ''
 date: []
 categories:
   - Data Model
+tags: []
 weight: 5
 ---
 
 ```{r, echo = FALSE, warning = FALSE}
 htmltools::tagList(
-  print_mult_tbl("flowchart", data)
+  print_mult_tbl("poisson", data)
 )
 ```
